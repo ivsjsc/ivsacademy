@@ -1,0 +1,45 @@
+# Robots.txt for IVS JSC Website
+# https://ivs.edu.vn/robots.txt
+
+User-agent: *
+Allow: /
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Disallow access to sensitive directories
+Disallow: /secrets/
+Disallow: /functions/
+Disallow: /server/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /firebase/
+
+# Allow access to CSS, JS, and image files
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /lang/
+Allow: /components/
+
+# Sitemap location
+Sitemap: https://ivs.edu.vn/sitemap.xml
+
+# Crawl delay (optional - be respectful to server resources)
+Crawl-delay: 1
