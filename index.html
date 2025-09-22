@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/responsive-enhancements.css">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -627,7 +628,7 @@
                         </div>
                     </div>
                     <div class="hidden lg:block" data-aos="fade-left" data-aos-delay="200">
-                        <img src="https://storage.googleapis.com/ivs-public-assets/images/pages/eov2025/eov2025.jpg" alt="Mockup của EOV 2025 trên các thiết bị" class="max-w-full h-auto rounded-lg shadow-xl">
+                        <img src="https://storage.googleapis.com/ivs-public-assets/images/pages/eov2025/eov2025.jpg" alt="Mockup của EOV 2025 trên các thiết bị" class="max-w-full h-auto rounded-lg shadow-xl" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -740,7 +741,7 @@
                             </a>
                         </div>
                         <div class="lg:w-1/2">
-                            <img src="https://storage.googleapis.com/ivs-public-assets/videos/ivs-video-background.png" alt="Hình ảnh giới thiệu IVS Celestech" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                            <img src="https://storage.googleapis.com/ivs-public-assets/videos/ivs-video-background.png" alt="Hình ảnh giới thiệu IVS Celestech" class="rounded-lg shadow-xl w-full h-auto object-cover" loading="lazy">
                         </div>
                     </div>
 
@@ -986,7 +987,7 @@
                             "Chúng tôi cam kết cống hiến hết mình, không ngừng nỗ lực vì sự phát triển vượt bậc của Giáo dục Việt Nam. Tầm nhìn chiến lược của chúng tôi là tối ưu hóa triệt để các nguồn lực quốc gia, tiết kiệm chi phí cho đất nước và chuyển hóa hiệu quả những khoản đầu tư chưa đạt hiệu suất tối đa. Với tinh thần SYNERGY mạnh mẽ, chúng tôi sẽ tăng cường hợp tác quốc tế sâu rộng, tập trung hỗ trợ toàn diện các cơ sở giáo dục trong nước, nhằm xây dựng một nền giáo dục vững mạnh, hiện đại và hội nhập."
                         </blockquote>
                         <div class="text-lg md:text-xl text-ivs-text-secondary" data-aos="fade-up" data-aos-delay="200">
-                            <img src="https://storage.googleapis.com/ivs-public-assets/images/team/nguyen-minh-triet.png" alt="Ảnh đại diện Ông Nguyễn Minh Triết" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-ivs-blue shadow-lg object-cover" data-aos="fade-up" data-aos-delay="250" onerror="this.onerror=null;this.src='https://placehold.co/128x128/007bff/ffffff?text=CEO';">
+                            <img src="https://storage.googleapis.com/ivs-public-assets/images/team/nguyen-minh-triet.png" alt="Ảnh đại diện Ông Nguyễn Minh Triết" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-ivs-blue shadow-lg object-cover" data-aos="fade-up" data-aos-delay="250" onerror="this.onerror=null;this.src='https://placehold.co/128x128/007bff/ffffff?text=CEO';" loading="lazy">
                             <p class="font-semibold text-ivs-blue" data-lang-key="ceo_name">Ông Nguyễn Minh Triết</p>
                             <p class="text-sm md:text-base" data-lang-key="ceo_title">Tổng Giám đốc (CEO)</p>
                         </div>
@@ -1051,6 +1052,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="/js/loadComponents.js"></script>
     <script src="/js/language.js"></script>
+    <script src="/js/lazy-loading.js"></script>
+    <script src="/js/dark-mode-toggle.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {

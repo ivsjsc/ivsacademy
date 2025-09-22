@@ -1,0 +1,273 @@
+/*
+ * IVS Website - Responsive Design Enhancements
+ * Additional responsive improvements for better mobile experience
+ */
+
+ /* ==========================================================================
+    1. MOBILE OPTIMIZATIONS
+    ========================================================================== */
+
+/* Improve touch targets for mobile */
+@media (max-width: 768px) {
+    /* Larger touch targets for buttons and links */
+    button, .btn, a[role="button"], .mobile-nav-link, .mobile-submenu-toggle {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 16px;
+    }
+
+    /* Better spacing for mobile cards */
+    .feature-card, .service-card, .card {
+        margin-bottom: 1rem;
+        padding: 1.5rem;
+    }
+
+    /* Improve readability on mobile */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    h5 { font-size: 1.125rem; }
+    h6 { font-size: 1rem; }
+}
+
+/* ==========================================================================
+   2. TABLET OPTIMIZATIONS (768px - 1024px)
+   ========================================================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Adjust grid layouts for tablets */
+    .grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-cols-1.md\\:grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Better spacing for tablet navigation */
+    .desktop-nav-link {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ==========================================================================
+   3. DESKTOP OPTIMIZATIONS (1024px+)
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+    /* Enhanced hover effects for desktop */
+    .feature-card:hover, .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Better focus states for accessibility */
+    button:focus, a:focus, input:focus, textarea:focus {
+        outline: 2px solid #60a5fa;
+        outline-offset: 2px;
+    }
+}
+
+/* ==========================================================================
+   4. HIGH-DPI DISPLAY OPTIMIZATIONS
+   ========================================================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Sharper borders and shadows for high-DPI displays */
+    .feature-card, .service-card {
+        border-width: 0.5px;
+    }
+
+    /* Better text rendering */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+}
+
+/* ==========================================================================
+   5. PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    /* Hide navigation and interactive elements when printing */
+    header, footer, .fab-container, nav, button, .no-print {
+        display: none !important;
+    }
+
+    /* Optimize text for printing */
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        color: black !important;
+        background: white !important;
+    }
+
+    /* Ensure links are visible in print */
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+
+    /* Optimize images for printing */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* ==========================================================================
+   6. ACCESSIBILITY IMPROVEMENTS
+   ========================================================================== */
+
+/* Better focus indicators */
+.focus-visible:focus {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .feature-card, .service-card {
+        border: 2px solid currentColor;
+    }
+
+    button, .btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ==========================================================================
+   7. ORIENTATION CHANGES
+   ========================================================================== */
+
+/* Handle orientation changes on mobile */
+@media screen and (orientation: landscape) and (max-width: 768px) {
+    /* Adjust hero section for landscape mobile */
+    .hero-content {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Smaller text in landscape */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* ==========================================================================
+   8. FLEXIBLE CONTAINERS
+   ========================================================================== */
+
+/* Container query support for modern browsers */
+@container (min-width: 768px) {
+    .responsive-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+/* ==========================================================================
+   9. PERFORMANCE OPTIMIZATIONS
+   ========================================================================== */
+
+/* Optimize rendering for large screens */
+@media (min-width: 1440px) {
+    /* Limit max-width for better readability on ultra-wide screens */
+    .container, .max-w-7xl {
+        max-width: 1400px;
+    }
+}
+
+/* Optimize for low-end devices */
+@media (max-width: 360px) {
+    /* Reduce animations and effects on small screens */
+    .feature-card, .service-card {
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* Simplify backgrounds */
+    .hero-video, .background-video {
+        display: none;
+    }
+
+    .hero-fallback-image {
+        display: block !important;
+    }
+}
+
+/* ==========================================================================
+   10. DARK MODE ENHANCEMENTS
+   ========================================================================== */
+
+/* Dark mode specific optimizations */
+@media (prefers-color-scheme: dark) {
+    .dark {
+        /* Enhanced contrast for dark mode */
+        --ivs-bg: #0a0a0a;
+        --ivs-card: #111111;
+        --ivs-border: #27272a;
+        --ivs-text-primary: #f4f4f5;
+        --ivs-text-secondary: #a1a1aa;
+    }
+}
+
+/* Smooth transitions when switching themes */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode toggle button animations */
+#darkModeToggle {
+    backdrop-filter: blur(10px);
+}
+
+#darkModeToggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark #darkModeToggle {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Theme transition effects */
+html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure proper contrast in both themes */
+.dark .feature-card,
+.dark .service-card {
+    background-color: var(--ivs-card);
+    border-color: var(--ivs-border);
+}
+
+.dark text,
+.dark .text-ivs-text-primary {
+    color: var(--ivs-text-primary);
+}
+
+.dark .text-ivs-text-secondary {
+    color: var(--ivs-text-secondary);
+}
