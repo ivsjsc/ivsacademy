@@ -126,6 +126,7 @@ const IVSFabController = {
     populateMenus() {
         const contactMenu = document.getElementById('contact-options');
         const shareMenu = document.getElementById('share-options');
+        const assistantMenu = document.getElementById('assistant-options');
 
         if (contactMenu) {
             this.populateContactOptions(contactMenu);
@@ -135,6 +136,34 @@ const IVSFabController = {
             this.populateShareOptions(shareMenu);
             window.componentLog("IVSFabController: Đã điền nội dung menu chia sẻ.");
         }
+        if (assistantMenu) {
+            this.populateAssistantOptions(assistantMenu);
+            window.componentLog("IVSFabController: Đã điền nội dung menu IVS Assistant.");
+        }
+    },
+
+    /**
+     * Điền nội dung cho menu con tùy chọn IVS Assistant.
+     * @param {HTMLElement} element Phần tử HTML để điền nội dung.
+     */
+    populateAssistantOptions(element) {
+        const assistantOptions = [
+            { key: "fab_ai_chat", text: "Chat with AI", href: "/grok-chat.html", icon: "fas fa-comments", color: "text-purple-500" },
+            { key: "fab_ai_support", text: "AI Support", href: "/ai-support.html", icon: "fas fa-headset", color: "text-blue-500" },
+            { key: "fab_ai_tutor", text: "AI Tutor", href: "/ai-tutor.html", icon: "fas fa-graduation-cap", color: "text-green-500" },
+        ];
+
+        const fragment = document.createDocumentFragment();
+        assistantOptions.forEach(option => {
+            const link = document.createElement('a');
+            link.href = option.href;
+            link.setAttribute('role', 'menuitem');
+            link.className = 'fab-submenu-item group w-full';
+            link.setAttribute('data-lang-key', option.key);
+            link.innerHTML = `<i class="${option.icon} fa-fw ${option.color}"></i><span>${option.text}</span>`;
+            fragment.appendChild(link);
+        });
+        element.appendChild(fragment);
     },
 
     /**
