@@ -1,3 +1,4 @@
+
 [build]
   # Build command (không cần vì đây là static site)
   command = "echo 'No build step required'"
@@ -8,6 +9,7 @@
 [build.environment]
   # Node version (nếu cần)
   NODE_VERSION = "18"
+  NODE_ENV = "production"
 
 # Redirect rules
 [[redirects]]
@@ -59,9 +61,6 @@
 [build.processing.html]
   pretty_urls = true
 
-# Environment variables
-[build.environment]
-  NODE_ENV = "production"
 
 # Plugins (nếu cần)
 # [[plugins]]
