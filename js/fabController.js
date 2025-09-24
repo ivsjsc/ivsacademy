@@ -43,6 +43,7 @@ const IVSFabController = {
         this.populateMenus();
         this.bindEvents();
         this.addRippleEffect();
+        this.bindChatbotEvents();
         this.isInitialized = true; // Đánh dấu đã khởi tạo
         
         // Thêm hiệu ứng shake cho nút liên hệ sau 3 giây để thu hút sự chú ý
@@ -79,6 +80,42 @@ const IVSFabController = {
                 this.createRipple(e, button);
             });
         });
+    },
+
+    /**
+     * Gắn sự kiện cho nút chatbot toggle.
+     */
+    bindChatbotEvents() {
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        if (chatbotToggle) {
+            chatbotToggle.addEventListener('click', () => {
+                this.toggleChatbot();
+            });
+            window.componentLog("IVSFabController: Đã gắn sự kiện cho nút chatbot toggle.");
+        }
+    },
+
+    /**
+     * Toggle trạng thái chatbot (mở/đóng).
+     */
+    toggleChatbot() {
+        const chatIcon = document.getElementById('chat-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (chatIcon && closeIcon) {
+            // Toggle visibility của icons
+            chatIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            
+            // Thêm logic mở/đóng chatbot ở đây
+            // Ví dụ: hiển thị/ẩn chatbot interface
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            if (chatbotInterface) {
+                chatbotInterface.classList.toggle('hidden');
+            }
+            
+            window.componentLog("IVSFabController: Đã toggle trạng thái chatbot.");
+        }
     },
 
     /**
