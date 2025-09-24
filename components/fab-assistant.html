@@ -1,46 +1,26 @@
-<div id="fab-container" class="fixed right-4 z-40 flex flex-col items-end space-y-8 bottom-6 md:bottom-6">
-    
-    <!-- Nút Cuộn lên đầu trang -->
-    <button id="scroll-to-top-btn" title="Lên đầu trang" aria-label="Lên đầu trang"
-            class="fab-item flex items-center justify-center opacity-0 scale-90 pointer-events-none w-12 h-12 md:w-14 md:h-14"
-            tabindex="0" role="button">
-        <i class="fas fa-arrow-up text-lg"></i>
-    </button>
+<!-- FAB IVS Assistant -->
+<div id="fab-assistant-container" class="fixed right-4 z-40 flex flex-col items-end space-y-8 bottom-6 md:bottom-6">
 
-    <!-- Nút FAB Chia Sẻ -->
+    <!-- Nút FAB IVS Assistant -->
     <div class="relative group/fab">
-        <button id="share-main-btn" title="Chia sẻ" aria-label="Mở menu chia sẻ" aria-haspopup="true" aria-expanded="false" aria-controls="share-options"
+        <button id="assistant-main-btn" title="IVS Assistant" aria-label="Mở IVS Assistant" aria-haspopup="true" aria-expanded="false" aria-controls="assistant-options"
                 class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
                 tabindex="0" role="button">
-            <i class="fas fa-share-alt text-xl"></i>
+            <i class="fas fa-robot text-xl"></i>
         </button>
-        <div id="share-options" 
-             class="fab-submenu-panel hidden absolute bottom-full mb-5 p-3 flex flex-wrap justify-start gap-2 transition-all duration-300 ease-out opacity-0 scale-95 transform origin-bottom-right pointer-events-none right-0 w-auto max-w-[calc(100vw-32px)] md:min-w-[240px] md:w-auto"
-             role="menu" aria-orientation="vertical" aria-labelledby="share-main-btn">
-            <!-- Nội dung cho share-options sẽ được JavaScript chèn vào đây -->
-        </div>
-    </div>
-
-    <!-- Nút FAB Liên Hệ (chính) -->
-    <div class="relative group/fab">
-        <button id="contact-main-btn" title="Liên hệ" aria-label="Mở menu liên hệ" aria-haspopup="true" aria-expanded="false" aria-controls="contact-options"
-                class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
-                tabindex="0" role="button">
-            <i class="fas fa-comment-dots text-xl"></i>
-        </button>
-        <div id="contact-options" 
+        <div id="assistant-options"
              class="fab-submenu-panel hidden absolute bottom-full mb-5 p-3 flex flex-wrap justify-start gap-2 transition-all duration-300 ease-out opacity-0 scale-95 transform origin-bottom-right pointer-events-none right-0 w-auto max-w-[calc(100vw-32px)] md:min-w-[260px] md:w-auto"
-             role="menu" aria-orientation="vertical" aria-labelledby="contact-main-btn">
-            <!-- Nội dung cho contact-options sẽ được JavaScript chèn vào đây -->
+             role="menu" aria-orientation="vertical" aria-labelledby="assistant-main-btn">
+            <!-- Nội dung cho assistant-options sẽ được JavaScript chèn vào đây -->
         </div>
     </div>
 </div>
 
-<!-- FAB Social Media Style Floating Button -->
-<div id="fab-social-container" class="fixed bottom-6 right-6 z-50">
-    <!-- Main FAB Button: Toggles the visibility of social media icons -->
-                </div>
-                <!-- End FAB Social Media -->
+<style>
+    /* FAB Item Styles */
+    .fab-item {
+        background: linear-gradient(135deg, #f97316, #ea580c);
+        color: #ffffff;
         border-radius: 50%;
         box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
         transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
@@ -48,18 +28,18 @@
         overflow: hidden;
         touch-action: manipulation;
     }
-    
+
     .fab-item:hover {
         transform: translateY(-3px) scale(1.05);
         box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15);
     }
-    
+
     .fab-item:active {
         transform: translateY(0) scale(0.95);
         box-shadow: 0 2px 10px rgba(249, 115, 22, 0.25);
         transition: transform 0.1s, box-shadow 0.1s;
     }
-    
+
     /* Ripple effect for FAB buttons */
     .fab-item::after {
         content: '';
@@ -77,13 +57,13 @@
         opacity: 0;
         transition: transform 0.5s, opacity 0.8s;
     }
-    
+
     .fab-item:active::after {
         transform: scale(0, 0);
         opacity: 0.3;
         transition: 0s;
     }
-    
+
     /* FAB Submenu Panel */
     .fab-submenu-panel {
         background: rgba(31, 41, 55, 0.95);
@@ -93,7 +73,7 @@
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     /* Keyframes for submenu entry/exit */
     @keyframes fab-panel-in {
         0% { opacity: 0; transform: translateY(10px) scale(0.95); }
@@ -113,7 +93,7 @@
     .fab-submenu-panel:not(.show) {
         animation: fab-panel-out 0.3s ease forwards;
     }
-    
+
     /* FAB Submenu Items */
     .fab-submenu-item {
         display: flex;
@@ -127,17 +107,17 @@
         min-width: 120px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
-    
+
     .fab-submenu-item:hover {
         background: rgba(249, 115, 22, 0.15);
         transform: translateX(2px);
     }
-    
+
     .fab-submenu-item:active {
         transform: scale(0.98);
         background: rgba(249, 115, 22, 0.2);
     }
-    
+
     /* Shake animation for attention */
     @keyframes shake {
         0% { transform: rotate(0); }
@@ -150,38 +130,10 @@
         92% { transform: rotate(1deg); }
         100% { transform: rotate(0); }
     }
-    
+
     .fab-shake {
         animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-    }
-
-    /* Social Media FAB Styles */
-    #fab-social-container {
-        /* Specific styles for the social media FAB container */
-    }
-
-    .social-fab-icon {
-        background: rgba(255, 255, 255, 0.1);
-        color: #f3f4f6;
-        border-radius: 50%;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease, background 0.2s ease;
-        position: relative;
-        overflow: hidden;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .social-fab-icon:hover {
-        transform: translateY(-3px);
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    .social-fab-icon:active {
-        transform: translateY(0) scale(0.95);
     }
 </style>
 
 <script src="/js/fabController.js" defer></script>
-<script src="/js/fab-social.js" defer></script>
