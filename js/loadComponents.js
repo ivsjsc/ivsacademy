@@ -140,6 +140,13 @@ async function loadCommonComponents() {
     window.onPageComponentsLoadedCallback?.();
 }
 
+// Auto-inject FAB container if chưa có
+if (!document.getElementById('fab-container-placeholder')) {
+    const fabDiv = document.createElement('div');
+    fabDiv.id = 'fab-container-placeholder';
+    document.body.appendChild(fabDiv);
+}
+
 // ================= IVSHeaderController (GỘP) =================
 // This controller is kept here as it's tightly coupled with the header.html component
 // and its logic is not intended to be a separate file.
