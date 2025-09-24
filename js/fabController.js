@@ -147,23 +147,10 @@ const IVSFabController = {
      * @param {HTMLElement} element Phần tử HTML để điền nội dung.
      */
     populateAssistantOptions(element) {
-        const assistantOptions = [
-            { key: "fab_chatbot", text: "Chatbot", href: "/grok-chat.html", icon: "fas fa-comments", color: "text-purple-500" },
-            { key: "fab_ai_support", text: "AI Support", href: "/ai-support.html", icon: "fas fa-headset", color: "text-blue-500" },
-            { key: "fab_ai_tutor", text: "AI Tutor", href: "/ai-tutor.html", icon: "fas fa-graduation-cap", color: "text-green-500" },
-        ];
-
-        const fragment = document.createDocumentFragment();
-        assistantOptions.forEach(option => {
-            const link = document.createElement('a');
-            link.href = option.href;
-            link.setAttribute('role', 'menuitem');
-            link.className = 'fab-submenu-item group w-full';
-            link.setAttribute('data-lang-key', option.key);
-            link.innerHTML = `<i class="${option.icon} fa-fw ${option.color}"></i><span>${option.text}</span>`;
-            fragment.appendChild(link);
-        });
-        element.appendChild(fragment);
+        // Chỉ giữ lại một nút IVS Assistant duy nhất, không có menu con
+        element.innerHTML = `<div class="text-center w-full">
+            <span class="font-semibold text-base text-ivs-blue">IVS Assistant đã sẵn sàng hỗ trợ bạn!</span>
+        </div>`;
     },
 
     /**
