@@ -31,7 +31,7 @@ Write-Host "   Record 5: * → A → 112.213.89.150 → DELETE"
 
 Write-Host ""
 Write-Host "4. ADD NEW RECORD IF MISSING:" -ForegroundColor Cyan
-Write-Host "   @ → A → 75.2.60.5 (main domain)"
+Write-Host "   @ -> A -> 75.2.60.5 (main domain)" -ForegroundColor Cyan
 
 Write-Host ""
 Write-Host "💡 NETLIFY IP ADDRESSES:" -ForegroundColor Green
