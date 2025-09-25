@@ -1010,16 +1010,6 @@
         <footer id="footer-placeholder"></footer>
         <div id="fab-container-placeholder"></div>
 
-        <!-- Nút chuyển đổi chế độ tối/sáng -->
-        <button id="darkModeToggle" aria-label="Toggle dark mode">
-            <svg id="moonIcon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-            </svg>
-            <svg id="sunIcon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.675l-.707-.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M7.05 7.05l-.707-.707M8 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-            </svg>
-        </button>
-
         <script src="/js/script.js" defer></script>
         <script src="/js/language.js" defer></script>
         <script src="/js/fabController.js" defer></script>
@@ -1046,25 +1036,7 @@
             document.querySelectorAll('.faq-answer').forEach(answer => {
                 answer.style.display = 'none';
             });
-            
-            // Back to top button
-            const backToTopButton = document.getElementById('backToTop');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.classList.remove('hidden');
-                } else {
-                    backToTopButton.classList.add('hidden');
-                }
-            });
-            
-            backToTopButton.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
+
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
