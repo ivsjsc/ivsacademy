@@ -139,36 +139,6 @@
             color: #60a5fa;
         }
 
-        .fab-container {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            z-index: 1000;
-        }
-
-        .fab-button {
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 9999px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .fab-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-        }
-        .fab-zalo { background-color: #008f3b; }
-        .fab-phone { background-color: #ef4444; }
-        .fab-up { background-color: #60a5fa; }
-        
         .hero-banner {
             position: relative;
             min-height: 80vh;
@@ -337,7 +307,7 @@
 
     <!-- Header will be loaded here by loadComponents.js -->
     <div id="header-placeholder"></div>
-    
+
 
     <div class="header-main">
         <div class="container mx-auto px-4 py-2 flex justify-between items-center">
@@ -1014,11 +984,10 @@
         </div>
 
         <footer id="footer-placeholder"></footer>
-        <div id="fab-container-placeholder"></div>
+        <div id="fab-buttons-placeholder"></div>
 
         <script src="/js/script.js" defer></script>
         <script src="/js/language.js" defer></script>
-        <script src="/js/fabController.js" defer></script>
         <script src="/js/loadComponents.js" defer></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
@@ -1060,6 +1029,19 @@
                     }
                 });
             });
+        </script>
+        <script>
+          fetch('/components/fab-container.html')
+            .then(res => res.text())
+            .then(html => {
+              const placeholder = document.getElementById('fab-buttons-placeholder');
+              if (!placeholder) return;
+              placeholder.innerHTML = html;
+              if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+                window.IVSFabController.init();
+              }
+            })
+            .catch(err => console.error('Không tải được FAB component:', err));
         </script>
     </body>
 </html>
