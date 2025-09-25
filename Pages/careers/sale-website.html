@@ -331,6 +331,8 @@
 <body class="antialiased">
 
     <!-- Header -->
+    <header id="header-placeholder" data-loading-text="Đang tải menu..."></header>
+
     <header class="header-main">
         <div class="container mx-auto px-4 py-2 flex justify-between items-center">
             <div class="flex items-center">
@@ -1018,25 +1020,24 @@
 
         </div>
 
-        <!-- Footer -->
-        <footer class="bg-dark text-white py-8 px-4">
-            <div class="container mx-auto max-w-4xl text-center">
-                <div class="flex justify-center space-x-6 mb-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                <p class="text-gray-300">&copy; 2025 IVS Celestech. All rights reserved.</p>
-                <p class="text-gray-400 text-sm mt-2">Đơn vị trực thuộc IVS JSC - Chuyên cung cấp giải pháp công nghệ chuyên nghiệp</p>
-            </div>
-        </footer>
+        <footer id="footer-placeholder"></footer>
+        <div id="fab-container-placeholder"></div>
 
+        <!-- Nút chuyển đổi chế độ tối/sáng -->
+        <button id="darkModeToggle" aria-label="Toggle dark mode">
+            <svg id="moonIcon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+            <svg id="sunIcon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.675l-.707-.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M7.05 7.05l-.707-.707M8 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+        </button>
+
+        <script src="/js/script.js" defer></script>
+        <script src="/js/language.js" defer></script>
+        <script src="/js/fabController.js" defer></script>
+        <script src="/js/loadComponents.js" defer></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             // Toggle FAQ answers
             function toggleFAQ(element) {
