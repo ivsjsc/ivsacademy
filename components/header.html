@@ -1,9 +1,9 @@
 <!-- FILE: /public/components/header.html -->
-<!-- VERSION: 2.12 - Added missing data-lang-key attributes for 'IVS Celestech' section in desktop navigation -->
+<!-- VERSION: 2.13 - Giới hạn chiều rộng của header và dropdown menu để tránh che khuất nội dung chính, đồng thời căn giữa header để cải thiện bố cục. -->
 <!-- DESCRIPTION: Optimized HTML structure for the main header with updated navigation menus and language selection. -->
 
-<header id="ivs-main-header" class="fixed top-0 left-0 right-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 h-full">
+<header id="ivs-main-header" class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
+    <div class="max-w-6xl mx-auto px-4 h-full">
         <div class="flex items-center justify-between h-full">
             <button id="mobile-menu-open-btn" aria-label="Mở menu di động" aria-haspopup="true" aria-expanded="false" aria-controls="ivs-mobile-menu-panel" class="md:hidden inline-flex items-center p-2 rounded-md text-neutral-300 hover:text-ivs-accent focus:outline-none focus:ring-2 focus:ring-ivs-accent focus:ring-offset-2 focus:ring-offset-ivs-bg transition-colors">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,8 +38,8 @@
                     <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
                         <span data-lang-key="nav_services">Dịch Vụ</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div class="desktop-mega-menu left-1/2 -translate-x-1/2">
-                        <div class="grid grid-cols-3 gap-x-6 p-5"> <!-- Changed to 3 columns -->
+                    <div class="desktop-mega-menu left-1/2 -translate-x-1/2 max-w-4xl">
+                        <div class="grid grid-cols-2 gap-x-6 p-5"> <!-- Giảm số cột xuống 2 -->
                             <!-- Cột trái: Liên kết Giáo dục -->
                             <div class="space-y-2">
                                 <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="nav_services_education_title">Liên kết Giáo dục</h3>
@@ -53,19 +53,6 @@
                                 </a>
                                 <a href="/Pages/lkttnn.html" class="dropdown-item" data-lang-key="nav_services_education_language_centers">
                                     <i class="fas fa-language fa-fw mr-3 text-ivs-accent/70"></i>Liên kết Trung tâm Ngoại ngữ
-                                </a>
-                            </div>
-                            <!-- Cột giữa: Giáo viên nước ngoài -->
-                            <div class="space-y-2">
-                                <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="nav_foreign_teachers">Giáo viên nước ngoài</h3>
-                                <a href="/Pages/foreign-teacher-services.html" class="dropdown-item" data-lang-key="nav_foreign_teachers_services">
-                                    <i class="fas fa-chalkboard-teacher fa-fw mr-3 text-ivs-accent/70"></i>Dịch vụ GVNN
-                                </a>
-                                <a href="/Pages/bang-gia-tham-khao-gvnn-ivs.html" class="dropdown-item" data-lang-key="nav_foreign_teachers_price_list">
-                                    <i class="fas fa-file-invoice-dollar fa-fw mr-3 text-ivs-accent/70"></i>Bảng giá GVNN
-                                </a>
-                                <a href="/Pages/teacher-lists-available.html" class="dropdown-item" data-lang-key="nav_foreign_teachers_teacher_list">
-                                    <i class="fas fa-users fa-fw mr-3 text-ivs-accent/70"></i>Danh sách GVNN
                                 </a>
                             </div>
                             <!-- Cột phải: IVS Celestech - Đã thêm data-lang-key -->
@@ -199,10 +186,6 @@
                     <a href="/Pages/lktieuhoc.html" class="mobile-submenu-item" data-lang-key="nav_services_education_primary">Liên kết Tiểu học</a>
                     <a href="/Pages/lkthcsthpt.html" class="mobile-submenu-item" data-lang-key="nav_services_education_secondary_high">Liên kết THCS & THPT</a>
                     <a href="/Pages/lkttnn.html" class="mobile-submenu-item" data-lang-key="nav_services_education_language_centers">Liên kết Trung tâm Ngoại ngữ</a>
-                    <h5 class="mobile-menu-group-sub mt-2">Giáo viên nước ngoài</h5>
-                    <a href="/Pages/foreign-teacher-services.html" class="mobile-submenu-item" data-lang-key="nav_foreign_teachers_services">Dịch vụ GVNN</a>
-                    <a href="/Pages/bang-gia-tham-khao-gvnn-ivs.html" class="mobile-submenu-item" data-lang-key="nav_foreign_teachers_price_list">Bảng giá tham khảo</a>
-                    <a href="/Pages/teacher-lists-available.html" class="mobile-submenu-item" data-lang-key="nav_foreign_teachers_teacher_list">Danh sách Giáo viên</a>
                     <h5 class="mobile-menu-group-sub mt-2">IVS Celestech</h5>
                     <a href="/Pages/webdesign.html" class="mobile-submenu-item" data-lang-key="header_ivscelestech_webdesign">Thiết kế Website</a>
                     <a href="/Pages/ivscelestech.html" class="mobile-submenu-item" data-lang-key="header_ivscelestech_edtech">Trang thiết bị công nghệ GD</a>
