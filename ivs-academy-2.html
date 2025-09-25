@@ -219,7 +219,7 @@
 
                 <div class="feature-card bg-ivs-card p-6 rounded-xl border border-ivs-border transition-all duration-300" data-aos="fade-up" data-aos-delay="800">
                     <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-universal-access text-white"></i>
+                        <i class="fab fa-universal-access text-white"></i>
                     </div>
                     <h4 class="text-lg font-bold mb-2">♿ Smart Accessibility</h4>
                     <p class="text-sm text-ivs-text-secondary">AI-powered adaptive interfaces và cognitive support</p>
@@ -465,6 +465,19 @@
             document.querySelectorAll('[data-aos="zoom-in"]').forEach(el => {
                 observer.observe(el);
             });
+        });
+    </script>
+
+    <!-- Chèn vào cuối <body> của mọi trang -->
+    <div id="fab-buttons-placeholder"></div>
+    <script>
+      fetch('/components/fab-container.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('fab-buttons-placeholder').innerHTML = html;
+          if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+            window.IVSFabController.init();
+          }
         });
     </script>
 </body>
