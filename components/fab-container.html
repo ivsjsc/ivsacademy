@@ -1,43 +1,8 @@
-<div id="fab-container" class="fixed right-4 z-40 flex flex-col items-end space-y-6 bottom-6 md:bottom-6">
-    
-    <!-- Nút Cuộn lên đầu trang -->
-    <button id="scroll-to-top-btn" title="Lên đầu trang" aria-label="Lên đầu trang"
-            class="fab-item flex items-center justify-center opacity-0 scale-90 pointer-events-none w-12 h-12 md:w-14 md:h-14"
-            tabindex="0" role="button">
-        <i class="fas fa-arrow-up text-lg"></i>
-    </button>
-
-    <!-- Nút FAB Chia Sẻ -->
-    <div class="relative group/fab">
-        <button id="share-main-btn" title="Chia sẻ" aria-label="Mở menu chia sẻ" aria-haspopup="true" aria-expanded="false" aria-controls="share-options"
-                class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
-                tabindex="0" role="button">
-            <i class="fas fa-share-alt text-xl"></i>
-        </button>
-        <div id="share-options" 
-             class="fab-submenu-panel hidden absolute bottom-full mb-5 p-3 flex flex-wrap justify-start gap-2 transition-all duration-300 ease-out opacity-0 scale-95 transform origin-bottom-right pointer-events-none right-0 w-auto max-w-[calc(100vw-32px)] md:min-w-[240px] md:w-auto"
-             role="menu" aria-orientation="vertical" aria-labelledby="share-main-btn">
-            <!-- Nội dung cho share-options sẽ được JavaScript chèn vào đây -->
-        </div>
-    </div>
-
-    <!-- Nút FAB Liên Hệ (chính) -->
-    <div class="relative group/fab">
-        <button id="contact-main-btn" title="Liên hệ" aria-label="Mở menu liên hệ" aria-haspopup="true" aria-expanded="false" aria-controls="contact-options"
-                class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
-                tabindex="0" role="button">
-            <i class="fas fa-comment-dots text-xl"></i>
-        </button>
-        <div id="contact-options" 
-             class="fab-submenu-panel hidden absolute bottom-full mb-5 p-3 flex flex-wrap justify-start gap-2 transition-all duration-300 ease-out opacity-0 scale-95 transform origin-bottom-right pointer-events-none right-0 w-auto max-w-[calc(100vw-32px)] md:min-w-[260px] md:w-auto"
-             role="menu" aria-orientation="vertical" aria-labelledby="contact-main-btn">
-            <!-- Nội dung cho contact-options sẽ được JavaScript chèn vào đây -->
-        </div>
-    </div>
+<!-- FAB Buttons Group: Đã gộp các nút chức năng vào một file riêng -->
+<div id="fab-buttons-group-container">
+    <!-- Nạp thành phần fab-buttons.html mới -->
+    <div id="fab-buttons-placeholder"></div>
 </div>
-
-<!-- FAB Social Media Style Floating Button -->
-<div id="fab-social-container" class="fixed bottom-6 right-6 z-50">
     <!-- Main FAB Button: Toggles the visibility of social media icons -->
                 </div>
                 <!-- End FAB Social Media -->
