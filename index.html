@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="vi" class="dark scroll-smooth">
     <head>
         <meta charset="UTF-8">
@@ -1270,6 +1270,17 @@
                     });
                 });
             }
+
+            // FAB Buttons
+            fetch('/components/fab-container.html')
+              .then(res => res.text())
+              .then(html => {
+                document.getElementById('fab-buttons-placeholder').innerHTML = html;
+                // Khởi tạo controller nếu cần
+                if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+                  window.IVSFabController.init();
+                }
+              });
         </script>
     </body>
     </html>
