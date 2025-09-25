@@ -330,8 +330,13 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
-    <header id="header-placeholder" data-loading-text="Đang tải menu..."></header>
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-ivs-bg flex items-center justify-center z-[100] transition-opacity duration-500 opacity-100">
+        <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-ivs-blue"></div>
+    </div>
+
+    <!-- Header will be loaded here by loadComponents.js -->
+    <div id="header-placeholder"></div>
 
     <header class="header-main">
         <div class="container mx-auto px-4 py-2 flex justify-between items-center">
