@@ -167,5 +167,17 @@
 
     <script src="/js/language.js" defer></script>
     <script src="/js/loadComponents.js" defer></script>
+    <!-- Chèn vào cuối <body> của mọi trang -->
+    <div id="fab-buttons-placeholder"></div>
+    <script>
+      fetch('/components/fab-container.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('fab-buttons-placeholder').innerHTML = html;
+          if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+            window.IVSFabController.init();
+          }
+        });
+    </script>
 </body>
 </html>
