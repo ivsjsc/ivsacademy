@@ -856,8 +856,6 @@
                 contact_email1: "info@ivsacademy.edu.vn",
                 contact_email2: "ivscorp.vn@gmail.com",
                 contact_zalo: "zalo.me/ivsjsc",
-                contact_partner_button_text: "Hợp tác với Chúng tôi",
-                contact_join_button_text: "Gia nhập Đội ngũ IVS",
                 footer_copyright: "© 2025 Công ty Cổ phần Dịch vụ Thương mại Integrate Vision Synergy. Bảo lưu mọi quyền.",
                 footer_tagline: "Tư duy chiến lược, Hành động thực tiễn, Giá trị toàn cầu."
             },
@@ -1028,8 +1026,6 @@
                 contact_email1: "info@ivsacademy.edu.vn",
                 contact_email2: "ivscorp.vn@gmail.com",
                 contact_zalo: "zalo.me/ivsjsc",
-                contact_partner_button_text: "Partner With Us",
-                contact_join_button_text: "Join Our Team",
                 footer_copyright: "© 2025 Integrate Vision Synergy Trading Services Joint Stock Company. All Rights Reserved.",
                 footer_tagline: "Strategic Thinking, Practical Action, Global Values."
             }
@@ -1383,5 +1379,17 @@
             });
         });
     </script>
+    <!-- Chèn vào cuối <body> của mọi trang -->
+<div id="fab-buttons-placeholder"></div>
+<script>
+  fetch('/components/fab-container.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('fab-buttons-placeholder').innerHTML = html;
+      if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+        window.IVSFabController.init();
+      }
+    });
+</script>
 </body>
 </html>
