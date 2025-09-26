@@ -71,7 +71,15 @@
             text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
         }
         .teacher-card {
-            @apply bg-ivs-card p-6 rounded-xl border border-ivs-border shadow-lg flex flex-col items-center text-center;
+            background-color: #161B22;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .teacher-card:hover {
@@ -79,18 +87,29 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         .teacher-avatar {
-            @apply w-28 h-28 rounded-full object-cover mb-4 border-2 border-ivs-blue;
+            width: 7rem;
+            height: 7rem;
+            border-radius: 9999px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid #58a6ff;
         }
         .teacher-info ul {
-            @apply text-ivs-text-secondary text-sm list-none p-0 space-y-1;
-            text-align: left;
+            color: #a1aab4;
+            font-size: 0.875rem;
+            list-style: none;
+            padding: 0;
             width: 100%;
         }
         .teacher-info li {
-            @apply flex items-center justify-start;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 0.25rem;
         }
         .teacher-info li i {
-            @apply text-ivs-green mr-2;
+            color: #34d399;
+            margin-right: 0.5rem;
             width: 1.25rem;
             flex-shrink: 0;
         }
@@ -98,16 +117,32 @@
             flex-grow: 1;
         }
         .btn-view-profile {
-            @apply mt-4 py-2 px-4 bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold rounded-lg transition-colors transform hover:scale-105 inline-flex items-center justify-center;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #58a6ff;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, background-color 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
+        .btn-view-profile:hover { transform: scale(1.05); background-color: #3b82f6; }
         .pagination-button {
-            @apply px-4 py-2 rounded-lg font-semibold transition-colors duration-200;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
         }
         .pagination-button:not(:disabled) {
-            @apply bg-ivs-blue text-white hover:bg-ivs-blue-darker;
+            background-color: #58a6ff;
+            color: #ffffff;
         }
         .pagination-button:disabled {
-            @apply bg-ivs-border text-ivs-text-secondary cursor-not-allowed;
+            background-color: #30363d;
+            color: #a1aab4;
+            cursor: not-allowed;
         }
         .form-container {
             background-color: var(--ivs-card);
@@ -150,11 +185,26 @@
             resize: vertical;
         }
         .submit-button {
-            @apply w-full py-3 px-6 bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold rounded-lg transition-colors transform hover:scale-105;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background-color: #58a6ff;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, background-color 0.15s ease;
         }
         .file-upload-label {
-            @apply block w-full py-3 px-6 text-center bg-ivs-border text-ivs-text-secondary rounded-lg cursor-pointer hover:bg-ivs-text-secondary hover:text-ivs-bg transition-colors;
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            background-color: #30363d;
+            color: #a1aab4;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease;
         }
+        .file-upload-label:hover { background-color: #a1aab4; color: #0d1117; }
         .file-upload-input {
             display: none;
         }
@@ -1080,16 +1130,6 @@
         });
     </script>
     <!-- Chèn vào cuối <body> của mọi trang -->
-    <div id="fab-buttons-placeholder"></div>
-    <script>
-    fetch('/components/fab-container.html')
-        .then(res => res.text())
-        .then(html => {
-        document.getElementById('fab-buttons-placeholder').innerHTML = html;
-        if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
-            window.IVSFabController.init();
-        }
-        });
-    </script>
+        <div id="fab-container-placeholder"></div>
 </body>
 </html>

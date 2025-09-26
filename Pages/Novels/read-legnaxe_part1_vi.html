@@ -143,23 +143,41 @@
         }
         /* Sửa .prose để đảm bảo màu chữ đúng và sử dụng biến cỡ chữ */
         .prose {
-            @apply max-w-none font-serif text-black dark:text-white;
+            max-width: none;
+            font-family: 'Merriweather', serif;
+            color: #111827;
         }
+        .dark .prose { color: #ffffff; }
         .prose p {
-            /* Sử dụng biến cho font-size và đảm bảo màu */
-            @apply mb-4 leading-relaxed text-justify text-black dark:text-white;
+            margin-bottom: 1rem;
+            line-height: 1.75;
+            text-align: justify;
+            color: #111827;
         }
+        .dark .prose p { color: #ffffff; }
         .prose strong {
-            @apply font-semibold text-black dark:text-white;
+            font-weight: 600;
+            color: #111827;
         }
+        .dark .prose strong { color: #ffffff; }
         .prose h4 {
-             /* Sử dụng biến cho font-size và đảm bảo màu */
-            @apply font-semibold mt-5 mb-2 text-black dark:text-white;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #111827;
         }
+        .dark .prose h4 { color: #ffffff; }
         .chapter h3 {
-             /* Sử dụng biến cho font-size và đảm bảo màu */
-            @apply font-semibold mb-6 mt-4 text-black dark:text-white border-b pb-3 border-gray-200 dark:border-gray-700;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+            color: #111827;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.75rem;
         }
+        .dark .chapter h3 { color: #ffffff; border-bottom-color: #374151; }
         /* CSS cho nút cuộn lên */
         #scroll-to-top-btn {
             transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -228,7 +246,8 @@
 
     </main>
 
-    <div id="chapter-modal" class="modal fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none" style="/* display: none; is controlled by JS adding modal-active class */">
+    <!-- display is controlled by JS adding/removing the 'modal-active' class -->
+    <div id="chapter-modal" class="modal fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none">
         <div class="modal-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-2xl w-full max-w-md relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
             <span id="close-modal-btn" class="close absolute top-3 right-4 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 text-3xl cursor-pointer transition-colors leading-none">&times;</span>
             <h3 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Danh Sách Chương</h3>

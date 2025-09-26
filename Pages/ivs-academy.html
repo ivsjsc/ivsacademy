@@ -243,7 +243,9 @@
 
         .feature-card, .unit-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            @apply rounded-xl border border-ivs-border bg-ivs-card; /* Đồng bộ style card */
+            border-radius: 0.75rem;
+            border: 1px solid #30363d;
+            background-color: #161B22;
         }
         .feature-card:hover, .unit-card:hover {
             transform: translateY(-5px);
@@ -262,29 +264,56 @@
 
         /* Cải thiện style cho các tab */
         .tab-button {
-            @apply px-6 py-3 font-semibold border-b-2 transition-colors duration-300;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-bottom-width: 2px;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
         .tab-button.active {
-            @apply text-ivs-blue border-ivs-blue;
+            color: #58a6ff;
+            border-color: #58a6ff;
         }
         .tab-button:not(.active) {
-            @apply text-ivs-text-secondary border-transparent hover:border-ivs-border;
+            color: #a1aab4;
+            border-color: transparent;
         }
+        .tab-button:not(.active):hover { border-color: #30363d; }
 
         /* Cải thiện style cho CTA cuối trang */
         .cta-section {
-            background: linear-gradient(to right, var(--tw-colors-ivs-blue-darker), var(--tw-colors-ivs-purple));
-            @apply text-white py-16 md:py-24 text-center rounded-xl shadow-2xl;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            color: #ffffff;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
         .cta-section h2 {
-            @apply text-4xl md:text-5xl font-bold font-display mb-6;
+            font-size: 2.25rem;
+            font-weight: 700;
+            font-family: 'Lexend', sans-serif;
+            margin-bottom: 1.5rem;
         }
         .cta-section p {
-            @apply text-lg md:text-xl max-w-3xl mx-auto mb-10;
+            font-size: 1.125rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2.5rem;
         }
         .cta-section .btn-contact {
-            @apply inline-flex items-center gap-3 bg-white text-ivs-blue font-semibold py-3 px-8 md:py-4 md:px-10 rounded-lg transition duration-300 shadow-xl hover:shadow-2xl text-lg transform hover:scale-105;
+            display: inline-flex;
+            gap: 0.75rem;
+            align-items: center;
+            background-color: #ffffff;
+            color: #58a6ff;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: box-shadow 0.3s ease, transform 0.15s ease;
         }
+        .cta-section .btn-contact:hover { box-shadow: 0 12px 30px rgba(0,0,0,0.15); transform: scale(1.03); }
 
     </style>
     <!-- CSS -->

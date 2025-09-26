@@ -534,12 +534,7 @@ body.menu-open {
     touch-action: none;
 }
 
-/* Fallback for Tailwind JIT: ensure these classes are not purged */
-/* purgecss start ignore */
-.translate-x-full {}
-.opacity-0 {}
-.opacity-100 {}
-/* purgecss end ignore */
+/* Note: Removed empty placeholder rules to satisfy linter. */
 
 /* ================= END IVS MOBILE MENU FIX ================= */
 
@@ -733,7 +728,7 @@ html {
  * has all necessary styles loaded.
  */
 
-@import url('/css/fab-styles.css');
+@import url('/css/fab.css');
 
 .dark .video-background {
     filter: brightness(0.7);
@@ -820,71 +815,11 @@ html {
     }
 }
 
-/* FAB Button Styles */
-.fab-item {
-    position: relative;
-    overflow: hidden;
-}
+/* DEPRECATED: FAB rules moved to canonical stylesheet /css/fab.css
+   This shim imports the canonical file to preserve behavior for pages
+   that still reference `css/styles.css`. Please update templates to
+   load /css/fab.css directly and then this shim can be removed.
+*/
 
-.fab-active {
-    background: linear-gradient(145deg, #ea580c, #c2410c) !important;
-    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.15) !important;
-    transform: scale(1.05) !important;
-}
+@import url('/css/fab.css');
 
-.ripple {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: scale(0);
-    animation: ripple 0.6s linear;
-    pointer-events: none;
-}
-
-@keyframes ripple {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
-
-/* Mobile Optimization */
-@media (max-width: 640px) {
-    /* Tăng kích thước vùng nhấn cho các nút trên mobile */
-    .mobile-nav-link, .mobile-submenu-toggle, .mobile-submenu-item {
-        min-height: 44px; /* Đảm bảo vùng nhấn tối thiểu 44px theo tiêu chuẩn Apple */
-        padding: 0.8rem 1rem;
-    }
-    
-    /* Đảm bảo FAB không bị che bởi các phần tử khác */
-    #fab-container {
-        z-index: 40;
-    }
-    
-    /* Tối ưu khoảng cách giữa các nút FAB trên mobile */
-    #fab-container .fab-item {
-        margin-bottom: 0.5rem;
-    }
-}
-
-/* Accessibility Improvements */
-.fab-item:focus-visible, 
-.mobile-nav-link:focus-visible, 
-.mobile-submenu-toggle:focus-visible, 
-.mobile-submenu-item:focus-visible {
-    outline: 2px solid #F97316;
-    outline-offset: 2px;
-}
-
-/* Touch Feedback */
-@media (hover: none) {
-    /* Hiệu ứng phản hồi khi chạm trên thiết bị cảm ứng */
-    .fab-item:active, 
-    .mobile-nav-link:active, 
-    .mobile-submenu-toggle:active, 
-    .mobile-submenu-item:active {
-        background-color: rgba(249, 115, 22, 0.2);
-        transform: scale(0.97);
-        transition: transform 0.1s, background-color 0.1s;
-    }
-}

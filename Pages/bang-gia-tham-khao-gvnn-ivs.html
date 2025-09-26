@@ -106,33 +106,27 @@
 
         /* Custom styles for price cards - Adjusted for dark theme */
         .price-card {
-            @apply bg-ivs-card border border-ivs-border rounded-lg p-6 shadow-xl flex flex-col h-full;
+            background-color: var(--ivs-card);
+            border: 1px solid var(--ivs-border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .price-card:hover {
-            @apply transform -translate-y-2 shadow-2xl;
+            transform: translateY(-0.5rem);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
         }
-        .price-card-header {
-            @apply text-center pb-4 mb-4 border-b border-ivs-border;
-        }
-        .price-card-title {
-            @apply text-3xl font-display font-bold text-ivs-text-primary;
-        }
-        .price-card-price {
-            @apply text-5xl font-display font-extrabold mt-2;
-        }
-        .price-card-features {
-            @apply flex-grow space-y-3 py-4;
-        }
-        .price-card-feature-item {
-            @apply flex items-center text-ivs-text-secondary;
-        }
-        .price-card-feature-item i {
-            @apply text-ivs-green mr-3;
-        }
-        .price-card-cta {
-            @apply mt-6 !text-center;
-        }
+        .price-card-header { text-align: center; padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--ivs-border); }
+        .price-card-title { font-size: 1.875rem; font-weight: 700; color: var(--ivs-text-primary); }
+        .price-card-price { font-size: 3rem; font-weight: 800; margin-top: 0.5rem; }
+        .price-card-features { flex-grow: 1; margin-bottom: 1rem; }
+        .price-card-feature-item { display: flex; align-items: center; color: var(--ivs-text-secondary); margin-bottom: 0.5rem; }
+        .price-card-feature-item i { color: var(--ivs-green); margin-right: 0.75rem; }
+        .price-card-cta { margin-top: 1.5rem; text-align: center !important; }
 
         /* Styles for spotlight card effect from layout.html - Adjusted for dark theme */
         .spotlight-card {
@@ -170,23 +164,21 @@
 
         /* CTA Button Styling */
         .cta-button {
-            @apply inline-flex items-center px-8 py-4 text-base font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
-            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3); /* Updated shadow color for muted blue */
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
         }
-        .cta-button:hover {
-            box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4); /* Updated shadow color for muted blue */
-        }
+        .cta-button:hover { box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4); transform: scale(1.05); }
 
         /* FAQ Section Styling - Adjusted for dark theme */
-        .faq-item {
-            @apply bg-ivs-card border border-ivs-border rounded-lg mb-4;
-        }
-        .faq-question {
-            @apply flex justify-between items-center p-5 cursor-pointer text-ivs-text-primary font-semibold text-lg;
-        }
-        .faq-answer {
-            @apply p-5 pt-0 text-ivs-text-secondary hidden;
-        }
+        .faq-item { background-color: var(--ivs-card); border: 1px solid var(--ivs-border); border-radius: 0.5rem; margin-bottom: 1rem; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem; cursor: pointer; color: var(--ivs-text-primary); font-weight: 600; font-size: 1.125rem; }
+        .faq-answer { padding: 1.25rem; padding-top: 0; color: var(--ivs-text-secondary); display: none; }
         .faq-answer.open {
             display: block;
         }

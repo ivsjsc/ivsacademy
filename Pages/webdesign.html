@@ -138,13 +138,7 @@
             color: #9ca3af;
         }
 
-        /* Kiểu cho Floating Action Buttons (FABs) */
-        .fab-hidden { display: none !important; }
-        #contact-options:not(.fab-hidden),
-        #share-options:not(.fab-hidden) {
-            display: flex; flex-direction: column; align-items: flex-end;
-        }
-        #contact-options, #share-options { z-index: 1000; }
+        /* FAB helpers moved to /css/fab.css (canonical) */
         
         /* Kiểu cho nút ngôn ngữ đang hoạt động */
         #header-placeholder button.active-lang {
@@ -405,18 +399,8 @@
         // Điều này đảm bảo theme được áp dụng nhanh chóng, tránh FOUC (Flash of Unstyled Content)
         initializeTheme();
     </script>
-    <!-- Chèn vào cuối <body> của mọi trang -->
-    <div id="fab-buttons-placeholder"></div>
-    <script>
-      fetch('/components/fab-container.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('fab-buttons-placeholder').innerHTML = html;
-          if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
-            window.IVSFabController.init();
-          }
-        });
-    </script>
+        <!-- FAB placeholder: centralized loader will fetch the canonical component -->
+        <div id="fab-container-placeholder"></div>
 </body>
 </html>
 

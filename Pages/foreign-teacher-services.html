@@ -77,14 +77,26 @@
 
         /* General Button Styling */
         .btn-primary {
-            @apply inline-flex items-center px-8 py-4 text-base font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
             box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
         }
         .btn-primary:hover {
             box-shadow: 0 6px 20px rgba(88, 166, 255, 0.4);
         }
         .btn-secondary {
-            @apply inline-flex items-center px-8 py-4 text-base font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
             box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3);
         }
         .btn-secondary:hover {
@@ -129,62 +141,39 @@
         }
 
         /* Price Table Styling */
-        .price-table-container {
-            @apply overflow-x-auto;
-        }
-        .price-table {
-            @apply w-full border-collapse;
-            min-width: 700px; /* Ensure table is wide enough on smaller screens */
-        }
-        .price-table th, .price-table td {
-            @apply py-3 px-4 text-left border border-ivs-border;
-        }
-        .price-table th {
-            @apply bg-ivs-blue text-white font-semibold uppercase text-sm;
-        }
-        .price-table td {
-            @apply bg-ivs-card text-ivs-text-secondary;
-        }
-        .price-table tbody tr:nth-child(odd) td {
-            @apply bg-ivs-bg; /* Alternate row color */
-        }
-        .price-table tbody tr:hover td {
-            @apply bg-ivs-border; /* Hover effect */
-        }
-        .price-range {
-            @apply font-bold text-ivs-green;
-        }
-        .note-column {
-            @apply text-ivs-text-secondary text-sm italic;
-        }
+        .price-table-container { overflow-x: auto; }
+        .price-table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        .price-table th, .price-table td { padding: 0.75rem 1rem; text-align: left; border: 1px solid #30363d; }
+        .price-table th { background-color: #58a6ff; color: #ffffff; font-weight: 600; text-transform: uppercase; font-size: 0.875rem; }
+        .price-table td { background-color: #161B22; color: #a1aab4; }
+        .price-table tbody tr:nth-child(odd) td { background-color: #0d1117; }
+        .price-table tbody tr:hover td { background-color: #30363d; }
+        .price-range { font-weight: 700; color: #34d399; }
+        .note-column { color: #a1aab4; font-size: 0.875rem; font-style: italic; }
 
         /* Price Card Styling (from previous version, kept for consistency if needed elsewhere) */
         .price-card {
-            @apply bg-ivs-card p-8 rounded-xl border border-ivs-border shadow-lg flex flex-col;
+            background-color: #161B22;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .price-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
-        .price-card-header {
-            @apply text-center pb-6 mb-6 border-b border-ivs-border;
-        }
-        .price-card-features {
-            @apply flex-grow space-y-3 mb-8;
-        }
-        .price-card-features li {
-            @apply flex items-center text-ivs-text-secondary;
-        }
-        .price-card-features li .fa-check-circle {
-            @apply text-ivs-green mr-2;
-        }
+        .price-card-header { text-align: center; padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #30363d; }
+        .price-card-features { flex-grow: 1; margin-bottom: 2rem; }
+        .price-card-features li { display: flex; align-items: center; color: #a1aab4; margin-bottom: 0.5rem; }
+        .price-card-features li .fa-check-circle { color: #34d399; margin-right: 0.5rem; }
         .price-card-features li .fa-times-circle {
-            @apply text-red-500 mr-2;
+            color: #ef4444; /* red-500 */
+            margin-right: 0.5rem;
         }
-        .price-card-cta {
-            @apply mt-auto; /* Push button to the bottom */
-        }
+        .price-card-cta { margin-top: auto; /* Push button to the bottom */ }
 
         /* FAQ Section Styling */
         details > summary {
