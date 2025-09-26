@@ -159,10 +159,10 @@
         --ivs-text-secondary: #d1d5db;
         
         /* Accent colors */
-        --ivs-accent: #F97316;
+        --ivs-accent: var(--ivs-accent);
         --ivs-accent-dark: #ea580c;
         --ivs-accent-light: #fdba74;
-        --ivs-accent-gradient: linear-gradient(135deg, #F97316 0%, #ea580c 100%);
+        --ivs-accent-gradient: linear-gradient(135deg, var(--ivs-accent) 0%, #ea580c 100%);
         
         /* Interactive states */
         --ivs-link-active-bg: rgba(249, 115, 22, 0.15);
@@ -439,7 +439,7 @@
     border: none;
 }
 .hamburger-btn:focus-visible {
-    outline: 2px solid #F97316;
+    outline: 2px solid var(--ivs-accent);
     outline-offset: 2px;
 }
 .hamburger-btn:hover {
@@ -513,7 +513,7 @@
     touch-action: manipulation;
 }
 .mobile-nav-link:focus-visible, .mobile-submenu-toggle:focus-visible, .mobile-submenu-item:focus-visible {
-    outline: 2px solid #F97316;
+    outline: 2px solid var(--ivs-accent);
     outline-offset: 2px;
     background: rgba(249,115,22,0.08);
 }
@@ -588,7 +588,7 @@
     color: #fdba74;
 }
 .mobile-nav-link:focus-visible, .mobile-submenu-toggle:focus-visible, .mobile-submenu-item:focus-visible {
-    outline: 2px solid #F97316;
+    outline: 2px solid var(--ivs-accent);
     outline-offset: 2px;
     background: rgba(249,115,22,0.13);
     box-shadow: 0 2px 8px 0 rgba(249,115,22,0.13);
@@ -656,7 +656,7 @@
 }
 #mobile-menu-close-btn:active {
     transform: scale(0.95);
-    background: #f97316;
+    background: var(--ivs-accent);
     transition: transform 0.1s, background 0.1s;
 }
 #mobile-menu-close-btn svg {
@@ -745,7 +745,7 @@
         color: linear-gradient(90deg,#fdba74,#38bdf8);
     }
     .mobile-nav-link:focus-visible, .mobile-submenu-toggle:focus-visible, .mobile-submenu-item:focus-visible {
-        outline: 2px solid #F97316;
+        outline: 2px solid var(--ivs-accent);
         outline-offset: 2px;
         background: rgba(249,115,22,0.13);
         box-shadow: 0 2px 8px 0 rgba(249,115,22,0.13);
@@ -830,7 +830,7 @@
         border: none;
     }
     #mobile-menu-open-btn:focus-visible {
-        outline: 2px solid #F97316;
+        outline: 2px solid var(--ivs-accent);
         outline-offset: 2px;
     }
     #mobile-menu-open-btn:hover {
@@ -840,10 +840,11 @@
     }
     #mobile-menu-open-btn:active {
         transform: scale(0.95);
-        background: #f97316;
+        background: var(--ivs-accent);
     }
     #mobile-menu-open-btn svg {
         width: 28px; height: 28px;
     }
 </style>
+
 
