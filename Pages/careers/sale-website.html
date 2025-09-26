@@ -15,6 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -987,11 +993,19 @@
     <!-- FAB placeholder (standard id expected by loadComponents.js) -->
     <div id="fab-container-placeholder"></div>
 
-    <script src="/js/fabController.js" defer></script>
-    <script src="/js/script.js" defer></script>
+    <!-- Load utilities first -->
+    <script src="/js/utils.js" defer></script>
+    
+    <!-- Load core components -->  
     <script src="/js/language.js" defer></script>
     <script src="/js/loadComponents.js" defer></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Load controllers -->
+    <script src="/js/fabController.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    
+    <!-- Load AOS animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             // Toggle FAQ answers
             function toggleFAQ(element) {
