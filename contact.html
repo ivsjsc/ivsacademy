@@ -154,32 +154,163 @@
                     <h2 class="text-3xl font-bold text-white mb-6 section-title" data-lang-key="contact_form_title">
                         Gửi Yêu Cầu Cho Chúng Tôi
                     </h2>
-                    <form action="#" method="POST" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_name_label">Họ và Tên</label>
-                            <input type="text" id="name" name="name" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nguyễn Văn A" required data-lang-key="form_name_placeholder">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_email_label">Email</label>
-                            <input type="email" id="email" name="email" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="email@example.com" required data-lang-key="form_email_placeholder">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_phone_label">Số Điện Thoại</label>
-                            <input type="tel" id="phone" name="phone" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0901234567" data-lang-key="form_phone_placeholder">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_message_label">Nội Dung Yêu Cầu</label>
-                            <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tôi muốn tìm hiểu về..." required data-lang-key="form_message_placeholder"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800" data-lang-key="form_submit_button">
-                            Gửi Yêu Cầu
-                        </button>
 
-                        <!-- Thêm nút liên kết Google Form đã điền sẵn -->
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScy2U7Pa1Sy9Xzny4InhSLvUWYeBh3WTxAldelI6xOAzJ2FXg/viewform?usp=pp_url&entry.1517655153=Nguy%E1%BB%85n+Minh+Tri%E1%BA%BFt&entry.396944312=n.bi2993@gmail.com&entry.138806801=0795555789&entry.1102553479=Y%C3%AAu+c%E1%BA%A7u+t%E1%BB%AB+kh%C3%A1ch+h%C3%A0ng" target="_blank" rel="noopener noreferrer" class="block text-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800 mt-4" data-lang-key="google_form_button">
+                    <!-- Netlify-ready form: keep form-name hidden input and honeypot for spam protection -->
+                    <form name="contact" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" enctype="multipart/form-data" class="space-y-6 contact-form" novalidate>
+                        <input type="hidden" name="form-name" value="contact">
+
+                        <!-- Honeypot field (hidden) -->
+                        <div style="display:none;" aria-hidden="true">
+                            <label>Không điền trường này nếu bạn là người thật: <input name="bot-field"></label>
+                        </div>
+
+                        <div>
+                            <label for="name" class="block text-lg font-medium text-gray-300 mb-2">Họ và Tên <span class="text-orange-400">*</span></label>
+                            <input type="text" id="name" name="name" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nguyễn Văn A" required aria-required="true">
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-lg font-medium text-gray-300 mb-2">Email <span class="text-orange-400">*</span></label>
+                            <input type="email" id="email" name="email" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="email@example.com" required aria-required="true">
+                        </div>
+
+                        <div>
+                            <label for="phone" class="block text-lg font-medium text-gray-300 mb-2">Số Điện Thoại</label>
+                            <input type="tel" id="phone" name="phone" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0901234567">
+                        </div>
+
+                        <div>
+                            <label for="project_type" class="block text-lg font-medium text-gray-300 mb-2">Loại dự án</label>
+                            <select id="project_type" name="project_type" class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700">
+                                <option value="">-- chọn --</option>
+                                <option value="dock-construction">Dock Construction</option>
+                                <option value="remodel">Remodel</option>
+                                <option value="repair">Repairs & Maintenance</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-lg font-medium text-gray-300 mb-2">Nội Dung Yêu Cầu</label>
+                            <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tôi muốn tìm hiểu về..."></textarea>
+                        </div>
+
+                        <div>
+                            <label for="attachment" class="block text-lg font-medium text-gray-300 mb-2">Tệp đính kèm (tuỳ chọn)</label>
+                            <input type="file" id="attachment" name="attachment" accept=".jpg,.png,.pdf,.docx" class="w-full text-sm text-gray-300">
+                            <p class="text-xs text-gray-500 mt-1">Tối đa theo giới hạn Netlify (kiểm tra tài liệu Netlify cho kích thước tối đa).</p>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <input type="checkbox" id="consent" name="consent" required aria-required="true" class="mt-1" />
+                            <label for="consent" class="text-sm text-gray-300">Tôi đồng ý được liên hệ về yêu cầu này. <span class="text-orange-400">*</span></label>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800" data-netlify="true">Gửi Yêu Cầu</button>
+                        </div>
+
+                        <!-- Optional quick Google Form button retained -->
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScy2U7Pa1Sy9Xzny4InhSLvUWYeBh3WTxAldelI6xOAzJ2FXg/viewform?usp=pp_url&entry.1517655153=Nguy%E1%BB%85n+Minh+Tri%E1%BA%BFt&entry.396944312=n.bi2993@gmail.com&entry.138806801=0795555789&entry.1102553479=Y%C3%AAu+c%E1%BA%A7u+t%E1%BB%AB+kh%C3%A1ch+h%C3%A0ng" target="_blank" rel="noopener noreferrer" class="block text-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800 mt-4">
                             Hoặc Gửi Yêu Cầu Nhanh qua Google Form
                         </a>
                     </form>
+
+                    <!-- Progressive enhancement: AJAX submit that still triggers Netlify form processing -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const form = document.querySelector('form[name="contact"]');
+                            if (!form) return;
+
+                            const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+                            const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+                            const showFormMessage = (msg, isError = true) => {
+                                let container = form.querySelector('#formMessage');
+                                if (!container) {
+                                    container = document.createElement('div');
+                                    container.id = 'formMessage';
+                                    container.className = 'text-sm mt-3';
+                                    form.appendChild(container);
+                                }
+                                container.textContent = msg;
+                                container.classList.toggle('text-red-400', isError);
+                                container.classList.toggle('text-green-400', !isError);
+                            };
+
+                            form.addEventListener('submit', async (e) => {
+                                // Allow native submission if JS disabled
+                                e.preventDefault();
+
+                                // Honeypot check
+                                if (form.querySelector('[name="bot-field"]').value) {
+                                    // Detected bot — abort
+                                    return;
+                                }
+
+                                const submitButton = form.querySelector('button[type="submit"]');
+                                const originalText = submitButton && submitButton.textContent;
+                                if (submitButton) {
+                                    submitButton.disabled = true;
+                                    submitButton.textContent = 'Đang gửi...';
+                                }
+
+                                // Client-side file validation
+                                const fileInput = form.querySelector('input[type="file"][name="attachment"]');
+                                if (fileInput && fileInput.files.length > 0) {
+                                    const file = fileInput.files[0];
+                                    if (file.size > MAX_FILE_SIZE) {
+                                        showFormMessage('Kích thước tệp vượt quá giới hạn 5 MB. Vui lòng chọn tệp nhỏ hơn.', true);
+                                        if (submitButton) {
+                                            submitButton.disabled = false;
+                                            submitButton.textContent = originalText;
+                                        }
+                                        return;
+                                    }
+                                    if (ALLOWED_TYPES.indexOf(file.type) === -1) {
+                                        showFormMessage('Loại tệp không được hỗ trợ. Vui lòng gửi JPG, PNG, PDF hoặc DOCX.', true);
+                                        if (submitButton) {
+                                            submitButton.disabled = false;
+                                            submitButton.textContent = originalText;
+                                        }
+                                        return;
+                                    }
+                                }
+
+                                const formData = new FormData(form);
+                                // Ensure form-name is present (Netlify requires it when using AJAX)
+                                formData.set('form-name', form.getAttribute('name') || 'contact');
+
+                                try {
+                                    const res = await fetch('/', {
+                                        method: 'POST',
+                                        body: formData
+                                    });
+
+                                    if (res.ok) {
+                                        // Redirect to thank-you page (maintain Netlify behavior)
+                                        window.location.href = form.getAttribute('action') || '/thank-you.html';
+                                    } else {
+                                        // Show error UI while keeping original form available
+                                        const text = await res.text();
+                                        console.error('Netlify form error', text);
+                                        showFormMessage('Gửi thất bại — vui lòng thử lại sau.', true);
+                                        if (submitButton) {
+                                            submitButton.disabled = false;
+                                            submitButton.textContent = originalText;
+                                        }
+                                    }
+                                } catch (err) {
+                                    console.error('Submit error', err);
+                                    showFormMessage('Lỗi khi gửi. Vui lòng thử lại sau.', true);
+                                    if (submitButton) {
+                                        submitButton.disabled = false;
+                                        submitButton.textContent = originalText;
+                                    }
+                                }
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         </section>
