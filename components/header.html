@@ -1,20 +1,16 @@
-<!-- FILE: /public/components/header.html -->
-<!-- VERSION: 2.13 - Giới hạn chiều rộng của header và dropdown menu để tránh che khuất nội dung chính, đồng thời căn giữa header để cải thiện bố cục. -->
-<!-- DESCRIPTION: Optimized HTML structure for the main header with updated navigation menus and language selection. -->
-
-<header id="ivs-main-header" class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
+<header id="ivs-main-header" class="fixed top-0 left-0 right-0 z-40 bg-ivs-bg shadow-md">
     <div class="max-w-6xl mx-auto px-4 h-full">
         <div class="flex items-center justify-between h-full">
-            <button id="mobile-menu-open-btn" aria-label="Mở menu di động" aria-haspopup="true" aria-expanded="false" aria-controls="ivs-mobile-menu-panel" class="md:hidden inline-flex items-center p-2 rounded-md text-neutral-300 hover:text-ivs-accent focus:outline-none focus:ring-2 focus:ring-ivs-accent focus:ring-offset-2 focus:ring-offset-ivs-bg transition-colors">
+            <button id="mobile-menu-open-btn" aria-label="Mở menu di động" aria-haspopup="true" aria-expanded="false" aria-controls="ivs-mobile-menu-panel" class="md:hidden inline-flex items-center p-2 rounded-md text-ivs-text-primary hover:text-ivs-accent focus:outline-none focus:ring-2 focus:ring-ivs-accent focus:ring-offset-2 focus:ring-offset-ivs-bg transition-colors">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
             <a href="/index.html" class="flex-shrink-0 flex items-center space-x-2 group" aria-label="IVS JSC Homepage">
-                <img src="/images/logo/logo.png" alt="IVS JSC Logo" class="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';">
-                <span class="hidden sm:inline text-lg md:text-xl font-bold group-hover:text-ivs-accent transition-colors">IVS <span class="text-ivs-accent">JSC</span></span>
+                <img src="/images/logo/logo.jpg" alt="IVS JSC Logo" class="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';">
+                <span class="hidden sm:inline text-lg md:text-xl font-bold text-ivs-text-primary group-hover:text-ivs-accent transition-colors">IVS <span class="text-ivs-accent">JSC</span></span>
             </a>
-
+            
             <!-- Desktop Navigation -->
             <nav id="main-navigation" class="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
                 <a href="/index.html" class="desktop-nav-link" data-lang-key="nav_home">Trang Chủ</a>
@@ -127,10 +123,10 @@
             <!-- Language Buttons (Desktop & Mobile) -->
             <div class="flex items-center space-x-2 md:space-x-1 ml-auto md:ml-0 relative">
                 <button class="lang-toggle-btn group" data-lang="vi" aria-label="Chọn Tiếng Việt">
-                    <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
+                    <img src="/images/flags/vn.jpg" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='images/flags/vi.jpg'">
                 </button>
                 <button class="lang-toggle-btn group" data-lang="en" aria-label="Select English">
-                    <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                    <img src="/images/flags/en.jpg" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='images/flags/en.jpg'">
                 </button>
                 
                 <!-- Language Change Confirmation Message -->
@@ -152,7 +148,7 @@
     <div id="ivs-mobile-menu-container" class="relative w-full max-w-sm h-full bg-ivs-bg-medium mr-auto flex flex-col transform -translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] rounded-r-3xl shadow-2xl p-2 md:p-4 glass-menu-panel">
         <div class="flex items-center justify-between p-4 border-b border-ivs-bg-light">
             <span class="text-lg font-semibold text-ivs-accent menu-title" data-lang-key="mobile_menu_title">Menu</span>
-            <img id="mobile-menu-logo" src="/images/logo.png" alt="IVS Logo" class="h-9 w-auto mx-auto hidden" loading="lazy" width="120" height="36">
+            <img id="mobile-menu-logo" src="/images/logo.jpg" alt="IVS Logo" class="h-9 w-auto mx-auto hidden" loading="lazy" width="120" height="36">
             <button id="mobile-menu-close-btn" type="button" class="p-2 rounded-xl hover:bg-ivs-bg-light shadow-md focus:outline-none focus:ring-2 focus:ring-ivs-accent" aria-label="Close menu">
                 <span class="sr-only">Close menu</span>
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,6 +208,9 @@
                 <div id="submenu-library" class="mobile-submenu-content">
                     <a href="/gallery.html" class="mobile-submenu-item" data-lang-key="nav_library_gallery">Thư viện</a>
                     <a href="/Pages/document-library.html" class="mobile-submenu-item" data-lang-key="nav_library_docs">Tài liệu</a>
+                    <a href="/learning-materials.html" class="mobile-submenu-item">Tài Liệu Học Tập</a>
+                    <a href="/admin.html" class="mobile-submenu-item">Quản Lý Nội Dung</a>
+                    <a href="/analytics.html" class="mobile-submenu-item">Analytics Dashboard</a>
                     <a href="/apps/story-repository.html" class="mobile-submenu-item" data-lang-key="nav_library_stories">Kho truyện</a>
                     <a href="/games/ivsgames.html" class="mobile-submenu-item" data-lang-key="nav_library_games">IVS Games</a>
                     <a href="/apps/ivsapps.html" class="mobile-submenu-item" data-lang-key="nav_library_apps">IVS Apps</a>
@@ -224,10 +223,10 @@
             <div class="mobile-menu-group card-menu-group mobile-menu-lang-group">
                 <div class="flex justify-center gap-3 mt-2">
                     <button class="lang-toggle-btn group rounded-full shadow-md border border-orange-300 bg-white/10 hover:bg-orange-100/20 focus:ring-2 focus:ring-orange-400 w-10 h-10 flex items-center justify-center" data-lang="vi" aria-label="Chọn Tiếng Việt">
-                        <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
+                        <img src="/images/flags/vn.jpg" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='/images/flags/vi.jpg'">
                     </button>
-                    <button class="lang-toggle-btn group rounded-full shadow-md border border-blue-300 bg-white/10 hover:bg-blue-100/20 focus:ring-2 focus:ring-blue-400 w-10 h-10 flex items-center justify-center" data-lang="en" aria-label="Select English">
-                        <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                    <button class="lang-toggle-btn group" data-lang="en" aria-label="Select English">
+                        <img src="/images/flags/en.jpg" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='/images/flags/en.jpg'">
                     </button>
                 </div>
             </div>
@@ -309,7 +308,7 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
-        background: linear-gradient(to right, var(--ivs-bg-light) 50%, transparent 50%);
+        background: linear-gradient(to right, #0A0A0A 50%, transparent 50%);
         background-size: 200% 100%;
         background-position: right bottom;
     }
@@ -355,7 +354,7 @@
         top: 100%;
         left: 0;
         z-index: 50;
-        background: linear-gradient(to bottom right, var(--ivs-bg-medium), rgba(31, 41, 55, 0.98));
+        background: linear-gradient(to bottom right, #0A0A0A, rgba(17, 17, 17, 0.98));
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 1rem;
         box-shadow: 
@@ -413,7 +412,7 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         margin: 4px 6px;
         position: relative;
-        background: linear-gradient(to right, var(--ivs-bg-light) 50%, transparent 50%);
+        background: linear-gradient(to right, #111111 50%, transparent 50%);
         background-size: 200% 100%;
         background-position: right bottom;
     }
@@ -940,5 +939,3 @@
         width: 28px; height: 28px;
     }
 </style>
-
-
