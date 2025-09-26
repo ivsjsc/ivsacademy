@@ -1,0 +1,24 @@
+/* Centralized CSS variables for IVS color system */
+:root {
+  /* Accent */
+  --ivs-accent: #ff7a18;
+  --ivs-accent-dark: #e05f00;
+  --ivs-accent-light: #ffb380;
+
+  /* Alpha helpers */
+  --ivs-accent-08: rgba(255,122,24,0.08);
+  --ivs-accent-12: rgba(255,122,24,0.12);
+  --ivs-accent-18: rgba(255,122,24,0.18);
+
+  /* Core background/text tokens (can be extended) */
+  --ivs-bg-dark: #0b1220;
+  --ivs-bg-medium: #0f1724;
+  --ivs-bg-light: #1f2a36;
+  --ivs-text-primary: #ffffff;
+  --ivs-text-secondary: #cbd5e1;
+}
+
+/* Small helpers (optional) */
+.text-ivs-accent { color: var(--ivs-accent) !important; }
+.bg-ivs-accent { background-color: var(--ivs-accent) !important; }
+.ring-ivs-accent:focus { box-shadow: 0 0 0 3px var(--ivs-accent-12); }
