@@ -245,37 +245,42 @@
         --header-height: 64px;
         --desktop-header-height: 72px;
 
-        /* Core colors */
-        --ivs-bg-dark: #111827;
-        --ivs-bg-medium: #1f2937;
-        --ivs-bg-light: #374151;
-        --ivs-text-primary: #f9fafb;
-        --ivs-text-secondary: #d1d5db;
+        /* Core colors (updated for a darker, modern header) */
+        --ivs-bg-dark: #0b1220; /* deep navy */
+        --ivs-bg-medium: #0f1724; /* very dark blue-gray */
+        --ivs-bg-light: #1f2a36; /* muted charcoal */
+        --ivs-text-primary: #ffffff; /* bright text for contrast */
+        --ivs-text-secondary: #cbd5e1; /* soft light gray */
         
-        /* Accent colors */
-        --ivs-accent: #F97316;
-        --ivs-accent-dark: #ea580c;
-        --ivs-accent-light: #fdba74;
-        --ivs-accent-gradient: linear-gradient(135deg, #F97316 0%, #ea580c 100%);
+        /* Accent colors (retain brand orange, tuned for vibrancy) */
+        --ivs-accent: #ff7a18; /* slightly warmer/brighter orange */
+        --ivs-accent-dark: #e05f00; /* deeper accent for contrast */
+        --ivs-accent-light: #ffb380; /* lighter accent */
+        --ivs-accent-gradient: linear-gradient(135deg, #ff7a18 0%, #e05f00 100%);
         
         /* Interactive states */
-        --ivs-link-active-bg: rgba(249, 115, 22, 0.15);
-        --ivs-hover-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --ivs-link-active-bg: rgba(255,122,24,0.12); /* subtle warm bg for active */
+        --ivs-hover-transition: 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
         
         /* Shadows */
-        --ivs-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-        --ivs-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --ivs-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        --ivs-shadow-accent: 0 4px 15px rgba(249, 115, 22, 0.3);
+        --ivs-shadow-sm: 0 2px 6px rgba(2,6,23,0.6);
+        --ivs-shadow-md: 0 6px 18px rgba(2,6,23,0.6);
+        --ivs-shadow-lg: 0 18px 40px rgba(2,6,23,0.6);
+        --ivs-shadow-accent: 0 6px 22px rgba(255,122,24,0.18);
         
         /* Glass effect */
-        --ivs-glass-bg: rgba(31, 41, 55, 0.8);
-        --ivs-glass-border: rgba(255, 255, 255, 0.1);
-        --ivs-glass-blur: blur(12px);
+        --ivs-glass-bg: rgba(11,17,34,0.6);
+        --ivs-glass-border: rgba(255, 255, 255, 0.06);
+        --ivs-glass-blur: blur(10px);
     }
 
     #ivs-main-header {
         transition: all var(--ivs-hover-transition);
+        /* default header background tuned for an elegant dark glass look */
+        background: var(--ivs-glass-bg);
+        color: var(--ivs-text-primary);
+        box-shadow: 0 2px 8px rgba(2,6,23,0.45);
+        border-bottom: 1px solid rgba(255,255,255,0.02);
     }
 
     #ivs-main-header.scrolled {
@@ -496,7 +501,7 @@
         background: linear-gradient(145deg, var(--ivs-accent), var(--ivs-accent-dark));
         border: 2px solid rgba(255, 255, 255, 0.1);
         box-shadow: 
-            0 4px 15px rgba(249, 115, 22, 0.3),
+            0 4px 15px rgba(255, 122, 24, 0.3),
             inset 0 2px 4px rgba(255, 255, 255, 0.1);
     }
 
@@ -681,11 +686,11 @@
     margin-right: 0.5em;
     color: #fdba74;
 }
-.mobile-nav-link:focus-visible, .mobile-submenu-toggle:focus-visible, .mobile-submenu-item:focus-visible {
-    outline: 2px solid #F97316;
+    .mobile-nav-link:focus-visible, .mobile-submenu-toggle:focus-visible, .mobile-submenu-item:focus-visible {
+    outline: 2px solid var(--ivs-accent);
     outline-offset: 2px;
-    background: rgba(249,115,22,0.13);
-    box-shadow: 0 2px 8px 0 rgba(249,115,22,0.13);
+    background: rgba(255,122,24,0.08);
+    box-shadow: 0 2px 8px 0 rgba(255,122,24,0.13);
 }
 .mobile-nav-link:hover, .mobile-submenu-toggle:hover, .mobile-submenu-item:hover {
     background: rgba(249,115,22,0.16);
@@ -745,19 +750,19 @@
 }
 #mobile-menu-close-btn:hover {
     background: #fdba74;
-    box-shadow: 0 4px 16px rgba(249,115,22,0.18);
+    box-shadow: 0 4px 16px rgba(255,122,24,0.18);
     transform: scale(1.05);
 }
 #mobile-menu-close-btn:active {
     transform: scale(0.95);
-    background: #f97316;
+    background: var(--ivs-accent);
     transition: transform 0.1s, background 0.1s;
 }
 #mobile-menu-close-btn svg {
     width: 24px; height: 24px;
 }
 
-@media (max-width: 480px) {
+    @media (max-width: 480px) {
     #ivs-mobile-menu-container {
         min-width: 96vw;
         max-width: 100vw;
@@ -839,11 +844,11 @@
         color: linear-gradient(90deg,#fdba74,#38bdf8);
     }
     .mobile-nav-link:focus-visible, .mobile-submenu-toggle:focus-visible, .mobile-submenu-item:focus-visible {
-        outline: 2px solid #F97316;
-        outline-offset: 2px;
-        background: rgba(249,115,22,0.13);
-        box-shadow: 0 2px 8px 0 rgba(249,115,22,0.13);
-    }
+    outline: 2px solid var(--ivs-accent);
+    outline-offset: 2px;
+    background: rgba(255,122,24,0.13);
+    box-shadow: 0 2px 8px 0 rgba(255,122,24,0.13);
+}
     .mobile-nav-link:hover, .mobile-submenu-toggle:hover, .mobile-submenu-item:hover {
         background: rgba(249,115,22,0.16);
         color: #fff;
