@@ -1,0 +1,51 @@
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Counter Animation */
+@keyframes countUp {
+    from {
+        content: "0";
+    }
+    to {
+        content: attr(data-target);
+    }
+}
+
+/* Gradient Border Animation */
+@keyframes gradientBorder {
+    0% { border-image-source: linear-gradient(45deg, #60a5fa, #a78bfa); }
+    50% { border-image-source: linear-gradient(45deg, #a78bfa, #22d3ee); }
+    100% { border-image-source: linear-gradient(45deg, #22d3ee, #60a5fa); }
+}
+
+/* Card Hover Effect */
+.card {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, #60a5fa, #a78bfa) 1;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-image: linear-gradient(45deg, #22d3ee, #60a5fa) 1;
+    animation: gradientBorder 3s infinite;
+}
+
+/* Mobile Menu Animation */
+.mobile-menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}

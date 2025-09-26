@@ -1,142 +1,49 @@
-<header id="ivs-main-header" class="fixed top-0 left-0 right-0 z-40 bg-ivs-bg shadow-md">
-    <div class="max-w-6xl mx-auto px-4 h-full">
-        <div class="flex items-center justify-between h-full">
-            <button id="mobile-menu-open-btn" aria-label="Mở menu di động" aria-haspopup="true" aria-expanded="false" aria-controls="ivs-mobile-menu-panel" class="md:hidden inline-flex items-center p-2 rounded-md text-ivs-text-primary hover:text-ivs-accent focus:outline-none focus:ring-2 focus:ring-ivs-accent focus:ring-offset-2 focus:ring-offset-ivs-bg transition-colors">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+<header class="fixed top-0 left-0 w-full bg-ivs-bg z-50">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-2">
+            <img src="/images/logo.png" alt="IVS Logo" class="h-8">
+            <span class="text-xl font-bold">IVS Academy</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center space-x-6">
+            <a href="#about" class="nav-link">Về chúng tôi</a>
+            <a href="#services" class="nav-link">Dịch vụ</a>
+            <a href="#products" class="nav-link">Sản phẩm</a>
+            <a href="#contact" class="nav-link">Liên hệ</a>
+            <button class="cta-button">
+                Đăng ký ngay
+                <span class="ml-2">→</span>
             </button>
-            <a href="/index.html" class="flex-shrink-0 flex items-center space-x-2 group" aria-label="IVS JSC Homepage">
-                <img src="/images/logo/logo.png" alt="IVS JSC Logo" class="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';">
-                <span class="hidden sm:inline text-lg md:text-xl font-bold text-ivs-text-primary group-hover:text-ivs-accent transition-colors">IVS <span class="text-ivs-accent">JSC</span></span>
-            </a>
-            
-            <!-- Desktop Navigation -->
-            <nav id="main-navigation" class="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
-                <a href="/index.html" class="desktop-nav-link" data-lang-key="nav_home">Trang Chủ</a>
-                
-                <!-- Dropdown "Về IVS" -->
-                <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
-                        <span data-lang-key="nav_about_ivs">Về IVS</span><i class="fas fa-chevron-down text-xs ml-2"></i>
-                    </button>
-                    <div class="desktop-dropdown p-2 space-y-1">
-                        <a href="/about.html" class="dropdown-item" data-lang-key="nav_about_us">Về chúng tôi</a>                        
-                        <a href="/Pages/non-profit.html" class="dropdown-item" data-lang-key="nav_non_profit">Phi lợi nhuận</a>
-                        <a href="/Pages/careervn.html" class="dropdown-item" data-lang-key="nav_career_opportunities">Cơ hội nghề nghiệp</a>                     
-                        <a href="/ivs-global-teacher-hub.html" class="dropdown-item" data-lang-key="nav_foreign_teachers_applying">Teachers Applying</a>
-                        <a href="/Pages/international-partnership.html" class="dropdown-item" data-lang-key="solution_international_coop_title">Hợp tác Quốc tế</a>
-                    </div>
-                </div>
+        </nav>
 
-                <!-- Dropdown "Dịch Vụ" -->
-                <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
-                        <span data-lang-key="nav_services">Dịch Vụ</span><i class="fas fa-chevron-down text-xs ml-2"></i>
-                    </button>
-                    <div class="desktop-mega-menu left-1/2 -translate-x-1/2 max-w-4xl">
-                        <div class="grid grid-cols-2 gap-x-6 p-5"> <!-- Giảm số cột xuống 2 -->
-                            <!-- Cột trái: Liên kết Giáo dục -->
-                            <div class="space-y-2">
-                                <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="nav_services_education_title">Liên kết Giáo dục</h3>
-                                <a href="/education.html" class="dropdown-item" data-lang-key="nav_services_education_overview"><i class="fas fa-school fa-fw mr-3 text-ivs-accent/70"></i>Tổng quan</a>
-                                <a href="/Pages/lkmamnon.html" class="dropdown-item" data-lang-key="nav_services_education_kindergarten"><i class="fas fa-child fa-fw mr-3 text-ivs-accent/70"></i>Liên kết Mầm non</a>
-                                <a href="/Pages/lktieuhoc.html" class="dropdown-item" data-lang-key="nav_services_education_primary">
-                                    <i class="fas fa-book-reader fa-fw mr-3 text-ivs-accent/70"></i>Liên kết Tiểu học
-                                </a>
-                                <a href="/Pages/lkthcsthpt.html" class="dropdown-item" data-lang-key="nav_services_education_secondary_high">
-                                    <i class="fas fa-user-graduate fa-fw mr-3 text-ivs-accent/70"></i>Liên kết THCS & THPT
-                                </a>
-                                <a href="/Pages/lkttnn.html" class="dropdown-item" data-lang-key="nav_services_education_language_centers">
-                                    <i class="fas fa-language fa-fw mr-3 text-ivs-accent/70"></i>Liên kết Trung tâm Ngoại ngữ
-                                </a>
-                            </div>
-                            <!-- Cột phải: IVS Celestech - Đã thêm data-lang-key -->
-                            <div class="space-y-2">
-                                <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="header_ivscelestech_title">IVS Celestech</h3>
-                                <a href="/Pages/webdesign.html" class="dropdown-item" data-lang-key="header_ivscelestech_webdesign">
-                                    <i class="fas fa-globe fa-fw mr-3 text-ivs-accent/70"></i>Thiết kế Website
-                                </a>
-                                <a href="/Pages/tech_devices.html" class="dropdown-item" data-lang-key="header_ivscelestech_edtech">
-                                    <i class="fas fa-microchip fa-fw mr-3 text-ivs-accent/70"></i>Trang thiết bị công nghệ
-                                </a>
-                                <a href="/Pages/ivscelestech-tcnoithat.html" class="dropdown-item" data-lang-key="header_ivscelestech_tcnoithat">
-                                    <i class="fas fa-couch fa-fw mr-3 text-ivs-accent/70"></i>Tư vấn, thi công nội thất
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden mobile-menu-button">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
 
-                <!-- Dropdown "Giải pháp" - Updated to two columns -->
-                <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
-                        <span data-lang-key="nav_solutions">Giải pháp</span><i class="fas fa-chevron-down text-xs ml-2"></i>
-                    </button>
-                    <div class="desktop-mega-menu left-1/2 -translate-x-1/2"> <!-- Changed to desktop-mega-menu -->
-                        <div class="grid grid-cols-2 gap-x-6 p-5">
-                            <!-- Cột trái: Công nghệ ứng dụng -->
-                            <div class="space-y-2">
-                                <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="nav_solutions_tech_title">Công nghệ ứng dụng</h3>
-                                <a href="/solutions.html" class="dropdown-item" data-lang-key="nav_solutions_overview"><i class="fas fa-lightbulb fa-fw mr-3 text-ivs-accent/70"></i>Tổng quan</a>
-                                <a href="/Pages/ivscelestech.html" class="dropdown-item" data-lang-key="nav_solutions_edtech"><i class="fas fa-code fa-fw mr-3 text-ivs-accent/70"></i>Công nghệ GD</a>
-                                <a href="/Pages/upskill.html" class="dropdown-item" data-lang-key="nav_solutions_upskill"><i class="fas fa-arrow-up-right-dots fa-fw mr-3 text-ivs-accent/70"></i>Nâng cao Trình độ</a>
-                                <!-- Removed: <a href="/Pages/webdesign.html" class="dropdown-item" data-lang-key="nav_solutions_webdesign"><i class="fas fa-globe fa-fw mr-3 text-ivs-accent/70"></i>Thiết kế Web</a> -->
-                            </div>
-                            <!-- Cột phải: Tư vấn Pháp lý -->
-                            <div class="space-y-2">
-                                <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="nav_services_legal_title">Tư vấn Pháp lý</h3>
-                                <a href="/Pages/legal_consulting.html" class="dropdown-item" data-lang-key="nav_services_legal_consulting">
-                                    <i class="fas fa-gavel fa-fw mr-3 text-ivs-accent/70"></i>Tư vấn Chuyên sâu
-                                </a>
-                                <a href="/Pages/psb_introduction.html" class="dropdown-item" data-lang-key="nav_services_legal_corporate">
-                                    <i class="fas fa-balance-scale fa-fw mr-3 text-ivs-accent/70"></i>Luật Doanh nghiệp
-                                </a>
-                                <a href="/Pages/litigation_consulting.html" class="dropdown-item" data-lang-key="nav_services_legal_civil">
-                                    <i class="fas fa-landmark fa-fw mr-3 text-ivs-accent/70"></i>Pháp luật Dân sự
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
-                        <span data-lang-key="nav_library">Thư Viện</span><i class="fas fa-chevron-down text-xs ml-2"></i>
-                    </button>
-                    <div class="desktop-dropdown left-1/2 -translate-x-1/2 p-2 space-y-1">
-                        <a href="/gallery.html" class="dropdown-item" data-lang-key="nav_library_gallery">Thư viện</a>
-                        <a href="/Pages/document-library.html" class="dropdown-item" data-lang-key="nav_library_docs">Tài liệu</a>
-                        <a href="/learning-materials.html" class="dropdown-item">Tài Liệu Học Tập</a>
-                        <a href="/admin.html" class="dropdown-item">Quản Lý Nội Dung</a>
-                        <a href="/analytics.html" class="dropdown-item">Analytics Dashboard</a>
-                        <a href="/apps/story-repository.html" class="dropdown-item" data-lang-key="nav_library_stories">Kho truyện</a>
-                        <a href="/games/ivsgames.html" class="dropdown-item" data-lang-key="nav_library_games">IVS Games</a>
-                        <a href="/apps/ivsapps.html" class="dropdown-item" data-lang-key="nav_library_apps">IVS Apps</a>
-                    </div>
-                </div>
-
-                <a href="/news-archive.html" class="desktop-nav-link" data-lang-key="nav_news">Tin tức</a>
-                <a href="/contact.html" class="desktop-nav-link bg-ivs-accent hover:bg-ivs-accent-dark text-white font-bold" data-lang-key="nav_contact">Liên Hệ</a>
-            </nav>
-
-            <!-- Language Buttons (Desktop & Mobile) -->
-            <div class="flex items-center space-x-2 md:space-x-1 ml-auto md:ml-0 relative">
-                <button class="lang-toggle-btn group" data-lang="vi" aria-label="Chọn Tiếng Việt">
-                    <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='images/flags/vi.jpg'">
+        <!-- Mobile Menu Panel -->
+        <div class="mobile-menu md:hidden fixed inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out bg-ivs-bg w-64 p-6 z-50">
+            <div class="flex items-center justify-between mb-8">
+                <img src="/images/logo.png" alt="IVS Logo" class="h-8">
+                <button class="mobile-menu-close">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
                 </button>
-                <button class="lang-toggle-btn group" data-lang="en" aria-label="Select English">
-                    <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='images/flags/en.jpg'">
-                </button>
-                
-                <!-- Language Change Confirmation Message -->
-                <div id="lang-confirm-message" class="absolute top-full mt-2 right-0 bg-gray-800 text-white text-xs px-3 py-1.5 rounded-md shadow-lg opacity-0 scale-90 transition-all duration-300 ease-out pointer-events-none origin-top-right whitespace-nowrap">
-                    Language changed!
-                </div>
-
-                <!-- Mobile Menu Button (Hamburger) - hidden on desktop -->
-                <!-- This button is now moved to the left -->
             </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="#about" class="nav-link">Về chúng tôi</a>
+                <a href="#services" class="nav-link">Dịch vụ</a>
+                <a href="#products" class="nav-link">Sản phẩm</a>
+                <a href="#contact" class="nav-link">Liên hệ</a>
+                <button class="cta-button w-full">
+                    Đăng ký ngay
+                </button>
+            </nav>
         </div>
     </div>
 </header>
