@@ -89,8 +89,7 @@ async function loadCommonComponents() {
     window.componentLog("Initializing component sequence...", "info");
     const components = [
         { id: 'header-placeholder', url: '/components/header.html', controller: window.IVSHeaderController },
-        { id: 'fab-container-placeholder', url: '/components/fab-container.html', controller: window.IVSFabController },
-        { id: 'fab-assistant-placeholder', url: '/components/fab-assistant.html', controller: window.IVSFabController }
+        { id: 'fab-container-placeholder', url: '/components/fab-container.html', controller: window.IVSFabController }
     ];
 
     // Footer is loaded last, no specific controller init needed for it
@@ -139,20 +138,6 @@ async function loadCommonComponents() {
     window.componentLog("Component sequence complete.", "info");
     // Callback for page-specific logic after all common components are loaded
     window.onPageComponentsLoadedCallback?.();
-}
-
-// Auto-inject FAB container if chưa có
-if (!document.getElementById('fab-container-placeholder')) {
-    const fabDiv = document.createElement('div');
-    fabDiv.id = 'fab-container-placeholder';
-    document.body.appendChild(fabDiv);
-}
-
-// Auto-inject FAB assistant if chưa có
-if (!document.getElementById('fab-assistant-placeholder')) {
-    const fabAssistantDiv = document.createElement('div');
-    fabAssistantDiv.id = 'fab-assistant-placeholder';
-    document.body.appendChild(fabAssistantDiv);
 }
 
 // ================= IVSHeaderController (GỘP) =================
