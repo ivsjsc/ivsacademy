@@ -593,4 +593,43 @@ window.IVSHeaderController = IVSHeaderController; // Expose globally
 
 // Attach the main loading function to DOMContentLoaded
 // This will ensure all components are loaded and controllers initialized after the DOM is ready.
-document.addEventListener('DOMContentLoaded', loadCommonComponents);
+document.addEventListener('DOMContentLoaded', function () {
+  // Helper to resolve relative path based on current location
+  function getComponentPath(name) {
+    // Adjust path if needed (../components/ for Pages, ./components/ for root)
+    const depth = location.pathname.split('/').length - 2;
+    let prefix = '';
+    if (depth > 0) prefix = '../'.repeat(depth);
+    return `${prefix}components/${name}.html`;
+  }
+
+  // Load Header
+  fetch(getComponentPath('header'))
+    .then(res => res.text())
+    .then(html => {
+      const el = document.getElementById('header-placeholder');
+      if (el) el.innerHTML = html;
+      if (window.IVSHeaderController && typeof window.IVSHeaderController.init === 'function') {
+        window.IVSHeaderController.init();
+      }
+    });
+
+  // Load Footer
+  fetch(getComponentPath('footer'))
+    .then(res => res.text())
+    .then(html => {
+      const el = document.getElementById('footer-placeholder');
+      if (el) el.innerHTML = html;
+    });
+
+  // Load FAB
+  fetch(getComponentPath('fab-container'))
+    .then(res => res.text())
+    .then(html => {
+      const el = document.getElementById('fab-container-placeholder');
+      if (el) el.innerHTML = html;
+      if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+        window.IVSFabController.init();
+      }
+    });
+});
