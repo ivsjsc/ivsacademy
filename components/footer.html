@@ -1,7 +1,7 @@
-<footer id="footer" class="bg-neutral-900 text-neutral-300 py-12 md:py-16 footer-section">
-    <div class="relative bg-gray-900 text-gray-400 pt-16 pb-8 overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-[0.07]">
-            <img src="/images/logo/webbannermo.png" alt="Footer Background Pattern" class="w-full h-full object-cover" 
+<footer id="footer" class="bg-neutral-900 text-neutral-300 py-12 md:py-16 footer-section backdrop-blur-sm">
+    <div class="relative bg-gray-900/95 text-gray-400 pt-16 pb-8 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-[0.07] animate-pulse">
+            <img src="/images/logo/webbannermo.png" alt="Footer Background Pattern" class="w-full h-full object-cover filter blur-sm" 
                  onerror="this.style.display='none'; this.parentElement.style.backgroundImage='url(https://placehold.co/1920x400/1f2937/374151?text=Footer+Pattern)'; this.parentElement.style.backgroundSize='cover';">
         </div>
 
@@ -72,16 +72,39 @@
                 <div class="sm:col-span-2 lg:col-span-1">
                     <h3 class="text-base font-semibold text-white mb-5 uppercase tracking-wider" data-lang-key="footer_newsletter_title">Đăng ký nhận bản tin</h3>
                     <p class="text-sm text-gray-400 mb-4" data-lang-key="footer_newsletter_desc">Nhập Email của bạn để nhận thông tin cập nhật mới nhất từ IVS JSC.</p>
-                    <form id="newsletterForm" action="https://formspree.io/f/mqaqqrkz" method="POST" class="flex flex-col sm:flex-row gap-3">
-                        <input type="email" id="newsletterEmail" name="email" placeholder="Nhập Email của bạn" aria-label="Nhập Email của bạn" required class="flex-grow px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200" data-lang-key="footer_newsletter_email_placeholder">
-                        <button type="submit" class="px-6 py-2 bg-orange-600 text-white font-semibold rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200" 
+                    <form id="newsletterForm" action="https://formspree.io/f/mqaqqrkz" method="POST" class="flex flex-col sm:flex-row gap-3 group">
+                        <div class="relative flex-grow">
+                            <input type="email" id="newsletterEmail" name="email" 
+                                   placeholder="Nhập Email của bạn" 
+                                   aria-label="Nhập Email của bạn" 
+                                   required 
+                                   class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-500 
+                                          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent 
+                                          transition-all duration-300 ease-in-out
+                                          group-hover:border-orange-400" 
+                                   data-lang-key="footer_newsletter_email_placeholder">
+                            <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="far fa-envelope text-orange-400"></i>
+                            </div>
+                        </div>
+                        <button type="submit" 
+                                class="px-6 py-2 bg-orange-600 text-white font-semibold rounded-md 
+                                       hover:bg-orange-700 hover:shadow-lg hover:scale-105
+                                       focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 
+                                       transition-all duration-300 ease-in-out
+                                       disabled:opacity-50 disabled:cursor-not-allowed" 
                                 data-lang-key="footer_newsletter_button"
                                 data-processing-text-key="newsletter_processing"
                                 data-success-text-key="newsletter_success"
                                 data-error-text-key="newsletter_error"
-                                data-invalid-email-text-key="newsletter_invalid_email">Đăng ký</button>
+                                data-invalid-email-text-key="newsletter_invalid_email">
+                            <span class="flex items-center gap-2">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Đăng ký</span>
+                            </span>
+                        </button>
                     </form>
-                    <div id="newsletterMessage" class="text-sm mt-3"></div>
+                    <div id="newsletterMessage" class="text-sm mt-3 transition-all duration-300"></div>
                 </div>
             </div>
 
@@ -89,14 +112,23 @@
                 <div class="lg:col-span-1">
                     <h3 class="text-base font-semibold text-white mb-5 uppercase tracking-wider" data-lang-key="footer_connect_title">Kết nối</h3>
                     <div class="flex space-x-5 mb-6">
-                        <a href="https://www.youtube.com/@integratevisionsynergy" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors duration-200" aria-label="YouTube IVS JSC" data-lang-key="footer_youtube_link">
+                        <a href="https://www.youtube.com/@integratevisionsynergy" target="_blank" rel="noopener noreferrer" 
+                           class="text-gray-400 hover:text-orange-400 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-full p-2" 
+                           aria-label="YouTube IVS JSC" data-lang-key="footer_youtube_link">
                             <i class="fab fa-youtube fa-lg" aria-hidden="true"></i>
+                            <span class="sr-only">YouTube</span>
                         </a>
-                        <a href="https://www.tiktok.com/@congty.ivsjsc" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors duration-200" aria-label="TikTok IVS JSC" data-lang-key="footer_tiktok_link">
+                        <a href="https://www.tiktok.com/@congty.ivsjsc" target="_blank" rel="noopener noreferrer" 
+                           class="text-gray-400 hover:text-orange-400 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-full p-2" 
+                           aria-label="TikTok IVS JSC" data-lang-key="footer_tiktok_link">
                             <i class="fab fa-tiktok fa-lg" aria-hidden="true"></i>
+                            <span class="sr-only">TikTok</span>
                         </a>
-                        <a href="https://instagram.com/ivs.jsc/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors duration-200" aria-label="Instagram IVS JSC" data-lang-key="footer_instagram_link">
+                        <a href="https://instagram.com/ivs.jsc/" target="_blank" rel="noopener noreferrer" 
+                           class="text-gray-400 hover:text-orange-400 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-full p-2" 
+                           aria-label="Instagram IVS JSC" data-lang-key="footer_instagram_link">
                             <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
+                            <span class="sr-only">Instagram</span>
                         </a>
                         <a href="https://zalo.me/1582587135739746654" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors duration-200" aria-label="Zalo IVS JSC (OA)" data-lang-key="footer_zalo_oa_link">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 50 50" fill="currentColor">
@@ -164,5 +196,36 @@
     "availableLanguage": ["Vietnamese", "English"]
   }
 }
-</script>
+    </script>
+    <button id="scrollToTop" 
+            class="fixed bottom-8 right-8 bg-orange-600 text-white p-3 rounded-full shadow-lg 
+                   opacity-0 invisible transform translate-y-10
+                   hover:bg-orange-700 hover:scale-110
+                   focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2
+                   transition-all duration-300 ease-in-out
+                   z-50"
+            aria-label="Cuộn lên đầu trang">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollToTopButton = document.getElementById('scrollToTop');
+            
+            const toggleScrollButton = () => {
+                const scrolled = window.scrollY > 200;
+                scrollToTopButton.classList.toggle('opacity-0', !scrolled);
+                scrollToTopButton.classList.toggle('invisible', !scrolled);
+                scrollToTopButton.classList.toggle('translate-y-10', !scrolled);
+            };
+
+            window.addEventListener('scroll', toggleScrollButton);
+            
+            scrollToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </footer>
