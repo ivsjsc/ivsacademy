@@ -984,11 +984,13 @@
         </div>
 
         <footer id="footer-placeholder"></footer>
-        <div id="fab-buttons-placeholder"></div>
+    <!-- FAB placeholder (standard id expected by loadComponents.js) -->
+    <div id="fab-container-placeholder"></div>
 
-        <script src="/js/script.js" defer></script>
-        <script src="/js/language.js" defer></script>
-        <script src="/js/loadComponents.js" defer></script>
+    <script src="/js/fabController.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/language.js" defer></script>
+    <script src="/js/loadComponents.js" defer></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             // Toggle FAQ answers
@@ -1030,18 +1032,15 @@
                 });
             });
         </script>
-        <script>
-          fetch('/components/fab-container.html')
-            .then(res => res.text())
-            .then(html => {
-              const placeholder = document.getElementById('fab-buttons-placeholder');
-              if (!placeholder) return;
-              placeholder.innerHTML = html;
-              if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
-                window.IVSFabController.init();
-              }
-            })
-            .catch(err => console.error('Không tải được FAB component:', err));
-        </script>
+                <script>
+                    // Fade out loading overlay once all assets are loaded
+                    window.addEventListener('load', () => {
+                        const overlay = document.getElementById('loading-overlay');
+                        if (overlay) {
+                            overlay.classList.add('opacity-0');
+                            setTimeout(() => overlay.remove(), 600);
+                        }
+                    });
+                </script>
     </body>
 </html>
