@@ -39,7 +39,8 @@ async function loadAndInject(url, placeholderId) {
         return false;
     }
     try {
-        const response = await fetch(url);
+        // Use fetchWithRetry to improve resilience against transient network errors
+        const response = await fetchWithRetry(url, { attempts: 3, timeout: 5000 });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const text = await response.text();
@@ -79,6 +80,33 @@ async function loadAndInject(url, placeholderId) {
     } catch (error) {
         window.componentLog(`Failed to load ${url}: ${error.message}`, 'error');
         return false;
+    }
+}
+
+/**
+ * Fetch helper with retry and timeout.
+ * options: { attempts: number, timeout: ms }
+ */
+async function fetchWithRetry(resource, options = {}) {
+    const attempts = options.attempts || 3;
+    const timeout = options.timeout || 5000;
+
+    for (let attempt = 1; attempt <= attempts; attempt++) {
+        try {
+            const controller = new AbortController();
+            const id = setTimeout(() => controller.abort(), timeout);
+            const resp = await fetch(resource, { signal: controller.signal });
+            clearTimeout(id);
+            return resp;
+        } catch (err) {
+            // If it's the last attempt, rethrow
+            window.componentLog(`fetchWithRetry: attempt ${attempt} for ${resource} failed: ${err.message}`, attempt < attempts ? 'warn' : 'error');
+            if (attempt === attempts) throw err;
+            // exponential backoff with jitter
+            const backoff = Math.min(2000 * attempt, 8000);
+            const jitter = Math.floor(Math.random() * 300);
+            await new Promise(r => setTimeout(r, backoff + jitter));
+        }
     }
 }
 
@@ -597,50 +625,44 @@ window.IVSHeaderController = IVSHeaderController; // Expose globally
 // Attach the main loading function to DOMContentLoaded
 // This will ensure all components are loaded and controllers initialized after the DOM is ready.
 document.addEventListener('DOMContentLoaded', function() {
-    // Utility function to get correct path based on current page depth
+    // Shared helper to compute correct component path based on current page depth
     function getComponentPath(componentName) {
-        const currentPath = window.location.pathname;
-        const depth = currentPath.split('/').length - 2;
-        const prefix = depth > 1 ? '../'.repeat(depth-1) : './';
+        const currentPath = window.location.pathname || '';
+        // Count non-empty segments to approximate depth
+        const segments = currentPath.split('/').filter(Boolean);
+        // If at root, use absolute path to components for clarity
+        if (segments.length <= 1) return `/components/${componentName}.html`;
+        // Otherwise compute relative path
+        const depth = segments.length; // e.g. ['pages','foo.html'] -> 2
+        const prefix = '../'.repeat(depth - 1);
         return `${prefix}components/${componentName}.html`;
     }
 
-    // Load Header
-    const headerPlaceholder = document.getElementById('header-placeholder');
-    if (headerPlaceholder) {
-        fetch(getComponentPath('header'))
-            .then(res => res.text())
-            .then(html => {
-                headerPlaceholder.innerHTML = html;
-                if (window.IVSHeaderController?.init) {
+    // Use loadAndInject (which uses fetchWithRetry) for robust loading and ensure controllers init
+    (async function() {
+        try {
+            if (document.getElementById('header-placeholder')) {
+                const headerPath = getComponentPath('header');
+                const ok = await loadAndInject(headerPath, 'header-placeholder');
+                if (ok && window.IVSHeaderController?.init) {
                     window.IVSHeaderController.init();
                 }
-            })
-            .catch(err => console.error('Error loading header:', err));
-    }
+            }
 
-    // Load Footer
-    const footerPlaceholder = document.getElementById('footer-placeholder');
-    if (footerPlaceholder) {
-        fetch(getComponentPath('footer'))
-            .then(res => res.text())
-            .then(html => {
-                footerPlaceholder.innerHTML = html;
-            })
-            .catch(err => console.error('Error loading footer:', err));
-    }
-
-    // Load FAB
-    const fabPlaceholder = document.getElementById('fab-container-placeholder');
-    if (fabPlaceholder) {
-        fetch(getComponentPath('fab-container'))
-            .then(res => res.text())
-            .then(html => {
-                fabPlaceholder.innerHTML = html;
-                if (window.IVSFabController?.init) {
+            if (document.getElementById('fab-container-placeholder')) {
+                const fabPath = getComponentPath('fab-container');
+                const ok = await loadAndInject(fabPath, 'fab-container-placeholder');
+                if (ok && window.IVSFabController?.init) {
                     window.IVSFabController.init();
                 }
-            })
-            .catch(err => console.error('Error loading FAB:', err));
-    }
+            }
+
+            if (document.getElementById('footer-placeholder')) {
+                const footerPath = getComponentPath('footer');
+                await loadAndInject(footerPath, 'footer-placeholder');
+            }
+        } catch (err) {
+            window.componentLog(`Error during automatic component loading: ${err.message}`, 'error');
+        }
+    })();
 });
