@@ -1097,5 +1097,16 @@
     <button id="scrollToTopBtn" style="display: none;" class="fixed bottom-5 right-5 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white shadow-lg hover:bg-primary-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
         <i class="fas fa-arrow-up"></i>
     </button>
+    <div id="fab-buttons-placeholder"></div>
+<script>
+  fetch('/components/fab-container.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('fab-buttons-placeholder').innerHTML = html;
+      if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+        window.IVSFabController.init();
+      }
+    });
+</script>
 </body>
 </html>

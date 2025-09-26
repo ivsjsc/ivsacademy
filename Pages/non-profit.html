@@ -254,5 +254,16 @@
     <script src="/js/fabController.js" defer></script>
     <script src="/js/loadComponents.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <div id="fab-buttons-placeholder"></div>
+<script>
+  fetch('/components/fab-container.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('fab-buttons-placeholder').innerHTML = html;
+      if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+        window.IVSFabController.init();
+      }
+    });
+</script>
 </body>
 </html>

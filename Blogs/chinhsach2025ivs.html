@@ -69,6 +69,16 @@
     </style>
 </head>
 <body class="bg-gray-50">
+    <div id="header-placeholder"></div>
+<script>
+  fetch('/components/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+      // Nếu có controller cho header, gọi khởi tạo ở đây
+    });
+</script>
+
 
     <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40 shadow-sm">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -420,5 +430,26 @@
             });
         });
     </script>
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/components/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      // Nếu có controller cho footer, gọi khởi tạo ở đây
+    });
+</script>
+
+<div id="fab-buttons-placeholder"></div>
+<script>
+  fetch('/components/fab-container.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('fab-buttons-placeholder').innerHTML = html;
+      if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+        window.IVSFabController.init();
+      }
+    });
+</script>
 </body>
 </html>

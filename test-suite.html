@@ -31,6 +31,16 @@
 </head>
 
 <body class="bg-ivs-bg text-ivs-text-primary min-h-screen p-6">
+    <div id="header-placeholder"></div>
+<script>
+  fetch('/components/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+      // Nếu có controller cho header, gọi khởi tạo ở đây
+    });
+</script>
+
     <div class="max-w-6xl mx-auto">
         <header class="mb-8">
             <h1 class="text-3xl font-bold mb-2">IVS Academy - Comprehensive Test Suite</h1>
@@ -288,7 +298,17 @@
         });
     </script>
 
-    <!-- Chèn vào cuối <body> của mọi trang -->
+    <!-- Chèn vào cuối <body>
+    <div id="header-placeholder"></div>
+<script>
+  fetch('/components/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+      // Nếu có controller cho header, gọi khởi tạo ở đây
+    });
+</script>
+ của mọi trang -->
     <div id="fab-buttons-placeholder"></div>
     <script>
       fetch('/components/fab-container.html')
@@ -300,5 +320,14 @@
           }
         });
     </script>
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/components/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      // Nếu có controller cho footer, gọi khởi tạo ở đây
+    });
+</script>
 </body>
 </html>

@@ -319,6 +319,16 @@
     </style>
 </head>
 <body class="antialiased">
+    <div id="header-placeholder"></div>
+<script>
+  fetch('/components/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+      // Nếu có controller cho header, gọi khởi tạo ở đây
+    });
+</script>
+
 
     <header id="header" class="bg-[#f9f9f7]/90 backdrop-blur-lg sticky top-0 z-50 shadow-xl">
         <div class="container mx-auto px-6 py-4">
@@ -1379,7 +1389,17 @@
             });
         });
     </script>
-    <!-- Chèn vào cuối <body> của mọi trang -->
+    <!-- Chèn vào cuối <body>
+    <div id="header-placeholder"></div>
+<script>
+  fetch('/components/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('header-placeholder').innerHTML = html;
+      // Nếu có controller cho header, gọi khởi tạo ở đây
+    });
+</script>
+ của mọi trang -->
     <div id="fab-buttons-placeholder"></div>
     <script>
     fetch('/components/fab-container.html')
@@ -1391,5 +1411,14 @@
         }
         });
     </script>
+    <div id="footer-placeholder"></div>
+<script>
+  fetch('/components/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+      // Nếu có controller cho footer, gọi khởi tạo ở đây
+    });
+</script>
 </body>
 </html>
