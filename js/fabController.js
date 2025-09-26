@@ -126,7 +126,6 @@ const IVSFabController = {
     populateMenus() {
         const contactMenu = document.getElementById('contact-options');
         const shareMenu = document.getElementById('share-options');
-        const assistantMenu = document.getElementById('assistant-options');
 
         if (contactMenu) {
             this.populateContactOptions(contactMenu);
@@ -136,34 +135,6 @@ const IVSFabController = {
             this.populateShareOptions(shareMenu);
             window.componentLog("IVSFabController: Đã điền nội dung menu chia sẻ.");
         }
-        if (assistantMenu) {
-            this.populateAssistantOptions(assistantMenu);
-            window.componentLog("IVSFabController: Đã điền nội dung menu IVS Assistant.");
-        }
-    },
-
-    /**
-     * Điền nội dung cho menu con tùy chọn IVS Assistant.
-     * @param {HTMLElement} element Phần tử HTML để điền nội dung.
-     */
-    populateAssistantOptions(element) {
-        const assistants = [
-            { text: "Chatbot", href: "#", icon: "fas fa-robot", color: "text-blue-500" },
-            { text: "AI Support", href: "#", icon: "fas fa-headset", color: "text-green-500" },
-            { text: "AI Tutor", href: "#", icon: "fas fa-graduation-cap", color: "text-purple-500" },
-        ];
-        // Sử dụng DocumentFragment để tối ưu hiệu suất khi thêm nhiều phần tử DOM
-        const fragment = document.createDocumentFragment();
-        assistants.forEach(a => {
-            const link = document.createElement('a');
-            link.href = a.href;
-            link.setAttribute('role', 'menuitem');
-            // Thêm 'w-full' để mỗi mục chiếm toàn bộ chiều rộng và xuống hàng
-            link.className = 'fab-submenu-item group w-full';
-            link.innerHTML = `<i class="${a.icon} fa-fw ${a.color}"></i><span>${a.text}</span>`;
-            fragment.appendChild(link);
-        });
-        element.appendChild(fragment);
     },
 
     /**
