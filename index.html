@@ -1001,7 +1001,17 @@
     <div id="footer-placeholder">
         <!-- This content will be dynamically loaded by footerController.js -->
     </div>
-    
+    <div id="fab-buttons-placeholder"></div>
+    <script>
+    fetch('/components/fab-container.html')
+        .then(res => res.text())
+        .then(html => {
+        document.getElementById('fab-buttons-placeholder').innerHTML = html;
+        if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+            window.IVSFabController.init();
+        }
+        });
+    </script>    
     <!-- Custom Message Modal -->
     <div id="messageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[1000] hidden">
         <div class="bg-ivs-card p-8 rounded-lg shadow-xl max-w-sm w-full text-center border border-ivs-border">
