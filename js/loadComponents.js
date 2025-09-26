@@ -87,6 +87,9 @@ async function loadAndInject(url, placeholderId) {
  */
 async function loadCommonComponents() {
     window.componentLog("Initializing component sequence...", "info");
+    // Canonical FAB component: use /components/fab-container.html
+    // NOTE: there used to be multiple FAB fragments (e.g. fab-buttons.html).
+    // Keep only the canonical fab-container.html to avoid duplicate IDs and event bindings.
     const components = [
         { id: 'header-placeholder', url: '/components/header.html', controller: window.IVSHeaderController },
         { id: 'fab-container-placeholder', url: '/components/fab-container.html', controller: window.IVSFabController }
