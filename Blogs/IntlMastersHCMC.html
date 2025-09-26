@@ -461,7 +461,11 @@
                         <div class="sm:col-span-2 lg:col-span-1">
                             <h3 class="text-base font-semibold text-white mb-5 uppercase tracking-wider">Newsletter</h3>
                             <p class="text-sm text-gray-400 mb-4">Get the latest updates from IVS JSC.</p>
-                            <form id="newsletterForm" action="https://formspree.io/f/mqaqqrkz" method="POST" class="flex flex-col sm:flex-row gap-3">
+                            <form id="newsletterForm" name="newsletter" action="/" data-netlify="true" data-netlify-honeypot="bot-field" data-fallback-action="https://formspree.io/f/mqaqqrkz" method="POST" class="flex flex-col sm:flex-row gap-3">
+                                <input type="hidden" name="form-name" value="newsletter">
+                                <div style="display:none;" aria-hidden="true">
+                                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                                </div>
                                 <input type="email" id="newsletterEmail" name="email" placeholder="Enter your Email" aria-label="Enter your Email" required class="flex-grow px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors duration-200">
                                 <button type="submit" class="px-6 py-2 bg-orange-600 text-white font-semibold rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors duration-200">Subscribe</button>
                             </form>
@@ -669,9 +673,19 @@
                 submitButton.textContent = translations.processing;
 
                 try {
-                    const response = await fetch(fabElements.newsletterForm.action, {
-                        method: 'POST', body: new FormData(fabElements.newsletterForm), headers: { 'Accept': 'application/json' }
-                    });
+                    // Ensure form-name is included for Netlify when posting via AJAX
+                    const formData = new FormData(fabElements.newsletterForm);
+                    if (!formData.get('form-name')) formData.set('form-name', fabElements.newsletterForm.getAttribute('name') || 'newsletter');
+
+                    // Decide where to post: Netlify expects POST to '/' for forms to be picked up
+                    const targetAction = (fabElements.newsletterForm.getAttribute('action') || '/');
+
+                    const fetchOptions = {
+                        method: 'POST',
+                        body: formData
+                    };
+
+                    const response = await fetch(targetAction, fetchOptions);
                     if (response.ok) {
                         fabElements.newsletterMessage.textContent = translations.success;
                         fabElements.newsletterMessage.className = 'text-sm mt-3 text-green-500 dark:text-green-400';

@@ -483,7 +483,11 @@
                     <h2 class="text-3xl font-bold text-white mb-6 section-title" data-lang-key="contact_form_title">
                         Gửi Yêu Cầu Cho Chúng Tôi
                     </h2>
-                    <form action="#" method="POST" class="space-y-6">
+                    <form name="ivscelestech_inquiry" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-6" novalidate>
+                        <input type="hidden" name="form-name" value="ivscelestech_inquiry">
+                        <div style="display:none;" aria-hidden="true">
+                            <label>Không điền nếu bạn là người thật: <input name="bot-field"></label>
+                        </div>
                         <div>
                             <label for="name" class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_name_label">Họ và Tên</label>
                             <input type="text" id="name" name="name" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nguyễn Văn A" required data-lang-key="form_name_placeholder">
@@ -500,9 +504,45 @@
                             <label for="message" class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_message_label">Nội Dung Yêu Cầu</label>
                             <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tôi muốn tìm hiểu về..." required data-lang-key="form_message_placeholder"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800" data-lang-key="form_submit_button">
-                            Gửi Yêu Cầu
-                        </button>
+                        <div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800" data-lang-key="form_submit_button">
+                                Gửi Yêu Cầu
+                            </button>
+                        </div>
+                        <div id="ivscelestechMessage" class="text-sm mt-2"></div>
+                    </form>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const form = document.querySelector('form[name="ivscelestech_inquiry"]');
+                            if (!form) return;
+                            form.addEventListener('submit', async (e) => {
+                                e.preventDefault();
+                                if (form.querySelector('[name="bot-field"]').value) return; // bot
+                                const submit = form.querySelector('button[type="submit"]');
+                                const orig = submit ? submit.textContent : '';
+                                if (submit) { submit.disabled = true; submit.textContent = 'Đang gửi...'; }
+                                const out = document.getElementById('ivscelestechMessage');
+                                out.textContent = '';
+                                try {
+                                    const fd = new FormData(form);
+                                    if (!fd.get('form-name')) fd.set('form-name', form.getAttribute('name'));
+                                    const res = await fetch('/', { method: 'POST', body: fd });
+                                    if (res.ok) {
+                                        window.location.href = form.getAttribute('action') || '/thank-you.html';
+                                    } else {
+                                        out.textContent = 'Gửi thất bại. Vui lòng thử lại sau.';
+                                        out.className = 'text-sm mt-2 text-red-400';
+                                    }
+                                } catch (err) {
+                                    console.error(err);
+                                    out.textContent = 'Lỗi khi gửi. Vui lòng thử lại sau.';
+                                    out.className = 'text-sm mt-2 text-red-400';
+                                } finally {
+                                    if (submit) { submit.disabled = false; submit.textContent = orig; }
+                                }
+                            });
+                        });
+                    </script>                    
 
                         <!-- Thêm nút liên kết Google Form đã điền sẵn -->
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLScy2U7Pa1Sy9Xzny4InhSLvUWYeBh3WTxAldelI6xOAzJ2FXg/viewform?usp=pp_url&entry.1517655153=Nguy%E1%BB%85n+Minh+Tri%E1%BA%BFt&entry.396944312=n.bi2993@gmail.com&entry.138806801=0795555789&entry.1102553479=Y%C3%AAu+c%E1%BA%A7u+t%E1%BB%AB+kh%C3%A1ch+h%C3%A0ng" target="_blank" rel="noopener noreferrer" class="block text-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800 mt-4" data-lang-key="google_form_button">

@@ -72,7 +72,11 @@
                 <div class="sm:col-span-2 lg:col-span-1">
                     <h3 class="text-base font-semibold text-white mb-5 uppercase tracking-wider" data-lang-key="footer_newsletter_title">Đăng ký nhận bản tin</h3>
                     <p class="text-sm text-gray-400 mb-4" data-lang-key="footer_newsletter_desc">Nhập Email của bạn để nhận thông tin cập nhật mới nhất từ IVS JSC.</p>
-                    <form id="newsletterForm" action="https://formspree.io/f/mqaqqrkz" method="POST" class="flex flex-col sm:flex-row gap-3 group">
+                    <form id="newsletterForm" name="newsletter" action="/" data-netlify="true" data-netlify-honeypot="bot-field" data-fallback-action="https://formspree.io/f/mqaqqrkz" method="POST" class="flex flex-col sm:flex-row gap-3 group">
+                        <input type="hidden" name="form-name" value="newsletter">
+                        <div style="display:none;" aria-hidden="true">
+                            <label>Không điền nếu bạn là người thật: <input name="bot-field"></label>
+                        </div>
                         <div class="relative flex-grow">
                             <input type="email" id="newsletterEmail" name="email" 
                                    placeholder="Nhập Email của bạn" 
@@ -225,6 +229,59 @@
                     top: 0,
                     behavior: 'smooth'
                 });
+            });
+        });
+    </script>
+    <script>
+        // Newsletter progressive handler: ensure form-name present and post to Netlify-compatible endpoint
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('newsletterForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                // Allow native submission if JS disabled
+                e.preventDefault();
+
+                // Honeypot
+                const honeypot = form.querySelector('[name="bot-field"]');
+                if (honeypot && honeypot.value) return; // bot detected
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn ? submitBtn.textContent : '';
+                if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Đang xử lý...'; }
+
+                try {
+                    const fd = new FormData(form);
+                    if (!fd.get('form-name')) fd.set('form-name', form.getAttribute('name') || 'newsletter');
+
+                    const target = form.getAttribute('action') || '/';
+                    // If action is '/' (Netlify), POST FormData to '/' so Netlify captures it.
+                    const res = await fetch(target, { method: 'POST', body: fd });
+                    if (res.ok) {
+                        const msg = form.dataset.successMessage || 'Cảm ơn! Đăng ký thành công.';
+                        const out = document.getElementById('newsletterMessage');
+                        if (out) { out.textContent = msg; out.className = 'text-sm mt-3 text-green-400'; }
+                        form.reset();
+                    } else {
+                        // Try fallback action if defined
+                        const fallback = form.dataset.fallbackAction || form.getAttribute('data-fallback-action');
+                        if (fallback && fallback !== target) {
+                            await fetch(fallback, { method: 'POST', body: fd });
+                            const out = document.getElementById('newsletterMessage');
+                            if (out) { out.textContent = 'Đã gửi (fallback). Cảm ơn!'; out.className = 'text-sm mt-3 text-green-400'; }
+                            form.reset();
+                        } else {
+                            const out = document.getElementById('newsletterMessage');
+                            if (out) { out.textContent = 'Gửi thất bại. Vui lòng thử lại sau.'; out.className = 'text-sm mt-3 text-red-400'; }
+                        }
+                    }
+                } catch (err) {
+                    console.error('Newsletter submit error', err);
+                    const out = document.getElementById('newsletterMessage');
+                    if (out) { out.textContent = 'Lỗi khi gửi. Vui lòng thử lại sau.'; out.className = 'text-sm mt-3 text-red-400'; }
+                } finally {
+                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalText; }
+                }
             });
         });
     </script>

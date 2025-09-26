@@ -369,7 +369,11 @@
                     <!-- Contact Form -->
                     <div class="bg-ivs-bg p-8 rounded-xl shadow-md text-left text-ivs-text-primary card spotlight-card border border-ivs-border" data-aos="fade-left" data-aos-delay="200">
                         <h3 class="text-2xl font-semibold mb-4" data-lang-key="contact_internationalcoop_form_title">Gửi yêu cầu hợp tác</h3>
-                        <form action="#" method="POST">
+                        <form name="international_partnership" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+                            <input type="hidden" name="form-name" value="international_partnership">
+                            <div style="display:none;" aria-hidden="true">
+                                <label>Không điền nếu bạn là người thật: <input name="bot-field"></label>
+                            </div>
                             <div class="mb-4">
                                 <label for="name" class="block text-ivs-text-secondary text-sm font-bold mb-2" data-lang-key="form_internationalcoop_name_label">Tên của bạn:</label>
                                 <input type="text" id="name" name="name" class="shadow appearance-none border border-ivs-border rounded w-full py-3 px-4 bg-ivs-card text-ivs-text-primary leading-tight focus:outline-none focus:ring-2 focus:ring-ivs-blue rounded-lg" placeholder="Tên của bạn" data-lang-key="form_internationalcoop_name_placeholder" required>
@@ -386,6 +390,39 @@
                                 Gửi yêu cầu
                             </button>
                         </form>
+                        <div id="internationalPartnershipMessage" class="text-sm mt-3"></div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const form = document.querySelector('form[name="international_partnership"]');
+                                if (!form) return;
+                                form.addEventListener('submit', async (e) => {
+                                    e.preventDefault();
+                                    if (form.querySelector('[name="bot-field"]').value) return; // bot
+                                    const submit = form.querySelector('button[type="submit"]');
+                                    const orig = submit ? submit.textContent : '';
+                                    if (submit) { submit.disabled = true; submit.textContent = 'Đang gửi...'; }
+                                    const out = document.getElementById('internationalPartnershipMessage');
+                                    out.textContent = '';
+                                    try {
+                                        const fd = new FormData(form);
+                                        if (!fd.get('form-name')) fd.set('form-name', form.getAttribute('name'));
+                                        const res = await fetch('/', { method: 'POST', body: fd });
+                                        if (res.ok) {
+                                            window.location.href = form.getAttribute('action') || '/thank-you.html';
+                                        } else {
+                                            out.textContent = 'Gửi thất bại. Vui lòng thử lại sau.';
+                                            out.className = 'text-sm mt-3 text-red-400';
+                                        }
+                                    } catch (err) {
+                                        console.error(err);
+                                        out.textContent = 'Lỗi khi gửi. Vui lòng thử lại sau.';
+                                        out.className = 'text-sm mt-3 text-red-400';
+                                    } finally {
+                                        if (submit) { submit.disabled = false; submit.textContent = orig; }
+                                    }
+                                });
+                            });
+                        </script>
                         <!-- New button for pre-filled Google Form -->
                         <div class="mt-6 text-center">
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLScy2U7Pa1Sy9Xzny4InhSLvUWYeBh3WTxAldelI6xOAzJ2FXg/viewform?usp=pp_url&entry.1517655153=Nguy%E1%BB%85n+Minh+Tri%E1%BA%BFt&entry.396944312=n.bi2993@gmail.com&entry.138806801=0795555789&entry.1102553479=Y%C3%AAu+c%E1%BA%A7u+t%E1%BB%AB+kh%C3%A1ch+h%C3%A0ng" target="_blank" class="inline-block bg-ivs-green hover:bg-green-600 text-ivs-text-primary font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 transform hover:scale-105 shadow-lg">
