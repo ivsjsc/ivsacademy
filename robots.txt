@@ -1,5 +1,5 @@
 # Robots.txt for IVS JSC Website
-# https://ivs.edu.vn/robots.txt
+# https://ivsacademy.edu.vn/robots.txt
 
 User-agent: *
 Allow: /
@@ -39,7 +39,7 @@ Allow: /lang/
 Allow: /components/
 
 # Sitemap location
-Sitemap: https://ivs.edu.vn/sitemap.xml
+Sitemap: https://ivsacademy.edu.vn/sitemap.xml
 
 # Crawl delay (optional - be respectful to server resources)
 Crawl-delay: 1

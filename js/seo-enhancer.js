@@ -20,10 +20,10 @@ class SEOEnhancer {
             "name": "IVS JSC",
             "alternateName": "IVS Academy",
             "description": "Hệ sinh thái Giáo dục, Công nghệ & Nhân lực tiên phong tại Việt Nam",
-            "url": "https://ivs.edu.vn",
-            "logo": "https://ivs.edu.vn/images/logo/logo.png",
+            "url": "https://ivsacademy.edu.vn",
+            "logo": "https://ivsacademy.edu.vn/images/logo/logo.png",
             "sameAs": [
-                "https://www.facebook.com/ivs.edu.vn",
+                "https://www.facebook.com/ivsacademy.edu.vn",
                 "https://www.linkedin.com/company/ivs-jsc",
                 "https://www.youtube.com/@ivsacademy"
             ],
@@ -105,7 +105,7 @@ class SEOEnhancer {
                     "@type": "ListItem",
                     "position": index + 1,
                     "name": crumb.name,
-                    "item": "https://ivs.edu.vn" + crumb.url
+                    "item": "https://ivsacademy.edu.vn" + crumb.url
                 }))
             };
 
