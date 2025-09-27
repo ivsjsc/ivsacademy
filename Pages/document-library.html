@@ -193,6 +193,7 @@
             font-size: 0.875rem;
             display: -webkit-box;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -350,7 +351,8 @@
             }
             
             .bookshelf {
-                /* No change needed, overflow-x handles it */
+                /* Keep layout behavior; provide a safe property to avoid empty ruleset */
+                overflow-x: auto;
             }
         }
 
@@ -398,7 +400,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="bg-neutral-50 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 antialiased font-sans">
-    <div id="header-placeholder"></div>
+    <div id="header-placeholder" data-loading-text="Đang tải menu..."></div>
 
     <main class="flex-grow pt-[var(--header-height)] md:pt-[var(--desktop-header-height)]">
         <!-- Hero Section -->
@@ -676,8 +678,8 @@
         </section>
     </main>
 
-    <div id="footer-placeholder"></div>
     <div id="fab-container-placeholder"></div>
+    <div id="footer-placeholder" data-loading-text="Đang tải chân trang..."></div>
 
     <!-- Book Viewer Modal -->
     <div id="bookViewerModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 opacity-0 invisible transition-opacity duration-300">
