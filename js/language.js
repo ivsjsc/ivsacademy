@@ -49,6 +49,40 @@ async function fetchTranslations(langCode) {
     }
 }
 
+function applyTranslationToElement(element, translation) {
+    if (translation === undefined) {
+        return false;
+    }
+
+    const tagName = element.tagName ? element.tagName.toUpperCase() : '';
+    let targetAttr = element.dataset.langTarget;
+
+    if (!targetAttr) {
+        if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
+            targetAttr = 'placeholder';
+        } else {
+            targetAttr = 'textContent';
+        }
+    }
+
+    const targets = targetAttr.split(',').map(t => t.trim()).filter(Boolean);
+    if (!targets.length) {
+        return false;
+    }
+
+    targets.forEach(target => {
+        if (target === 'textContent') {
+            element.textContent = translation;
+        } else if (target === 'innerHTML') {
+            element.innerHTML = translation;
+        } else {
+            element.setAttribute(target, translation);
+        }
+    });
+
+    return true;
+}
+
 function applyTranslations() {
     const lang = window.langSystem.currentLanguage;
     const translations = window.langSystem.translations[lang] || window.langSystem.translations[window.langSystem.defaultLanguage];
@@ -64,19 +98,13 @@ function applyTranslations() {
     let translatedElementsCount = 0;
     document.querySelectorAll('[data-lang-key]').forEach(el => {
         const key = el.dataset.langKey;
+        if (!key) return;
         const translation = translations[key];
 
         if (translation !== undefined) {
-            const targetAttr = el.dataset.langTarget || 'textContent';
-
-            if (targetAttr === 'textContent') {
-                el.textContent = translation;
-            } else if (targetAttr === 'innerHTML') {
-                el.innerHTML = translation;
-            } else {
-                el.setAttribute(targetAttr, translation);
+            if (applyTranslationToElement(el, translation)) {
+                translatedElementsCount++;
             }
-            translatedElementsCount++;
         } else {
             window.componentLog(`Key '${key}' not found for current language '${lang}' or default. Element not translated.`, 'warn');
         }
@@ -169,29 +197,7 @@ window.changeLanguage = async function(langCode) {
     }
 
     try {
-        // Fetch translations if not already loaded
-        await fetchTranslations(langCode);
-        
-        // Update current language
-        window.langSystem.currentLanguage = langCode;
-        
-        // Save preference
-        localStorage.setItem(window.langSystem.languageStorageKey, langCode);
-        
-        // Update all elements with data-lang-key
-        document.querySelectorAll('[data-lang-key]').forEach(element => {
-            const key = element.getAttribute('data-lang-key');
-            const translation = window.langSystem.translations[langCode][key];
-            
-            if (translation) {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = translation;
-                } else {
-                    element.textContent = translation;
-                }
-            }
-        });
-
+        await window.langSystem.setLanguage(langCode);
         window.componentLog(`Successfully changed language to: ${langCode}`);
         return true;
     } catch (error) {

@@ -19,6 +19,34 @@ if (typeof window.debounce !== 'function') {
     window.debounce = (func) => func; // Hàm dự phòng
 }
 
+/**
+ * Lấy chuỗi dịch từ langSystem nếu khả dụng, nếu không trả về fallback.
+ * @param {string} key
+ * @param {string} fallback
+ * @returns {string}
+ */
+function getTranslationValue(key, fallback) {
+    try {
+        const langSystem = window.langSystem;
+        if (!langSystem || !langSystem.translations) return fallback;
+        const candidates = [];
+        if (langSystem.currentLanguage && langSystem.translations[langSystem.currentLanguage]) {
+            candidates.push(langSystem.translations[langSystem.currentLanguage]);
+        }
+        if (langSystem.defaultLanguage && langSystem.translations[langSystem.defaultLanguage]) {
+            candidates.push(langSystem.translations[langSystem.defaultLanguage]);
+        }
+        for (const pack of candidates) {
+            if (pack && typeof pack[key] === 'string' && pack[key].trim().length) {
+                return pack[key];
+            }
+        }
+    } catch (err) {
+        // Bỏ qua lỗi và dùng fallback
+    }
+    return fallback;
+}
+
 const IVSFabController = {
     // Biến để lưu trữ trạng thái khởi tạo
     isInitialized: false,
@@ -207,11 +235,16 @@ const IVSFabController = {
     populateAssistantOptions(element) {
         // Create a single button that triggers the assistant. For now it opens a new window/tab
         // or toggles a panel if a chatbot controller is present.
+        const assistantLabel = getTranslationValue('fab_assistant_button_label', 'Mở IVS Assistant AI');
         const btn = document.createElement('button');
         btn.className = 'fab-submenu-item group w-full';
         btn.setAttribute('role', 'menuitem');
         btn.id = 'assistant-open-btn';
-        btn.innerHTML = `<i class="fas fa-robot fa-fw text-cyan-400"></i><span>Open IVS Assistant</span>`;
+        btn.setAttribute('aria-label', assistantLabel);
+        btn.setAttribute('title', assistantLabel);
+        btn.setAttribute('data-lang-key', 'fab_assistant_button_label');
+        btn.setAttribute('data-lang-target', 'aria-label,title');
+        btn.innerHTML = `<i class="fas fa-robot fa-fw text-cyan-400"></i><span data-lang-key="fab_assistant_button_label">${assistantLabel}</span>`;
         btn.addEventListener('click', async () => {
             // If a dedicated chatbot controller exists, call it.
             if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
@@ -485,8 +518,14 @@ window.IVSFabController = IVSFabController;
 if (!window.IVSChatbotController) {
     window.IVSChatbotController = (function () {
         let overlay = null;
+        let keydownHandler = null;
+
+        const bodyClass = 'ivs-assistant-modal-open';
 
         function createOverlay() {
+            const modalTitle = getTranslationValue('fab_assistant_modal_title', 'IVS Assistant AI');
+            const closeLabel = getTranslationValue('fab_assistant_close_label', 'Đóng IVS Assistant AI');
+
             overlay = document.createElement('div');
             overlay.id = 'ivs-chatbot-overlay';
             overlay.style.position = 'fixed';
@@ -506,32 +545,67 @@ if (!window.IVSChatbotController) {
             panel.style.overflow = 'hidden';
             panel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
             panel.style.background = '#fff';
+            panel.style.display = 'flex';
+            panel.style.flexDirection = 'column';
+            panel.style.position = 'relative';
+
+            const header = document.createElement('div');
+            header.style.background = '#0f172a';
+            header.style.color = '#f8fafc';
+            header.style.padding = '0.75rem 1rem';
+            header.style.display = 'flex';
+            header.style.alignItems = 'center';
+            header.style.justifyContent = 'space-between';
+            header.style.fontWeight = '600';
+            header.style.fontSize = '1rem';
+
+            const titleSpan = document.createElement('span');
+            titleSpan.textContent = modalTitle;
+            titleSpan.dataset.langKey = 'fab_assistant_modal_title';
+            header.appendChild(titleSpan);
 
             const iframe = document.createElement('iframe');
             iframe.src = '/apps/ivs-assistant.html';
             iframe.style.border = '0';
             iframe.style.width = '100%';
             iframe.style.height = '100%';
+            iframe.style.flex = '1';
+            iframe.style.background = '#fff';
+            iframe.title = modalTitle;
+            iframe.setAttribute('aria-label', modalTitle);
 
             const closeBtn = document.createElement('button');
-            closeBtn.setAttribute('aria-label', 'Close IVS Assistant');
+            closeBtn.type = 'button';
             closeBtn.innerHTML = '&times;';
-            closeBtn.style.position = 'absolute';
-            closeBtn.style.right = '12px';
-            closeBtn.style.top = '12px';
-            closeBtn.style.zIndex = '100000';
-            closeBtn.style.width = '36px';
-            closeBtn.style.height = '36px';
+            closeBtn.style.width = '32px';
+            closeBtn.style.height = '32px';
             closeBtn.style.border = 'none';
-            closeBtn.style.background = 'rgba(0,0,0,0.6)';
-            closeBtn.style.color = '#fff';
-            closeBtn.style.borderRadius = '50%';
+            closeBtn.style.background = 'rgba(15,23,42,0.35)';
+            closeBtn.style.color = '#f8fafc';
+            closeBtn.style.borderRadius = '9999px';
             closeBtn.style.cursor = 'pointer';
-
+            closeBtn.style.fontSize = '1.25rem';
+            closeBtn.style.lineHeight = '1';
+            closeBtn.style.display = 'inline-flex';
+            closeBtn.style.alignItems = 'center';
+            closeBtn.style.justifyContent = 'center';
+            closeBtn.style.transition = 'background 0.2s ease';
+            closeBtn.addEventListener('mouseenter', () => { closeBtn.style.background = 'rgba(15,23,42,0.55)'; });
+            closeBtn.addEventListener('mouseleave', () => { closeBtn.style.background = 'rgba(15,23,42,0.35)'; });
             closeBtn.addEventListener('click', () => window.IVSChatbotController.close());
+            closeBtn.dataset.langKey = 'fab_assistant_close_label';
+            closeBtn.dataset.langTarget = 'aria-label,title';
+            closeBtn.setAttribute('aria-label', closeLabel);
+            closeBtn.setAttribute('title', closeLabel);
 
-            panel.appendChild(iframe);
-            panel.appendChild(closeBtn);
+            header.appendChild(closeBtn);
+            panel.appendChild(header);
+
+            const frameWrapper = document.createElement('div');
+            frameWrapper.style.flex = '1';
+            frameWrapper.style.position = 'relative';
+            frameWrapper.appendChild(iframe);
+            panel.appendChild(frameWrapper);
             overlay.appendChild(panel);
 
             overlay.addEventListener('click', (e) => {
@@ -551,6 +625,14 @@ if (!window.IVSChatbotController) {
                     if (overlay) return; // already open
                     overlay = createOverlay();
                     document.body.appendChild(overlay);
+                    document.body.classList.add(bodyClass);
+                    keydownHandler = (event) => {
+                        if (event.key === 'Escape') {
+                            window.IVSChatbotController.close();
+                        }
+                    };
+                    document.addEventListener('keydown', keydownHandler);
+                    window.componentLog('IVSChatbotController (fallback) overlay opened.', 'info');
                 } catch (err) {
                     window.componentLog('Failed to open IVS Assistant overlay: ' + err.message, 'error');
                     // Fallback to opening in a new window/tab
@@ -562,9 +644,23 @@ if (!window.IVSChatbotController) {
                 if (!overlay) return;
                 overlay.remove();
                 overlay = null;
+                document.body.classList.remove(bodyClass);
+                if (keydownHandler) {
+                    document.removeEventListener('keydown', keydownHandler);
+                    keydownHandler = null;
+                }
+                window.componentLog('IVSChatbotController (fallback) overlay closed.', 'info');
             }
         };
     })();
+}
+
+try {
+    if (window.IVSChatbotController && typeof window.IVSChatbotController.init === 'function') {
+        window.IVSChatbotController.init();
+    }
+} catch (err) {
+    window.componentLog('IVSChatbotController init() error: ' + err.message, 'warn');
 }
 
 // Tự động khởi tạo bộ điều khiển FAB khi DOM được tải hoàn toàn.
