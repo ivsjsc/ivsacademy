@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="hero_section.title">Dịch Vụ Thiết Kế Website Chiến Lược cho IVS</title>
+    <title data-key="hero_section.title"></title>
     <!-- Tải Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Cấu hình Tailwind và Font Inter -->
@@ -40,33 +40,27 @@
             margin-top: 8px;
             border-radius: 9999px;
         }
+        /* Đảm bảo nội dung không bị che bởi header cố định */
+        main {
+            padding-top: 0; /* Sẽ được điều chỉnh bởi CSS/JS khi header load */
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header & Navigation (Hardcoded structure, content uses data-key) -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-2xl font-extrabold text-ivs-primary">IVS DIGITAL</div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#loai-hinh" class="text-gray-600 hover:text-ivs-primary transition duration-150" data-key="nav.solutions_link">Giải Pháp</a>
-                <a href="#gia-tri" class="text-gray-600 hover:text-ivs-primary transition duration-150" data-key="nav.principles_link">Giá Trị</a>
-                <a href="#quy-trinh" class="text-gray-600 hover:text-ivs-primary transition duration-150" data-key="nav.process_link">Quy Trình</a>
-                <a href="#lien-he" class="px-4 py-2 bg-ivs-primary text-white rounded-lg shadow-lg hover:bg-ivs-dark transition duration-150" data-key="nav.cta_button">Bắt Đầu</a>
-                <!-- Thêm nút chuyển đổi ngôn ngữ, ví dụ -->
-                <button onclick="changeLanguage('en')" class="px-4 py-2 bg-gray-200 rounded-lg text-ivs-dark">EN</button>
-            </nav>
-        </div>
+    <!-- HEADER PLACEHOLDER: Sẽ được load động bởi loadComponents.js -->
+    <header id="header-placeholder" class="w-full fixed top-0 left-0 z-50 transition-all duration-300">
+        <!-- Nội dung Header sẽ được tải động tại đây -->
     </header>
-
+    
     <!-- Hero Section -->
-    <section class="bg-ivs-dark text-white pt-20 pb-24 sm:pt-32 sm:pb-40 rounded-b-[40px]">
+    <section class="bg-ivs-dark text-white pt-24 pb-24 sm:pt-32 sm:pb-32 rounded-b-[40px] mt-[64px] sm:mt-[80px]">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 leading-tight">
                 <span data-key="hero_section.subtitle" class="text-ivs-secondary block md:inline"></span>
             </h1>
             <p data-key="hero_section.description" class="text-xl text-gray-300 max-w-3xl mx-auto mb-10"></p>
-            <a href="#lien-he" class="inline-block px-8 py-3 bg-ivs-secondary text-ivs-dark font-bold text-lg rounded-xl shadow-2xl hover:bg-yellow-400 transition duration-300 transform hover:scale-105" data-key="nav.cta_button"></a>
+            <a href="#lien-he" class="inline-block px-8 py-3 bg-ivs-secondary text-ivs-dark font-bold text-lg rounded-xl shadow-2xl hover:bg-yellow-400 transition duration-300 transform hover:scale-105" data-key="cta_section.button"></a>
         </div>
     </section>
 
@@ -74,8 +68,8 @@
     <section id="gia-tri" class="py-16 sm:py-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 data-key="principles_section.title" class="section-heading text-3xl sm:text-4xl font-extrabold text-ivs-dark mb-12"></h2>
-            <div id="principles-container" class="grid md:grid-cols-3 gap-8">
-                <!-- Principles will be injected here using JS or mapped to specific keys -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Nguyên tắc 1: Tầm Nhìn & Chiến Lược -->
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary hover:shadow-xl transition duration-300">
                     <div class="text-4xl text-ivs-primary mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -83,6 +77,7 @@
                     <h3 data-key="principles_section.principles.0.name" class="text-xl font-bold mb-2"></h3>
                     <p data-key="principles_section.principles.0.description" class="text-gray-600"></p>
                 </div>
+                <!-- Nguyên tắc 2: Chính Xác & Kỹ Càng -->
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary hover:shadow-xl transition duration-300">
                     <div class="text-4xl text-ivs-primary mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
@@ -90,6 +85,7 @@
                     <h3 data-key="principles_section.principles.1.name" class="text-xl font-bold mb-2"></h3>
                     <p data-key="principles_section.principles.1.description" class="text-gray-600"></p>
                 </div>
+                <!-- Nguyên tắc 3: Hiệu Quả & Thực Tế -->
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary hover:shadow-xl transition duration-300">
                     <div class="text-4xl text-ivs-primary mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
@@ -101,12 +97,83 @@
         </div>
     </section>
 
-    <!-- Section: Loại Hình Website Chuyên Biệt -->
+    <!-- Section: Loại Hình Website Chuyên Biệt (Kèm Link & Ảnh Mẫu) -->
     <section id="loai-hinh" class="py-16 sm:py-24 bg-ivs-light border-t border-b">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 data-key="solutions_section.title" class="section-heading text-3xl sm:text-4xl font-extrabold text-ivs-dark mb-12"></h2>
-            <div id="solutions-container" class="space-y-12">
-                <!-- Solution blocks will be generated by JS for demonstration/flexibility -->
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Card 1: LMS (Giáo Dục) - web-plus.jpg -->
+                <a data-key-href="solutions_section.solutions.0.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.0.image" alt="Thiết kế website Giáo dục IVS" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-plus.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=LMS+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.0.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.0.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.0.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+
+                <!-- Card 2: B2B (Doanh Nghiệp) - web-doanhnghiep.jpg -->
+                <a data-key-href="solutions_section.solutions.1.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.1.image" alt="Thiết kế website Doanh nghiệp" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-doanhnghiep.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=B2B+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.1.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.1.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.1.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+
+                <!-- Card 3: E-Commerce (TMĐT/Lead Gen) - web-TMDT.jpg -->
+                <a data-key-href="solutions_section.solutions.2.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.2.image" alt="Thiết kế website Thương mại điện tử" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-TMDT.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=E-commerce+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.2.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.2.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.2.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+
+                <!-- Card 4: Du Lịch & Dịch Vụ - web-khudulich.jpg -->
+                <a data-key-href="solutions_section.solutions.3.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.3.image" alt="Thiết kế website Khu du lịch" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-khudulich.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=Travel+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.3.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.3.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.3.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+
+                <!-- Card 5: Nhà Hàng & Sự Kiện - web-nhahang.jpg -->
+                <a data-key-href="solutions_section.solutions.4.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.4.image" alt="Thiết kế website Nhà hàng Sự kiện" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-nhahang.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=Restaurant+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.4.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.4.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.4.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+                
             </div>
         </div>
     </section>
@@ -115,8 +182,32 @@
     <section id="quy-trinh" class="py-16 sm:py-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 data-key="process_section.title" class="section-heading text-3xl sm:text-4xl font-extrabold text-ivs-dark mb-12"></h2>
-            <div id="steps-container" class="grid md:grid-cols-4 gap-8 text-center">
-                <!-- Steps will be generated by JS for demonstration/flexibility -->
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <!-- Steps will be dynamically loaded via data-key -->
+                <!-- Step 1 -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <div data-key="process_section.steps.0.id" class="text-5xl font-extrabold text-ivs-secondary mb-2"></div>
+                    <h4 data-key="process_section.steps.0.name" class="font-bold text-lg mb-2"></h4>
+                    <p data-key="process_section.steps.0.description" class="text-sm text-gray-600"></p>
+                </div>
+                <!-- Step 2 -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <div data-key="process_section.steps.1.id" class="text-5xl font-extrabold text-ivs-secondary mb-2"></div>
+                    <h4 data-key="process_section.steps.1.name" class="font-bold text-lg mb-2"></h4>
+                    <p data-key="process_section.steps.1.description" class="text-sm text-gray-600"></p>
+                </div>
+                <!-- Step 3 -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <div data-key="process_section.steps.2.id" class="text-5xl font-extrabold text-ivs-secondary mb-2"></div>
+                    <h4 data-key="process_section.steps.2.name" class="font-bold text-lg mb-2"></h4>
+                    <p data-key="process_section.steps.2.description" class="text-sm text-gray-600"></p>
+                </div>
+                <!-- Step 4 -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <div data-key="process_section.steps.3.id" class="text-5xl font-extrabold text-ivs-secondary mb-2"></div>
+                    <h4 data-key="process_section.steps.3.name" class="font-bold text-lg mb-2"></h4>
+                    <p data-key="process_section.steps.3.description" class="text-sm text-gray-600"></p>
+                </div>
             </div>
 
             <div class="mt-16 bg-ivs-dark text-white p-8 rounded-xl shadow-xl">
@@ -127,33 +218,35 @@
     </section>
 
     <!-- Call to Action -->
-    <section id="lien-he" class="bg-ivs-primary py-16 sm:py-20 rounded-t-[40px]">
+    <section id="lien-he" class="bg-ivs-primary py-16 sm:py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 data-key="cta_section.title" class="text-3xl sm:text-4xl font-extrabold text-white mb-4"></h2>
             <p data-key="cta_section.description" class="text-xl text-gray-200 mb-8"></p>
-            <a href="#" class="inline-block px-10 py-4 bg-ivs-secondary text-ivs-dark font-bold text-xl rounded-xl shadow-2xl hover:bg-yellow-400 transition duration-300 transform hover:scale-105" data-key="nav.cta_button_large">Yêu Cầu Tư Vấn Ngay</a>
+            <a href="#" class="inline-block px-10 py-4 bg-ivs-secondary text-ivs-dark font-bold text-xl rounded-xl shadow-2xl hover:bg-yellow-400 transition duration-300 transform hover:scale-105" data-key="cta_section.button_large"></a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-ivs-dark border-t border-gray-700 py-6">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-400">
-            <p data-key="footer.copyright"></p>
-        </div>
+    <!-- FOOTER PLACEHOLDER: Sẽ được load động bởi loadComponents.js -->
+    <footer id="footer-placeholder" class="bg-ivs-light border-t border-gray-200 py-12">
+        <!-- Nội dung Footer sẽ được tải động tại đây -->
     </footer>
+    <!-- Floating Action Button Placeholder -->
+    <div id="fab-container-placeholder"></div>
+
+    <!-- START OF SCRIPT LOADING BLOCK -->
+    <!-- Scripts IVS sử dụng cho các tính năng dynamic -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom IVS Scripts for dynamic components and language -->
+    <script src="/js/loadComponents.js"></script>
+    <script src="/js/language.js"></script>
+    <script src="/js/fabController.js"></script>
+    <!-- END OF SCRIPT LOADING BLOCK -->
+
 
     <script>
-        // NOTE: Trong môi trường thực tế, Quý vị sẽ dùng fetch() để tải file JSON tương ứng (ví dụ: 'vi.json' hoặc 'en.json')
-        // Dưới đây là dữ liệu mẫu (mock data) dựa trên file webdesign_data.json của Quý vị để minh họa cách JS hoạt động.
-        
+        // NOTE: Dữ liệu mẫu (mock data) dựa trên cấu trúc JSON để minh họa.
         const dataVI = {
-            "nav": {
-                "solutions_link": "Giải Pháp",
-                "principles_link": "Giá Trị",
-                "process_link": "Quy Trình",
-                "cta_button": "Bắt Đầu Dự Án",
-                "cta_button_large": "Yêu Cầu Tư Vấn Ngay"
-            },
             "hero_section": {
                 "title": "Dịch Vụ Thiết Kế Website Chiến Lược cho IVS",
                 "subtitle": "Kiến Tạo Nền Tảng Số Toàn Diện: Tầm Nhìn Xa, Hành Động Thực Tế",
@@ -177,33 +270,62 @@
                 ]
             },
             "solutions_section": {
-                "title": "Các Giải Pháp Website Trọng Tâm",
+                "title": "Các Giải Pháp Website Trọng Tâm (Kèm Ảnh Thiết Kế Thực Tế)",
+                "view_demo": "Xem Mẫu",
                 "solutions": [
                     {
+                        "url": "https://demo.ivs.edu.vn/lms-plus",
+                        "image": "images/pages/careers/website/web-plus.jpg",
                         "type_name": "Loại 1: Nền Tảng Giáo Dục (LMS)",
                         "focus": "Tập trung: IVS LIFE Minds & Chương trình Đào tạo Quốc tế",
                         "features": [
-                          "**Quản lý Học tập (LMS):** Tích hợp phân phối giáo trình **IVS LIFE Minds**, quản lý tiến độ, bài kiểm tra và cấp chứng chỉ online.",
-                          "**Cổng Du học & Trao đổi:** Module tiếp nhận và xử lý hồ sơ tự động cho các chương trình liên kết với **Hoa Kỳ, Đài Loan, Philippines, châu Âu**.",
-                          "**Tuyển dụng Giáo viên Bản xứ:** Hệ thống đăng ký, quản lý hồ sơ và xác thực giáo viên chuyên nghiệp."
+                          "**Quản lý Học tập (LMS):** Tích hợp phân phối giáo trình, quản lý tiến độ và cấp chứng chỉ online.",
+                          "**Cổng Du học & Trao đổi:** Tự động hóa hồ sơ liên kết với **Hoa Kỳ, Đài Loan, châu Âu**.",
+                          "**Tuyển dụng Giáo viên Bản xứ:** Hệ thống đăng ký, quản lý hồ sơ chuyên nghiệp."
                         ]
                     },
                     {
+                        "url": "https://demo.ivs.edu.vn/b2b-corporate",
+                        "image": "images/pages/careers/website/web-doanhnghiep.jpg",
                         "type_name": "Loại 2: Website Doanh Nghiệp (B2B)",
                         "focus": "Tập trung: Thể hiện Uy tín, Tư vấn Pháp lý và Đối tác",
                         "features": [
-                          "**Hồ sơ Năng lực Trực tuyến:** Trình bày chi tiết **giải pháp giáo dục toàn diện**, báo cáo tài chính và đối tác chiến lược.",
-                          "**Dịch vụ Tư vấn Pháp lý:** Cổng thông tin hỗ trợ thành lập và vận hành trung tâm giáo dục, tạo sự tin cậy tuyệt đối.",
+                          "**Hồ sơ Năng lực Trực tuyến:** Trình bày chi tiết **giải pháp giáo dục toàn diện** và đối tác chiến lược.",
+                          "**Dịch vụ Tư vấn Pháp lý:** Cổng thông tin hỗ trợ thành lập và vận hành trung tâm giáo dục.",
                           "**Phòng Báo Chí Kỹ thuật số:** Quản lý thông cáo, sự kiện và hình ảnh minh bạch."
                         ]
                     },
                     {
-                        "type_name": "Loại 3: Thương Mại Điện Tử Thiết Bị",
-                        "focus": "Tập trung: Phân phối Cơ sở Vật chất & Thiết bị Hiện đại",
+                        "url": "https://demo.ivs.edu.vn/ecommerce-store",
+                        "image": "images/pages/careers/website/web-TMDT.jpg",
+                        "type_name": "Loại 3: Thương Mại Điện Tử (E-Commerce)",
+                        "focus": "Tập trung: Phân phối Thiết bị Công nghệ & Lead Generation",
                         "features": [
-                          "**Danh mục Thiết bị Công nghệ:** Gian hàng cho **bảng tương tác, thiết bị VR, AR** với hệ thống đặt hàng và báo giá chuyên biệt.",
+                          "**Danh mục Thiết bị Công nghệ:** Gian hàng cho **bảng tương tác, thiết bị VR, AR**.",
                           "**Tích hợp Thanh toán:** Hỗ trợ nhiều cổng thanh toán an toàn, bảo mật cao.",
-                          "**Hệ thống Quản lý Tồn kho:** Đảm bảo số lượng và thông tin sản phẩm luôn **chính xác**."
+                          "**Hệ thống Quản lý Báo Giá (Lead Gen):** Thu thập thông tin khách hàng tiềm năng hiệu quả."
+                        ]
+                    },
+                     {
+                        "url": "https://demo.ivs.edu.vn/travel-booking",
+                        "image": "images/pages/careers/website/web-khudulich.jpg",
+                        "type_name": "Loại 4: Du Lịch & Dịch Vụ Khách Sạn",
+                        "focus": "Tập trung: Trải nghiệm người dùng và Đặt chỗ trực tuyến",
+                        "features": [
+                          "**Hệ thống Booking:** Quản lý phòng, tour và dịch vụ theo thời gian thực.",
+                          "**Gallery Ảnh & Video:** Trình bày trải nghiệm Hoàng Sơ, Tiện Nghi Đỉnh Cao.",
+                          "**Tối ưu SEO Địa Phương:** Thu hút khách hàng tiềm năng qua tìm kiếm."
+                        ]
+                    },
+                     {
+                        "url": "https://demo.ivs.edu.vn/restaurant-event",
+                        "image": "images/pages/careers/website/web-nhahang.jpg",
+                        "type_name": "Loại 5: Nhà Hàng, Sự Kiện & Tiệc Cưới",
+                        "focus": "Tập trung: Hình ảnh sang trọng và Quản lý sự kiện",
+                        "features": [
+                          "**Quản lý Đặt Bàn/Đặt Tiệc:** Hệ thống tiếp nhận yêu cầu và xác nhận tự động.",
+                          "**Trình bày Thực đơn/Menu:** Ảnh chất lượng cao, dễ dàng tùy chỉnh theo mùa.",
+                          "**Gallery Hội Nghị & Tiệc Cưới:** Nơi gửi gắm trọn vẹn hạnh phúc."
                         ]
                     }
                 ]
@@ -221,14 +343,13 @@
             },
             "cta_section": {
                 "title": "Sẵn Sàng Hành Động Thực Tế?",
-                "description": "Liên hệ ngay để nhận bản đề xuất **chính xác** và **tư vấn chiến lược** chi tiết nhất cho dự án của Quý vị."
-            },
-            "footer": {
-                "copyright": "&copy; 2025 IVS Digital Solutions. Thiết Kế Website theo nguyên tắc: Chính xác, Kỹ càng, Hiệu quả."
+                "description": "Liên hệ ngay để nhận bản đề xuất **chính xác** và **tư vấn chiến lược** chi tiết nhất cho dự án của Quý vị.",
+                "button": "Bắt Đầu Dự Án",
+                "button_large": "Yêu Cầu Tư Vấn Ngay"
             }
         };
 
-        const globalData = dataVI; // Dùng dataVI để chạy thử
+        const globalData = dataVI;
         
         // Hàm lấy giá trị từ JSON theo chuỗi key (ví dụ: 'hero_section.title')
         function getNestedValue(obj, path) {
@@ -246,7 +367,7 @@
 
         // Hàm áp dụng Localization
         function applyLocalization(data) {
-            // 1. Áp dụng cho các element có data-key
+            // 1. Áp dụng cho các element có data-key (text content)
             document.querySelectorAll('[data-key]').forEach(el => {
                 const keyPath = el.getAttribute('data-key');
                 let content = getNestedValue(data, keyPath);
@@ -257,64 +378,50 @@
                 }
             });
 
-            // 2. Áp dụng cho Solutions Section (vì đây là mảng, cần tạo DOM động)
-            const solutionsContainer = document.getElementById('solutions-container');
-            if (solutionsContainer) {
-                solutionsContainer.innerHTML = ''; // Clear previous content
-                data.solutions_section.solutions.forEach(solution => {
-                    const solutionBlock = document.createElement('div');
-                    solutionBlock.className = 'md:flex md:space-x-12 p-8 bg-white rounded-2xl shadow-xl';
-                    
-                    let featuresList = solution.features.map(feature => 
-                        `<li class="flex items-start">
-                            <span class="text-ivs-primary mr-3 text-xl font-bold">&#10003;</span>
-                            ${feature}
-                        </li>`
-                    ).join('');
+            // 2. Áp dụng cho các element có data-key-list (tạo list <ul><li>)
+            document.querySelectorAll('[data-key-list]').forEach(ul => {
+                const keyPath = ul.getAttribute('data-key-list');
+                const features = getNestedValue(data, keyPath);
+                
+                if (features && Array.isArray(features)) {
+                    ul.innerHTML = ''; // Clear previous content
+                    features.forEach(feature => {
+                        // Thêm icon và nội dung vào li
+                        ul.innerHTML += `
+                            <li class="flex items-start">
+                                <span class="text-ivs-primary mr-3 text-lg font-bold">&#10003;</span>
+                                ${feature}
+                            </li>
+                        `;
+                    });
+                }
+            });
 
-                    solutionBlock.innerHTML = `
-                        <div class="md:w-1/3 mb-6 md:mb-0">
-                            <h3 class="text-2xl font-bold text-ivs-primary mb-2">${solution.type_name}</h3>
-                            <p class="text-ivs-secondary font-semibold">${solution.focus}</p>
-                        </div>
-                        <div class="md:w-2/3">
-                            <ul class="space-y-4 text-gray-700">
-                                ${featuresList}
-                            </ul>
-                        </div>
-                    `;
-                    solutionsContainer.appendChild(solutionBlock);
-                });
-            }
+            // 3. Áp dụng cho các element có data-key-href (set href attribute)
+            document.querySelectorAll('[data-key-href]').forEach(el => {
+                const keyPath = el.getAttribute('data-key-href');
+                const url = getNestedValue(data, keyPath);
+                if (url) {
+                    el.setAttribute('href', url);
+                }
+            });
 
-            // 3. Áp dụng cho Process Steps Section (vì đây là mảng, cần tạo DOM động)
-            const stepsContainer = document.getElementById('steps-container');
-            if (stepsContainer) {
-                stepsContainer.innerHTML = '';
-                data.process_section.steps.forEach(step => {
-                    const stepBlock = document.createElement('div');
-                    stepBlock.className = 'p-6 bg-white rounded-xl shadow-lg border border-gray-100';
-                    stepBlock.innerHTML = `
-                        <div class="text-5xl font-extrabold text-ivs-secondary mb-2">${step.id}</div>
-                        <h4 class="font-bold text-lg mb-2">${step.name}</h4>
-                        <p class="text-sm text-gray-600">${step.description}</p>
-                    `;
-                    stepsContainer.appendChild(stepBlock);
-                });
-            }
+            // 4. Áp dụng cho Image: Đảm bảo src đã được đặt đúng trong HTML.
         }
 
         // Gọi hàm khi tài liệu đã tải xong
         window.onload = () => {
             applyLocalization(globalData);
+            // Khởi tạo AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                });
+            }
         };
-
-        // Hàm thay đổi ngôn ngữ (chỉ là giả định)
-        function changeLanguage(langCode) {
-            // Trong môi trường thực, Quý vị sẽ tải file JSON (ví dụ: fetch('en.json').then(...) )
-            alert(`Đã chuyển sang chế độ ngôn ngữ: ${langCode}. (Lưu ý: Đây chỉ là chức năng giả định. Quý vị cần thay đổi file JSON để thấy nội dung mới).`);
-            // Ví dụ: applyLocalization(dataEN);
-        }
     </script>
 </body>
 </html>
+
+
