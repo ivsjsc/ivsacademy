@@ -1,0 +1,177 @@
+{
+  "totalKeys": 4072,
+  "translatedKeys": 88,
+  "percentTranslated": "2.16",
+  "translatedKeysList": [
+    "1hero_description",
+    "1process_step1_desc",
+    "1process_step1_title",
+    "1process_step2_desc",
+    "1process_step2_title",
+    "1process_step3_desc",
+    "1process_step3_title",
+    "1process_step4_desc",
+    "1process_step4_title",
+    "1process_step5_desc",
+    "1process_step5_title",
+    "1process_step6_desc",
+    "1process_step6_title",
+    "1process_title",
+    "about_achievements_subtitle",
+    "about_achievements_title",
+    "about_activities_title",
+    "about_activity_biz_desc",
+    "about_activity_biz_title",
+    "about_activity_edu_desc",
+    "about_activity_edu_title",
+    "about_intro",
+    "about_page_title",
+    "about_team_subtitle",
+    "about_team_title",
+    "about_title",
+    "about_vision_title",
+    "contact",
+    "contact_address",
+    "contact_email",
+    "contact_page_title",
+    "contact_phone",
+    "contact_title",
+    "contact_us",
+    "footer_contact",
+    "footer_copyright",
+    "footer_newsletter_button",
+    "header_contact",
+    "hero_cta",
+    "hero_subtitle",
+    "hero_title",
+    "ivs_meaning_integrate_desc",
+    "ivs_meaning_integrate_title",
+    "ivs_meaning_synergy_desc",
+    "ivs_meaning_synergy_title",
+    "ivs_meaning_vision_desc",
+    "ivs_meaning_vision_title",
+    "learn_more",
+    "nav_about",
+    "nav_about_mobile",
+    "nav_contact",
+    "nav_contact_mobile",
+    "nav_ecosystem",
+    "nav_ecosystem_mobile",
+    "nav_impact",
+    "nav_impact_mobile",
+    "nav_leadership",
+    "nav_leadership_mobile",
+    "nav_roadmap",
+    "nav_roadmap_mobile",
+    "nav_strategy",
+    "nav_strategy_mobile",
+    "news_subtitle",
+    "news_title",
+    "read_more",
+    "search_placeholder",
+    "solution_edtech_desc",
+    "solution_edtech_title",
+    "solution_edu_desc",
+    "solution_edu_title",
+    "solution_international_coop_desc",
+    "solution_international_coop_title",
+    "solution_learn_more",
+    "solution_psb_desc",
+    "solution_psb_title",
+    "solution_upskill_desc",
+    "solution_upskill_title",
+    "solution_webdesign_desc",
+    "solution_webdesign_title",
+    "solutions_cta_button",
+    "solutions_cta_subtitle",
+    "solutions_cta_title",
+    "solutions_hero_subtitle",
+    "solutions_hero_title",
+    "solutions_overview_content",
+    "solutions_overview_title",
+    "view_details",
+    "view_project"
+  ],
+  "samples": {
+    "1hero_description": {
+      "english": "IVS là hệ sinh thái giáo dục toàn diện, cung cấp các giải pháp đột phá từ đào tạo ngôn ngữ, kỹ năng đến tư vấn chiến lược cho các tổ chức giáo dục.",
+      "chinese": "IVS是一个全面的教育生态系统，提供从语言培训、技能培训到为教育组织提供战略咨询的创新解决方案。"
+    },
+    "1process_step1_desc": {
+      "english": "IVS JSC lắng nghe chi tiết nhu cầu của đối tác về số lượng, quốc tịch, kinh nghiệm, chuyên môn, ngân sách, và các yêu cầu đặc biệt khác. Chúng tôi sẽ tư vấn gói dịch vụ phù hợp nhất.",
+      "chinese": "IVS JSC详细倾听合作伙伴关于数量、国籍、经验、专业知识、预算和其他特殊要求的需求。我们将建议最合适的服务套餐。"
+    },
+    "1process_step1_title": {
+      "english": "Tiếp Nhận Yêu Cầu & Tư Vấn",
+      "chinese": "接收需求和咨询"
+    },
+    "1process_step2_desc": {
+      "english": "Dựa trên yêu cầu, chúng tôi tiến hành tìm kiếm ứng viên từ mạng lưới toàn cầu. Hồ sơ được sàng lọc kỹ lưỡng về bằng cấp, chứng chỉ (TESOL/CELTA), kinh nghiệm và lý lịch tư pháp.",
+      "chinese": "根据要求，我们从全球网络中搜索候选人。资料会经过资格、证书（TESOL/CELTA）、经验和犯罪记录的全面筛选。"
+    },
+    "1process_step2_title": {
+      "english": "Tuyển Chọn & Sàng Lọc Hồ Sơ",
+      "chinese": "候选人选择与筛选"
+    },
+    "1process_step3_desc": {
+      "english": "Các ứng viên tiềm năng sẽ trải qua vòng phỏng vấn chuyên sâu với đội ngũ chuyên gia của IVS. Sau đó, chúng tôi tổ chức buổi dạy thử (demo teaching) để đánh giá năng lực sư phạm thực tế và kỹ năng mềm.",
+      "chinese": "潜在候选人将接受IVS专家团队的深入面试。之后，我们会组织示范教学环节，评估实际教学能力和软技能。"
+    },
+    "1process_step3_title": {
+      "english": "Phỏng Vấn Chuyên Sâu & Dạy Thử",
+      "chinese": "深入面试与示范教学"
+    },
+    "1process_step4_desc": {
+      "english": "IVS JSC gửi hồ sơ và kết quả đánh giá các ứng viên phù hợp nhất để đối tác lựa chọn và phỏng vấn trực tiếp (nếu muốn). Sau khi đối tác chọn được giáo viên, chúng tôi hỗ trợ các thủ tục ký kết hợp đồng lao động.",
+      "chinese": "IVS JSC发送最合适候选人的简历和评估结果，供合作伙伴选择并直接面试（如有需要）。一旦合作伙伴选择了教师，我们将协助签署劳动合同手续。"
+    },
+    "1process_step4_title": {
+      "english": "Giới Thiệu Ứng Viên & Ký Kết",
+      "chinese": "候选人介绍与合同签署"
+    },
+    "1process_step5_desc": {
+      "english": "Đội ngũ pháp lý của IVS sẽ tư vấn và hỗ trợ toàn bộ quá trình chuẩn bị hồ sơ, nộp và theo dõi tiến độ xin cấp Work Permit, visa, và thẻ tạm trú cho giáo viên tại Việt Nam, đảm bảo tuân thủ đúng quy định.",
+      "chinese": "IVS的法律团队将在准备文件、提交和跟踪在越南申请工作许可证、签证和临时居留证的整个过程中提供咨询和支持，确保符合规定。"
+    },
+    "1process_step5_title": {
+      "english": "Hỗ Trợ Thủ Tục Pháp Lý (Work Permit, Visa, Thẻ Tạm Trú)",
+      "chinese": "法律程序支持（工作许可证、签证、临时居留证）"
+    },
+    "1process_step6_desc": {
+      "english": "Cung cấp các buổi định hướng văn hóa, hỗ trợ GVNN hòa nhập và giải quyết các vấn đề phát sinh (nếu có thỏa thuận trong hợp đồng dịch vụ).",
+      "chinese": "提供文化定向课程，支持外籍教师融入，并解决任何出现的问题（如服务合同中有规定）。"
+    },
+    "1process_step6_title": {
+      "english": "Đồng Hành & Hỗ Trợ Sau Tuyển Dụng",
+      "chinese": "陪伴和招聘后支持"
+    },
+    "1process_title": {
+      "english": "Quy Trình Cung Cấp Giáo Viên Nước Ngoài",
+      "chinese": "提供外籍教师的流程"
+    },
+    "about_achievements_subtitle": {
+      "english": "Những cột mốc đáng tự hào trên hành trình phát triển của IVS JSC.",
+      "chinese": "IVS JSC发展历程中值得自豪的里程碑。"
+    },
+    "about_achievements_title": {
+      "english": "Thành Tựu và Giải Thưởng",
+      "chinese": "成就和奖项"
+    },
+    "about_activities_title": {
+      "english": "Các Lĩnh Vực Hoạt Động Chính",
+      "chinese": "主要活动领域"
+    },
+    "about_activity_biz_desc": {
+      "english": "Giải pháp toàn diện cho doanh nghiệp: từ thủ tục hành chính, thuế, website, thiết kế học liệu, đến các dịch vụ hỗ trợ vận hành chuyên nghiệp.",
+      "chinese": "为企业提供全面解决方案：从行政程序、税务、网站、学习材料设计到专业运营支持服务。"
+    },
+    "about_activity_biz_title": {
+      "english": "Tư vấn Quản trị & Giải pháp Doanh nghiệp",
+      "chinese": "管理咨询和商业解决方案"
+    },
+    "about_activity_edu_desc": {
+      "english": "Cung cấp các chương trình đào tạo liên kết đa dạng, phát triển học liệu và ứng dụng giải pháp EdTech tiên tiến cho mọi cấp học.",
+      "chinese": "提供创新而全面的教育解决方案，包括师资、课程、设施和学生服务支持，使教育机构能够提高质量和达到国际标准。"
+    }
+  }
+}
