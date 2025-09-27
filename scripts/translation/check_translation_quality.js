@@ -55,6 +55,6 @@ fs.writeFileSync(
 console.log(`\nĐã tạo báo cáo chi tiết tại lang/translation_report.json`);
 console.log(`Tỷ lệ dịch: ${report.percentTranslated}% (${report.translatedKeys}/${report.totalKeys} keys)`);
 console.log('\nBước tiếp theo:');
-console.log('1. Hoàn thành việc dịch các key còn lại theo hướng dẫn trong TRANSLATION_GUIDE_ZH.md');
+console.log('1. Hoàn thành việc dịch các key còn lại theo hướng dẫn trong scripts/translation/docs/TRANSLATION_GUIDE_ZH.md');
 console.log('2. Sau khi hoàn thành, chạy node apply_zh_translation.js để áp dụng các thay đổi');
 console.log('3. Kiểm tra website với ngôn ngữ tiếng Trung để đảm bảo mọi thứ hiển thị đúng');
