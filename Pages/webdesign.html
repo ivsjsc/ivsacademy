@@ -44,6 +44,16 @@
         main {
             padding-top: 0; /* Sẽ được điều chỉnh bởi CSS/JS khi header load */
         }
+        .price-card-premium {
+            background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-top: 6px solid #FBBF24; /* Nhấn mạnh hơn */
+        }
+        .price-card-premium .feature-check {
+            color: #FBBF24 !important; /* Icon check màu vàng */
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -216,6 +226,74 @@
             </div>
         </div>
     </section>
+    
+    <!-- NEW SECTION: Bảng Giá Linh Hoạt & Khẳng Định Sức Mạnh Lập Trình -->
+    <section id="bang-gia" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-key="pricing_section.title" class="section-heading inline-block text-3xl sm:text-4xl font-extrabold text-ivs-dark mb-4"></h2>
+                <p data-key="pricing_section.subtitle" class="text-xl font-semibold text-ivs-primary max-w-3xl mx-auto"></p>
+            </div>
+
+            <!-- Pricing Tiers Grid -->
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- Pricing Card 1: Khởi Điểm -->
+                <div class="bg-ivs-light p-6 rounded-xl shadow-lg border-t-4 border-gray-300 flex flex-col justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <h3 data-key="pricing_section.tiers.0.name" class="text-2xl font-bold mb-2 text-ivs-dark"></h3>
+                        <p data-key="pricing_section.tiers.0.focus" class="text-sm text-gray-600 mb-4"></p>
+                        <p class="text-4xl font-extrabold text-ivs-secondary mb-6"><span data-key="pricing_section.tiers.0.price"></span></p>
+                        
+                        <h4 data-key="pricing_section.feature_include" class="font-semibold text-ivs-primary mb-3 border-b pb-2"></h4>
+                        <ul data-key-list="pricing_section.tiers.0.features" class="space-y-3 text-gray-700 text-sm"></ul>
+                    </div>
+                    <a href="#lien-he" data-key="pricing_section.tiers.0.button" class="mt-8 block text-center py-3 bg-ivs-primary text-white font-semibold rounded-lg hover:bg-ivs-dark transition duration-300"></a>
+                </div>
+
+                <!-- Pricing Card 2: Tiêu Chuẩn -->
+                <div class="bg-ivs-light p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary flex flex-col justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <h3 data-key="pricing_section.tiers.1.name" class="text-2xl font-bold mb-2 text-ivs-dark"></h3>
+                        <p data-key="pricing_section.tiers.1.focus" class="text-sm text-gray-600 mb-4"></p>
+                        <p class="text-4xl font-extrabold text-ivs-primary mb-6"><span data-key="pricing_section.tiers.1.price"></span></p>
+                        
+                        <h4 data-key="pricing_section.feature_include" class="font-semibold text-ivs-primary mb-3 border-b pb-2"></h4>
+                        <ul data-key-list="pricing_section.tiers.1.features" class="space-y-3 text-gray-700 text-sm"></ul>
+                    </div>
+                    <a href="#lien-he" data-key="pricing_section.tiers.1.button" class="mt-8 block text-center py-3 bg-ivs-primary text-white font-semibold rounded-lg hover:bg-ivs-dark transition duration-300"></a>
+                </div>
+                
+                <!-- Pricing Card 3: Nâng Cao -->
+                <div class="bg-ivs-light p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary flex flex-col justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <h3 data-key="pricing_section.tiers.2.name" class="text-2xl font-bold mb-2 text-ivs-dark"></h3>
+                        <p data-key="pricing_section.tiers.2.focus" class="text-sm text-gray-600 mb-4"></p>
+                        <p class="text-4xl font-extrabold text-ivs-primary mb-6"><span data-key="pricing_section.tiers.2.price"></span></p>
+                        
+                        <h4 data-key="pricing_section.feature_include" class="font-semibold text-ivs-primary mb-3 border-b pb-2"></h4>
+                        <ul data-key-list="pricing_section.tiers.2.features" class="space-y-3 text-gray-700 text-sm"></ul>
+                    </div>
+                    <a href="#lien-he" data-key="pricing_section.tiers.2.button" class="mt-8 block text-center py-3 bg-ivs-primary text-white font-semibold rounded-lg hover:bg-ivs-dark transition duration-300"></a>
+                </div>
+
+                <!-- Pricing Card 4: Tùy Biến Chuyên Sâu (Highlight) -->
+                <div class="price-card-premium p-6 rounded-xl shadow-2xl flex flex-col justify-between transition duration-300">
+                    <div>
+                        <h3 data-key="pricing_section.tiers.3.name" class="text-2xl font-bold mb-2 text-ivs-secondary"></h3>
+                        <p data-key="pricing_section.tiers.3.focus" class="text-sm text-gray-200 mb-4"></p>
+                        <p class="text-4xl font-extrabold text-white mb-6"><span data-key="pricing_section.tiers.3.price"></span></p>
+                        
+                        <h4 data-key="pricing_section.feature_include" class="font-semibold text-ivs-secondary mb-3 border-b border-gray-500 pb-2"></h4>
+                        <ul data-key-list="pricing_section.tiers.3.features" class="space-y-3 text-gray-200 text-sm"></ul>
+                    </div>
+                    <!-- Button for Custom Tier -->
+                    <a href="#lien-he" data-key="pricing_section.tiers.3.button" class="mt-8 block text-center py-3 bg-ivs-secondary text-ivs-dark font-bold rounded-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-[1.02]"></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- Call to Action -->
     <section id="lien-he" class="bg-ivs-primary py-16 sm:py-20">
@@ -341,6 +419,46 @@
                 "core_tech_title": "Công nghệ Cốt lõi:",
                 "core_tech_desc": "Chúng tôi ưu tiên các giải pháp **chủ động, hiệu quả** như React/Next.js cho front-end, tích hợp API đa nền tảng và tối ưu hóa cho tốc độ truy cập toàn cầu."
             },
+            "pricing_section": {
+                "title": "Bảng Giá Thiết Kế Website Linh Hoạt",
+                "subtitle": "Khẳng định Sức mạnh Lập trình Code Tay không giới hạn. Mọi yêu cầu khó đều được đáp ứng.",
+                "feature_include": "Bao gồm các đặc điểm:",
+                "tiers": [
+                    {
+                        "name": "Khởi Điểm",
+                        "price": "10 - 15 Triệu VNĐ",
+                        "focus": "Website giới thiệu, Landing Page tốc độ cao.",
+                        "button": "Chọn Gói Khởi Điểm",
+                        "features": ["Hosting và tên miền 1 năm (Quốc tế)", "Tối ưu tốc độ cơ bản (Mobile First)", "Cấu trúc 5-7 trang, giao diện có sẵn (Tối ưu)", "Tối ưu hóa SEO On-page cơ bản (3-5 từ khóa)"]
+                    },
+                    {
+                        "name": "Tiêu Chuẩn",
+                        "price": "15 - 25 Triệu VNĐ",
+                        "focus": "Phù hợp Doanh nghiệp vừa & nhỏ, B2B cơ bản.",
+                        "button": "Chọn Gói Tiêu Chuẩn",
+                        "features": ["Tất cả tính năng của gói Khởi Điểm", "Thiết kế UI/UX theo nhận diện thương hiệu", "Hệ thống quản lý nội dung đa cấp (CMS)", "Tích hợp tính năng Marketing (CRM/Form nâng cao)"]
+                    },
+                    {
+                        "name": "Nâng Cao",
+                        "price": "25 - 40 Triệu VNĐ",
+                        "focus": "Phù hợp E-commerce, Giáo dục (LMS Lite), Cổng thông tin.",
+                        "button": "Chọn Gói Nâng Cao",
+                        "features": ["Tất cả tính năng của gói Tiêu Chuẩn", "Tích hợp thanh toán trực tuyến (e-Commerce)", "Hệ thống Đa ngôn ngữ (2-3 ngôn ngữ)", "Bảo mật nâng cao (SSL & Firewall)"]
+                    },
+                    {
+                        "name": "Tùy Biến Chuyên Sâu",
+                        "price": "Từ 40 Triệu VNĐ",
+                        "focus": "Giải pháp Độc quyền: Mọi yêu cầu phức tạp đều được đáp ứng.",
+                        "button": "Liên Hệ Báo Giá Độc Quyền",
+                        "features": [
+                            "**SỨC MẠNH CỐT LÕI:** Siêu lập trình code tay, không giới hạn tính năng.",
+                            "Phân tích chuyên sâu (Strategy Workshop)", 
+                            "Tích hợp API/Hệ thống bên thứ 3 (ERP, CRM, LMS nặng)", 
+                            "Tối ưu hóa hiệu suất, khả năng mở rộng (Scalability) và bảo mật quốc tế."
+                        ]
+                    }
+                ]
+            },
             "cta_section": {
                 "title": "Sẵn Sàng Hành Động Thực Tế?",
                 "description": "Liên hệ ngay để nhận bản đề xuất **chính xác** và **tư vấn chiến lược** chi tiết nhất cho dự án của Quý vị.",
@@ -386,10 +504,11 @@
                 if (features && Array.isArray(features)) {
                     ul.innerHTML = ''; // Clear previous content
                     features.forEach(feature => {
+                        const iconClass = ul.parentElement.classList.contains('price-card-premium') ? 'text-ivs-secondary' : 'text-ivs-primary';
                         // Thêm icon và nội dung vào li
                         ul.innerHTML += `
                             <li class="flex items-start">
-                                <span class="text-ivs-primary mr-3 text-lg font-bold">&#10003;</span>
+                                <span class="feature-check ${iconClass} mr-3 text-lg font-bold">&#10003;</span>
                                 ${feature}
                             </li>
                         `;
@@ -423,5 +542,3 @@
     </script>
 </body>
 </html>
-
-
