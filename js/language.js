@@ -9,6 +9,23 @@
  */
 'use strict';
 
+// Ensure a safe fallback for window.componentLog so pages don't crash if utils.js
+// hasn't loaded yet. This provides defensive logging until the real implementation
+// from utils.js becomes available.
+if (typeof window.componentLog !== 'function') {
+    window.componentLog = function(msg, level = 'log') {
+        try {
+            if (level === 'error') console.error(msg);
+            else if (level === 'warn') console.warn(msg);
+            else console.log(msg);
+        } catch (e) {
+            // swallow errors from console in constrained environments
+        }
+    };
+    // Mark that this is a temporary fallback so other scripts can check if utils loaded
+    window.__componentLogFallback = true;
+}
+
 // 1. GLOBAL CONFIGURATION & STATE
 window.langSystem = window.langSystem || {
     translations: {},
@@ -209,9 +226,26 @@ window.changeLanguage = async function(langCode) {
 // 5. SCRIPT EXECUTION
 // The script will now self-initialize once the DOM is ready.
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeLanguageSystem);
+    document.addEventListener('DOMContentLoaded', function() {
+        // If utils.js hasn't fully replaced the fallback, wait a short moment
+        // to allow page-level script ordering to finish. This prevents the
+        // earlier TypeError seen in production where window.componentLog was not a function.
+        if (window.__componentLogFallback) {
+            // small retry delay (non-blocking) to let utils.js initialize
+            setTimeout(initializeLanguageSystem, 25);
+            window.componentLog('DOMContentLoaded: using fallback componentLog; scheduling language initialization shortly.');
+        } else {
+            initializeLanguageSystem();
+            window.componentLog('DOMContentLoaded: initializing language system.');
+        }
+    });
     window.componentLog('DOMContentLoaded listener added for language system initialization.');
 } else {
-    initializeLanguageSystem();
-    window.componentLog('DOM already loaded, language system initializing immediately.');
+    if (window.__componentLogFallback) {
+        setTimeout(initializeLanguageSystem, 25);
+        window.componentLog('DOM already loaded: using fallback componentLog; scheduling language initialization shortly.');
+    } else {
+        initializeLanguageSystem();
+        window.componentLog('DOM already loaded, language system initializing immediately.');
+    }
 }

@@ -8,15 +8,22 @@
 
 'use strict';
 
-// Đảm bảo các hàm tiện ích toàn cục có sẵn (componentLog, debounce)
-// Các hàm này được mong đợi sẽ được tải qua public/js/utils.js
+// Provide gentle fallbacks for global utilities to avoid hard crashes when
+// utils.js hasn't loaded yet. Existing code relied on immediate console.error
+// which floods logs and may break some environments; we'll use componentLog
+// fallback quietly (console.error only if console present and on explicit need).
 if (typeof window.componentLog !== 'function') {
-    console.error("[IVSFabController] window.componentLog không được định nghĩa. Vui lòng đảm bảo utils.js được tải trước fabController.js.");
-    window.componentLog = (msg, level = 'error') => console[level](msg); // Hàm dự phòng
+    window.componentLog = function(msg, level = 'log') {
+        try {
+            if (level === 'error') console.error(msg);
+            else if (level === 'warn') console.warn(msg);
+            else console.log(msg);
+        } catch (e) {}
+    };
+    window.__componentLogFallback = true;
 }
 if (typeof window.debounce !== 'function') {
-    console.error("[IVSFabController] window.debounce không được định nghĩa. Vui lòng đảm bảo utils.js được tải trước fabController.js.");
-    window.debounce = (func) => func; // Hàm dự phòng
+    window.debounce = (fn) => fn;
 }
 
 /**
@@ -493,6 +500,31 @@ const IVSFabController = {
         window.componentLog(`IVSFabController: Đã đóng submenu cho nút: ${btn.id}`);
     },
 };
+
+// Ensure FAB is initialized when DOM is ready and when componentLog becomes available.
+async function ensureFabInit(retries = 6) {
+    const delay = 25;
+    for (let i = 0; i < retries; i++) {
+        if (typeof window.componentLog === 'function' && document.getElementById('fab-container')) {
+            try {
+                if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+                    window.IVSFabController.init();
+                    return;
+                }
+            } catch (err) {
+                window.componentLog('ensureFabInit error: ' + err.message, 'warn');
+            }
+        }
+        await new Promise(r => setTimeout(r, delay * (i + 1)));
+    }
+    window.componentLog('ensureFabInit: FAB init not completed after retries.', 'warn');
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => ensureFabInit());
+} else {
+    ensureFabInit();
+}
 
 // Thêm CSS cho hiệu ứng ripple (nếu chưa có trong fab-container-new.html)
 // Lưu ý: Phần này đã được chuyển vào fab-container-new.html để giữ CSS và HTML cùng nhau.

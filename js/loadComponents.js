@@ -113,6 +113,40 @@ async function fetchWithRetry(resource, options = {}) {
 }
 
 /**
+ * Safely initialize a controller with retries.
+ * Waits for window.componentLog to be a function and retries controller.init if it throws.
+ * @param {Object} controller
+ * @param {string} id
+ */
+async function safeInitController(controller, id) {
+    const maxAttempts = 6;
+    const baseDelay = 25; // ms
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        try {
+            if (typeof window.componentLog !== 'function') {
+                // Wait a bit for utils.js to load and replace the fallback
+                await new Promise(r => setTimeout(r, baseDelay * attempt));
+                continue;
+            }
+
+            if (controller && typeof controller.init === 'function') {
+                controller.init();
+                window.componentLog(`Controller for ${id} initialized.`, 'info');
+                return;
+            } else {
+                window.componentLog(`Controller for ${id} missing init or not provided.`, 'warn');
+                return;
+            }
+        } catch (err) {
+            window.componentLog(`safeInitController attempt ${attempt} for ${id} failed: ${err.message}`, attempt < maxAttempts ? 'warn' : 'error');
+            // small backoff
+            await new Promise(r => setTimeout(r, baseDelay * attempt));
+        }
+    }
+    window.componentLog(`safeInitController: Failed to initialize controller for ${id} after ${maxAttempts} attempts.`, 'error');
+}
+
+/**
  * Loads common components (header, fab-container, footer) and initializes their controllers.
  */
 async function loadCommonComponents() {
@@ -134,8 +168,10 @@ async function loadCommonComponents() {
             if (success) {
                 // Initialize controller if available and has an init method
                 if (comp.controller && typeof comp.controller.init === 'function') {
-                    comp.controller.init();
-                    window.componentLog(`Controller for ${comp.id} initialized.`, "info");
+                    // Use a safe initializer to avoid race conditions when utils.js
+                    // hasn't yet provided logging helpers or when controller was defined
+                    // but some dependencies are not ready.
+                    await safeInitController(comp.controller, comp.id);
                 } else {
                     window.componentLog(`Controller for ${comp.id} not found or init method missing.`, "warn");
                 }
@@ -154,7 +190,7 @@ async function loadCommonComponents() {
                 // re-run its init to bind assistant-specific elements (assistant-main-btn, etc.).
                 if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
                     try {
-                        window.IVSFabController.init();
+                        await safeInitController(window.IVSFabController, 'fab-container-placeholder');
                         window.componentLog('IVSFabController re-initialized after assistant injection.', 'info');
                     } catch (err) {
                         window.componentLog('Error re-initializing IVSFabController: ' + err.message, 'error');
