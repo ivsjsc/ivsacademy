@@ -648,17 +648,12 @@ window.IVSHeaderController = IVSHeaderController; // Expose globally
 // Attach the main loading function to DOMContentLoaded
 // This will ensure all components are loaded and controllers initialized after the DOM is ready.
 document.addEventListener('DOMContentLoaded', function() {
-    // Shared helper to compute correct component path based on current page depth
+    // Shared helper to compute correct component path. Use absolute paths to avoid
+    // relative-resolution bugs when pages live in subfolders or are served from
+    // different base paths. If you intentionally host the site from a subpath,
+    // update this function or set a global base path.
     function getComponentPath(componentName) {
-        const currentPath = window.location.pathname || '';
-        // Count non-empty segments to approximate depth
-        const segments = currentPath.split('/').filter(Boolean);
-        // If at root, use absolute path to components for clarity
-        if (segments.length <= 1) return `/components/${componentName}.html`;
-        // Otherwise compute relative path
-        const depth = segments.length; // e.g. ['pages','foo.html'] -> 2
-        const prefix = '../'.repeat(depth - 1);
-        return `${prefix}components/${componentName}.html`;
+        return `/components/${componentName}.html`;
     }
 
     // Use loadAndInject (which uses fetchWithRetry) for robust loading and ensure controllers init
