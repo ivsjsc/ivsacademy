@@ -162,7 +162,8 @@ async function initializeLanguageSystem() {
 window.changeLanguage = async function(langCode) {
     window.componentLog(`Initiating language change to: ${langCode}`);
     
-    if (!['en', 'vi'].includes(langCode)) {
+    // Allow Chinese ('zh') in addition to English and Vietnamese
+    if (!['en', 'vi', 'zh'].includes(langCode)) {
         window.componentLog(`Invalid language code: ${langCode}`, 'error');
         return;
     }

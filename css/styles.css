@@ -21,7 +21,7 @@
     --ivs-primary: #003366;
     --ivs-primary-dark: #002244;
     --ivs-secondary: #ffc107;
-    --ivs-accent: #F97316;
+    --ivs-accent: var(--ivs-accent);
     --ivs-accent-dark: #DD6B20;
 
     /* Neutral Grayscale */
@@ -822,4 +822,5 @@ html {
 */
 
 @import url('/css/fab.css');
+
 

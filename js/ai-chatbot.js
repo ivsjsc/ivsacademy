@@ -258,7 +258,7 @@ class IVSChatbot {
 
         // Contact queries
         if (message.includes('liên hệ') || message.includes('contact') || message.includes('liên lạc')) {
-            return 'Cách liên hệ với IVS: 📞\n\n• Hotline: 1900 XXX XXX\n• Email: info@ivs.edu.vn\n• Website: ivs.edu.vn\n• Văn phòng: Quận 1, TP.HCM\n\nHoặc bạn có thể để lại thông tin, đội ngũ của chúng tôi sẽ liên hệ ngay!';
+            return 'Cách liên hệ với IVS: 📞\n\n• Hotline: 1900 XXX XXX\n• Email: info@ivsacademy.edu.vn\n• Website: ivsacademy.edu.vn\n• Văn phòng: Quận 1, TP.HCM\n\nHoặc bạn có thể để lại thông tin, đội ngũ của chúng tôi sẽ liên hệ ngay!';
         }
 
         // About IVS queries

@@ -3,404 +3,542 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="webdesign_page_title">Thiết kế Website chuyên nghiệp | IVS Celestech</title>
-    <meta name="description" content="Dịch vụ thiết kế website chuyên nghiệp, uy tín, chất lượng cao bởi IVS Celestech. Đối tác tin cậy của doanh nghiệp trong và ngoài nước." data-lang-key="webdesign_meta_description">
-    <meta property="og:title" content="IVS Celestech - Thiết kế Website chuyên nghiệp, uy tín, chất lượng" data-lang-key="webdesign_og_title">
-    <meta property="og:description" content="IVS Celestech cung cấp giải pháp thiết kế website hiện đại, tối ưu UI/UX, bảo mật, tốc độ, chuẩn SEO. Sản phẩm tiêu biểu: KhaDock.com cho đối tác Bang Florida, Hoa Kỳ." data-lang-key="webdesign_og_description">
-    <meta property="og:image" content="/images/ivs-celestech.png">
-    <meta property="og:url" content="https://ivs.id.vn/Pages/webdesign.html">
-    <meta property="og:type" content="website">
-
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/images/logo/logo-192.png">
-    <link rel="manifest" href="/manifest.json">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,line-clamp"></script>
+    <title data-key="hero_section.title"></title>
+    <!-- Tải Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cấu hình Tailwind và Font Inter -->
     <script>
         tailwind.config = {
-            darkMode: 'class', // Kích hoạt chế độ tối dựa trên class 'dark'
             theme: {
                 extend: {
                     colors: {
-                        // Định nghĩa lại bảng màu cho chủ đề tối, đồng bộ với ivscelestech-dark-theme
-                        'primary': '#6366F1', // Indigo 500
-                        'primary-dark': '#4F46E5', // Indigo 600
-                        'secondary': '#FACC15', // Amber 400
-                        'secondary-dark': '#EAB308', // Amber 500
-                        'header-orange': '#F97316', // Giữ nguyên
-                        'ivs-neutral-800': '#18181B', // Zinc 900
-                        'ivs-neutral-700': '#27272A', // Zinc 800
-                        'ivs-neutral-600': '#3F3F46', // Zinc 700
-                        'ivs-neutral-300': '#D4D4D8', // Zinc 300
-                        'ivs-neutral-200': '#E4E4E7', // Zinc 200
-                        'ivs-neutral-100': '#F4F4F5', // Zinc 100
-                        'ivs-neutral-50': '#FAFAFA', // Zinc 50
-                        'purple-accent': '#A78BFA', // Purple 400
-                        'warning': '#FACC15', // Amber 400
-                        'blue-50': '#EEF2FF', // Indigo 50
-                        'blue-200': '#C7D2FE', // Indigo 200
-                        'blue-500': '#6366F1', // Indigo 500 (Primary)
-                        'blue-600': '#4F46E5', // Indigo 600 (Primary Dark)
-                        'blue-700': '#4338CA', // Indigo 700
-                        'blue-800': '#3730A3', // Indigo 800
-                        'purple-50': '#F5F3FF', // Purple 50
-                        'purple-500': '#8B5CF6', // Purple 500
-                        'purple-600': '#7C3AED', // Purple 600
-                        'purple-700': '#6D28D9', // Purple 700
-                        'emerald-50': '#ECFDF5', // Emerald 50
-                        'emerald-200': '#A7F3D0', // Emerald 200
-                        'emerald-500': '#10B981', // Emerald 500
-                        'emerald-600': '#059669', // Emerald 600
-                        'amber-200': '#FDE68A', // Amber 200
-                        'amber-500': '#F59E0B', // Amber 500
-                        'orange-200': '#FED7AA', // Orange 200
-                        'orange-500': '#F97316', // Orange 500
-                        'teal-600': '#0D9488', // Teal 600
-                        'indigo-600': '#4F46E5', // Indigo 600
-                        'indigo-700': '#4338CA', // Indigo 700
-                        'pink-500': '#EC4899' // Pink 500
-                    }
+                        'ivs-primary': '#1D4ED8', // Dark Blue - Tư duy chiến lược
+                        'ivs-secondary': '#FBBF24', // Amber - Sáng tạo & Hiệu quả
+                        'ivs-dark': '#1F2937',
+                        'ivs-light': '#F9FAFB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
                 }
-            },
-            plugins: [],
+            }
         }
     </script>
-    <!-- Loại bỏ styles.css nếu các style đã được chuyển sang Tailwind hoặc inline -->
-    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
     <style>
-        /* Các biến CSS cho header-height (giữ lại nếu được sử dụng ở các component khác) */
-        :root {
-            --header-height: 4rem;       /* 64px */
-            --header-height-mobile: 3.5rem; /* 56px */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1F2937;
+            background-color: #F9FAFB;
         }
-
-        /* Điều chỉnh Header Placeholder */
-        #header-placeholder {
-            height: var(--header-height);
-            transition: transform 0.3s ease;
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #FBBF24;
+            margin-top: 8px;
+            border-radius: 9999px;
         }
-        @media (max-width: 768px) {
-            #header-placeholder {
-                height: var(--header-height-mobile);
-            }
-        }
-        /* Đảm bảo nội dung không bị ẩn dưới header cố định */
+        /* Đảm bảo nội dung không bị che bởi header cố định */
         main {
-            position: relative;
-            z-index: 1;
-            padding-top: var(--header-height); /* Đẩy nội dung xuống dưới header */
+            padding-top: 0; /* Sẽ được điều chỉnh bởi CSS/JS khi header load */
         }
-        @media (max-width: 768px) {
-            main {
-                padding-top: var(--header-height-mobile);
-            }
-        }
-        /* Ẩn header khi cuộn xuống */
-        .header-hidden {
-            transform: translateY(-100%);
-        }
-        /* Hiển thị header khi cuộn lên */
-        .header-visible {
-            transform: translateY(0);
-        }
-
-        /* Các kiểu cho phần Hero Section */
-        .hero-rnd {
-            position: relative; /* Thêm để video background có thể định vị tuyệt đối */
-            overflow: hidden; /* Ẩn phần video thừa ra ngoài */
-            background-size: cover;
-            background-position: center;
-        }
-        .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
-
-        /* Kiểu cho placeholder khi tải component */
-        #header-placeholder:empty::before,
-        #footer-placeholder:empty::before {
-            content: attr(data-loading-text);
-            min-height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width:100%;
-            background-color: #e5e7eb;
-            color: #6b7280;
-        }
-        html.dark #header-placeholder:empty::before,
-        html.dark #footer-placeholder:empty::before {
-            background-color: #374151;
-            color: #9ca3af;
-        }
-
-        /* FAB helpers moved to /css/fab.css (canonical) */
-        
-        /* Kiểu cho nút ngôn ngữ đang hoạt động */
-        #header-placeholder button.active-lang {
-            background-color: var(--ivs-primary) !important;
-            color: var(--ivs-text-white) !important;
-        }
-        /* Hiệu ứng hover cho dropdown/mega menu */
-        .group:hover .group-hover\:opacity-100 {
-            opacity: 1 !important; visibility: visible !important;
-        }
-        .group:hover .group-hover\:visible {
-            visibility: visible !important;
-        }
-
-        /* Thêm các kiểu dáng cho nút chuyển đổi chế độ tối */
-        #darkModeToggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--tw-colors-primary);
+        .price-card-premium {
+            background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%);
             color: white;
-            border-radius: 9999px; /* rounded-full */
-            padding: 0.75rem; /* p-3 */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #darkModeToggle:hover {
-            background-color: var(--tw-colors-primary-dark);
             transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-top: 6px solid #FBBF24; /* Nhấn mạnh hơn */
         }
-
-        #darkModeToggle svg {
-            width: 1.5rem; /* h-6 */
-            height: 1.5rem; /* w-6 */
-        }
-        /* Style for the background video within a section */
-        .video-background {
-            position: absolute; /* Changed from fixed to absolute for section background */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1; /* Place the video behind all content */
-            filter: brightness(0.5); /* Make the video darker for better text readability */
+        .price-card-premium .feature-check {
+            color: #FBBF24 !important; /* Icon check màu vàng */
         }
     </style>
-    <!-- CSS -->
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/animations.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<!-- Điều chỉnh màu nền body cho chủ đề tối -->
-<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-ivs-neutral-800 text-gray-800 dark:text-ivs-neutral-200 font-inter">
-    <!-- Removed the global background video from here -->
+<body class="antialiased">
 
-    <header id="header-placeholder" data-loading-text="Đang tải menu..."></header>
-    <main class="flex-grow">
-        <!-- HERO SECTION -->
-        <!-- Điều chỉnh màu nền gradient cho chủ đề tối -->
-        <section class="hero-rnd text-white py-16 md:py-24 text-center shadow-lg bg-gradient-to-br from-primary via-blue-600 to-indigo-600">
-            <!-- Video Background -->
-            <video class="video-background" autoplay loop muted playsinline>
-                <source src="/videos/videowebdesign.mp4" type="video/mp4">
-                Trình duyệt của bạn không hỗ trợ thẻ video.
-            </video>
-            <!-- Gradient Overlay for better text readability -->
-            <div class="absolute inset-0 bg-gradient-to-t from-ivs-neutral-800 via-ivs-neutral-800/70 to-transparent z-0"></div>
-            <div class="container mx-auto px-4 relative z-10"> <!-- Added relative z-10 for content to be above video and overlay -->
-                <h1 class="text-3xl md:text-5xl font-bold mb-4 hero-text-shadow" data-aos="fade-up" data-lang-key="webdesign_hero_title">
-                    Thiết kế Website chuyên nghiệp, uy tín, chất lượng
-                </h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto hero-text-shadow mb-6" data-aos="fade-up" data-aos-delay="100" data-lang-key="webdesign_hero_subtitle">
-                    IVS Celestech là đơn vị hàng đầu trong lĩnh vực thiết kế website hiện đại, chuẩn UI/UX, tối ưu tốc độ, bảo mật và chuẩn SEO. Chúng tôi đồng hành cùng doanh nghiệp Việt Nam và quốc tế xây dựng thương hiệu số vững mạnh.
-                </p>
-                <!-- Điều chỉnh màu nút CTA cho chủ đề tối -->
-                <a href="/contact.html" class="inline-block bg-secondary hover:bg-secondary-dark text-ivs-neutral-800 font-semibold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" data-aos="zoom-in" data-aos-delay="200" data-lang-key="webdesign_hero_cta">
-                    Liên hệ tư vấn <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </section>
+    <!-- HEADER PLACEHOLDER: Sẽ được load động bởi loadComponents.js -->
+    <header id="header-placeholder" class="w-full fixed top-0 left-0 z-50 transition-all duration-300">
+        <!-- Nội dung Header sẽ được tải động tại đây -->
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="bg-ivs-dark text-white pt-24 pb-24 sm:pt-32 sm:pb-32 rounded-b-[40px] mt-[64px] sm:mt-[80px]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 leading-tight">
+                <span data-key="hero_section.subtitle" class="text-ivs-secondary block md:inline"></span>
+            </h1>
+            <p data-key="hero_section.description" class="text-xl text-gray-300 max-w-3xl mx-auto mb-10"></p>
+            <a href="#lien-he" class="inline-block px-8 py-3 bg-ivs-secondary text-ivs-dark font-bold text-lg rounded-xl shadow-2xl hover:bg-yellow-400 transition duration-300 transform hover:scale-105" data-key="cta_section.button"></a>
+        </div>
+    </section>
 
-        <!-- GIỚI THIỆU IVS CELESTECH -->
-        <!-- Điều chỉnh màu nền và màu chữ cho chủ đề tối -->
-        <section class="py-12 md:py-16 bg-white dark:bg-ivs-neutral-700">
-            <div class="container mx-auto px-4">
-                <div class="prose max-w-full lg:max-w-2xl mx-auto text-neutral-700 dark:text-ivs-neutral-300 bg-white dark:bg-ivs-neutral-700 p-6 md:p-8 rounded-lg shadow-md text-left" data-aos="fade-up">
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-primary dark:text-primary" data-lang-key="webdesign_about_title">Về IVS Celestech</h2>
-                    <p data-lang-key="webdesign_about_content_1">
-                        IVS Celestech là đối tác công nghệ tin cậy, chuyên cung cấp dịch vụ thiết kế website, phát triển ứng dụng web, tư vấn giải pháp số hóa cho doanh nghiệp, tổ chức giáo dục và cá nhân. Chúng tôi cam kết mang đến sản phẩm chất lượng, bảo mật, giao diện đẹp, trải nghiệm người dùng tối ưu và hỗ trợ kỹ thuật tận tâm.
-                    </p>
-                    <ul class="list-disc pl-5 mt-4">
-                        <li data-lang-key="webdesign_about_item_1">Đội ngũ chuyên gia giàu kinh nghiệm, sáng tạo và chuyên nghiệp.</li>
-                        <li data-lang-key="webdesign_about_item_2">Quy trình làm việc minh bạch, rõ ràng, đúng tiến độ.</li>
-                        <li data-lang-key="webdesign_about_item_3">Hỗ trợ đa ngôn ngữ, đa nền tảng, responsive trên mọi thiết bị.</li>
-                        <li data-lang-key="webdesign_about_item_4">Bảo hành, bảo trì và nâng cấp liên tục.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- DỊCH VỤ NỔI BẬT -->
-        <!-- Điều chỉnh màu nền và màu chữ cho chủ đề tối -->
-        <section class="py-12 md:py-16 bg-neutral-50 dark:bg-ivs-neutral-800">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-semibold text-center mb-8 text-neutral-700 dark:text-ivs-neutral-200" data-lang-key="webdesign_services_title">Dịch vụ thiết kế website tại IVS Celestech</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Điều chỉnh màu nền và màu chữ cho chủ đề tối -->
-                    <div class="card p-6 rounded-lg shadow-md flex flex-col bg-white dark:bg-ivs-neutral-700" data-aos="fade-right" data-aos-delay="100">
-                        <h3 class="text-xl font-semibold mb-4 text-primary dark:text-primary" data-lang-key="webdesign_service_uiux_title">Thiết kế UI/UX hiện đại</h3>
-                        <ul class="space-y-2 text-sm text-neutral-600 dark:text-ivs-neutral-300 list-disc pl-5">
-                            <li data-lang-key="webdesign_service_uiux_item_1">Phân tích nhu cầu, nghiên cứu hành vi người dùng.</li>
-                            <li data-lang-key="webdesign_service_uiux_item_2">Thiết kế wireframe, prototype, giao diện chuẩn thương hiệu.</li>
-                            <li data-lang-key="webdesign_service_uiux_item_3">Đảm bảo trải nghiệm mượt mà trên mọi thiết bị.</li>
-                        </ul>
+    <!-- Section: Giá Trị Cốt Lõi (Nguyên tắc làm việc) -->
+    <section id="gia-tri" class="py-16 sm:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 data-key="principles_section.title" class="section-heading text-3xl sm:text-4xl font-extrabold text-ivs-dark mb-12"></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Nguyên tắc 1: Tầm Nhìn & Chiến Lược -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary hover:shadow-xl transition duration-300">
+                    <div class="text-4xl text-ivs-primary mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                     </div>
-                    <!-- Điều chỉnh màu nền và màu chữ cho chủ đề tối -->
-                    <div class="card p-6 rounded-lg shadow-md flex flex-col bg-white dark:bg-ivs-neutral-700" data-aos="fade-left" data-aos-delay="200">
-                        <h3 class="text-xl font-semibold mb-4 text-secondary dark:text-secondary" data-lang-key="webdesign_service_development_title">Phát triển website & ứng dụng web</h3>
-                        <ul class="space-y-2 text-sm text-neutral-600 dark:text-ivs-neutral-300 list-disc pl-5">
-                            <li data-lang-key="webdesign_service_development_item_1">Xây dựng website giới thiệu, thương mại điện tử, landing page, cổng thông tin.</li>
-                            <li data-lang-key="webdesign_service_development_item_2">Tối ưu tốc độ tải trang, bảo mật, chuẩn SEO.</li>
-                            <li data-lang-key="webdesign_service_development_item_3">Tích hợp CMS, CRM, các hệ thống quản lý hiện đại.</li>
-                        </ul>
+                    <h3 data-key="principles_section.principles.0.name" class="text-xl font-bold mb-2"></h3>
+                    <p data-key="principles_section.principles.0.description" class="text-gray-600"></p>
+                </div>
+                <!-- Nguyên tắc 2: Chính Xác & Kỹ Càng -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary hover:shadow-xl transition duration-300">
+                    <div class="text-4xl text-ivs-primary mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
                     </div>
+                    <h3 data-key="principles_section.principles.1.name" class="text-xl font-bold mb-2"></h3>
+                    <p data-key="principles_section.principles.1.description" class="text-gray-600"></p>
+                </div>
+                <!-- Nguyên tắc 3: Hiệu Quả & Thực Tế -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary hover:shadow-xl transition duration-300">
+                    <div class="text-4xl text-ivs-primary mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+                    </div>
+                    <h3 data-key="principles_section.principles.2.name" class="text-xl font-bold mb-2"></h3>
+                    <p data-key="principles_section.principles.2.description" class="text-gray-600"></p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SẢN PHẨM TIÊU BIỂU: KHADOCK.COM -->
-        <!-- Điều chỉnh màu nền và màu chữ cho chủ đề tối -->
-        <section class="py-12 md:py-16 bg-white dark:bg-ivs-neutral-700">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-neutral-700 dark:text-ivs-neutral-200" data-lang-key="webdesign_khadock_title">Sản phẩm tiêu biểu: <span class="text-primary dark:text-primary">KhaDock.com</span></h2>
-                <p class="text-base md:text-lg text-neutral-700 dark:text-ivs-neutral-300 mb-8 max-w-2xl mx-auto" data-lang-key="webdesign_khadock_description">
-                    <strong>KhaDock.com</strong> là dự án website thương mại điện tử được IVS Celestech thiết kế và phát triển cho đối tác khách hàng tại Bang Florida, Hoa Kỳ. Dự án thể hiện năng lực triển khai quốc tế, đáp ứng các tiêu chuẩn khắt khe về UI/UX, bảo mật, tốc độ và khả năng mở rộng.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Placeholder image updated for dark theme -->
-                    <img src="/images/pages/webs/KhaDock.com/khadock-home.png" alt="Trang chủ KhaDock.com" class="w-full h-auto rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="100" onerror="this.onerror=null; this.src='https://placehold.co/600x400/27272A/E4E4E7?text=KhaDock+Home';">
-                    <img src="/images/pages/webs/KhaDock.com/khadock-design.jpg" alt="Thiết kế KhaDock.com" class="w-full h-auto rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="200" onerror="this.onerror=null; this.src='https://placehold.co/600x400/27272A/E4E4E7?text=KhaDock+Design';">
-                    <img src="/images/pages/webs/KhaDock.com/khadock-services.jpg" alt="Dịch vụ KhaDock.com" class="w-full h-auto rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="300" onerror="this.onerror=null; this.src='https://placehold.co/600x400/27272A/E4E4E7?text=KhaDock+Services';">
-                    <img src="/images/pages/webs/KhaDock.com/khadock-projects.jpg" alt="Quản lý dự án KhaDock.com" class="w-full h-auto rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="400" onerror="this.onerror=null; this.src='https://placehold.co/600x400/27272A/E4E4E7?text=KhaDock+Projects';">
-                    <img src="/images/pages/webs/KhaDock.com/khadock-contact.jpg" alt="Liên hệ KhaDock.com" class="w-full h-auto rounded-lg shadow-xl" data-aos="zoom-in" data-aos-delay="500" onerror="this.onerror=null; this.src='https://placehold.co/600x400/27272A/E4E4E7?text=KhaDock+Contact';">
-                </div>
-                <div class="mt-8">
-                    <!-- Điều chỉnh màu nút CTA cho chủ đề tối -->
-                    <a href="https://khadock.com" target="_blank" rel="noopener" class="inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-md shadow-md transition-all duration-300 transform hover:scale-105" data-lang-key="webdesign_khadock_cta">
-                        Truy cập KhaDock.com <i class="fas fa-arrow-up-right-from-square ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <!-- Điều chỉnh màu nền và màu chữ cho chủ đề tối -->
-        <section class="text-center py-12 md:py-16 bg-gradient-to-r from-blue-50 dark:from-ivs-neutral-700 to-purple-50 dark:to-ivs-neutral-700">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl md:text-3xl font-semibold text-neutral-700 dark:text-ivs-neutral-200 mb-4" data-lang-key="website_consultation_title">Bạn cần website chuyên nghiệp cho doanh nghiệp?</h2>
-                <p class="text-neutral-600 dark:text-ivs-neutral-300 mb-8 max-w-xl mx-auto text-base md:text-lg" data-lang-key="website_consultation_description">
-                    Liên hệ IVS Celestech để nhận tư vấn miễn phí, giải pháp thiết kế website tối ưu, bảo mật, chuẩn SEO, hỗ trợ kỹ thuật tận tâm.
-                </p>
-                <!-- Điều chỉnh màu nút CTA cho chủ đề tối -->
-                <a href="/contact.html" class="inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105" data-lang-key="website_consultation_button">
-                    Nhận tư vấn miễn phí <i class="fas fa-arrow-right ml-2"></i>
+    <!-- Section: Loại Hình Website Chuyên Biệt (Kèm Link & Ảnh Mẫu) -->
+    <section id="loai-hinh" class="py-16 sm:py-24 bg-ivs-light border-t border-b">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 data-key="solutions_section.title" class="section-heading text-3xl sm:text-4xl font-extrabold text-ivs-dark mb-12"></h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Card 1: LMS (Giáo Dục) - web-plus.jpg -->
+                <a data-key-href="solutions_section.solutions.0.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.0.image" alt="Thiết kế website Giáo dục IVS" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-plus.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=LMS+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.0.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.0.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.0.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
                 </a>
-            </div>
-        </section>
 
-    </main>
-    <footer id="footer-placeholder"></footer>
+                <!-- Card 2: B2B (Doanh Nghiệp) - web-doanhnghiep.jpg -->
+                <a data-key-href="solutions_section.solutions.1.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.1.image" alt="Thiết kế website Doanh nghiệp" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-doanhnghiep.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=B2B+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.1.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.1.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.1.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+
+                <!-- Card 3: E-Commerce (TMĐT/Lead Gen) - web-TMDT.jpg -->
+                <a data-key-href="solutions_section.solutions.2.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.2.image" alt="Thiết kế website Thương mại điện tử" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-TMDT.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=E-commerce+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.2.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.2.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.2.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+
+                <!-- Card 4: Du Lịch & Dịch Vụ - web-khudulich.jpg -->
+                <a data-key-href="solutions_section.solutions.3.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.3.image" alt="Thiết kế website Khu du lịch" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-khudulich.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=Travel+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.3.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.3.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.3.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+
+                <!-- Card 5: Nhà Hàng & Sự Kiện - web-nhahang.jpg -->
+                <a data-key-href="solutions_section.solutions.4.url" target="_blank" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-key-img="solutions_section.solutions.4.image" alt="Thiết kế website Nhà hàng Sự kiện" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" src="images/pages/careers/website/web-nhahang.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1D4ED8/ffffff?text=Restaurant+Design'">
+                        <!-- Badge Link -->
+                        <span data-key="solutions_section.view_demo" class="absolute top-3 right-3 bg-ivs-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md transition duration-300 group-hover:bg-ivs-secondary group-hover:text-ivs-dark"></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 data-key="solutions_section.solutions.4.type_name" class="text-2xl font-bold text-ivs-primary mb-2"></h3>
+                        <p data-key="solutions_section.solutions.4.focus" class="text-ivs-secondary font-semibold text-sm mb-4"></p>
+                        <ul data-key-list="solutions_section.solutions.4.features" class="space-y-2 text-gray-700 text-sm"></ul>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Quy Trình Kỹ Càng & Công Nghệ -->
+    <section id="quy-trinh" class="py-16 sm:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 data-key="process_section.title" class="section-heading text-3xl sm:text-4xl font-extrabold text-ivs-dark mb-12"></h2>
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <!-- Steps will be dynamically loaded via data-key -->
+                <!-- Step 1 -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <div data-key="process_section.steps.0.id" class="text-5xl font-extrabold text-ivs-secondary mb-2"></div>
+                    <h4 data-key="process_section.steps.0.name" class="font-bold text-lg mb-2"></h4>
+                    <p data-key="process_section.steps.0.description" class="text-sm text-gray-600"></p>
+                </div>
+                <!-- Step 2 -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <div data-key="process_section.steps.1.id" class="text-5xl font-extrabold text-ivs-secondary mb-2"></div>
+                    <h4 data-key="process_section.steps.1.name" class="font-bold text-lg mb-2"></h4>
+                    <p data-key="process_section.steps.1.description" class="text-sm text-gray-600"></p>
+                </div>
+                <!-- Step 3 -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <div data-key="process_section.steps.2.id" class="text-5xl font-extrabold text-ivs-secondary mb-2"></div>
+                    <h4 data-key="process_section.steps.2.name" class="font-bold text-lg mb-2"></h4>
+                    <p data-key="process_section.steps.2.description" class="text-sm text-gray-600"></p>
+                </div>
+                <!-- Step 4 -->
+                <div class="p-6 bg-white rounded-xl shadow-lg border border-gray-100">
+                    <div data-key="process_section.steps.3.id" class="text-5xl font-extrabold text-ivs-secondary mb-2"></div>
+                    <h4 data-key="process_section.steps.3.name" class="font-bold text-lg mb-2"></h4>
+                    <p data-key="process_section.steps.3.description" class="text-sm text-gray-600"></p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-ivs-dark text-white p-8 rounded-xl shadow-xl">
+                <h3 data-key="process_section.core_tech_title" class="text-xl font-bold mb-2"></h3>
+                <p data-key="process_section.core_tech_desc" class="text-gray-300"></p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NEW SECTION: Bảng Giá Linh Hoạt & Khẳng Định Sức Mạnh Lập Trình -->
+    <section id="bang-gia" class="py-16 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-key="pricing_section.title" class="section-heading inline-block text-3xl sm:text-4xl font-extrabold text-ivs-dark mb-4"></h2>
+                <p data-key="pricing_section.subtitle" class="text-xl font-semibold text-ivs-primary max-w-3xl mx-auto"></p>
+            </div>
+
+            <!-- Pricing Tiers Grid -->
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- Pricing Card 1: Khởi Điểm -->
+                <div class="bg-ivs-light p-6 rounded-xl shadow-lg border-t-4 border-gray-300 flex flex-col justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <h3 data-key="pricing_section.tiers.0.name" class="text-2xl font-bold mb-2 text-ivs-dark"></h3>
+                        <p data-key="pricing_section.tiers.0.focus" class="text-sm text-gray-600 mb-4"></p>
+                        <p class="text-4xl font-extrabold text-ivs-secondary mb-6"><span data-key="pricing_section.tiers.0.price"></span></p>
+                        
+                        <h4 data-key="pricing_section.feature_include" class="font-semibold text-ivs-primary mb-3 border-b pb-2"></h4>
+                        <ul data-key-list="pricing_section.tiers.0.features" class="space-y-3 text-gray-700 text-sm"></ul>
+                    </div>
+                    <a href="#lien-he" data-key="pricing_section.tiers.0.button" class="mt-8 block text-center py-3 bg-ivs-primary text-white font-semibold rounded-lg hover:bg-ivs-dark transition duration-300"></a>
+                </div>
+
+                <!-- Pricing Card 2: Tiêu Chuẩn -->
+                <div class="bg-ivs-light p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary flex flex-col justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <h3 data-key="pricing_section.tiers.1.name" class="text-2xl font-bold mb-2 text-ivs-dark"></h3>
+                        <p data-key="pricing_section.tiers.1.focus" class="text-sm text-gray-600 mb-4"></p>
+                        <p class="text-4xl font-extrabold text-ivs-primary mb-6"><span data-key="pricing_section.tiers.1.price"></span></p>
+                        
+                        <h4 data-key="pricing_section.feature_include" class="font-semibold text-ivs-primary mb-3 border-b pb-2"></h4>
+                        <ul data-key-list="pricing_section.tiers.1.features" class="space-y-3 text-gray-700 text-sm"></ul>
+                    </div>
+                    <a href="#lien-he" data-key="pricing_section.tiers.1.button" class="mt-8 block text-center py-3 bg-ivs-primary text-white font-semibold rounded-lg hover:bg-ivs-dark transition duration-300"></a>
+                </div>
+                
+                <!-- Pricing Card 3: Nâng Cao -->
+                <div class="bg-ivs-light p-6 rounded-xl shadow-lg border-t-4 border-ivs-primary flex flex-col justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <h3 data-key="pricing_section.tiers.2.name" class="text-2xl font-bold mb-2 text-ivs-dark"></h3>
+                        <p data-key="pricing_section.tiers.2.focus" class="text-sm text-gray-600 mb-4"></p>
+                        <p class="text-4xl font-extrabold text-ivs-primary mb-6"><span data-key="pricing_section.tiers.2.price"></span></p>
+                        
+                        <h4 data-key="pricing_section.feature_include" class="font-semibold text-ivs-primary mb-3 border-b pb-2"></h4>
+                        <ul data-key-list="pricing_section.tiers.2.features" class="space-y-3 text-gray-700 text-sm"></ul>
+                    </div>
+                    <a href="#lien-he" data-key="pricing_section.tiers.2.button" class="mt-8 block text-center py-3 bg-ivs-primary text-white font-semibold rounded-lg hover:bg-ivs-dark transition duration-300"></a>
+                </div>
+
+                <!-- Pricing Card 4: Tùy Biến Chuyên Sâu (Highlight) -->
+                <div class="price-card-premium p-6 rounded-xl shadow-2xl flex flex-col justify-between transition duration-300">
+                    <div>
+                        <h3 data-key="pricing_section.tiers.3.name" class="text-2xl font-bold mb-2 text-ivs-secondary"></h3>
+                        <p data-key="pricing_section.tiers.3.focus" class="text-sm text-gray-200 mb-4"></p>
+                        <p class="text-4xl font-extrabold text-white mb-6"><span data-key="pricing_section.tiers.3.price"></span></p>
+                        
+                        <h4 data-key="pricing_section.feature_include" class="font-semibold text-ivs-secondary mb-3 border-b border-gray-500 pb-2"></h4>
+                        <ul data-key-list="pricing_section.tiers.3.features" class="space-y-3 text-gray-200 text-sm"></ul>
+                    </div>
+                    <!-- Button for Custom Tier -->
+                    <a href="#lien-he" data-key="pricing_section.tiers.3.button" class="mt-8 block text-center py-3 bg-ivs-secondary text-ivs-dark font-bold rounded-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-[1.02]"></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="lien-he" class="bg-ivs-primary py-16 sm:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 data-key="cta_section.title" class="text-3xl sm:text-4xl font-extrabold text-white mb-4"></h2>
+            <p data-key="cta_section.description" class="text-xl text-gray-200 mb-8"></p>
+            <a href="#" class="inline-block px-10 py-4 bg-ivs-secondary text-ivs-dark font-bold text-xl rounded-xl shadow-2xl hover:bg-yellow-400 transition duration-300 transform hover:scale-105" data-key="cta_section.button_large"></a>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER: Sẽ được load động bởi loadComponents.js -->
+    <footer id="footer-placeholder" class="bg-ivs-light border-t border-gray-200 py-12">
+        <!-- Nội dung Footer sẽ được tải động tại đây -->
+    </footer>
+    <!-- Floating Action Button Placeholder -->
     <div id="fab-container-placeholder"></div>
 
-    <!-- Nút chuyển đổi chế độ tối/sáng -->
-    <button id="darkModeToggle" aria-label="Toggle dark mode">
-        <svg id="moonIcon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-        </svg>
-        <svg id="sunIcon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.675l-.707-.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M7.05 7.05l-.707-.707M8 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-        </svg>
-    </button>
-
-    <script src="/js/script.js" defer></script>
-    <script src="/js/language.js" defer></script>
-    <script src="/js/fabController.js" defer></script>
-    <script src="/js/loadComponents.js" defer></script>
+    <!-- START OF SCRIPT LOADING BLOCK -->
+    <!-- Scripts IVS sử dụng cho các tính năng dynamic -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom IVS Scripts for dynamic components and language -->
+    <script src="/js/loadComponents.js"></script>
+    <script src="/js/language.js"></script>
+    <script src="/js/fabController.js"></script>
+    <!-- END OF SCRIPT LOADING BLOCK -->
+
+
     <script>
-        // Hàm để áp dụng hoặc loại bỏ chế độ tối
-        function applyDarkMode(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-                document.getElementById('moonIcon').classList.add('hidden');
-                document.getElementById('sunIcon').classList.remove('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.getElementById('moonIcon').classList.remove('hidden');
-                document.getElementById('sunIcon').classList.add('hidden');
-            }
-        }
-
-        // Kiểm tra cài đặt chế độ tối của người dùng hoặc lưu trữ cục bộ
-        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-        let isDarkMode = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && prefersDarkMode.matches);
-        applyDarkMode(isDarkMode);
-
-        // Lắng nghe sự kiện click trên nút chuyển đổi
-        document.getElementById('darkModeToggle').addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
-            applyDarkMode(isDarkMode);
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        });
-
-        // Lắng nghe thay đổi cài đặt hệ thống
-        prefersDarkMode.addEventListener('change', (e) => {
-            if (localStorage.getItem('theme') === null) { // Chỉ thay đổi nếu người dùng chưa đặt tùy chọn thủ công
-                isDarkMode = e.matches;
-                applyDarkMode(isDarkMode);
-            }
-        });
-
-        // Khởi tạo AOS sau khi DOM đã tải hoàn chỉnh
-        document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({
-                offset: 100,
-                duration: 700,
-                easing: 'ease-out-quad',
-                once: true,
-                mirror: false,
-                anchorPlacement: 'top-bottom'
-            });
-        });
-
-        // Hàm initializeTheme được giữ lại ở đây để đảm bảo tính nhất quán nếu trang này được truy cập trực tiếp
-        // Hàm này sẽ được gọi bởi loadComponentsAndInitialize hoặc trực tiếp nếu trang được tải độc lập
-        window.initializeTheme = function() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme) {
-                document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-            } else {
-                document.documentElement.classList.toggle('dark', prefersDark);
+        // NOTE: Dữ liệu mẫu (mock data) dựa trên cấu trúc JSON để minh họa.
+        const dataVI = {
+            "hero_section": {
+                "title": "Dịch Vụ Thiết Kế Website Chiến Lược cho IVS",
+                "subtitle": "Kiến Tạo Nền Tảng Số Toàn Diện: Tầm Nhìn Xa, Hành Động Thực Tế",
+                "description": "Chúng tôi không chỉ lập trình website. Chúng tôi thiết kế giải pháp **chính xác và kỹ càng** để đưa chiến lược giáo dục quốc tế của Quý vị lên không gian mạng."
+            },
+            "principles_section": {
+                "title": "Thiết Kế Theo Nguyên Tắc IVS",
+                "principles": [
+                    {
+                        "name": "Tầm Nhìn & Chiến Lược",
+                        "description": "Xây dựng website không chỉ cho hiện tại mà còn cho sự mở rộng trong **5-10 năm tới**, hỗ trợ các liên kết quốc tế (**Hoa Kỳ, Đài Loan, châu Âu**)."
+                    },
+                    {
+                        "name": "Chính Xác & Kỹ Càng",
+                        "description": "Kiểm tra nghiêm ngặt từng module, đảm bảo tính **bảo mật cao** cho dữ liệu học viên và đối tác. Code sạch, tối ưu hóa SEO ngay từ đầu."
+                    },
+                    {
+                        "name": "Hiệu Quả & Thực Tế",
+                        "description": "Tập trung vào các tính năng mang lại **lợi ích kinh doanh trực tiếp**: Tăng tỷ lệ chuyển đổi tuyển sinh, quản lý học viên tự động, tiết kiệm thời gian vận hành."
+                    }
+                ]
+            },
+            "solutions_section": {
+                "title": "Các Giải Pháp Website Trọng Tâm (Kèm Ảnh Thiết Kế Thực Tế)",
+                "view_demo": "Xem Mẫu",
+                "solutions": [
+                    {
+                        "url": "https://demo.ivs.edu.vn/lms-plus",
+                        "image": "images/pages/careers/website/web-plus.jpg",
+                        "type_name": "Loại 1: Nền Tảng Giáo Dục (LMS)",
+                        "focus": "Tập trung: IVS LIFE Minds & Chương trình Đào tạo Quốc tế",
+                        "features": [
+                          "**Quản lý Học tập (LMS):** Tích hợp phân phối giáo trình, quản lý tiến độ và cấp chứng chỉ online.",
+                          "**Cổng Du học & Trao đổi:** Tự động hóa hồ sơ liên kết với **Hoa Kỳ, Đài Loan, châu Âu**.",
+                          "**Tuyển dụng Giáo viên Bản xứ:** Hệ thống đăng ký, quản lý hồ sơ chuyên nghiệp."
+                        ]
+                    },
+                    {
+                        "url": "https://demo.ivs.edu.vn/b2b-corporate",
+                        "image": "images/pages/careers/website/web-doanhnghiep.jpg",
+                        "type_name": "Loại 2: Website Doanh Nghiệp (B2B)",
+                        "focus": "Tập trung: Thể hiện Uy tín, Tư vấn Pháp lý và Đối tác",
+                        "features": [
+                          "**Hồ sơ Năng lực Trực tuyến:** Trình bày chi tiết **giải pháp giáo dục toàn diện** và đối tác chiến lược.",
+                          "**Dịch vụ Tư vấn Pháp lý:** Cổng thông tin hỗ trợ thành lập và vận hành trung tâm giáo dục.",
+                          "**Phòng Báo Chí Kỹ thuật số:** Quản lý thông cáo, sự kiện và hình ảnh minh bạch."
+                        ]
+                    },
+                    {
+                        "url": "https://demo.ivs.edu.vn/ecommerce-store",
+                        "image": "images/pages/careers/website/web-TMDT.jpg",
+                        "type_name": "Loại 3: Thương Mại Điện Tử (E-Commerce)",
+                        "focus": "Tập trung: Phân phối Thiết bị Công nghệ & Lead Generation",
+                        "features": [
+                          "**Danh mục Thiết bị Công nghệ:** Gian hàng cho **bảng tương tác, thiết bị VR, AR**.",
+                          "**Tích hợp Thanh toán:** Hỗ trợ nhiều cổng thanh toán an toàn, bảo mật cao.",
+                          "**Hệ thống Quản lý Báo Giá (Lead Gen):** Thu thập thông tin khách hàng tiềm năng hiệu quả."
+                        ]
+                    },
+                     {
+                        "url": "https://demo.ivs.edu.vn/travel-booking",
+                        "image": "images/pages/careers/website/web-khudulich.jpg",
+                        "type_name": "Loại 4: Du Lịch & Dịch Vụ Khách Sạn",
+                        "focus": "Tập trung: Trải nghiệm người dùng và Đặt chỗ trực tuyến",
+                        "features": [
+                          "**Hệ thống Booking:** Quản lý phòng, tour và dịch vụ theo thời gian thực.",
+                          "**Gallery Ảnh & Video:** Trình bày trải nghiệm Hoàng Sơ, Tiện Nghi Đỉnh Cao.",
+                          "**Tối ưu SEO Địa Phương:** Thu hút khách hàng tiềm năng qua tìm kiếm."
+                        ]
+                    },
+                     {
+                        "url": "https://demo.ivs.edu.vn/restaurant-event",
+                        "image": "images/pages/careers/website/web-nhahang.jpg",
+                        "type_name": "Loại 5: Nhà Hàng, Sự Kiện & Tiệc Cưới",
+                        "focus": "Tập trung: Hình ảnh sang trọng và Quản lý sự kiện",
+                        "features": [
+                          "**Quản lý Đặt Bàn/Đặt Tiệc:** Hệ thống tiếp nhận yêu cầu và xác nhận tự động.",
+                          "**Trình bày Thực đơn/Menu:** Ảnh chất lượng cao, dễ dàng tùy chỉnh theo mùa.",
+                          "**Gallery Hội Nghị & Tiệc Cưới:** Nơi gửi gắm trọn vẹn hạnh phúc."
+                        ]
+                    }
+                ]
+            },
+            "process_section": {
+                "title": "Quy Trình Triển Khai Chủ Động & Kỹ Càng",
+                "steps": [
+                    {"id": "01", "name": "Phân tích Chiến lược", "description": "Xác định mục tiêu IVS (tuyển sinh, đối tác, du học) và xây dựng cấu trúc website."},
+                    {"id": "02", "name": "Thiết kế Chính xác (UX/UI)", "description": "Wireframe và Mockup tập trung vào trải nghiệm người dùng, đảm bảo tính chuyên nghiệp quốc tế."},
+                    {"id": "03", "name": "Lập trình Hiệu quả", "description": "Sử dụng công nghệ hiện đại, code sạch, tối ưu hóa tốc độ và tương thích đa thiết bị."},
+                    {"id": "04", "name": "Kiểm duyệt Kỹ càng & Bàn giao", "description": "Thử nghiệm bảo mật, tốc độ. Đào tạo vận hành và hỗ trợ kỹ thuật dài hạn."}
+                ],
+                "core_tech_title": "Công nghệ Cốt lõi:",
+                "core_tech_desc": "Chúng tôi ưu tiên các giải pháp **chủ động, hiệu quả** như React/Next.js cho front-end, tích hợp API đa nền tảng và tối ưu hóa cho tốc độ truy cập toàn cầu."
+            },
+            "pricing_section": {
+                "title": "Bảng Giá Thiết Kế Website Linh Hoạt",
+                "subtitle": "Khẳng định Sức mạnh Lập trình Code Tay không giới hạn. Mọi yêu cầu khó đều được đáp ứng.",
+                "feature_include": "Bao gồm các đặc điểm:",
+                "tiers": [
+                    {
+                        "name": "Khởi Điểm",
+                        "price": "10 - 15 Triệu VNĐ",
+                        "focus": "Website giới thiệu, Landing Page tốc độ cao.",
+                        "button": "Chọn Gói Khởi Điểm",
+                        "features": ["Hosting và tên miền 1 năm (Quốc tế)", "Tối ưu tốc độ cơ bản (Mobile First)", "Cấu trúc 5-7 trang, giao diện có sẵn (Tối ưu)", "Tối ưu hóa SEO On-page cơ bản (3-5 từ khóa)"]
+                    },
+                    {
+                        "name": "Tiêu Chuẩn",
+                        "price": "15 - 25 Triệu VNĐ",
+                        "focus": "Phù hợp Doanh nghiệp vừa & nhỏ, B2B cơ bản.",
+                        "button": "Chọn Gói Tiêu Chuẩn",
+                        "features": ["Tất cả tính năng của gói Khởi Điểm", "Thiết kế UI/UX theo nhận diện thương hiệu", "Hệ thống quản lý nội dung đa cấp (CMS)", "Tích hợp tính năng Marketing (CRM/Form nâng cao)"]
+                    },
+                    {
+                        "name": "Nâng Cao",
+                        "price": "25 - 40 Triệu VNĐ",
+                        "focus": "Phù hợp E-commerce, Giáo dục (LMS Lite), Cổng thông tin.",
+                        "button": "Chọn Gói Nâng Cao",
+                        "features": ["Tất cả tính năng của gói Tiêu Chuẩn", "Tích hợp thanh toán trực tuyến (e-Commerce)", "Hệ thống Đa ngôn ngữ (2-3 ngôn ngữ)", "Bảo mật nâng cao (SSL & Firewall)"]
+                    },
+                    {
+                        "name": "Tùy Biến Chuyên Sâu",
+                        "price": "Từ 40 Triệu VNĐ",
+                        "focus": "Giải pháp Độc quyền: Mọi yêu cầu phức tạp đều được đáp ứng.",
+                        "button": "Liên Hệ Báo Giá Độc Quyền",
+                        "features": [
+                            "**SỨC MẠNH CỐT LÕI:** Siêu lập trình code tay, không giới hạn tính năng.",
+                            "Phân tích chuyên sâu (Strategy Workshop)", 
+                            "Tích hợp API/Hệ thống bên thứ 3 (ERP, CRM, LMS nặng)", 
+                            "Tối ưu hóa hiệu suất, khả năng mở rộng (Scalability) và bảo mật quốc tế."
+                        ]
+                    }
+                ]
+            },
+            "cta_section": {
+                "title": "Sẵn Sàng Hành Động Thực Tế?",
+                "description": "Liên hệ ngay để nhận bản đề xuất **chính xác** và **tư vấn chiến lược** chi tiết nhất cho dự án của Quý vị.",
+                "button": "Bắt Đầu Dự Án",
+                "button_large": "Yêu Cầu Tư Vấn Ngay"
             }
         };
-        // Gọi hàm khởi tạo chủ đề ngay khi script được tải
-        // Điều này đảm bảo theme được áp dụng nhanh chóng, tránh FOUC (Flash of Unstyled Content)
-        initializeTheme();
+
+        const globalData = dataVI;
+        
+        // Hàm lấy giá trị từ JSON theo chuỗi key (ví dụ: 'hero_section.title')
+        function getNestedValue(obj, path) {
+            const parts = path.split('.');
+            let current = obj;
+            for (const part of parts) {
+                if (current && current[part] !== undefined) {
+                    current = current[part];
+                } else {
+                    return null;
+                }
+            }
+            return current;
+        }
+
+        // Hàm áp dụng Localization
+        function applyLocalization(data) {
+            // 1. Áp dụng cho các element có data-key (text content)
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const keyPath = el.getAttribute('data-key');
+                let content = getNestedValue(data, keyPath);
+                
+                if (content) {
+                    // Sử dụng innerHTML để hiển thị các thẻ markdown/html như <strong>/<b>
+                    el.innerHTML = content;
+                }
+            });
+
+            // 2. Áp dụng cho các element có data-key-list (tạo list <ul><li>)
+            document.querySelectorAll('[data-key-list]').forEach(ul => {
+                const keyPath = ul.getAttribute('data-key-list');
+                const features = getNestedValue(data, keyPath);
+                
+                if (features && Array.isArray(features)) {
+                    ul.innerHTML = ''; // Clear previous content
+                    features.forEach(feature => {
+                        const iconClass = ul.parentElement.classList.contains('price-card-premium') ? 'text-ivs-secondary' : 'text-ivs-primary';
+                        // Thêm icon và nội dung vào li
+                        ul.innerHTML += `
+                            <li class="flex items-start">
+                                <span class="feature-check ${iconClass} mr-3 text-lg font-bold">&#10003;</span>
+                                ${feature}
+                            </li>
+                        `;
+                    });
+                }
+            });
+
+            // 3. Áp dụng cho các element có data-key-href (set href attribute)
+            document.querySelectorAll('[data-key-href]').forEach(el => {
+                const keyPath = el.getAttribute('data-key-href');
+                const url = getNestedValue(data, keyPath);
+                if (url) {
+                    el.setAttribute('href', url);
+                }
+            });
+
+            // 4. Áp dụng cho Image: Đảm bảo src đã được đặt đúng trong HTML.
+        }
+
+        // Gọi hàm khi tài liệu đã tải xong
+        window.onload = () => {
+            applyLocalization(globalData);
+            // Khởi tạo AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                });
+            }
+        };
     </script>
-        <!-- FAB placeholder: centralized loader will fetch the canonical component -->
-        <div id="fab-container-placeholder"></div>
 </body>
 </html>
-

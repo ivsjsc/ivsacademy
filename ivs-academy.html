@@ -1,104 +1,333 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="ivs_academy_page_title">IVS Academy - Kiến Tạo Tương Lai Chiến Lược & Toàn Diện</title>
-    <meta name="description" content="Nền tảng giáo dục & đào tạo trọng tâm của IVS JSC. Cung cấp các giải pháp ngoại ngữ, kỹ năng sống, STEAM và đào tạo giáo viên theo tiêu chuẩn quốc tế, đảm bảo kết quả thực tế." data-lang-key="ivs_academy_meta_description">
+    <title data-lang-key="ivs_academy_page_title">IVS Academy - Hệ Sinh Thái Giáo Dục & Đào Tạo | IVS JSC</title>
+    <meta name="description" content="IVS Academy là trung tâm đào tạo đa lĩnh vực của IVS JSC, cung cấp các chương trình ngoại ngữ, kỹ năng sống, STEAM và đào tạo giáo viên chất lượng cao." data-lang-key="ivs_academy_meta_description">
     <meta name="keywords" content="IVS JSC, IVS Academy, đào tạo ngoại ngữ, kỹ năng sống, STEAM, đào tạo giáo viên, Long Thành, Đồng Nai" data-lang-key="ivs_academy_meta_keywords">
     <meta property="og:title" content="IVS Academy - Nâng Tầm Tri Thức, Kiến Tạo Tương Lai" data-lang-key="ivs_academy_og_title">
     <meta property="og:description" content="Khám phá các chương trình đào tạo toàn diện và chất lượng cao tại IVS Academy, nơi ươm mầm tài năng và phát triển con người." data-lang-key="ivs_academy_og_description">
     <meta property="og:image" content="/images/banners/ivs_academy_og.jpg">
     <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/ivs-academy.html">
     <meta property="og:type" content="website">
-    <meta name="author" content="IVS JSC & NMT">
+    <meta name="author" content="IVS JSC">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo/logo-192.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,line-clamp"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'ivs-bg': '#0A0A0A', 'ivs-card': '#111111', 'ivs-border': '#27272a',
+                        'ivs-text-primary': '#f4f4f5', 'ivs-text-secondary': '#a1a1aa',
+                        'ivs-blue': '#60a5fa', 'ivs-blue-darker': '#3b82f6', 'ivs-green': '#4ade80',
+                        'ivs-purple': '#a78bfa', 'ivs-cyan': '#22d3ee', 'ivs-amber': '#f59e0b',
+                        'ivs-orange': '#fb923c',
+                        'ivs-emerald': '#10b981',
+                        'ivs-rose': '#f43f5e',
+                        'ivs-red': '#ef4444',
+
+                        // Màu sắc từ trang chủ để đồng bộ
+                        'primary': '#004080', // Màu xanh đậm chính
+                        'primary-dark': '#003366',
+                        'secondary': '#ffc107', // Màu vàng phụ
+                        'secondary-dark': '#e0a800',
+                        'header-orange': 'var(--ivs-accent)',
+                        'purple-accent': '#8b5cf6',
+                        'warning': '#f59e0b',
+                        'blue-50': '#eff6ff',
+                        'blue-200': '#bfdbfe',
+                        'blue-500': '#3b82f6',
+                        'blue-600': '#2563eb',
+                        'blue-700': '#1d4ed8',
+                        'blue-800': '#1e40af',
+                        'purple-50': '#faf5ff',
+                        'purple-500':'#a855f7',
+                        'purple-600': '#9333ea',
+                        'purple-700': '#7e2d87',
+                        'emerald-50': '#ecfdf5',
+                        'emerald-200': '#a7f3d0',
+                        'emerald-500': '#10b981',
+                        'emerald-600': '#059669',
+                        'amber-50': '#fffbeb',
+                        'amber-200': '#fde68a',
+                        'amber-500': '#f59e0b',
+                        'amber-700': '#b45309',
+                        'orange-100': '#ffedd5',
+                        'orange-200': '#fed7aa',
+                        'orange-500': 'var(--ivs-accent)',
+                        'orange-700': '#c2410c',
+                        'teal-100': '#ccfbf1',
+                        'teal-600': '#0d9488',
+                        'teal-700': '#0f766e',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-600': '#4f46e5',
+                        'indigo-700': '#4338ca',
+                        'pink-100': '#fce7f3',
+                        'pink-500': '#ec4899',
+                        'pink-700': '#be185d',
+                        'red-50': '#fef2f2',
+                        'red-200': '#fecaca',
+                        'red-500': '#ef4444',
+                        'red-600': '#dc2626',
+                        'red-700': '#b91c1c',
+                        'red-800': '#991b1b',
+                        'yellow-100': '#fef9c3',
+                        'yellow-400': '#facc15',
+                        'gray-50': '#f9fafb'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'], // Đảm bảo font Inter được sử dụng
+                        'display': ['Lexend', 'sans-serif'], // Hoặc Poppins nếu bạn muốn
+                    },
+                    animation: { 'aurora-spin': 'aurora-spin 6s linear infinite' }, // Giữ nguyên từ trang chủ nếu có
+                    keyframes: {
+                        'aurora-spin': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        }
+                    }
+                }
+            },
+            plugins: [],
+        }
+    </script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- <link rel="stylesheet" href="/dist/output.css"> -->
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0d1117; }
-        .hero-section { position: relative; overflow: hidden; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; }
-        .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0.2; transition: opacity 0.5s ease-in-out; }
-        .hero-video.loaded { opacity: 0.35; }
-        .hero-content { z-index: 2; position: relative; max-width: 900px; padding: 2rem; }
-        .section-title { position: relative; display: inline-block; }
-        .section-title::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 60%; height: 4px; background-color: #10b981; border-radius: 2px; }
-        .card-icon { color: #10b981; }
+        /* Custom scrollbar for chatbot messages (giữ nguyên) */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111111; /* ivs-card */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #27272a; /* ivs-border */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6; /* ivs-blue-darker */
+        }
+
+        /* Hero Section Styles (tương tự trang chủ) */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Chiếm toàn bộ chiều cao khung nhìn */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            background-color: #0A0A0A; /* ivs-bg */
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0; /* Đặt video ở lớp thấp nhất */
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.5); /* Làm tối video để nội dung dễ đọc */
+            opacity: 0; /* Bắt đầu ẩn, sẽ hiện lên bằng JS */
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-video.loaded {
+            opacity: 1;
+        }
+
+        .hero-fallback-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            display: block;
+        }
+
+        .hero-overlay-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--tw-colors-ivs-bg) 0%, rgba(10, 10, 10, 0.5) 50%, transparent 100%);
+            z-index: 1; /* Nằm trên video */
+        }
+
+        .hero-overlay-darken {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4); /* Lớp phủ đen trong suốt */
+            z-index: 1; /* Nằm trên video, dưới nội dung */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Nội dung nằm trên cùng */
+            max-width: 90%;
+            padding: 20px;
+        }
+
+        /* Base button styles (tương tự trang chủ) */
+        .btn-primary, .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            transform: scale(1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(to right, #3b82f6, #2563eb);
+            color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #52525b;
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #52525b;
+            box-shadow: 0 10px 15px -3px rgba(82, 82, 91, 0.2), 0 4px 6px -2px rgba(82, 82, 91, 0.2);
+        }
+
+        /* Adjust Hero Headline for better visual balance */
+        .hero-section h1 .bg-clip-text {
+            line-height: 1.2;
+        }
+
+        /* General Section Styles (tương tự trang chủ) */
+        .section-heading-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            color: var(--tw-colors-blue-500);
+        }
+        .dark .section-heading-icon {
+            color: var(--tw-colors-blue-400);
+        }
+
+        .feature-card, .unit-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.75rem;
+            border: 1px solid #30363d;
+            background-color: #161B22;
+        }
+        .feature-card:hover, .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.07);
+        }
+
+        /* Màu sắc cho các icon và tiêu đề phụ trong các section */
+        .text-primary { color: var(--tw-colors-ivs-blue); }
+        .dark .text-primary { color: var(--tw-colors-ivs-blue); }
+        .text-secondary { color: var(--tw-colors-ivs-green); }
+        .dark .text-secondary { color: var(--tw-colors-ivs-green); }
+        .border-primary { border-color: var(--tw-colors-ivs-blue); }
+        .dark .border-primary { border-color: var(--tw-colors-ivs-blue); }
+        .border-secondary { border-color: var(--tw-colors-ivs-green); }
+        .dark .border-secondary { border-color: var(--tw-colors-ivs-green); }
+
+        /* Cải thiện style cho các tab */
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-bottom-width: 2px;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        .tab-button.active {
+            color: #58a6ff;
+            border-color: #58a6ff;
+        }
+        .tab-button:not(.active) {
+            color: #a1aab4;
+            border-color: transparent;
+        }
+        .tab-button:not(.active):hover { border-color: #30363d; }
+
+        /* Cải thiện style cho CTA cuối trang */
+        .cta-section {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            color: #ffffff;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            text-align: center;
+            border-radius: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+        .cta-section h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            font-family: 'Lexend', sans-serif;
+            margin-bottom: 1.5rem;
+        }
+        .cta-section p {
+            font-size: 1.125rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2.5rem;
+        }
+        .cta-section .btn-contact {
+            display: inline-flex;
+            gap: 0.75rem;
+            align-items: center;
+            background-color: #ffffff;
+            color: #58a6ff;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: box-shadow 0.3s ease, transform 0.15s ease;
+        }
+        .cta-section .btn-contact:hover { box-shadow: 0 12px 30px rgba(0,0,0,0.15); transform: scale(1.03); }
+
     </style>
+    <!-- CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-
-    <header id="header-placeholder"></header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section bg-gray-900 text-white">
-            <video class="hero-video" autoplay muted loop playsinline poster="/images/banners/ivs_academy_fallback.jpg">
-                <source src="/videos/ivs-academy-hero.mp4" type="video/mp4">
-            </video>
-            <div class="hero-content text-center">
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight" data-aos="fade-up" data-lang-key="ivs_academy_hero_title">
-                    IVS Academy: Hệ Sinh Thái Giáo Dục Kiến Tạo Tương Lai
-                </h1>
-                <p class="text-xl md:text-2xl font-light mb-8 text-neutral-300" data-aos="fade-up" data-aos-delay="200" data-lang-key="ivs_academy_hero_subtitle">
-                    Tầm nhìn xa, Tư duy chiến lược, Hành động thực tế. Chúng tôi cung cấp các chương trình đào tạo chuẩn quốc tế, từ ngôn ngữ đến kỹ năng sống, đảm bảo kết quả có ích.
-                </p>
-                <div class="flex justify-center space-x-4" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#chuong-trinh" class="px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-full shadow-lg transition duration-300" data-lang-key="ivs_academy_btn_explore">
-                        Khám Phá Chương Trình
-                    </a>
-                    <a href="#lien-he" class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-gray-900 transition duration-300" data-lang-key="ivs_academy_btn_contact">
-                        Đăng Ký Tư Vấn
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Core Offerings Section -->
-        <section id="chuong-trinh" class="py-20 bg-neutral-900 dark:bg-gray-800">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="section-title text-4xl font-bold text-white mb-12 mx-auto" data-aos="fade-up" data-lang-key="ivs_academy_core_title">
-                    3 Trụ Cột Chiến Lược Của IVS Academy
-                </h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Column 1: International Cooperation -->
-                    <div class="bg-neutral-800 p-8 rounded-xl shadow-2xl border border-teal-600/50" data-aos="fade-up">
-                        <i class="fas fa-globe-americas fa-3x mb-4 card-icon"></i>
-                        <h3 class="text-2xl font-semibold text-white mb-3" data-lang-key="ivs_academy_collab_title">
-                            Hợp Tác Quốc Tế & Du Học Liên Kết
-                        </h3>
-                        <p class="text-neutral-400" data-lang-key="ivs_academy_collab_desc">
-                            Thiết lập liên kết chiến lược với Hoa Kỳ, Đài Loan, Philippines, châu Âu. Cung cấp chương trình du học và trao đổi chất lượng cao, mở rộng chân trời tri thức, hành động thực tế.
-                        </p>
-                    </div>
-
-                    <!-- Column 2: Teacher Training & Curriculum -->
-                    <div class="bg-neutral-800 p-8 rounded-xl shadow-2xl border border-teal-600/50" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-chalkboard-teacher fa-3x mb-4 card-icon"></i>
-                        <h3 class="text-2xl font-semibold text-white mb-3" data-lang-key="ivs_academy_teacher_title">
-                            Giáo Viên Bản Xứ Chuyên Nghiệp & Đào Tạo
-                        </h3>
-                        <p class="text-neutral-400" data-lang-key="ivs_academy_teacher_desc">
-                            Tuyển dụng và bồi dưỡng đội ngũ giáo viên bản xứ, xây dựng chương trình ngoại ngữ & kỹ năng sống theo tiêu chuẩn quốc tế. Đảm bảo chất lượng nghiêm túc và chính xác.
-                        </p>
-                    </div>
-
-                    <!-- Column 3: Comprehensive Educational Solution -->
-                    <div class="bg-neutral-800 p-8 rounded-xl shadow-2xl border border-teal-600/50" data-aos="fade-up" data-aos-delay="400">
-                        <i class="fas fa-lightbulb fa-3x mb-4 card-icon"></i>
-                        <h3 class="text-2xl font-semibold text-white mb-3" data-lang-key="ivs_academy_solution_title">
-                            Giải Pháp Giáo Dục Toàn Diện & Công Nghệ
-                        </h3>
-                        <p class="text-neutral-400" data-lang-key="ivs_academy_solution_desc">
-                            Tư vấn vận hành, cung cấp cơ sở vật chất hiện đại (bảng tương tác, VR, AR) và tích hợp EdTech, ưu tiên kết quả có ích cho quá trình dạy và học, không lặp lại.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+<body class="flex flex-col min-h-screen bg-ivs-bg text-ivs-text-primary font-inter">
+    <div id="header-placeholder" data-loading-text="Đang tải menu..."></div>
 
     <main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
         <!-- 1. HERO SECTION (Video Background) - Đồng bộ với trang chủ -->
@@ -525,5 +754,6 @@
     </script>
 </body>
 </html>
+
 
 

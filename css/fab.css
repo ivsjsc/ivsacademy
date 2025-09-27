@@ -28,7 +28,7 @@
 
 /* FAB base button */
 .fab-item {
-    background: linear-gradient(145deg, #f97316, #ea580c);
+    background: linear-gradient(145deg, var(--ivs-accent), #ea580c);
     color: #fff;
     border-radius: var(--fab-border-radius);
     box-shadow: var(--fab-shadow);
@@ -155,7 +155,7 @@
 .fab-shake { animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both; }
 
 /* Utility: ensure focus-visible accessibility */
-.fab-item:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; }
+.fab-item:focus-visible { outline: 2px solid var(--ivs-accent); outline-offset: 2px; }
 
 /* Small helper utilities used by pages when loading placeholder FABs */
 .fab-hidden { display: none !important; }
@@ -166,4 +166,5 @@
 /* Responsive tweaks */
 @media (max-width:768px) { #fab-container{ right:1rem; bottom:7rem } .fab-submenu-panel{ min-width:200px } }
 @media (max-width:480px) { #fab-container{ right:.5rem; bottom:6rem } .fab-item{ width:2.5rem; height:2.5rem } }
+
 
