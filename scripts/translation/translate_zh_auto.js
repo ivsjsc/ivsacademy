@@ -1,21 +1,97 @@
-// Tệp này chứa mock version của mã dịch tự động
-// Trong môi trường thực tế, bạn sẽ cần sử dụng Google Translate API hoặc dịch vụ tương tự
+
+// translate_zh_auto.js
+// Lightweight auto-translation helper with optional Google Translate REST integration.
+// Usage examples (PowerShell):
+//   $env:GOOGLE_API_KEY='YOUR_KEY'; node translate_zh_auto.js --source ../../lang/en.json --target ../../lang/zh.json --output ../../lang/candidates/zh.translated_full.json --api google --auto
+// Without an API key or --api=google the script runs in mock mode (placeholders).
 
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
-const querystring = require('querystring');
 const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+// Minimal CLI parsing (no dependencies)
+const rawArgs = process.argv.slice(2);
+function argVal(name, def) {
+  const pair = rawArgs.find(a => a.startsWith(`--${name}=`));
+  if (pair) return pair.split('=')[1];
+  if (rawArgs.includes(`--${name}`)) return true;
+  return def;
+}
 
-// Đường dẫn tới các file JSON
-const zhJsonPath = path.join(__dirname, '../../lang/zh.json');
-const enJsonPath = path.join(__dirname, '../../lang/en.json');
-const outputPath = path.join(__dirname, '../../lang/candidates/zh.translated_full.json');
+const DEFAULT_SOURCE = path.join(__dirname, '../../lang/en.json');
+const DEFAULT_TARGET = path.join(__dirname, '../../lang/zh.json');
+const DEFAULT_OUTPUT = path.join(__dirname, '../../lang/candidates/zh.translated_full.json');
+
+const sourcePath = argVal('source', DEFAULT_SOURCE);
+const targetPath = argVal('target', DEFAULT_TARGET);
+const outputArgPath = argVal('output', DEFAULT_OUTPUT);
+const apiProvider = argVal('api', 'mock'); // 'google' or 'mock'
+const autoRun = !!argVal('auto', false);
+const googleApiKey = process.env.GOOGLE_API_KEY || argVal('key', null);
+
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+
+// Keep old variable names for compatibility with the rest of the file
+const enJsonPath = sourcePath;
+const zhJsonPath = targetPath;
+const outputPath = outputArgPath;
+
+console.log('translate_zh_auto.js starting');
+console.log(' source:', enJsonPath);
+console.log(' target:', zhJsonPath);
+console.log(' output:', outputPath);
+console.log(' apiProvider:', apiProvider);
+
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// Google Translate v2 REST wrapper (requires API key). Returns translated text.
+function googleTranslateText(text, apiKey, target = 'zh-CN') {
+  return new Promise((resolve, reject) => {
+    if (!apiKey) return reject(new Error('Google API key is required'));
+    const postData = new URLSearchParams({ q: text, target: target, format: 'text' }).toString();
+    const options = {
+      hostname: 'translation.googleapis.com',
+      path: `/language/translate/v2?key=${encodeURIComponent(apiKey)}`,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': Buffer.byteLength(postData, 'utf8')
+      }
+    };
+
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.setEncoding('utf8');
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          if (json && json.data && Array.isArray(json.data.translations) && json.data.translations[0]) {
+            resolve(json.data.translations[0].translatedText);
+          } else if (json && json.error) {
+            reject(new Error(json.error.message || JSON.stringify(json.error)));
+          } else {
+            reject(new Error('Unexpected translation response: ' + data));
+          }
+        } catch (err) {
+          reject(err);
+        }
+      });
+    });
+
+    req.on('error', err => reject(err));
+    req.write(postData, 'utf8');
+    req.end();
+  });
+}
+
+// Mock translator used when no API configured
+async function mockTranslate(text) {
+  await delay(5);
+  if (!text) return '';
+  return `[ZH] ${String(text).substring(0, 200)}`;
+}
 
 // Đọc nội dung các file
 console.log('Đang đọc file zh.json và en.json...');

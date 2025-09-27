@@ -6,12 +6,26 @@ const enJsonPath = path.join(__dirname, '../../lang/en.json');
 const viJsonPath = path.join(__dirname, '../../lang/vi.json');
 const zhJsonPath = path.join(__dirname, '../../lang/zh.json');
 const zhCandidatePath = path.join(__dirname, '../../lang/candidates/zh.candidate.json');
+const zhTranslatedFullPath = path.join(__dirname, '../../lang/candidates/zh.translated_full.json');
+const zhCandidateFullPath = path.join(__dirname, '../../lang/candidates/zh.candidate.full.json');
 
-// Đọc nội dung các file
+// Đọc nội dung các file (an toàn nếu file ứng viên không tồn tại)
 const en = JSON.parse(fs.readFileSync(enJsonPath, 'utf8'));
 const vi = JSON.parse(fs.readFileSync(viJsonPath, 'utf8'));
 const zh = JSON.parse(fs.readFileSync(zhJsonPath, 'utf8'));
-const zhCandidate = JSON.parse(fs.readFileSync(zhCandidatePath, 'utf8'));
+
+function safeReadJson(p) {
+    try {
+        if (fs.existsSync(p)) return JSON.parse(fs.readFileSync(p, 'utf8'));
+    } catch (err) {
+        console.warn(`Không thể đọc ${p}: ${err.message}`);
+    }
+    return null;
+}
+
+const zhCandidate = safeReadJson(zhCandidatePath) || {};
+const zhTranslatedFull = safeReadJson(zhTranslatedFullPath) || null;
+const zhCandidateFull = safeReadJson(zhCandidateFullPath) || null;
 
 // Kiểm tra số lượng key trong mỗi file
 const enKeyCount = Object.keys(en).length;
@@ -23,11 +37,15 @@ console.log(`Số lượng key trong en.json: ${enKeyCount}`);
 console.log(`Số lượng key trong vi.json: ${viKeyCount}`);
 console.log(`Số lượng key trong zh.json: ${zhKeyCount}`);
 console.log(`Số lượng key trong zh.candidate.json: ${zhCandidateKeyCount}`);
+if (zhTranslatedFull) console.log(`Số lượng key trong zh.translated_full.json: ${Object.keys(zhTranslatedFull).length}`);
+if (zhCandidateFull) console.log(`Số lượng key trong zh.candidate.full.json: ${Object.keys(zhCandidateFull).length}`);
 
 // Kiểm tra key thiếu trong mỗi file
 const missingInVi = Object.keys(en).filter(key => !vi[key]);
 const missingInZh = Object.keys(en).filter(key => !zh[key]);
 const missingInZhCandidate = Object.keys(en).filter(key => !zhCandidate[key]);
+const missingInZhTranslatedFull = zhTranslatedFull ? Object.keys(en).filter(k => !zhTranslatedFull[k]) : Object.keys(en);
+const missingInZhCandidateFull = zhCandidateFull ? Object.keys(en).filter(k => !zhCandidateFull[k]) : Object.keys(en);
 
 console.log(`\nKey có trong en.json nhưng thiếu trong vi.json: ${missingInVi.length}`);
 if (missingInVi.length > 0) {
@@ -42,6 +60,16 @@ if (missingInZh.length > 0) {
 console.log(`\nKey có trong en.json nhưng thiếu trong zh.candidate.json: ${missingInZhCandidate.length}`);
 if (missingInZhCandidate.length > 0) {
     console.log(missingInZhCandidate.slice(0, 10).join(', ') + (missingInZhCandidate.length > 10 ? '...' : ''));
+}
+
+if (zhTranslatedFull) {
+    console.log(`\nKey có trong en.json nhưng thiếu trong zh.translated_full.json: ${missingInZhTranslatedFull.length}`);
+    if (missingInZhTranslatedFull.length > 0) console.log(missingInZhTranslatedFull.slice(0,10).join(', ') + (missingInZhTranslatedFull.length > 10 ? '...' : ''));
+}
+
+if (zhCandidateFull) {
+    console.log(`\nKey có trong en.json nhưng thiếu trong zh.candidate.full.json: ${missingInZhCandidateFull.length}`);
+    if (missingInZhCandidateFull.length > 0) console.log(missingInZhCandidateFull.slice(0,10).join(', ') + (missingInZhCandidateFull.length > 10 ? '...' : ''));
 }
 
 // Kiểm tra giá trị trong zh.json có phải là tiếng Trung không
