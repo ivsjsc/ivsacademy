@@ -480,12 +480,100 @@ document.head.appendChild(rippleStyle);
 // Xuất IVSFabController để loadComponents.js có thể truy cập
 window.IVSFabController = IVSFabController;
 
+// Fallback IVSChatbotController: if no external chatbot is provided,
+// provide a simple in-page modal that loads /apps/ivs-assistant.html in an iframe.
+if (!window.IVSChatbotController) {
+    window.IVSChatbotController = (function () {
+        let overlay = null;
+
+        function createOverlay() {
+            overlay = document.createElement('div');
+            overlay.id = 'ivs-chatbot-overlay';
+            overlay.style.position = 'fixed';
+            overlay.style.inset = '0';
+            overlay.style.zIndex = '99999';
+            overlay.style.display = 'flex';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+            overlay.style.background = 'rgba(0,0,0,0.4)';
+
+            const panel = document.createElement('div');
+            panel.style.width = '420px';
+            panel.style.height = '720px';
+            panel.style.maxWidth = 'calc(100% - 32px)';
+            panel.style.maxHeight = 'calc(100% - 32px)';
+            panel.style.borderRadius = '12px';
+            panel.style.overflow = 'hidden';
+            panel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+            panel.style.background = '#fff';
+
+            const iframe = document.createElement('iframe');
+            iframe.src = '/apps/ivs-assistant.html';
+            iframe.style.border = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+
+            const closeBtn = document.createElement('button');
+            closeBtn.setAttribute('aria-label', 'Close IVS Assistant');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.right = '12px';
+            closeBtn.style.top = '12px';
+            closeBtn.style.zIndex = '100000';
+            closeBtn.style.width = '36px';
+            closeBtn.style.height = '36px';
+            closeBtn.style.border = 'none';
+            closeBtn.style.background = 'rgba(0,0,0,0.6)';
+            closeBtn.style.color = '#fff';
+            closeBtn.style.borderRadius = '50%';
+            closeBtn.style.cursor = 'pointer';
+
+            closeBtn.addEventListener('click', () => window.IVSChatbotController.close());
+
+            panel.appendChild(iframe);
+            panel.appendChild(closeBtn);
+            overlay.appendChild(panel);
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) window.IVSChatbotController.close();
+            });
+
+            return overlay;
+        }
+
+        return {
+            init() {
+                // No heavy initialization required for fallback
+                window.componentLog('IVSChatbotController (fallback) ready.', 'info');
+            },
+            open() {
+                try {
+                    if (overlay) return; // already open
+                    overlay = createOverlay();
+                    document.body.appendChild(overlay);
+                } catch (err) {
+                    window.componentLog('Failed to open IVS Assistant overlay: ' + err.message, 'error');
+                    // Fallback to opening in a new window/tab
+                    const w = window.open('/apps/ivs-assistant.html', '_blank', 'toolbar=0,location=0,menubar=0,width=420,height=720');
+                    if (!w) window.componentLog('Popup blocked when opening IVS Assistant fallback.', 'warn');
+                }
+            },
+            close() {
+                if (!overlay) return;
+                overlay.remove();
+                overlay = null;
+            }
+        };
+    })();
+}
+
 // Tự động khởi tạo bộ điều khiển FAB khi DOM được tải hoàn toàn.
 // Điều này đảm bảo FAB được thiết lập ngay cả khi loadComponents.js không gọi init một cách rõ ràng,
 // hoặc nếu fab-container được bao gồm trực tiếp trong một trang.
 document.addEventListener('DOMContentLoaded', () => {
-    // Kiểm tra xem phần tử fabContainer có tồn tại trước khi khởi tạo
-    if (document.getElementById('fab-container')) {
+    // Khởi tạo IVSFabController nếu có bất kỳ container FAB nào xuất hiện ngay khi DOM sẵn sàng.
+    // Trước đây chỉ kiểm tra 'fab-container' dẫn đến trường hợp assistant-only không được khởi tạo.
+    if (document.getElementById('fab-container') || document.getElementById('fab-assistant-container')) {
         IVSFabController.init();
         // Apply initial theme after init
         const savedTheme = localStorage.theme;
@@ -495,9 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('dark');
         }
     } else {
-        // Nếu fab-container không có sẵn ngay lập tức, nó có thể được tải động.
-        // Trong trường hợp đó, loadComponents.js (hoặc tương tự) nên gọi IVSFabController.init() một cách rõ ràng
-        // sau khi chèn nội dung fab-container.html.
-        window.componentLog("IVSFabController: Không tìm thấy FAB container trên DOMContentLoaded. Giả định tải động. Đảm bảo init() được gọi thủ công sau khi chèn.", "warn");
+        // Nếu không tìm thấy bất kỳ container nào, giữ hành vi trước đó: chờ loadComponents.js hoặc gọi init() thủ công.
+        window.componentLog("IVSFabController: Không tìm thấy FAB hoặc Assistant container trên DOMContentLoaded. Giả định tải động. Đảm bảo init() được gọi thủ công sau khi chèn.", "warn");
     }
 });
