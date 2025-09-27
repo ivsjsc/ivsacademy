@@ -191,7 +191,7 @@
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
     
     <!-- HEADER PLACEHOLDER -->
-    <header id="header-placeholder" class="w-full fixed top-0 left-0 z-50 transition-all duration-300">
+    <header id="header-placeholder" class="w-full fixed top-0 left-0 z-50 transition-all duration-300" data-loading-text="Đang tải menu...">
         <!-- This content will be dynamically loaded by loadComponents.js -->
     </header>
     
@@ -625,7 +625,7 @@
     </main>
 
     <!-- FOOTER PLACEHOLDER -->
-    <footer id="footer-placeholder" class="bg-ivs-bg border-t border-ivs-border py-12">
+    <footer id="footer-placeholder" class="bg-ivs-bg border-t border-ivs-border py-12" data-loading-text="Đang tải chân trang...">
         <!-- This content will be dynamically loaded by loadComponents.js -->
     </footer>
     
@@ -652,11 +652,11 @@
 
     <!-- START OF SCRIPT LOADING BLOCK -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <!-- Custom IVS Scripts for dynamic components and language -->
-    <script src="/js/loadComponents.js"></script>
-    <script src="/js/language.js"></script>
-    <script src="/js/fabController.js"></script>
+    <script src="/js/loadComponents.js" defer></script>
+    <script src="/js/language.js" defer></script>
+    <script src="/js/fabController.js" defer></script>
     
     <script>
         // Start of initialization logic (Non-component scripts)

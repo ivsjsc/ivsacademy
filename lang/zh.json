@@ -3343,10 +3343,10 @@
   "steam_vision_section2_title": "2. 战略目标",
   "steam_vision_section3_intro": "为了实现其理念和目标，IVS（通过IVS教育）采用先进的STEAM教育方法，以学习者为中心，强调创造力和实践经验，并与国际标准保持一致（通过IIVSA合作伙伴关系以及The Power to Inspire等合作伙伴）：",
   "steam_vision_section3_list_items": [
-    "基于项目的学习（PBL）：学生积极探索、研究和执行现实世界的项目，从而掌握知识并发展技能。",
+    "基于项目的学习（PBL）：学生积极探索、研究和执行现实世界的项目，从而掌握知识和发展技能。",
     "综合学习：学科自然地交织在一起，帮助学生清楚地看到联系和综合应用。",
     "技术和数字解决方案的应用：利用编程平台（Scratch，Python）、机器人、人工智能以及IVS教育开发的数字学习解决方案来增强互动和学习效果。",
-    "体验式学习：优先考虑实践活动、实验、模型构建和实地考察（如果适用），让学生“在做中学”。",
+    "体验式学习：优先考虑动手活动、实验、模型构建和实地考察（如果适用），让学生“在做中学”。",
     "协作和批判性思维环境：鼓励学生团队合作、交流思想、展示和捍卫自己的观点。",
     "多样化的能力评估：使用各种评估形式（过程、项目产品、演示、自我评估……）而不是仅仅关注传统的考试成绩。"
   ],
@@ -3787,7 +3787,7 @@
   "testimonial_2_name": "Kha Do先生",
   "testimonial_2_position": "美国佛罗里达州莱克兰Kha船坞主任",
   "testimonial_2_quote": "感谢IVS Celestech，不仅在越南，我们还在美国拥有一个真正专业、SEO优化、界面现代化的网站，最重要的是，即时支持。欢迎大家访问由IVS Celestech设计的网站：https://KhaDock.com。",
-  "testimonial_2_role": "美国佛罗里达州莱克兰Kha船坞主任",
+  "testimonial_2_role": "美国佛罗里да州莱克兰Kha船坞主任",
   "testimonial_2_text": "“感谢IVS Celestech，不仅在越南，我们还在美国拥有一个真正专业、SEO优化、界面现代化的网站，最重要的是，他们总是提供即时支持。欢迎大家访问由IVS Celestech设计的网站：https://KhaDock.com。”",
   "testimonial_2_title": "Anh Duong小学校长",
   "testimonial_3_author": "Chau An Nhien女士",
@@ -4117,3 +4117,4 @@
   "work_permit_point_5": "指导注册和申请临时居留卡。",
   "work_permit_point_6": "就其他相关法律问题提供建议。"
 }
+
