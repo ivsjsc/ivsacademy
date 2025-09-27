@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 // Đường dẫn tới các file JSON
-const enJsonPath = path.join(__dirname, 'lang/en.json');
-const viJsonPath = path.join(__dirname, 'lang/vi.json');
-const zhJsonPath = path.join(__dirname, 'lang/zh.json');
-const zhCandidatePath = path.join(__dirname, 'lang/zh.candidate.json');
+const enJsonPath = path.join(__dirname, '../../lang/en.json');
+const viJsonPath = path.join(__dirname, '../../lang/vi.json');
+const zhJsonPath = path.join(__dirname, '../../lang/zh.json');
+const zhCandidatePath = path.join(__dirname, '../../lang/candidates/zh.candidate.json');
 
 // Đọc nội dung các file
 const en = JSON.parse(fs.readFileSync(enJsonPath, 'utf8'));

@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Đọc các file JSON
-const zhJsonPath = path.join(__dirname, 'lang/zh.json');
-const zhCandidateFullPath = path.join(__dirname, 'lang/zh.candidate.full.json');
+const zhJsonPath = path.join(__dirname, '../../lang/zh.json');
+const zhCandidateFullPath = path.join(__dirname, '../../lang/candidates/zh.candidate.full.json');
 
 const zh = JSON.parse(fs.readFileSync(zhJsonPath, 'utf8'));
 const zhCandidateFull = JSON.parse(fs.readFileSync(zhCandidateFullPath, 'utf8'));
@@ -48,7 +48,7 @@ const report = {
 
 // Ghi file báo cáo
 fs.writeFileSync(
-  path.join(__dirname, 'lang/translation_report.json'),
+  path.join(__dirname, '../../lang/reports/translation_report.json'),
   JSON.stringify(report, null, 2)
 );
 

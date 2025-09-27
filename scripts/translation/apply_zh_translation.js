@@ -8,10 +8,10 @@ const rl = readline.createInterface({
 });
 
 // Đường dẫn tới các file
-const zhJsonPath = path.join(__dirname, 'lang/zh.json');
-const zhCandidateFullPath = path.join(__dirname, 'lang/zh.candidate.full.json');
+const zhJsonPath = path.join(__dirname, '../../lang/zh.json');
+const zhCandidateFullPath = path.join(__dirname, '../../lang/candidates/zh.candidate.full.json');
 const timestamp = new Date().toISOString().replace(/[:T\-\.Z]/g, '_');
-const zhBackupPath = path.join(__dirname, `lang/zh.json.backup_${timestamp}`);
+const zhBackupPath = path.join(__dirname, `../../lang/backups/zh.json.backup_${timestamp}`);
 
 console.log('Tiến hành áp dụng file zh.candidate.full.json thành zh.json mới...');
 
