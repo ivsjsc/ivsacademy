@@ -54,8 +54,10 @@ async function loadAndInject(url, placeholderId) {
         // Remove scripts from tempDiv's innerHTML before injecting to avoid double execution
         scripts.forEach(script => script.parentNode?.removeChild(script));
 
-        // Inject the HTML content (without scripts first)
-        placeholder.innerHTML = tempDiv.innerHTML;
+    // Inject the HTML content (without scripts first).
+    // Use append rather than replace so multiple components can be loaded
+    // into the same placeholder (for example: fab-container + fab-assistant).
+    placeholder.insertAdjacentHTML('beforeend', tempDiv.innerHTML);
 
         // Execute scripts sequentially
         for (const oldScript of scripts) {

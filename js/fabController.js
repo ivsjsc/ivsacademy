@@ -61,12 +61,15 @@ const IVSFabController = {
      * Lưu trữ các phần tử DOM cần thiết cho FAB.
      */
     cacheDOM() {
-        this.fabContainer = document.getElementById('fab-container');
-        this.scrollToTopBtn = document.getElementById('scroll-to-top-btn');
-        // Sử dụng Optional Chaining (?) để tránh lỗi nếu fabContainer không tìm thấy
-        this.buttonsWithSubmenu = this.fabContainer?.querySelectorAll('button[aria-haspopup="true"]') || [];
+    this.fabContainer = document.getElementById('fab-container');
+    this.assistantContainer = document.getElementById('fab-assistant-container');
+    this.scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+    // Collect submenu buttons from both the canonical fab container and the assistant container
+    const buttonsInFab = this.fabContainer ? Array.from(this.fabContainer.querySelectorAll('button[aria-haspopup="true"]')) : [];
+    const buttonsInAssistant = this.assistantContainer ? Array.from(this.assistantContainer.querySelectorAll('button[aria-haspopup="true"]')) : [];
+    this.buttonsWithSubmenu = buttonsInFab.concat(buttonsInAssistant);
 
-        window.componentLog(`IVSFabController: FAB Container: ${!!this.fabContainer}, ScrollToTopBtn: ${!!this.scrollToTopBtn}, ButtonsWithSubmenu count: ${this.buttonsWithSubmenu.length}`, 'info');
+    window.componentLog(`IVSFabController: FAB Container: ${!!this.fabContainer}, Assistant Container: ${!!this.assistantContainer}, ScrollToTopBtn: ${!!this.scrollToTopBtn}, ButtonsWithSubmenu count: ${this.buttonsWithSubmenu.length}`, 'info');
     },
 
     /**
@@ -78,6 +81,29 @@ const IVSFabController = {
             button.addEventListener('click', (e) => {
                 this.createRipple(e, button);
             });
+        });
+    },
+
+    /**
+     * Dynamically load an external script and return when loaded.
+     * Useful to pull the chatbot controller from another repo if it's not present.
+     * @param {string} url
+     * @returns {Promise<void>}
+     */
+    loadExternalScript(url) {
+        return new Promise((resolve, reject) => {
+            if (!url) return reject(new Error('No script URL provided'));
+            // Avoid loading the same script multiple times
+            if (document.querySelector(`script[data-ivs-external-src="${url}"]`)) {
+                return resolve();
+            }
+            const s = document.createElement('script');
+            s.src = url;
+            s.async = true;
+            s.setAttribute('data-ivs-external-src', url);
+            s.onload = () => resolve();
+            s.onerror = (e) => reject(new Error('Failed to load ' + url));
+            document.head.appendChild(s);
         });
     },
 
@@ -126,6 +152,7 @@ const IVSFabController = {
     populateMenus() {
         const contactMenu = document.getElementById('contact-options');
         const shareMenu = document.getElementById('share-options');
+        const assistantMenu = document.getElementById('assistant-options');
 
         if (contactMenu) {
             this.populateContactOptions(contactMenu);
@@ -134,6 +161,10 @@ const IVSFabController = {
         if (shareMenu) {
             this.populateShareOptions(shareMenu);
             window.componentLog("IVSFabController: Đã điền nội dung menu chia sẻ.");
+        }
+        if (assistantMenu) {
+            this.populateAssistantOptions(assistantMenu);
+            window.componentLog("IVSFabController: Đã điền nội dung menu assistant.");
         }
     },
 
@@ -167,6 +198,46 @@ const IVSFabController = {
             fragment.appendChild(link);
         });
         element.appendChild(fragment);
+    },
+
+    /**
+     * Populate assistant menu with a simple action to open the assistant chat window.
+     * @param {HTMLElement} element
+     */
+    populateAssistantOptions(element) {
+        // Create a single button that triggers the assistant. For now it opens a new window/tab
+        // or toggles a panel if a chatbot controller is present.
+        const btn = document.createElement('button');
+        btn.className = 'fab-submenu-item group w-full';
+        btn.setAttribute('role', 'menuitem');
+        btn.id = 'assistant-open-btn';
+        btn.innerHTML = `<i class="fas fa-robot fa-fw text-cyan-400"></i><span>Open IVS Assistant</span>`;
+        btn.addEventListener('click', async () => {
+            // If a dedicated chatbot controller exists, call it.
+            if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
+                window.IVSChatbotController.open();
+                return;
+            }
+
+            // If a global script URL is provided (from another repo), try to load it dynamically
+            const externalUrl = window.IVS_CHATBOT_SCRIPT_URL || null;
+            if (externalUrl) {
+                try {
+                    await this.loadExternalScript(externalUrl);
+                    if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
+                        window.IVSChatbotController.open();
+                        return;
+                    }
+                } catch (err) {
+                    window.componentLog('Failed to load external IVSChatbotController: ' + err.message, 'warn');
+                }
+            }
+
+            // Fallback: open a small popup to the assistant page (could be replaced with in-page modal)
+            const w = window.open('/apps/ivs-assistant.html', '_blank', 'toolbar=0,location=0,menubar=0,width=420,height=720');
+            if (!w) window.componentLog('Popup blocked when opening IVS Assistant.');
+        });
+        element.appendChild(btn);
     },
 
     /**
