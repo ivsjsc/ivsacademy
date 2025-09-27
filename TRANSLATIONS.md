@@ -18,6 +18,7 @@ This document describes the translation system used by the IVS website, how file
   - `translate_zh_auto.js` - Auto-translation helper (mock mode by default; supports Google Translate REST via `--api=google` and `GOOGLE_API_KEY` env var)
   - `apply_zh_translation.js` - Apply a translated candidate file into `lang/zh.json` (review before applying)
   - `merge_translate_locales.py` - Python utility to auto-translate with more controls (uses deep-translator)
+   - `translate_zh_deep.py` - Python helper using deep-translator (MyMemory or LibreTranslate) for free/low-cost translations
   - `commit_translations.ps1` - Helper to create a branch and commit translation artifacts
 
 ## Basic workflow
@@ -36,6 +37,34 @@ This document describes the translation system used by the IVS website, how file
 - Use `lang/backups` to restore previous versions if needed.
 - Keep `en.json` as the canonical key list. Do not add keys directly to `zh.json` or `vi.json` without adding them to `en.json` first.
 - If you need higher quality automated translations, consider using the `merge_translate_locales.py` script with `deep-translator` and a paid translation API.
+ - If you prefer a free/low-cost option, use `scripts/translation/translate_zh_deep.py` which supports MyMemory and LibreTranslate. LibreTranslate can be self-hosted (Docker) for private, unlimited translations.
+
+## Free translation options (no paid Google API)
+
+1) MyMemory (deep-translator)
+ - Provider: public MyMemory API via deep-translator
+ - Good for quick tests. Quality varies and rate-limited.
+ - Usage:
+ ```powershell
+ cd .\scripts\translation
+ py -3 .\translate_zh_deep.py --provider mymemory --limit 50
+ ```
+
+2) LibreTranslate (recommended self-hosted)
+ - You can use the public instance at https://libretranslate.com (rate-limited) or self-host via Docker for higher throughput and privacy.
+ - Self-host (Docker):
+ ```powershell
+ docker run -d -p 5000:5000 libretranslate/LibreTranslate:latest
+ # then call with --provider libre --libre-url http://localhost:5000
+ py -3 .\translate_zh_deep.py --provider libre --libre-url http://localhost:5000 --limit 500
+ ```
+
+3) Manual / crowdsourced translation (no-cost)
+ - Export `lang/candidates/zh.candidate.full.json` and have native speakers edit the file directly, or use a spreadsheet workflow.
+
+4) Notes
+ - All free methods should be followed by a manual review before applying to `lang/zh.json`.
+ - The `translate_zh_deep.py` script protects placeholders like `{0}`, `%s`, and `{{var}}` during translation and restores them.
 
 ## Quick commands (PowerShell)
 

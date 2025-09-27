@@ -28,6 +28,8 @@ const targetPath = argVal('target', DEFAULT_TARGET);
 const outputArgPath = argVal('output', DEFAULT_OUTPUT);
 const apiProvider = argVal('api', 'mock'); // 'google' or 'mock'
 const autoRun = !!argVal('auto', false);
+const limitArg = argVal('limit', null); // optional numeric limit for testing
+const limitNumber = limitArg ? parseInt(limitArg, 10) : null;
 const googleApiKey = process.env.GOOGLE_API_KEY || argVal('key', null);
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
@@ -105,6 +107,9 @@ function isChinese(text) {
 }
 
 const untranslatedKeys = Object.keys(zh).filter(key => !isChinese(zh[key]));
+if (limitNumber && Number.isInteger(limitNumber) && limitNumber > 0) {
+  console.log(`Limiting translation run to first ${limitNumber} untranslated keys (for testing)`);
+}
 console.log(`Có ${untranslatedKeys.length} keys cần được dịch sang tiếng Trung.`);
 
 // Mock function giả lập dịch tự động (trong thực tế sẽ sử dụng API)
@@ -126,58 +131,70 @@ async function translateAllKeys() {
   console.log('Quá trình này sẽ mất thời gian, tùy thuộc vào số lượng key cần dịch.');
   console.log('Trong môi trường thực tế, bạn sẽ cần sử dụng API dịch như Google Translate API.');
   
-  rl.question('Bạn có muốn tiếp tục với mô phỏng dịch không? (y/n): ', async (answer) => {
-    if (answer.toLowerCase() === 'y') {
-      const translatedZh = { ...zh }; // Tạo bản sao của zh.json
-      
-      console.log('Đang dịch (mô phỏng)...');
-      
-      // Dịch theo batch để giảm tải API
-      const batchSize = 20;
-      let processed = 0;
-      
-      for (let i = 0; i < untranslatedKeys.length; i += batchSize) {
-        const batch = untranslatedKeys.slice(i, i + batchSize);
-        const promises = batch.map(async (key) => {
-          // Sử dụng en[key] làm nguồn để dịch nếu có
-          const sourceText = en[key] || zh[key];
-          
-          try {
-            // Trong thực tế, gọi API dịch tại đây
-            const translatedText = await mockTranslate(sourceText);
-            translatedZh[key] = translatedText;
-            
-            // Log tiến độ
-            processed++;
-            if (processed % 50 === 0 || processed === untranslatedKeys.length) {
-              console.log(`Đã xử lý ${processed}/${untranslatedKeys.length} keys (${(processed / untranslatedKeys.length * 100).toFixed(1)}%)`);
-            }
-          } catch (error) {
-            console.error(`Lỗi khi dịch key "${key}":`, error.message);
-            // Giữ nguyên giá trị cũ nếu có lỗi
+  // Proceed function does the actual translation work (mock or Google depending on args)
+  const proceed = async () => {
+    const translatedZh = { ...zh }; // Tạo bản sao của zh.json
+    console.log('Đang dịch...');
+
+    // Dịch theo batch để giảm tải API
+    const batchSize = 20;
+    let processed = 0;
+
+    const keysToProcess = (limitNumber && Number.isInteger(limitNumber) && limitNumber > 0)
+      ? untranslatedKeys.slice(0, limitNumber)
+      : untranslatedKeys;
+
+    const useGoogle = apiProvider === 'google' && !!googleApiKey;
+    if (apiProvider === 'google' && !googleApiKey) {
+      console.warn('api=google was requested but no GOOGLE_API_KEY was provided; falling back to mock translator.');
+    }
+
+    for (let i = 0; i < keysToProcess.length; i += batchSize) {
+      const batch = keysToProcess.slice(i, i + batchSize);
+      const promises = batch.map(async (key) => {
+        const sourceText = en[key] || zh[key];
+        try {
+          let translatedText;
+          if (useGoogle) {
+            translatedText = await googleTranslateText(sourceText, googleApiKey);
+          } else {
+            translatedText = await mockTranslate(sourceText);
           }
-        });
-        
-        // Đợi batch hiện tại hoàn thành
-        await Promise.all(promises);
-        
-        // Tạm dừng để tránh vượt quá rate limit của API
-        if (i + batchSize < untranslatedKeys.length) {
-          await new Promise(resolve => setTimeout(resolve, 500));
+          translatedZh[key] = translatedText;
+
+          processed++;
+          if (processed % 50 === 0 || processed === keysToProcess.length) {
+            console.log(`Đã xử lý ${processed}/${keysToProcess.length} keys (${(processed / keysToProcess.length * 100).toFixed(1)}%)`);
+          }
+        } catch (error) {
+          console.error(`Lỗi khi dịch key "${key}":`, error.message);
         }
+      });
+
+      await Promise.all(promises);
+
+      if (i + batchSize < keysToProcess.length) {
+        await new Promise(resolve => setTimeout(resolve, 500));
       }
-      
-      // Ghi file kết quả
-      fs.writeFileSync(outputPath, JSON.stringify(translatedZh, null, 2));
-      console.log(`\nĐã hoàn thành! File kết quả được lưu tại: ${outputPath}`);
-      console.log('\nLưu ý: Đây chỉ là mô phỏng dịch. Trong môi trường thực tế:');
-      console.log('1. Bạn cần sử dụng API dịch thực tế như Google Translate API');
-      console.log('2. Cần kiểm tra lại chất lượng dịch bởi người biết tiếng Trung');
-      console.log('3. Sử dụng apply_zh_translation.js để áp dụng file đã dịch');
+    }
+
+    fs.writeFileSync(outputPath, JSON.stringify(translatedZh, null, 2));
+    console.log(`\nĐã hoàn thành! File kết quả được lưu tại: ${outputPath}`);
+    console.log('\nLưu ý: Nếu dùng dịch thực tế, hãy kiểm tra chất lượng dịch bằng người biết tiếng Trung.');
+  };
+
+  if (autoRun) {
+    await proceed();
+    rl.close();
+    return;
+  }
+
+  rl.question(`Bạn có muốn tiếp tục với ${apiProvider === 'google' ? 'dịch thực tế (Google API)' : 'mô phỏng dịch'} không? (y/n): `, async (answer) => {
+    if (answer.toLowerCase() === 'y') {
+      await proceed();
     } else {
       console.log('Đã hủy thao tác.');
     }
-    
     rl.close();
   });
 }
