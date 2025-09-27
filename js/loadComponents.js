@@ -148,6 +148,16 @@ async function loadCommonComponents() {
             const assistantLoaded = await loadAndInject('/components/fab-assistant.html', 'fab-container-placeholder');
             if (assistantLoaded) {
                 window.componentLog('fab-assistant loaded into fab-container-placeholder', 'info');
+                // If the FAB controller was already initialized before assistant injection,
+                // re-run its init to bind assistant-specific elements (assistant-main-btn, etc.).
+                if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+                    try {
+                        window.IVSFabController.init();
+                        window.componentLog('IVSFabController re-initialized after assistant injection.', 'info');
+                    } catch (err) {
+                        window.componentLog('Error re-initializing IVSFabController: ' + err.message, 'error');
+                    }
+                }
             }
         } catch (err) {
             window.componentLog('Failed to load fab-assistant: ' + err.message, 'warn');
