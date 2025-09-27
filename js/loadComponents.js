@@ -141,6 +141,19 @@ async function loadCommonComponents() {
         }
     }
 
+    // Additionally load the IVS Assistant (robot) FAB into the same FAB placeholder
+    // This ensures the assistant button appears on every page that has the fab-container-placeholder
+    if (document.getElementById('fab-container-placeholder')) {
+        try {
+            const assistantLoaded = await loadAndInject('/components/fab-assistant.html', 'fab-container-placeholder');
+            if (assistantLoaded) {
+                window.componentLog('fab-assistant loaded into fab-container-placeholder', 'info');
+            }
+        } catch (err) {
+            window.componentLog('Failed to load fab-assistant: ' + err.message, 'warn');
+        }
+    }
+
     // Load footer separately as it doesn't have a dedicated controller
     if (document.getElementById(footerComponent.id)) {
         await loadAndInject(footerComponent.url, footerComponent.id);
