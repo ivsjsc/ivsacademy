@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 // Đọc các file JSON
-const enJsonPath = path.join(__dirname, 'lang/en.json');
-const zhJsonPath = path.join(__dirname, 'lang/zh.json');
-const zhCandidateFullPath = path.join(__dirname, 'lang/zh.candidate.full.json');
+const enJsonPath = path.join(__dirname, '../../lang/en.json');
+const zhJsonPath = path.join(__dirname, '../../lang/zh.json');
+const zhCandidateFullPath = path.join(__dirname, '../../lang/candidates/zh.candidate.full.json');
 
 const en = JSON.parse(fs.readFileSync(enJsonPath, 'utf8'));
 const zh = JSON.parse(fs.readFileSync(zhJsonPath, 'utf8'));

@@ -13,9 +13,9 @@ const rl = readline.createInterface({
 });
 
 // Đường dẫn tới các file JSON
-const zhJsonPath = path.join(__dirname, 'lang/zh.json');
-const enJsonPath = path.join(__dirname, 'lang/en.json');
-const outputPath = path.join(__dirname, 'lang/zh.translated_full.json');
+const zhJsonPath = path.join(__dirname, '../../lang/zh.json');
+const enJsonPath = path.join(__dirname, '../../lang/en.json');
+const outputPath = path.join(__dirname, '../../lang/candidates/zh.translated_full.json');
 
 // Đọc nội dung các file
 console.log('Đang đọc file zh.json và en.json...');

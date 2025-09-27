@@ -4,9 +4,9 @@ const path = require('path');
 console.log('Bắt đầu quá trình tạo file zh.candidate.json đầy đủ...');
 
 // Đọc các file JSON hiện có
-const enJsonPath = path.join(__dirname, 'lang/en.json');
-const viJsonPath = path.join(__dirname, 'lang/vi.json');
-const zhCandidatePath = path.join(__dirname, 'lang/zh.candidate.json');
+const enJsonPath = path.join(__dirname, '../../lang/en.json');
+const viJsonPath = path.join(__dirname, '../../lang/vi.json');
+const zhCandidatePath = path.join(__dirname, '../../lang/candidates/zh.candidate.json');
 
 console.log('Đang đọc các file JSON...');
 const en = JSON.parse(fs.readFileSync(enJsonPath, 'utf8'));
@@ -41,7 +41,7 @@ Object.keys(en).forEach(key => {
 // Ghi file zh.candidate.json đầy đủ
 console.log('Đang ghi file zh.candidate.full.json...');
 fs.writeFileSync(
-    path.join(__dirname, 'lang/zh.candidate.full.json'),
+    path.join(__dirname, '../../lang/candidates/zh.candidate.full.json'),
     JSON.stringify(fullZhCandidate, null, 2)
 );
 
