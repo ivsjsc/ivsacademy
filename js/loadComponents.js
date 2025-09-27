@@ -673,6 +673,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (ok && window.IVSFabController?.init) {
                     window.IVSFabController.init();
                 }
+                // Also attempt to load the IVS Assistant into the same placeholder
+                try {
+                    const assistantOk = await loadAndInject('/components/fab-assistant.html', 'fab-container-placeholder');
+                    if (assistantOk) {
+                        window.componentLog('fab-assistant loaded via DOMContentLoaded path', 'info');
+                        if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+                            try {
+                                window.IVSFabController.init();
+                                window.componentLog('IVSFabController re-initialized after assistant injection (DOMContentLoaded path).', 'info');
+                            } catch (err) {
+                                window.componentLog('Error re-initializing IVSFabController after assistant injection: ' + err.message, 'error');
+                            }
+                        }
+                    }
+                } catch (err) {
+                    window.componentLog('Failed to load fab-assistant via DOMContentLoaded path: ' + err.message, 'warn');
+                }
             }
 
             if (document.getElementById('footer-placeholder')) {
