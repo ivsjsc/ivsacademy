@@ -1,5 +1,5 @@
 {
-  "generated": "2025-09-28T18:01:38.872007Z",
+  "generated": "2025-09-28T18:06:17.923823Z",
   "base": "http://127.0.0.1:8000",
   "results": {
     "about.html": {
@@ -1367,7 +1367,7 @@
         {
           "ref": "https://placehold.co/96x96/007bff/ffffff?text=CEO",
           "url": "https://placehold.co/96x96/007bff/ffffff?text=CEO",
-          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
+          "status": 200
         },
         {
           "ref": "https://storage.googleapis.com/ivs-public-assets/images/team/nguyen-minin-triet.png",
@@ -1632,7 +1632,7 @@
         {
           "ref": "https://placehold.co/1200x800/111111/f4f4f5?text=IVS+Academy+Overview",
           "url": "https://placehold.co/1200x800/111111/f4f4f5?text=IVS+Academy+Overview",
-          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
+          "status": 200
         },
         {
           "ref": "Pages/ivslifeminds.html",
@@ -2152,12 +2152,12 @@
         {
           "ref": "https://baohiemxahoi.gov.vn/",
           "url": "https://baohiemxahoi.gov.vn/",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='baohiemxahoi.gov.vn', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://vssid.gov.vn/",
           "url": "https://vssid.gov.vn/",
-          "status": "HTTPSConnectionPool(host='vssid.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000025EC23F8B50>: Failed to resolve 'vssid.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
+          "status": "HTTPSConnectionPool(host='vssid.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001C843C62F10>: Failed to resolve 'vssid.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
           "ref": "https://dangkykinhdoanh.gov.vn/",
@@ -2172,7 +2172,7 @@
         {
           "ref": "https://csdlqgvedancu.gov.vn/",
           "url": "https://csdlqgvedancu.gov.vn/",
-          "status": "HTTPSConnectionPool(host='csdlqgvedancu.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000025EC23BD110>: Failed to resolve 'csdlqgvedancu.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
+          "status": "HTTPSConnectionPool(host='csdlqgvedancu.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001C843C8C710>: Failed to resolve 'csdlqgvedancu.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
           "ref": "js/utils.js",
