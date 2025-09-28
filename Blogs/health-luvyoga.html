@@ -266,11 +266,30 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            loadComponent('header.html', 'header-placeholder', () => {
+            (function guardLoad(url, id, cb) {
+                const placeholder = document.getElementById(id);
+                if (!placeholder) return;
+                if (window.loadAndInject || placeholder.querySelector('[data-component-src]') || (placeholder.innerHTML && placeholder.innerHTML.trim().length > 0)) {
+                    console.info(`guardLoad: skipping manual load for ${id}`);
+                    if (typeof cb === 'function') cb();
+                    return;
+                }
+                loadComponent(url, id, cb);
+            })('header.html', 'header-placeholder', () => {
                 if (typeof initializeMenu === 'function') initializeMenu();
                 if (typeof setLanguage === 'function') setLanguage(localStorage.getItem('preferredLanguage') || 'vi');
             });
-            loadComponent('footer.html', 'footer-placeholder', () => {
+
+            (function guardLoad(url, id, cb) {
+                const placeholder = document.getElementById(id);
+                if (!placeholder) return;
+                if (window.loadAndInject || placeholder.querySelector('[data-component-src]') || (placeholder.innerHTML && placeholder.innerHTML.trim().length > 0)) {
+                    console.info(`guardLoad: skipping manual load for ${id}`);
+                    if (typeof cb === 'function') cb();
+                    return;
+                }
+                loadComponent(url, id, cb);
+            })('footer.html', 'footer-placeholder', () => {
                  if (typeof setLanguage === 'function') setLanguage(localStorage.getItem('preferredLanguage') || 'vi');
             });
             // FB.XFBML.parse(); // Có thể cần gọi lại parse nếu SDK không tự nhận diện được
