@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Prevent committing .bak files. If any .bak files are staged, abort commit and
+# move them to .backups with timestamp, then unstage them.
+set -euo pipefail
+
+# Find staged .bak files
+staged=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.bak$|\.bak_auto|\.bak_before_' || true)
+if [ -n "$staged" ]; then
+  echo "Detected staged backup files:\n$staged"
+  ts=$(date -u +%Y%m%dT%H%M%SZ)
+  for f in $staged; do
+    # move to .backups preserving relative path
+    dest=".backups/${f}.moved.${ts}"
+    mkdir -p "$(dirname "$dest")"
+    git mv -f "$f" "$dest" || {
+      # if git mv fails (e.g., file untracked), move with mv and then git add dest
+      mv "$f" "$dest"
+      git add "$dest"
+      git rm --cached --ignore-unmatch "$f" || true
+    }
+    echo "Moved $f -> $dest"
+  done
+  echo "Backup files were moved to .backups and unstaged. Please review and commit again."
+  exit 1
+fi
+
+exit 0

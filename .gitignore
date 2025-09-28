@@ -1,0 +1,8 @@
+.backups/
+*.bak
+*.bak_auto*
+*.bak_before_*
+# Keep local node_modules and dist out
+node_modules/
+dist/
+.venv/

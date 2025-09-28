@@ -42,8 +42,14 @@ for f in html_files:
     txt = attr_re.sub(repl, txt)
 
     if txt != orig:
-        bak = f.with_suffix(f.suffix + '.bak')
-        bak.write_text(orig, encoding='utf-8')
+        # centralized timestamped backup under .backups
+        from datetime import datetime
+        ts = datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')
+        backup_root = root / '.backups'
+        backup_path = backup_root / f.with_suffix('').relative_to(root)
+        backup_path = backup_path.with_suffix(f.name + f'.backup.{ts}.orig')
+        backup_path.parent.mkdir(parents=True, exist_ok=True)
+        backup_path.write_text(orig, encoding='utf-8')
         f.write_text(txt, encoding='utf-8')
         modified.append(str(f.relative_to(root)))
 
