@@ -8,15 +8,50 @@
 
 'use strict';
 
-// Đảm bảo các hàm tiện ích toàn cục có sẵn (componentLog, debounce)
-// Các hàm này được mong đợi sẽ được tải qua public/js/utils.js
+// Provide gentle fallbacks for global utilities to avoid hard crashes when
+// utils.js hasn't loaded yet. Existing code relied on immediate console.error
+// which floods logs and may break some environments; we'll use componentLog
+// fallback quietly (console.error only if console present and on explicit need).
 if (typeof window.componentLog !== 'function') {
-    console.error("[IVSFabController] window.componentLog không được định nghĩa. Vui lòng đảm bảo utils.js được tải trước fabController.js.");
-    window.componentLog = (msg, level = 'error') => console[level](msg); // Hàm dự phòng
+    window.componentLog = function(msg, level = 'log') {
+        try {
+            if (level === 'error') console.error(msg);
+            else if (level === 'warn') console.warn(msg);
+            else console.log(msg);
+        } catch (e) {}
+    };
+    window.__componentLogFallback = true;
 }
 if (typeof window.debounce !== 'function') {
-    console.error("[IVSFabController] window.debounce không được định nghĩa. Vui lòng đảm bảo utils.js được tải trước fabController.js.");
-    window.debounce = (func) => func; // Hàm dự phòng
+    window.debounce = (fn) => fn;
+}
+
+/**
+ * Lấy chuỗi dịch từ langSystem nếu khả dụng, nếu không trả về fallback.
+ * @param {string} key
+ * @param {string} fallback
+ * @returns {string}
+ */
+function getTranslationValue(key, fallback) {
+    try {
+        const langSystem = window.langSystem;
+        if (!langSystem || !langSystem.translations) return fallback;
+        const candidates = [];
+        if (langSystem.currentLanguage && langSystem.translations[langSystem.currentLanguage]) {
+            candidates.push(langSystem.translations[langSystem.currentLanguage]);
+        }
+        if (langSystem.defaultLanguage && langSystem.translations[langSystem.defaultLanguage]) {
+            candidates.push(langSystem.translations[langSystem.defaultLanguage]);
+        }
+        for (const pack of candidates) {
+            if (pack && typeof pack[key] === 'string' && pack[key].trim().length) {
+                return pack[key];
+            }
+        }
+    } catch (err) {
+        // Bỏ qua lỗi và dùng fallback
+    }
+    return fallback;
 }
 
 const IVSFabController = {
@@ -207,11 +242,16 @@ const IVSFabController = {
     populateAssistantOptions(element) {
         // Create a single button that triggers the assistant. For now it opens a new window/tab
         // or toggles a panel if a chatbot controller is present.
+        const assistantLabel = getTranslationValue('fab_assistant_button_label', 'Mở IVS Assistant AI');
         const btn = document.createElement('button');
         btn.className = 'fab-submenu-item group w-full';
         btn.setAttribute('role', 'menuitem');
         btn.id = 'assistant-open-btn';
-        btn.innerHTML = `<i class="fas fa-robot fa-fw text-cyan-400"></i><span>Open IVS Assistant</span>`;
+        btn.setAttribute('aria-label', assistantLabel);
+        btn.setAttribute('title', assistantLabel);
+        btn.setAttribute('data-lang-key', 'fab_assistant_button_label');
+        btn.setAttribute('data-lang-target', 'aria-label,title');
+        btn.innerHTML = `<i class="fas fa-robot fa-fw text-cyan-400"></i><span data-lang-key="fab_assistant_button_label">${assistantLabel}</span>`;
         btn.addEventListener('click', async () => {
             // If a dedicated chatbot controller exists, call it.
             if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
@@ -461,6 +501,31 @@ const IVSFabController = {
     },
 };
 
+// Ensure FAB is initialized when DOM is ready and when componentLog becomes available.
+async function ensureFabInit(retries = 6) {
+    const delay = 25;
+    for (let i = 0; i < retries; i++) {
+        if (typeof window.componentLog === 'function' && document.getElementById('fab-container')) {
+            try {
+                if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+                    window.IVSFabController.init();
+                    return;
+                }
+            } catch (err) {
+                window.componentLog('ensureFabInit error: ' + err.message, 'warn');
+            }
+        }
+        await new Promise(r => setTimeout(r, delay * (i + 1)));
+    }
+    window.componentLog('ensureFabInit: FAB init not completed after retries.', 'warn');
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => ensureFabInit());
+} else {
+    ensureFabInit();
+}
+
 // Thêm CSS cho hiệu ứng ripple (nếu chưa có trong fab-container-new.html)
 // Lưu ý: Phần này đã được chuyển vào fab-container-new.html để giữ CSS và HTML cùng nhau.
 // Nếu bạn muốn giữ nó ở đây, hãy đảm bảo nó không bị trùng lặp.
@@ -480,12 +545,163 @@ document.head.appendChild(rippleStyle);
 // Xuất IVSFabController để loadComponents.js có thể truy cập
 window.IVSFabController = IVSFabController;
 
+// Fallback IVSChatbotController: if no external chatbot is provided,
+// provide a simple in-page modal that loads /apps/ivs-assistant.html in an iframe.
+if (!window.IVSChatbotController) {
+    window.IVSChatbotController = (function () {
+        let overlay = null;
+        let keydownHandler = null;
+
+        const bodyClass = 'ivs-assistant-modal-open';
+
+        function createOverlay() {
+            const modalTitle = getTranslationValue('fab_assistant_modal_title', 'IVS Assistant AI');
+            const closeLabel = getTranslationValue('fab_assistant_close_label', 'Đóng IVS Assistant AI');
+
+            overlay = document.createElement('div');
+            overlay.id = 'ivs-chatbot-overlay';
+            overlay.style.position = 'fixed';
+            overlay.style.inset = '0';
+            overlay.style.zIndex = '99999';
+            overlay.style.display = 'flex';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+            overlay.style.background = 'rgba(0,0,0,0.4)';
+
+            const panel = document.createElement('div');
+            panel.style.width = '420px';
+            panel.style.height = '720px';
+            panel.style.maxWidth = 'calc(100% - 32px)';
+            panel.style.maxHeight = 'calc(100% - 32px)';
+            panel.style.borderRadius = '12px';
+            panel.style.overflow = 'hidden';
+            panel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+            panel.style.background = '#fff';
+            panel.style.display = 'flex';
+            panel.style.flexDirection = 'column';
+            panel.style.position = 'relative';
+
+            const header = document.createElement('div');
+            header.style.background = '#0f172a';
+            header.style.color = '#f8fafc';
+            header.style.padding = '0.75rem 1rem';
+            header.style.display = 'flex';
+            header.style.alignItems = 'center';
+            header.style.justifyContent = 'space-between';
+            header.style.fontWeight = '600';
+            header.style.fontSize = '1rem';
+
+            const titleSpan = document.createElement('span');
+            titleSpan.textContent = modalTitle;
+            titleSpan.dataset.langKey = 'fab_assistant_modal_title';
+            header.appendChild(titleSpan);
+
+            const iframe = document.createElement('iframe');
+            iframe.src = '/apps/ivs-assistant.html';
+            iframe.style.border = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.flex = '1';
+            iframe.style.background = '#fff';
+            iframe.title = modalTitle;
+            iframe.setAttribute('aria-label', modalTitle);
+
+            const closeBtn = document.createElement('button');
+            closeBtn.type = 'button';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.style.width = '32px';
+            closeBtn.style.height = '32px';
+            closeBtn.style.border = 'none';
+            closeBtn.style.background = 'rgba(15,23,42,0.35)';
+            closeBtn.style.color = '#f8fafc';
+            closeBtn.style.borderRadius = '9999px';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.fontSize = '1.25rem';
+            closeBtn.style.lineHeight = '1';
+            closeBtn.style.display = 'inline-flex';
+            closeBtn.style.alignItems = 'center';
+            closeBtn.style.justifyContent = 'center';
+            closeBtn.style.transition = 'background 0.2s ease';
+            closeBtn.addEventListener('mouseenter', () => { closeBtn.style.background = 'rgba(15,23,42,0.55)'; });
+            closeBtn.addEventListener('mouseleave', () => { closeBtn.style.background = 'rgba(15,23,42,0.35)'; });
+            closeBtn.addEventListener('click', () => window.IVSChatbotController.close());
+            closeBtn.dataset.langKey = 'fab_assistant_close_label';
+            closeBtn.dataset.langTarget = 'aria-label,title';
+            closeBtn.setAttribute('aria-label', closeLabel);
+            closeBtn.setAttribute('title', closeLabel);
+
+            header.appendChild(closeBtn);
+            panel.appendChild(header);
+
+            const frameWrapper = document.createElement('div');
+            frameWrapper.style.flex = '1';
+            frameWrapper.style.position = 'relative';
+            frameWrapper.appendChild(iframe);
+            panel.appendChild(frameWrapper);
+            overlay.appendChild(panel);
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) window.IVSChatbotController.close();
+            });
+
+            return overlay;
+        }
+
+        return {
+            init() {
+                // No heavy initialization required for fallback
+                window.componentLog('IVSChatbotController (fallback) ready.', 'info');
+            },
+            open() {
+                try {
+                    if (overlay) return; // already open
+                    overlay = createOverlay();
+                    document.body.appendChild(overlay);
+                    document.body.classList.add(bodyClass);
+                    keydownHandler = (event) => {
+                        if (event.key === 'Escape') {
+                            window.IVSChatbotController.close();
+                        }
+                    };
+                    document.addEventListener('keydown', keydownHandler);
+                    window.componentLog('IVSChatbotController (fallback) overlay opened.', 'info');
+                } catch (err) {
+                    window.componentLog('Failed to open IVS Assistant overlay: ' + err.message, 'error');
+                    // Fallback to opening in a new window/tab
+                    const w = window.open('/apps/ivs-assistant.html', '_blank', 'toolbar=0,location=0,menubar=0,width=420,height=720');
+                    if (!w) window.componentLog('Popup blocked when opening IVS Assistant fallback.', 'warn');
+                }
+            },
+            close() {
+                if (!overlay) return;
+                overlay.remove();
+                overlay = null;
+                document.body.classList.remove(bodyClass);
+                if (keydownHandler) {
+                    document.removeEventListener('keydown', keydownHandler);
+                    keydownHandler = null;
+                }
+                window.componentLog('IVSChatbotController (fallback) overlay closed.', 'info');
+            }
+        };
+    })();
+}
+
+try {
+    if (window.IVSChatbotController && typeof window.IVSChatbotController.init === 'function') {
+        window.IVSChatbotController.init();
+    }
+} catch (err) {
+    window.componentLog('IVSChatbotController init() error: ' + err.message, 'warn');
+}
+
 // Tự động khởi tạo bộ điều khiển FAB khi DOM được tải hoàn toàn.
 // Điều này đảm bảo FAB được thiết lập ngay cả khi loadComponents.js không gọi init một cách rõ ràng,
 // hoặc nếu fab-container được bao gồm trực tiếp trong một trang.
 document.addEventListener('DOMContentLoaded', () => {
-    // Kiểm tra xem phần tử fabContainer có tồn tại trước khi khởi tạo
-    if (document.getElementById('fab-container')) {
+    // Khởi tạo IVSFabController nếu có bất kỳ container FAB nào xuất hiện ngay khi DOM sẵn sàng.
+    // Trước đây chỉ kiểm tra 'fab-container' dẫn đến trường hợp assistant-only không được khởi tạo.
+    if (document.getElementById('fab-container') || document.getElementById('fab-assistant-container')) {
         IVSFabController.init();
         // Apply initial theme after init
         const savedTheme = localStorage.theme;
@@ -495,9 +711,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('dark');
         }
     } else {
-        // Nếu fab-container không có sẵn ngay lập tức, nó có thể được tải động.
-        // Trong trường hợp đó, loadComponents.js (hoặc tương tự) nên gọi IVSFabController.init() một cách rõ ràng
-        // sau khi chèn nội dung fab-container.html.
-        window.componentLog("IVSFabController: Không tìm thấy FAB container trên DOMContentLoaded. Giả định tải động. Đảm bảo init() được gọi thủ công sau khi chèn.", "warn");
+        // Nếu không tìm thấy bất kỳ container nào, giữ hành vi trước đó: chờ loadComponents.js hoặc gọi init() thủ công.
+        window.componentLog("IVSFabController: Không tìm thấy FAB hoặc Assistant container trên DOMContentLoaded. Giả định tải động. Đảm bảo init() được gọi thủ công sau khi chèn.", "warn");
     }
 });

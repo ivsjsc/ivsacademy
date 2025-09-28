@@ -1,0 +1,24 @@
+name: Translation Status Check
+
+on:
+  pull_request:
+    paths:
+      - 'lang/**'
+      - 'scripts/translation/**'
+  push:
+    branches:
+      - 'translations/**'
+
+jobs:
+  check-translations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies (none)
+        run: echo "No dependencies to install"
+      - name: Run translation status check
+        run: node ./scripts/translation/check_translations_status.js
