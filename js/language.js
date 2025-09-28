@@ -46,24 +46,50 @@ async function fetchTranslations(langCode) {
         window.componentLog(`Translations for ${langCode} already loaded.`, 'info');
         return; // Already loaded
     }
-    window.componentLog(`Attempting to fetch translations for: ${langCode} from ${window.langSystem.languageFilesPath}${langCode}.json`);
-    try {
-        const response = await fetch(`${window.langSystem.languageFilesPath}${langCode}.json?v=${new Date().getTime()}`);
-        window.componentLog(`Fetch response status for ${langCode}.json: ${response.status} - OK: ${response.ok}`);
+    window.componentLog(`Attempting to fetch translations for: ${langCode} (configured path: ${window.langSystem.languageFilesPath})`);
 
-        if (!response.ok) {
-            if (response.status === 404) {
-                throw new Error(`404 Not Found: Language file ${langCode}.json does not exist at ${response.url}`);
-            } else {
-                throw new Error(`HTTP ${response.status} for ${langCode}.json: ${response.statusText}`);
-            }
-        }
-        window.langSystem.translations[langCode] = await response.json();
-        window.componentLog(`Successfully loaded and parsed translations for ${langCode}. Keys loaded: ${Object.keys(window.langSystem.translations[langCode]).length}`);
-    } catch (error) {
-        window.componentLog(`Failed to fetch or parse translations for ${langCode}: ${error.message}`, 'error');
-        // Do not load default here, handle fallback during language setting.
+    // Build candidate URLs to support both absolute (/lang/) and relative (lang/) deployments
+    const base = String(window.langSystem.languageFilesPath || '/lang/');
+    const normalizedBase = base.endsWith('/') ? base : base + '/';
+    const candidates = [];
+
+    // Primary candidate: as configured
+    candidates.push(`${normalizedBase}${langCode}.json`);
+    // If configured path starts with '/', also try without leading slash (subpath deployments)
+    if (normalizedBase.startsWith('/')) {
+        candidates.push(normalizedBase.replace(/^\/+/, '') + `${langCode}.json`);
     }
+    // Also try a relative path from current location
+    candidates.push(`lang/${langCode}.json`);
+    candidates.push(`./lang/${langCode}.json`);
+
+    let lastError = null;
+    for (const url of candidates) {
+        try {
+            const fetchUrl = `${url}?v=${new Date().getTime()}`;
+            window.componentLog(`Trying language file URL: ${fetchUrl}`, 'info');
+            const response = await fetch(fetchUrl);
+            window.componentLog(`Fetch ${fetchUrl} -> ${response.status} (ok=${response.ok})`);
+
+            if (!response.ok) {
+                // If 404 or other error, try next candidate rather than throwing immediately
+                lastError = new Error(`HTTP ${response.status} for ${fetchUrl}`);
+                continue;
+            }
+
+            const json = await response.json();
+            window.langSystem.translations[langCode] = json;
+            window.componentLog(`Successfully loaded and parsed translations for ${langCode}. Keys loaded: ${Object.keys(json).length}`);
+            return;
+        } catch (err) {
+            lastError = err;
+            window.componentLog(`Error fetching/parsing ${url}: ${err.message}`, 'warn');
+            // try next candidate
+        }
+    }
+
+    // If we reach here, all attempts failed
+    window.componentLog(`Failed to load translations for ${langCode} after trying ${candidates.length} locations. Last error: ${lastError && lastError.message}`, 'error');
 }
 
 function applyTranslationToElement(element, translation) {
