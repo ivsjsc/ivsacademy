@@ -219,6 +219,16 @@ async function initializeLanguageSystem() {
     }
 }
 
+
+// 5. BOOTSTRAP
+// Initialize the system after the DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeLanguageSystem);
+} else {
+    // DOM is already ready
+    initializeLanguageSystem();
+}
+
 // 5. SCRIPT EXECUTION
 // The script will now self-initialize once the DOM is ready.
 if (document.readyState === 'loading') {
