@@ -324,19 +324,32 @@
 <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <!-- Core Application Scripts - Order is crucial -->
-<script src="js/firebase-init.js" type="module"></script>
-<script defer="" src="js/bundle.min.js"></script>
-<script>
-        // Initialize AOS after all page components are loaded
-        window.onPageComponentsLoadedCallback = function() {
-            AOS.init({
-                duration: 700, // Animation duration
-                once: true,    // Whether animation should happen only once - while scrolling down
-                offset: 50,    // Offset (in px) from the original trigger point
-                easing: 'ease-out-cubic', // Easing function for animation
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer src="js/bundle.min.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load components first
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                // Initialize AOS after components are loaded
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
             });
-        };
-    </script>
+        }
+    });
+</script>
 <div id="fab-container-placeholder"></div>
 </body>
 </html>

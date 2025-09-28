@@ -232,39 +232,36 @@
 </main>
 <div id="fab-container-placeholder"></div>
 <footer data-loading-text="Đang tải chân trang..." id="footer-placeholder"></footer>
-<script defer="" src="js/script.js"></script>
-<script defer="" src="js/language.js"></script>
-<script defer="" src="js/fabController.js"></script>
-<script defer="" src="js/loadComponents.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-        // Callback function to be executed after components are loaded
-        window.onPageComponentsLoadedCallback = function() {
-            // Initialize Animate On Scroll library
-            AOS.init({
-                offset: 100, 
-                duration: 800, 
-                easing: 'ease-in-out-quad', 
-                once: true, 
-            });
 
-            // Apply translations if the language system is ready
-            if (window.system && typeof window.system.applyTranslations === 'function') {
-                window.system.applyTranslations();
-            } else {
-                console.warn("Language system not ready when page components loaded.");
-            }
-        };
 
-        // Fallback for safety, in case loadComponents.js fails or is slow
-        document.addEventListener('DOMContentLoaded', function() {
-             setTimeout(() => {
-                if (!window.AOS) { // Check if AOS has been initialized by the callback
-                    console.warn("[Fallback] Initializing AOS manually.");
-                    AOS.init({ offset: 100, duration: 800, easing: 'ease-in-out-quad', once: true });
-                }
-            }, 1500); 
-        });
-    </script>
 </body>
 </html>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>

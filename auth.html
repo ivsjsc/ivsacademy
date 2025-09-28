@@ -140,208 +140,35 @@
 <footer id="footer-placeholder"></footer>
 <div id="fab-container-placeholder"></div>
 <!-- Scripts -->
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script defer="" src="js/loadComponents.js"></script>
-<script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-        
-        // Cấu hình Firebase - Lấy từ biến môi trường của Canvas
-        // QUAN TRỌNG: TRONG MÔI TRƯỜNG THỰC TẾ (PRODUCTION) CẦN BẢO VỆ API KEY NÀY!
-        // SỬ DỤNG SERVER-SIDE RENDERING HOẶC BIẾN MÔI TRƯỜNG SERVER.
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
 
-        // Khởi tạo Firebase App only if config contains an apiKey
-        if (!firebaseConfig || !firebaseConfig.apiKey) {
-            console.warn('Auth page: firebaseConfig.apiKey missing. Skipping Firebase initialization in auth.html.');
-        } else {
-            const app = initializeApp(firebaseConfig);
-            const auth = getAuth(app);
-
-            // Kiểm tra trạng thái đăng nhập khi trang tải
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    // Người dùng đã đăng nhập, chuyển hướng về trang chính
-                    console.log("User already logged in, redirecting to home.");
-                    window.location.href = '/'; 
-                }
-            });
-        }
-        // Cache DOM elements
-        const authForm = document.getElementById('auth-form');
-        const authTitle = document.getElementById('auth-title');
-        const submitBtn = document.getElementById('submit-btn');
-        const toggleAuthModeBtn = document.getElementById('toggle-auth-mode');
-        const authMessage = document.getElementById('auth-message');
-        const emailInput = document.getElementById('email');
-        const passwordInput = document.getElementById('password');
-        const forgotPasswordBtn = document.getElementById('forgot-password-btn');
-        const forgotPasswordArea = document.getElementById('forgot-password-area');
-        const loadingSpinner = document.getElementById('loading-spinner');
-        const submitButtonText = submitBtn.querySelector('.button-text'); // Thêm span để giữ text
-
-        let isRegisterMode = false;
-        let isProcessing = false; // Ngăn chặn gửi nhiều lần
-
-        // Kiểm tra trạng thái đăng nhập khi trang tải
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // Người dùng đã đăng nhập, chuyển hướng về trang chính
-                console.log("User already logged in, redirecting to home.");
-                window.location.href = '/'; 
-            }
-        });
-
-        // Hàm hiển thị thông báo
-        function showMessage(message, type = 'info') {
-            authMessage.textContent = message;
-            authMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700', 'bg-blue-100', 'text-blue-700');
-            authMessage.classList.add('block'); // Hiển thị thông báo
-            if (type === 'error') {
-                authMessage.classList.add('bg-red-100', 'text-red-700');
-            } else if (type === 'success') {
-                authMessage.classList.add('bg-green-100', 'text-green-700');
-            } else {
-                authMessage.classList.add('bg-blue-100', 'text-blue-700');
-            }
-        }
-
-        // Hàm ẩn thông báo
-        function hideMessage() {
-            authMessage.classList.add('hidden');
-        }
-
-        // Hàm bật/tắt trạng thái xử lý
-        function setProcessing(processing) {
-            isProcessing = processing;
-            submitBtn.disabled = processing;
-            loadingSpinner.classList.toggle('hidden', !processing);
-            submitButtonText.textContent = processing ? 'Đang xử lý...' : (isRegisterMode ? 'Đăng ký' : 'Đăng nhập');
-        }
-
-
-        // Chuyển đổi giữa chế độ Đăng nhập và Đăng ký
-        toggleAuthModeBtn.addEventListener('click', () => {
-            isRegisterMode = !isRegisterMode;
-            authTitle.textContent = isRegisterMode ? 'Đăng ký' : 'Đăng nhập';
-            submitButtonText.textContent = isRegisterMode ? 'Đăng ký' : 'Đăng nhập';
-            toggleAuthModeBtn.textContent = isRegisterMode ? 'Đăng nhập ngay' : 'Đăng ký ngay';
-            forgotPasswordArea.classList.toggle('hidden', isRegisterMode); // Ẩn "Quên mật khẩu?" khi đăng ký
-            hideMessage(); // Ẩn thông báo khi chuyển đổi chế độ
-        });
-
-        // Xử lý quên mật khẩu
-        forgotPasswordBtn.addEventListener('click', async () => {
-            const email = emailInput.value.trim();
-            if (email === '') {
-                showMessage('Vui lòng nhập Email của bạn để đặt lại mật khẩu.', 'error');
-                return;
-            }
-
-            setProcessing(true);
-            hideMessage();
-
-            try {
-                await sendPasswordResetEmail(auth, email);
-                showMessage(`Email đặt lại mật khẩu đã được gửi đến ${email}. Vui lòng kiểm tra hộp thư của bạn.`, 'success');
-            } catch (error) {
-                let errorMessage = 'Gửi yêu cầu đặt lại mật khẩu không thành công.';
-                if (error.code === 'auth/invalid-email') {
-                    errorMessage = 'Email không hợp lệ.';
-                } else if (error.code === 'auth/user-not-found') {
-                    errorMessage = 'Không tìm thấy người dùng với email này.';
-                }
-                showMessage(errorMessage, 'error');
-                console.error("Lỗi đặt lại mật khẩu:", error);
-            } finally {
-                setProcessing(false);
-            }
-        });
-
-        // Xử lý gửi form (Đăng nhập/Đăng ký)
-        authForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            if (isProcessing) return; // Ngăn chặn gửi nhiều lần
-
-            const email = emailInput.value.trim();
-            const password = passwordInput.value;
-
-            setProcessing(true);
-            hideMessage();
-
-            if (isRegisterMode) {
-                // Logic đăng ký
-                try {
-                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                    showMessage('Đăng ký thành công! Đang chuyển hướng...', 'success');
-                    // Chuyển hướng sau khi đăng ký thành công (onAuthStateChanged sẽ xử lý chuyển hướng nếu cần)
-                    window.location.href = '/'; 
-
-                } catch (error) {
-                    let errorMessage = 'Đăng ký không thành công.';
-                    if (error.code === 'auth/email-already-in-use') {
-                        errorMessage = 'Email này đã được sử dụng.';
-                    } else if (error.code === 'auth/invalid-email') {
-                        errorMessage = 'Email không hợp lệ.';
-                    } else if (error.code === 'auth/weak-password') {
-                        errorMessage = 'Mật khẩu quá yếu (tối thiểu 6 ký tự).';
-                    }
-                    showMessage(errorMessage, 'error');
-                    console.error("Lỗi đăng ký:", error);
-                } finally {
-                    setProcessing(false);
-                }
-            } else {
-                // Logic đăng nhập
-                try {
-                    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                    showMessage('Đăng nhập thành công! Đang chuyển hướng...', 'success');
-                    
-                    // Lấy ID Token sau khi đăng nhập thành công
-                    const idToken = await userCredential.user.getIdToken();
-                    
-                    // Gửi ID Token này về backend để backend xác minh hoặc quản lý session
-                    // Đây là cách an toàn để frontend thông báo cho backend về việc đăng nhập thành công.
-                    const response = await fetch('/api/login', {
-                       method: 'POST',
-                       headers: { 
-                           'Content-Type': 'application/json',
-                           'Authorization': `Bearer ${idToken}` // Gửi ID Token lên backend
-                       },
-                       body: JSON.stringify({ email: email }) // Chỉ gửi email, password không nên gửi lên backend qua đường này
-                    });
-                    const data = await response.json();
-                    if (!response.ok) {
-                        throw new Error(data.error || 'Lỗi từ server.');
-                    }
-                    // Chuyển hướng người dùng về trang chính sau khi đăng nhập thành công
-                    window.location.href = '/'; 
-
-                } catch (error) {
-                    let errorMessage = 'Đăng nhập không thành công.';
-                    if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
-                        errorMessage = 'Email hoặc mật khẩu không đúng.';
-                    } else if (error.code === 'auth/invalid-email') {
-                        errorMessage = 'Email không hợp lệ.';
-                    }
-                    showMessage(errorMessage, 'error');
-                    console.error("Lỗi đăng nhập:", error);
-                } finally {
-                    setProcessing(false);
-                }
-            }
-        });
-
-        // Callback cho loadComponents.js
-        window.onPageComponentsLoadedCallback = function() {
-            // Khởi tạo AOS nếu cần
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 50, 
-                easing: 'ease-out-quad',
-            });
-        };
-    </script>
 </body>
 </html>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>

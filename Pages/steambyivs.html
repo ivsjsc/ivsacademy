@@ -15,245 +15,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script defer="" src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,line-clamp"></script>
-<link href="css/styles.css" rel="stylesheet"/> <!-- CSS -->
-<link href="css/style.css" rel="stylesheet"/>
-<link href="css/animations.css" rel="stylesheet"/>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<!-- Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-</link></head>
-<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300">
-<div data-loading-text="Đang tải menu..." id="header-placeholder"></div>
-<main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
-<section class="relative text-white text-center overflow-hidden" data-aos="fade-in">
-<div class="absolute inset-0 bg-cover bg-center opacity-30" onerror="this.style.backgroundImage='url(https://placehold.co/1920x600/004080/ffffff?text=IVS+STEAM)'; this.classList.add('bg-slate-700');" style="background-image: url('https://ivsacademy.edu.vn/images/steam-banner.jpg');"></div>
-<div class="relative z-10 bg-gradient-to-r from-blue-600/80 to-blue-700/80 py-16 md:py-24 px-4">
-<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 hero-text-shadow" data-lang-key="steam_vision_main_title">IVS STEAM: Kiến Tạo Tương Lai Sáng Tạo</h1>
-<p class="text-lg md:text-xl max-w-3xl mx-auto" data-lang-key="steam_vision_main_subtitle">Khám phá tầm nhìn, triết lý "STEAM là Tư Duy" và cam kết của IVS trong việc phát triển năng lực thế kỷ 21 thông qua giáo dục STEAM tích hợp, đổi mới và định hướng "STEAM+ Intelligence".</p>
-</div>
-</section>
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-12 md:space-y-16">
-<section aria-labelledby="section1-title" data-aos="fade-up">
-<div class="flex items-center mb-4">
-<i aria-hidden="true" class="fas fa-rocket text-2xl text-blue-600 mr-3"></i>
-<h2 class="text-2xl md:text-3xl font-bold text-gray-800" data-lang-key="steam_vision_section1_title" id="section1-title">1. Triết Lý Cốt Lõi: STEAM Là Tư Duy</h2>
-</div>
-<div class="space-y-4 text-base md:text-lg">
-<p data-lang-key="steam_vision_section1_p1">Tại IVS, chúng tôi tin rằng STEAM không chỉ là viết tắt của Khoa học (Science), Công nghệ (Technology), Kỹ thuật (Engineering), Nghệ thuật (Arts) và Toán học (Mathematics). Đó là một <strong class="font-semibold">tư duy liên ngành</strong>, một cách tiếp cận <strong class="font-semibold">sáng tạo</strong> để giải quyết vấn đề trong thế giới thực. Triết lý "STEAM là Tư Duy" nhấn mạnh việc trang bị cho học sinh khả năng kết nối kiến thức rời rạc thành một bức tranh tổng thể, nhìn nhận thách thức từ nhiều góc độ và tìm ra giải pháp hiệu quả, bền vững.</p>
-<p data-lang-key="steam_vision_section1_p2">Chúng tôi xem STEAM là cầu nối giữa lý thuyết hàn lâm và ứng dụng thực tiễn, giữa học tập tại trường và cuộc sống muôn màu. Bằng cách tích hợp các lĩnh vực, chúng tôi <strong class="font-semibold">nuôi dưỡng trí tò mò bẩm sinh</strong>, khuyến khích học sinh đặt câu hỏi "tại sao" và "làm thế nào", phát triển <strong class="font-semibold">tư duy phản biện, kỹ năng giải quyết vấn đề phức tạp, khả năng làm việc nhóm và giao tiếp hiệu quả</strong>. Đây chính là nền tảng cốt lõi, phù hợp với giá trị <strong class="font-semibold">Chất lượng – Tận tâm – Sáng tạo – Bình đẳng</strong> mà IVS theo đuổi, giúp các em tự tin kiến tạo tương lai.</p>
-</div>
-</section>
-<section aria-labelledby="section2-title" class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 md:p-8 rounded-lg shadow" data-aos="fade-up" data-aos-delay="100">
-<div class="flex items-center mb-4">
-<i aria-hidden="true" class="fas fa-bullseye text-2xl text-blue-600 mr-3"></i>
-<h2 class="text-2xl md:text-3xl font-bold text-gray-800" data-lang-key="steam_vision_section2_title" id="section2-title">2. Mục Tiêu Chiến Lược</h2>
-</div>
-<div class="space-y-4 text-base md:text-lg">
-<p data-lang-key="steam_vision_section2_intro">Với tầm nhìn dài hạn và sự <strong class="font-semibold">tận tâm</strong> trong giáo dục, IVS đặt ra các mục tiêu chiến lược rõ ràng cho chương trình STEAM, nhằm trang bị cho học sinh Việt Nam, đặc biệt tại khu vực Long Thành - Đồng Nai, hành trang vững chắc để thành công trong kỷ nguyên số và hội nhập quốc tế:</p>
-<ul class="list-none space-y-3 mt-4" data-lang-key="steam_vision_section2_list_items">
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i> <span><strong class="font-semibold">Phát triển năng lực 4C:</strong> Trang bị vững chắc các kỹ năng thế kỷ 21: Tư duy Phản biện (Critical Thinking), Sáng tạo (Creativity), Hợp tác (Collaboration) và Giao tiếp (Communication).</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i> <span><strong class="font-semibold">Nâng cao kiến thức liên môn:</strong> Giúp học sinh hiểu sâu sắc mối liên hệ giữa Khoa học, Công nghệ, Kỹ thuật, Nghệ thuật và Toán học, áp dụng vào giải quyết các vấn đề thực tế.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i> <span><strong class="font-semibold">Thúc đẩy đam mê công nghệ và kỹ thuật:</strong> Khơi dậy hứng thú với lập trình, robotics, AI, và các lĩnh vực công nghệ cao, định hướng nghề nghiệp tương lai.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i> <span><strong class="font-semibold">Tích hợp Nghệ thuật (Arts):</strong> Không chỉ dừng lại ở STEM, yếu tố Nghệ thuật được lồng ghép để tăng cường khả năng sáng tạo, tư duy thiết kế và giải quyết vấn đề một cách toàn diện.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i> <span><strong class="font-semibold">Kết nối thực tiễn và cộng đồng:</strong> Tạo cơ hội cho học sinh tham gia các dự án có ý nghĩa, gắn liền với nhu cầu và bối cảnh địa phương (như dự án IELTS Station tại Long Thành do CEO Nguyễn Minh Triết khởi xướng).</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i> <span><strong class="font-semibold">Đảm bảo tiếp cận bình đẳng:</strong> Nỗ lực mang giáo dục STEAM chất lượng đến với mọi học sinh, không phân biệt hoàn cảnh, đúng với giá trị <strong class="font-semibold">Bình đẳng</strong> cốt lõi.</span></li>
-</ul>
-</div>
-</section>
-<section aria-labelledby="section3-title" data-aos="fade-up" data-aos-delay="200">
-<div class="flex items-center mb-4">
-<i aria-hidden="true" class="fas fa-hands-helping text-2xl text-blue-600 mr-3"></i>
-<h2 class="text-2xl md:text-3xl font-bold text-gray-800" data-lang-key="steam_vision_section3_title" id="section3-title">3. Phương Pháp Tiếp Cận</h2>
-</div>
-<div class="space-y-4 text-base md:text-lg">
-<p data-lang-key="steam_vision_section3_intro">Để hiện thực hóa triết lý và mục tiêu, IVS (thông qua đơn vị IVS Education) áp dụng các phương pháp tiếp cận giáo dục STEAM tiên tiến, lấy người học làm trung tâm, đề cao sự <strong class="font-semibold">sáng tạo</strong> và trải nghiệm thực tế, phù hợp với chuẩn quốc tế (thông qua liên kết IIVSA và các đối tác như The Power to Inspire):</p>
-<ul class="list-none space-y-3 mt-4" data-lang-key="steam_vision_section3_list_items">
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-cogs text-blue-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Học tập qua dự án (Project-Based Learning - PBL):</strong> Học sinh chủ động khám phá, nghiên cứu và thực hiện các dự án thực tế, từ đó nắm vững kiến thức và rèn luyện kỹ năng.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-puzzle-piece text-blue-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Học tập tích hợp (Integrated Learning):</strong> Các môn học không tách rời mà được lồng ghép một cách tự nhiên, giúp học sinh thấy rõ mối liên hệ và ứng dụng tổng hợp.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-laptop-code text-blue-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Ứng dụng công nghệ và giải pháp số:</strong> Tận dụng các nền tảng lập trình (Scratch, Python), robotics, AI, và các giải pháp học tập số do IVS Education phát triển để tăng cường tương tác và hiệu quả học tập.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-flask text-blue-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Học tập trải nghiệm (Experiential Learning):</strong> Ưu tiên các hoạt động thực hành, thí nghiệm, chế tạo mô hình, tham quan thực tế (nếu có) để học sinh "học qua làm".</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-users text-blue-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Môi trường hợp tác và phản biện:</strong> Khuyến khích học sinh làm việc nhóm, trao đổi ý tưởng, trình bày và bảo vệ quan điểm của mình.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-chart-line text-blue-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Đánh giá năng lực đa dạng:</strong> Sử dụng nhiều hình thức đánh giá (quá trình, sản phẩm dự án, thuyết trình, tự đánh giá...) thay vì chỉ tập trung vào điểm số kiểm tra truyền thống.</span></li>
-</ul>
-</div>
-</section>
-<section aria-labelledby="section4-title" class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 md:p-8 rounded-lg shadow" data-aos="fade-up" data-aos-delay="300">
-<div class="flex items-center mb-4">
-<i aria-hidden="true" class="fas fa-brain text-2xl text-purple-600 mr-3"></i>
-<h2 class="text-2xl md:text-3xl font-bold text-gray-800" data-lang-key="steam_vision_section4_title" id="section4-title">4. Định Hướng "STEAM+ Intelligence"</h2>
-</div>
-<div class="space-y-4 text-base md:text-lg">
-<p data-lang-key="steam_vision_section4_intro">Điểm độc đáo và tiên phong trong tầm nhìn của IVS là định hướng <strong class="font-semibold text-purple-700">"STEAM+ Intelligence"</strong>. Chúng tôi tin rằng để thực sự thành công và hạnh phúc trong thế kỷ 21, học sinh không chỉ cần làm chủ kiến thức, kỹ năng STEAM mà còn phải phát triển các loại hình trí thông minh và năng lực bổ trợ quan trọng. "Intelligence" ở đây được hiểu một cách toàn diện, bao gồm:</p>
-<ul class="list-none space-y-3 mt-4" data-lang-key="steam_vision_section4_list_items">
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-lightbulb text-yellow-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Năng lực cốt lõi STEAM:</strong> Nền tảng vững chắc về Khoa học, Công nghệ, Kỹ thuật, Nghệ thuật và Toán học.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-heart text-red-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Trí thông minh cảm xúc (Emotional Intelligence - EQ):</strong> Khả năng nhận biết, thấu hiểu, quản lý cảm xúc của bản thân và người khác, xây dựng mối quan hệ tích cực.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-wifi text-blue-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Trí thông minh số (Digital Intelligence - DQ):</strong> Năng lực sử dụng công nghệ số một cách an toàn, hiệu quả và có trách nhiệm; khả năng phân tích thông tin và giao tiếp trên môi trường mạng.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-brain text-purple-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Tư duy phát triển (Growth Mindset):</strong> Niềm tin vào khả năng học hỏi và cải thiện bản thân thông qua nỗ lực và kiên trì; sẵn sàng đối mặt thử thách và học hỏi từ thất bại.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-sync-alt text-green-500 mt-1 mr-2 w-5 text-center flex-shrink-0"></i> <span><strong class="font-semibold">Năng lực thích ứng và học tập suốt đời (Adaptability &amp; Lifelong Learning):</strong> Khả năng linh hoạt trước thay đổi, chủ động cập nhật kiến thức và kỹ năng mới trong một thế giới biến động không ngừng.</span></li>
-</ul>
-</div>
-</section>
-<section aria-labelledby="section5-title" data-aos="fade-up" data-aos-delay="400">
-<div class="flex items-center mb-4">
-<i aria-hidden="true" class="fas fa-graduation-cap text-2xl text-blue-600 mr-3"></i>
-<h2 class="text-2xl md:text-3xl font-bold text-gray-800" data-lang-key="steam_programs_overview_title" id="section5-title">5. Chương Trình STEAM Tại IVS</h2>
-</div>
-<div class="space-y-4 text-base md:text-lg">
-<p data-lang-key="steam_programs_overview_intro">Chương trình STEAM tại IVS (do IVS Academy triển khai, IVS Education phát triển nội dung) được thiết kế khoa học theo lộ trình phát triển năng lực xuyên suốt bậc THCS (từ lớp 6 đến lớp 9). Mỗi khối lớp tập trung vào các mục tiêu và công cụ cụ thể, đảm bảo sự tiếp nối và chuyên sâu dần, phù hợp với đặc điểm tâm sinh lý và định hướng tương lai của học sinh:</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mt-8">
-<div class="border border-orange-200 bg-orange-50 p-6 rounded-lg shadow hover:shadow-md transition-shadow duration-300">
-<div class="flex items-center mb-4">
-<img alt="Biểu tượng Scratch" class="w-10 h-10 mr-3 object-contain flex-shrink-0" decoding="async" loading="lazy" onerror="this.src='https://placehold.co/40x40/f97316/ffffff?text=S'" src="images/icons/scratch.png"/>
-<h4 class="text-lg font-semibold text-orange-800" data-lang-key="steam_program_grade6_title">Khối 6: Nền tảng STEAM &amp; Tư duy Lập trình Trực quan</h4>
-</div>
-<ul class="list-none space-y-2 text-sm md:text-base" data-lang-key="steam_program_grade6_details">
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-mouse-pointer text-orange-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Làm quen với khái niệm STEAM và tư duy liên ngành.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-shapes text-orange-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span><strong class="font-medium">Công cụ chính:</strong> Scratch - Ngôn ngữ lập trình kéo-thả trực quan.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-lightbulb text-orange-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Phát triển tư duy logic, giải quyết vấn đề cơ bản.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-paint-brush text-orange-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Khơi dậy sự sáng tạo qua việc tạo ra các dự án hoạt hình, game đơn giản.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-users text-orange-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Rèn luyện kỹ năng trình bày ý tưởng và làm việc nhóm cơ bản.</span></li>
-</ul>
-</div>
-<div class="border border-blue-200 bg-blue-50 p-6 rounded-lg shadow hover:shadow-md transition-shadow duration-300">
-<div class="flex items-center mb-4">
-<img alt="Biểu tượng Python" class="w-10 h-10 mr-3 object-contain flex-shrink-0" decoding="async" loading="lazy" onerror="this.src='https://placehold.co/40x40/3b82f6/ffffff?text=Py'" src="images/icons/python.png"/>
-<h4 class="text-lg font-semibold text-blue-800" data-lang-key="steam_program_grade7_title">Khối 7: Khám phá Lập trình &amp; Ứng dụng Khoa học</h4>
-</div>
-<ul class="list-none space-y-2 text-sm md:text-base" data-lang-key="steam_program_grade7_details">
-<li class="flex items-start"><i aria-hidden="true" class="fab fa-python text-blue-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span><strong class="font-medium">Công cụ chính:</strong> Python - Ngôn ngữ lập trình văn bản phổ biến.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-code text-blue-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Xây dựng nền tảng lập trình cấu trúc, biến, vòng lặp, điều kiện.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-calculator text-blue-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Ứng dụng lập trình vào giải các bài toán Khoa học, Toán học.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-atom text-blue-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Thực hiện các dự án nhỏ tích hợp Khoa học (ví dụ: mô phỏng hiện tượng tự nhiên).</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-search text-blue-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Phát triển kỹ năng tìm kiếm, phân tích thông tin và giải quyết vấn đề phức tạp hơn.</span></li>
-</ul>
-</div>
-<div class="border border-red-200 bg-red-50 p-6 rounded-lg shadow hover:shadow-md transition-shadow duration-300">
-<div class="flex items-center mb-4">
-<img alt="Biểu tượng Robotics" class="w-10 h-10 mr-3 object-contain flex-shrink-0" decoding="async" loading="lazy" onerror="this.src='https://placehold.co/40x40/ef4444/ffffff?text=R'" src="images/icons/robotics.png"/>
-<h4 class="text-lg font-semibold text-red-800" data-lang-key="steam_program_grade8_title">Khối 8: Chuyên sâu Robotics &amp; Kỹ thuật</h4>
-</div>
-<ul class="list-none space-y-2 text-sm md:text-base" data-lang-key="steam_program_grade8_details">
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-robot text-red-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span><strong class="font-medium">Công cụ chính:</strong> Các bộ kit Robotics (ví dụ: Arduino, Micro:bit hoặc tương đương).</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-cogs text-red-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Tìm hiểu nguyên lý cơ bản về điện tử, cơ khí, cảm biến.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-laptop-code text-red-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Lập trình điều khiển robot thực hiện nhiệm vụ cụ thể.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-tools text-red-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Rèn luyện tư duy kỹ thuật, thiết kế và chế tạo.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-users-cog text-red-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Thúc đẩy kỹ năng hợp tác, quản lý dự án qua các thử thách robotics.</span></li>
-</ul>
-</div>
-<div class="border border-purple-200 bg-purple-50 p-6 rounded-lg shadow hover:shadow-md transition-shadow duration-300">
-<div class="flex items-center mb-4">
-<img alt="Biểu tượng AI" class="w-10 h-10 mr-3 object-contain flex-shrink-0" decoding="async" loading="lazy" onerror="this.src='https://placehold.co/40x40/8b5cf6/ffffff?text=AI'" src="images/icons/ai.png"/>
-<h4 class="text-lg font-semibold text-purple-800" data-lang-key="steam_program_grade9_title">Khối 9: Tích hợp AI &amp; Định hướng Dự án Lớn</h4>
-</div>
-<ul class="list-none space-y-2 text-sm md:text-base" data-lang-key="steam_program_grade9_details">
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-brain text-purple-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span><strong class="font-medium">Công cụ chính:</strong> Nền tảng AI/Machine Learning cơ bản, Python nâng cao.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-database text-purple-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Giới thiệu về Trí tuệ Nhân tạo (AI), Học máy (Machine Learning) và ứng dụng.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-chart-bar text-purple-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Tìm hiểu về thu thập và phân tích dữ liệu cơ bản.</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-project-diagram text-purple-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Thực hiện dự án STEAM tích hợp quy mô lớn, kết hợp kiến thức đã học (lập trình, robotics, AI, thiết kế...).</span></li>
-<li class="flex items-start"><i aria-hidden="true" class="fas fa-graduation-cap text-purple-600 w-4 text-center mr-2 mt-1 flex-shrink-0"></i><span>Định hướng nghề nghiệp liên quan đến STEAM, thảo luận về đạo đức công nghệ.</span></li>
-</ul>
-</div>
-</div>
-<p class="mt-6 italic text-sm text-gray-600" data-lang-key="steam_programs_note"><strong class="font-medium">Lưu ý:</strong> Chương trình được thiết kế linh hoạt, có thể điều chỉnh để phù hợp với năng lực và sở thích đa dạng của học sinh. IVS liên tục cập nhật nội dung và công nghệ giảng dạy để đảm bảo tính hiện đại và hiệu quả, phản ánh đúng tinh thần <strong class="font-medium">Chất lượng</strong> và <strong class="font-medium">Sáng tạo</strong>.</p>
-<div class="text-center mt-8">
-<a class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out" data-lang-key="steam_cta_button" href="../contact.html">
-                            Đăng ký Tư vấn Ngay
-                        </a>
-</div>
-</div>
-</section>
-<section aria-labelledby="section6-title" class="bg-blue-600 text-white p-6 md:p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="500">
-<div class="flex items-center mb-4">
-<i aria-hidden="true" class="fas fa-handshake text-2xl mr-3"></i> <h2 class="text-2xl md:text-3xl font-bold" data-lang-key="steam_vision_section5_title" id="section6-title">6. Cam Kết Tương Lai</h2>
-</div>
-<div class="space-y-4 text-base md:text-lg">
-<p data-lang-key="steam_vision_section5_p1">IVS cam kết mạnh mẽ vào việc đầu tư và phát triển giáo dục STEAM như một trụ cột chiến lược, góp phần nâng cao chất lượng nguồn nhân lực tương lai cho Việt Nam. Chúng tôi không ngừng nỗ lực để mang đến những chương trình <strong class="font-semibold">chất lượng</strong> cao, được xây dựng bởi đội ngũ <strong class="font-semibold">tận tâm</strong> và liên tục <strong class="font-semibold">sáng tạo</strong>, đảm bảo cơ hội học tập <strong class="font-semibold">bình đẳng</strong> cho mọi học sinh.</p>
-<blockquote class="border-l-4 border-blue-300 pl-4 italic my-6" data-lang-key="steam_vision_quote">
-                        "IVS tin tưởng vào sức mạnh của giáo dục STEAM trong việc khai phá tiềm năng và định hình tương lai."
-                    </blockquote>
-<div data-lang-key="steam_vision_section5_p2">
-<p class="font-semibold mb-2">Cam kết này được thể hiện qua việc:</p>
-<ul class="list-disc list-inside space-y-2 pl-4">
-<li>Liên tục cập nhật chương trình theo chuẩn quốc tế, tích hợp định hướng "STEAM+ Intelligence" độc đáo.</li>
-<li>Ứng dụng công nghệ giáo dục tiên tiến và các giải pháp học tập số do IVS Education phát triển.</li>
-<li>Xây dựng và bồi dưỡng đội ngũ giáo viên tâm huyết, có chuyên môn STEAM và kỹ năng sư phạm hiện đại.</li>
-<li>Duy trì và mở rộng hợp tác với các đối tác giáo dục uy tín trong và ngoài nước (như IIVSA, The Power to Inspire, dự án Kinderlink25...).</li>
-</ul>
-</div>
-<p class="mt-4" data-lang-key="steam_vision_section5_p3">Chúng tôi tin rằng mỗi học sinh đều ẩn chứa một tiềm năng vô hạn. IVS cam kết tạo ra một môi trường học tập truyền cảm hứng, an toàn và khuyến khích, nơi các em được tự do khám phá, trải nghiệm, mắc lỗi và trưởng thành. Cùng với phụ huynh và cộng đồng, IVS sẽ đồng hành kiến tạo một thế hệ trẻ Việt Nam tự tin, năng động, giàu lòng nhân ái, sẵn sàng làm chủ tương lai và đóng góp tích cực vào sự phát triển của Long Thành, Đồng Nai và đất nước.</p>
-</div>
-</section>
-<section class="section-padding bg-gray-100 shadow-md my-8 mx-auto max-w-7xl rounded-xl">
-<div class="container mx-auto container-padding">
-<h2 class="text-4xl font-bold text-primary mb-8 text-center" data-lang-key="steam_video_title">Video Giới thiệu Giáo dục STEAM của IVS</h2>
-<div class="video-wrapper max-w-3xl mx-auto rounded-lg shadow-xl" data-aos="zoom-in">
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/g3YjsMhM0NE?si=1x3rAd7rUA2KF8ur&amp;start=1" title="YouTube video player - IVS STEAM Introduction"></iframe>
-</div>
-<p class="text-center text-gray-600 mt-6 text-lg" data-lang-key="steam_video_caption">
-                        Khám phá cách IVS mang giáo dục STEAM đến gần hơn với học sinh, khơi dậy niềm đam mê sáng tạo và tư duy phản biện.
-                    </p>
-</div>
-</section>
-<section class="section-padding bg-white shadow-md my-8 mx-auto max-w-7xl rounded-xl">
-<div class="container mx-auto container-padding">
-<h2 class="text-4xl font-bold text-primary mb-8 text-center" data-lang-key="steam_gallery_title">Thư viện ảnh Hoạt động STEAM</h2>
-<div class="horizontal-scroll-gallery">
-<div class="gallery-item-snap rounded-lg overflow-hidden shadow-md">
-<img alt="Hoạt động STEAM 1" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e0e0e0/757575?text=Ảnh+STEAM';" src="https://ivsacademy.edu.vn/images/steam-gallery/gallery1.jpg"/>
-</div>
-<div class="gallery-item-snap rounded-lg overflow-hidden shadow-md">
-<img alt="Hoạt động STEAM 2" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e0e0e0/757575?text=Ảnh+STEAM';" src="https://ivsacademy.edu.vn/images/steam-gallery/gallery2.jpg"/>
-</div>
-<div class="gallery-item-snap rounded-lg overflow-hidden shadow-md">
-<img alt="Hoạt động STEAM 3" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e0e0e0/757575?text=Ảnh+STEAM';" src="https://ivsacademy.edu.vn/images/steam-gallery/gallery3.jpg"/>
-</div>
-<div class="gallery-item-snap rounded-lg overflow-hidden shadow-md">
-<img alt="Hoạt động STEAM 4" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e0e0e0/757575?text=Ảnh+STEAM';" src="https://ivsacademy.edu.vn/images/steam-gallery/gallery4.jpg"/>
-</div>
-<div class="gallery-item-snap rounded-lg overflow-hidden shadow-md">
-<img alt="Hoạt động STEAM 5" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e0e0e0/757575?text=Ảnh+STEAM';" src="https://ivsacademy.edu.vn/images/steam-gallery/gallery5.jpg"/>
-</div>
-</div>
-<div class="text-center mt-8">
-<a class="text-primary hover:underline font-medium text-sm" data-lang-key="steam_gallery_view_more" href="../contact.html?interest=steam_gallery">Xem thêm ảnh (sắp có)...</a>
-</div>
-</div>
-</section>
-</div>
-</main>
-<footer id="footer-placeholder"></footer>
-<div id="fab-container-placeholder"></div>
-<script defer="" src="js/script.js"></script>
-<script defer="" src="js/language.js"></script>
-<script defer="" src="js/fabController.js"></script>
-<script defer="" src="js/loadComponents.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-        window.onPageComponentsLoadedCallback = function() {
-            console.log("[STEAM Page] Components loaded. Page specific JS can run now.");
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    offset: 100,
-                    duration: 700,
-                    easing: 'ease-out-quad',
-                    once: true,
-                    mirror: false,
-                    anchorPlacement: 'top-bottom',
-                });
-            }
-            if (typeof window.initializeLanguageSystem === 'function') {
-                window.initializeLanguageSystem().then(() => {
-                    console.log("[STEAM Page] Language system initialized by callback.");
-                }).catch(error => {
-                    console.error("[STEAM Page] Error initializing language system from callback:", error);
-                });
-            }
-            if (typeof initializeFabButtons === 'function') {
-                initializeFabButtons();
-            }
-        };
-    </script>
+
 </body>
 </html>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>

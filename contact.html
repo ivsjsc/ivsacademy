@@ -168,246 +168,7 @@
                         </a>
 </form>
 <!-- Progressive enhancement: AJAX submit that still triggers Netlify form processing -->
-<script>
-                        document.addEventListener('DOMContentLoaded', () => {
-                            const form = document.querySelector('form[name="contact"]');
-                            if (!form) return;
 
-                            const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
-                            const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-
-                            const showFormMessage = (msg, isError = true) => {
-                                let container = form.querySelector('#formMessage');
-                                if (!container) {
-                                    container = document.createElement('div');
-                                    container.id = 'formMessage';
-                                    container.className = 'text-sm mt-3';
-                                    form.appendChild(container);
-                                }
-                                container.textContent = msg;
-                                container.classList.toggle('text-red-400', isError);
-                                container.classList.toggle('text-green-400', !isError);
-                            };
-
-                            form.addEventListener('submit', async (e) => {
-                                // Allow native submission if JS disabled
-                                e.preventDefault();
-
-                                // Honeypot check
-                                if (form.querySelector('[name="bot-field"]').value) {
-                                    // Detected bot — abort
-                                    return;
-                                }
-
-                                const submitButton = form.querySelector('button[type="submit"]');
-                                const originalText = submitButton && submitButton.textContent;
-                                if (submitButton) {
-                                    submitButton.disabled = true;
-                                    submitButton.textContent = 'Đang gửi...';
-                                }
-
-                                // Client-side file validation
-                                const fileInput = form.querySelector('input[type="file"][name="attachment"]');
-                                if (fileInput && fileInput.files.length > 0) {
-                                    const file = fileInput.files[0];
-                                    if (file.size > MAX_FILE_SIZE) {
-                                        showFormMessage('Kích thước tệp vượt quá giới hạn 5 MB. Vui lòng chọn tệp nhỏ hơn.', true);
-                                        if (submitButton) {
-                                            submitButton.disabled = false;
-                                            submitButton.textContent = originalText;
-                                        }
-                                        return;
-                                    }
-                                    if (ALLOWED_TYPES.indexOf(file.type) === -1) {
-                                        showFormMessage('Loại tệp không được hỗ trợ. Vui lòng gửi JPG, PNG, PDF hoặc DOCX.', true);
-                                        if (submitButton) {
-                                            submitButton.disabled = false;
-                                            submitButton.textContent = originalText;
-                                        }
-                                        return;
-                                    }
-                                }
-
-                                const formData = new FormData(form);
-                                // Ensure form-name is present (Netlify requires it when using AJAX)
-                                formData.set('form-name', form.getAttribute('name') || 'contact');
-
-                                try {
-                                    const res = await fetch('/', {
-                                        method: 'POST',
-                                        body: formData
-                                    });
-
-                                    if (res.ok) {
-                                        // Redirect to thank-you page (maintain Netlify behavior)
-                                        window.location.href = form.getAttribute('action') || '/thank-you.html';
-                                    } else {
-                                        // Show error UI while keeping original form available
-                                        const text = await res.text();
-                                        console.error('Netlify form error', text);
-                                        showFormMessage('Gửi thất bại — vui lòng thử lại sau.', true);
-                                        if (submitButton) {
-                                            submitButton.disabled = false;
-                                            submitButton.textContent = originalText;
-                                        }
-                                    }
-                                } catch (err) {
-                                    console.error('Submit error', err);
-                                    showFormMessage('Lỗi khi gửi. Vui lòng thử lại sau.', true);
-                                    if (submitButton) {
-                                        submitButton.disabled = false;
-                                        submitButton.textContent = originalText;
-                                    }
-                                }
-                            });
-                        });
-                    </script>
-</div>
-</div>
-</section>
-<section class="bg-gray-800 rounded-xl shadow-lg p-8 mb-12">
-<h2 class="text-3xl font-bold text-white mb-6 section-title" data-lang-key="contact_map_title">
-                Vị Trí Của Chúng Tôi
-            </h2>
-<div class="rounded-lg overflow-hidden shadow-md">
-<iframe allowfullscreen="" height="500" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4823.4906387985575!2d106.98627547583808!3d10.73115266002554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317519ffa45ccdf1%3A0x9b79f7937cef7081!2zSOG7jEMgVknhu4ZOIElWUyBBQ0FERU1ZIFRydW5nIHTDom0gTmdv4bqhaSBuZyBYYSAtIElWUyBKU0M!5e1!3m2!1svi!2sus!4v1751406225294!5m2!1svi!2sus" style="border:0;" title="Vị trí IVS JSC trên bản đồ Google" width="100%"></iframe>
-</div>
-</section>
-</main>
-<footer id="footer-placeholder"></footer>
-<div id="fab-container-placeholder"></div>
-<!-- Deferred JavaScript Libraries -->
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!-- Core Application Scripts - Order is crucial -->
-<!-- 1. Firebase Init (if type="module", load first) -->
-<script src="js/firebase-init.js" type="module"></script>
-<!-- 2. Global Utilities (componentLog, debounce) -->
-<script defer="" src="js/bundle.min.js"></script>
-<script defer="" src="js/security-enhancements.js"></script>
-<!-- 3. Language System (self-initializes, needed by Header) -->
-<!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->
-<!-- 5. Component Loader (loads HTML and then calls controller inits) -->
-<!-- 6. Main App Logic (if any, after all components are ready) -->
-<!-- Page-specific logic initialization -->
-<script>
-        // Callback triggered by loadComponents.js
-        window.onPageComponentsLoadedCallback = function() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-quad' });
-            }
-
-            // Ensure hero-canvas-container exists before initializing 3D
-            const heroCanvasContainer = document.getElementById('hero-canvas-container');
-            if (typeof THREE !== 'undefined' && heroCanvasContainer) {
-                initHero3D();
-            } else if (!heroCanvasContainer) {
-                window.componentLog("Container for 3D hero canvas (#hero-canvas-container) not found. Skipping 3D initialization.", "info");
-            } else {
-                window.componentLog("THREE.js not loaded. Skipping 3D initialization.", "warn");
-            }
-
-            initAnimatedCounters();
-            initSpotlightEffect();
-        };
-
-        function initHero3D() {
-            const container = document.getElementById('hero-canvas-container');
-            if (!container) return;
-
-            let scene, camera, renderer, stars;
-            let mouseX = 0, mouseY = 0;
-
-            function init() {
-                scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-                camera.position.z = 1;
-                camera.rotation.x = Math.PI / 2;
-
-                renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                container.appendChild(renderer.domElement);
-
-                const starGeo = new THREE.BufferGeometry();
-                const starVertices = [];
-                for (let i = 0; i < 8000; i++) {
-                    starVertices.push((Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000);
-                }
-                starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-
-                let starMaterial = new THREE.PointsMaterial({ color: 0xaaaaaa, size: 0.7, transparent: true });
-                stars = new THREE.Points(starGeo, starMaterial);
-                scene.add(stars);
-
-                window.addEventListener('resize', onWindowResize, false);
-                document.addEventListener('mousemove', onMouseMove, false);
-
-                animate();
-            }
-
-            function onMouseMove(e) {
-                mouseX = e.clientX - window.innerWidth / 2;
-                mouseY = e.clientY - window.innerHeight / 2;
-            }
-
-            function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                stars.rotation.y += 0.0001;
-                camera.position.y += (-mouseY * 0.00002 - camera.position.y) * 0.05;
-                camera.position.x += (mouseX * 0.00002 - camera.position.x) * 0.05;
-                camera.lookAt(scene.position);
-                renderer.render(scene, camera);
-            }
-
-            init();
-        }
-
-        function initAnimatedCounters() {
-            const counters = document.querySelectorAll('#impact-counters h3');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counter = entry.target;
-                        const target = +counter.getAttribute('data-target');
-                        const duration = 2000;
-                        let start = 0;
-                        const step = (timestamp) => {
-                            if (!start) start = timestamp;
-                            const progress = timestamp - start;
-                            const current = Math.min(Math.floor(progress / duration * target), target);
-                            counter.innerText = current.toLocaleString('en-US');
-                            if (current < target) {
-                                requestAnimationFrame(step);
-                            }
-                        };
-                        requestAnimationFrame(step);
-                        observer.unobserve(counter);
-                    }
-                });
-            }, { threshold: 0.5 });
-            counters.forEach(counter => observer.observe(counter));
-        }
-
-        function initSpotlightEffect() {
-            const cards = document.querySelectorAll('.spotlight-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--px', x + 'px');
-                    card.style.setProperty('--py', y + 'px');
-                });
-            });
-        }
-    </script>
 <script>
         document.addEventListener('DOMContentLoaded', () => {
             const philosophyContent = document.getElementById('philosophyContent');
@@ -445,3 +206,32 @@
 <div id="fab-container-placeholder"></div>
 </body>
 </html>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>

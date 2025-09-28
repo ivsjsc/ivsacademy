@@ -127,26 +127,35 @@
 </main>
 <div id="fab-container-placeholder"></div>
 <div data-loading-text="Đang tải chân trang..." id="footer-placeholder"></div>
-<script defer="" src="js/script.js"></script>
-<script defer="" src="js/language.js"></script>
-<script defer="" src="js/loadComponents.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-        window.onPageComponentsLoadedCallback = function() {
-            console.log("[Solutions Page] Components loaded. Page specific JS can run now.");
-            // AOS.init() is called by loadComponents.js after all components are loaded
-            // applyLanguage() is called by loadComponents.js after language system is initialized
-            // initializeFabButtons() is called by loadComponents.js after components are loaded
-            AOS.init({
-                offset: 100,
-                duration: 700,
-                easing: 'ease-out-quad',
-                once: true,
-                mirror: false,
-                anchorPlacement: 'top-bottom',
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer src="js/script.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log("[Solutions Page] Components loaded");
+                // Initialize AOS
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        offset: 100,
+                        duration: 700,
+                        easing: 'ease-out-quad',
+                        once: true,
+                        mirror: false,
+                        anchorPlacement: 'top-bottom'
+                    });
+                }
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
             });
-        };
-    </script>
+        }
+    });
+</script>
 <!-- Chèn vào cuối <body> của mọi trang -->
 <div id="fab-container-placeholder"></div>
 </body>

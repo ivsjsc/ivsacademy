@@ -313,77 +313,36 @@
 <path d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.675l-.707-.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M7.05 7.05l-.707-.707M8 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
 </svg>
 </button>
-<script defer="" src="js/script.js"></script>
-<script defer="" src="js/language.js"></script>
-<script defer="" src="js/fabController.js"></script>
-<script defer="" src="js/loadComponents.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-        // Hàm để áp dụng hoặc loại bỏ chế độ tối
-        function applyDarkMode(isDark) {
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-                document.getElementById('moonIcon').classList.add('hidden');
-                document.getElementById('sunIcon').classList.remove('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.getElementById('moonIcon').classList.remove('hidden');
-                document.getElementById('sunIcon').classList.add('hidden');
-            }
-        }
 
-        // Kiểm tra cài đặt chế độ tối của người dùng hoặc lưu trữ cục bộ
-        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-        let isDarkMode = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && prefersDarkMode.matches);
-        applyDarkMode(isDarkMode);
 
-        // Lắng nghe sự kiện click trên nút chuyển đổi
-        document.getElementById('darkModeToggle').addEventListener('click', () => {
-            isDarkMode = !isDarkMode;
-            applyDarkMode(isDarkMode);
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        });
-
-        // Lắng nghe thay đổi cài đặt hệ thống
-        prefersDarkMode.addEventListener('change', (e) => {
-            if (localStorage.getItem('theme') === null) { // Chỉ thay đổi nếu người dùng chưa đặt tùy chọn thủ công
-                isDarkMode = e.matches;
-                applyDarkMode(isDarkMode);
-            }
-        });
-
-        // Khởi tạo toàn bộ trang sau khi DOM đã tải hoàn chỉnh
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                // Khởi tạo hệ thống ngôn ngữ
-                if (window.initializeLanguageSystem) {
-                    await window.initializeLanguageSystem();
+</body>
+</html>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
                 }
                 
-                // Tải và khởi tạo các component (header, footer, FABs)
-                if (window.loadComponentsAndInitialize) {
-                    await window.loadComponentsAndInitialize();
-                }
-                
-                // Chạy bất kỳ khởi tạo cụ thể nào của trang này (nếu có)
+                // Call page callback if exists
                 if (typeof window.onPageComponentsLoadedCallback === 'function') {
                     window.onPageComponentsLoadedCallback();
                 }
-
-                // Khởi tạo thư viện AOS (Animate On Scroll)
-                AOS.init({
-                    offset: 100,
-                    duration: 700,
-                    easing: 'ease-out-quad',
-                    once: true,
-                    mirror: false,
-                    anchorPlacement: 'top-bottom',
-                });
-            } catch (error) {
-                console.error('Error during page initialization:', error);
-            }
-        });
-        
-    </script>
-</body>
-</html>
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>

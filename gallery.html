@@ -127,24 +127,37 @@
 <div id="fab-container-placeholder"></div>
 <div data-loading-text="Đang tải chân trang..." id="footer-placeholder"></div>
 <!-- Scripts -->
-<script defer="" src="js/language.js"></script>
-<script defer="" src="js/fabController.js"></script>
-<script defer="" src="js/loadComponents.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-        window.onPageComponentsLoadedCallback = function() {
-            AOS.init({
-                offset: 100, 
-                duration: 800, 
-                easing: 'ease-in-out-quad', 
-                once: true,
-            });
-            if (window.system && typeof window.system.applyTranslations === 'function') {
-                window.system.applyTranslations();
-            }
-        };
-    </script>
+
 <!-- Chèn vào cuối <body> của mọi trang -->
 <div id="fab-container-placeholder"></div>
 </body>
 </html>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>

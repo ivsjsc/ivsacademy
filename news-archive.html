@@ -245,240 +245,37 @@
 </main>
 <div id="fab-container-placeholder"></div>
 <div data-loading-text="Đang tải chân trang..." id="footer-placeholder"></div>
-<script defer="" src="js/language.js"></script>
-<script defer="" src="js/fabController.js"></script>
-<script defer="" src="js/loadComponents.js"></script>
-<script defer="" src="./js/script.js"></script>
-<script defer="" src="./js/posts-loader.js"></script>
-<script defer="" src="./js/rss-loader.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-<script>
-        window.rssFeeds = {
-            public_services: [
-                { name: "Pháp luật Việt Nam", url: "https://baophapluat.vn/rss/phap-luat-24h-200.rss", limit: 4 },
-            ],
-            unified_general_news: [
-                { name: "VnExpress", url: "https://vnexpress.net/rss/tin-moi-nhat.rss", limit: 6 } // Using a general VnExpress feed
-            ]
-        };
 
-        function loadContentForTab(tabId) {
-            const panelId = `${tabId}-panel`;
-            const panelElement = document.getElementById(panelId);
-
-            if (!panelElement) {
-                console.error(`[LỖI Tab Content] Không tìm thấy panel: #${panelId}.`);
-                return;
-            }
-            
-            panelElement.classList.remove('hidden'); 
-
-            if (tabId === 'ivs-news') {
-                const ivsNewsContainer = document.getElementById('ivs-news-container');
-                if (!ivsNewsContainer) {
-                    console.error('[LỖI Tab Content] Không tìm thấy container tin IVS: #ivs-news-container.');
-                    panelElement.innerHTML = '<p class="text-red-500 dark:text-red-400 col-span-full text-center py-10" data-lang-key="error_ivs_container_not_found">Lỗi: Không tìm thấy vùng chứa tin IVS.</p>';
-                    if (typeof window.applyTranslations === 'function') window.applyTranslations(panelElement);
-                    return;
-                }
-                if (typeof window.loadPosts === 'function') {
-                    window.loadPosts('ivs-news-container'); 
-                } else {
-                    console.warn('[CẢNH BÁO Tab Content] Hàm window.loadPosts không tồn tại.');
-                    ivsNewsContainer.innerHTML = '<p class="text-orange-500 dark:text-orange-400 col-span-full text-center py-10" data-lang-key="error_loadposts_not_defined">Chức năng tải tin IVS chưa sẵn sàng.</p>';
-                     if (typeof window.applyTranslations === 'function') window.applyTranslations(ivsNewsContainer);
-                }
-            } else { 
-                let feedsToLoad;
-                const mainRssContainerForTab = document.querySelector(`#${panelId} #${tabId}-rss-container`);
-
-                if (!mainRssContainerForTab) {
-                    console.error(`[LỖI Tab Content] Không tìm thấy container RSS chính #${tabId}-rss-container bên trong #${panelId}.`);
-                    panelElement.innerHTML = `<p class="text-red-600 dark:text-red-400 p-4 text-center" data-lang-key="error_rss_container_generic_not_found">Lỗi: Không tìm thấy vùng chứa RSS (#${tabId}-rss-container).</p>`;
-                    if (typeof window.applyTranslations === 'function') window.applyTranslations(panelElement);
-                    return; 
-                }
-                
-                mainRssContainerForTab.innerHTML = `<p class="text-gray-500 dark:text-gray-400 col-span-full text-center py-10" aria-busy="true" data-lang-key="loading_rss_feed_generic">Đang tải tin tức...</p>`;
-                if (typeof window.applyTranslations === 'function') {
-                    window.applyTranslations(mainRssContainerForTab);
-                }
-
-                if (tabId === 'public-services-news') {
-                    feedsToLoad = window.rssFeeds.public_services;
-                } else if (tabId === 'education-news' || tabId === 'technology-news' || tabId === 'other-news') {
-                    feedsToLoad = window.rssFeeds.unified_general_news;
-                } else {
-                    console.warn(`[Tab Content] Không có cấu hình RSS cho tab: ${tabId}`);
-                    mainRssContainerForTab.innerHTML = `<p class="text-orange-500 dark:text-orange-400 col-span-full text-center py-10" data-lang-key="no_rss_config_for_category">Không có cấu hình RSS cho mục này.</p>`;
-                    if (typeof window.applyTranslations === 'function') window.applyTranslations(mainRssContainerForTab);
-                    return;
-                }
-
-                if (feedsToLoad && feedsToLoad.length > 0) {
-                    mainRssContainerForTab.innerHTML = ''; 
-                    feedsToLoad.forEach((feed, index) => {
-                        const uniqueFeedGroupId = `${tabId}-rss-feed-group-${index}`;
-                        let feedGroupDiv = document.getElementById(uniqueFeedGroupId);
-
-                        if (!feedGroupDiv) { 
-                            feedGroupDiv = document.createElement('div');
-                            feedGroupDiv.id = uniqueFeedGroupId;
-                            feedGroupDiv.className = 'rss-feed-group'; 
-
-                            const feedTitleElement = document.createElement('h4');
-                            feedTitleElement.className = 'rss-feed-title'; 
-                            feedTitleElement.textContent = feed.name || `Nguồn ${index + 1}`;
-                            feedGroupDiv.appendChild(feedTitleElement);
-
-                            const gridContainerDiv = document.createElement('div');
-                            gridContainerDiv.id = `${tabId}-rss-feed-items-${index}`; 
-                            gridContainerDiv.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
-                            feedGroupDiv.appendChild(gridContainerDiv);
-                            
-                            mainRssContainerForTab.appendChild(feedGroupDiv);
-                        }
-                        const actualTargetContainerForFeedItems = document.getElementById(`${tabId}-rss-feed-items-${index}`);
-                        
-                        if (typeof window.loadRssFeed === 'function' && actualTargetContainerForFeedItems) {
-                            window.loadRssFeed(actualTargetContainerForFeedItems.id, feed.url, feed.limit || 6);
-                        } else {
-                            if(!actualTargetContainerForFeedItems) console.error(`[LỖI Tab Content] Không tạo/tìm được container cho mục RSS của nguồn ${feed.name}: ${tabId}-rss-feed-items-${index}`);
-                            else console.warn('[CẢNH BÁO Tab Content] Hàm window.loadRssFeed không tồn tại.');
-                            if(actualTargetContainerForFeedItems) actualTargetContainerForFeedItems.innerHTML = `<p class="text-orange-500 dark:text-orange-400 col-span-full text-center py-10" data-lang-key="error_loadrss_not_defined_feed">Chức năng tải RSS cho ${feed.name} chưa sẵn sàng.</p>`;
-                             if (typeof window.applyTranslations === 'function' && actualTargetContainerForFeedItems) window.applyTranslations(actualTargetContainerForFeedItems);
-                        }
-                    });
-                } else {
-                    mainRssContainerForTab.innerHTML = `<p class="text-orange-500 dark:text-orange-400 col-span-full text-center py-10" data-lang-key="no_rss_feeds_for_category">Không có nguồn tin RSS nào cho mục này.</p>`;
-                    if (typeof window.applyTranslations === 'function') window.applyTranslations(mainRssContainerForTab);
-                }
-            }
-
-            if (typeof window.applyTranslations === 'function') {
-                window.applyTranslations(panelElement); 
-            }
-        }
-
-        function setupTabs() {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            if(tabButtons.length === 0) return;
-
-            let initialTabId = tabButtons[0].dataset.tab; 
-            const activeTabButtonFromMarkup = document.querySelector('.tab-button[aria-selected="true"]');
-            if (activeTabButtonFromMarkup) {
-                initialTabId = activeTabButtonFromMarkup.dataset.tab;
-            } else {
-                tabButtons[0].setAttribute('aria-selected', 'true'); 
-                tabButtons[0].classList.add('active'); 
-            }
-            
-            const activateTab = (tabId) => {
-                if (!tabId) return;
-                tabButtons.forEach(button => {
-                    const isActive = button.dataset.tab === tabId;
-                    button.classList.toggle('active', isActive);
-                    button.setAttribute('aria-selected', String(isActive));
-                });
-                tabContents.forEach(content => {
-                    const isContentActive = content.id === `${tabId}-panel`;
-                    content.classList.toggle('hidden', !isContentActive);
-                    content.classList.toggle('active', isContentActive); 
-                    content.classList.toggle('tab-panel-active-styles', isContentActive);
-                });
-                loadContentForTab(tabId);
-            };
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const tabId = event.currentTarget.dataset.tab;
-                    if (tabId) {
-                        activateTab(tabId);
-                    }
-                });
-            });
-            
-            if (initialTabId) {
-                activateTab(initialTabId);
-            }
-        }
-        
-        window.onPageComponentsLoadedCallback = function() {
-            AOS.init({ duration: 800, once: true, offset: 50 });
-            // Language system is initialized by language.js before this callback
-            // We can directly call applyTranslations if language data is ready (or it will fetch it)
-            if (typeof window.applyTranslations === 'function') {
-                window.applyTranslations(localStorage.getItem('selectedLanguage') || 'en'); // Default to EN if not set
-            } else {
-                console.error('Lỗi: Hàm window.applyTranslations không được tìm thấy sau khi loadComponents.');
-            }
-            if (typeof setupTabs === 'function') {
-                setupTabs(); 
-            } else {
-                console.error('Lỗi: Hàm setupTabs không được tìm thấy sau khi loadComponents.');
-            }
-            window.pageComponentsCallbackCalled = true; 
-        };
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const mainContent = document.querySelector('main');
-            const loadingSpinner = document.getElementById('loading-spinner');
-            if (loadingSpinner) loadingSpinner.classList.remove('opacity-0', 'pointer-events-none');
-
-            setTimeout(function() { 
-                if (!window.pageComponentsCallbackCalled) { 
-                    console.warn("Fallback DOMContentLoaded: onPageComponentsLoadedCallback không được gọi. Khởi tạo thủ công.");
-                    AOS.init({ duration: 800, once: true, offset: 50 });
-                    
-                    // [FIXED] Sửa lỗi logic: Tách riêng việc khởi tạo và áp dụng ngôn ngữ
-                    // 1. Cố gắng khởi tạo hệ thống ngôn ngữ trước, nếu có.
-                    if (typeof window.initializeLanguageSystem === 'function') {
-                         window.initializeLanguageSystem('en'); // Mặc định 'en' trong fallback
-                    }
-                    
-                    // 2. Sau đó, luôn cố gắng áp dụng bản dịch.
-                    if (typeof window.applyTranslations === 'function') {
-                         window.applyTranslations(localStorage.getItem('selectedLanguage') || 'en');
-                    } else {
-                        console.error('Lỗi nghiêm trọng (Fallback): Hàm applyTranslations KHÔNG TÌM THẤY.');
-                    }
-
-                    // 3. Thiết lập tabs
-                    if (typeof setupTabs === 'function') {
-                        setupTabs();
-                    } else {
-                         console.error('Lỗi nghiêm trọng (Fallback): Hàm setupTabs KHÔNG TÌM THẤY.');
-                    }
-                }
-                 if (mainContent) mainContent.classList.remove('opacity-0');
-                 if (loadingSpinner) loadingSpinner.classList.add('opacity-0', 'pointer-events-none');
-            }, 1200); 
-        });
-        
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        if (scrollToTopBtn) {
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 200) {
-                    scrollToTopBtn.classList.remove('hidden');
-                    scrollToTopBtn.classList.add('flex');
-                } else {
-                    scrollToTopBtn.classList.remove('flex');
-                    scrollToTopBtn.classList.add('hidden');
-                }
-            }, { passive: true });
-
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            if (window.pageYOffset <= 200) {
-                scrollToTopBtn.classList.add('hidden');
-            }
-        }
-    </script>
 <!-- Chèn vào cuối <body> của mọi trang -->
 <div id="fab-container-placeholder"></div>
 </body>
 </html>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>
