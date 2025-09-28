@@ -19,8 +19,20 @@
  */
 function componentLog(message, level = 'info') {
     // Ensure console exists and has the method
-    if (typeof console !== 'undefined' && typeof console[level] === 'function') {
-        console[level](`[IVS App] ${message}`);
+    if (typeof console !== 'undefined' && console && typeof console[level] === 'function') {
+        try {
+            console[level](`[IVS App] ${message}`);
+        } catch (error) {
+            // Fallback to console.log if specific level fails
+            if (typeof console.log === 'function') {
+                console.log(`[IVS App] ${level.toUpperCase()}: ${message}`);
+            }
+        }
+    } else {
+        // Ultimate fallback
+        if (typeof console !== 'undefined' && console && typeof console.log === 'function') {
+            console.log(`[IVS App] ${level.toUpperCase()}: ${message}`);
+        }
     }
 }
 window.componentLog = componentLog; // Expose globally
