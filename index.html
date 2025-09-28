@@ -29,60 +29,10 @@
     <link rel="stylesheet" href="/css/tailwind.css">
     
     <!-- Custom CSS -->
+    <!-- Custom CSS -->
     <link href="/css/styles.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/animations.css" rel="stylesheet">
-    <script>
-        // Cấu hình Tailwind CSS, sử dụng font Inter làm mặc định
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'ivs-bg': '#0A0A0A',
-                        'ivs-card': '#111111',
-                        'ivs-border': '#27272a',
-                        'ivs-text-primary': '#f4f4f5',
-                        'ivs-text-secondary': '#a1a1aa',
-                        'ivs-blue': '#60a5fa',
-                        'ivs-blue-darker': '#3b82f6',
-                        'ivs-green': '#4ade80',
-                        'ivs-purple': '#a78bfa',
-                        'ivs-cyan': '#22d3ee',
-                        'ivs-amber': '#f59e0b',
-                        'ivs-orange': '#fb923c',
-                        'primary': '#6366F1', // Indigo
-                        'secondary': '#FACC15', // Amber
-                        'ivs-neutral-800': '#18181B',
-                        'ivs-neutral-700': '#27272A',
-                        'ivs-neutral-600': '#3F3F46',
-                        'ivs-red': '#f87171', // New color for emphasis
-                        'ivs-pink': '#ec4899', // New pink for mamnon/certs
-                    },
-                    fontFamily: {
-                        'sans': ['Be Vietnam Pro', 'sans-serif'],
-                        'display': ['Poppins', 'sans-serif'],
-                        'inter': ['Inter', 'sans-serif']
-                    },
-                    keyframes: {
-                        wave: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        pulseCode: {
-                            '0%, 100%': { opacity: 0.8 },
-                            '50%': { opacity: 1 },
-                        }
-                    },
-                    animation: {
-                        wave: 'wave 2s infinite ease-in-out',
-                        pulseCode: 'pulseCode 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            },
-            plugins: []
-        }
-    </script>
 
     <style>
         /* CSS tuỳ chỉnh cho giao diện tối */
@@ -858,32 +808,49 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Floating Action Button Placeholder -->
+    <!-- Footer Placeholder -->
+    <footer id="footer-placeholder" data-loading-text="Đang tải chân trang..." data-lang-key="placeholder_footer_loading">
+        <!-- This content will be dynamically loaded by loadComponents.js -->
+    </footer>
+
+    <!-- FAB Container Placeholder -->
     <div id="fab-container-placeholder"></div>
 
-    <!-- START OF SCRIPT LOADING BLOCK -->
+    <!-- Deferred JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <!-- Custom IVS Scripts for dynamic components and language -->
-    <script src="/js/loadComponents.js" defer></script>
+
+    <!-- Core Application Scripts - Order is crucial -->
+    <!-- 1. Firebase Init (if type="module", load first) -->
+    <script src="/js/firebase-init.js" type="module"></script>
+    <!-- 2. Global Utilities (componentLog, debounce) - MUST load synchronously first -->
+    <script src="/js/utils.js"></script>
+    <!-- 3. Language System (self-initializes, needed by Header) -->
     <script src="/js/language.js" defer></script>
+    <!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->
     <script src="/js/fabController.js" defer></script>
-    
+    <!-- 5. Component Loader (loads HTML and then calls controller inits) -->
+    <script src="/js/loadComponents.js" defer></script>
+    <!-- 6. Main App Logic (if any, after all components are ready) -->
+    <script src="/js/app.js" defer></script>
+
+    <!-- Page-specific logic initialization -->
     <script>
-        // Start of initialization logic (Non-component scripts)
-        // Lưu ý: Các chức năng liên quan đến Menu Mobile (initMobileMenu) đã được loại bỏ 
-        // khỏi script này vì chúng sẽ nằm trong headerController.js
-        document.addEventListener('DOMContentLoaded', () => {
-            // Khởi tạo các chức năng chính sau khi tải DOM
-            setTimeout(() => {
-                initAOS();
-                initVideos();
-                initAnimatedCounters();
-                initSmoothScroll();
-                initAudioMenu();
-                // initMobileMenu() đã được loại bỏ ở đây.
-            }, 300); 
-        });
+        // Callback triggered by loadComponents.js after all common components are loaded
+        window.onPageComponentsLoadedCallback = function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-quad' });
+            }
+
+            // Initialize page-specific functionality
+            initVideos();
+            initAnimatedCounters();
+            initSmoothScroll();
+            initAudioMenu();
+
+            window.componentLog("Index page initialization completed.", "info");
+        };
 
         // Function để hiển thị modal thông báo (thay cho alert/confirm)
         function showMessageModal(title, message) {
@@ -983,30 +950,6 @@
             audioPlayer.addEventListener('error', stopCurrentAudio);
         }
 
-        // Khởi tạo menu Mobile (Được giữ lại logic, nhưng không gọi DOM element vì nó được load từ component khác)
-        // Hàm này có thể bị thay thế hoàn toàn bởi logic trong headerController.js
-        function initMobileMenu() {
-            // Logic cho mobile menu sẽ được quản lý bởi script loadComponents.js (headerController.js)
-            // Ví dụ: khi header được load xong, nó sẽ gọi hàm khởi tạo menu mobile.
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (mobileMenu) {
-                // Thêm các link động nếu cần. Tạm thời chỉ là placeholder.
-            }
-        }
-
-        // Khởi tạo AOS library cho hiệu ứng cuộn
-        function initAOS() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 800,
-                    once: true,
-                    offset: 50,
-                    easing: 'ease-out-quad',
-                    disable: 'mobile'
-                });
-            }
-        }
-
         // Xử lý Video nền
         function initVideos() {
             const heroVideo = document.getElementById('heroVideo');
@@ -1075,51 +1018,6 @@
                 });
             });
         }
-    </script>
-
-    <!-- Footer Placeholder -->
-    <footer id="footer-placeholder" data-loading-text="Đang tải chân trang..." data-lang-key="placeholder_footer_loading">
-        <!-- This content will be dynamically loaded by loadComponents.js -->
-    </footer>
-
-    <!-- FAB Container Placeholder -->
-    <div id="fab-container-placeholder"></div>
-
-    <!-- Deferred JavaScript Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-
-    <!-- Core Application Scripts - Order is crucial -->
-    <!-- 1. Firebase Init (if type="module", load first) -->
-    <script src="/js/firebase-init.js" type="module"></script>
-    <!-- 2. Global Utilities (componentLog, debounce) - MUST load synchronously first -->
-    <script src="/js/utils.js"></script>
-    <!-- 3. Language System (self-initializes, needed by Header) -->
-    <script src="/js/language.js" defer></script>
-    <!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->
-    <script src="/js/fabController.js" defer></script>
-    <!-- 5. Component Loader (loads HTML and then calls controller inits) -->
-    <script src="/js/loadComponents.js" defer></script>
-    <!-- 6. Main App Logic (if any, after all components are ready) -->
-    <script src="/js/app.js" defer></script>
-
-    <!-- Page-specific logic initialization -->
-    <script>
-        // Callback triggered by loadComponents.js after all common components are loaded
-        window.onPageComponentsLoadedCallback = function() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-quad' });
-            }
-
-            // Initialize page-specific functionality
-            initVideos();
-            initAnimatedCounters();
-            initSmoothScroll();
-            initAudioMenu();
-
-            window.componentLog("Index page initialization completed.", "info");
-        };
     </script>
 
 </body>
