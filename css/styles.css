@@ -541,7 +541,7 @@ body.menu-open {
 /* Moved from <style> in index.html */
 .font-display { font-family: 'Lexend', sans-serif; }
 .hero-image {
-    background-image: linear-gradient(to top, rgba(13, 17, 23, 1) 5%, rgba(13, 17, 23, 0.4) 50%, rgba(13, 17, 23, 0.2) 100%), url('/images/logo/webbannermo.png');
+    background-image: linear-gradient(to top, rgba(13, 17, 23, 1) 5%, rgba(13, 17, 23, 0.4) 50%, rgba(13, 17, 23, 0.2) 100%), url('/images/logo/webbannermo.jpg');
     background-size: cover;
     background-position: center 70%;
     background-attachment: scroll;

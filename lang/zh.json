@@ -4275,5 +4275,13 @@
   "pricing_lp_feat1_salewebsite": "完整响应式 Landing Page 设计",
   "pricing_lp_feat2_salewebsite": "手机与桌面自适应",
   "pricing_lp_feat3_salewebsite": "集成联系表单与一键拨号",
-  "pricing_lp_feat4_salewebsite": "包含主机 + 域名（1年）"
+  "pricing_lp_feat4_salewebsite": "包含主机 + 域名（1年）",
+  "hero_service_edu": "教育培训解决方案",
+  "hero_service_edu_sub": "教育生态系统，国际标准课程",
+  "cta_final_contact_email": "联系方式：info@ivsacademy.edu.vn",
+  "fab_call_hotline": "拨打热线",
+  "fab_send_email": "发送邮件",
+  "fab_chat_zalo": "Zalo聊天",
+  "fab_fanpage_fb": "Facebook主页",
+  "fab_chat_whatapps": "WhatsApp聊天"
 }

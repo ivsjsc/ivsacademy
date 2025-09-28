@@ -89,8 +89,8 @@
     <!-- Core Application Scripts - Order is crucial -->
     <!-- 1. Firebase Init (if type="module", load first) -->
     <script src="/js/firebase-init.js" type="module"></script>
-    <!-- 2. Global Utilities (componentLog, debounce) -->
-    <script src="/js/utils.js" defer></script>
+    <!-- 2. Global Utilities (componentLog, debounce) - MUST load synchronously first -->
+    <script src="/js/utils.js"></script>
     <!-- 3. Language System (self-initializes, needed by Header) -->
     <script src="/js/language.js" defer></script>
     <!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->

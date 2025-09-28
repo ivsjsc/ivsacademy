@@ -4280,6 +4280,7 @@
   "project_khahome_title_ivsapps": "KhaHome (BĐS & TMĐT)",
   "project_khahome_desc_ivsapps": "Nền tảng thương mại điện tử kết hợp bất động sản/cải tạo nhà cửa, tích hợp hệ thống quản lý sản phẩm phức tạp.",
   "project_suoicamp_title_ivsapps": "Suối Camp (Du Lịch/Giải Trí)",
+  
   "project_suoicamp_desc_ivsapps": "Website giới thiệu khu du lịch, cắm trại, nổi bật về thiết kế hình ảnh và tối ưu cho việc đặt chỗ, thu hút khách hàng tiềm năng.",
   "project_banhanh_title_ivsapps": "Tiệc cưới Ba Nhánh 2 (Sự Kiện)",
   "project_banhanh_desc_ivsapps": "Mẫu website dịch vụ tiệc cưới, hội nghị, với giao diện tối ưu hiển thị hình ảnh chất lượng cao và tích hợp form tư vấn đặt tiệc.",
@@ -4308,5 +4309,13 @@
   "pricing_lp_feat1_salewebsite": "Thiết kế Landing Page responsive hoàn chỉnh",
   "pricing_lp_feat2_salewebsite": "Tương thích di động & desktop",
   "pricing_lp_feat3_salewebsite": "Tích hợp form liên hệ & nút gọi nhanh",
-  "pricing_lp_feat4_salewebsite": "Hosting + tên miền (1 năm) đã bao gồm"
+  "pricing_lp_feat4_salewebsite": "Hosting + tên miền (1 năm) đã bao gồm",
+  "hero_service_edu": "Giải pháp Giáo dục & Đào tạo",
+  "hero_service_edu_sub": "Hệ sinh thái giáo dục, chương trình chuẩn quốc tế",
+  "cta_final_contact_email": "Liên hệ: info@ivsacademy.edu.vn",
+  "fab_call_hotline": "Gọi Hotline",
+  "fab_send_email": "Gửi Email",
+  "fab_chat_zalo": "Chat Zalo",
+  "fab_fanpage_fb": "Fanpage Facebook",
+  "fab_chat_whatapps": "Chat WhatsApp"
 }

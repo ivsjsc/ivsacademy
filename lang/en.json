@@ -4308,5 +4308,13 @@
   "pricing_lp_feat1_salewebsite": "Complete responsive Landing Page design",
   "pricing_lp_feat2_salewebsite": "Mobile & desktop responsive",
   "pricing_lp_feat3_salewebsite": "Contact form & quick-call integration",
-  "pricing_lp_feat4_salewebsite": "Hosting + domain (1 year) included"
+  "pricing_lp_feat4_salewebsite": "Hosting + domain (1 year) included",
+  "hero_service_edu": "Education & Training Solutions",
+  "hero_service_edu_sub": "Education ecosystem, international standard programs",
+  "cta_final_contact_email": "Contact: info@ivsacademy.edu.vn",
+  "fab_call_hotline": "Call Hotline",
+  "fab_send_email": "Send Email",
+  "fab_chat_zalo": "Chat Zalo",
+  "fab_fanpage_fb": "Facebook Fanpage",
+  "fab_chat_whatapps": "Chat WhatsApp"
 }
