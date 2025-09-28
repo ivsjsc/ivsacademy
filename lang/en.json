@@ -4301,4 +4301,12 @@
   "placeholder_footer_loading": "Loading footer...",
   "hero_fallback_image_alt": "IVS Academy hero background image",
   "index_page_title": "IVS JSC - Technology, Education & Talent Ecosystem - We Build Solutions"
+  ,
+  "pricing_lp_title_salewebsite": "Landing Page - From 1,500,000 VND",
+  "pricing_lp_desc_salewebsite": "A fast, affordable one-page website ideal for individuals or small shops. All costs included (design, hosting, basic domain, initial technical support).",
+  "pricing_lp_price_salewebsite": "From 1,500,000 VND",
+  "pricing_lp_feat1_salewebsite": "Complete responsive Landing Page design",
+  "pricing_lp_feat2_salewebsite": "Mobile & desktop responsive",
+  "pricing_lp_feat3_salewebsite": "Contact form & quick-call integration",
+  "pricing_lp_feat4_salewebsite": "Hosting + domain (1 year) included"
 }

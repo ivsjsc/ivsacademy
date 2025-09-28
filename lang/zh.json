@@ -4268,4 +4268,12 @@
   "placeholder_footer_loading": "正在加载页脚...",
   "hero_fallback_image_alt": "IVS Academy 主页背景图",
   "index_page_title": "IVS JSC - 技术、教育与人才生态系统 - 我们构建解决方案"
+  ,
+  "pricing_lp_title_salewebsite": "Landing Page - 起价 1.500.000 越南盾",
+  "pricing_lp_desc_salewebsite": "快速、经济的一页式网站，适合个人或小型店铺。包含所有费用（设计、主机、基础域名、初期技术支持）。",
+  "pricing_lp_price_salewebsite": "起价 1.500.000 越南盾",
+  "pricing_lp_feat1_salewebsite": "完整响应式 Landing Page 设计",
+  "pricing_lp_feat2_salewebsite": "手机与桌面自适应",
+  "pricing_lp_feat3_salewebsite": "集成联系表单与一键拨号",
+  "pricing_lp_feat4_salewebsite": "包含主机 + 域名（1年）"
 }
