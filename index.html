@@ -214,7 +214,7 @@
         }
 
 
-        /* Custom Scrollbar for solutions tab */
+        /* Custom Scrollbar for tabs */
         .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #111111; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 2px; }
@@ -252,6 +252,10 @@
                     </h1>
                     <p class="text-lg sm:text-xl lg:text-2xl text-ivs-text-primary max-w-4xl mx-auto mb-8 font-medium" data-aos="fade-up" data-aos-delay="200" data-lang-key="hero_description">
                         Chúng tôi cung cấp giải pháp toàn diện từ <span class="font-bold">lập trình cốt lõi (Code Tay)</span>, tư vấn chiến lược đến ứng dụng công nghệ, giúp các tổ chức tối ưu hóa nguồn lực và bứt phá hiệu suất.
+                        <br class="hidden sm:block">
+                        <span class="block mt-4 text-sm sm:text-base text-ivs-blue/80" data-lang-key="hero_contact_email">
+                            Liên hệ: <a href="mailto:info@ivsacademy.edu.vn" class="underline hover:text-ivs-cyan transition-colors">info@ivsacademy.edu.vn</a>
+                        </span>
                     </p>
                     
                     <!-- DỊCH VỤ NỔI BẬT: THIẾT KẾ WEB & TRIỂN KHAI APPS -->
@@ -423,7 +427,7 @@
                     <!-- App Card: QLGX (Quản lý cộng đồng) -->
                     <a href="https://qlgx.netlify.app/" target="_blank" rel="noopener noreferrer" class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-purple" data-aos="fade-up" data-aos-delay="300">
                         <i class="fas fa-people-group text-5xl text-ivs-purple"></i> <!-- Icon mới cho quản lý cộng đồng/giáo xứ -->
-                        <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_qlgx_title">QLGX – Quản Lý Cộng Đồng (Custom App)</h3>
+                        <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_qlgx_title">QLGX – Quản Lý Cộng đồng (Custom App)</h3>
                         <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_qlgx_desc">Hỗ trợ Nhà Thờ và Giáo Xứ quản lý thông tin hộ gia đình, giúp việc tra cứu dữ liệu giáo dân trở nên dễ dàng.</p>
                         <span class="mt-auto font-semibold text-ivs-purple hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá &rarr;</span>
                     </a>
@@ -445,7 +449,7 @@
                     </a>
 
                     <!-- All Apps Button Card -->
-                    <a href="/apps/ivsapps.html" class="interactive-card bg-ivs-neutral-800 border-2 border-dashed border-ivs-cyan/50 hover:border-ivs-cyan p-6 md:p-8 rounded-xl flex flex-col items-center justify-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="600">
+                    <a href="https://ivsacademy.edu.vn/apps/ivsapps" target="_blank" class="interactive-card bg-ivs-neutral-800 border-2 border-dashed border-ivs-cyan/50 hover:border-ivs-cyan p-6 md:p-8 rounded-xl flex flex-col items-center justify-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="600">
                         <i class="fas fa-shapes text-5xl text-ivs-cyan mb-4 animate-pulse"></i>
                         <h3 class="text-2xl font-semibold font-display text-ivs-text-primary mb-3" data-lang-key="app_all_title">Xây dựng Apps tùy chỉnh</h3>
                         <p class="text-base text-ivs-text-secondary mb-6" data-lang-key="app_all_desc">Chúng tôi phát triển ứng dụng quản lý/quy trình riêng theo mọi yêu cầu.</p>
@@ -455,6 +459,22 @@
                         </span>
                     </a>
                 </div>
+
+                <!-- BỔ SUNG: Tham khảo các trang quản lý mẫu -->
+                <div class="mt-16 pt-8 border-t border-ivs-border text-center" data-aos="fade-up" data-aos-delay="700">
+                    <h3 class="text-xl font-semibold text-ivs-text-primary mb-4" data-lang-key="app_management_sample_title">Tham khảo Trang Quản lý & Analytics Mẫu:</h3>
+                    <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+                        <a href="https://ivsacademy.edu.vn/analytics" target="_blank" class="text-ivs-purple hover:text-ivs-text-primary transition-colors flex items-center" data-lang-key="app_management_sample_analytics">
+                            <i class="fas fa-chart-bar mr-2"></i> Analytics Dashboard
+                        </a>
+                        <span class="text-ivs-border">|</span>
+                        <a href="https://ivsacademy.edu.vn/admin" target="_blank" class="text-ivs-purple hover:text-ivs-text-primary transition-colors flex items-center" data-lang-key="app_management_sample_admin">
+                            <i class="fas fa-user-shield mr-2"></i> Admin Panel
+                        </a>
+                    </div>
+                </div>
+                <!-- KẾT THÚC BỔ SUNG -->
+
             </div>
         </section>
 
@@ -544,7 +564,7 @@
                     </div>
 
                     <!-- CTA to Web Design Service -->
-                    <a href="/Pages/webdesign.html" class="interactive-card bg-ivs-neutral-800 border-2 border-dashed border-ivs-red/50 hover:border-ivs-red p-6 rounded-xl flex flex-col items-center justify-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="600">
+                    <a href="https://ivsacademy.edu.vn/pages/webdesign" target="_blank" class="interactive-card bg-ivs-neutral-800 border-2 border-dashed border-ivs-red/50 hover:border-ivs-red p-6 rounded-xl flex flex-col items-center justify-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="600">
                         <i class="fas fa-triangle-exclamation text-5xl text-ivs-red mb-4"></i>
                         <h3 class="text-2xl font-semibold font-display text-ivs-text-primary mb-3" data-lang-key="web_projects_cta_title">Cần giải pháp không thể?</h3>
                         <p class="text-base text-ivs-text-secondary mb-6" data-lang-key="web_projects_cta_desc">Hãy để đội ngũ Code Tay của chúng tôi biến thử thách thành hiện thực.</p>
@@ -636,7 +656,105 @@
             </div>
         </section>
         
-        
+        <!-- SECTION 8: SOLUTIONS FOR PARTNERS (Tabs: LIÊN KẾT GIÁO DỤC, Tư vấn,...) -->
+        <section id="solutions" class="py-20 lg:py-24 bg-ivs-bg border-b border-ivs-border">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl lg:text-5xl font-bold font-display text-white mb-4" data-lang-key="solutions_main_title">Giải pháp Tối ưu cho Từng đối tác</h2>
+                    <p class="text-lg text-ivs-text-secondary" data-lang-key="solutions_main_subtitle">Chúng tôi thiết kế các gói giải pháp chuyên biệt, đáp ứng chính xác nhu cầu và mục tiêu của từng loại hình đối tác.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200" x-data="{ tab: 'schools' }" x-init="
+                    $watch('tab', value => { 
+                        // Cập nhật URL hash khi tab thay đổi (optional)
+                        window.history.replaceState(null, null, '#solutions?tab=' + value);
+                    });
+                    // Kiểm tra hash khi tải trang
+                    if (window.location.hash.includes('tab=')) {
+                        const initialTab = window.location.hash.split('tab=')[1];
+                        if (['schools', 'centers', 'corporate', 'individual'].includes(initialTab)) {
+                            tab = initialTab;
+                        }
+                    }
+                " class="font-inter">
+                    <!-- Tabs Menu -->
+                    <div class="mb-8 border-b border-ivs-border flex justify-center custom-scrollbar overflow-x-auto pb-2">
+                        <button @click="tab = 'schools'" :class="{ 'text-ivs-blue border-ivs-blue': tab === 'schools', 'text-ivs-text-secondary border-transparent': tab !== 'schools' }" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_schools">Trường học</button>
+                        <button @click="tab = 'centers'" :class="{ 'text-ivs-blue border-ivs-blue': tab === 'centers', 'text-ivs-text-secondary border-transparent': tab !== 'centers' }" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_centers">Trung tâm</button>
+                        <button @click="tab = 'corporate'" :class="{ 'text-ivs-blue border-ivs-blue': tab === 'corporate', 'text-ivs-text-secondary border-transparent': tab !== 'corporate' }" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_corporate">Doanh nghiệp</button>
+                        <button @click="tab = 'individual'" :class="{ 'text-ivs-blue border-ivs-blue': tab === 'individual', 'text-ivs-text-secondary border-transparent': tab !== 'individual' }" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_individual">Cá nhân</button>
+                    </div>
+
+                    <!-- Tabs Content -->
+                    <div class="bg-ivs-card p-8 rounded-xl border border-ivs-border shadow-xl">
+                        <!-- Schools Content -->
+                        <div x-show="tab === 'schools'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0">
+                            <h3 class="text-3xl font-bold font-display text-ivs-blue mb-6" data-lang-key="solutions_schools_title">Giải pháp cho Trường học (K-12)</h3>
+                            <ul class="space-y-4 text-ivs-text-secondary list-disc list-inside text-lg">
+                                <li class="pl-2" data-lang-key="solutions_schools_item1">Triển khai chương trình STEAM và tiếng Anh tích hợp.</li>
+                                <li class="pl-2" data-lang-key="solutions_schools_item2">Cung ứng và quản lý giáo viên nước ngoài.</li>
+                                <li class="pl-2" data-lang-key="solutions_schools_item3">Tổ chức các cuộc thi học thuật và sự kiện ngoại khóa.</li>
+                                <li class="pl-2" data-lang-key="solutions_schools_item4">Xây dựng hệ thống quản lý học tập (LMS) và cổng thông tin trường học.</li>
+                                <li class="pl-2" data-lang-key="solutions_schools_item5">Cung cấp và lắp đặt thiết bị công nghệ chuyên dụng (máy tính, máy in, laptop đa số hàng nội địa Nhật) từ IVS Celestech.</li>
+                            </ul>
+                            <div class="mt-8 flex flex-wrap gap-4">
+                                <a href="/pages/lkmamnon.html" class="bg-ivs-blue text-white px-5 py-2 rounded-lg hover:bg-ivs-blue-darker transition-colors font-semibold" data-lang-key="solutions_schools_cta1"><i class="fas fa-baby mr-2"></i> Hợp tác Mầm non</a>
+                                <a href="/pages/lkthcsthpt.html" class="bg-ivs-blue text-white px-5 py-2 rounded-lg hover:bg-ivs-blue-darker transition-colors font-semibold" data-lang-key="solutions_schools_cta2"><i class="fas fa-school mr-2"></i> Hợp tác Cấp 2-3</a>
+                                <a href="/pages/tech_devices.html" class="bg-ivs-cyan text-white px-5 py-2 rounded-lg hover:bg-cyan-600 transition-colors font-semibold" data-lang-key="solutions_tech_cta"><i class="fas fa-desktop mr-2"></i> Thiết bị Công nghệ</a>
+                            </div>
+                        </div>
+                        <!-- Centers Content -->
+                        <div x-show="tab === 'centers'" style="display: none;" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0">
+                            <h3 class="text-3xl font-bold font-display text-ivs-blue mb-6" data-lang-key="solutions_centers_title">Giải pháp cho Trung tâm Ngoại ngữ & Kỹ năng</h3>
+                            <ul class="space-y-4 text-ivs-text-secondary list-disc list-inside text-lg">
+                                <li class="pl-2" data-lang-key="solutions_centers_item1">Tư vấn thành lập, setup và vận hành trung tâm từ A-Z.</li>
+                                <li class="pl-2" data-lang-key="solutions_centers_item2">Cung cấp chương trình và giáo trình độc quyền.</li>
+                                <li class="pl-2" data-lang-key="solutions_centers_item3">Giải pháp CRM và App thương hiệu để quản lý và chăm sóc học viên.</li>
+                                <li class="pl-2" data-lang-key="solutions_centers_item4">Hỗ trợ tuyển sinh và chiến lược marketing.</li>
+                                <li class="pl-2" data-lang-key="solutions_centers_item5">Dịch vụ cung ứng giáo viên nước ngoài và nhân sự chuyên môn.</li>
+                            </ul>
+                            <div class="mt-8 flex flex-wrap gap-4">
+                                <a href="/Pages/lkttnn.html" class="bg-ivs-blue text-white px-5 py-2 rounded-lg hover:bg-ivs-blue-darker transition-colors font-semibold" data-lang-key="solutions_centers_cta1"><i class="fas fa-chalkboard-user mr-2"></i> Hợp tác Trung tâm</a>
+                                <a href="/Pages/foreign-teacher-services.html" class="bg-ivs-purple text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition-colors font-semibold" data-lang-key="solutions_foreign_teacher_cta"><i class="fas fa-globe mr-2"></i> GV Nước ngoài</a>
+                                <a href="/apps/ivsapps.html" class="bg-ivs-cyan text-white px-5 py-2 rounded-lg hover:bg-cyan-600 transition-colors font-semibold" data-lang-key="solutions_app_cta"><i class="fas fa-mobile-alt mr-2"></i> Nền tảng App</a>
+                            </div>
+                        </div>
+                        <!-- Corporate Content -->
+                        <div x-show="tab === 'corporate'" style="display: none;" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0">
+                            <h3 class="3xl font-bold font-display text-ivs-blue mb-6" data-lang-key="solutions_corporate_title">Giải pháp cho Doanh nghiệp (IVS Consulting)</h3>
+                            <ul class="space-y-4 text-ivs-text-secondary list-disc list-inside text-lg">
+                                <li class="pl-2" data-lang-key="solutions_corporate_item1">Chương trình đào tạo Tiếng Anh Thương mại (Business English) cho nhân viên.</li>
+                                <li class="pl-2" data-lang-key="solutions_corporate_item2">Các khóa học "Upskill" nâng cao kỹ năng mềm và kỹ năng lãnh đạo.</li>
+                                <li class="pl-2" data-lang-key="solutions_corporate_item3">Tư vấn chiến lược nhân sự và xây dựng văn hóa học tập trong doanh nghiệp.</li>
+                                <li class="pl-2" data-lang-key="solutions_corporate_item4">Tổ chức team-building và các sự kiện đào tạo chuyên biệt.</li>
+                                <li class="pl-2" data-lang-key="solutions_corporate_item5">Cung cấp thiết bị văn phòng nội địa Nhật (Máy in, Laptop, PC).</li>
+                            </ul>
+                            <div class="mt-8 flex flex-wrap gap-4">
+                                <a href="/Pages/psb_introduction.html" class="bg-ivs-blue text-white px-5 py-2 rounded-lg hover:bg-ivs-blue-darker transition-colors font-semibold" data-lang-key="solutions_corporate_cta1"><i class="fas fa-chart-line mr-2"></i> Giới thiệu PSB</a>
+                                <a href="/Pages/webdesign.html" class="bg-ivs-purple text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition-colors font-semibold" data-lang-key="solutions_corporate_cta2"><i class="fas fa-code mr-2"></i> Thiết kế Website</a>
+                                <a href="/Pages/ivscelestech-tcnoithat.html" class="bg-ivs-cyan text-white px-5 py-2 rounded-lg hover:bg-cyan-600 transition-colors font-semibold" data-lang-key="solutions_corporate_cta3"><i class="fas fa-couch mr-2"></i> Nội thất & Văn phòng</a>
+                            </div>
+                        </div>
+                        <!-- Individual Content -->
+                        <div x-show="tab === 'individual'" style="display: none;" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0">
+                            <h3 class="text-3xl font-bold font-display text-ivs-blue mb-6" data-lang-key="solutions_individual_title">Giải pháp cho Cá nhân</h3>
+                            <ul class="space-y-4 text-ivs-text-secondary list-disc list-inside text-lg">
+                                <li class="pl-2" data-lang-key="solutions_individual_item1">Tư vấn pháp lý và tranh tụng trong lĩnh vực giáo dục.</li>
+                                <li class="pl-2" data-lang-key="solutions_individual_item2">Dịch vụ tư vấn và định hướng nghề nghiệp.</li>
+                                <li class="pl-2" data-lang-key="solutions_individual_item3">Cung cấp các thiết bị công nghệ (máy in, laptop đa số hàng nội địa Nhật).</li>
+                                <li class="pl-2" data-lang-key="solutions_individual_item4">Các khóa học "ngắn hạn" về kỹ năng mềm, tư duy phản biện.</li>
+                            </ul>
+                            <div class="mt-8 flex flex-wrap gap-4">
+                                <a href="/Pages/litigation_consulting.html" class="bg-ivs-blue text-white px-5 py-2 rounded-lg hover:bg-ivs-blue-darker transition-colors font-semibold" data-lang-key="solutions_individual_cta1"><i class="fas fa-balance-scale mr-2"></i> Tư vấn Pháp lý</a>
+                                <a href="/Pages/careervn.html" class="bg-ivs-purple text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition-colors font-semibold" data-lang-key="solutions_individual_cta2"><i class="fas fa-briefcase mr-2"></i> Cơ hội Nghề nghiệp</a>
+                                <a href="/Pages/tech_devices.html" class="bg-ivs-cyan text-white px-5 py-2 rounded-lg hover:bg-cyan-600 transition-colors font-semibold" data-lang-key="solutions_tech_cta"><i class="fas fa-desktop mr-2"></i> Thiết bị Công nghệ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <!-- SECTION 9: CEO MESSAGE & VIDEO -->
         <section class="py-16 md:py-24 bg-ivs-neutral-800 text-center border-b border-ivs-border">
             <div class="container mx-auto px-6">
@@ -692,6 +810,9 @@
                 <a href="/contact.html" class="inline-block bg-ivs-blue hover:bg-ivs-blue-darker text-white font-bold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/40" data-lang-key="cta_final_button">
                     Yêu cầu Tư vấn Ngay <i class="fas fa-arrow-right ml-2"></i>
                 </a>
+                <p class="block mt-6 text-base sm:text-lg text-ivs-blue/80" data-lang-key="cta_final_contact_email">
+                    Hoặc gửi email đến: <a href="mailto:info@ivsacademy.edu.vn" class="underline hover:text-ivs-cyan transition-colors">info@ivsacademy.edu.vn</a>
+                </p>
             </div>
         </section>
             
