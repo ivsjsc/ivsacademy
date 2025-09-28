@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVS JSC - Test</title>
+    <link href="css/tailwind.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-900 text-white">
+    
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-900 to-gray-900">
+        <div class="text-center">
+            <h1 class="text-6xl font-bold mb-6">IVS JSC</h1>
+            <p class="text-xl mb-8">Hệ sinh thái Giáo dục, Công nghệ & Nhân lực</p>
+        </div>
+    </section>
+
+    <!-- Test Content -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Về chúng tôi</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Tầm nhìn</h3>
+                    <p>Trở thành nền tảng giáo dục toàn cầu hàng đầu</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Sứ mệnh</h3>
+                    <p>Kiến tạo hệ sinh thái giáo dục tích hợp</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Giá trị</h3>
+                    <p>Integrate - Vision - Synergy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAB Container -->
+    <div id="fab-container-placeholder"></div>
+    
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script defer src="js/utils.js"></script>
+    <script defer src="js/language.js"></script>
+    <script defer src="js/loadComponents.js"></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+            
+            if (typeof window.loadCommonComponents === 'function') {
+                window.loadCommonComponents();
+            }
+        });
+    </script>
+</body>
+</html>
