@@ -19,19 +19,19 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PAGES_DIR = ROOT / 'pages'
 
+# Match href or src attributes where the value does NOT start with http(s)://, //, /, or ../
 link_re = re.compile(r'(href|src)=("|\')(?!(?:https?:|//|/|\.\./))([^"\']+?)("|\')', re.IGNORECASE)
+
 
 def fix_target(target: str) -> str:
     # If target already contains a slash, assume it's a folder path like Pages/foo.html
     if '/' in target:
-        # Normalize leading "Pages/" (case-insensitive) to pages/
         parts = target.split('/')
-        # If there are multiple path segments, preserve the tail and map to ../pages/<tail...>
         tail = '/'.join(parts[1:]) if parts[0].lower() == 'pages' else '/'.join(parts)
         return f"../pages/{tail}"
     else:
-        # Bare filename like contact.html -> ../contact.html
         return f"../{target}"
+
 
 def process_file(path: Path) -> bool:
     text = path.read_text(encoding='utf-8')
@@ -40,6 +40,13 @@ def process_file(path: Path) -> bool:
     def repl(m: re.Match) -> str:
         nonlocal changed
         attr, quote1, target, quote2 = m.group(1), m.group(2), m.group(3), m.group(4)
+        # Skip schemes that should not be rewritten
+        low = target.lower()
+        if low.startswith(('mailto:', 'tel:', 'javascript:')):
+            return m.group(0)
+        # Skip pure fragment identifiers
+        if target.startswith('#'):
+            return m.group(0)
         new_target = fix_target(target)
         if new_target != target:
             changed = True
@@ -50,6 +57,7 @@ def process_file(path: Path) -> bool:
     if changed:
         path.write_text(new_text, encoding='utf-8')
     return changed
+
 
 def main():
     html_files = sorted(PAGES_DIR.glob('*.html'))
@@ -65,6 +73,7 @@ def main():
     print('\nModified files:')
     for m in modified:
         print('  ', m)
+
 
 if __name__ == '__main__':
     main()
