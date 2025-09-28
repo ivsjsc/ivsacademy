@@ -1,5 +1,5 @@
 {
-  "generated": "2025-09-28T18:06:17.923823Z",
+  "generated": "2025-09-28T18:12:37.968265Z",
   "base": "http://127.0.0.1:8000",
   "results": {
     "about.html": {
@@ -16,9 +16,9 @@
           "status": 200
         },
         {
-          "ref": "images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "manifest.json",
@@ -681,9 +681,9 @@
           "status": 200
         },
         {
-          "ref": "images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "manifest.json",
@@ -866,9 +866,9 @@
           "status": 200
         },
         {
-          "ref": "images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "manifest.json",
@@ -1026,9 +1026,9 @@
           "status": 200
         },
         {
-          "ref": "images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "manifest.json",
@@ -1540,9 +1540,9 @@
           "status": 200
         },
         {
-          "ref": "images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "manifest.json",
@@ -1720,9 +1720,9 @@
           "status": 200
         },
         {
-          "ref": "images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "manifest.json",
@@ -2070,9 +2070,9 @@
           "status": 200
         },
         {
-          "ref": "images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "manifest.json",
@@ -2152,12 +2152,12 @@
         {
           "ref": "https://baohiemxahoi.gov.vn/",
           "url": "https://baohiemxahoi.gov.vn/",
-          "status": "HTTPSConnectionPool(host='baohiemxahoi.gov.vn', port=443): Read timed out. (read timeout=6)"
+          "status": 200
         },
         {
           "ref": "https://vssid.gov.vn/",
           "url": "https://vssid.gov.vn/",
-          "status": "HTTPSConnectionPool(host='vssid.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001C843C62F10>: Failed to resolve 'vssid.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
+          "status": "HTTPSConnectionPool(host='vssid.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001FDCCB8F790>: Failed to resolve 'vssid.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
           "ref": "https://dangkykinhdoanh.gov.vn/",
@@ -2172,7 +2172,7 @@
         {
           "ref": "https://csdlqgvedancu.gov.vn/",
           "url": "https://csdlqgvedancu.gov.vn/",
-          "status": "HTTPSConnectionPool(host='csdlqgvedancu.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001C843C8C710>: Failed to resolve 'csdlqgvedancu.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
+          "status": "HTTPSConnectionPool(host='csdlqgvedancu.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001FDCCB98490>: Failed to resolve 'csdlqgvedancu.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
           "ref": "js/utils.js",
@@ -2390,9 +2390,9 @@
           "status": 200
         },
         {
-          "ref": "images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "manifest.json",
@@ -2710,9 +2710,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -3080,9 +3080,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -3405,9 +3405,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -3815,9 +3815,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -3965,9 +3965,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -4210,9 +4210,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -4345,9 +4345,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -4560,9 +4560,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -4775,9 +4775,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -4975,9 +4975,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -5405,9 +5405,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
@@ -6000,9 +6000,9 @@
           "status": 200
         },
         {
-          "ref": "../images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
-          "status": 404
+          "ref": "../images/logo/logo-192.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.jpg",
+          "status": 200
         },
         {
           "ref": "../manifest.json",
