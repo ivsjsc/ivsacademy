@@ -1,0 +1,289 @@
+<link rel="stylesheet" href="/css/tailwind.css">
+<footer id="footer" class="bg-neutral-900 text-neutral-300 py-12 md:py-16 footer-section backdrop-blur-sm">
+    <div class="relative bg-gray-900/95 text-gray-400 pt-16 pb-8 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-[0.07] animate-pulse">
+            <img src="/images/logo/webbannermo.jpg" alt="Footer Background Pattern" class="w-full h-full object-cover filter blur-sm" 
+                 onerror="this.style.display='none'; this.parentElement.style.backgroundImage='url(https://placehold.co/1920x400/1f2937/374151?text=Footer+Pattern)'; this.parentElement.style.backgroundSize='cover';">
+        </div>
+
+        <div class="relative z-[1] container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+                <div class="sm:col-span-2 lg:col-span-1 space-y-6">
+                    <a href="https://ivsacademy.edu.vn/index.html" class="inline-block mb-2">
+                        <img src="/images/logo/logo.png" alt="IVS JSC Logo White" class="h-10 md:h-12 w-auto" 
+                             onerror="this.onerror=null; this.src='/images/logo/webbannermo.jpg';">
+                        <span class="sr-only" data-lang-key="footer_logo_alt">Logo IVS JSC</span>
+                    </a>
+                    <p class="text-sm leading-relaxed" data-lang-key="footer_desc_full">
+                        <span data-lang-key="footer_company_legal_name_line1">CÔNG TY CP DỊCH VỤ THƯƠNG MẠI</span><br>
+                        <strong data-lang-key="footer_company_legal_name_line2">INTEGRATE VISION SYNERGY</strong><br>
+                        <span data-lang-key="footer_mst">MST: 3603960189</span>
+                    </p>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt w-4 h-4 mr-3 mt-1 flex-shrink-0 text-orange-500" aria-hidden="true"></i>
+                            <span data-lang-key="footer_address">Số 1104, Tổ 6, Ấp Đất Mới, Xã Long Phước, Huyện Long Thành, Tỉnh Đồng Nai, Việt Nam, 76213.</span>
+                        </div>
+                        <!-- Thêm thông tin địa chỉ quốc tế -->
+                        <div class="flex items-start">
+                            <i class="fas fa-globe w-4 h-4 mr-3 mt-1 flex-shrink-0 text-orange-500" aria-hidden="true"></i>
+                            <span data-lang-key="footer_international_address">No. 1104, Group 6, Dat Moi Hamlet, Long Phuoc Ward, Long Thanh District, Dong Nai Province, Vietnam.</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope w-4 h-4 mr-3 text-orange-500" aria-hidden="true"></i>
+                            <a href="mailto:info@ivsacademy.edu.vn" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_email_address">info@ivsacademy.edu.vn</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt w-4 h-4 mr-3 text-orange-500" aria-hidden="true"></i>
+                            <a href="tel:+84795555789" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_phone_number_1">Công ty: +84 795 555 789</a>
+                        </div>
+                        <!-- Thêm thông tin điện thoại quốc tế -->
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt w-4 h-4 mr-3 text-orange-500" aria-hidden="true"></i>
+                            <a href="tel:+84896920547" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_international_phone_number">International: +84 896 920 547</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sm:col-span-1">
+                    <h3 class="text-base font-semibold text-white mb-5 uppercase tracking-wider" data-lang-key="footer_quick_links_title">Liên Kết Nhanh</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="https://ivsacademy.edu.vn/about.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_about_us">Về chúng tôi</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/contact.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_contact">Liên hệ</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/Pages/careervn.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_careers">Tuyển Dụng</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/Pages/terms.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_terms">Điều khoản dịch vụ</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/Pages/privacy.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_privacy">Chính sách bảo mật</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/apps/story-repository.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_read_novel">Đọc truyện</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/news-archive.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_blog">Tin tức</a></li>
+                    </ul>
+                </div>
+
+                <div class="sm:col-span-1">
+                    <h3 class="text-base font-semibold text-white mb-5 uppercase tracking-wider" data-lang-key="footer_services_title">Dịch vụ</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="https://ivsacademy.edu.vn/Pages/ivs-academy.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_service_languages">IVS Academy</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/Pages/ivscelestech.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_service_celestech">IVS Celestech</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/Pages/ivsmedia.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_service_media">IVS Media</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/Pages/ivslifeminds.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_service_lifeminds">IVS LifeMinds</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/Pages/rnd-curriculum.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_service_rnd">R&D Chương trình</a></li>
+                        <li><a href="https://ivsacademy.edu.vn/Pages/webdesign.html" class="hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_menu_web_design">Thiết kế Web</a></li>
+                    </ul>
+                </div>
+
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <h3 class="text-base font-semibold text-white mb-5 uppercase tracking-wider" data-lang-key="footer_newsletter_title">Đăng ký nhận bản tin</h3>
+                    <p class="text-sm text-gray-400 mb-4" data-lang-key="footer_newsletter_desc">Nhập Email của bạn để nhận thông tin cập nhật mới nhất từ IVS JSC.</p>
+                    <form id="newsletterForm" name="newsletter" action="/" data-netlify="true" data-netlify-honeypot="bot-field" data-fallback-action="https://formspree.io/f/mqaqqrkz" method="POST" class="flex flex-col sm:flex-row gap-3 group">
+                        <input type="hidden" name="form-name" value="newsletter">
+                        <div style="display:none;" aria-hidden="true">
+                            <label>Không điền nếu bạn là người thật: <input name="bot-field"></label>
+                        </div>
+                        <div class="relative flex-grow">
+                            <input type="email" id="newsletterEmail" name="email" 
+                                   placeholder="Nhập Email của bạn" 
+                                   aria-label="Nhập Email của bạn" 
+                                   required 
+                                   class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-500 
+                                          focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent 
+                                          transition-all duration-300 ease-in-out
+                                          group-hover:border-orange-400" 
+                                   data-lang-key="footer_newsletter_email_placeholder">
+                            <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="far fa-envelope text-orange-400"></i>
+                            </div>
+                        </div>
+                        <button type="submit" 
+                                class="px-6 py-2 bg-orange-600 text-white font-semibold rounded-md 
+                                       hover:bg-orange-700 hover:shadow-lg hover:scale-105
+                                       focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 
+                                       transition-all duration-300 ease-in-out
+                                       disabled:opacity-50 disabled:cursor-not-allowed" 
+                                data-lang-key="footer_newsletter_button"
+                                data-processing-text-key="newsletter_processing"
+                                data-success-text-key="newsletter_success"
+                                data-error-text-key="newsletter_error"
+                                data-invalid-email-text-key="newsletter_invalid_email">
+                            <span class="flex items-center gap-2">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Đăng ký</span>
+                            </span>
+                        </button>
+                    </form>
+                    <div id="newsletterMessage" class="text-sm mt-3 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-12">
+                <div class="lg:col-span-1">
+                    <h3 class="text-base font-semibold text-white mb-5 uppercase tracking-wider" data-lang-key="footer_connect_title">Kết nối</h3>
+                    <div class="flex space-x-5 mb-6">
+                        <a href="https://www.youtube.com/@integratevisionsynergy" target="_blank" rel="noopener noreferrer" 
+                           class="text-gray-400 hover:text-orange-400 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-full p-2" 
+                           aria-label="YouTube IVS JSC" data-lang-key="footer_youtube_link">
+                            <i class="fab fa-youtube fa-lg" aria-hidden="true"></i>
+                            <span class="sr-only">YouTube</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@congty.ivsjsc" target="_blank" rel="noopener noreferrer" 
+                           class="text-gray-400 hover:text-orange-400 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-full p-2" 
+                           aria-label="TikTok IVS JSC" data-lang-key="footer_tiktok_link">
+                            <i class="fab fa-tiktok fa-lg" aria-hidden="true"></i>
+                            <span class="sr-only">TikTok</span>
+                        </a>
+                        <a href="https://instagram.com/ivs.jsc/" target="_blank" rel="noopener noreferrer" 
+                           class="text-gray-400 hover:text-orange-400 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-full p-2" 
+                           aria-label="Instagram IVS JSC" data-lang-key="footer_instagram_link">
+                            <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                        <a href="https://zalo.me/1582587135739746654" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors duration-200" aria-label="Zalo IVS JSC (OA)" data-lang-key="footer_zalo_oa_link">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 50 50" fill="currentColor">
+                                <path d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z M 9 6 L 15.580078 6 C 12.00899 9.7156859 10 14.518083 10 19.5 C 10 24.66 12.110156 29.599844 15.910156 33.339844 C 16.030156 33.549844 16.129922 34.579531 15.669922 35.769531 C 15.379922 36.519531 14.799687 37.499141 13.679688 37.869141 C 13.249688 38.009141 12.97 38.430859 13 38.880859 C 13.03 39.330859 13.360781 39.710781 13.800781 39.800781 C 16.670781 40.370781 18.529297 39.510078 20.029297 38.830078 C 21.379297 38.210078 22.270625 37.789609 23.640625 38.349609 C 26.440625 39.439609 29.42 40 32.5 40 C 36.593685 40 40.531459 39.000731 44 37.113281 L 44 41 C 44 42.668484 42.668484 44 41 44 L 9 44 C 7.3315161 44 6 42.668484 6 41 L 6 9 C 6 7.3315161 7.3315161 6 9 6 z M 33 15 C 33.55 15 34 15.45 34 16 L 34 25 C 34 25.55 33.55 26 33 26 C 32.45 26 32 25.55 32 25 L 32 16 C 32 15.45 32.45 15 33 15 z M 18 16 L 23 16 C 23.36 16 23.700859 16.199531 23.880859 16.519531 C 24.050859 16.829531 24.039609 17.219297 23.849609 17.529297 L 19.800781 24 L 23 24 C 23.55 24 24 24.45 24 25 C 24 25.55 23.55 26 23 26 L 18 26 C 17.64 26 17.299141 25.800469 17.119141 25.480469 C 16.949141 25.170469 16.960391 24.780703 17.150391 24.470703 L 21.199219 18 L 18 18 C 17.45 18 17 17.55 17 17 C 17 16.45 17.45 16 18 16 z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/ivsmastery/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-400 transition-colors duration-200" aria-label="Facebook IVS JSC (Công ty)" data-lang-key="footer_facebook_company_link">
+                            <i class="fab fa-facebook-f fa-lg" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-800/50 p-4 rounded-md">
+                        <h4 class="text-sm font-semibold mb-2 text-white" data-lang-key="footer_ivs_academy_title">IVS Academy</h4>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhr.ivsacademy%2F&tabs=&width=340&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="340" height="70" style="border:none;overflow:hidden;max-width:100%;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" title="IVS Academy - Liên kết Giáo dục Facebook Page Embed Small" loading="lazy" data-lang-key="footer_ivs_academy_facebook_embed_title"></iframe>
+                        <noscript>
+                            <a href="https://www.facebook.com/hr.ivsacademy/" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-400 hover:text-blue-300 block mt-1" data-lang-key="footer_visit_page_academy">Truy cập Fanpage</a>
+                        </noscript>
+                    </div>
+                    <div class="bg-gray-800/50 p-4 rounded-md">
+                        <h4 class="text-sm font-semibold mb-2 text-white" data-lang-key="footer_ivs_mastery_title">IVS Trading Services JSC</h4>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fivsmastery%2F&tabs=&width=340&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="340" height="70" style="border:none;overflow:hidden;max-width:100%;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" title="Công ty IVS JSC Facebook Page Embed Small" loading="lazy" data-lang-key="footer_ivs_mastery_facebook_embed_title"></iframe>
+                        <noscript>
+                            <a href="https://www.facebook.com/ivsmastery/" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-400 hover:text-blue-300 block mt-1" data-lang-key="footer_visit_page_mastery">Truy cập Fanpage</a>
+                        </noscript>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-sm">
+                <p class="text-slate-400 mb-1">© <span id="current-year">2025</span> IVS JSC. Mọi quyền được bảo bảo lưu.</p>
+                <p class="text-slate-400">Được thiết kế và phát triển bởi <a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 underline transition-colors">IVS Celestech, IVS JSC</a>.</p>
+            </div>       
+        </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) {
+          yearSpan.textContent = new Date().getFullYear();
+        }
+      });
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IVS JSC",
+  "url": "https://ivsacademy.edu.vn",
+  "logo": "https://ivsacademy.edu.vn/images/logo/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1104, Tổ 6, Ấp Đất Mới, Xã Long Phước",
+    "addressLocality": "Huyện Long Thành",
+    "addressRegion": "Tỉnh Đồng Nai",
+    "postalCode": "810000",
+    "addressCountry": "VN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+84-795-555-789",
+    "contactType": "customer service",
+    "areaServed": "VN",
+    "availableLanguage": ["Vietnamese", "English"]
+  }
+}
+    </script>
+    <button id="scrollToTop" 
+            class="fixed bottom-8 right-8 bg-orange-600 text-white p-3 rounded-full shadow-lg 
+                   opacity-0 invisible transform translate-y-10
+                   hover:bg-orange-700 hover:scale-110
+                   focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2
+                   transition-all duration-300 ease-in-out
+                   z-50"
+            aria-label="Cuộn lên đầu trang">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollToTopButton = document.getElementById('scrollToTop');
+            
+            const toggleScrollButton = () => {
+                const scrolled = window.scrollY > 200;
+                scrollToTopButton.classList.toggle('opacity-0', !scrolled);
+                scrollToTopButton.classList.toggle('invisible', !scrolled);
+                scrollToTopButton.classList.toggle('translate-y-10', !scrolled);
+            };
+
+            window.addEventListener('scroll', toggleScrollButton);
+            
+            scrollToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+        // Newsletter progressive handler: ensure form-name present and post to Netlify-compatible endpoint
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('newsletterForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                // Allow native submission if JS disabled
+                e.preventDefault();
+
+                // Honeypot
+                const honeypot = form.querySelector('[name="bot-field"]');
+                if (honeypot && honeypot.value) return; // bot detected
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn ? submitBtn.textContent : '';
+                if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Đang xử lý...'; }
+
+                try {
+                    const fd = new FormData(form);
+                    if (!fd.get('form-name')) fd.set('form-name', form.getAttribute('name') || 'newsletter');
+
+                    const target = form.getAttribute('action') || '/';
+                    // If action is '/' (Netlify), POST FormData to '/' so Netlify captures it.
+                    const res = await fetch(target, { method: 'POST', body: fd });
+                    if (res.ok) {
+                        const msg = form.dataset.successMessage || 'Cảm ơn! Đăng ký thành công.';
+                        const out = document.getElementById('newsletterMessage');
+                        if (out) { out.textContent = msg; out.className = 'text-sm mt-3 text-green-400'; }
+                        form.reset();
+                    } else {
+                        // Try fallback action if defined
+                        const fallback = form.dataset.fallbackAction || form.getAttribute('data-fallback-action');
+                        if (fallback && fallback !== target) {
+                            await fetch(fallback, { method: 'POST', body: fd });
+                            const out = document.getElementById('newsletterMessage');
+                            if (out) { out.textContent = 'Đã gửi (fallback). Cảm ơn!'; out.className = 'text-sm mt-3 text-green-400'; }
+                            form.reset();
+                        } else {
+                            const out = document.getElementById('newsletterMessage');
+                            if (out) { out.textContent = 'Gửi thất bại. Vui lòng thử lại sau.'; out.className = 'text-sm mt-3 text-red-400'; }
+                        }
+                    }
+                } catch (err) {
+                    console.error('Newsletter submit error', err);
+                    const out = document.getElementById('newsletterMessage');
+                    if (out) { out.textContent = 'Lỗi khi gửi. Vui lòng thử lại sau.'; out.className = 'text-sm mt-3 text-red-400'; }
+                } finally {
+                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalText; }
+                }
+            });
+        });
+    </script>
+</footer>

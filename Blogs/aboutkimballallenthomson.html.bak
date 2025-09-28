@@ -7,7 +7,7 @@
     <meta name="description" content="Tìm hiểu về Ông Kimball Allen Thomson, Đối tác Giáo dục và Cộng đồng của IVS JSC từ Hoa Kỳ.">
     <meta name="keywords" content="Kimball Allen Thomson, IVS JSC, đối tác giáo dục, Hoa Kỳ, cộng đồng">
     <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,line-clamp"></script>
-    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="/css/tailwind.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -31,8 +31,8 @@
         }
     </style>
     <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animations.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -178,7 +178,7 @@
                 <p class="text-lg max-w-3xl mx-auto mb-8" data-lang-key="kimball_cta_subtitle">
                     Hãy liên hệ với chúng tôi để khám phá những cơ hội hợp tác và phát triển cùng IVS JSC.
                 </p>
-                <a href="contact.html" class="inline-block bg-secondary hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md" data-lang-key="kimball_cta_button">
+                <a href="/contact.html" class="inline-block bg-secondary hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md" data-lang-key="kimball_cta_button">
                     Liên Hệ Ngay
                 </a>
             </div>
@@ -191,7 +191,7 @@
         function initializePlaceholderComponents() {
             const headerPlaceholder = document.getElementById('header-placeholder');
             if (headerPlaceholder) {
-                fetch('components/header.html')
+                fetch('/components/header.html')
                     .then(response => response.text())
                     .then(html => {
                         headerPlaceholder.innerHTML = html;
@@ -214,7 +214,7 @@
 
             const footerPlaceholder = document.getElementById('footer-placeholder');
             if (footerPlaceholder) {
-                fetch('components/footer.html')
+                fetch('/components/footer.html')
                     .then(response => response.text())
                     .then(html => {
                         footerPlaceholder.innerHTML = html;

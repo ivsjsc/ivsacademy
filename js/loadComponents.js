@@ -93,6 +93,19 @@ async function fetchWithRetry(resource, options = {}) {
     const attempts = options.attempts || 3;
     const timeout = options.timeout || 5000;
 
+    // Normalize component paths: if a caller accidentally uses a leading-root
+    // path like '/components/header.html' (which breaks when the site is
+    // served from a subpath or opened locally), convert it to a relative
+    // path 'components/header.html' so fetch resolves correctly.
+    try {
+        if (typeof resource === 'string' && resource.startsWith('/components/')) {
+            resource = resource.replace(/^\/components\//, 'components/');
+            window.componentLog(`Normalized component path to '${resource}'`, 'info');
+        }
+    } catch (e) {
+        // Ignore normalization errors and proceed with original resource
+    }
+
     for (let attempt = 1; attempt <= attempts; attempt++) {
         try {
             const controller = new AbortController();
@@ -154,13 +167,14 @@ async function loadCommonComponents() {
     // Canonical FAB component: use /components/fab-container.html
     // NOTE: there used to be multiple FAB fragments (e.g. fab-buttons.html).
     // Keep only the canonical fab-container.html to avoid duplicate IDs and event bindings.
+    // Use relative component paths so loading works when the site is hosted under a subpath
     const components = [
-        { id: 'header-placeholder', url: '/components/header.html', controller: window.IVSHeaderController },
-        { id: 'fab-container-placeholder', url: '/components/fab-container.html', controller: window.IVSFabController }
+        { id: 'header-placeholder', url: 'components/header.html', controller: window.IVSHeaderController },
+        { id: 'fab-container-placeholder', url: 'components/fab-container.html', controller: window.IVSFabController }
     ];
 
     // Footer is loaded last, no specific controller init needed for it
-    const footerComponent = { id: 'footer-placeholder', url: '/components/footer.html' };
+    const footerComponent = { id: 'footer-placeholder', url: 'components/footer.html' };
 
     for (const comp of components) {
         if (document.getElementById(comp.id)) {
@@ -183,7 +197,7 @@ async function loadCommonComponents() {
     // This ensures the assistant button appears on every page that has the fab-container-placeholder
     if (document.getElementById('fab-container-placeholder')) {
         try {
-            const assistantLoaded = await loadAndInject('/components/fab-assistant.html', 'fab-container-placeholder');
+            const assistantLoaded = await loadAndInject('components/fab-assistant.html', 'fab-container-placeholder');
             if (assistantLoaded) {
                 window.componentLog('fab-assistant loaded into fab-container-placeholder', 'info');
                 // If the FAB controller was already initialized before assistant injection,
@@ -713,7 +727,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 // Also attempt to load the IVS Assistant into the same placeholder
                 try {
-                    const assistantOk = await loadAndInject('/components/fab-assistant.html', 'fab-container-placeholder');
+                    const assistantOk = await loadAndInject(getComponentPath('fab-assistant'), 'fab-container-placeholder');
                     if (assistantOk) {
                         window.componentLog('fab-assistant loaded via DOMContentLoaded path', 'info');
                         if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {

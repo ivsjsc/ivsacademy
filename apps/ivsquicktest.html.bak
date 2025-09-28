@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVS Quick Learning Advisor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/tailwind.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f7;
+            color: #1a202c;
+            overflow-x: hidden; 
+        }
+        .advisor-container {
+            background: linear-gradient(135deg, #0a3d4a 0%, #0e5061 100%);
+            min-height: 100vh; 
+        }
+        .screen {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            will-change: opacity, transform;
+        }
+        .screen.hidden-screen {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            position: absolute; 
+            width: 100%; 
+        }
+         .screen.visible-screen {
+            opacity: 1;
+            transform: translateY(0);
+            position: relative; 
+        }
+
+        .question-card, .results-card, .modal-card {
+            background-color: rgba(255, 255, 255, 0.97); 
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 156, 74, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+        }
+        .option-button {
+            transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            border: 2px solid transparent;
+            transform-origin: center;
+        }
+        .option-button:hover {
+            border-color: #c89c4a;
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 6px 20px rgba(200, 156, 74, 0.25);
+        }
+        .option-button.selected {
+            background-color: #0a3d4a;
+            color: white;
+            border-color: #08333d;
+            transform: scale(1.03); 
+            box-shadow: 0 5px 15px rgba(10, 61, 74, 0.3);
+        }
+         .option-button:active {
+            transform: scale(0.98); 
+        }
+        .progress-bar-fill {
+            transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .lang-switcher button {
+            padding: 7px 14px; 
+            border: 1.5px solid #c89c4a;
+            color: #c89c4a;
+            background-color: transparent;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+            font-weight: 600;
+        }
+        .lang-switcher button.active, .lang-switcher button:hover {
+            background-color: #c89c4a;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+        .recommendation-item {
+            border-left: 4px solid #c89c4a;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .recommendation-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+         [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px); 
+            background-color: #2d3748; 
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            z-index: 50; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        [data-tooltip] {
+            position: relative;
+        }
+        .control-button {
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+        .control-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .control-button:active {
+            transform: translateY(0px) scale(0.98);
+        }
+        .primary-action-button {
+            background-color: #c89c4a;
+            color: white;
+        }
+        .primary-action-button:hover {
+            background-color: #b3893b; 
+        }
+        .secondary-action-button {
+            background-color: #e2e8f0; 
+            color: #2d3748; 
+        }
+        .secondary-action-button:hover {
+            background-color: #cbd5e0; 
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+    <!-- CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 advisor-container">
+
+    <div class="lang-switcher fixed top-4 right-4 flex rounded-md overflow-hidden shadow-lg z-50">
+        <button data-lang="vi" class="active">VIE</button>
+        <button data-lang="en">ENG</button>
+    </div>
+
+    <div id="advisorApp" class="w-full max-w-2xl mx-auto relative">
+        <div id="welcomeScreen" class="screen visible-screen text-center p-8 rounded-xl question-card">
+            <img src="https://placehold.co/150x80/FFFFFF/0a3d4a?text=IVS+Logo" alt="IVS Logo" class="mx-auto mb-6 h-16 object-contain" onerror="this.src='https://placehold.co/150x80/FFFFFF/0a3d4a?text=IVS'; this.alt='IVS Placeholder Logo';">
+            <h1 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-4" data-lang-key="welcome_title">Chào mừng đến với IVS</h1>
+            <p class="text-gray-700 mb-8 text-lg" data-lang-key="welcome_subtitle">Khám phá giải pháp giáo dục tối ưu dành cho bạn chỉ với vài bước đơn giản.</p>
+            <button id="startButton" class="control-button primary-action-button font-semibold py-3.5 px-10 rounded-lg text-lg">
+                <span data-lang-key="start_button">Bắt đầu</span> <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+
+        <div id="questionScreen" class="screen hidden-screen">
+            <div class="p-6 md:p-8 rounded-xl question-card">
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-[#0a3d4a]" data-lang-key="progress_text">Tiến độ</span>
+                        <span id="progressPercentage" class="text-sm font-medium text-[#c89c4a]">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div id="progressBar" class="bg-[#c89c4a] h-3 rounded-full progress-bar-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <h2 id="questionTitle" class="text-2xl md:text-3xl font-semibold text-[#0a3d4a] mb-8 text-center min-h-[72px] md:min-h-[84px] flex items-center justify-center"></h2>
+                <div id="optionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                </div>
+                <div class="mt-10 flex justify-between items-center">
+                    <button id="prevButton" class="control-button secondary-action-button font-medium py-3 px-7 rounded-lg">
+                        <i class="fas fa-arrow-left mr-2"></i> <span data-lang-key="prev_button">Trước</span>
+                    </button>
+                    <button id="nextButton" class="control-button primary-action-button font-semibold py-3 px-8 rounded-lg opacity-50 cursor-not-allowed" disabled>
+                        <span data-lang-key="next_button">Tiếp</span> <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsScreen" class="screen hidden-screen">
+            <div class="p-6 md:p-10 rounded-xl results-card">
+                <img src="https://placehold.co/120x60/FFFFFF/0a3d4a?text=IVS" alt="IVS Logo" class="mx-auto mb-5 h-12 object-contain" onerror="this.src='https://placehold.co/120x60/FFFFFF/0a3d4a?text=IVS'; this.alt='IVS Placeholder Logo';">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-3 text-center" data-lang-key="results_title">Đề xuất Dành Riêng Cho Bạn</h2>
+                <p class="text-gray-600 mb-8 text-center text-lg" data-lang-key="results_subtitle">Dựa trên thông tin bạn cung cấp, IVS gợi ý các giải pháp sau:</p>
+                <div id="recommendationsContainer" class="space-y-5">
+                </div>
+                <div class="mt-10 text-center">
+                     <p class="text-sm text-gray-500 mb-6" data-lang-key="results_disclaimer">Đây là gợi ý ban đầu. Để được tư vấn chi tiết và xây dựng lộ trình phù hợp nhất, vui lòng liên hệ IVS.</p>
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <button id="restartButton" class="control-button secondary-action-button w-full sm:w-auto font-semibold py-3.5 px-10 rounded-lg text-lg">
+                            <i class="fas fa-redo mr-2"></i> <span data-lang-key="restart_button">Làm lại</span>
+                        </button>
+                         <a href="https://ivsacademy.edu.vn/contact.html" target="_blank" class="control-button primary-action-button w-full sm:w-auto font-semibold py-3.5 px-10 rounded-lg text-lg inline-flex items-center justify-center" data-lang-key="contact_button">
+                            <i class="fas fa-phone-alt mr-2"></i> <span data-lang-key="contact_button_text">Liên hệ Tư vấn</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <footer class="text-center mt-10 pb-6">
+            <p class="text-sm text-white/80" data-lang-key="footer_text">© 2025 IVS JSC. Bảo lưu mọi quyền.</p>
+        </footer>
+    </div>
+
+    <div id="continueSessionModal" class="modal-overlay">
+        <div class="modal-card p-6 md:p-8 rounded-xl w-full max-w-md mx-4 text-center">
+            <h3 class="text-xl font-semibold text-[#0a3d4a] mb-4" data-lang-key="modal_continue_title">Tiếp tục Phiên làm việc?</h3>
+            <p class="text-gray-700 mb-6" data-lang-key="modal_continue_text">Chúng tôi tìm thấy dữ liệu từ lần truy cập trước. Bạn có muốn tiếp tục không?</p>
+            <div class="flex justify-center gap-4">
+                <button id="confirmContinueButton" class="control-button primary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_yes">Có, Tiếp tục</button>
+                <button id="declineContinueButton" class="control-button secondary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_no">Không, Bắt đầu mới</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const translations = {
+            vi: {
+                welcome_title: "Chào mừng đến với IVS",
+                welcome_subtitle: "Khám phá giải pháp giáo dục tối ưu dành cho bạn chỉ với vài bước đơn giản.",
+                start_button: "Bắt đầu",
+                progress_text: "Tiến độ",
+                prev_button: "Trước",
+                next_button: "Tiếp",
+                results_title: "Đề xuất Dành Riêng Cho Bạn",
+                results_subtitle: "Dựa trên thông tin bạn cung cấp, IVS gợi ý các giải pháp sau:",
+                results_disclaimer: "Đây là gợi ý ban đầu. Để được tư vấn chi tiết và xây dựng lộ trình phù hợp nhất, vui lòng liên hệ IVS.",
+                restart_button: "Làm lại",
+                contact_button_text: "Liên hệ Tư vấn",
+                footer_text: "© 2025 IVS JSC. Bảo lưu mọi quyền.",
+                modal_continue_title: "Tiếp tục Phiên làm việc?",
+                modal_continue_text: "Chúng tôi tìm thấy dữ liệu từ lần truy cập trước. Bạn có muốn tiếp tục không?",
+                modal_continue_yes: "Có, Tiếp tục",
+                modal_continue_no: "Không, Bắt đầu mới",
+                q1_title: "Bạn là ai?",
+                q1_opt1: "Học sinh Phổ thông (Lớp 1-12)",
+                q1_opt1_tooltip: "Dành cho học sinh từ tiểu học đến trung học phổ thông",
+                q1_opt2: "Sinh viên Cao đẳng/Đại học",
+                q1_opt2_tooltip: "Dành cho sinh viên đang theo học tại các trường cao đẳng, đại học",
+                q1_opt3: "Người đi làm/Chuyên gia",
+                q1_opt3_tooltip: "Dành cho cá nhân đã đi làm, muốn nâng cao kỹ năng hoặc chuyển đổi nghề nghiệp",
+                q1_opt4: "Đại diện Doanh nghiệp/Tổ chức Giáo dục",
+                q1_opt4_tooltip: "Dành cho công ty, trường học, hoặc các đơn vị giáo dục tìm kiếm giải pháp đào tạo, hợp tác",
+                
+                q1_1_k12_title: "Bạn đang học lớp mấy hoặc quan tâm đến cấp học nào?",
+                q1_1_k12_opt1: "Tiểu học (Lớp 1-5)",
+                q1_1_k12_opt2: "Trung học Cơ sở (Lớp 6-9)",
+                q1_1_k12_opt3: "Trung học Phổ thông (Lớp 10-12)",
+
+                q1_1_org_title: "Quy mô tổ chức của bạn như thế nào?",
+                q1_1_org_opt1: "Dưới 50 người",
+                q1_1_org_opt2: "Từ 50 - 200 người",
+                q1_1_org_opt3: "Trên 200 người",
+
+                q2_title: "Lĩnh vực nào bạn quan tâm hàng đầu?",
+                q2_opt1: "Ngoại ngữ (Anh, Nhật, Hàn, Trung)",
+                q2_opt1_tooltip: "Các khóa học và luyện thi chứng chỉ ngoại ngữ quốc tế",
+                q2_opt2: "Giáo dục STEAM & Công nghệ Số",
+                q2_opt2_tooltip: "Chương trình Khoa học, Công nghệ, Kỹ thuật, Nghệ thuật, Toán và ứng dụng công nghệ trong giáo dục",
+                q2_opt3: "Phát triển Kỹ năng Chuyên môn & Tư duy",
+                q2_opt3_tooltip: "Các khóa học kỹ năng mềm, kỹ năng lãnh đạo, tư duy phản biện, sáng tạo",
+                q2_opt4: "Tư vấn Chiến lược Giáo dục & Du học",
+                q2_opt4_tooltip: "Dịch vụ tư vấn xây dựng lộ trình học tập, du học và phát triển cho các tổ chức giáo dục",
+                q2_opt5: "Giải pháp Đào tạo Toàn diện cho Tổ chức",
+                q2_opt5_tooltip: "Các gói đào tạo theo yêu cầu, xây dựng chương trình và chuyển giao công nghệ giáo dục cho doanh nghiệp, trường học",
+
+                q2_1_lang_title: "Bạn muốn học ngoại ngữ nào cụ thể?",
+                q2_1_lang_opt1: "Tiếng Anh (IELTS, TOEFL, Giao tiếp)",
+                q2_1_lang_opt2: "Tiếng Nhật (JLPT, Giao tiếp)",
+                q2_1_lang_opt3: "Tiếng Hàn (TOPIK, Giao tiếp)",
+                q2_1_lang_opt4: "Tiếng Trung (HSK, Giao tiếp)",
+                q2_1_lang_opt5: "Ngoại ngữ khác/Chưa xác định",
+
+                q3_title: "Mục tiêu chính bạn hướng đến là gì?",
+                q3_opt1: "Đạt Chứng chỉ Quốc tế/Nâng cao Học vấn",
+                q3_opt1_tooltip: "Lấy chứng chỉ IELTS, TOEFL, JLPT, TOPIK,... hoặc bằng cấp học thuật",
+                q3_opt2: "Phát triển Sự nghiệp & Năng lực Chuyên môn",
+                q3_opt2_tooltip: "Nâng cao kỹ năng làm việc, thăng tiến trong công việc hiện tại hoặc tìm kiếm cơ hội mới",
+                q3_opt3: "Chuẩn bị Du học & Tìm kiếm Học bổng",
+                q3_opt3_tooltip: "Xây dựng hồ sơ, luyện thi và tìm kiếm cơ hội học bổng du học tại các quốc gia phát triển",
+                q3_opt4: "Nâng cao Hiệu quả & Chất lượng cho Tổ chức",
+                q3_opt4_tooltip: "Cải thiện chương trình đào tạo, ứng dụng công nghệ, phát triển đội ngũ cho doanh nghiệp/trường học",
+                q3_opt5: "Phát triển Tư duy & Khai phá Tiềm năng Cá nhân",
+                q3_opt5_tooltip: "Mở rộng kiến thức, rèn luyện tư duy toàn diện và khám phá năng lực bản thân",
+                rec_ivs_academy_title: "IVS Academy",
+                rec_ivs_academy_desc: "Cung cấp các khóa đào tạo ngoại ngữ chuyên sâu (Anh, Nhật, Hàn, Trung), luyện thi chứng chỉ quốc tế (IELTS, TOEFL, TOEIC), và phát triển kỹ năng mềm thiết yếu.",
+                rec_ivs_education_title: "IVS Education",
+                rec_ivs_education_desc: "Tiên phong trong các chương trình giáo dục STEAM, phát triển giải pháp công nghệ giáo dục (IVSCelesTech LMS, E-learning), và chương trình mầm non KinderLink25.",
+                rec_ivs_consulting_title: "IVS Consulting",
+                rec_ivs_consulting_desc: "Đồng hành cùng cá nhân và tổ chức với dịch vụ tư vấn du học, xây dựng chiến lược giáo dục, thành lập trung tâm và cung ứng nhân sự giáo dục chất lượng cao.",
+                rec_ivs_media_title: "IVS Media",
+                rec_ivs_media_desc: "Chuyên sản xuất nội dung giáo dục số hóa (video, e-book), thiết kế website chuyên nghiệp và triển khai các chiến dịch marketing hiệu quả cho lĩnh vực giáo dục.",
+                rec_ivs_lifeminds_title: "IVSLifeMinds",
+                rec_ivs_lifeminds_desc: "Tập trung vào việc khai phá và phát triển tiềm năng con người thông qua các chương trình đào tạo tư duy (phản biện, sáng tạo), kỹ năng sống và định hướng nghề nghiệp.",
+                learn_more_button: "Tìm hiểu thêm"
+            },
+            en: {
+                welcome_title: "Welcome to IVS",
+                welcome_subtitle: "Discover the optimal educational solution for you in just a few simple steps.",
+                start_button: "Start",
+                progress_text: "Progress",
+                prev_button: "Previous",
+                next_button: "Next",
+                results_title: "Recommendations For You",
+                results_subtitle: "Based on the information you provided, IVS suggests the following solutions:",
+                results_disclaimer: "These are initial suggestions. For detailed consultation and to build the most suitable roadmap, please contact IVS.",
+                restart_button: "Restart",
+                contact_button_text: "Contact for Consultation",
+                footer_text: "© 2025 IVS JSC. All rights reserved.",
+                modal_continue_title: "Continue Session?",
+                modal_continue_text: "We found data from your previous visit. Would you like to continue?",
+                modal_continue_yes: "Yes, Continue",
+                modal_continue_no: "No, Start New",
+                q1_title: "Who are you?",
+                q1_opt1: "K-12 Student (Grade 1-12)",
+                q1_opt1_tooltip: "For students from elementary to high school",
+                q1_opt2: "College/University Student",
+                q1_opt2_tooltip: "For students currently enrolled in colleges or universities",
+                q1_opt3: "Working Professional/Expert",
+                q1_opt3_tooltip: "For working individuals seeking skill enhancement or career change",
+                q1_opt4: "Representative of Business/Educational Organization",
+                q1_opt4_tooltip: "For companies, schools, or educational units seeking training solutions or partnerships",
+
+                q1_1_k12_title: "Which grade level are you in or interested in?",
+                q1_1_k12_opt1: "Elementary School (Grades 1-5)",
+                q1_1_k12_opt2: "Middle School (Grades 6-9)",
+                q1_1_k12_opt3: "High School (Grades 10-12)",
+
+                q1_1_org_title: "What is the size of your organization?",
+                q1_1_org_opt1: "Under 50 people",
+                q1_1_org_opt2: "50 - 200 people",
+                q1_1_org_opt3: "Over 200 people",
+                
+                q2_title: "Which primary field interests you?",
+                q2_opt1: "Foreign Languages (English, Japanese, Korean, Chinese)",
+                q2_opt1_tooltip: "Courses and preparation for international language certifications",
+                q2_opt2: "STEAM Education & Digital Technology",
+                q2_opt2_tooltip: "Programs in Science, Technology, Engineering, Arts, Math, and technology application in education",
+                q2_opt3: "Professional Skills & Mindset Development",
+                q2_opt3_tooltip: "Courses on soft skills, leadership skills, critical thinking, creativity",
+                q2_opt4: "Educational Strategy & Study Abroad Consulting",
+                q2_opt4_tooltip: "Consulting services for academic pathway planning, study abroad, and development for educational organizations",
+                q2_opt5: "Comprehensive Training Solutions for Organizations",
+                q2_opt5_tooltip: "Customized training packages, curriculum development, and educational technology transfer for businesses and schools",
+
+                q2_1_lang_title: "Which specific foreign language do you want to learn?",
+                q2_1_lang_opt1: "English (IELTS, TOEFL, Communication)",
+                q2_1_lang_opt2: "Japanese (JLPT, Communication)",
+                q2_1_lang_opt3: "Korean (TOPIK, Communication)",
+                q2_1_lang_opt4: "Chinese (HSK, Communication)",
+                q2_1_lang_opt5: "Other language/Undecided",
+
+                q3_title: "What is your primary objective?",
+                q3_opt1: "Achieve International Certification/Academic Advancement",
+                q3_opt1_tooltip: "Obtain IELTS, TOEFL, JLPT, TOPIK certificates, or academic degrees",
+                q3_opt2: "Career & Professional Competency Development",
+                q3_opt2_tooltip: "Enhance work skills, advance in current career, or seek new opportunities",
+                q3_opt3: "Prepare for Study Abroad & Scholarship Opportunities",
+                q3_opt3_tooltip: "Build application profiles, prepare for exams, and find scholarship opportunities in developed countries",
+                q3_opt4: "Enhance Operational Efficiency & Quality for Organization",
+                q3_opt4_tooltip: "Improve training programs, apply technology, and develop human resources for businesses/schools",
+                q3_opt5: "Holistic Mindset Development & Personal Potential Unlocking",
+                q3_opt5_tooltip: "Expand knowledge, cultivate comprehensive thinking, and discover personal capabilities",
+                rec_ivs_academy_title: "IVS Academy",
+                rec_ivs_academy_desc: "Offers intensive foreign language training (English, Japanese, Korean, Chinese), international certification preparation (IELTS, TOEFL, TOEIC), and essential soft skills development.",
+                rec_ivs_education_title: "IVS Education",
+                rec_ivs_education_desc: "Pioneers STEAM education programs, develops educational technology solutions (IVSCelesTech LMS, E-learning), and the KinderLink25 early childhood program.",
+                rec_ivs_consulting_title: "IVS Consulting",
+                rec_ivs_consulting_desc: "Partners with individuals and organizations by providing study abroad consulting, educational strategy development, center establishment, and high-quality educational staffing.",
+                rec_ivs_media_title: "IVS Media",
+                rec_ivs_media_desc: "Specializes in producing digital educational content (videos, e-books), professional website design, and implementing effective marketing campaigns for the education sector.",
+                rec_ivs_lifeminds_title: "IVSLifeMinds",
+                rec_ivs_lifeminds_desc: "Focuses on unlocking and developing human potential through training programs in thinking skills (critical, creative), life skills, and career orientation.",
+                learn_more_button: "Learn More"
+            }
+        };
+
+        const allQuestions = [
+            {
+                id: 'q1',
+                titleKey: 'q1_title',
+                options: [
+                    { value: 'k12_student', textKey: 'q1_opt1', tooltipKey: 'q1_opt1_tooltip' },
+                    { value: 'uni_student', textKey: 'q1_opt2', tooltipKey: 'q1_opt2_tooltip' },
+                    { value: 'professional', textKey: 'q1_opt3', tooltipKey: 'q1_opt3_tooltip' },
+                    { value: 'organization', textKey: 'q1_opt4', tooltipKey: 'q1_opt4_tooltip' }
+                ]
+            },
+            {
+                id: 'q1_1_k12',
+                titleKey: 'q1_1_k12_title',
+                options: [
+                    { value: 'elementary', textKey: 'q1_1_k12_opt1'},
+                    { value: 'middle_school', textKey: 'q1_1_k12_opt2'},
+                    { value: 'high_school', textKey: 'q1_1_k12_opt3'}
+                ],
+                condition: (answers) => answers.q1 === 'k12_student'
+            },
+            {
+                id: 'q1_1_org',
+                titleKey: 'q1_1_org_title',
+                options: [
+                    { value: 'org_small', textKey: 'q1_1_org_opt1'},
+                    { value: 'org_medium', textKey: 'q1_1_org_opt2'},
+                    { value: 'org_large', textKey: 'q1_1_org_opt3'}
+                ],
+                condition: (answers) => answers.q1 === 'organization'
+            },
+            {
+                id: 'q2',
+                titleKey: 'q2_title',
+                options: [
+                    { value: 'language', textKey: 'q2_opt1', tooltipKey: 'q2_opt1_tooltip' },
+                    { value: 'steam_digital', textKey: 'q2_opt2', tooltipKey: 'q2_opt2_tooltip' },
+                    { value: 'skills_mindset', textKey: 'q2_opt3', tooltipKey: 'q2_opt3_tooltip' },
+                    { value: 'consulting_study_abroad', textKey: 'q2_opt4', tooltipKey: 'q2_opt4_tooltip' },
+                    { value: 'org_solutions', textKey: 'q2_opt5', tooltipKey: 'q2_opt5_tooltip' }
+                ]
+            },
+            {
+                id: 'q2_1_lang',
+                titleKey: 'q2_1_lang_title',
+                options: [
+                    { value: 'english', textKey: 'q2_1_lang_opt1'},
+                    { value: 'japanese', textKey: 'q2_1_lang_opt2'},
+                    { value: 'korean', textKey: 'q2_1_lang_opt3'},
+                    { value: 'chinese', textKey: 'q2_1_lang_opt4'},
+                    { value: 'other_lang', textKey: 'q2_1_lang_opt5'}
+                ],
+                condition: (answers) => answers.q2 === 'language'
+            },
+            {
+                id: 'q3',
+                titleKey: 'q3_title',
+                options: [
+                    { value: 'certification_academic', textKey: 'q3_opt1', tooltipKey: 'q3_opt1_tooltip' },
+                    { value: 'career_competency', textKey: 'q3_opt2', tooltipKey: 'q3_opt2_tooltip' },
+                    { value: 'study_abroad_scholarship', textKey: 'q3_opt3', tooltipKey: 'q3_opt3_tooltip' },
+                    { value: 'org_efficiency_quality', textKey: 'q3_opt4', tooltipKey: 'q3_opt4_tooltip' },
+                    { value: 'mindset_potential', textKey: 'q3_opt5', tooltipKey: 'q3_opt5_tooltip' }
+                ]
+            }
+        ];
+
+        let currentQuestionPath = [];
+        let currentQuestionIndexInPath = 0;
+        let answers = {};
+        let currentLang = 'vi';
+
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const questionScreen = document.getElementById('questionScreen');
+        const resultsScreen = document.getElementById('resultsScreen');
+        const startButton = document.getElementById('startButton');
+        const questionTitleEl = document.getElementById('questionTitle');
+        const optionsContainerEl = document.getElementById('optionsContainer');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const progressBar = document.getElementById('progressBar');
+        const progressPercentage = document.getElementById('progressPercentage');
+        const recommendationsContainerEl = document.getElementById('recommendationsContainer');
+        const restartButton = document.getElementById('restartButton');
+        const langButtons = document.querySelectorAll('.lang-switcher button');
+        const allScreenElements = [welcomeScreen, questionScreen, resultsScreen];
+        const continueSessionModal = document.getElementById('continueSessionModal');
+        const confirmContinueButton = document.getElementById('confirmContinueButton');
+        const declineContinueButton = document.getElementById('declineContinueButton');
+
+
+        function showScreen(screenToShow) {
+            allScreenElements.forEach(screen => {
+                if (screen === screenToShow) {
+                    screen.classList.remove('hidden-screen');
+                    screen.classList.add('visible-screen');
+                    screen.style.position = 'relative'; 
+                    screen.style.width = '100%';
+                } else {
+                    screen.classList.add('hidden-screen');
+                    screen.classList.remove('visible-screen');
+                    setTimeout(() => { 
+                        if (screen.classList.contains('hidden-screen')) {
+                           screen.style.position = 'absolute';
+                        }
+                    }, 50); 
+                }
+            });
+        }
+
+        function updateTexts(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.dataset.langKey;
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            if (questionScreen.classList.contains('visible-screen')) {
+                 buildCurrentQuestionPath(); // Rebuild path in case language change affects conditions (though unlikely here)
+                 loadQuestion(currentQuestionIndexInPath);
+            }
+             if (resultsScreen.classList.contains('visible-screen')) {
+                displayResults();
+            }
+        }
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.dataset.lang;
+                updateTexts(lang);
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+        
+        function buildCurrentQuestionPath() {
+            currentQuestionPath = allQuestions.filter(q => !q.condition || q.condition(answers));
+        }
+
+        function updateProgressBar() {
+            if (currentQuestionPath.length === 0) {
+                progressBar.style.width = '0%';
+                progressPercentage.textContent = '0%';
+                return;
+            }
+            const percentage = Math.max(0, (currentQuestionIndexInPath / currentQuestionPath.length)) * 100;
+            progressBar.style.width = `${percentage}%`;
+            progressPercentage.textContent = `${Math.round(percentage)}%`;
+             if (currentQuestionIndexInPath === currentQuestionPath.length) { 
+                progressBar.style.width = `100%`;
+                progressPercentage.textContent = `100%`;
+            }
+        }
+
+        function loadQuestion(indexInPath) {
+            if (indexInPath < 0 || indexInPath >= currentQuestionPath.length) {
+                 if (currentQuestionPath.length > 0 && indexInPath >= currentQuestionPath.length) { // Attempted to go beyond last question
+                    showResultsScreen();
+                }
+                return;
+            }
+            const question = currentQuestionPath[indexInPath];
+            questionTitleEl.textContent = translations[currentLang][question.titleKey];
+            optionsContainerEl.innerHTML = '';
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.classList.add('option-button', 'p-4', 'md:p-5', 'bg-white', 'text-gray-800', 'rounded-lg', 'shadow-md', 'text-left', 'w-full', 'font-medium', 'text-base', 'md:text-lg');
+                button.dataset.value = option.value;
+                
+                const textSpan = document.createElement('span');
+                textSpan.dataset.langKey = option.textKey;
+                textSpan.innerText = translations[currentLang][option.textKey];
+                button.appendChild(textSpan);
+
+                if (option.tooltipKey && translations[currentLang][option.tooltipKey]) {
+                    button.dataset.tooltip = translations[currentLang][option.tooltipKey];
+                }
+                button.addEventListener('click', () => selectOption(button, question.id, option.value));
+                if (answers[question.id] === option.value) {
+                    button.classList.add('selected');
+                }
+                optionsContainerEl.appendChild(button);
+            });
+            
+            prevButton.style.visibility = indexInPath === 0 ? 'hidden' : 'visible';
+            nextButton.disabled = !answers[question.id];
+            nextButton.classList.toggle('opacity-50', !answers[question.id]);
+            nextButton.classList.toggle('cursor-not-allowed', !answers[question.id]);
+            updateProgressBar();
+        }
+
+        function selectOption(buttonEl, questionId, value) {
+            answers[questionId] = value;
+            saveState(); 
+
+            document.querySelectorAll(`#optionsContainer .option-button`).forEach(btn => btn.classList.remove('selected'));
+            buttonEl.classList.add('selected');
+            nextButton.disabled = false;
+            nextButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            
+            const oldPathLength = currentQuestionPath.length;
+            buildCurrentQuestionPath(); 
+            
+            if (currentQuestionPath.length !== oldPathLength) {
+                 // Path might have changed, ensure current index is valid or adjust
+                if (currentQuestionIndexInPath >= currentQuestionPath.length) {
+                    // This can happen if a conditional question further down the new path is removed
+                    // Or if the current question itself is no longer valid.
+                    // For simplicity, if path changes, we might need to re-evaluate the next step carefully.
+                    // A common scenario: if current question is removed, try to find its replacement or next valid one.
+                }
+            }
+            // No automatic advance, user clicks next.
+        }
+
+        function saveState() {
+            localStorage.setItem('ivsAdvisorAnswers', JSON.stringify(answers));
+            localStorage.setItem('ivsAdvisorCurrentQuestionIndexInPath', currentQuestionIndexInPath.toString());
+        }
+
+        function loadState() {
+            const savedAnswers = localStorage.getItem('ivsAdvisorAnswers');
+            const savedIndex = localStorage.getItem('ivsAdvisorCurrentQuestionIndexInPath');
+
+            if (savedAnswers) {
+                answers = JSON.parse(savedAnswers);
+                if (savedIndex !== null) {
+                    currentQuestionIndexInPath = parseInt(savedIndex, 10);
+                }
+                return true; // Found saved state
+            }
+            return false; // No saved state
+        }
+
+        function clearState() {
+            localStorage.removeItem('ivsAdvisorAnswers');
+            localStorage.removeItem('ivsAdvisorCurrentQuestionIndexInPath');
+            answers = {};
+            currentQuestionIndexInPath = 0;
+        }
+
+        function showResultsScreen() {
+            showScreen(resultsScreen);
+            displayResults();
+            updateProgressBar(); 
+        }
+        
+        startButton.addEventListener('click', () => {
+            showScreen(questionScreen);
+            buildCurrentQuestionPath();
+            loadQuestion(currentQuestionIndexInPath); // currentQuestionIndexInPath is 0 if new start
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentQuestionIndexInPath > 0) {
+                currentQuestionIndexInPath--;
+                saveState(); // Save index when going back
+                loadQuestion(currentQuestionIndexInPath);
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            buildCurrentQuestionPath(); // Rebuild path before moving to next, in case current answer changed it
+            if (currentQuestionIndexInPath < currentQuestionPath.length - 1) {
+                currentQuestionIndexInPath++;
+                saveState();
+                loadQuestion(currentQuestionIndexInPath);
+            } else {
+                currentQuestionIndexInPath = currentQuestionPath.length; // Mark as completed
+                saveState();
+                showResultsScreen();
+            }
+        });
+        
+        function getRecommendations() {
+            const q1 = answers.q1; 
+            const q1_1_k12 = answers.q1_1_k12;
+            const q1_1_org = answers.q1_1_org;
+            const q2 = answers.q2; 
+            const q2_1_lang = answers.q2_1_lang;
+            const q3 = answers.q3; 
+            let recommendations = new Set();
+
+            // Language focus
+            if (q2 === 'language' || (q3 === 'certification_academic' && (q2_1_lang || q1 !== 'organization'))) {
+                recommendations.add('ivs_academy');
+            }
+
+            // STEAM & Digital
+            if (q2 === 'steam_digital') {
+                recommendations.add('ivs_education');
+                if (q1 === 'organization' || q3 === 'org_efficiency_quality') {
+                    recommendations.add('ivs_media'); 
+                }
+                if (q1 === 'k12_student' && (q1_1_k12 === 'elementary' || q1_1_k12 === 'middle_school')) {
+                     // KinderLink25 could be mentioned if IVS Education covers early STEAM
+                }
+            }
+
+            // Skills & Mindset
+            if (q2 === 'skills_mindset' || q3 === 'career_competency' || q3 === 'mindset_potential') {
+                 recommendations.add('ivs_academy'); // Soft skills often here
+                 recommendations.add('ivs_lifeminds');
+            }
+
+            // Consulting & Study Abroad
+            if (q2 === 'consulting_study_abroad' || q3 === 'study_abroad_scholarship') {
+                recommendations.add('ivs_consulting');
+            }
+
+            // Organizational Solutions
+             if (q2 === 'org_solutions' || (q1 === 'organization' && q3 === 'org_efficiency_quality')) {
+                recommendations.add('ivs_consulting'); // Strategic consulting
+                recommendations.add('ivs_education'); // IVSCelesTech, custom programs
+                recommendations.add('ivs_media'); // Digital content, marketing for orgs
+            }
+            
+            // Specifics for user types
+            if (q1 === 'k12_student') {
+                if (q2 === 'language') recommendations.add('ivs_academy');
+                if (q2 === 'steam_digital') recommendations.add('ivs_education');
+            }
+            if (q1 === 'uni_student') {
+                 if (q2 === 'language' || q2 === 'skills_mindset') recommendations.add('ivs_academy');
+                 if (q3 === 'study_abroad_scholarship') recommendations.add('ivs_consulting');
+                 if (q2 === 'skills_mindset') recommendations.add('ivs_lifeminds');
+            }
+            if (q1 === 'professional') {
+                if (q2 === 'language' || q2 === 'skills_mindset' || q3 === 'career_competency') {
+                    recommendations.add('ivs_academy'); 
+                    recommendations.add('ivs_lifeminds');
+                }
+                if (q3 === 'study_abroad_scholarship' || q2 === 'consulting_study_abroad') recommendations.add('ivs_consulting');
+            }
+            
+            if (recommendations.size === 0) { 
+                recommendations.add('ivs_academy');
+                recommendations.add('ivs_consulting');
+                recommendations.add('ivs_lifeminds');
+            }
+            return Array.from(recommendations);
+        }
+
+        function displayResults() {
+            const recommendedServices = getRecommendations();
+            recommendationsContainerEl.innerHTML = '';
+            if (recommendedServices.length > 0) {
+                recommendedServices.forEach((serviceKey, index) => {
+                    const titleKey = `rec_${serviceKey}_title`;
+                    const descKey = `rec_${serviceKey}_desc`;
+                    const div = document.createElement('div');
+                    div.classList.add('recommendation-item', 'bg-white/80', 'p-5', 'rounded-lg', 'shadow-lg', 'hover:shadow-xl', 'transition-shadow');
+                    div.innerHTML = `
+                        <h3 class="text-xl md:text-2xl font-semibold text-[#0a3d4a] mb-2">${translations[currentLang][titleKey] || serviceKey}</h3>
+                        <p class="text-gray-700 mb-4 text-sm md:text-base">${translations[currentLang][descKey] || 'Description not available.'}</p>
+                        <a href="https://ivsacademy.edu.vn" target="_blank" class="inline-block bg-[#c89c4a] text-white text-sm font-medium py-2 px-5 rounded-md hover:bg-opacity-80 transition">
+                            ${translations[currentLang]['learn_more_button']} <i class="fas fa-external-link-alt ml-1.5"></i>
+                        </a>
+                    `;
+                    recommendationsContainerEl.appendChild(div);
+                    setTimeout(() => {
+                        div.classList.add('visible');
+                    }, index * 150); 
+                });
+            } else {
+                recommendationsContainerEl.innerHTML = `<p class="text-gray-700 text-center" data-lang-key="no_recommendations_fallback">Chúng tôi đang tìm giải pháp phù hợp. Vui lòng liên hệ để được tư vấn chi tiết.</p>`;
+                 updateTexts(currentLang); 
+            }
+        }
+
+        restartButton.addEventListener('click', () => {
+            clearState();
+            showScreen(welcomeScreen);
+            buildCurrentQuestionPath(); // Rebuild for fresh start
+            updateProgressBar();
+        });
+        
+        confirmContinueButton.addEventListener('click', () => {
+            continueSessionModal.classList.remove('visible');
+            showScreen(questionScreen);
+            buildCurrentQuestionPath(); // Build path based on loaded answers
+            loadQuestion(currentQuestionIndexInPath);
+        });
+
+        declineContinueButton.addEventListener('click', () => {
+            continueSessionModal.classList.remove('visible');
+            clearState();
+            showScreen(welcomeScreen); // Or directly to question 1 of new session
+            buildCurrentQuestionPath();
+            updateProgressBar();
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            updateTexts(currentLang); 
+            if (loadState() && Object.keys(answers).length > 0) { // Check if answers object is not empty
+                // If currentQuestionIndexInPath points beyond the last question of the saved path,
+                // it means they completed it. Ask to restart or view results (if results can be regenerated).
+                buildCurrentQuestionPath(); // Build path based on loaded answers first
+                if (currentQuestionIndexInPath >= currentQuestionPath.length && currentQuestionPath.length > 0) {
+                    // They were at the results screen or completed.
+                    // Offer to view results again or restart. For simplicity, show modal to restart or continue (which implies restarting if at end).
+                    // Or, directly show results if possible.
+                    // Let's make "continue" mean going to the results if they were at the end.
+                     continueSessionModal.classList.add('visible');
+                     // Adjust confirmContinue logic: if at end, show results.
+                     confirmContinueButton.onclick = () => {
+                        continueSessionModal.classList.remove('visible');
+                        if (currentQuestionIndexInPath >= currentQuestionPath.length && currentQuestionPath.length > 0) {
+                            showResultsScreen();
+                        } else {
+                            showScreen(questionScreen);
+                            loadQuestion(currentQuestionIndexInPath);
+                        }
+                     }
+
+                } else if (currentQuestionPath.length > 0) { // Has progress and not at the end
+                     continueSessionModal.classList.add('visible');
+                } else { // Saved state is invalid or led to an empty path
+                    clearState();
+                    showScreen(welcomeScreen);
+                    buildCurrentQuestionPath();
+                }
+            } else {
+                clearState(); // Ensure clean start if no valid saved state
+                showScreen(welcomeScreen);
+                buildCurrentQuestionPath();
+            }
+        });
+
+    </script>
+    <!-- Component Placeholders -->
+    <div id="header-placeholder"></div>
+    <div id="footer-placeholder"></div>
+    <div id="fab-container-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/loadComponents.js"></script>
+</body>
+</html>
+

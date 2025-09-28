@@ -1,0 +1,1111 @@
+```html
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVS JSC | Giáo Viên Nước Ngoài [Active now]</title>
+    <meta name="description" content="Danh sách các giáo viên nước ngoài chất lượng cao đang tìm kiếm cơ hội việc làm tại Việt Nam thông qua IVS JSC. Xem hồ sơ và liên hệ ngay.">
+    <meta name="keywords" content="giáo viên nước ngoài, giáo viên bản ngữ, tuyển dụng giáo viên, việc làm giáo viên, IVS JSC, TESOL, CELTA">
+    <meta property="og:title" content="Giáo Viên Nước Ngoài Đang Tìm Việc | IVS JSC">
+    <meta property="og:description" content="Khám phá hồ sơ các giáo viên tiếng Anh bản ngữ và nước ngoài chất lượng, sẵn sàng cho các vị trí giảng dạy tại trường học và trung tâm tại Việt Nam.">
+    <meta property="og:image" content="https://ivsjsc.github.io/images/banners/available-teachers-og.png">
+    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/teacher-lists-available.html">
+    <meta property="og:type" content="website">
+    <meta name="author" content="IVS JSC">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo/logo-192.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/tailwind.css">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        .font-display { font-family: 'Lexend', sans-serif; }
+        .hero-section {
+            background-image: url('https://placehold.co/1920x400/1a202c/ffffff?text=Available+Teachers');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(13, 17, 23, 0.8), rgba(13, 17, 23, 0.6));
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text-shadow {
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        .teacher-card {
+            background-color: #161B22;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .teacher-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .teacher-avatar {
+            width: 7rem;
+            height: 7rem;
+            border-radius: 9999px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid #58a6ff;
+        }
+        .teacher-info ul {
+            color: #a1aab4;
+            font-size: 0.875rem;
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+        .teacher-info li {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 0.25rem;
+        }
+        .teacher-info li i {
+            color: #34d399;
+            margin-right: 0.5rem;
+            width: 1.25rem;
+            flex-shrink: 0;
+        }
+        .teacher-info li span {
+            flex-grow: 1;
+        }
+        .btn-view-profile {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #58a6ff;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, background-color 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-view-profile:hover { transform: scale(1.05); background-color: #3b82f6; }
+        .pagination-button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .pagination-button:not(:disabled) {
+            background-color: #58a6ff;
+            color: #ffffff;
+        }
+        .pagination-button:disabled {
+            background-color: #30363d;
+            color: #a1aab4;
+            cursor: not-allowed;
+        }
+        .form-container {
+            background-color: var(--ivs-card);
+            border: 1px solid var(--ivs-border);
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--ivs-text-primary);
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea,
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--ivs-border);
+            border-radius: 0.5rem;
+            background-color: var(--ivs-bg);
+            color: var(--ivs-text-primary);
+            font-size: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group textarea:focus,
+        .form-group input[type="file"]:focus {
+            outline: none;
+            border-color: var(--ivs-blue);
+            box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background-color: #58a6ff;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, background-color 0.15s ease;
+        }
+        .file-upload-label {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            background-color: #30363d;
+            color: #a1aab4;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+        .file-upload-label:hover { background-color: #a1aab4; color: #0d1117; }
+        .file-upload-input {
+            display: none;
+        }
+        .file-list {
+            margin-top: 0.5rem;
+            color: var(--ivs-text-secondary);
+            font-size: 0.875rem;
+        }
+    </style>
+    <!-- CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-ivs-bg text-ivs-text-primary antialiased">
+    <header id="header-placeholder"></header>
+    <main>
+        <!-- Hero Section for Available Teachers -->
+        <section class="py-20 md:py-28 text-white text-center">
+            <div class="container mx-auto px-6 hero-content" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold font-display mb-4 hero-text-shadow">
+                    IVS Academy | Giáo Viên Nước Ngoài [Active now]
+                </h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto hero-text-shadow leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                    Khám phá hồ sơ giáo viên chất lượng, đã được chọn lọc kỹ càng, làm việc hợp pháp tại VN và sẵn sàng cho các cơ hội giảng dạy tại trường học và trung tâm của bạn.
+                </p>
+            </div>
+        </section>
+        <!-- Teacher Listings Section -->
+        <section class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-center mb-12 text-ivs-text-primary">
+                    Danh Sách Giáo Viên Tiêu Biểu
+                </h2>
+                <p class="text-center text-ivs-text-secondary max-w-2xl mx-auto mb-10">
+                    Dưới đây là danh sach giáo viên hoạt động theo thời gian thật [on active]
+                </p>
+                <div id="teacher-list-container" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+                                        <div class="teacher-card" data-aos="fade-up" data-aos-delay="100" data-location="Đồng Nai">
+                        <img class="teacher-avatar" src="/images/team/kimball-allen-thomson.png" alt="[Ảnh giáo viên Kimball Thomson]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV1';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Kimball Thomson</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đồng Nai)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Hoa Kỳ</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Thạc sỹ MBA Viện Đại học California–Berkeley</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>MBA (Quản trị Kinh doanh)</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                        <a href="https://ivsacademy.edu.vn/Blogs/aboutkimballallenthomson.html" class="btn-view-profile" data-lang-key="view_more_button">
+                            <i class="fas fa-arrow-right mr-2"></i> More...
+                        </a>
+                    </div>
+        
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="150" data-location="Hồ Chí Minh">
+                        <img class="teacher-avatar" src="/images/team/rachid-belferar.png" alt="[Ảnh giáo viên Rachid Bellafar]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV2';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Rachid Bellafar</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Hồ Chí Minh)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Anh Quốc</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Thạc sỹ kỹ thuật - Kỹ sư Trường Đại Học LONDON METROPOLITAN</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Công nghệ máy tính</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Anh</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="200" data-location="Đồng Nai">
+                        <img class="teacher-avatar" src="/images/team/salma-mahzoum.png" alt="[Ảnh giáo viên Salma Nour]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV3';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Salma Nour</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đồng Nai)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Ma Rốc</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Tiến Sỹ</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Văn Hóa Xã Hội , Ngôn Ngữ Anh</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="250" data-location="Đồng Nai">
+                        <img class="teacher-avatar" src="/images/team/teachers/raphael.png" alt="[Ảnh giáo viên RAPHAEL GALUZ]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV4';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">RAPHAEL GALUZ</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đồng Nai)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Hoa Kỳ</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân luật University Paris 2 Panthéon Assas & HND Communication, Law, English, Computering skills</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span></span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="650" data-location="Đồng Nai, Hồ Chí Minh">
+                        <img class="teacher-avatar" src="/images/team/jannicar-nayve.png" alt="[Ảnh giáo viên Jannicar Nayve]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV12';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Jannicar Nayve</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đồng Nai, Hồ Chí Minh)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Kinh tế và Quản trị Kinh doanh, Cử nhân Giáo dục, TESOL, TEFL, IELTS 8.0</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giảng dạy IELTS và phát triển nhân cách</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2450" data-location="Đồng Nai, Hồ Chí Minh">
+                        <img class="teacher-avatar" src="/images/team/teachers/madison-schae-summers.jpg" alt="[Ảnh giáo viên Madison-Schae Summers]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV48';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Madison-Schae Summers</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đồng Nai, Hồ Chí Minh)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: South African</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>, 120-hour TEFL/TESOL</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span></span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Nam Phi</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2500" data-location="Đồng Nai, Hồ Chí Minh">
+                        <img class="teacher-avatar" src="/images/team/teachers/sloan-pierre-samuel-venter.png" alt="[Ảnh giáo viên Sloan Pierre Samuel Venter]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV49';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Sloan Pierre Samuel Venter</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đồng Nai, Hồ Chí Minh)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: South African</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>, 120-hour TEFL/TESOL</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span></span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Nam Phi</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+ 
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="3150" data-location="Đồng Nai, Hồ Chí Minh, Bình Dương">
+                        <img class="teacher-avatar" src="/images/team/teachers/williams-nanji.jpg" alt="[Ảnh giáo viên William Nanji]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV62';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">William Nanji</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đồng Nai, Hồ Chí Minh, Bình Dương)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Nigeria</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>TESOL Master, TEFL , CEFR C2, Education Managerment in English</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Khoa học công nghệ</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="300" data-location="Cần Thơ">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher5.png" alt="[Ảnh giáo viên Thabo Mbeki]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV5';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Thabo Mbeki</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Cần Thơ)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Nam Phi</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher5_qualification_label">Trình Độ:</span> <span>Cử nhân Văn học, TEFL</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher5_specialization_label">Chuyên ngành:</span> <span>Tiếng Anh Doanh Nghiệp, Phát âm</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher5_accent_label">Giọng:</span> <span>Anh-Nam Phi</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher5_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="350" data-location="Vũng Tàu">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher6.png" alt="[Ảnh giáo viên Emily White]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV6';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Emily White</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Vũng Tàu)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Úc</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher6_qualification_label">Trình Độ:</span> <span>Thạc sĩ Quản lý Giáo dục, TESOL</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher6_specialization_label">Chuyên ngành:</span> <span>Quản lý lớp học, Phát triển chương trình</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher6_accent_label">Giọng:</span> <span>Anh-Úc</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher6_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="400" data-location="TP.HCM">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher7.png" alt="[Ảnh giáo viên Kenji Tanaka]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV7';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Kenji Tanaka</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(TP.HCM)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Nhật Bản</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher7_qualification_label">Trình Độ:</span> <span>Tiến sĩ Ngôn ngữ học, CELTA</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher7_specialization_label">Chuyên ngành:</span> <span>Nghiên cứu ngôn ngữ, Đào tạo giáo viên</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher7_accent_label">Giọng:</span> <span>Anh-Nhật (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher7_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="450" data-location="Hà Nội">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher8.png" alt="[Ảnh giáo viên Chloe Dubois]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV8';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Chloe Dubois</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Hà Nội)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Pháp</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher8_qualification_label">Trình Độ:</span> <span>Thạc sĩ Tâm lý học, TESOL</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher8_specialization_label">Chuyên ngành:</span> <span data-lang-key="teacher8_specialization">Tâm lý học đường, Kỹ năng mềm</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher8_accent_label">Giọng:</span> <span>Anh-Pháp (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher8_expectation_label">Mong đợi (công việc):</span> <span data-lang-key="teacher8_expectation"></span></li>
+                            </ul>
+                        </div>
+                    </div>              
+        
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="600" data-location="Không có thông tin">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher3.png" alt="[Ảnh giáo viên Cindy Claire Hinunangan]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV11';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Cindy Claire Hinunangan</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">()</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Nghệ thuật Ngôn ngữ Anh, TEFL, TESOL, TEYL, C2</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giảng dạy ESL và Montessori</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="700" data-location="Không có thông tin">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher5.png" alt="[Ảnh giáo viên Juvelynne Bayadog]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV13';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Juvelynne Bayadog</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">()</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Giáo dục Trung học, TESOL 220 giờ, 120 giờ</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giảng dạy tiếng Anh và Khoa học cho nhiều lứa tuổi</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="750" data-location="Không có thông tin">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher6.png" alt="[Ảnh giáo viên Celina Anica]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV14';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Celina Anica</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">()</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Mozambique</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Công nghệ Nông nghiệp, TESOL, CEFR C2</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giảng dạy tiếng Anh cho trẻ em và người lớn</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="800" data-location="Không có thông tin">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher7.png" alt="[Ảnh giáo viên Hazel Inting]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV15';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Hazel Inting</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">()</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Thạc sĩ Giáo dục nghề nghiệp, TESOL, TEYL, C2</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giảng dạy tiếng Anh, luyện thi IELTS</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="850" data-location="Không có thông tin">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher8.png" alt="[Ảnh giáo viên Roselyn Cuadra]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV16';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Roselyn Cuadra</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">()</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Giáo dục Tiểu học, TESOL, Giấy phép Giáo viên</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giảng dạy tiếng Anh Tiểu học và ESL</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+     
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1000" data-location="Không có thông tin">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher3.png" alt="[Ảnh giáo viên Richard Veloch]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV19';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Richard Veloch</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">()</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Slovakia</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Chứng chỉ TEFL, TEFL, Coaching in Education</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giảng dạy ESL cho cả trẻ em và người lớn, quản lý dự án</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Mỹ</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1050" data-location="Đa quốc gia">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher4.png" alt="[Ảnh giáo viên Amir Shahzad]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV20';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Amir Shahzad</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đa quốc gia)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Pakistan</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân về Phát triển Trẻ em, 120-Hour TESOL/TEFL Certificate</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Phát triển trẻ em</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Pakistan (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1100" data-location="Đa quốc gia">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher5.png" alt="[Ảnh giáo viên Anarwat Emmanuel]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV21';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Anarwat Emmanuel</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đa quốc gia)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Ghana</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Giáo dục từ University of Cape Coast, 120-Hour TEFL, C2 Certification</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giáo dục</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1150" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher6.png" alt="[Ảnh giáo viên Carie Tablizo]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV22';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Carie Tablizo</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Thạc sĩ Quản lý Giáo dục, </span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Quản lý Giáo dục</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1200" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher7.png" alt="[Ảnh giáo viên Harshita (Edith)]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV23';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Harshita (Edith)</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: India</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor's of Science in Electronics, TEFL, C1 Certificate</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Electronics, IT, English</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1250" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher8.png" alt="[Ảnh giáo viên Fatih Donmez]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV24';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Fatih Donmez</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Turkey</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor of Science in English Language Education, 120-Hour TEFL, TESOL</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>English Language Education</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Thổ Nhĩ Kỳ (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1350" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher2.png" alt="[Ảnh giáo viên Michal Mitchell Duana]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV26';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Michal Mitchell Duana</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Sirrea Leonean</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor in marketing and Media Communication, TEFL, C2 Certificate</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Marketing and Media</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1400" data-location="Bình Dương">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher3.png" alt="[Ảnh giáo viên Asraful Islam]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV27';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Asraful Islam</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Bình Dương)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Bangladesh</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Khoa học, TEFL, C1 Certificate</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Science</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Bangladesh (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1450" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher4.png" alt="[Ảnh giáo viên Mary Jjoy Codera]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV28';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Mary Jjoy Codera</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor of Secondary Education Major in English, License English Teacher, 120 Hour TESOL/TEFL, C2 Certificate</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giáo dục tiếng Anh</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1500" data-location="Không có thông tin">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher5.png" alt="[Ảnh giáo viên Muhamad Amir Shazad]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV29';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Muhamad Amir Shazad</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Không có thông tin)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Pakistan</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span></span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span></span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1550" data-location="Hà Nội">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher6.png" alt="[Ảnh giáo viên Ras Ghanem Zakaria]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV30';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Ras Ghanem Zakaria</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Hanoi)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Algeria</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor and Master Degree of French Language, 120-hour TEFL, EF SET Certificate</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Ngôn ngữ Pháp</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1600" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher7.png" alt="[Ảnh giáo viên Roman Abramov]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV31';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Roman Abramov</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Russia</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Khoa học ngành ngôn ngữ, </span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Ngành ngôn ngữ</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1650" data-location="Đa quốc gia">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher8.png" alt="[Ảnh giáo viên Rumi]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV32';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Rumi</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Đa quốc gia)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Pakistani</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor of Aeronatical Engineering, </span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Aeronatical Engineering</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1800" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher3.png" alt="[Ảnh giáo viên Stepan Laptev]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV35';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Stepan Laptev</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Russian Federation</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Master Builder, </span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Tiếng Anh tổng quát</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1850" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher4.png" alt="[Ảnh giáo viên Derek A. Hammer]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV36';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Derek A. Hammer</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Unknown</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor’s Degree in Asian Ethnic Studies, 120-hour TEFL Certificate</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Asian Ethnic Studies</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1900" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher5.png" alt="[Ảnh giáo viên Leo]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV37';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Leo</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Unknown</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor of Arts, </span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Business Operations</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="1950" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher6.png" alt="[Ảnh giáo viên Thelma Gonzales]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV38';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Thelma Gonzales</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor of Secondary Education, TEYL, TEFL, TESOL Certifications</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Secondary Education</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2000" data-location="TP.HCM">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher7.png" alt="[Ảnh giáo viên Nedded Soraya]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV39';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Nedded Soraya</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(TP.HCM)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Algeria</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Tiếng Anh, TESOL 120 hours</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Tiếng Anh</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2050" data-location="Hà Nội, Đà Nẵng">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher8.png" alt="[Ảnh giáo viên Walter Izquierdo Cotes]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV40';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Walter Izquierdo Cotes</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Hà Nội, Đà Nẵng)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Barcelona</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor of Journalism, ESO, Professional Sale, Marketing manager, Business manager, Teaching ESL , TEFL247</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Journalism, Sale and Marketing, Business manager</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2100" data-location="Hà Nội">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher1.png" alt="[Ảnh giáo viên Hazel A.Inting]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV41';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Hazel A.Inting</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Hà Nội)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Philippines</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor of Secondary Education, Bachelor of Science in Industrial Techology, TESOL 120 hours, TEYL, C2 Certifications</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Secondary Education, Science in Industrial Techology</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2350" data-location="Việt Nam">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher6.png" alt="[Ảnh giáo viên Zachary Bryce]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV46';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Zachary Bryce</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Việt Nam)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: United States</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Various certifications, 120 Hour English Tesol</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span></span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2400" data-location="Không có thông tin">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher7.png" alt="[Ảnh giáo viên Linda Le]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV47';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Linda Le</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">()</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: United States</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Bachelor of Arts, 120-hour TESOL/TEFL Teacher Certification</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Social Welfare, Education</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                   
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2650" data-location="Filipino">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher4.png" alt="[Ảnh giáo viên Alexander-Jeramie Cube]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV52';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Alexander-Jeramie Cube</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Filipino)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Filipino</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span></span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span></span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2900" data-location="Hanoi">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher1.png" alt="[Ảnh giáo viên Celina F. Anica]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV57';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Celina F. Anica</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Hanoi)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Mozambican</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Công nghệ cao Nông nghiệp, TESOL, CEFR C2</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Công nghệ cao Nông nghiệp</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <div class="teacher-card" data-aos="fade-up" data-aos-delay="2950" data-location="Hanoi">
+                        <img class="teacher-avatar" src="/images/teachers/englishteacher2.png" alt="[Ảnh giáo viên Roselyn S. Cuadra]" onerror="this.onerror=null; this.src='https://placehold.co/112x112/161B22/FFFFFF?text=GV58';">
+                        <div class="flex items-baseline justify-center flex-wrap mb-2">
+                            <h3 class="text-xl font-semibold text-ivs-blue">Roselyn S. Cuadra</h3>
+                            <span class="text-xl font-semibold text-ivs-orange ml-2">(Hanoi)</span>
+                        </div>
+                        <p class="text-ivs-text-primary text-base mb-3">Quốc tịch: Filipino</p>
+                        <div class="teacher-info">
+                            <ul>
+                                <li><i class="fas fa-user-graduate"></i> <span data-lang-key="teacher_qualification_label">Trình Độ:</span> <span>Cử nhân Giáo dục Tiểu học, TESOL</span></li>
+                                <li><i class="fas fa-book-open"></i> <span data-lang-key="teacher_specialization_label">Chuyên ngành:</span> <span>Giáo dục tiểu học</span></li>
+                                <li><i class="fas fa-microphone"></i> <span data-lang-key="teacher_accent_label">Giọng:</span> <span>Anh-Đa quốc gia (ESL)</span></li>
+                                <li><i class="fas fa-search-location"></i> <span data-lang-key="teacher_expectation_label">Mong đợi (công việc):</span> <span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="flex justify-center items-center space-x-4 mt-12" data-aos="fade-up" data-aos-delay="200">
+                    <button id="prevPageBtn" class="pagination-button" disabled data-lang-key="pagination_prev">
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    <span id="pageInfo" class="text-ivs-text-primary text-lg font-semibold" data-lang-key="pagination_info">
+                        Page 1 of X
+                    </span>
+                    <button id="nextPageBtn" class="pagination-button" data-lang-key="pagination_next">
+                        Next <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                    <!-- Teacher Cards will be dynamically populated here -->
+                </div>
+                <!-- Pagination Controls -->
+                <div class="flex justify-center items-center space-x-4 mt-12" data-aos="fade-up" data-aos-delay="200">
+                    <button id="prevPageBtn" class="pagination-button" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i> Previous
+                    </button>
+                    <span id="pageInfo" class="text-ivs-text-primary text-lg font-semibold">
+                        Page 1 of X
+                    </span>
+                    <button id="nextPageBtn" class="pagination-button">
+                        Next <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                <div class="text-center mt-12">
+                    <p class="text-lg text-ivs-text-secondary mb-6">
+                        Bạn không tìm thấy giáo viên phù hợp? IVS JSC có một mạng lưới giáo viên rộng lớn và đa dạng.
+                    </p>
+                    <a href="#" class="bg-ivs-green hover:bg-ivs-green-darker text-white py-3 px-6 rounded-lg font-bold inline-flex items-center transition-colors">
+                        <i class="fas fa-search-plus mr-2"></i> Yêu Cầu Tìm Giáo Viên Theo Yêu Cầu
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- IVS - Partnership Education Linking Form -->
+        <section class="py-16 md:py-24 bg-ivs-card border-y border-ivs-border">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl lg:text-5xl font-bold font-display text-ivs-blue mb-4">
+                        IVS - Partnership Education Linking
+                    </h2>
+                    <p class="text-lg text-ivs-text-secondary max-w-2xl mx-auto">
+                        Cùng IVS kiến tạo tương lai giáo dục. Vui lòng điền thông tin dưới đây để bắt đầu hành trình hợp tác.
+                    </p>
+                </div>
+                <div class="form-container">
+                    <h3 class="text-2xl font-semibold text-ivs-text-primary mb-8 text-center">
+                        Đăng Ký Hợp Tác Giáo Dục
+                    </h3>
+                    <form id="partnershipForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfftr8CX5gB7OkPAUSf-khuZR-YQ8LG03jeEWB34RwKypNbHA/formResponse" method="POST" enctype="multipart/form-data" target="_blank">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="form-group">
+                                <label for="organizationName">Tên Cơ Sở Giáo Dục (thường gọi)</label>
+                                <input type="text" id="organizationName" name="entry.1517655153" placeholder="Ví dụ: Trường Mầm non ABC, Trung tâm Anh ngữ XYZ" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="parentOrganization">CSGD trực thuộc, Tên Doanh nghiệp/ Tổ chức</label>
+                                <input type="text" id="parentOrganization" name="entry.59438074" placeholder="Ví dụ: Công ty TNHH Giáo dục ABC">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="form-group">
+                                <label for="taxId">Mã số thuế Doanh nghiệp</label>
+                                <input type="text" id="taxId" name="entry.866799846" placeholder="Nhập mã số thuế của doanh nghiệp/tổ chức">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Địa điểm có nhu cầu</label>
+                                <input type="text" id="location" name="entry.1745495925" placeholder="Ví dụ: Đồng Nai, TP.HCM, Hà Nội">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="form-group">
+                                <label for="phoneNumber">Số điện thoại</label>
+                                <input type="tel" id="phoneNumber" name="entry.138806801" placeholder="Nhập số điện thoại liên hệ" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="entry.396944312" placeholder="Nhập địa chỉ email liên hệ" required>
+                            </div>
+                        </div>
+                        <div class="form-group mb-6">
+                            <label for="selectedTeachers">Giáo viên đã chọn</label>
+                            <textarea id="selectedTeachers" name="entry.778899001" rows="3" placeholder="Liệt kê tên các giáo viên bạn quan tâm từ danh sách trên (ví dụ: John Smith, Sarah Johnson)"></textarea>
+                            <p class="text-ivs-text-secondary text-xs mt-1">
+                                (Lưu ý: ID cho trường này có thể cần được kiểm tra lại từ Google Form của bạn)
+                            </p>
+                        </div>
+                        <div class="form-group mb-6">
+                            <label for="detailedNeeds">Mô tả về nhu cầu chi tiết</label>
+                            <textarea id="detailedNeeds" name="entry.556677889" rows="5" placeholder="Ví dụ: Yêu cầu về giáo viên (quốc tịch, kinh nghiệm, chuyên môn), số lượng lớp, độ tuổi học viên, chương trình mong muốn, các yêu cầu đặc biệt khác..."></textarea>
+                            <p class="text-ivs-text-secondary text-xs mt-1">
+                                (Lưu ý: ID cho trường này có thể cần được kiểm tra lại từ Google Form của bạn)
+                            </p>
+                        </div>
+                        <div class="form-group mb-8">
+                            <label class="file-upload-label">
+                                <i class="fas fa-upload mr-2"></i> Tệp đính kèm (GPKD, Quyết định thành lập cơ sở,...)
+                            </label>
+                            <div class="border-2 border-dashed border-ivs-border rounded-lg p-6 text-center cursor-pointer hover:border-ivs-blue transition-colors">
+                                <p class="text-ivs-text-secondary mb-2">Kéo thả tệp vào đây hoặc click để chọn tệp</p>
+                                <p class="text-xs text-ivs-text-secondary">Tối đa 5MB mỗi tệp, định dạng: PDF, DOC, DOCX, JPG, PNG</p>
+                            </div>
+                            <p class="text-ivs-text-secondary text-xs mt-1">
+                                (Tối đa 5MB mỗi tệp, định dạng: PDF, DOC, DOCX, JPG, PNG. Lưu ý: ID cho trường này có thể cần được kiểm tra lại từ Google Form của bạn để đảm bảo tải tệp hoạt động.)
+                            </p>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            Gửi Yêu Cầu Hợp Tác
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Price List Section -->
+        <section class="py-16 md:py-24 bg-ivs-card border-y border-ivs-border">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold mb-6 text-white">
+                    Xem Bảng Giá Dịch Vụ Tham Khảo
+                </h2>
+                <p class="text-lg text-ivs-text-secondary max-w-2xl mx-auto mb-8">
+                    Để có cái nhìn tổng quan về chi phí, vui lòng tham khảo bảng giá dịch vụ cung cấp giáo viên nước ngoài của IVS JSC.
+                </p>
+                <a href="#" class="bg-ivs-green hover:bg-ivs-green-darker text-white py-3 px-6 rounded-lg font-bold inline-flex items-center transition-colors">
+                    <i class="fas fa-file-invoice-dollar mr-2"></i> Xem Bảng Giá Chi Tiết
+                </a>
+            </div>
+        </section>
+        <!-- Call to Action Section -->
+        <section class="py-16 md:py-24 bg-ivs-blue text-white text-center">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold mb-6">
+                    Sẵn Sàng Nâng Tầm Chất Lượng Giáo Dục Của Bạn?
+                </h2>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10">
+                    Liên hệ với IVS JSC ngay hôm nay để nhận tư vấn miễn phí và tìm kiếm giải pháp nhân sự giáo viên nước ngoài tối ưu nhất cho tổ chức của bạn.
+                </p>
+                <a href="#" class="bg-ivs-orange hover:bg-orange-600 text-white py-3 px-6 rounded-lg font-bold inline-flex items-center transition-colors">
+                    <i class="fas fa-envelope mr-2"></i> Yêu Cầu Tư Vấn Ngay
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer id="footer-placeholder"></footer>
+    <div id="fab-container-placeholder"></div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/js/loadComponents.js"></script>
+    <script src="/js/language.js"></script>
+    <script src="/js/fab-container.js"></script>
+    <script>
+        AOS.init({
+            offset: 80,
+            duration: 600,
+            easing: 'ease-out-quad',
+            once: true,
+            mirror: false,
+            anchorPlacement: 'top-bottom',
+        });
+    </script>
+    <!-- Chèn vào cuối <body> của mọi trang -->
+        <div id="fab-container-placeholder"></div>
+</body>
+</html>

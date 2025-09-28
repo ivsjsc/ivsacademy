@@ -3,8 +3,8 @@
 <!-- DESCRIPTION: Optimized HTML structure for the main header with updated navigation menus and language selection. -->
 
 <!-- Load centralized CSS variables -->
-<link rel="stylesheet" href="css/tailwind.css">
-<link rel="stylesheet" href="css/vars.css">
+<link rel="stylesheet" href="/css/tailwind.css">
+<link rel="stylesheet" href="/css/vars.css">
 
 <header id="ivs-main-header" class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
     <div class="max-w-6xl mx-auto px-4 h-full">
@@ -14,14 +14,14 @@
                     <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
-            <a href="index.html" class="flex-shrink-0 flex items-center space-x-2 group" aria-label="IVS JSC Homepage">
-                <img src="images/logo/logo.png" alt="IVS JSC Logo" class="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';">
+            <a href="/index.html" class="flex-shrink-0 flex items-center space-x-2 group" aria-label="IVS JSC Homepage">
+                <img src="/images/logo/logo.png" alt="IVS JSC Logo" class="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';">
                 <span class="hidden sm:inline text-lg md:text-xl font-bold group-hover:text-ivs-accent transition-colors">IVS <span class="text-ivs-accent">JSC</span></span>
             </a>
 
             <!-- Desktop Navigation -->
             <nav id="main-navigation" class="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
-                <a href="index.html" class="desktop-nav-link" data-lang-key="nav_home">Trang Chủ</a>
+                <a href="/index.html" class="desktop-nav-link" data-lang-key="nav_home">Trang Chủ</a>
                 
                 <!-- Dropdown "Về IVS" -->
                 <div class="desktop-dropdown-container">
@@ -29,11 +29,11 @@
                         <span data-lang-key="nav_about_ivs">Về IVS</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
                     <div class="desktop-dropdown p-2 space-y-1">
-                        <a href="about.html" class="dropdown-item" data-lang-key="nav_about_us">Về chúng tôi</a>                        
-                        <a href="Pages/non-profit.html" class="dropdown-item" data-lang-key="nav_non_profit">Phi lợi nhuận</a>
-                        <a href="Pages/careervn.html" class="dropdown-item" data-lang-key="nav_career_opportunities">Cơ hội nghề nghiệp</a>                     
-                        <a href="ivs-global-teacher-hub.html" class="dropdown-item" data-lang-key="nav_foreign_teachers_applying">Teachers Applying</a>
-                        <a href="Pages/international-partnership.html" class="dropdown-item" data-lang-key="solution_international_coop_title">Hợp tác Quốc tế</a>
+                        <a href="/about.html" class="dropdown-item" data-lang-key="nav_about_us">Về chúng tôi</a>                        
+                        <a href="/Pages/non-profit.html" class="dropdown-item" data-lang-key="nav_non_profit">Phi lợi nhuận</a>
+                        <a href="/Pages/careervn.html" class="dropdown-item" data-lang-key="nav_career_opportunities">Cơ hội nghề nghiệp</a>                     
+                        <a href="/ivs-global-teacher-hub.html" class="dropdown-item" data-lang-key="nav_foreign_teachers_applying">Teachers Applying</a>
+                        <a href="/Pages/international-partnership.html" class="dropdown-item" data-lang-key="solution_international_coop_title">Hợp tác Quốc tế</a>
                     </div>
                 </div>
 
@@ -47,28 +47,28 @@
                             <!-- Cột trái: Liên kết Giáo dục -->
                             <div class="space-y-2">
                                 <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="nav_services_education_title">Liên kết Giáo dục</h3>
-                                <a href="education.html" class="dropdown-item" data-lang-key="nav_services_education_overview"><i class="fas fa-school fa-fw mr-3 text-ivs-accent/70"></i>Tổng quan</a>
-                                <a href="Pages/lkmamnon.html" class="dropdown-item" data-lang-key="nav_services_education_kindergarten"><i class="fas fa-child fa-fw mr-3 text-ivs-accent/70"></i>Liên kết Mầm non</a>
-                                <a href="Pages/lktieuhoc.html" class="dropdown-item" data-lang-key="nav_services_education_primary">
+                                <a href="/education.html" class="dropdown-item" data-lang-key="nav_services_education_overview"><i class="fas fa-school fa-fw mr-3 text-ivs-accent/70"></i>Tổng quan</a>
+                                <a href="/Pages/lkmamnon.html" class="dropdown-item" data-lang-key="nav_services_education_kindergarten"><i class="fas fa-child fa-fw mr-3 text-ivs-accent/70"></i>Liên kết Mầm non</a>
+                                <a href="/Pages/lktieuhoc.html" class="dropdown-item" data-lang-key="nav_services_education_primary">
                                     <i class="fas fa-book-reader fa-fw mr-3 text-ivs-accent/70"></i>Liên kết Tiểu học
                                 </a>
-                                <a href="Pages/lkthcsthpt.html" class="dropdown-item" data-lang-key="nav_services_education_secondary_high">
+                                <a href="/Pages/lkthcsthpt.html" class="dropdown-item" data-lang-key="nav_services_education_secondary_high">
                                     <i class="fas fa-user-graduate fa-fw mr-3 text-ivs-accent/70"></i>Liên kết THCS & THPT
                                 </a>
-                                <a href="Pages/lkttnn.html" class="dropdown-item" data-lang-key="nav_services_education_language_centers">
+                                <a href="/Pages/lkttnn.html" class="dropdown-item" data-lang-key="nav_services_education_language_centers">
                                     <i class="fas fa-language fa-fw mr-3 text-ivs-accent/70"></i>Liên kết Trung tâm Ngoại ngữ
                                 </a>
                             </div>
                             <!-- Cột phải: IVS Celestech - Đã thêm data-lang-key -->
                             <div class="space-y-2">
                                 <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="header_ivscelestech_title">IVS Celestech</h3>
-                                <a href="Pages/webdesign.html" class="dropdown-item" data-lang-key="header_ivscelestech_webdesign">
+                                <a href="/Pages/webdesign.html" class="dropdown-item" data-lang-key="header_ivscelestech_webdesign">
                                     <i class="fas fa-globe fa-fw mr-3 text-ivs-accent/70"></i>Thiết kế Website
                                 </a>
-                                <a href="Pages/tech_devices.html" class="dropdown-item" data-lang-key="header_ivscelestech_edtech">
+                                <a href="/Pages/tech_devices.html" class="dropdown-item" data-lang-key="header_ivscelestech_edtech">
                                     <i class="fas fa-microchip fa-fw mr-3 text-ivs-accent/70"></i>Trang thiết bị công nghệ
                                 </a>
-                                <a href="Pages/ivscelestech-tcnoithat.html" class="dropdown-item" data-lang-key="header_ivscelestech_tcnoithat">
+                                <a href="/Pages/ivscelestech-tcnoithat.html" class="dropdown-item" data-lang-key="header_ivscelestech_tcnoithat">
                                     <i class="fas fa-couch fa-fw mr-3 text-ivs-accent/70"></i>Tư vấn, thi công nội thất
                                 </a>
                             </div>
@@ -86,21 +86,21 @@
                             <!-- Cột trái: Công nghệ ứng dụng -->
                             <div class="space-y-2">
                                 <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="nav_solutions_tech_title">Công nghệ ứng dụng</h3>
-                                <a href="solutions.html" class="dropdown-item" data-lang-key="nav_solutions_overview"><i class="fas fa-lightbulb fa-fw mr-3 text-ivs-accent/70"></i>Tổng quan</a>
-                                <a href="Pages/ivscelestech.html" class="dropdown-item" data-lang-key="nav_solutions_edtech"><i class="fas fa-code fa-fw mr-3 text-ivs-accent/70"></i>Công nghệ GD</a>
-                                <a href="Pages/upskill.html" class="dropdown-item" data-lang-key="nav_solutions_upskill"><i class="fas fa-arrow-up-right-dots fa-fw mr-3 text-ivs-accent/70"></i>Nâng cao Trình độ</a>
-                                <!-- Removed: <a href="Pages/webdesign.html" class="dropdown-item" data-lang-key="nav_solutions_webdesign"><i class="fas fa-globe fa-fw mr-3 text-ivs-accent/70"></i>Thiết kế Web</a> -->
+                                <a href="/solutions.html" class="dropdown-item" data-lang-key="nav_solutions_overview"><i class="fas fa-lightbulb fa-fw mr-3 text-ivs-accent/70"></i>Tổng quan</a>
+                                <a href="/Pages/ivscelestech.html" class="dropdown-item" data-lang-key="nav_solutions_edtech"><i class="fas fa-code fa-fw mr-3 text-ivs-accent/70"></i>Công nghệ GD</a>
+                                <a href="/Pages/upskill.html" class="dropdown-item" data-lang-key="nav_solutions_upskill"><i class="fas fa-arrow-up-right-dots fa-fw mr-3 text-ivs-accent/70"></i>Nâng cao Trình độ</a>
+                                <!-- Removed: <a href="/Pages/webdesign.html" class="dropdown-item" data-lang-key="nav_solutions_webdesign"><i class="fas fa-globe fa-fw mr-3 text-ivs-accent/70"></i>Thiết kế Web</a> -->
                             </div>
                             <!-- Cột phải: Tư vấn Pháp lý -->
                             <div class="space-y-2">
                                 <h3 class="font-bold text-ivs-accent border-b border-ivs-bg-light pb-2 mb-2" data-lang-key="nav_services_legal_title">Tư vấn Pháp lý</h3>
-                                <a href="Pages/legal_consulting.html" class="dropdown-item" data-lang-key="nav_services_legal_consulting">
+                                <a href="/Pages/legal_consulting.html" class="dropdown-item" data-lang-key="nav_services_legal_consulting">
                                     <i class="fas fa-gavel fa-fw mr-3 text-ivs-accent/70"></i>Tư vấn Chuyên sâu
                                 </a>
-                                <a href="Pages/psb_introduction.html" class="dropdown-item" data-lang-key="nav_services_legal_corporate">
+                                <a href="/Pages/psb_introduction.html" class="dropdown-item" data-lang-key="nav_services_legal_corporate">
                                     <i class="fas fa-balance-scale fa-fw mr-3 text-ivs-accent/70"></i>Luật Doanh nghiệp
                                 </a>
-                                <a href="Pages/litigation_consulting.html" class="dropdown-item" data-lang-key="nav_services_legal_civil">
+                                <a href="/Pages/litigation_consulting.html" class="dropdown-item" data-lang-key="nav_services_legal_civil">
                                     <i class="fas fa-landmark fa-fw mr-3 text-ivs-accent/70"></i>Pháp luật Dân sự
                                 </a>
                             </div>
@@ -113,32 +113,32 @@
                         <span data-lang-key="nav_library">Thư Viện</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
                     <div class="desktop-dropdown left-1/2 -translate-x-1/2 p-2 space-y-1">
-                        <a href="gallery.html" class="dropdown-item" data-lang-key="nav_library_gallery">Thư viện</a>
-                        <a href="Pages/document-library.html" class="dropdown-item" data-lang-key="nav_library_docs">Tài liệu</a>
-                        <a href="learning-materials.html" class="dropdown-item">Tài Liệu Học Tập</a>
-                        <a href="admin.html" class="dropdown-item">Quản Lý Nội Dung</a>
-                        <a href="analytics.html" class="dropdown-item">Analytics Dashboard</a>
-                        <a href="apps/story-repository.html" class="dropdown-item" data-lang-key="nav_library_stories">Kho truyện</a>
-                        <a href="games/ivsgames.html" class="dropdown-item" data-lang-key="nav_library_games">IVS Games</a>
-                        <a href="apps/ivsapps.html" class="dropdown-item" data-lang-key="nav_library_apps">IVS Apps</a>
+                        <a href="/gallery.html" class="dropdown-item" data-lang-key="nav_library_gallery">Thư viện</a>
+                        <a href="/Pages/document-library.html" class="dropdown-item" data-lang-key="nav_library_docs">Tài liệu</a>
+                        <a href="/learning-materials.html" class="dropdown-item">Tài Liệu Học Tập</a>
+                        <a href="/admin.html" class="dropdown-item">Quản Lý Nội Dung</a>
+                        <a href="/analytics.html" class="dropdown-item">Analytics Dashboard</a>
+                        <a href="/apps/story-repository.html" class="dropdown-item" data-lang-key="nav_library_stories">Kho truyện</a>
+                        <a href="/games/ivsgames.html" class="dropdown-item" data-lang-key="nav_library_games">IVS Games</a>
+                        <a href="/apps/ivsapps.html" class="dropdown-item" data-lang-key="nav_library_apps">IVS Apps</a>
                     </div>
                 </div>
 
-                <a href="news-archive.html" class="desktop-nav-link" data-lang-key="nav_news">Tin tức</a>
-                <a href="contact.html" class="desktop-nav-link bg-ivs-accent hover:bg-ivs-accent-dark text-white font-bold" data-lang-key="nav_contact">Liên Hệ</a>
+                <a href="/news-archive.html" class="desktop-nav-link" data-lang-key="nav_news">Tin tức</a>
+                <a href="/contact.html" class="desktop-nav-link bg-ivs-accent hover:bg-ivs-accent-dark text-white font-bold" data-lang-key="nav_contact">Liên Hệ</a>
             </nav>
 
             <!-- Language Buttons (Desktop & Mobile) -->
             <div class="flex items-center space-x-2 md:space-x-1 ml-auto md:ml-0 relative">
                 <button class="lang-toggle-btn group" data-lang="vi" aria-label="Chọn Tiếng Việt">
-                    <img src="images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
+                    <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
                 </button>
                 <button class="lang-toggle-btn group" data-lang="en" aria-label="Select English">
-                    <img src="images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                    <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
                 </button>
                 <!-- Chinese language button -->
                 <button class="lang-toggle-btn group" data-lang="zh" aria-label="中文">
-                    <img src="images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
+                    <img src="/images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
                 </button>
                 
                 <!-- Language Change Confirmation Message -->
@@ -160,7 +160,7 @@
     <div id="ivs-mobile-menu-container" class="relative w-full max-w-sm h-full bg-ivs-bg-medium mr-auto flex flex-col transform -translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] rounded-r-3xl shadow-2xl p-2 md:p-4 glass-menu-panel">
         <div class="flex items-center justify-between p-4 border-b border-ivs-bg-light">
             <span class="text-lg font-semibold text-ivs-accent menu-title" data-lang-key="mobile_menu_title">Menu</span>
-            <img id="mobile-menu-logo" src="images/logo.png" alt="IVS Logo" class="h-9 w-auto mx-auto hidden" loading="lazy" width="120" height="36">
+            <img id="mobile-menu-logo" src="/images/logo.png" alt="IVS Logo" class="h-9 w-auto mx-auto hidden" loading="lazy" width="120" height="36">
             <button id="mobile-menu-close-btn" type="button" class="p-2 rounded-xl hover:bg-ivs-bg-light shadow-md focus:outline-none focus:ring-2 focus:ring-ivs-accent" aria-label="Close menu">
                 <span class="sr-only">Close menu</span>
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -171,17 +171,17 @@
         </div>
         <nav id="ivs-mobile-main-nav" class="flex-grow p-2 space-y-4 overflow-y-auto">
             <div class="mobile-menu-group card-menu-group">
-                <a href="index.html" class="mobile-nav-link" data-lang-key="nav_home"><i class="fas fa-home fa-sm mr-2 text-ivs-accent"></i>Trang Chủ</a>
+                <a href="/index.html" class="mobile-nav-link" data-lang-key="nav_home"><i class="fas fa-home fa-sm mr-2 text-ivs-accent"></i>Trang Chủ</a>
             </div>
             <div class="mobile-menu-group card-menu-group">
                 <h4 class="mobile-menu-group-title">Về IVS</h4>
                 <button class="mobile-submenu-toggle" aria-expanded="false" aria-controls="submenu-about"><span data-lang-key="nav_about_ivs">Về IVS</span><i class="fas fa-chevron-down mobile-submenu-icon"></i></button>
                 <div id="submenu-about" class="mobile-submenu-content">
-                    <a href="about.html" class="mobile-submenu-item" data-lang-key="nav_about_us">Về chúng tôi</a>
-                    <a href="Pages/non-profit.html" class="mobile-submenu-item" data-lang-key="nav_non_profit">Phi lợi nhuận</a>
-                    <a href="Pages/careervn.html" class="mobile-submenu-item" data-lang-key="nav_career_opportunities">Cơ hội nghề nghiệp</a>
-                    <a href="ivs-global-teacher-hub.html" class="mobile-submenu-item" data-lang-key="nav_foreign_teachers_applying">Teachers Applying</a>
-                    <a href="Pages/international-partnership.html" class="mobile-submenu-item" data-lang-key="solution_international_coop_title">Hợp tác Quốc tế</a>
+                    <a href="/about.html" class="mobile-submenu-item" data-lang-key="nav_about_us">Về chúng tôi</a>
+                    <a href="/Pages/non-profit.html" class="mobile-submenu-item" data-lang-key="nav_non_profit">Phi lợi nhuận</a>
+                    <a href="/Pages/careervn.html" class="mobile-submenu-item" data-lang-key="nav_career_opportunities">Cơ hội nghề nghiệp</a>
+                    <a href="/ivs-global-teacher-hub.html" class="mobile-submenu-item" data-lang-key="nav_foreign_teachers_applying">Teachers Applying</a>
+                    <a href="/Pages/international-partnership.html" class="mobile-submenu-item" data-lang-key="solution_international_coop_title">Hợp tác Quốc tế</a>
                 </div>
             </div>
             <div class="mobile-menu-group card-menu-group">
@@ -189,15 +189,15 @@
                 <button class="mobile-submenu-toggle" aria-expanded="false" aria-controls="submenu-services"><span data-lang-key="nav_services">Dịch Vụ</span><i class="fas fa-chevron-down mobile-submenu-icon"></i></button>
                 <div id="submenu-services" class="mobile-submenu-content">
                     <h5 class="mobile-menu-group-sub">Liên kết Giáo dục</h5>
-                    <a href="consulting.html" class="mobile-submenu-item" data-lang-key="nav_services_education_overview">Tổng quan</a>
-                    <a href="Pages/lkmamnon.html" class="mobile-submenu-item" data-lang-key="nav_services_education_kindergarten">Liên kết Mầm non</a>
-                    <a href="Pages/lktieuhoc.html" class="mobile-submenu-item" data-lang-key="nav_services_education_primary">Liên kết Tiểu học</a>
-                    <a href="Pages/lkthcsthpt.html" class="mobile-submenu-item" data-lang-key="nav_services_education_secondary_high">Liên kết THCS & THPT</a>
-                    <a href="Pages/lkttnn.html" class="mobile-submenu-item" data-lang-key="nav_services_education_language_centers">Liên kết Trung tâm Ngoại ngữ</a>
+                    <a href="/consulting.html" class="mobile-submenu-item" data-lang-key="nav_services_education_overview">Tổng quan</a>
+                    <a href="/Pages/lkmamnon.html" class="mobile-submenu-item" data-lang-key="nav_services_education_kindergarten">Liên kết Mầm non</a>
+                    <a href="/Pages/lktieuhoc.html" class="mobile-submenu-item" data-lang-key="nav_services_education_primary">Liên kết Tiểu học</a>
+                    <a href="/Pages/lkthcsthpt.html" class="mobile-submenu-item" data-lang-key="nav_services_education_secondary_high">Liên kết THCS & THPT</a>
+                    <a href="/Pages/lkttnn.html" class="mobile-submenu-item" data-lang-key="nav_services_education_language_centers">Liên kết Trung tâm Ngoại ngữ</a>
                     <h5 class="mobile-menu-group-sub mt-2">IVS Celestech</h5>
-                    <a href="Pages/webdesign.html" class="mobile-submenu-item" data-lang-key="header_ivscelestech_webdesign">Thiết kế Website</a>
-                    <a href="Pages/ivscelestech.html" class="mobile-submenu-item" data-lang-key="header_ivscelestech_edtech">Trang thiết bị công nghệ GD</a>
-                    <a href="Pages/ivscelestech-tcnoithat.html" class="mobile-submenu-item" data-lang-key="header_ivscelestech_tcnoithat">Tư vấn, thi công nội thất GD</a>
+                    <a href="/Pages/webdesign.html" class="mobile-submenu-item" data-lang-key="header_ivscelestech_webdesign">Thiết kế Website</a>
+                    <a href="/Pages/ivscelestech.html" class="mobile-submenu-item" data-lang-key="header_ivscelestech_edtech">Trang thiết bị công nghệ GD</a>
+                    <a href="/Pages/ivscelestech-tcnoithat.html" class="mobile-submenu-item" data-lang-key="header_ivscelestech_tcnoithat">Tư vấn, thi công nội thất GD</a>
                 </div>
             </div>
             <div class="mobile-menu-group card-menu-group">
@@ -205,40 +205,40 @@
                 <button class="mobile-submenu-toggle" aria-expanded="false" aria-controls="submenu-solutions"><span data-lang-key="nav_solutions">Giải pháp</span><i class="fas fa-chevron-down mobile-submenu-icon"></i></button>
                 <div id="submenu-solutions" class="mobile-submenu-content">
                     <h5 class="mobile-menu-group-sub">Công nghệ ứng dụng</h5>
-                    <a href="solutions.html" class="mobile-submenu-item" data-lang-key="nav_solutions_overview">Tổng quan</a>
-                    <a href="Pages/ivscelestech.html" class="mobile-submenu-item" data-lang-key="nav_solutions_edtech">Công nghệ GD</a>
-                    <a href="Pages/upskill.html" class="mobile-submenu-item" data-lang-key="nav_solutions_upskill">Nâng cao Trình độ</a>
+                    <a href="/solutions.html" class="mobile-submenu-item" data-lang-key="nav_solutions_overview">Tổng quan</a>
+                    <a href="/Pages/ivscelestech.html" class="mobile-submenu-item" data-lang-key="nav_solutions_edtech">Công nghệ GD</a>
+                    <a href="/Pages/upskill.html" class="mobile-submenu-item" data-lang-key="nav_solutions_upskill">Nâng cao Trình độ</a>
                     <h5 class="mobile-menu-group-sub mt-2">Tư vấn Pháp lý</h5>
-                    <a href="Pages/legal_consulting.html" class="mobile-submenu-item" data-lang-key="nav_services_legal_consulting">Tư vấn Chuyên sâu</a>
-                    <a href="Pages/psb_introduction.html" class="mobile-submenu-item" data-lang-key="nav_services_legal_corporate">Luật Doanh nghiệp</a>
-                    <a href="Pages/litigation_consulting.html" class="mobile-submenu-item" data-lang-key="nav_services_legal_civil">Pháp luật Dân sự</a>
+                    <a href="/Pages/legal_consulting.html" class="mobile-submenu-item" data-lang-key="nav_services_legal_consulting">Tư vấn Chuyên sâu</a>
+                    <a href="/Pages/psb_introduction.html" class="mobile-submenu-item" data-lang-key="nav_services_legal_corporate">Luật Doanh nghiệp</a>
+                    <a href="/Pages/litigation_consulting.html" class="mobile-submenu-item" data-lang-key="nav_services_legal_civil">Pháp luật Dân sự</a>
                 </div>
             </div>
             <div class="mobile-menu-group card-menu-group">
                 <h4 class="mobile-menu-group-title">Thư Viện</h4>
                 <button class="mobile-submenu-toggle" aria-expanded="false" aria-controls="submenu-library"><span data-lang-key="nav_library">Thư Viện</span><i class="fas fa-chevron-down mobile-submenu-icon"></i></button>
                 <div id="submenu-library" class="mobile-submenu-content">
-                    <a href="gallery.html" class="mobile-submenu-item" data-lang-key="nav_library_gallery">Thư viện</a>
-                    <a href="Pages/document-library.html" class="mobile-submenu-item" data-lang-key="nav_library_docs">Tài liệu</a>
-                    <a href="apps/story-repository.html" class="mobile-submenu-item" data-lang-key="nav_library_stories">Kho truyện</a>
-                    <a href="games/ivsgames.html" class="mobile-submenu-item" data-lang-key="nav_library_games">IVS Games</a>
-                    <a href="apps/ivsapps.html" class="mobile-submenu-item" data-lang-key="nav_library_apps">IVS Apps</a>
+                    <a href="/gallery.html" class="mobile-submenu-item" data-lang-key="nav_library_gallery">Thư viện</a>
+                    <a href="/Pages/document-library.html" class="mobile-submenu-item" data-lang-key="nav_library_docs">Tài liệu</a>
+                    <a href="/apps/story-repository.html" class="mobile-submenu-item" data-lang-key="nav_library_stories">Kho truyện</a>
+                    <a href="/games/ivsgames.html" class="mobile-submenu-item" data-lang-key="nav_library_games">IVS Games</a>
+                    <a href="/apps/ivsapps.html" class="mobile-submenu-item" data-lang-key="nav_library_apps">IVS Apps</a>
                 </div>
             </div>
             <div class="mobile-menu-group card-menu-group">
-                <a href="news-archive.html" class="mobile-nav-link" data-lang-key="nav_news"><i class="fas fa-newspaper fa-sm mr-2 text-ivs-accent"></i>Tin tức</a>
-                <a href="contact.html" class="mobile-nav-link" data-lang-key="nav_contact"><i class="fas fa-envelope fa-sm mr-2 text-ivs-accent"></i>Liên Hệ</a>
+                <a href="/news-archive.html" class="mobile-nav-link" data-lang-key="nav_news"><i class="fas fa-newspaper fa-sm mr-2 text-ivs-accent"></i>Tin tức</a>
+                <a href="/contact.html" class="mobile-nav-link" data-lang-key="nav_contact"><i class="fas fa-envelope fa-sm mr-2 text-ivs-accent"></i>Liên Hệ</a>
             </div>
             <div class="mobile-menu-group card-menu-group mobile-menu-lang-group">
                 <div class="flex justify-center gap-3 mt-2">
                     <button class="lang-toggle-btn group rounded-full shadow-md border border-orange-300 bg-white/10 hover:bg-orange-100/20 focus:ring-2 focus:ring-orange-400 w-10 h-10 flex items-center justify-center" data-lang="vi" aria-label="Chọn Tiếng Việt">
-                        <img src="images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
+                        <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
                     </button>
                     <button class="lang-toggle-btn group rounded-full shadow-md border border-blue-300 bg-white/10 hover:bg-blue-100/20 focus:ring-2 focus:ring-blue-400 w-10 h-10 flex items-center justify-center" data-lang="en" aria-label="Select English">
-                        <img src="images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                        <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
                     </button>
                     <button class="lang-toggle-btn group rounded-full shadow-md border border-red-300 bg-white/10 hover:bg-red-100/20 focus:ring-2 focus:ring-red-400 w-10 h-10 flex items-center justify-center" data-lang="zh" aria-label="中文">
-                        <img src="images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
+                        <img src="/images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
                     </button>
                 </div>
             </div>
@@ -285,7 +285,6 @@
         --ivs-glass-blur: blur(10px);
     }
 
-    /* Ensure the header sits above page content (but below full-screen overlays like the mobile menu when opened) */
     #ivs-main-header {
         transition: all var(--ivs-hover-transition);
         /* default header background tuned for an elegant dark glass look */
@@ -293,8 +292,6 @@
         color: var(--ivs-text-primary);
         box-shadow: 0 2px 8px rgba(2,6,23,0.45);
         border-bottom: 1px solid rgba(255,255,255,0.02);
-        z-index: 1100; /* raised so header controls are not blocked by hero overlays */
-        pointer-events: auto; /* ensure header receives pointer events */
     }
 
     #ivs-main-header.scrolled {
@@ -531,10 +528,8 @@
     /* Mobile menu styles */
     /* Updated to use 'hidden' class with JS toggle */
     /* Mobile Menu Panel Styling */
-    /* Mobile menu panel should overlay the header when open */
     #ivs-mobile-menu-panel {
         transition: visibility 0.3s;
-        z-index: 1200; /* above #ivs-main-header so the menu/backdrop covers the header when active */
     }
     
     #ivs-mobile-menu-panel.hidden {

@@ -108,9 +108,9 @@
     <script src="js/loadComponents.js"></script>
 
     <script>
-        // Load FAB component
+        // Load FAB component for demo page using relative component path
         document.addEventListener('DOMContentLoaded', async () => {
-            const success = await loadAndInject('/components/fab-container.html', 'fab-container-placeholder');
+            const success = await loadAndInject('components/fab-container.html', 'fab-container-placeholder');
             if (success) {
                 if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
                     window.IVSFabController.init();

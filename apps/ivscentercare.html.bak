@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVS CenterCare - Ứng Dụng Quản Lý Trung Tâm Ngoại Ngữ</title>
+    <meta name="description" content="Khám phá IVS CenterCare, ứng dụng quản lý trung tâm ngoại ngữ toàn diện giúp tối ưu hóa vận hành, nâng cao trải nghiệm và thúc đẩy tăng trưởng bền vững." data-lang-key="ivscentercare_meta_description">
+    <meta name="keywords" content="IVS CenterCare, quản lý trung tâm ngoại ngữ, phần mềm giáo dục, EdTech, IVS JSC, giải pháp quản lý, học viên, giảng viên, tài chính" data-lang-key="ivscentercare_meta_keywords">
+    <meta property="og:title" content="IVS CenterCare - Ứng Dụng Quản Lý Trung Tâm Ngoại Ngữ" data-lang-key="ivscentercare_og_title">
+    <meta property="og:description" content="Tối ưu hóa quản lý, nâng cao trải nghiệm học viên, tăng trưởng bền vững với IVS CenterCare." data-lang-key="ivscentercare_og_description">
+    <meta property="og:image" content="https://ivsacademy.edu.vn/images/banners/ivs_centercare_og.jpg"> <!-- Placeholder image for OG -->
+    <meta property="og:url" content="https://ivsacademy.edu.vn/apps/ivscentercare.html">
+    <meta property="og:type" content="website">
+    <meta name="author" content="IVS JSC">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon"> <!-- Assuming favicon exists -->
+    <link rel="apple-touch-icon" href="/images/logo/logo-192.png"> <!-- Assuming logo exists -->
+    <link rel="manifest" href="/manifest.json"> <!-- Assuming manifest exists -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/tailwind.css">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    
+    <style>
+        .font-display { font-family: 'Lexend', sans-serif; }
+        .hero-section-ivs {
+            /* Background image and gradient overlay similar to about.html */
+            background: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.7)), url('https://images.unsplash.com/photo-1542744173-8e47f2545163?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+        }
+        .feature-icon-circle {
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(13, 17, 23, 0.1));
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+        .glass-card {
+            background-color: rgba(22, 27, 34, 0.6); /* ivs-card with transparency */
+            border: 1px solid var(--tw-colors-ivs-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .glass-card:hover {
+            border-color: var(--tw-colors-ivs-blue);
+        }
+    </style>
+    <!-- CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-ivs-bg text-ivs-text-primary antialiased">
+    <!-- Header Placeholder (will be loaded by loadComponents.js) -->
+    <header id="header-placeholder"></header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section-ivs pt-28 pb-16 md:pt-40 md:pb-24 border-b border-ivs-border">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl lg:text-5xl font-bold font-display text-white mb-4" data-aos="fade-down">
+                    IVS CenterCare: <span class="block">Quản Lý Trung Tâm Ngoại Ngữ </span>
+                    <span class="text-ivs-blue">Đỉnh Cao</span>
+                </h1>
+                <p class="text-lg text-ivs-text-secondary max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    Tối ưu hóa vận hành, nâng cao trải nghiệm học viên, tăng trưởng bền vững.
+                </p>
+                <a href="#lien-he" class="inline-block bg-ivs-blue hover:bg-ivs-blue-darker text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 mt-6" data-aos="fade-up" data-aos-delay="300">
+                    Khám Phá Ngay
+                </a>
+            </div>
+        </section>
+
+        <!-- About IVS CenterCare Section -->
+        <section id="gioi-thieu" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-white">IVS CenterCare Là Gì?</h2>
+                </div>
+                <div class="glass-card p-8 rounded-xl shadow-lg border border-ivs-border" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-lg leading-relaxed text-center md:text-left mb-6 text-ivs-text-secondary">
+                        <strong class="text-ivs-blue">IVS CenterCare</strong> là hệ thống quản lý trung tâm ngoại ngữ toàn diện, được phát triển dựa trên tư duy chiến lược và kinh nghiệm thực tiễn của <strong class="text-ivs-purple">IVS – Tư duy chiến lược, Hành động thực tiễn, Giá trị toàn cầu.</strong> Chúng tôi không đơn thuần cung cấp dịch vụ, chúng tôi xây dựng giải pháp – đồng hành – hiện thực hóa tầm nhìn giáo dục toàn cầu.
+                    </p>
+                    <p class="text-lg leading-relaxed text-center md:text-left text-ivs-text-secondary">
+                        Ứng dụng này giúp các trung tâm:
+                    </p>
+                    <ul class="mt-6 space-y-4 text-lg md:text-xl text-ivs-text-primary">
+                        <li class="flex items-start">
+                            <span class="text-ivs-blue mr-3 text-2xl mt-1"><i class="fas fa-check-circle"></i></span>
+                            <p><strong class="font-semibold">Tối ưu hóa quản lý:</strong> Quản lý hiệu quả mọi khía cạnh từ tuyển sinh, xếp lớp, điểm danh, đến theo dõi tiến độ học tập của học viên.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-ivs-blue mr-3 text-2xl mt-1"><i class="fas fa-check-circle"></i></span>
+                            <p><strong class="font-semibold">Nâng cao trải nghiệm:</strong> Giúp học viên và phụ huynh dễ dàng truy cập thông tin, theo dõi kết quả, và tương tác với trung tâm.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-ivs-blue mr-3 text-2xl mt-1"><i class="fas fa-check-circle"></i></span>
+                            <p><strong class="font-semibold">Tăng cường hiệu suất:</strong> Giảm thiểu công việc hành chính thủ công, giải phóng thời gian cho đội ngũ để tập trung vào chất lượng giảng dạy và phát triển.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="tinh-nang" class="py-16 md:py-24 bg-ivs-card border-y border-ivs-border">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-white">Các Tính Năng Nổi Bật</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div class="glass-card p-6 rounded-xl shadow-md border border-ivs-border transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon-circle w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl text-ivs-blue"><i class="fas fa-user-graduate"></i></div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Quản lý Học viên</h3>
+                        <p class="text-ivs-text-secondary text-sm">Hồ sơ chi tiết, lịch sử học tập, thông tin liên hệ, quản lý công nợ một cách dễ dàng.</p>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div class="glass-card p-6 rounded-xl shadow-md border border-ivs-border transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon-circle w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl text-ivs-blue"><i class="fas fa-book-open"></i></div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Quản lý Khóa học & Lớp học</h3>
+                        <p class="text-ivs-text-secondary text-sm">Tạo, chỉnh sửa khóa học, phân bổ lớp, quản lý thời khóa biểu linh hoạt, tiện lợi.</p>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div class="glass-card p-6 rounded-xl shadow-md border border-ivs-border transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon-circle w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl text-ivs-blue"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Quản lý Giảng viên</h3>
+                        <p class="text-ivs-text-secondary text-sm">Thông tin cá nhân, lịch dạy, đánh giá hiệu suất, tính lương chính xác và tự động.</p>
+                    </div>
+                    <!-- Feature Card 4 -->
+                    <div class="glass-card p-6 rounded-xl shadow-md border border-ivs-border transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-icon-circle w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl text-ivs-blue"><i class="fas fa-wallet"></i></div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Quản lý Tài chính</h3>
+                        <p class="text-ivs-text-secondary text-sm">Theo dõi doanh thu, chi phí, công nợ, tạo báo cáo tài chính trực quan, rõ ràng.</p>
+                    </div>
+                    <!-- Feature Card 5 -->
+                    <div class="glass-card p-6 rounded-xl shadow-md border border-ivs-border transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="500">
+                        <div class="feature-icon-circle w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl text-ivs-blue"><i class="fas fa-clipboard-check"></i></div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Điểm danh & Chấm công tự động</h3>
+                        <p class="text-ivs-text-secondary text-sm">Tiết kiệm thời gian, nâng cao độ chính xác, giảm thiểu sai sót thủ công.</p>
+                    </div>
+                    <!-- Feature Card 6 -->
+                    <div class="glass-card p-6 rounded-xl shadow-md border border-ivs-border transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="600">
+                        <div class="feature-icon-circle w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl text-ivs-blue"><i class="fas fa-user-friends"></i></div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Cổng thông tin Học viên/Phụ huynh</h3>
+                        <p class="text-ivs-text-secondary text-sm">Truy cập điểm số, lịch học, thông báo, tài liệu học tập mọi lúc mọi nơi.</p>
+                    </div>
+                    <!-- Feature Card 7 -->
+                    <div class="glass-card p-6 rounded-xl shadow-md border border-ivs-border transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="700">
+                        <div class="feature-icon-circle w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl text-ivs-blue"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Hệ thống Báo cáo Thông minh</h3>
+                        <p class="text-ivs-text-secondary text-sm">Tổng hợp dữ liệu theo thời gian thực, hỗ trợ ra quyết định chiến lược hiệu quả.</p>
+                    </div>
+                    <!-- Feature Card 8 -->
+                    <div class="glass-card p-6 rounded-xl shadow-md border border-ivs-border transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="800">
+                        <div class="feature-icon-circle w-12 h-12 rounded-full flex items-center justify-center mb-5 text-2xl text-ivs-blue"><i class="fas fa-bullhorn"></i></div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Tích hợp Công cụ truyền thông</h3>
+                        <p class="text-ivs-text-secondary text-sm">Gửi thông báo qua SMS, Email, Zalo (tùy chỉnh), duy trì kết nối hiệu quả.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-white">Lợi Ích Mang Lại Cho Trung Tâm Của Bạn</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-xl shadow-lg border border-ivs-border text-center transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl text-ivs-blue"><i class="fas fa-clock"></i></div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Tiết kiệm Thời gian & Chi phí</h3>
+                        <p class="text-ivs-text-secondary">Tự động hóa quy trình, giảm thiểu công việc giấy tờ, tối ưu nguồn lực.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-xl shadow-lg border border-ivs-border text-center transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl text-ivs-blue"><i class="fas fa-rocket"></i></div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Nâng cao Hiệu quả Vận hành</h3>
+                        <p class="text-ivs-text-secondary">Mọi thông tin được tập trung, dễ dàng quản lý và truy xuất tức thì.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-xl shadow-lg border border-ivs-border text-center transform hover:scale-105 transition duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl text-ivs-blue"><i class="fas fa-comments"></i></div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Cải thiện Tương tác & Trải nghiệm</h3>
+                        <p class="text-ivs-text-secondary">Kết nối chặt chẽ hơn giữa trung tâm, giảng viên, học viên và phụ huynh.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose IVS CenterCare Section -->
+        <section class="py-16 md:py-24 bg-ivs-card border-y border-ivs-border">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-white">Tại Sao Chọn IVS CenterCare?</h2>
+                </div>
+                <div class="glass-card p-8 rounded-xl shadow-lg border border-ivs-border" data-aos="fade-up" data-aos-delay="100">
+                    <ul class="space-y-6 text-lg md:text-xl text-ivs-text-secondary">
+                        <li class="flex items-start">
+                            <span class="text-ivs-blue mr-3 text-2xl font-bold mt-1"><i class="fas fa-angle-right"></i></span>
+                            <p><strong class="font-semibold text-ivs-text-primary">Giải pháp chuyên biệt:</strong> Được thiết kế riêng cho ngành giáo dục, hiểu rõ đặc thù của trung tâm ngoại ngữ.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-ivs-blue mr-3 text-2xl font-bold mt-1"><i class="fas fa-angle-right"></i></span>
+                            <p><strong class="font-semibold text-ivs-text-primary">Dễ dàng sử dụng:</strong> Giao diện trực quan, thân thiện, giúp đội ngũ dễ dàng làm quen và vận hành.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-ivs-blue mr-3 text-2xl font-bold mt-1"><i class="fas fa-angle-right"></i></span>
+                            <p><strong class="font-semibold text-ivs-text-primary">Hỗ trợ tận tâm từ IVS:</strong> Đội ngũ chuyên gia IVS luôn sẵn sàng hỗ trợ, tư vấn và đồng hành cùng sự phát triển của bạn.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-ivs-blue mr-3 text-2xl font-bold mt-1"><i class="fas fa-angle-right"></i></span>
+                            <p><strong class="font-semibold text-ivs-text-primary">Nâng tầm thương hiệu:</strong> Thể hiện sự chuyên nghiệp và hiện đại trong quản lý, tạo ấn tượng tốt với học viên và phụ huynh.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section id="lien-he" class="py-16 md:py-24 text-center">
+            <div class="container mx-auto px-6 glass-card p-8 md:p-12 rounded-2xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-aos="fade-up">Sẵn Sàng Nâng Tầm Trung Tâm Của Bạn?</h2>
+                <p class="text-lg md:text-xl mb-8 text-ivs-text-secondary" data-aos="fade-up" data-aos-delay="100">
+                    Liên hệ với IVS ngay hôm nay để nhận tư vấn chuyên sâu và trải nghiệm demo miễn phí!
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="mailto:info@ivsacademy.edu.vn" class="inline-block bg-ivs-blue hover:bg-ivs-blue-darker text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-envelope mr-2"></i> Gửi Email Cho Chúng Tôi
+                    </a>
+                    <a href="tel:+84896920547" class="inline-block bg-ivs-purple hover:bg-ivs-purple-darker text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all transform hover:scale-105" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-phone mr-2"></i> Gọi Ngay (+84 795 555 789)
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder (will be loaded by loadComponents.js) -->
+    <footer id="footer-placeholder"></footer>
+    <!-- Floating Action Button Container (will be loaded by loadComponents.js) -->
+    <div id="fab-container-placeholder"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Assuming these scripts exist in the project structure -->
+    <script src="/js/language.js"></script>
+    <script src="/js/loadComponents.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-quad',
+            });
+        });
+    </script>
+</body>
+</html>
+

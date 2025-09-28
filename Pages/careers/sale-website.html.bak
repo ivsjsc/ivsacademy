@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuyển Dụng Thực Tập Sinh Sale Website - IVS Celestech</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tuyển dụng thực tập sinh Sale Website tại IVS Celestech, đơn vị trực thuộc IVS JSC. Tìm hiểu về cơ hội việc làm, hoa hồng hấp dẫn và môi trường làm việc chuyên nghiệp.">
+    <meta name="keywords" content="tuyển dụng, thực tập sinh, sale website, IVS Celestech, IVS JSC, hoa hồng cao, cơ hội việc làm">
+    <meta name="description" content="IVS Academy - Hệ sinh thái giáo dục toàn diện, cung cấp giải pháp ngôn ngữ, kỹ năng và công nghệ giáo dục tiên tiến.">
+    <meta name="keywords" content="IVS, giáo dục, học tiếng Anh, học tiếng Trung, EdTech, IVS Academy">
+        
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/tailwind.css">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Tailwind CSS -->
+    
+
+    <style>
+        :root {
+            --header-height: 4rem;
+            --safe-area-top: env(safe-area-inset-top, 0px);
+        }
+        
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.6;
+            padding-top: var(--header-height);
+        }
+        
+        .header-main {
+            background-color: #0A0A0A;
+            color: #f4f4f5;
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: #60a5fa;
+        }
+
+        .hero-banner {
+            position: relative;
+            min-height: 80vh;
+            background-image: url('/images/pages/careers/website/web-plus.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: var(--header-height);
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 90%;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: #2563eb;
+            border-radius: 2px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-primary {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+        }
+        .badge-secondary {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+        .badge-accent {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        .service-card {
+            border-left: 4px solid #2563eb;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            border-left-color: #f59e0b;
+            transform: translateX(5px);
+        }
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .certificate-card {
+            border: 2px dashed #10b981;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+        }
+        .requirement-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .requirement-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #10b981;
+            color: white;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        .price-tag {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
+        }
+        .process-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .process-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+    <!-- CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="antialiased">
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="fixed inset-0 bg-ivs-bg flex items-center justify-center z-[100] transition-opacity duration-500 opacity-100">
+        <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-ivs-blue"></div>
+    </div>
+
+    <!-- Header will be loaded here by loadComponents.js -->
+
+    <header class="header-main">
+        <div id="header-placeholder"></div>
+        <p></p>
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="https://ivsacademy.edu.vn" class="flex items-center space-x-2">
+                    <img src="/images/logo/career.jpg" class="h-10" alt="IVS Celestech">
+                    <span class="text-xl font-bold font-display hidden sm:block">IVS Celestech</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-4">
+                <a href="#jd" class="nav-link text-white hover:text-ivs-blue-darker">Mô tả công việc</a>
+                <a href="#pricing" class="nav-link text-white hover:text-ivs-blue-darker">Bảng giá</a>
+                <a href="#projects" class="nav-link text-white hover:text-ivs-blue-darker">Dự án mẫu</a>
+                <a href="#process" class="nav-link text-white hover:text-ivs-blue-darker">Quy trình</a>
+                <a href="#faq" class="nav-link text-white hover:text-ivs-blue-darker">FAQ</a>
+                <a href="#contact" class="nav-link text-white hover:text-ivs-blue-darker">Liên hệ</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="#contact" class="bg-yellow-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-yellow-600 transition hidden md:block">Ứng tuyển ngay</a>
+                <button class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Back link to careers page -->
+    <div class="container mx-auto px-4 py-4">
+        <a href="/Pages/careervn.html" class="text-ivs-blue hover:underline font-medium">
+            ← Quay lại Cơ hội nghề nghiệp
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Banner Section -->
+        <section class="hero-banner">
+            <div class="hero-overlay"></div>
+            <div class="hero-content max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">TUYỂN DỤNG THỰC TẬP SINH SALE WEBSITE</h1>
+                <p class="text-lg md:text-xl font-semibold mb-6">IVS Celestech - Đơn vị trực thuộc IVS JSC</p>
+                <p class="text-xl md:text-2xl font-bold text-yellow-300 mb-8">
+                    Cơ hội làm việc ngay, thu nhập không giới hạn!
+                </p>
+                <a href="#contact" class="bg-yellow-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors duration-200">
+                    <i class="fas fa-paper-plane mr-2"></i> Ứng tuyển ngay
+                </a>
+            </div>
+        </section>
+
+        <div class="container mx-auto max-w-4xl space-y-12 py-12 px-4 md:px-8">
+            <!-- JD Section -->
+            <section id="jd" class="scroll-mt-20">
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl md:text-3xl font-bold section-title">Mô tả công việc</h2>
+                    <div class="mb-6">
+                        <span class="badge badge-primary">Vị trí: Thực Tập Sinh Sale Website</span>
+                        <span class="badge badge-secondary ml-2">Làm việc online</span>
+                        <span class="badge badge-accent ml-2">Hoa hồng 10%</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-tasks text-primary mr-2"></i>Mô tả công việc
+                            </h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Tìm kiếm khách hàng:</strong> Chủ động tìm kiếm và khai thác các khách hàng tiềm năng có nhu cầu về website (cá nhân, doanh nghiệp nhỏ và vừa).</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Tư vấn và thuyết phục:</strong> Giới thiệu và tư vấn các gói dịch vụ thiết kế website phù hợp với nhu cầu và ngân sách của khách hàng.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Chốt đơn hàng:</strong> Đàm phán, thuyết phục khách hàng ký kết hợp đồng.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Hỗ trợ khách hàng:</strong> Hướng dẫn khách hàng các bước cơ bản sau khi chốt đơn.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Hợp tác nội bộ:</strong> Phối hợp với các bộ phận liên quan để đảm bảo quá trình triển khai dự án diễn ra suôn sẻ.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-user-graduate text-primary mr-2"></i>Yêu cầu
+                            </h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-star text-secondary mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Không yêu cầu kinh nghiệm,</strong> chỉ cần có đam mê kinh doanh và mong muốn học hỏi.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-star text-secondary mt-1 mr-2 flex-shrink-0"></i>
+                                    <span>Kỹ năng giao tiếp và thuyết phục tốt.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-star text-secondary mt-1 mr-2 flex-shrink-0"></i>
+                                    <span>Năng động, chủ động, chịu khó và có tinh thần trách nhiệm cao.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-star text-secondary mt-1 mr-2 flex-shrink-0"></i>
+                                    <span>Có laptop cá nhân và kết nối Internet ổn định.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                                <i class="fas fa-gift text-primary mr-2"></i>Quyền lợi & Cam kết
+                            </h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-money-bill-wave text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Thu nhập hấp dẫn:</strong> Hưởng ngay <strong>10% hoa hồng</strong> trên tổng giá trị hợp đồng khi chốt đơn thành công (không giới hạn số lượng đơn hàng).</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chalkboard-teacher text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Đào tạo chuyên sâu:</strong> Được đào tạo về kiến thức sản phẩm, kỹ năng bán hàng, kỹ năng tư vấn khách hàng và các chiến lược tiếp cận thị trường hiệu quả.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chart-line text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Đánh giá khách quan:</strong> Kết quả thực tập được đánh giá dựa trên <strong>nỗ lực và hiệu quả công việc thực tế</strong> (số lượng đơn hàng chốt thành công, kỹ năng tư vấn, thái độ làm việc).</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-briefcase text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Cơ hội phát triển:</strong> Cơ hội trở thành nhân viên chính thức nếu hoàn thành tốt công việc và có thành tích xuất sắc.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-laptop-house text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Môi trường làm việc:</strong> Năng động, linh hoạt về thời gian, được làm việc online.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-seedling text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Phát triển bản thân:</strong> Cơ hội tìm hiểu và khám phá đam mê trong ngành công nghệ, lập trình (Coding), Marketing và các lĩnh vực liên quan.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-calendar-alt text-accent mt-1 mr-2 flex-shrink-0"></i>
+                                    <span><strong>Làm việc ngay:</strong> Được nhận vào làm việc ngay sau khi nộp hồ sơ, không cần chờ đợi.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section id="pricing" class="scroll-mt-20">
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl md:text-3xl font-bold section-title text-ivs-text-primary">Bảng Giá Dịch Vụ</h2>
+                    <p class="text-ivs-text-primary mb-6">Tham khảo giá dịch vụ hiện tại để tư vấn khách hàng chính xác. Giá có thể thay đổi tùy theo yêu cầu cụ thể.</p>
+                    
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <!-- Gói Landing Page - Siêu tiết kiệm -->
+                        <div class="service-card bg-gradient-to-r from-ivs-primary/5 to-ivs-secondary/5 p-6 rounded-lg border-l-4 border-primary">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                    <i class="fas fa-rocket text-primary"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800" data-lang-key="pricing_lp_title_salewebsite">Landing Page - Từ 1.500.000 VNĐ</h4>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-3 font-medium" data-lang-key="pricing_lp_desc_salewebsite">Gói nhanh, phù hợp cho cá nhân hoặc shop muốn hiện diện ngay trên web. <strong>Đã bao gồm tất cả chi phí</strong> (thiết kế, hosting, tên miền, tối ưu hiển thị).</p>
+                            <div class="price-tag text-lg font-bold" data-lang-key="pricing_lp_price_salewebsite">Từ 1.500.000 VNĐ</div>
+                            <ul class="text-gray-600 space-y-2 mt-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span data-lang-key="pricing_lp_feat1_salewebsite">Thiết kế 1 trang Landing Page hoàn chỉnh</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span data-lang-key="pricing_lp_feat2_salewebsite">Responsive cho mobile & desktop</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span data-lang-key="pricing_lp_feat3_salewebsite">Tích hợp form liên hệ / nút gọi nhanh</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span data-lang-key="pricing_lp_feat4_salewebsite">Hosting + Tên miền (1 năm) — đã bao gồm trong giá</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Gói Website Cơ Bản -->
+                        <div class="service-card bg-gray-50 p-6 rounded-lg border-l-4 border-primary">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                    <i class="fas fa-star text-primary"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800">Website Cơ Bản</h4>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-3">Phù hợp với cá nhân, cửa hàng nhỏ, hoặc doanh nghiệp mới.</p>
+                            <div class="price-tag">5.000.000 - 8.000.000 VNĐ</div>
+                            <ul class="text-gray-600 space-y-2 mt-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Thiết kế 1 trang (Landing Page) hoặc tối đa 5 trang tĩnh</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Tối ưu hóa hiển thị trên di động</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Tích hợp form liên hệ cơ bản</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Tặng kèm hosting và tên miền 1 năm</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Gói Website Doanh Nghiệp -->
+                        <div class="service-card bg-gray-50 p-6 rounded-lg border-l-4 border-primary">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                    <i class="fas fa-building text-primary"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800">Website Doanh Nghiệp</h4>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-3">Dành cho các công ty cần một website chuyên nghiệp để xây dựng thương hiệu.</p>
+                            <div class="price-tag">10.000.000 - 20.000.000 VNĐ</div>
+                            <ul class="text-gray-600 space-y-2 mt-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Thiết kế 5-10 trang</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Hệ thống quản trị nội dung (CMS) thân thiện</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Tối ưu hóa SEO cơ bản</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Hỗ trợ 2 ngôn ngữ</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Gói Website Thương Mại Điện Tử -->
+                        <div class="service-card bg-gray-50 p-6 rounded-lg border-l-4 border-primary">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold text-gray-800">Website TMĐT</h4>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-3">Dành cho các cửa hàng, doanh nghiệp muốn bán hàng trực tuyến hiệu quả.</p>
+                            <div class="price-tag">15.000.000 - 30.000.000 VNĐ</div>
+                            <ul class="text-gray-600 space-y-2 mt-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Thiết kế website bán hàng chuyên nghiệp</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Hệ thống giỏ hàng và thanh toán trực tuyến</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Quản lý sản phẩm, tồn kho, đơn hàng</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-accent mt-1 mr-2 text-xs"></i>
+                                    <span>Tích hợp các hình thức thanh toán phổ biến</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <p class="text-blue-700 text-sm flex items-start">
+                            <i class="fas fa-info-circle mt-0.5 mr-2 flex-shrink-0"></i>
+                            <span><strong>Lưu ý:</strong> Giá cả có thể thay đổi tùy thuộc vào yêu cầu tùy chỉnh của khách hàng. Chúng tôi cam kết hỗ trợ kỹ thuật tận tình.</span>
+                        </p>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h3 class="text-xl font-semibold mb-4 flex items-center">
+                            <i class="fas fa-calculator text-primary mr-2"></i>Tính Hoa Hồng Thực Tế
+                        </h3>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-gray-700 mb-3">Với mức hoa hồng 10%, bạn có thể kiếm được:</p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div class="bg-white p-3 rounded-lg">
+                                    <p class="text-sm text-gray-500">Gói Cơ Bản</p>
+                                    <p class="font-bold text-lg text-primary">500.000 - 800.000 VNĐ</p>
+                                    <p class="text-xs text-gray-500">mỗi hợp đồng</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg">
+                                    <p class="text-sm text-gray-500">Gói Doanh Nghiệp</p>
+                                    <p class="font-bold text-lg text-primary">1.000.000 - 2.000.000 VNĐ</p>
+                                    <p class="text-xs text-gray-500">mỗi hợp đồng</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg">
+                                    <p class="text-sm text-gray-500">Gói TMĐT</p>
+                                    <p class="font-bold text-lg text-primary">1.500.000 - 3.000.000 VNĐ</p>
+                                    <p class="text-xs text-gray-500">mỗi hợp đồng</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg">
+                                    <p class="text-sm text-gray-500">Mục tiêu 2 hợp đồng</p>
+                                    <p class="font-bold text-lg text-accent">3.000.000 - 6.000.000 VNĐ</p>
+                                    <p class="text-xs text-gray-500">thu nhập/tháng</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certificate Section -->
+            <section id="certificate" class="scroll-mt-20">
+                <div class="card p-6 md:p-8 certificate-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-award text-accent text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold section-title">Giấy Xác Nhận Thực Tập</h2>
+                            <p class="text-gray-600">Điều kiện để nhận giấy xác nhận thực tập từ IVS Celestech</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Thời gian thực tập</h3>
+                                <p class="text-gray-600 mt-1">Hoàn thành tối thiểu <strong>03 tháng thực tập</strong> tại IVS Celestech.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Chỉ tiêu doanh số</h3>
+                                <p class="text-gray-600 mt-1">Đạt được chỉ tiêu doanh số tối thiểu: chốt được ít nhất <strong>1-2 hợp đồng</strong> trong suốt thời gian thực tập.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Thái độ làm việc</h3>
+                                <p class="text-gray-600 mt-1">Tuân thủ quy trình làm việc và có <strong>thái độ tích cực, chuyên nghiệp</strong> trong suốt quá trình thực tập.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <div class="requirement-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Báo cáo thực tập</h3>
+                                <p class="text-gray-600 mt-1">Hoàn thành <strong>báo cáo thực tập</strong> theo yêu cầu và định hướng của công ty.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-white rounded-lg border border-accent/30">
+                        <h3 class="font-semibold text-gray-800 mb-2 flex items-center">
+                            <i class="fas fa-info-circle text-accent mr-2"></i>Lưu ý quan trọng
+                        </h3>
+                        <p class="text-gray-600">
+                            Giấy xác nhận thực tập sẽ được cấp sau khi thực tập sinh đáp ứng đầy đủ các điều kiện trên. 
+                            Đây là minh chứng quan trọng cho quá trình học tập và làm việc chuyên nghiệp của bạn tại IVS Celestech, 
+                            có giá trị đối với hồ sơ xin việc sau này.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sample Projects Section -->
+            <section id="projects" class="mb-12">
+                <div class="card p-6 md:p-8">
+                    <h3 class="text-2xl md:text-3xl font-bold section-title mb-6">Các Trang Web Mẫu và Ứng Dụng</h3>
+                    <p class="text-gray-600 mb-8 text-lg">Đây là một số sản phẩm tiêu biểu mà IVS Celestech đã thực hiện, giúp bạn có cái nhìn rõ hơn về năng lực và chất lượng dịch vụ của chúng tôi.</p>
+                    
+                    <h4 class="text-xl font-semibold mb-6 text-gray-800 flex items-center">
+                        <i class="fas fa-desktop text-blue-500 mr-2"></i> Các Trang Web Mẫu
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-6 mb-10">
+                        <div class="card p-4 hover:shadow-lg transition-shadow duration-300">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2">1. Trang web Tiệc cưới Ba Nhánh 2</h5>
+                            <p class="text-sm text-gray-600 mb-3">Lĩnh vực: Sự kiện, Nhà hàng</p>
+                            <a href="https://trungtamhoinghitieccuoi-banhanh.netlify.app" target="_blank" class="block project-image-link">
+                                <img src="/images/pages/careers/website/web-nhahang.jpg" alt="Ba Nhánh 2" class="w-full h-40 object-cover rounded-md">
+                            </a>
+                        </div>
+                        <div class="card p-4 hover:shadow-lg transition-shadow duration-300">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2">2. Trang web Suối Camp</h5>
+                            <p class="text-sm text-gray-600 mb-3">Lĩnh vực: Du lịch, Giải trí</p>
+                            <a href="https://suoicamp.netlify.app" target="_blank" class="block project-image-link">
+                                <img src="/images/pages/careers/website/web-khudulich.jpg" alt="Suối Camp" class="w-full h-40 object-cover rounded-md">
+                            </a>
+                        </div>
+                        <div class="card p-4 hover:shadow-lg transition-shadow duration-300">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2">3. Trang web KhaDock</h5>
+                            <p class="text-sm text-gray-600 mb-3">Lĩnh vực: Xây dựng, Dịch vụ bến thuyền</p>
+                            <a href="https://khadock.com" target="_blank" class="block project-image-link">
+                                <img src="/images/pages/webs/webbds.jpg" alt="KhaDock" class="w-full h-40 object-cover rounded-md">
+                            </a>
+                        </div>
+                        <div class="card p-4 hover:shadow-lg transition-shadow duration-300">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2">4. Trang web KhaHome.com</h5>
+                            <p class="text-sm text-gray-600 mb-3">Lĩnh vực: Bất động sản, Cải tạo nhà cửa</p>
+                            <a href="https://khahome.com" target="_blank" class="block project-image-link">
+                                <span class="project-image">Hình ảnh minh họa: KhaHome.com</span>
+                            </a>
+                        </div>
+                        <div class="card p-4 hover:shadow-lg transition-shadow duration-300 md:col-span-2">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2">5. Trang web IVS Academy</h5>
+                            <p class="text-sm text-gray-600 mb-3">Lĩnh vực: Trung tâm ngoại ngữ</p>
+                            <a href="https://ivsacademy.edu.vn" target="_blank" class="block project-image-link">
+                                <img src="/images/pages/careers/website/web-doanhnghiep.jpg" alt="IVS Academy" class="w-full h-40 object-cover rounded-md">
+                            </a>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-6 text-gray-800 flex items-center">
+                        <i class="fas fa-mobile-alt text-blue-500 mr-2"></i> Danh Sách Ứng Dụng
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="card p-5 hover:shadow-lg transition-shadow duration-300">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2 flex items-center">
+                                <i class="fas fa-globe-americas text-green-500 mr-2"></i> IVS English
+                            </h5>
+                            <p class="text-sm text-gray-600 mb-3">Nền tảng tiếng Anh dành cho học sinh từ mầm non đến lớp 12, với sách điện tử tương tác và các tính năng học tập AI, gamification.</p>
+                            <a href="https://ivseng.netlify.app" target="_blank" class="text-blue-600 hover:underline">Xem ứng dụng IVS English</a>
+                        </div>
+                        <div class="card p-5 hover:shadow-lg transition-shadow duration-300">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2 flex items-center">
+                                <i class="fas fa-language text-red-500 mr-2"></i> IVS Mandarin Learners
+                            </h4>
+                            <p class="text-sm text-gray-600 mb-3">Ứng dụng học tiếng Trung Quốc, tập trung vào giao tiếp HSK và chinh phục ngôn ngữ.</p>
+                            <a href="https://mandarinbyivs.netlify.app" target="_blank" class="text-blue-600 hover:underline">Xem ứng dụng IVS Mandarin Learners</a>
+                        </div>
+                        <div class="card p-5 hover:shadow-lg transition-shadow duration-300">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2 flex items-center">
+                                <i class="fas fa-church text-purple-500 mr-2"></i> QLGX - Quản Lý Giáo Xứ
+                            </h4>
+                            <p class="text-sm text-gray-600 mb-3">Ứng dụng chuyên biệt hỗ trợ Nhà Thờ và Giáo Xứ quản lý thông tin hộ gia đình.</p>
+                            <a href="https://qlgx.netlify.app" target="_blank" class="text-blue-600 hover:underline">Xem ứng dụng QLGX</a>
+                        </div>
+                        <div class="card p-5 hover:shadow-lg transition-shadow duration-300">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2 flex items-center">
+                                <i class="fas fa-home text-indigo-500 mr-2"></i> IVS Stay Smart
+                            </h5>
+                            <p class="text-sm text-gray-600 mb-3">Ứng dụng quản lý nhà trọ, giúp đơn giản hóa việc quản lý thông tin phòng, hồ sơ khách thuê, giao dịch và hóa đơn.</p>
+                            <a href="https://ivs-staysmart.netlify.app" target="_blank" class="text-blue-600 hover:underline">Xem ứng dụng IVS Stay Smart</a>
+                        </div>
+                        <div class="card p-5 hover:shadow-lg transition-shadow duration-300 md:col-span-2">
+                            <h5 class="font-semibold text-gray-800 text-lg mb-2 flex items-center">
+                                <i class="fas fa-trophy text-orange-500 mr-2"></i> StriveStreak
+                            </h5>
+                            <p class="text-sm text-gray-600 mb-3">Ứng dụng web hỗ trợ học tập, xây dựng thói quen và duy trì động lực với game hóa.</p>
+                            <a href="#" target="_blank" class="text-blue-600 hover:underline">Xem ứng dụng StriveStreak</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sales Process Section -->
+            <section id="process" class="mb-12">
+                <div class="card p-6 md:p-8">
+                    <h3 class="text-2xl md:text-3xl font-bold section-title mb-6">Hướng dẫn Quy trình Bán hàng</h3>
+                    <p class="text-gray-600 mb-8 text-lg">Đây là quy trình 5 bước cơ bản để bạn tiếp cận, tư vấn và chốt đơn hàng hiệu quả với khách hàng.</p>
+                    <div class="space-y-8">
+                        <div class="process-item flex items-start">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h5 class="font-semibold text-lg mb-2">Tìm kiếm và tiếp cận khách hàng</h5>
+                                <ul class="list-none ml-0 space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Kênh Online:</span> Sử dụng các nền tảng mạng xã hội (Facebook, LinkedIn), diễn đàn, các group cộng đồng về kinh doanh/startup.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Kênh Offline:</span> Tham gia các buổi hội thảo, sự kiện liên quan đến công nghệ, kinh doanh.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Thông điệp tiếp cận:</span> Luôn lịch sự, chuyên nghiệp. Bắt đầu bằng việc giới thiệu bản thân và IVS Celestech, sau đó hỏi thăm nhu cầu của khách hàng.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="process-item flex items-start">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h5 class="font-semibold text-lg mb-2">Phân tích nhu cầu khách hàng</h5>
+                                <ul class="list-none ml-0 space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Lắng nghe:</span> Dành thời gian lắng nghe khách hàng, hiểu rõ họ đang gặp vấn đề gì và tại sao họ cần một website.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Đưa ra câu hỏi:</span> Đặt các câu hỏi gợi mở như: "Anh/chị muốn làm website để làm gì?", "Ngân sách dự kiến là bao nhiêu?", "Anh/chị thích mẫu website nào?"</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="process-item flex items-start">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h5 class="font-semibold text-lg mb-2">Trình bày và tư vấn giải pháp</h5>
+                                <ul class="list-none ml-0 space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Dựa trên nhu cầu:</span> Dựa vào những gì khách hàng chia sẻ, hãy giới thiệu gói dịch vụ phù hợp nhất.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Nhấn mạnh lợi ích:</span> Tập trung vào các lợi ích mà giải pháp của chúng ta mang lại cho họ, ví dụ: giúp tăng doanh số, xây dựng thương hiệu chuyên nghiệp, quản lý công việc hiệu quả hơn.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Sử dụng ví dụ thực tế:</span> Nếu có thể, hãy cho khách hàng xem các website mà IVS Celestech đã làm để tăng độ tin cậy.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="process-item flex items-start">
+                            <div class="step-number">4</div>
+                            <div>
+                                <h5 class="font-semibold text-lg mb-2">Đàm phán và chốt đơn</h5>
+                                <ul class="list-none ml-0 space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Xử lý từ chối:</span> Chuẩn bị tinh thần để đối mặt với các lời từ chối và thắc mắc từ khách hàng. Luôn giữ thái độ bình tĩnh và chuyên nghiệp.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Đưa ra ưu đãi:</span> Nếu cần, bạn có thể đề xuất các ưu đãi nhỏ để thuyết phục khách hàng.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Chốt hợp đồng:</span> Hướng dẫn khách hàng các bước ký hợp đồng và thanh toán.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="process-item flex items-start">
+                            <div class="step-number">5</div>
+                            <div>
+                                <h5 class="font-semibold text-lg mb-2">Bàn giao và chăm sóc khách hàng</h5>
+                                <ul class="list-none ml-0 space-y-2 text-gray-700">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Bàn giao thông tin:</span> Bàn giao thông tin chi tiết của khách hàng cho bộ phận kỹ thuật để bắt đầu triển khai dự án.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                                        <span><span class="font-semibold">Theo dõi:</span> Tiếp tục giữ liên lạc với khách hàng để đảm bảo họ hài lòng với dịch vụ. Mối quan hệ tốt có thể mang lại thêm các đơn hàng trong tương lai.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="mb-12">
+                <div class="card p-6 md:p-8">
+                    <h3 class="text-2xl md:text-3xl font-bold section-title mb-6">Bộ câu hỏi thường gặp (FAQ) từ Khách hàng</h3>
+                    <p class="text-gray-600 mb-8 text-lg">Đây là các câu hỏi phổ biến mà khách hàng thường hỏi, hãy nắm vững các câu trả lời này để tư vấn một cách tự tin.</p>
+                    <div class="space-y-6">
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>1. Câu hỏi về Giá cả</span>
+                                <i class="fas fa-chevron-down text-blue-500"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="font-semibold">Câu hỏi: "Tại sao giá website của IVS Celestech lại cao/thấp hơn các đơn vị khác?"</p>
+                                <p class="mt-2">Trả lời: Chúng ta cam kết cung cấp giải pháp chất lượng, tối ưu nhất. Chi phí hợp lý vì chúng ta sử dụng công nghệ tiên tiến, đảm bảo website hoạt động ổn định và có giao diện chuyên nghiệp. Hơn nữa, chúng ta cung cấp đầy đủ các dịch vụ hậu mãi và hỗ trợ kỹ thuật trong suốt quá trình sử dụng.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>2. Câu hỏi về Công nghệ & Chức năng</span>
+                                <i class="fas fa-chevron-down text-blue-500"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="font-semibold">Câu hỏi: "Website của tôi có thể chỉnh sửa được không?"</p>
+                                <p class="mt-2">Trả lời: Hoàn toàn có thể. Chúng tôi sử dụng các công nghệ hiện đại và cung cấp hệ thống quản trị nội dung (CMS) rất dễ sử dụng. Anh/chị có thể tự cập nhật bài viết, hình ảnh, sản phẩm mà không cần có kiến thức về lập trình.</p>
+                                
+                                <p class="font-semibold mt-4">Câu hỏi: "Website có hiển thị tốt trên điện thoại không?"</p>
+                                <p class="mt-2">Trả lời: Vâng. Tất cả các website do IVS Celestech thiết kế đều được tối ưu hóa hiển thị trên mọi thiết bị, bao gồm máy tính, máy tính bảng và điện thoại.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>3. Câu hỏi về Thời gian thực hiện</span>
+                                <i class="fas fa-chevron-down text-blue-500"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="font-semibold">Câu hỏi: "Mất bao lâu để hoàn thành một website?"</p>
+                                <p class="mt-2">Trả lời: Thời gian hoàn thành tùy thuộc vào mức độ phức tạp của gói dịch vụ. Chúng tôi sẽ thông báo thời gian cụ thể khi chốt hợp đồng.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span>4. Câu hỏi về Dịch vụ hậu mãi</span>
+                                <i class="fas fa-chevron-down text-blue-500"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="font-semibold">Câu hỏi: "Nếu website gặp lỗi thì sao?"</p>
+                                <p class="mt-2">Trả lời: Chúng tôi có đội ngũ hỗ trợ kỹ thuật sẵn sàng giúp đỡ. Khi website gặp vấn đề, anh/chị chỉ cần liên hệ, chúng tôi sẽ kiểm tra và khắc phục nhanh chóng.</p>
+                                
+                                <p class="font-semibold mt-4">Câu hỏi: "IVS Celestech có cung cấp dịch vụ bảo trì website không?"</p>
+                                <p class="mt-2">Trả lời: Có. Chúng tôi cung cấp các gói dịch vụ bảo trì định kỳ, bao gồm cập nhật phiên bản, sao lưu dữ liệu và kiểm tra bảo mật để đảm bảo website của anh/chị luôn hoạt động ổn định và an toàn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="mb-12">
+                <div class="card p-6 md:p-8">
+                    <h3 class="text-2xl md:text-3xl font-bold section-title mb-6">Thông tin liên hệ</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-4 text-gray-800">Ứng tuyển ngay</h4>
+                            <p class="text-gray-600 mb-6">Nếu bạn quan tâm đến vị trí Thực tập sinh Sale Website, hãy liên hệ với chúng tôi qua các kênh dưới đây:</p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-envelope text-blue-500"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Email</p>
+                                        <a href="mailto:info@ivsacademy.edu.vn" class="text-gray-600 hover:text-blue-500 transition-colors duration-200">info@ivsacademy.edu.vn</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                        <i class="fab fa-zalo text-green-500"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Zalo</p>
+                                        <a href="https://zalo.me/0795555789" target="_blank" class="text-gray-600 hover:text-green-500 transition-colors duration-200">0795555789</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                                        <i class="fas fa-globe text-purple-500"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Website</p>
+                                        <a href="https://ivsacademy.edu.vn" target="_blank" class="text-gray-600 hover:text-purple-500 transition-colors duration-200">https://ivsacademy.edu.vn</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold mb-4 text-gray-800">Gửi thông tin ứng tuyển</h4>
+                            <form class="space-y-4">
+                                <div>
+                                    <label class="block text-gray-700 mb-2" for="name">Họ và tên</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Nhập họ và tên của bạn">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2" for="email">Email</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Nhập địa chỉ email">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2" for="phone">Số điện thoại</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Nhập số điện thoại">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2" for="message">Lời nhắn</label>
+                                    <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Giới thiệu ngắn gọn về bản thân và lý do ứng tuyển"></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary w-full text-center">
+                                    <i class="fas fa-paper-plane mr-2"></i> Gửi thông tin ứng tuyển
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    <footer id="footer-placeholder"></footer>
+    <!-- FAB placeholder (standard id expected by loadComponents.js) -->
+    <div id="fab-container-placeholder"></div>
+
+    <script src="/js/fabController.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    <script src="/js/language.js" defer></script>
+    <script src="/js/loadComponents.js" defer></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            // Toggle FAQ answers
+            function toggleFAQ(element) {
+                const answer = element.nextElementSibling;
+                const icon = element.querySelector('i');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            }
+            
+            // Initialize all FAQ answers as hidden
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                answer.style.display = 'none';
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        </script>
+                <script>
+                    // Fade out loading overlay once all assets are loaded
+                    window.addEventListener('load', () => {
+                        const overlay = document.getElementById('loading-overlay');
+                        if (overlay) {
+                            overlay.classList.add('opacity-0');
+                            setTimeout(() => overlay.remove(), 600);
+                        }
+                    });
+                </script>
+    </body>
+</html>
+
+
+

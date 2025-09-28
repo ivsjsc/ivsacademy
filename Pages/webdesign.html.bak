@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title sẽ được cập nhật bằng JS -->
+    <title data-lang-key="page_title">Giải Pháp Toàn Diện: Website & Hệ Thống Số | IVS Celestech</title>
+    <!-- Tải Tailwind CSS CDN -->
+    
+    <style>
+        /* CSS Cơ bản */
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--tw-colors-ivs-dark);
+            color: var(--tw-colors-ivs-text-light);
+            line-height: 1.6;
+        }
+        .header-bg {
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #6366F1, #3b82f6, #6366F1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-section {
+            background-color: #0A0A0A;
+            background-image: radial-gradient(#1f2937 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .card-base {
+            background-color: var(--tw-colors-ivs-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .card-base:hover {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+            transform: translateY(-5px);
+        }
+        .feature-icon-container {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(99, 102, 241, 0.1);
+        }
+        .price-card-premium {
+            background: linear-gradient(135deg, #6366F1 0%, #3b82f6 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+            transform: scale(1.02);
+            border: 4px solid #FACC15;
+        }
+        .price-card-premium .feature-icon-color {
+            color: #FACC15 !important;
+        }
+    </style>
+<link rel="stylesheet" href="/css/tailwind.css">
+</head>
+<body class="antialiased">
+
+    <!-- Language & Localization Script (Đã tối ưu để tránh lỗi) -->
+    <script>
+        // === DỮ LIỆU LOCALIZATION TIẾNG VIỆT (Đã cập nhật Project Showcase) ===
+        // Dữ liệu này sẽ được tải từ file vi.json, en.json, zh.json trong môi trường thực tế
+        const langData = {
+            "vi": {
+                "page_title": "Giải Pháp Toàn Diện: Website & Hệ Thống Số | IVS Celestech",
+                "nav_home": "Trang chủ",
+                "nav_philosophy": "Triết lý Code-First",
+                "nav_solutions": "Giải pháp",
+                "nav_showcase": "Hồ sơ Năng lực", 
+                "nav_pricing": "Bảng giá",
+                "nav_contact": "Tư vấn ngay",
+                
+                "hero_tagline": "DỊCH VỤ CODE-FIRST, TÍCH HỢP QUẢN LÝ",
+                "hero_title": "Website Chuyên Nghiệp: Xây dựng nền tảng số phù hợp mọi quy mô kinh doanh.", // CẬP NHẬT
+                "hero_subtitle": "Từ Landing Page cơ bản đến Hệ thống Quản lý (CRM/ERP) phức tạp. Chúng tôi lập trình tùy biến, đảm bảo website của bạn hoạt động hiệu quả, dễ dùng, và dễ dàng mở rộng.", // CẬP NHẬT
+                "hero_cta": "Yêu cầu Tư vấn & Báo giá", // CẬP NHẬT
+                "hero_price_callout": "Giải pháp cho mọi ngân sách. Bắt đầu với Website Tối Giản chỉ từ 1.500.000 VNĐ.", // NEW KEY,
+
+                "section_features_title": "Lợi Thế Cốt Lõi: Chức năng & Tích hợp Cao",
+                "feature_1_title": "Tích Hợp Phần Mềm Quản Lý (ERP/CRM)",
+                "feature_1_desc": "Liên kết website với các hệ thống quản lý nội bộ như Tài chính, Nhân sự, Khách hàng, Giảng dạy (LMS) một cách liền mạch và an toàn.",
+                "feature_2_title": "Hệ Thống Tài Khoản Người Dùng Chuyên Sâu",
+                "feature_2_desc": "Xây dựng cổng thông tin thành viên, quản lý tài khoản đa cấp, hồ sơ người dùng, và phân quyền truy cập nội dung riêng biệt.",
+                "feature_3_title": "Khả Năng Phát Triển Vô Hạn (SaaS-Ready)",
+                "feature_3_desc": "Kiến trúc Microservices và Code-First cho phép bạn biến ý tưởng phức tạp thành các ứng dụng độc lập, sẵn sàng mở rộng quy mô toàn cầu.",
+                
+                "section_solutions_title": "Phổ Giải Pháp Website Toàn Diện",
+                "solution_lms_title": "EdTech Platforms & Cổng Thành viên",
+                "solution_lms_focus": "Nền tảng Giáo dục & Đào tạo nội bộ",
+                "solution_lms_desc": "Hệ thống LMS, tích hợp thanh toán, quản lý giáo viên, theo dõi tiến độ học viên và cấp chứng chỉ tự động.",
+                "solution_b2b_title": "Website Tích hợp Quản lý Doanh nghiệp",
+                "solution_b2b_focus": "Tăng cường Uy tín, Automation Marketing",
+                "solution_b2b_desc": "Thiết kế chuẩn B2B, tích hợp CRM/Marketing Automation, quản lý đối tác và hiển thị hồ sơ năng lực số (Digital Profile).",
+                "solution_ecom_title": "Thương Mại Điện Tử & Lead Generation",
+                "solution_ecom_focus": "Phân phối Thiết bị Công nghệ & Bán hàng đa kênh",
+                "solution_ecom_desc": "Xây dựng gian hàng chuyên nghiệp, tích hợp quản lý kho, báo giá, các cổng thanh toán an toàn, và tối ưu cho chuyển đổi doanh số.",
+
+                // === NEW KEYS: PROJECT SHOWCASE (SECTION 4) ===
+                "section_showcase_title": "Hồ Sơ Năng Lực (Web Mẫu & Ứng Dụng Số)",
+                "section_showcase_subtitle": "Các dự án Code-First tiêu biểu do IVS Celestech thiết kế và phát triển, đảm bảo khả năng tích hợp và mở rộng không giới hạn.",
+                "showcase_web_title": "WEB MẪU & CỔNG THÔNG TIN (WEBSITE TÍCH HỢP)",
+                "showcase_app_title": "ỨNG DỤNG SỐ VÀ HỆ THỐNG QUẢN LÝ (WEB APPS)",
+                "project_edu_title": "Hệ Thống Đào Tạo Nội Bộ (LMS)",
+                "project_edu_desc": "Một nền tảng toàn diện cho phép tổ chức tạo khóa học, quản lý giáo viên, theo dõi tiến độ học viên, và tích hợp thanh toán tự động.",
+                "project_b2b_title": "Website Hồ Sơ Năng Lực Chuẩn B2B",
+                "project_b2b_desc": "Thiết kế giao diện hiện đại, tối ưu cho SEO, tích hợp Digital Profile, và cổng thông tin đối tác an toàn.",
+                "project_ecom_title": "Trang Bán Hàng Công Nghệ Chuyên Biệt",
+                "project_ecom_desc": "Giải pháp E-commerce tập trung vào sản phẩm công nghệ, tích hợp quản lý kho hàng phức tạp, hệ thống báo giá tự động và đa cổng thanh toán.",
+                "app_crm_title": "Ứng Dụng Quản Lý Quan Hệ Khách Hàng (CRM)",
+                "app_crm_desc": "Xây dựng CRM tùy chỉnh, tích hợp với website và các kênh bán hàng khác. Quản lý lead, lịch sử tương tác và tự động hóa quy trình marketing.",
+                "app_erp_title": "Hệ Thống Quản Lý Tài Nguyên Doanh Nghiệp (ERP)",
+                "app_erp_desc": "Ứng dụng giúp số hóa các quy trình nội bộ: kế toán, nhân sự, dự án, kho bãi. Đảm bảo dữ liệu tập trung và ra quyết định chính xác.",
+                "app_saas_title": "Nền tảng Công cụ SaaS Độc lập",
+                "app_saas_desc": "Phát triển các công cụ (tool) độc quyền, có tính phí theo gói thuê bao (subscription) hoặc sử dụng tính năng. Sẵn sàng mở rộng thành sản phẩm toàn cầu.",
+                "button_request_consult_short": "Yêu cầu tư vấn code", // Short CTA for card buttons
+                "button_view_all_apps": "Xem tất cả Ứng dụng tiêu biểu", // NEW KEY
+                // === END NEW KEYS ===
+
+                "section_transparency_title": "Minh Bạch Chi Phí Nền Tảng (Giá Tham Khảo)",
+                "transparency_desc": "Tổng chi phí website bao gồm nhiều thành phần. Dưới đây là các chi phí tham khảo trên thị trường để Quý khách hàng dễ dàng hình dung về đầu tư cơ bản:",
+                "item_domain": "Chi phí Tên miền (.com/.vn/.net)",
+                "price_domain": "700.000 - 800.000 VNĐ / năm",
+                "item_hosting": "Chi phí Thuê Hosting (Trung bình)",
+                "price_hosting": "Khoảng 1.000.000 VNĐ / năm",
+                "item_design": "Chi phí Thiết kế Giao diện",
+                "price_design": "3.000.000 - 5.000.000 VNĐ",
+                "item_coding": "Chi phí Lập trình Chức năng",
+                "price_coding": "3.000.000 - 10.000.000 VNĐ (Tùy tính năng)",
+                "item_maintenance": "Chi phí Bảo trì Website",
+                "price_maintenance": "2.000.000 - 5.000.000 VNĐ / năm",
+
+                "section_pricing_title": "Bảng Giá Toàn Diện: Từ Tối Giản đến Hệ Thống Lớn",
+                "pricing_subtitle": "Chúng tôi cung cấp giải pháp phù hợp với mọi quy mô đầu tư, cam kết <b>Chất lượng Code Tay</b> ở mọi cấp độ.",
+                "pricing_include": "Bao gồm:",
+                
+                "tier_0_name": "Gói Siêu Tối Giản (Landing Page)",
+                "tier_0_price": "Từ 1.500.000 VNĐ",
+                "tier_0_focus": "Website giới thiệu cá nhân/sản phẩm siêu tốc.",
+                "tier_0_f1": "HTML/CSS/JS tĩnh, tốc độ tải tuyệt đối (Static Site).",
+                "tier_0_f2": "Giao diện 1 trang (Landing Page) đơn giản, chuẩn di động.",
+                "tier_0_f3": "Tên miền phụ (Subdomain) và Hosting 3 tháng cơ bản.",
+                
+                "tier_1_name": "Gói Khởi Điểm (Tối ưu)",
+                "tier_1_price": "10 - 15 Triệu VNĐ",
+                "tier_1_focus": "Website giới thiệu, Landing Page tốc độ cao.",
+                "tier_1_f1": "Hosting & Tên miền 1 năm (Quốc tế)",
+                "tier_1_f2": "Tối ưu tốc độ (Mobile First) & SEO cơ bản",
+                "tier_1_f3": "Cấu trúc 5-7 trang, giao diện có sẵn tối ưu",
+                
+                "tier_2_name": "Gói Tiêu Chuẩn (B2B/CMS)",
+                "tier_2_price": "15 - 25 Triệu VNĐ",
+                "tier_2_focus": "Doanh nghiệp vừa & nhỏ, B2B cơ bản.",
+                "tier_2_f1": "Tất cả tính năng Khởi Điểm + Thiết kế UI/UX theo thương hiệu",
+                "tier_2_f2": "Hệ thống Quản lý Nội dung Đa cấp (CMS)",
+                "tier_2_f3": "Tích hợp Marketing (CRM/Form nâng cao) & Quản lý nhân sự",
+
+                "tier_3_name": "Gói Nâng Cao (Platform)",
+                "tier_3_price": "25 - 40 Triệu VNĐ",
+                "tier_3_focus": "E-commerce, Giáo dục (LMS Lite), Cổng thông tin.",
+                "tier_3_f1": "Tất cả tính năng Tiêu Chuẩn + Thanh toán trực tuyến",
+                "tier_3_f2": "Hệ thống Đa ngôn ngữ (2-3 ngôn ngữ)",
+                "tier_3_f3": "Bảo mật nâng cao (SSL & Firewall) và tích hợp API cơ bản",
+                
+                "tier_4_name": "Gói Tùy Biến Chuyên Sâu (ZERO-LIMIT)",
+                "tier_4_price": "TỪ 40 Triệu VNĐ",
+                "tier_4_focus": "Giải pháp Độc quyền: Phát triển Hệ thống Phần mềm Quản lý.",
+                "tier_4_f1": "<b>SIÊU LẬP TRÌNH CODE TAY</b>, không giới hạn tính năng (Tích hợp ERP/CRM/LMS).",
+                "tier_4_f2": "Xây dựng hệ thống Tài khoản Người dùng (Membership/SaaS).",
+                "tier_4_f3": "Tối ưu hóa khả năng mở rộng (Scalability) và Bảo mật quốc tế 24/7.",
+                
+                "cta_final_title": "Sẵn sàng hiện thực hóa Tầm nhìn của bạn?",
+                "cta_final_subtitle": "IVS Celestech cam kết biến ý tưởng phức tạp nhất thành Giải pháp Kỹ thuật Số hoạt động hiệu quả.",
+                "cta_final_button": "Yêu cầu Tư vấn Code-First",
+                "button_select": "Chọn gói này",
+                "button_contact_exclusive": "Liên hệ Báo giá Độc quyền"
+            }
+        };
+
+        // === LOGIC TẢI NỘI DUNG (ĐÃ TỐI ƯU HÓA) ===
+        const currentLang = 'vi';
+        const globalData = langData[currentLang];
+        
+        function applyLocalization(data) {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                let content = data[key];
+                
+                if (content !== undefined && content !== null) {
+                    // Sử dụng innerHTML để xử lý các thẻ <b> hoặc markdown đã được chuyển đổi
+                    el.innerHTML = content;
+                }
+            });
+            document.title = data['page_title'] || 'IVS Celestech Service';
+        }
+
+        window.onload = () => {
+            applyLocalization(globalData);
+            // Khởi tạo các scripts ngoài (giả lập)
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 800, once: true, offset: 50 });
+            }
+        };
+    </script>
+    <!-- END: Language & Localization Script -->
+
+    <!-- HEADER PLACEHOLDER -->
+    <header id="header-placeholder" class="header-bg fixed top-0 left-0 w-full z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-2xl font-black text-ivs-primary font-display">
+                    IVS<span class="text-ivs-accent">.</span>Tech
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#hero" class="hover:text-ivs-primary transition-colors text-ivs-text-light" data-lang-key="nav_home"></a>
+                <a href="#features" class="hover:text-ivs-primary transition-colors text-ivs-text-light" data-lang-key="nav_philosophy"></a>
+                <a href="#solutions" class="hover:text-ivs-primary transition-colors text-ivs-text-light" data-lang-key="nav_solutions"></a>
+                <a href="#showcase" class="hover:text-ivs-primary transition-colors text-ivs-text-light" data-lang-key="nav_showcase"></a> 
+                <a href="#pricing" class="hover:text-ivs-primary transition-colors text-ivs-text-light" data-lang-key="nav_pricing"></a>
+            </nav>
+            <a href="mailto:info@ivsacademy.edu.vn" class="px-4 py-2 text-sm font-semibold text-white rounded-lg bg-ivs-primary hover:bg-ivs-cyan transition-colors hidden sm:block" data-lang-key="nav_contact"></a>
+            <button class="md:hidden text-xl text-ivs-text-light"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <!-- SECTION 1: HERO - Code-First, Zero-Limit -->
+        <section id="hero" class="hero-section pt-20 pb-20 md:pt-32 md:pb-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <p class="text-ivs-accent text-sm sm:text-base font-semibold uppercase tracking-wider mb-3" data-lang-key="hero_tagline"></p>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
+                    <span class="text-gradient block" data-lang-key="hero_title"></span>
+                </h1>
+                <p class="text-lg sm:text-xl text-ivs-text-muted max-w-3xl mx-auto mb-10" data-lang-key="hero_subtitle"></p>
+                <a href="mailto:info@ivsacademy.edu.vn" class="px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg inline-block bg-ivs-primary hover:bg-ivs-cyan transition-colors transform hover:scale-105" data-lang-key="hero_cta"></a>
+                <!-- NEW PRICE CALLOUT FOR ACCESSIBILITY -->
+                <p class="mt-6 text-base font-bold text-ivs-text-light/90">
+                    <span class="text-ivs-accent mr-2"><i class="fas fa-money-bill-wave"></i></span>
+                    <span data-lang-key="hero_price_callout"></span>
+                </p>
+                <!-- END NEW PRICE CALLOUT -->
+            </div>
+        </section>
+
+        <!-- SECTION 2: CORE FEATURES - Lợi thế TÍCH HỢP QUẢN LÝ -->
+        <section id="features" class="py-20 bg-ivs-card border-y border-ivs-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" data-lang-key="section_features_title"></h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-10">
+                    <!-- Feature 1: Tích hợp ERP/CRM -->
+                    <div class="card-base p-6 rounded-xl border-t-4 border-ivs-primary hover:border-ivs-accent flex flex-col items-center text-center">
+                        <div class="feature-icon-container mb-4">
+                            <i class="fas fa-cubes text-ivs-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-ivs-primary" data-lang-key="feature_1_title"></h3>
+                        <p class="text-ivs-text-muted text-sm" data-lang-key="feature_1_desc"></p>
+                    </div>
+                    <!-- Feature 2: Hệ thống Tài khoản -->
+                    <div class="card-base p-6 rounded-xl border-t-4 border-ivs-primary hover:border-ivs-accent flex flex-col items-center text-center">
+                        <div class="feature-icon-container mb-4">
+                            <i class="fas fa-users-cog text-ivs-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-ivs-primary" data-lang-key="feature_2_title"></h3>
+                        <p class="text-ivs-text-muted text-sm" data-lang-key="feature_2_desc"></p>
+                    </div>
+                    <!-- Feature 3: Khả năng mở rộng -->
+                    <div class="card-base p-6 rounded-xl border-t-4 border-ivs-primary hover:border-ivs-accent flex flex-col items-center text-center">
+                        <div class="feature-icon-container mb-4">
+                            <i class="fas fa-rocket text-ivs-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-ivs-primary" data-lang-key="feature_3_title"></h3>
+                        <p class="text-ivs-text-muted text-sm" data-lang-key="feature_3_desc"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SOLUTIONS - Ứng dụng Chuyên Sâu -->
+        <section id="solutions" class="py-20 bg-ivs-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" data-lang-key="section_solutions_title"></h2>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Solution 1: LMS/EdTech -->
+                    <div class="card-base p-6 rounded-xl border-l-4 border-ivs-accent hover:border-ivs-primary flex flex-col justify-start">
+                        <i class="fas fa-graduation-cap text-3xl text-ivs-accent mb-3"></i>
+                        <h3 class="text-xl font-semibold text-white mb-1" data-lang-key="solution_lms_title"></h3>
+                        <p class="text-ivs-primary font-semibold text-sm mb-3" data-lang-key="solution_lms_focus"></p>
+                        <p class="text-ivs-text-muted text-sm flex-grow" data-lang-key="solution_lms_desc"></p>
+                    </div>
+                    <!-- Solution 2: B2B/Hồ sơ Năng lực -->
+                    <div class="card-base p-6 rounded-xl border-l-4 border-ivs-accent hover:border-ivs-primary flex flex-col justify-start">
+                        <i class="fas fa-handshake-alt text-3xl text-ivs-accent mb-3"></i>
+                        <h3 class="text-xl font-semibold text-white mb-1" data-lang-key="solution_b2b_title"></h3>
+                        <p class="text-ivs-primary font-semibold text-sm mb-3" data-lang-key="solution_b2b_focus"></p>
+                        <p class="text-ivs-text-muted text-sm flex-grow" data-lang-key="solution_b2b_desc"></p>
+                    </div>
+                    <!-- Solution 3: E-commerce -->
+                    <div class="card-base p-6 rounded-xl border-l-4 border-ivs-accent hover:border-ivs-primary flex flex-col justify-start">
+                        <i class="fas fa-shopping-cart text-3xl text-ivs-accent mb-3"></i>
+                        <h3 class="text-xl font-semibold text-white mb-1" data-lang-key="solution_ecom_title"></h3>
+                        <p class="text-ivs-primary font-semibold text-sm mb-3" data-lang-key="solution_ecom_focus"></p>
+                        <p class="text-ivs-text-muted text-sm flex-grow" data-lang-key="solution_ecom_desc"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PROJECT SHOWCASE - Hồ sơ Năng lực -->
+        <section id="showcase" class="py-20 bg-ivs-card border-y border-ivs-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-ivs-cyan mb-4" data-lang-key="section_showcase_title"></h2>
+                    <p class="text-lg text-ivs-text-muted" data-lang-key="section_showcase_subtitle"></p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Column 1: Website & Cổng Thông Tin -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-ivs-primary mb-6 border-b border-ivs-primary/50 pb-2" data-lang-key="showcase_web_title"></h3>
+                        <div class="space-y-8">
+                            <!-- Project 1: LMS -->
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
+                                <!-- Link đã được thêm -->
+                                <a href="https://ivsacademy.edu.vn/" target="_blank" class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors">
+                                    <span data-lang-key="project_edu_title"></span> (ivsacademy.edu.vn)
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4" data-lang-key="project_edu_desc"></p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-primary hover:text-ivs-accent transition-colors" data-lang-key="button_request_consult_short">
+                                    <i class="fas fa-angle-right mr-1"></i>
+                                </a>
+                            </div>
+                            <!-- Project 2: B2B Digital Profile -->
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
+                                <!-- Link đã được thêm -->
+                                <a href="" target="_blank" class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors">
+                                    <span data-lang-key="project_b2b_title"></span> (khadock.com)
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4" data-lang-key="project_b2b_desc"></p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-primary hover:text-ivs-accent transition-colors" data-lang-key="button_request_consult_short">
+                                    <i class="fas fa-angle-right mr-1"></i>
+                                </a>
+                            </div>
+                            <!-- Project 3: E-commerce Tech -->
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
+                                <!-- Link đã được thêm -->
+                                <a href="" target="_blank" class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors">
+                                    <span data-lang-key="project_ecom_title"></span> 
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4" data-lang-key="project_ecom_desc"></p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-primary hover:text-ivs-accent transition-colors" data-lang-key="button_request_consult_short">
+                                    <i class="fas fa-angle-right mr-1"></i>
+                                </a>
+                            </div>
+
+                            <!-- Thêm 2 Website Mẫu còn lại -->
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
+                                <a href="https://suoicamp.netlify.app/" target="_blank" class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors">
+                                    Website Khu Du lịch/Cắm trại (suoicamp.netlify.app)
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4">Mẫu website giới thiệu dịch vụ du lịch, cắm trại, tích hợp form đặt chỗ và thư viện ảnh động.</p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-primary hover:text-ivs-accent transition-colors" data-lang-key="button_request_consult_short">
+                                    <i class="fas fa-angle-right mr-1"></i>
+                                </a>
+                            </div>
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
+                                <a href="https://trungtamhoinghitieccuoi-banhanh.netlify.app/" target="_blank" class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors">
+                                    Website Dịch vụ Tiệc Cưới/Hội Nghị, Nhà hàng (banhanh.netlify.app)
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4">Website giới thiệu dịch vụ tổ chức sự kiện và tiệc cưới, tối ưu hiển thị cho nội dung hình ảnh chất lượng cao.</p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-primary hover:text-ivs-accent transition-colors" data-lang-key="button_request_consult_short">
+                                    <i class="fas fa-angle-right mr-1"></i>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Ứng Dụng Số & Hệ Thống Quản Lý -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-ivs-accent mb-6 border-b border-ivs-accent/50 pb-2" data-lang-key="showcase_app_title"></h3>
+                        <div class="space-y-8">
+                            <!-- App 1: Ứng dụng Học & Dạy Tiếng Anh (K-12) -->
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-accent flex flex-col">
+                                <a href="https://ivseng.netlify.app/" target="_blank" class="text-xl font-semibold mb-1 text-ivs-accent hover:text-ivs-primary transition-colors">
+                                    Ứng dụng Học & Dạy Tiếng Anh (K-12) — Giáo viên & Học sinh (ivseng.netlify.app)
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4">
+                                    Ứng dụng hỗ trợ đầy đủ chu trình giảng dạy và học tập từ mầm non tới THPT: Giáo viên tạo lộ trình, soạn bài, giao bài tập và chấm điểm; Học sinh học theo lộ trình, làm bài tương tác, theo dõi tiến độ và nhận phản hồi. Bao gồm báo cáo học tập, lịch học, gamification và tài nguyên bài giảng đa phương tiện.
+                                </p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-accent hover:text-ivs-primary transition-colors">
+                                    <i class="fas fa-angle-right mr-1"></i> Yêu cầu demo / Tư vấn
+                                </a>
+                            </div>
+                            <!-- App 3: Ứng dụng Học Tiếng Trung HSK1 - HSK4 -->
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-accent flex flex-col">
+                                <a href="https://mandarinbyivs.netlify.app/" target="_blank" class="text-xl font-semibold mb-1 text-ivs-accent hover:text-ivs-primary transition-colors">
+                                    Ứng dụng Học Tiếng Trung HSK1 - HSK4 (mandarinbyivs.netlify.app)
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4">
+                                    Mô-đun học theo cấp độ HSK1 → HSK4: bài học từ vựng & ngữ pháp, bài tập tương tác, luyện nghe và phát âm, thẻ flashcard, cùng hệ thống đánh giá tiến độ và báo cáo học tập.
+                                </p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-accent hover:text-ivs-primary transition-colors">
+                                    <i class="fas fa-angle-right mr-1"></i> Yêu cầu demo / Tư vấn
+                                </a>
+                            </div>
+                            <!-- Ứng Dụng: Quản lý Nhà Trọ -->
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-accent flex flex-col">
+                                <a href="https://nhatrobyivs.netlify.app/" target="_blank" class="text-xl font-semibold mb-1 text-ivs-accent hover:text-ivs-primary transition-colors">
+                                    Ứng dụng Quản lý Nhà Trọ (nhatrobyivs.netlify.app)
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4">
+                                    Quản lý phòng, hợp đồng thuê, hóa đơn và lịch dọn phòng. Bao gồm tính năng quản lý cư trú, theo dõi thu chi, thông báo tự động và báo cáo thống kê.
+                                </p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-accent hover:text-ivs-primary transition-colors" data-lang-key="button_request_consult_short">
+                                    <i class="fas fa-angle-right mr-1"></i>
+                                </a>
+                            </div>
+                            <!-- App 4: StriveStreak - Learning Companion -->
+                            <div class="card-base p-5 rounded-xl border-l-4 border-ivs-accent flex flex-col">
+                                <a href="https://strivestreak.netlify.app/" target="_blank" class="text-xl font-semibold mb-1 text-ivs-accent hover:text-ivs-primary transition-colors">
+                                    StriveStreak — Your Learning Companion (strivestreak.netlify.app)
+                                </a>
+                                <p class="text-ivs-text-muted text-sm mb-4">
+                                    StriveStreak là một ứng dụng web hỗ trợ học tập toàn diện: giúp người dùng xây dựng thói quen học tập, đặt mục tiêu và duy trì động lực thông qua game hóa và gợi ý AI cá nhân hóa.
+                                </p>
+                                <a href="mailto:info@ivsacademy.edu.vn" class="self-start text-sm font-medium text-ivs-accent hover:text-ivs-primary transition-colors" data-lang-key="button_request_consult_short">
+                                    <i class="fas fa-angle-right mr-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nút xem tất cả ứng dụng tổng hợp -->
+                <div class="mt-12 text-center">
+                    <a href="https://ivsacademy.edu.vn/apps/ivsapps" target="_blank" class="px-8 py-3 text-lg font-bold text-ivs-dark rounded-xl shadow-lg inline-block bg-ivs-cyan hover:bg-ivs-accent transition-colors transform hover:scale-105" data-lang-key="button_view_all_apps">
+                        <i class="fas fa-th-large mr-2"></i>
+                        Xem tất cả Ứng dụng tiêu biểu
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: COST BREAKDOWN - Minh bạch Chi phí Nền tảng -->
+        <section id="transparency" class="py-20 bg-ivs-dark border-b border-ivs-card">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-ivs-accent mb-4" data-lang-key="section_transparency_title"></h2>
+                    <p class="text-lg text-ivs-text-muted" data-lang-key="transparency_desc"></p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Cost Breakdown List -->
+                    <div class="bg-ivs-card p-6 rounded-xl shadow-xl border border-ivs-text-muted/10">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b border-ivs-text-muted/10 pb-2">
+                                <span class="text-ivs-text-light font-semibold" data-lang-key="item_domain"></span>
+                                <span class="text-ivs-primary font-bold" data-lang-key="price_domain"></span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-ivs-text-muted/10 pb-2">
+                                <span class="text-ivs-text-light font-semibold" data-lang-key="item_hosting"></span>
+                                <span class="text-ivs-primary font-bold" data-lang-key="price_hosting"></span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-ivs-text-muted/10 pb-2">
+                                <span class="text-ivs-text-light font-semibold" data-lang-key="item_design"></span>
+                                <span class="text-ivs-primary font-bold" data-lang-key="price_design"></span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-ivs-text-muted/10 pb-2">
+                                <span class="text-ivs-text-light font-semibold" data-lang-key="item_coding"></span>
+                                <span class="text-ivs-primary font-bold" data-lang-key="price_coding"></span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-ivs-text-muted/10 pb-2">
+                                <span class="text-ivs-text-light font-semibold" data-lang-key="item_maintenance"></span>
+                                <span class="text-ivs-primary font-bold" data-lang-key="price_maintenance"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emphasis Box -->
+                    <div class="bg-ivs-primary/10 p-6 rounded-xl shadow-xl border-l-4 border-ivs-primary flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-ivs-primary mb-3">Tuyên bố về Code-First</h3>
+                        <p class="text-ivs-text-muted">
+                            Giá trị cốt lõi của IVS Celestech nằm ở <b>Lập trình Chức năng</b> (`item_coding`). Chúng tôi không tính phí dựa trên mẫu (template) có sẵn, mà là dựa trên sự <b>phức tạp của logic</b> và <b>khả năng tích hợp API</b> mà hệ thống của bạn yêu cầu.
+                        </p>
+                        <p class="text-ivs-text-muted mt-2">
+                            Mức giá trọn gói trong Bảng giá chính đã bao gồm các chi phí nền tảng này (trừ các tính năng tùy biến quá phức tạp).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: PRICING - Bảng Giá Toàn Diện -->
+        <section id="pricing" class="py-20 bg-ivs-dark border-t border-ivs-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" data-lang-key="section_pricing_title"></h2>
+                    <p class="text-lg text-ivs-text-muted" data-lang-key="pricing_subtitle"></p>
+                </div>
+
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 items-stretch">
+                    
+                    <!-- Pricing Card 0: Siêu Tối Giản (1.5M VND) -->
+                    <div class="card-base p-6 rounded-xl flex flex-col justify-between hover:border-ivs-accent">
+                        <div>
+                            <h3 class="text-2xl font-bold text-ivs-cyan mb-2" data-lang-key="tier_0_name"></h3>
+                            <p class="text-sm text-ivs-text-muted mb-4" data-lang-key="tier_0_focus"></p>
+                            <p class="text-4xl font-extrabold text-ivs-cyan mb-6" data-lang-key="tier_0_price"></p>
+                            
+                            <h4 class="font-semibold text-ivs-accent mb-3 border-b border-ivs-dark pb-2" data-lang-key="pricing_include"></h4>
+                            <ul class="space-y-4 text-ivs-text-light text-sm">
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-cyan mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_0_f1"></span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-cyan mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_0_f2"></span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-cyan mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_0_f3"></span></li>
+                            </ul>
+                        </div>
+                        <a href="mailto:info@ivsacademy.edu.vn" class="mt-8 block text-center py-3 bg-ivs-cyan/50 text-white font-semibold rounded-lg hover:bg-ivs-cyan transition duration-300" data-lang-key="button_select"></a>
+                    </div>
+                    
+                    <!-- Pricing Card 1: Khởi Điểm -->
+                    <div class="card-base p-6 rounded-xl flex flex-col justify-between hover:border-ivs-primary">
+                        <div>
+                            <h3 class="text-2xl font-bold text-ivs-accent mb-2" data-lang-key="tier_1_name"></h3>
+                            <p class="text-sm text-ivs-text-muted mb-4" data-lang-key="tier_1_focus"></p>
+                            <p class="text-4xl font-extrabold text-ivs-primary mb-6" data-lang-key="tier_1_price"></p>
+                            
+                            <h4 class="font-semibold text-ivs-accent mb-3 border-b border-ivs-dark pb-2" data-lang-key="pricing_include"></h4>
+                            <ul class="space-y-4 text-ivs-text-light text-sm">
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-primary mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_1_f1"></span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-primary mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_1_f2"></span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-primary mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_1_f3"></span></li>
+                            </ul>
+                        </div>
+                        <a href="mailto:info@ivsacademy.edu.vn" class="mt-8 block text-center py-3 bg-ivs-primary/50 text-white font-semibold rounded-lg hover:bg-ivs-primary transition duration-300" data-lang-key="button_select"></a>
+                    </div>
+                    
+                    <!-- Pricing Card 3: Nâng Cao -->
+                    <div class="card-base p-6 rounded-xl flex flex-col justify-between hover:border-ivs-primary">
+                        <div>
+                            <h3 class="text-2xl font-bold text-ivs-accent mb-2" data-lang-key="tier_3_name"></h3>
+                            <p class="text-sm text-ivs-text-muted mb-4" data-lang-key="tier_3_focus"></p>
+                            <p class="text-4xl font-extrabold text-ivs-primary mb-6" data-lang-key="tier_3_price"></p>
+                            
+                            <h4 class="font-semibold text-ivs-accent mb-3 border-b border-ivs-dark pb-2" data-lang-key="pricing_include"></h4>
+                            <ul class="space-y-4 text-ivs-text-light text-sm">
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-primary mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_3_f1"></span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-primary mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_3_f2"></span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-ivs-primary mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_3_f3"></span></li>
+                            </ul>
+                        </div>
+                        <a href="mailto:info@ivsacademy.edu.vn" class="mt-8 block text-center py-3 bg-ivs-primary/50 text-white font-semibold rounded-lg hover:bg-ivs-primary transition duration-300" data-lang-key="button_select"></a>
+                    </div>
+
+                    <!-- Pricing Card 4: Tùy Biến Chuyên Sâu (Highlight) -->
+                    <div class="price-card-premium p-6 rounded-xl flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold text-ivs-accent mb-2" data-lang-key="tier_4_name"></h3>
+                            <p class="text-sm text-gray-200 mb-4" data-lang-key="tier_4_focus"></p>
+                            <p class="text-4xl font-extrabold text-white mb-6" data-lang-key="tier_4_price"></p>
+                            
+                            <h4 class="font-semibold text-ivs-accent mb-3 border-b border-ivs-dark/50 pb-2" data-lang-key="pricing_include"></h4>
+                            <ul class="space-y-4 text-gray-200 text-sm">
+                                <li class="flex items-start"><i class="fas fa-star text-ivs-accent mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_4_f1"></span></li>
+                                <li class="flex items-start"><i class="fas fa-star text-ivs-accent mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_4_f2"></span></li>
+                                <li class="flex items-start"><i class="fas fa-star text-ivs-accent mt-1 mr-3 feature-icon-color"></i><span data-lang-key="tier_4_f3"></span></li>
+                            </ul>
+                        </div>
+                        <a href="mailto:info@ivsacademy.edu.vn" class="mt-8 block text-center py-3 bg-ivs-accent text-ivs-dark font-bold rounded-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-[1.02]" data-lang-key="button_contact_exclusive"></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: CTA FINAL -->
+        <section id="contact" class="py-20 bg-ivs-primary/10 border-t border-ivs-primary/30">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <!-- APPLY TEXT GRADIENT HERE -->
+                <h2 class="text-4xl font-extrabold mb-4 leading-tight text-gradient" data-lang-key="cta_final_title"></h2>
+                <p class="text-xl text-ivs-text-muted mb-10" data-lang-key="cta_final_subtitle"></p>
+                
+                <a href="mailto:info@ivsacademy.edu.vn" class="px-10 py-4 text-xl font-bold text-white rounded-xl shadow-2xl inline-block bg-ivs-primary hover:bg-ivs-cyan transition-colors transform hover:scale-105" data-lang-key="cta_final_button"></a>
+                <p class="mt-4 text-ivs-text-muted text-sm">Email: info@ivsacademy.edu.vn | Zalo: 0795555789</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <footer id="footer-placeholder" class="bg-ivs-dark border-t border-ivs-card py-8 text-center">
+        <!-- Footer sẽ được tải động -->
+    </footer>
+    <!-- Floating Action Button Placeholder -->
+    <div id="fab-container-placeholder"></div>
+
+    <!-- SCRIPT LOADING BLOCK -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="/js/loadComponents.js" defer></script>
+    <script src="/js/language.js" defer></script>
+    <script src="/js/fabController.js" defer></script>
+
+</body>
+</html>

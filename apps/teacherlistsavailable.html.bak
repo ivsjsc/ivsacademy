@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="page_title_teacher_list">Danh sách Giáo viên Sẵn có - IVS Global Teacher Hub</title>
+    <meta name="description" content="Khám phá danh sách các nhà giáo dục quốc tế tài năng và giàu kinh nghiệm sẵn sàng hợp tác trong các dự án giáo dục của IVS JSC." data-lang-key="meta_description_teacher_list">
+    <meta name="keywords" content="IVS JSC, danh sách giáo viên, giáo viên quốc tế, cơ hội giảng dạy, hợp tác giáo dục" data-lang-key="meta_keywords_teacher_list">
+    <meta property="og:title" content="Danh sách Giáo viên Sẵn có - IVS Global Teacher Hub" data-lang-key="og_title_teacher_list">
+    <meta property="og:description" content="Duyệt qua hồ sơ của các nhà giáo dục xuất sắc trong mạng lưới IVS Global Teacher Hub." data-lang-key="og_description_teacher_list">
+    <meta property="og:image" content="/images/ivs-teacher-hub-og-banner.png"> 
+    <meta property="og:url" content="https://ivsacademy.edu.vn/apps/teacherlistsavailable.html">
+    <meta property="og:type" content="website">
+    <meta name="author" content="IVS JSC">
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo/logo-192.png">
+    <link rel="manifest" href="/manifest.json">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/tailwind.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, .font-display { font-family: 'Lexend', sans-serif; }
+        
+        .page-container {
+            background-color: theme('colors.ivs-neutral-50');
+            width: 100%;
+            min-height: calc(100vh - var(--header-height, 60px) - var(--footer-height, 60px)); /* Adjust based on actual header/footer height */
+        }
+        .dark .page-container { background-color: theme('colors.ivs-neutral-900'); }
+
+        .teacher-profile-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid theme('colors.ivs-neutral-200');
+            background-color: theme('colors.white');
+        }
+        .teacher-profile-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 15px 30px theme('colors.ivs-primary / 12%'), 0 5px 10px theme('colors.ivs-primary / 8%');
+        }
+        .dark .teacher-profile-card {
+            background-color: theme('colors.ivs-neutral-800');
+            border-color: theme('colors.ivs-neutral-700');
+        }
+        .dark .teacher-profile-card:hover {
+             box-shadow: 0 15px 30px theme('colors.black / 25%'), 0 5px 10px theme('colors.black / 15%');
+        }
+        .teacher-avatar {
+            border: 4px solid theme('colors.ivs-primary');
+            padding: 3px;
+            box-shadow: 0 2px 8px theme('colors.ivs-primary / 30%');
+        }
+        .dark .teacher-avatar {
+            border-color: theme('colors.ivs-secondary');
+            box-shadow: 0 2px 8px theme('colors.ivs-secondary / 30%');
+        }
+        
+        .modal-backdrop { transition: opacity 0.3s ease-in-out; }
+        .modal-panel { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease-in-out; }
+        .modal-panel.entering { opacity: 0; transform: translateY(30px) scale(0.95); }
+        .modal-panel.entered { opacity: 1; transform: translateY(0) scale(1); }
+        .modal-panel.exiting { opacity: 0; transform: translateY(30px) scale(0.95); }
+
+        #teachers-list-container::-webkit-scrollbar { width: 8px; }
+        #teachers-list-container::-webkit-scrollbar-track { background: theme('colors.ivs-neutral-200'); border-radius: 4px;}
+        #teachers-list-container::-webkit-scrollbar-thumb { background: theme('colors.ivs-neutral-400'); border-radius: 4px;}
+        #teachers-list-container::-webkit-scrollbar-thumb:hover { background: theme('colors.ivs-neutral-500');}
+        .dark #teachers-list-container::-webkit-scrollbar-track { background: theme('colors.ivs-neutral-700');}
+        .dark #teachers-list-container::-webkit-scrollbar-thumb { background: theme('colors.ivs-neutral-500');}
+        .dark #teachers-list-container::-webkit-scrollbar-thumb:hover { background: theme('colors.ivs-neutral-400');}
+        
+        .form-input {
+            background-color: theme('colors.white');
+            border-color: theme('colors.ivs-neutral-300');
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            padding: 0.65rem 1rem; 
+        }
+        .form-input:focus {
+            border-color: theme('colors.ivs-primary');
+            box-shadow: 0 0 0 3px theme('colors.ivs-primary / 20%');
+            outline: none;
+        }
+        .dark .form-input {
+            background-color: theme('colors.ivs-neutral-700');
+            border-color: theme('colors.ivs-neutral-600');
+            color: theme('colors.ivs-neutral-100');
+        }
+        .dark .form-input::placeholder{ color: theme('colors.ivs-neutral-400'); }
+        .dark .form-input:focus {
+            border-color: theme('colors.ivs-secondary');
+            box-shadow: 0 0 0 3px theme('colors.ivs-secondary / 25%');
+        }
+
+
+        #header-placeholder:empty, #footer-placeholder:empty { min-height: 60px; background-color: theme('colors.ivs-neutral-100'); display: flex; align-items: center; justify-content: center; }
+        .dark #header-placeholder:empty, .dark #footer-placeholder:empty { background-color: theme('colors.ivs-neutral-800'); }
+        #header-placeholder:empty::before, #footer-placeholder:empty::before { content: attr(data-loading-text); color: theme('colors.ivs-neutral-500'); font-style: italic; }
+    </style>
+    <!-- CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-ivs-neutral-50 dark:bg-ivs-neutral-900 text-ivs-neutral-700 dark:text-ivs-neutral-200 antialiased" id="page-teacher-list-available">
+    
+    <div id="header-placeholder" data-loading-text="Đang tải menu..."></div>
+
+    <div id="loading-spinner" class="fixed inset-0 flex items-center justify-center bg-white/70 dark:bg-ivs-neutral-900/70 backdrop-blur-md z-[1100] hidden transition-opacity duration-300">
+        <div class="animate-spin rounded-full h-14 w-14 border-t-4 border-b-4 border-ivs-primary dark:border-ivs-secondary"></div>
+        <p class="ml-4 text-lg font-medium text-ivs-primary dark:text-ivs-secondary" data-lang-key="loading_text">Đang tải danh sách...</p>
+    </div>
+
+    <div id="custom-modal" class="fixed inset-0 z-[1050] overflow-y-auto hidden modal-backdrop bg-ivs-neutral-900/60 dark:bg-black/75">
+        <div class="flex items-end sm:items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="modal-panel entering inline-block w-full max-w-md p-6 sm:p-8 my-8 overflow-hidden text-left align-middle transition-all transform bg-white dark:bg-ivs-neutral-800 shadow-2xl rounded-xl">
+                <div class="flex items-start">
+                    <div id="modal-icon-container" class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full mr-4">
+                    </div>
+                    <div class="flex-grow">
+                        <h3 id="modal-title" class="text-xl font-display font-semibold leading-6 text-ivs-neutral-900 dark:text-white">Modal Title</h3>
+                        <div class="mt-2">
+                            <p id="modal-message" class="text-sm text-ivs-neutral-600 dark:text-ivs-neutral-300">Modal message here.</p>
+                        </div>
+                    </div>
+                    <button id="modal-close-button-x" type="button" class="ml-auto -mr-2 -mt-2 p-2 text-ivs-neutral-400 hover:text-ivs-neutral-600 dark:text-ivs-neutral-500 dark:hover:text-ivs-neutral-300 rounded-full focus:outline-none focus:ring-2 focus:ring-ivs-primary dark:focus:ring-ivs-secondary" aria-label="Close modal">
+                         <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row-reverse gap-3">
+                    <button id="modal-confirm-button" type="button"
+                            class="w-full sm:w-auto inline-flex justify-center rounded-lg border border-transparent bg-ivs-primary px-6 py-2.5 text-base font-medium text-white hover:bg-ivs-primary-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-ivs-primary focus-visible:ring-offset-2 dark:bg-ivs-secondary dark:text-ivs-neutral-900 dark:hover:bg-ivs-secondary-dark dark:focus-visible:ring-ivs-secondary dark:focus-visible:ring-offset-ivs-neutral-800 transition-colors duration-150"
+                            data-lang-key="modal_confirm_button">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container pt-[var(--header-height, 60px)]">
+        <header class="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-ivs-secondary via-amber-500 to-ivs-accent dark:from-ivs-neutral-800 dark:via-ivs-neutral-900 dark:to-black text-white shadow-xl">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-4 leading-tight" data-lang-key="teacher_list_main_title">Mạng Lưới Giáo Viên Ưu Tú</h1>
+                <p class="text-lg sm:text-xl text-amber-100 dark:text-ivs-neutral-300 max-w-3xl mx-auto leading-relaxed" data-lang-key="teacher_list_subtitle">
+                    Khám phá hồ sơ của các nhà giáo dục quốc tế tài năng, sẵn sàng đồng hành cùng IVS trong các dự án giáo dục chất lượng cao.
+                </p>
+            </div>
+        </header>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+            <section id="teacher-overview-section" data-aos="fade-up" data-aos-delay="100">
+                 <header class="mb-8 md:mb-10 text-center">
+                    <h2 class="text-3xl sm:text-4xl font-display font-semibold text-ivs-primary dark:text-ivs-secondary mb-3" data-lang-key="hub_teacher_list_title_enhanced">Danh Sách Giáo Viên</h2>
+                    <p class="text-ivs-neutral-600 dark:text-ivs-neutral-400 max-w-2xl mx-auto text-sm sm:text-base" data-lang-key="hub_teacher_list_desc_enhanced_alt">Duyệt qua danh sách các nhà giáo dục đã được phê duyệt và sẵn sàng cho các cơ hội hợp tác.</p>
+                </header>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+                    <input type="text" id="teacher-search-input" class="form-input w-full sm:max-w-md md:max-w-lg rounded-lg shadow-sm py-2.5" placeholder="Tìm giáo viên theo tên, môn dạy, quốc tịch..." data-lang-key="search_teacher_placeholder">
+                    <button id="clear-search-button" class="px-4 py-2.5 bg-ivs-neutral-200 dark:bg-ivs-neutral-700 text-ivs-neutral-700 dark:text-ivs-neutral-200 rounded-lg hover:bg-ivs-neutral-300 dark:hover:bg-ivs-neutral-600 transition-colors text-sm font-medium items-center hidden">
+                        <i class="fas fa-times mr-2"></i><span data-lang-key="clear_search_button">Xóa tìm kiếm</span>
+                    </button>
+                </div>
+                <div id="teachers-list-container" class="min-h-[400px] max-h-[120vh] overflow-y-auto pb-8 pr-1 sm:pr-2"> 
+                    <div id="teachers-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
+                        {/* Teacher cards will be injected here by JavaScript */}
+                    </div>
+                </div>
+                <div id="no-teachers-message" class="text-ivs-neutral-500 dark:text-ivs-neutral-400 text-center col-span-full hidden py-16">
+                    <div class="flex flex-col items-center">
+                        <svg class="w-24 h-24 text-ivs-neutral-400 dark:text-ivs-neutral-500 mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                        </svg>
+                        <p class="text-xl font-medium mb-2" data-lang-key="hub_no_teachers_found_search">Không tìm thấy giáo viên phù hợp.</p>
+                        <p class="text-sm" data-lang-key="hub_try_different_search">Vui lòng thử lại với từ khóa khác hoặc xem toàn bộ danh sách.</p>
+                    </div>
+                </div>
+                 <div id="roster-error-message" class="text-ivs-danger dark:text-red-400 text-center col-span-full hidden py-16">
+                    <div class="flex flex-col items-center">
+                        <i class="fas fa-exclamation-triangle fa-4x text-ivs-danger dark:text-red-400 mb-5"></i>
+                        <p class="text-xl font-medium mb-2" data-lang-key="error_teacher_list_load">Lỗi khi tải danh sách giáo viên.</p>
+                        <p class="text-sm" data-lang-key="error_teacher_list_load_detail_alt">Không thể truy cập dữ liệu. Vui lòng kiểm tra kết nối mạng hoặc thử lại sau.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="fab-container-placeholder"></div>
+    <div id="footer-placeholder" data-loading-text="Đang tải chân trang..."></div>
+        
+    <script src="/js/language.js" defer></script>
+    <script src="/js/loadComponents.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script type="module">
+        const el = {
+            teachersList: document.getElementById('teachers-list'),
+            noTeachersMessage: document.getElementById('no-teachers-message'),
+            rosterErrorMessage: document.getElementById('roster-error-message'),
+            loadingSpinner: document.getElementById('loading-spinner'),
+            modal: document.getElementById('custom-modal'),
+            modalTitle: document.getElementById('modal-title'),
+            modalMessage: document.getElementById('modal-message'),
+            modalConfirmButton: document.getElementById('modal-confirm-button'),
+            modalCancelButton: document.getElementById('modal-cancel-button'), // Added for completeness
+            modalCloseButtonX: document.getElementById('modal-close-button-x'),
+            modalIconContainer: document.getElementById('modal-icon-container'),
+            teacherSearchInput: document.getElementById('teacher-search-input'),
+            clearSearchButton: document.getElementById('clear-search-button'),
+        };
+
+        let allFetchedTeachers = []; 
+
+        // QUAN TRỌNG: Thay thế URL này bằng URL CSV đã xuất bản công khai từ Google Sheet của bạn
+        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1nzSbohos7dmaT8WNZOwPNQD59My4agZkxS0pIJwnfWE/export?format=csv&gid=0"; // Thay đổi gid nếu cần
+
+        function showAppModal(title, message, type = 'info', { showConfirm = false, confirmText = 'OK', onConfirm = () => {}, showCancel = false, cancelText = 'Cancel', onCancel = () => {} } = {}) {
+            if (el.modalTitle) el.modalTitle.textContent = title;
+            if (el.modalMessage) el.modalMessage.innerHTML = message; 
+
+            if (el.modalIconContainer) {
+                let iconClass = 'fas fa-info-circle';
+                let iconBgColorClass = 'bg-ivs-info/10 dark:bg-ivs-info/20';
+                let iconTextColorClass = 'text-ivs-info';
+                if (type === 'success') { iconClass = 'fas fa-check-circle'; iconBgColorClass = 'bg-ivs-success/10 dark:bg-ivs-success/20'; iconTextColorClass = 'text-ivs-success'; }
+                else if (type === 'error') { iconClass = 'fas fa-times-circle'; iconBgColorClass = 'bg-ivs-danger/10 dark:bg-ivs-danger/20'; iconTextColorClass = 'text-ivs-danger'; } 
+                else if (type === 'warning') { iconClass = 'fas fa-exclamation-triangle'; iconBgColorClass = 'bg-ivs-warning/10 dark:bg-ivs-warning/20'; iconTextColorClass = 'text-ivs-warning'; }
+                el.modalIconContainer.className = `flex-shrink-0 flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 rounded-full mr-3 sm:mr-4 ${iconBgColorClass}`;
+                el.modalIconContainer.innerHTML = `<i class="${iconClass} text-xl sm:text-2xl ${iconTextColorClass}"></i>`;
+            }
+            
+            el.modalConfirmButton.classList.toggle('hidden', !showConfirm);
+            el.modalConfirmButton.textContent = confirmText;
+            el.modalConfirmButton.onclick = () => { onConfirm(); hideAppModal(); };
+
+            el.modalCancelButton.classList.toggle('hidden', !showCancel); // Ensure cancel button is handled
+            el.modalCancelButton.textContent = cancelText;
+            el.modalCancelButton.onclick = () => { onCancel(); hideAppModal(); };
+            
+            if(showConfirm && !showCancel) {
+                el.modalConfirmButton.classList.add('sm:w-auto', 'w-full');
+                 el.modalCancelButton.classList.add('hidden'); // Make sure cancel is hidden if not used
+            } else if (!showConfirm && showCancel){
+                el.modalCancelButton.classList.add('sm:w-auto', 'w-full');
+                el.modalConfirmButton.classList.add('hidden'); // Make sure confirm is hidden if not used
+            } else { // Both shown or neither shown (confirm defaults to OK if only one button needed)
+                 el.modalConfirmButton.classList.remove('w-full');
+                 el.modalConfirmButton.classList.add('sm:w-auto');
+                 el.modalCancelButton.classList.remove('w-full');
+                 el.modalCancelButton.classList.add('sm:w-auto');
+            }
+             if(!showConfirm && !showCancel && el.modalConfirmButton){ // Default to one "OK" button if neither specified
+                el.modalConfirmButton.classList.remove('hidden');
+                el.modalConfirmButton.textContent = "OK";
+                el.modalConfirmButton.onclick = hideAppModal;
+                el.modalConfirmButton.classList.add('sm:w-auto', 'w-full');
+                el.modalCancelButton.classList.add('hidden');
+            }
+
+
+            if (el.modal) {
+                 el.modal.classList.remove('hidden');
+                 const panel = el.modal.querySelector('.modal-panel');
+                 if(panel) {
+                    panel.classList.remove('exiting', 'opacity-0', 'scale-95', 'translate-y-5');
+                    panel.classList.add('entering');
+                    requestAnimationFrame(() => {
+                        panel.classList.remove('entering');
+                        panel.classList.add('entered', 'opacity-100', 'scale-100', 'translate-y-0');
+                    });
+                 }
+            }
+        }
+
+        function hideAppModal() {
+            if (el.modal) {
+                const panel = el.modal.querySelector('.modal-panel');
+                if(panel) {
+                    panel.classList.remove('entered', 'opacity-100', 'scale-100', 'translate-y-0');
+                    panel.classList.add('exiting');
+                    setTimeout(() => { el.modal.classList.add('hidden'); panel.classList.remove('exiting');}, 300);
+                } else { el.modal.classList.add('hidden');}
+            }
+        }
+        
+        if (el.modalCloseButtonX) el.modalCloseButtonX.addEventListener('click', hideAppModal);
+        
+        function toggleLoadingSpinner(show) {
+            if(el.loadingSpinner) {
+                if(show) {
+                    el.loadingSpinner.classList.remove('hidden', 'opacity-0');
+                    el.loadingSpinner.classList.add('opacity-100');
+                } else {
+                    el.loadingSpinner.classList.remove('opacity-100');
+                    el.loadingSpinner.classList.add('opacity-0');
+                    setTimeout(() => el.loadingSpinner.classList.add('hidden'), 300);
+                }
+            }
+        }
+        
+        function initializeAppCore() {
+            console.log("[TEACHER LIST PAGE] Khởi tạo logic trang.");
+            AOS.init({ duration: 700, once: true, offset: 30, easing: 'ease-out-cubic' });
+            initializeScrollToTop();
+            loadApprovedTeachers(); 
+            toggleLoadingSpinner(false); 
+        }
+
+        window.onPageComponentsLoadedCallback = async () => {
+            console.log("------------------------------------------------------------------");
+            console.log("[TEACHER LIST PAGE] SỰ KIỆN: onPageComponentsLoadedCallback được gọi.");
+            console.log("------------------------------------------------------------------");
+
+            if (window.langSystem && window.langSystem.initialized) {
+                console.log("[TEACHER LIST PAGE] ✔️ Hệ thống ngôn ngữ đã được khởi tạo.");
+                if (typeof window.applyTranslations === 'function') {
+                    window.applyTranslations(document.body); 
+                } else { console.warn("[TEACHER LIST PAGE] CẢNH BÁO: window.applyTranslations không tồn tại."); }
+            } else {
+                 console.error("[TEACHER LIST PAGE] LỖI NGHIÊM TRỌNG: Hệ thống ngôn ngữ CHƯA được khởi tạo.");
+            }
+            initializeAppCore(); 
+            window.pageComponentsCallbackCalled = true; 
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("[TEACHER LIST PAGE] SỰ KIỆN: DOMContentLoaded.");
+            setTimeout(() => {
+                if (!window.pageComponentsCallbackCalled) { 
+                    console.warn("[TEACHER LIST PAGE - Fallback] onPageComponentsLoadedCallback KHÔNG được gọi. Khởi tạo trực tiếp.");
+                    if (typeof window.langSystem === 'undefined') {
+                        console.error('[TEACHER LIST PAGE - Fallback] LỖI CỰC KỲ NGHIÊM TRỌNG: window.langSystem KHÔNG ĐƯỢC ĐỊNH NGHĨA.');
+                        initializeAppCore(); 
+                    } else if (typeof window.initializeLanguageSystem === 'function') {
+                        window.initializeLanguageSystem().then(() => {
+                             if (typeof window.applyTranslations === 'function') window.applyTranslations(document.body);
+                             initializeAppCore();
+                        }).catch(err => {
+                            console.error("[TEACHER LIST PAGE - Fallback] Lỗi khi gọi initializeLanguageSystem:", err);
+                            initializeAppCore(); 
+                        });
+                    } else {
+                         console.error('[TEACHER LIST PAGE - Fallback] LỖI NGHIÊM TRỌNG: initializeLanguageSystem VẪN KHÔNG TÌM THẤY.');
+                         initializeAppCore(); 
+                    }
+                } else {
+                    console.log("[TEACHER LIST PAGE - DOMContentLoaded] onPageComponentsLoadedCallback đã được gọi.");
+                }
+            }, 1500); 
+        });
+
+        function initializeScrollToTop(){
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                const checkVisibility = () => {
+                    if (window.pageYOffset > 200) scrollToTopBtn.classList.replace('hidden', 'flex');
+                    else scrollToTopBtn.classList.replace('flex', 'hidden');
+                };
+                window.addEventListener('scroll', checkVisibility, { passive: true });
+                scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+                checkVisibility(); 
+            }
+        }
+
+        async function parseCSV(csvText) {
+            const lines = csvText.split(/\r\n|\n/);
+            if (lines.length < 1) return [];
+            const headers = lines[0].split(',').map(header => header.trim().replace(/^"|"$/g, '').trim());
+            const data = [];
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue; 
+                const values = [];
+                let currentVal = '';
+                let inQuotes = false;
+                for (let char of lines[i]) {
+                    if (char === '"' && (lines[i][lines[i].indexOf(char) -1] !== '\\') ) { 
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(currentVal.trim().replace(/^"|"$/g, '').trim());
+                        currentVal = '';
+                    } else {
+                        currentVal += char;
+                    }
+                }
+                values.push(currentVal.trim().replace(/^"|"$/g, '').trim());
+                if (values.length === headers.length) {
+                    const entry = {};
+                    headers.forEach((header, index) => {
+                        entry[header] = values[index];
+                    });
+                    data.push(entry);
+                } else {
+                    console.warn("Dòng CSV không khớp header:", `"${lines[i]}"`, "Headers:", headers, "Values:", values);
+                }
+            }
+            return data;
+        }
+        
+        function filterTeachers(searchTerm) {
+            const lowerCaseSearchTerm = searchTerm.toLowerCase();
+            el.clearSearchButton.classList.toggle('hidden', !searchTerm);
+
+            const filteredTeachers = allFetchedTeachers.filter(teacher => {
+                return (teacher["Họ và Tên"]?.toLowerCase().includes(lowerCaseSearchTerm) ||
+                        teacher["Môn dạy"]?.toLowerCase().includes(lowerCaseSearchTerm) ||
+                        teacher["Quốc tịch"]?.toLowerCase().includes(lowerCaseSearchTerm) ||
+                        teacher["Email"]?.toLowerCase().includes(lowerCaseSearchTerm) ); 
+            });
+            renderTeacherList(filteredTeachers, searchTerm !== '');
+        }
+
+        if (el.teacherSearchInput) {
+            el.teacherSearchInput.addEventListener('input', (e) => {
+                filterTeachers(e.target.value);
+            });
+        }
+        if (el.clearSearchButton) {
+            el.clearSearchButton.addEventListener('click', () => {
+                el.teacherSearchInput.value = '';
+                filterTeachers('');
+            });
+        }
+
+        function renderTeacherList(teachers, isSearchResult = false) {
+            if (!el.teachersList || !el.noTeachersMessage || !el.rosterErrorMessage) return;
+            el.teachersList.innerHTML = '';
+            el.noTeachersMessage.classList.add('hidden');
+            el.rosterErrorMessage.classList.add('hidden');
+
+            if (teachers.length === 0) {
+                el.noTeachersMessage.classList.remove('hidden');
+                if(isSearchResult && el.noTeachersMessage.querySelector('p[data-lang-key="hub_no_teachers"]')) {
+                    el.noTeachersMessage.querySelector('p[data-lang-key="hub_no_teachers"]').setAttribute('data-lang-key', 'hub_no_teachers_found_search');
+                    el.noTeachersMessage.querySelector('p[data-lang-key="hub_check_back_later_or_apply"]').setAttribute('data-lang-key', 'hub_try_different_search');
+                } else if (el.noTeachersMessage.querySelector('p[data-lang-key="hub_no_teachers_found_search"]')) {
+                     el.noTeachersMessage.querySelector('p[data-lang-key="hub_no_teachers_found_search"]').setAttribute('data-lang-key', 'hub_no_teachers');
+                    el.noTeachersMessage.querySelector('p[data-lang-key="hub_try_different_search"]').setAttribute('data-lang-key', 'hub_check_back_later_or_apply');
+                }
+                 if(typeof window.applyTranslations === 'function') window.applyTranslations(el.noTeachersMessage);
+            } else {
+                teachers.forEach(teacher => {
+                    const fullName = teacher["Họ và Tên"] || 'Chưa có tên';
+                    const photoUrl = teacher["Ảnh (URL)"] || '';
+                    const qualification = teacher["Bằng cấp cao nhất"] || 'Chưa có bằng cấp';
+                    const experience = teacher["Kinh nghiệm (năm)"] !== undefined ? `${teacher["Kinh nghiệm (năm)"]} năm` : 'N/A';
+                    const subjects = teacher["Môn dạy"] || 'N/A';
+                    const bio = teacher["Tiểu sử ngắn"] || 'Chưa có giới thiệu.';
+                    const nationality = teacher["Quốc tịch"] || 'N/A';
+
+                    const initial = encodeURIComponent(fullName.charAt(0).toUpperCase());
+                    const finalPhotoUrl = photoUrl || `https://placehold.co/128x128/004080/FFFFFF?text=${initial}&font=lexend`;
+
+                    const teacherCardHTML = `
+                        <article class="teacher-profile-card rounded-xl shadow-lg overflow-hidden flex flex-col items-center p-6 text-center dark:bg-ivs-neutral-800 border dark:border-ivs-neutral-700">
+                            <img src="${finalPhotoUrl}" 
+                                 alt="Ảnh chân dung của ${fullName}" 
+                                 class="teacher-avatar w-32 h-32 rounded-full object-cover mb-5" 
+                                 loading="lazy"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/128x128/374151/FFFFFF?text=${initial}&font=lexend';">
+                            <h3 class="text-xl lg:text-2xl font-display font-semibold text-ivs-primary dark:text-ivs-secondary mb-1.5">${fullName}</h3>
+                            <p class="text-sm text-ivs-neutral-500 dark:text-ivs-neutral-400 mb-4 font-medium">${qualification}</p>
+                            
+                            <div class="w-full text-left text-xs sm:text-sm space-y-2.5 mb-5 border-t border-ivs-neutral-200 dark:border-ivs-neutral-700 pt-4">
+                                <p class="flex items-start"><i class="fas fa-flag fa-fw w-5 mr-2.5 text-ivs-primary dark:text-ivs-secondary pt-0.5"></i><span class="font-semibold mr-1.5">Quốc tịch:</span> <span class="text-ivs-neutral-600 dark:text-ivs-neutral-300">${nationality}</span></p>
+                                <p class="flex items-start"><i class="fas fa-briefcase fa-fw w-5 mr-2.5 text-ivs-primary dark:text-ivs-secondary pt-0.5"></i><span class="font-semibold mr-1.5">Kinh nghiệm:</span> <span class="text-ivs-neutral-600 dark:text-ivs-neutral-300">${experience}</span></p>
+                                <p class="flex items-start"><i class="fas fa-book-open fa-fw w-5 mr-2.5 text-ivs-primary dark:text-ivs-secondary pt-0.5"></i><span class="font-semibold mr-1.5">Môn dạy:</span> <span class="text-ivs-neutral-600 dark:text-ivs-neutral-300">${subjects}</span></p>
+                            </div>
+                            <p class="text-xs sm:text-sm text-ivs-neutral-600 dark:text-ivs-neutral-300 italic bg-ivs-neutral-50 dark:bg-ivs-neutral-700/50 p-4 rounded-lg w-full text-center leading-relaxed line-clamp-4">"${bio}"</p>
+                        </article>
+                    `;
+                    el.teachersList.insertAdjacentHTML('beforeend', teacherCardHTML);
+                });
+            }
+            if(el.teachersList.parentElement) { 
+                 if(typeof window.applyTranslations === 'function') window.applyTranslations(el.teachersList.parentElement);
+            }
+        }
+
+        async function loadApprovedTeachers() {
+            if (!el.teachersList || !el.noTeachersMessage || !el.rosterErrorMessage) return;
+            
+            toggleLoadingSpinner(true);
+            el.teachersList.innerHTML = ''; 
+            el.noTeachersMessage.classList.add('hidden');
+            el.rosterErrorMessage.classList.add('hidden');
+
+            try {
+                console.log(`[TEACHER LIST] Fetching CSV từ: ${GOOGLE_SHEET_CSV_URL}`);
+                const now = new Date().getTime();
+                const csvUrlWithCacheBust = `${GOOGLE_SHEET_CSV_URL}&t=${now}`;
+                const response = await fetch(csvUrlWithCacheBust);
+
+                if (!response.ok) {
+                    throw new Error(`Lỗi HTTP ${response.status} khi tải Google Sheet: ${response.statusText}. URL: ${csvUrlWithCacheBust}`);
+                }
+                const csvText = await response.text();
+                if (!csvText || csvText.trim() === "") {
+                    throw new Error("Dữ liệu CSV từ Google Sheet trống.");
+                }
+                const parsedTeachers = await parseCSV(csvText);
+                
+                allFetchedTeachers = parsedTeachers.filter(teacher => 
+                    teacher["Hiển thị công khai"] && teacher["Hiển thị công khai"].toUpperCase() === 'TRUE'
+                );
+                console.log(`[TEACHER LIST] Đã tải và xử lý ${allFetchedTeachers.length} giáo viên được phê duyệt.`);
+                renderTeacherList(allFetchedTeachers);
+
+            } catch (error) {
+                console.error("[TEACHER LIST] Lỗi khi tải hoặc xử lý danh sách giáo viên từ Google Sheet: ", error);
+                el.rosterErrorMessage.classList.remove('hidden');
+                if (typeof window.applyTranslations === 'function') window.applyTranslations(el.rosterErrorMessage);
+            } finally {
+                toggleLoadingSpinner(false);
+            }
+        }
+
+    </script>
+</body>
+</html>
+
+
