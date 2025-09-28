@@ -512,9 +512,28 @@
 
         const headerPlaceholder = document.getElementById('header-placeholder');
         const footerPlaceholder = document.getElementById('footer-placeholder');
+        const hasGlobalLoader = typeof window.loadAndInject === 'function';
+        const headerAlreadyInjected = headerPlaceholder && (headerPlaceholder.querySelector('[data-component-src]') || (headerPlaceholder.innerHTML && headerPlaceholder.innerHTML.trim().length > 0));
+        const footerAlreadyInjected = footerPlaceholder && (footerPlaceholder.querySelector('[data-component-src]') || (footerPlaceholder.innerHTML && footerPlaceholder.innerHTML.trim().length > 0));
 
-        if (headerPlaceholder) headerPlaceholder.innerHTML = headerHTML;
-        if (footerPlaceholder) footerPlaceholder.innerHTML = footerHTML;
+        if (!hasGlobalLoader) {
+            if (headerPlaceholder && !headerAlreadyInjected) {
+                headerPlaceholder.innerHTML = headerHTML;
+            } else {
+                // Header will be handled by global loader or is already present
+                console.debug('Header injection skipped: global loader present or already injected.');
+            }
+
+            if (footerPlaceholder && !footerAlreadyInjected) {
+                footerPlaceholder.innerHTML = footerHTML;
+            } else {
+                // Footer will be handled by global loader or is already present
+                console.debug('Footer injection skipped: global loader present or already injected.');
+            }
+        } else {
+            // Defer to global loader; it will initialize controllers and interactive behavior.
+            console.debug('Global loader detected; skipping manual header/footer injection.');
+        }
 
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
