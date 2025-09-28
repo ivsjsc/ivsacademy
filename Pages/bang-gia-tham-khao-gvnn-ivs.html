@@ -31,44 +31,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class', // Re-enabled dark mode
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Be Vietnam Pro', 'Inter', 'sans-serif'],
-                        display: ['Poppins', 'Lexend', 'sans-serif'],
-                    },
-                    colors: {
-                        // IVS custom color palette - Adjusted for dark theme
-                        'ivs-bg': '#0D1117', // Dark background
-                        'ivs-card': '#161B22', // Darker card background
-                        'ivs-border': '#30363d', // Dark border
-                        'ivs-text-primary': '#FFFFFF', // Changed to pure white for better contrast
-                        'ivs-text-secondary': '#F0F0F0', // Changed to lighter gray for better contrast
-                        'ivs-blue': '#58a6ff', /* Muted blue */
-                        'ivs-blue-darker': '#3b82f6', /* Muted darker blue */
-                        'ivs-green': '#34d399', /* Muted green */
-                        'ivs-purple': '#8b5cf6', /* Retained vibrant purple as it's less used */
-                        'ivs-orange': '#f59e0b', /* Muted orange */
-                        'ivs-cyan': '#22D3EE',
-                        'ivs-amber': '#F59E0B',
-                    },
-                    animation: { 
-                        'aurora-spin': 'aurora-spin 6s linear infinite' 
-                    },
-                    keyframes: {
-                        'aurora-spin': {
-                            '0%': { transform: 'rotate(0deg)' },
-                            '100%': { transform: 'rotate(360deg)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    
     <!-- Custom styles for general layout and specific components -->
     <link rel="stylesheet" href="/css/styles.css"> 
     <style>
@@ -413,7 +376,7 @@
     <script src="/js/posts-loader.js"></script>
     <script src="/js/rss-loader.js"></script>
     <script src="/js/typescript.js"></script>
-    <script src="/js/tailwind.config.js"></script>
+    
 
     <script>
         // Define loadComponent function here to ensure it's available
