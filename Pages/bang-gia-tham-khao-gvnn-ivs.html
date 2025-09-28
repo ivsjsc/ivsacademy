@@ -610,10 +610,36 @@
 
         // Initialize all effects and dynamic content after DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Load common components (use relative paths so pages work locally or under subpaths)
-            loadComponent('components/header.html', 'header-placeholder');
-            loadComponent('components/footer.html', 'footer-placeholder');
-            loadComponent('components/fab-container.html', 'fab-container-placeholder');
+            // Load common components (guarded: avoid duplicate loading when global loader is present)
+                (function guardLoad(id, url) {
+                    const placeholder = document.getElementById(id);
+                    if (!placeholder) return;
+                    // If a global loader is present or the placeholder already contains the component, skip manual load
+                    if (window.loadAndInject || placeholder.querySelector('[data-component-src]')) {
+                        // let the global loader handle it
+                        console.info(`guardLoad: skipping manual load for ${id}`);
+                        return;
+                    }
+                    loadComponent(url, id);
+                })('header-placeholder', 'components/header.html');
+                (function guardLoad(id, url) {
+                    const placeholder = document.getElementById(id);
+                    if (!placeholder) return;
+                    if (window.loadAndInject || placeholder.querySelector('[data-component-src]')) {
+                        console.info(`guardLoad: skipping manual load for ${id}`);
+                        return;
+                    }
+                    loadComponent(url, id);
+                })('footer-placeholder', 'components/footer.html');
+                (function guardLoad(id, url) {
+                    const placeholder = document.getElementById(id);
+                    if (!placeholder) return;
+                    if (window.loadAndInject || placeholder.querySelector('[data-component-src]')) {
+                        console.info(`guardLoad: skipping manual load for ${id}`);
+                        return;
+                    }
+                    loadComponent(url, id);
+                })('fab-container-placeholder', 'components/fab-container.html');
 
             initAnimatedCounters();
             initSpotlightEffect();

@@ -176,13 +176,32 @@
             let headerLoaded = false;
             let footerLoaded = false;
 
-            loadComponent('header.html', 'header-placeholder', () => {
+            // Guard manual loading: skip if loadComponents.js will handle it or if component already injected
+            (function guardLoadWithCallback(url, id, cb) {
+                const placeholder = document.getElementById(id);
+                if (!placeholder) return;
+                if (window.loadAndInject || placeholder.querySelector('[data-component-src]')) {
+                    console.info(`guardLoadWithCallback: skipping manual load for ${id}`);
+                    if (typeof cb === 'function') cb();
+                    return;
+                }
+                loadComponent(url, id, cb);
+            })('header.html', 'header-placeholder', () => {
                 if (typeof initializeMenu === 'function') initializeMenu();
                 headerLoaded = true;
                 applyLanguageIfReady();
             });
 
-            loadComponent('footer.html', 'footer-placeholder', () => {
+            (function guardLoadWithCallback(url, id, cb) {
+                const placeholder = document.getElementById(id);
+                if (!placeholder) return;
+                if (window.loadAndInject || placeholder.querySelector('[data-component-src]')) {
+                    console.info(`guardLoadWithCallback: skipping manual load for ${id}`);
+                    if (typeof cb === 'function') cb();
+                    return;
+                }
+                loadComponent(url, id, cb);
+            })('footer.html', 'footer-placeholder', () => {
                  footerLoaded = true;
                  applyLanguageIfReady();
             });
