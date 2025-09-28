@@ -1,186 +1,166 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics Dashboard - IVS Academy</title>
 
-    <meta name="description" content="Dashboard phân tích và thống kê hiệu suất của IVS Academy - theo dõi tương tác người dùng và hiệu quả học tập">
-    <meta name="robots" content="noindex, nofollow">
-
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
-    <!-- Fonts and Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="css/tailwind.css">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Chart.js for analytics charts -->
-    
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/responsive-enhancements.css">
-    <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animations.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-
+<html class="dark scroll-smooth" lang="vi">
+<head><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analytics Dashboard - IVS Academy</title>
+<meta content="Dashboard phân tích và thống kê hiệu suất của IVS Academy - theo dõi tương tác người dùng và hiệu quả học tập IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, " name="description"/>
+<meta content="noindex, nofollow" name="robots"/>
+<!-- Favicon -->
+<link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Poppins:wght@700;800;900&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+<!-- Chart.js for analytics charts -->
+<!-- Custom Styles -->
+<link href="css/responsive-enhancements.css" rel="stylesheet">
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</link><meta content="Analytics Dashboard - IVS Academy" property="og:title"/><meta content="Dashboard phân tích và thống kê hiệu suất của IVS Academy - theo dõi tương tác người dùng và hiệu quả học tập IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, " property="og:description"/><meta content="website" property="og:type"/></head>
 <body class="bg-ivs-bg text-ivs-text-primary min-h-screen">
-    <!-- Analytics Header -->
-    <header class="bg-ivs-card border-b border-ivs-border px-6 py-4">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-4">
-                <img src="images/logo.png" alt="IVS Logo" class="h-8 w-auto">
-                <div>
-                    <h1 class="text-xl font-bold">Analytics Dashboard</h1>
-                    <p class="text-sm text-ivs-text-secondary">Thống kê và phân tích hiệu suất</p>
-                </div>
-            </div>
-
-            <div class="flex items-center space-x-4">
-                <select id="timeRange" class="px-3 py-2 bg-ivs-bg border border-ivs-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ivs-blue">
-                    <option value="1d">24 giờ qua</option>
-                    <option value="7d" selected>7 ngày qua</option>
-                    <option value="30d">30 ngày qua</option>
-                    <option value="90d">90 ngày qua</option>
-                </select>
-                <button id="exportBtn" class="px-4 py-2 bg-ivs-blue hover:bg-blue-600 text-white rounded-lg transition-colors">
-                    <i class="fas fa-download mr-2"></i>Export
+<!-- Analytics Header -->
+<header class="bg-ivs-card border-b border-ivs-border px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<img alt="IVS Logo" class="h-8 w-auto" decoding="async" src="images/logo.png"/>
+<div>
+<h1 class="text-xl font-bold">Analytics Dashboard</h1>
+<p class="text-sm text-ivs-text-secondary">Thống kê và phân tích hiệu suất</p>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<select class="px-3 py-2 bg-ivs-bg border border-ivs-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ivs-blue" id="timeRange">
+<option value="1d">24 giờ qua</option>
+<option selected="" value="7d">7 ngày qua</option>
+<option value="30d">30 ngày qua</option>
+<option value="90d">90 ngày qua</option>
+</select>
+<button class="px-4 py-2 bg-ivs-blue hover:bg-blue-600 text-white rounded-lg transition-colors" id="exportBtn">
+<i class="fas fa-download mr-2"></i>Export
                 </button>
-            </div>
-        </div>
-    </header>
-
-    <main id="main-content" class="p-6 space-y-6">
-        <!-- Key Metrics -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-ivs-text-secondary text-sm">Tổng Lượt Truy Cập</p>
-                        <p class="text-2xl font-bold text-ivs-blue" id="totalPageViews">0</p>
-                        <p class="text-xs text-green-500 mt-1">
-                            <i class="fas fa-arrow-up mr-1"></i>+12% so với tuần trước
+</div>
+</div>
+</header>
+<main class="p-6 space-y-6" id="main-content">
+<!-- Key Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-ivs-text-secondary text-sm">Tổng Lượt Truy Cập</p>
+<p class="text-2xl font-bold text-ivs-blue" id="totalPageViews">0</p>
+<p class="text-xs text-green-500 mt-1">
+<i class="fas fa-arrow-up mr-1"></i>+12% so với tuần trước
                         </p>
-                    </div>
-                    <i class="fas fa-eye text-3xl text-ivs-blue opacity-50"></i>
-                </div>
-            </div>
-
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-ivs-text-secondary text-sm">Tương Tác Khóa Học</p>
-                        <p class="text-2xl font-bold text-ivs-green" id="courseInteractions">0</p>
-                        <p class="text-xs text-green-500 mt-1">
-                            <i class="fas fa-arrow-up mr-1"></i>+8% so với tuần trước
+</div>
+<i class="fas fa-eye text-3xl text-ivs-blue opacity-50"></i>
+</div>
+</div>
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-ivs-text-secondary text-sm">Tương Tác Khóa Học</p>
+<p class="text-2xl font-bold text-ivs-green" id="courseInteractions">0</p>
+<p class="text-xs text-green-500 mt-1">
+<i class="fas fa-arrow-up mr-1"></i>+8% so với tuần trước
                         </p>
-                    </div>
-                    <i class="fas fa-book text-3xl text-ivs-green opacity-50"></i>
-                </div>
-            </div>
-
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-ivs-text-secondary text-sm">Tải Tài Liệu</p>
-                        <p class="text-2xl font-bold text-ivs-purple" id="materialDownloads">0</p>
-                        <p class="text-xs text-red-500 mt-1">
-                            <i class="fas fa-arrow-down mr-1"></i>-3% so với tuần trước
+</div>
+<i class="fas fa-book text-3xl text-ivs-green opacity-50"></i>
+</div>
+</div>
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-ivs-text-secondary text-sm">Tải Tài Liệu</p>
+<p class="text-2xl font-bold text-ivs-purple" id="materialDownloads">0</p>
+<p class="text-xs text-red-500 mt-1">
+<i class="fas fa-arrow-down mr-1"></i>-3% so với tuần trước
                         </p>
-                    </div>
-                    <i class="fas fa-download text-3xl text-ivs-purple opacity-50"></i>
-                </div>
-            </div>
-
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-ivs-text-secondary text-sm">Hoàn Thành Quiz</p>
-                        <p class="text-2xl font-bold text-ivs-orange" id="quizCompletions">0</p>
-                        <p class="text-xs text-green-500 mt-1">
-                            <i class="fas fa-arrow-up mr-1"></i>+15% so với tuần trước
+</div>
+<i class="fas fa-download text-3xl text-ivs-purple opacity-50"></i>
+</div>
+</div>
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-ivs-text-secondary text-sm">Hoàn Thành Quiz</p>
+<p class="text-2xl font-bold text-ivs-orange" id="quizCompletions">0</p>
+<p class="text-xs text-green-500 mt-1">
+<i class="fas fa-arrow-up mr-1"></i>+15% so với tuần trước
                         </p>
-                    </div>
-                    <i class="fas fa-brain text-3xl text-ivs-orange opacity-50"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- Charts Row -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Traffic Overview -->
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <h3 class="text-lg font-bold mb-4">Tổng Quan Lưu Lượng</h3>
-                <canvas id="trafficChart" width="400" height="200"></canvas>
-            </div>
-
-            <!-- User Engagement -->
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <h3 class="text-lg font-bold mb-4">Tương Tác Người Dùng</h3>
-                <canvas id="engagementChart" width="400" height="200"></canvas>
-            </div>
-        </div>
-
-        <!-- Learning Analytics -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Top Courses -->
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <h3 class="text-lg font-bold mb-4">Khóa Học Phổ Biến Nhất</h3>
-                <div id="topCourses" class="space-y-3">
-                    <!-- Courses will be populated by JavaScript -->
-                </div>
-            </div>
-
-            <!-- Learning Progress -->
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <h3 class="text-lg font-bold mb-4">Tiến Độ Học Tập</h3>
-                <canvas id="progressChart" width="400" height="200"></canvas>
-            </div>
-        </div>
-
-        <!-- Performance Metrics -->
-        <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-            <h3 class="text-lg font-bold mb-4">Chỉ Số Hiệu Suất Website</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-ivs-blue" id="avgLoadTime">0ms</div>
-                    <p class="text-sm text-ivs-text-secondary">Thời Gian Tải Trung Bình</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-ivs-green" id="bounceRate">0%</div>
-                    <p class="text-sm text-ivs-text-secondary">Tỷ Lệ Thoát Trang</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-ivs-purple" id="sessionDuration">0m</div>
-                    <p class="text-sm text-ivs-text-secondary">Thời Gian Truy Cập Trung Bình</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Recent Events -->
-        <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-            <h3 class="text-lg font-bold mb-4">Sự Kiện Gần Đây</h3>
-            <div id="recentEvents" class="space-y-3 max-h-96 overflow-y-auto">
-                <!-- Events will be populated by JavaScript -->
-            </div>
-        </div>
-    </main>
-
-    <!-- Scripts -->
-    <script src="js/security-enhancements.js"></script>
-    <script src="js/analytics-tracking.js"></script>
-    <script src="js/accessibility-enhancements.js"></script>
-    <script>
+</div>
+<i class="fas fa-brain text-3xl text-ivs-orange opacity-50"></i>
+</div>
+</div>
+</div>
+<!-- Charts Row -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Traffic Overview -->
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h3 class="text-lg font-bold mb-4">Tổng Quan Lưu Lượng</h3>
+<canvas height="200" id="trafficChart" width="400"></canvas>
+</div>
+<!-- User Engagement -->
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h3 class="text-lg font-bold mb-4">Tương Tác Người Dùng</h3>
+<canvas height="200" id="engagementChart" width="400"></canvas>
+</div>
+</div>
+<!-- Learning Analytics -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Top Courses -->
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h3 class="text-lg font-bold mb-4">Khóa Học Phổ Biến Nhất</h3>
+<div class="space-y-3" id="topCourses">
+<!-- Courses will be populated by JavaScript -->
+</div>
+</div>
+<!-- Learning Progress -->
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h3 class="text-lg font-bold mb-4">Tiến Độ Học Tập</h3>
+<canvas height="200" id="progressChart" width="400"></canvas>
+</div>
+</div>
+<!-- Performance Metrics -->
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h3 class="text-lg font-bold mb-4">Chỉ Số Hiệu Suất Website</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="text-center">
+<div class="text-2xl font-bold text-ivs-blue" id="avgLoadTime">0ms</div>
+<p class="text-sm text-ivs-text-secondary">Thời Gian Tải Trung Bình</p>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-ivs-green" id="bounceRate">0%</div>
+<p class="text-sm text-ivs-text-secondary">Tỷ Lệ Thoát Trang</p>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-ivs-purple" id="sessionDuration">0m</div>
+<p class="text-sm text-ivs-text-secondary">Thời Gian Truy Cập Trung Bình</p>
+</div>
+</div>
+</div>
+<!-- Recent Events -->
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h3 class="text-lg font-bold mb-4">Sự Kiện Gần Đây</h3>
+<div class="space-y-3 max-h-96 overflow-y-auto" id="recentEvents">
+<!-- Events will be populated by JavaScript -->
+</div>
+</div>
+</main>
+<!-- Scripts -->
+<script src="js/security-enhancements.js"></script>
+<script src="js/analytics-tracking.js"></script>
+<script src="js/accessibility-enhancements.js"></script>
+<script>
         // Analytics Dashboard functionality
         class AnalyticsDashboard {
             constructor() {
@@ -528,14 +508,13 @@
             window.analyticsDashboard = new AnalyticsDashboard();
         });
     </script>
-    <!-- Component Placeholders -->
-    <div id="header-placeholder"></div>
-    <div id="footer-placeholder"></div>
-    <div id="fab-container-placeholder"></div>
-    
-    <!-- Scripts -->
-    <script src="js/utils.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/loadComponents.js"></script>
+<!-- Component Placeholders -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<div id="fab-container-placeholder"></div>
+<!-- Scripts -->
+<script src="js/utils.js"></script>
+<script defer="" src="js/animations.js"></script>
+<script src="js/loadComponents.js"></script>
 </body>
 </html>

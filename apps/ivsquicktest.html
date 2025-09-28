@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IVS Quick Learning Advisor</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/tailwind.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
+
+<html class="scroll-smooth" lang="vi">
+<head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//placehold.co" rel="dns-prefetch"/><link href="//cdn.tailwindcss.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IVS Quick Learning Advisor</title>
+<script defer="" src="https://cdn.tailwindcss.com"></script>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9f9f7;
@@ -150,97 +151,87 @@
             pointer-events: auto;
         }
     </style>
-    <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animations.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." name="description"/><meta content="IVS Quick Learning Advisor" property="og:title"/><meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." property="og:description"/><meta content="website" property="og:type"/></head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4 advisor-container">
-
-    <div class="lang-switcher fixed top-4 right-4 flex rounded-md overflow-hidden shadow-lg z-50">
-        <button data-lang="vi" class="active">VIE</button>
-        <button data-lang="en">ENG</button>
-    </div>
-
-    <div id="advisorApp" class="w-full max-w-2xl mx-auto relative">
-        <div id="welcomeScreen" class="screen visible-screen text-center p-8 rounded-xl question-card">
-            <img src="https://placehold.co/150x80/FFFFFF/0a3d4a?text=IVS+Logo" alt="IVS Logo" class="mx-auto mb-6 h-16 object-contain" onerror="this.src='https://placehold.co/150x80/FFFFFF/0a3d4a?text=IVS'; this.alt='IVS Placeholder Logo';">
-            <h1 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-4" data-lang-key="welcome_title">Chào mừng đến với IVS</h1>
-            <p class="text-gray-700 mb-8 text-lg" data-lang-key="welcome_subtitle">Khám phá giải pháp giáo dục tối ưu dành cho bạn chỉ với vài bước đơn giản.</p>
-            <button id="startButton" class="control-button primary-action-button font-semibold py-3.5 px-10 rounded-lg text-lg">
-                <span data-lang-key="start_button">Bắt đầu</span> <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-        </div>
-
-        <div id="questionScreen" class="screen hidden-screen">
-            <div class="p-6 md:p-8 rounded-xl question-card">
-                <div class="mb-6">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-sm font-medium text-[#0a3d4a]" data-lang-key="progress_text">Tiến độ</span>
-                        <span id="progressPercentage" class="text-sm font-medium text-[#c89c4a]">0%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-3">
-                        <div id="progressBar" class="bg-[#c89c4a] h-3 rounded-full progress-bar-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <h2 id="questionTitle" class="text-2xl md:text-3xl font-semibold text-[#0a3d4a] mb-8 text-center min-h-[72px] md:min-h-[84px] flex items-center justify-center"></h2>
-                <div id="optionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-                </div>
-                <div class="mt-10 flex justify-between items-center">
-                    <button id="prevButton" class="control-button secondary-action-button font-medium py-3 px-7 rounded-lg">
-                        <i class="fas fa-arrow-left mr-2"></i> <span data-lang-key="prev_button">Trước</span>
-                    </button>
-                    <button id="nextButton" class="control-button primary-action-button font-semibold py-3 px-8 rounded-lg opacity-50 cursor-not-allowed" disabled>
-                        <span data-lang-key="next_button">Tiếp</span> <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="resultsScreen" class="screen hidden-screen">
-            <div class="p-6 md:p-10 rounded-xl results-card">
-                <img src="https://placehold.co/120x60/FFFFFF/0a3d4a?text=IVS" alt="IVS Logo" class="mx-auto mb-5 h-12 object-contain" onerror="this.src='https://placehold.co/120x60/FFFFFF/0a3d4a?text=IVS'; this.alt='IVS Placeholder Logo';">
-                <h2 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-3 text-center" data-lang-key="results_title">Đề xuất Dành Riêng Cho Bạn</h2>
-                <p class="text-gray-600 mb-8 text-center text-lg" data-lang-key="results_subtitle">Dựa trên thông tin bạn cung cấp, IVS gợi ý các giải pháp sau:</p>
-                <div id="recommendationsContainer" class="space-y-5">
-                </div>
-                <div class="mt-10 text-center">
-                     <p class="text-sm text-gray-500 mb-6" data-lang-key="results_disclaimer">Đây là gợi ý ban đầu. Để được tư vấn chi tiết và xây dựng lộ trình phù hợp nhất, vui lòng liên hệ IVS.</p>
-                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                        <button id="restartButton" class="control-button secondary-action-button w-full sm:w-auto font-semibold py-3.5 px-10 rounded-lg text-lg">
-                            <i class="fas fa-redo mr-2"></i> <span data-lang-key="restart_button">Làm lại</span>
-                        </button>
-                         <a href="https://ivsacademy.edu.vn/contact.html" target="_blank" class="control-button primary-action-button w-full sm:w-auto font-semibold py-3.5 px-10 rounded-lg text-lg inline-flex items-center justify-center" data-lang-key="contact_button">
-                            <i class="fas fa-phone-alt mr-2"></i> <span data-lang-key="contact_button_text">Liên hệ Tư vấn</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-         <footer class="text-center mt-10 pb-6">
-            <p class="text-sm text-white/80" data-lang-key="footer_text">© 2025 IVS JSC. Bảo lưu mọi quyền.</p>
-        </footer>
-    </div>
-
-    <div id="continueSessionModal" class="modal-overlay">
-        <div class="modal-card p-6 md:p-8 rounded-xl w-full max-w-md mx-4 text-center">
-            <h3 class="text-xl font-semibold text-[#0a3d4a] mb-4" data-lang-key="modal_continue_title">Tiếp tục Phiên làm việc?</h3>
-            <p class="text-gray-700 mb-6" data-lang-key="modal_continue_text">Chúng tôi tìm thấy dữ liệu từ lần truy cập trước. Bạn có muốn tiếp tục không?</p>
-            <div class="flex justify-center gap-4">
-                <button id="confirmContinueButton" class="control-button primary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_yes">Có, Tiếp tục</button>
-                <button id="declineContinueButton" class="control-button secondary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_no">Không, Bắt đầu mới</button>
-            </div>
-        </div>
-    </div>
-
-
-    <script>
+<div class="lang-switcher fixed top-4 right-4 flex rounded-md overflow-hidden shadow-lg z-50">
+<button class="active" data-lang="vi">VIE</button>
+<button data-lang="en">ENG</button>
+</div>
+<div class="w-full max-w-2xl mx-auto relative" id="advisorApp">
+<div class="screen visible-screen text-center p-8 rounded-xl question-card" id="welcomeScreen">
+<img alt="IVS Logo" class="mx-auto mb-6 h-16 object-contain" decoding="async" onerror="this.src='https://placehold.co/150x80/FFFFFF/0a3d4a?text=IVS'; this.alt='IVS Placeholder Logo';" src="https://placehold.co/150x80/FFFFFF/0a3d4a?text=IVS+Logo"/>
+<h1 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-4" data-lang-key="welcome_title">Chào mừng đến với IVS</h1>
+<p class="text-gray-700 mb-8 text-lg" data-lang-key="welcome_subtitle">Khám phá giải pháp giáo dục tối ưu dành cho bạn chỉ với vài bước đơn giản.</p>
+<button class="control-button primary-action-button font-semibold py-3.5 px-10 rounded-lg text-lg" id="startButton">
+<span data-lang-key="start_button">Bắt đầu</span> <i class="fas fa-arrow-right ml-2"></i>
+</button>
+</div>
+<div class="screen hidden-screen" id="questionScreen">
+<div class="p-6 md:p-8 rounded-xl question-card">
+<div class="mb-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-[#0a3d4a]" data-lang-key="progress_text">Tiến độ</span>
+<span class="text-sm font-medium text-[#c89c4a]" id="progressPercentage">0%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-3">
+<div class="bg-[#c89c4a] h-3 rounded-full progress-bar-fill" id="progressBar" style="width: 0%"></div>
+</div>
+</div>
+<h2 class="text-2xl md:text-3xl font-semibold text-[#0a3d4a] mb-8 text-center min-h-[72px] md:min-h-[84px] flex items-center justify-center" id="questionTitle"></h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5" id="optionsContainer">
+</div>
+<div class="mt-10 flex justify-between items-center">
+<button class="control-button secondary-action-button font-medium py-3 px-7 rounded-lg" id="prevButton">
+<i class="fas fa-arrow-left mr-2"></i> <span data-lang-key="prev_button">Trước</span>
+</button>
+<button class="control-button primary-action-button font-semibold py-3 px-8 rounded-lg opacity-50 cursor-not-allowed" disabled="" id="nextButton">
+<span data-lang-key="next_button">Tiếp</span> <i class="fas fa-arrow-right ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="screen hidden-screen" id="resultsScreen">
+<div class="p-6 md:p-10 rounded-xl results-card">
+<img alt="IVS Logo" class="mx-auto mb-5 h-12 object-contain" decoding="async" loading="lazy" onerror="this.src='https://placehold.co/120x60/FFFFFF/0a3d4a?text=IVS'; this.alt='IVS Placeholder Logo';" src="https://placehold.co/120x60/FFFFFF/0a3d4a?text=IVS"/>
+<h2 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-3 text-center" data-lang-key="results_title">Đề xuất Dành Riêng Cho Bạn</h2>
+<p class="text-gray-600 mb-8 text-center text-lg" data-lang-key="results_subtitle">Dựa trên thông tin bạn cung cấp, IVS gợi ý các giải pháp sau:</p>
+<div class="space-y-5" id="recommendationsContainer">
+</div>
+<div class="mt-10 text-center">
+<p class="text-sm text-gray-500 mb-6" data-lang-key="results_disclaimer">Đây là gợi ý ban đầu. Để được tư vấn chi tiết và xây dựng lộ trình phù hợp nhất, vui lòng liên hệ IVS.</p>
+<div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+<button class="control-button secondary-action-button w-full sm:w-auto font-semibold py-3.5 px-10 rounded-lg text-lg" id="restartButton">
+<i class="fas fa-redo mr-2"></i> <span data-lang-key="restart_button">Làm lại</span>
+</button>
+<a class="control-button primary-action-button w-full sm:w-auto font-semibold py-3.5 px-10 rounded-lg text-lg inline-flex items-center justify-center" data-lang-key="contact_button" href="https://ivsacademy.edu.vn/contact.html" target="_blank">
+<i class="fas fa-phone-alt mr-2"></i> <span data-lang-key="contact_button_text">Liên hệ Tư vấn</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="text-center mt-10 pb-6">
+<p class="text-sm text-white/80" data-lang-key="footer_text">© 2025 IVS JSC. Bảo lưu mọi quyền.</p>
+</footer>
+</div>
+<div class="modal-overlay" id="continueSessionModal">
+<div class="modal-card p-6 md:p-8 rounded-xl w-full max-w-md mx-4 text-center">
+<h3 class="text-xl font-semibold text-[#0a3d4a] mb-4" data-lang-key="modal_continue_title">Tiếp tục Phiên làm việc?</h3>
+<p class="text-gray-700 mb-6" data-lang-key="modal_continue_text">Chúng tôi tìm thấy dữ liệu từ lần truy cập trước. Bạn có muốn tiếp tục không?</p>
+<div class="flex justify-center gap-4">
+<button class="control-button primary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_yes" id="confirmContinueButton">Có, Tiếp tục</button>
+<button class="control-button secondary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_no" id="declineContinueButton">Không, Bắt đầu mới</button>
+</div>
+</div>
+</div>
+<script>
         const translations = {
             vi: {
                 welcome_title: "Chào mừng đến với IVS",
@@ -834,15 +825,13 @@
         });
 
     </script>
-    <!-- Component Placeholders -->
-    <div id="header-placeholder"></div>
-    <div id="footer-placeholder"></div>
-    <div id="fab-container-placeholder"></div>
-    
-    <!-- Scripts -->
-    <script src="js/utils.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/loadComponents.js"></script>
+<!-- Component Placeholders -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<div id="fab-container-placeholder"></div>
+<!-- Scripts -->
+<script src="js/utils.js"></script>
+<script defer="" src="js/animations.js"></script>
+<script src="js/loadComponents.js"></script>
 </body>
 </html>
-

@@ -1,85 +1,69 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IVS JSC - Hệ Sinh Thái Giáo Dục, Công Nghệ & Nhân Sự Toàn Diện</title>
 
-    <!-- SEO Meta Tags -->
-    <!-- ... (giữ nguyên các thẻ meta SEO) ... -->
-
-    <!-- Favicons and Manifest -->
-    <!-- ... (giữ nguyên các thẻ favicon và manifest) ... -->
-
-    <!-- Preconnect to CDNs for faster resource loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <!-- Tailwind CSS (built locally) -->
-    <link rel="stylesheet" href="css/tailwind.css">
-
-    <!-- Fonts and Icons (Async loading for performance) -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
-
-    <!-- Custom Tailwind Config -->
-    
-
-    <!-- External Stylesheet for custom effects -->
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
+<html class="dark scroll-smooth" lang="vi">
+<head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IVS JSC - Hệ Sinh Thái Giáo Dục, Công Nghệ &amp; Nhân Sự Toàn...</title>
+<!-- SEO Meta Tags -->
+<!-- ... (giữ nguyên các thẻ meta SEO) ... -->
+<!-- Favicons and Manifest -->
+<!-- ... (giữ nguyên các thẻ favicon và manifest) ... -->
+<!-- Preconnect to CDNs for faster resource loading -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<!-- Tailwind CSS (built locally) -->
+<link href="css/tailwind.css" rel="stylesheet"/>
+<!-- Fonts and Icons (Async loading for performance) -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Poppins:wght@700;800;900&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'" rel="stylesheet"/>
+<!-- Custom Tailwind Config -->
+<!-- External Stylesheet for custom effects -->
+<link href="css/styles.css" rel="stylesheet"/>
+<style>
         /* ... (giữ nguyên các style tùy chỉnh) ... */
         /* CSS cho menu di động để ngăn cuộn nền */
         body.menu-open {
             overflow: hidden;
         }
     </style>
-    <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animations.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." name="description"/><meta content="IVS JSC - Hệ Sinh Thái Giáo Dục, Công Nghệ &amp; Nhân Sự Toàn..." property="og:title"/><meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." property="og:description"/><meta content="website" property="og:type"/></head>
 <body class="bg-ivs-bg text-ivs-text-primary antialiased">
-
-    <header id="header-placeholder"></header>
-
-    <main>
-        <!-- ... (giữ nguyên nội dung main) ... -->
-    </main>
-
-    <footer id="footer-placeholder"></footer>
-    <div id="fab-container-placeholder"></div>
-
-    <!-- Deferred JavaScript Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-
-    <!-- Core Application Scripts - Order is crucial -->
-    <!-- 1. Firebase Init (if type="module", load first) -->
-    <script src="js/firebase-init.js" type="module"></script>
-    <!-- 2. Global Utilities (componentLog, debounce) - MUST load synchronously first -->
-    <script src="js/utils.js"></script>
-    <!-- 3. Language System (self-initializes, needed by Header) -->
-    <script src="js/language.js" defer></script>
-    <!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->
-    <script src="js/fabController.js" defer></script>
-    <script src="js/chatbotController.js" defer></script>
-    <!-- 5. Component Loader (loads HTML and then calls controller inits) -->
-    <script src="js/loadComponents.js" defer></script>
-    <!-- 6. Main App Logic (if any, after all components are ready) -->
-    <script type="module" src="js/app.js" defer></script>
-
-
-    <!-- Page-specific logic initialization -->
-    <script>
+<header id="header-placeholder"></header>
+<main>
+<!-- ... (giữ nguyên nội dung main) ... -->
+</main>
+<footer id="footer-placeholder"></footer>
+<div id="fab-container-placeholder"></div>
+<!-- Deferred JavaScript Libraries -->
+<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Core Application Scripts - Order is crucial -->
+<!-- 1. Firebase Init (if type="module", load first) -->
+<script src="js/firebase-init.js" type="module"></script>
+<!-- 2. Global Utilities (componentLog, debounce) - MUST load synchronously first -->
+<script src="js/utils.js"></script>
+<!-- 3. Language System (self-initializes, needed by Header) -->
+<script defer="" src="js/language.js"></script>
+<!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->
+<script defer="" src="js/fabController.js"></script>
+<script defer="" src="js/chatbotController.js"></script>
+<!-- 5. Component Loader (loads HTML and then calls controller inits) -->
+<script defer="" src="js/loadComponents.js"></script>
+<!-- 6. Main App Logic (if any, after all components are ready) -->
+<script defer="" src="js/app.js" type="module"></script>
+<!-- Page-specific logic initialization -->
+<script>
         // Callback triggered by loadComponents.js after all common components are loaded
         window.onPageComponentsLoadedCallback = function() {
             if (typeof AOS !== 'undefined') {
@@ -196,8 +180,6 @@
             });
         }
     </script>
-
-        <div id="fab-container-placeholder"></div>
+<div id="fab-container-placeholder"></div>
 </body>
 </html>
-

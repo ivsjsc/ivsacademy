@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IVS Memory Match - Enhanced</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/tailwind.css">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <style>
+<head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//cdn.tailwindcss.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IVS Memory Match - Enhanced</title>
+<script defer="" src="https://cdn.tailwindcss.com"></script>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet"/>
+<style>
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f0f7ff;
@@ -260,94 +261,79 @@
             margin-top: 12px;
         }
     </style>
-    <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animations.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." name="description"/><meta content="IVS Memory Match - Enhanced" property="og:title"/><meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." property="og:description"/><meta content="website" property="og:type"/></head>
 <body>
-    <div class="main-container">
-        <header class="ivs-blue text-white p-4 rounded-t-lg mb-4 text-center">
-            <h1 class="ivs-logo" data-translate="headerTitle">IVS Memory Match: Eng-Vie</h1>
-        </header>
-
-        <div class="difficulty-selector mb-4 text-center">
-            <h3 class="text-lg font-semibold ivs-blue-text mb-2" data-translate="selectDifficulty">Select Difficulty:</h3>
-            <div class="flex justify-center gap-2">
-                <button id="difficulty-easy" class="btn-difficulty" data-difficulty="easy" data-translate="easy">Easy</button>
-                <button id="difficulty-medium" class="btn-difficulty active" data-difficulty="medium" data-translate="medium">Medium</button>
-                <button id="difficulty-hard" class="btn-difficulty" data-difficulty="hard" data-translate="hard">Hard</button>
-            </div>
-        </div>
-
-        <div id="game-info" class="game-info grid grid-cols-2 sm:grid-cols-4 gap-2 items-center p-3 bg-gray-100 rounded-lg text-center sm:text-left hidden">
-            <div><span data-translate="level">Level</span>: <span id="level-display">1</span></div>
-            <div class="sm:text-center"><i class="fas fa-stopwatch mr-1"></i><span data-translate="time">Time</span>: <span id="time-display" class="timer">00:00</span></div>
-            <div class="sm:text-center"><span data-translate="flips">Flips</span>: <span id="flips-count">0</span></div>
-            <div class="sm:text-right"><span data-translate="totalScore">Total Score</span>: <span id="total-score-display">0</span></div>
-        </div>
-
-        <div id="start-screen" class="text-center p-8">
-             <button id="start-game-button" class="btn-action text-2xl py-4 px-8" data-translate="startGame">Start Game</button>
-        </div>
-
-        <div id="game-board" class="game-board hidden">
-        </div>
-
-        <div id="controls-area" class="controls-area text-center hidden">
-            <button id="pause-resume-button" class="btn-action"><i class="fas fa-pause mr-1"></i><span data-translate="pause">Pause</span></button>
-            <button id="reset-level-button" class="btn-action"><i class="fas fa-redo mr-1"></i><span data-translate="restartLevel">Restart Level</span></button>
-            <a href="https://ivsacademy.edu.vn" target="_blank" id="ivs-website-button" class="btn-action" data-translate="ivsWebsite">IVS Website</a>
-            <button id="language-switcher-button" class="btn-language ml-2">VI/EN</button>
-        </div>
-
-
-        <footer class="text-center p-3 mt-4 bg-gray-50 rounded-b-lg">
-            <p class="text-xs text-gray-400" data-translate="copyright"> <i class="fa-solid fa-copyright"></i> 2025 IVS JSC. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <div class="scoreboard-container main-container">
-        <h3><i class="fas fa-trophy ivs-gold-text"></i> <span data-translate="top5Scoreboard">Top 5 Scoreboard</span> <i class="fas fa-trophy ivs-gold-text"></i></h3>
-        <ol id="scoreboard-list" class="scoreboard-list">
-        </ol>
-    </div>
-
-    <div id="message-overlay" class="message-overlay hidden">
-        <div class="message-content">
-            <h2 id="message-title" data-translate-dynamic="messageTitle">Congratulations!</h2>
-            <p id="message-text" data-translate-dynamic="messageText">You've completed the level!</p>
-            <p><span data-translate="levelScore">Level Score</span>: <span id="level-score-message">0</span></p>
-            <p><span data-translate="totalFlips">Total Flips</span>: <span id="final-flips">0</span></p>
-            <p><span data-translate="timeBonus">Time Bonus</span>: <span id="time-bonus-message">0</span></p>
-            <button id="next-action-button" class="btn-action" data-translate-dynamic="nextAction">Next Level</button>
-        </div>
-    </div>
-
-    <div id="name-input-overlay" class="name-input-overlay hidden">
-        <div class="name-input-content">
-            <h2 data-translate="highScoreTitle"><i class="fas fa-medal ivs-gold-text"></i> High Score! <i class="fas fa-medal ivs-gold-text"></i></h2>
-            <p data-translate="highScorePrompt">You've made it to the Top 5! Please enter your name (1-10 characters):</p>
-            <input type="text" id="player-name-input" maxlength="10" data-translate-placeholder="enterNamePlaceholder" placeholder="Enter name">
-            <button id="submit-name-button" class="btn-action" data-translate="saveScore">Save Score</button>
-        </div>
-    </div>
-
-    <div id="pause-overlay" class="pause-overlay hidden">
-        <div class="pause-content">
-            <h2 data-translate="gamePausedTitle"><i class="fas fa-pause-circle ivs-blue-text"></i> Game Paused</h2>
-            <p data-translate="gamePausedText">Take a moment. Press Resume to continue.</p>
-            <button id="resume-game-button-modal" class="btn-action"><i class="fas fa-play mr-1"></i><span data-translate="resume">Resume</span></button>
-        </div>
-    </div>
-
-
-    <script>
+<div class="main-container">
+<header class="ivs-blue text-white p-4 rounded-t-lg mb-4 text-center">
+<h1 class="ivs-logo" data-translate="headerTitle">IVS Memory Match: Eng-Vie</h1>
+</header>
+<div class="difficulty-selector mb-4 text-center">
+<h3 class="text-lg font-semibold ivs-blue-text mb-2" data-translate="selectDifficulty">Select Difficulty:</h3>
+<div class="flex justify-center gap-2">
+<button class="btn-difficulty" data-difficulty="easy" data-translate="easy" id="difficulty-easy">Easy</button>
+<button class="btn-difficulty active" data-difficulty="medium" data-translate="medium" id="difficulty-medium">Medium</button>
+<button class="btn-difficulty" data-difficulty="hard" data-translate="hard" id="difficulty-hard">Hard</button>
+</div>
+</div>
+<div class="game-info grid grid-cols-2 sm:grid-cols-4 gap-2 items-center p-3 bg-gray-100 rounded-lg text-center sm:text-left hidden" id="game-info">
+<div><span data-translate="level">Level</span>: <span id="level-display">1</span></div>
+<div class="sm:text-center"><i class="fas fa-stopwatch mr-1"></i><span data-translate="time">Time</span>: <span class="timer" id="time-display">00:00</span></div>
+<div class="sm:text-center"><span data-translate="flips">Flips</span>: <span id="flips-count">0</span></div>
+<div class="sm:text-right"><span data-translate="totalScore">Total Score</span>: <span id="total-score-display">0</span></div>
+</div>
+<div class="text-center p-8" id="start-screen">
+<button class="btn-action text-2xl py-4 px-8" data-translate="startGame" id="start-game-button">Start Game</button>
+</div>
+<div class="game-board hidden" id="game-board">
+</div>
+<div class="controls-area text-center hidden" id="controls-area">
+<button class="btn-action" id="pause-resume-button"><i class="fas fa-pause mr-1"></i><span data-translate="pause">Pause</span></button>
+<button class="btn-action" id="reset-level-button"><i class="fas fa-redo mr-1"></i><span data-translate="restartLevel">Restart Level</span></button>
+<a class="btn-action" data-translate="ivsWebsite" href="https://ivsacademy.edu.vn" id="ivs-website-button" target="_blank">IVS Website</a>
+<button class="btn-language ml-2" id="language-switcher-button">VI/EN</button>
+</div>
+<footer class="text-center p-3 mt-4 bg-gray-50 rounded-b-lg">
+<p class="text-xs text-gray-400" data-translate="copyright"> <i class="fa-solid fa-copyright"></i> 2025 IVS JSC. All rights reserved.</p>
+</footer>
+</div>
+<div class="scoreboard-container main-container">
+<h3><i class="fas fa-trophy ivs-gold-text"></i> <span data-translate="top5Scoreboard">Top 5 Scoreboard</span> <i class="fas fa-trophy ivs-gold-text"></i></h3>
+<ol class="scoreboard-list" id="scoreboard-list">
+</ol>
+</div>
+<div class="message-overlay hidden" id="message-overlay">
+<div class="message-content">
+<h2 data-translate-dynamic="messageTitle" id="message-title">Congratulations!</h2>
+<p data-translate-dynamic="messageText" id="message-text">You've completed the level!</p>
+<p><span data-translate="levelScore">Level Score</span>: <span id="level-score-message">0</span></p>
+<p><span data-translate="totalFlips">Total Flips</span>: <span id="final-flips">0</span></p>
+<p><span data-translate="timeBonus">Time Bonus</span>: <span id="time-bonus-message">0</span></p>
+<button class="btn-action" data-translate-dynamic="nextAction" id="next-action-button">Next Level</button>
+</div>
+</div>
+<div class="name-input-overlay hidden" id="name-input-overlay">
+<div class="name-input-content">
+<h2 data-translate="highScoreTitle"><i class="fas fa-medal ivs-gold-text"></i> High Score! <i class="fas fa-medal ivs-gold-text"></i></h2>
+<p data-translate="highScorePrompt">You've made it to the Top 5! Please enter your name (1-10 characters):</p>
+<input data-translate-placeholder="enterNamePlaceholder" id="player-name-input" maxlength="10" placeholder="Enter name" type="text"/>
+<button class="btn-action" data-translate="saveScore" id="submit-name-button">Save Score</button>
+</div>
+</div>
+<div class="pause-overlay hidden" id="pause-overlay">
+<div class="pause-content">
+<h2 data-translate="gamePausedTitle"><i class="fas fa-pause-circle ivs-blue-text"></i> Game Paused</h2>
+<p data-translate="gamePausedText">Take a moment. Press Resume to continue.</p>
+<button class="btn-action" id="resume-game-button-modal"><i class="fas fa-play mr-1"></i><span data-translate="resume">Resume</span></button>
+</div>
+</div>
+<script>
         const translations = {
             en: {
                 pageTitle: "IVS Memory Match - Enhanced",
@@ -1319,14 +1305,13 @@
             showStartScreen();
         };
     </script>
-    <!-- Component Placeholders -->
-    <div id="header-placeholder"></div>
-    <div id="footer-placeholder"></div>
-    <div id="fab-container-placeholder"></div>
-    
-    <!-- Scripts -->
-    <script src="js/utils.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/loadComponents.js"></script>
+<!-- Component Placeholders -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<div id="fab-container-placeholder"></div>
+<!-- Scripts -->
+<script src="js/utils.js"></script>
+<script defer="" src="js/animations.js"></script>
+<script src="js/loadComponents.js"></script>
 </body>
 </html>

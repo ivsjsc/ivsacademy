@@ -1,34 +1,30 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IVS Auth - Đăng nhập / Đăng ký</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Đăng nhập hoặc đăng ký tài khoản IVS JSC để trải nghiệm toàn bộ hệ sinh thái giáo dục, công nghệ và nhân sự." data-lang-key="auth_meta_description">
-    <meta name="keywords" content="IVS Auth, đăng nhập IVS, đăng ký IVS, tài khoản IVS, giáo dục, công nghệ, nhân sự" data-lang-key="auth_meta_keywords">
-    <meta property="og:title" content="IVS Auth - Đăng nhập / Đăng ký" data-lang-key="auth_og_title">
-    <meta property="og:description" content="Truy cập hệ sinh thái IVS JSC với tài khoản cá nhân của bạn." data-lang-key="auth_og_description">
-    <meta property="og:image" content="https://ivsacademy.edu.vn/images/banners/ivs_og_main.jpg">
-    <meta property="og:url" content="https://ivsacademy.edu.vn/auth.html">
-    <meta property="og:type" content="website">
 
-    <!-- Favicons -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
-    <!-- Fonts and Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="css/tailwind.css">
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Tailwind CSS with Custom Config -->
-    
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
+<html class="dark scroll-smooth" lang="vi">
+<head><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IVS Auth - Đăng nhập / Đăng ký</title>
+<!-- SEO Meta Tags -->
+<meta content="Đăng nhập hoặc đăng ký tài khoản IVS JSC để trải nghiệm toàn bộ hệ sinh thái giáo dục, công nghệ và nhân sự. IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đ" data-lang-key="auth_meta_description" name="description"/>
+<meta content="IVS Auth, đăng nhập IVS, đăng ký IVS, tài khoản IVS, giáo dục, công nghệ, nhân sự" data-lang-key="auth_meta_keywords" name="keywords"/>
+<meta content="IVS Auth - Đăng nhập / Đăng ký" data-lang-key="auth_og_title" property="og:title"/>
+<meta content="Truy cập hệ sinh thái IVS JSC với tài khoản cá nhân của bạn." data-lang-key="auth_og_description" property="og:description"/>
+<meta content="https://ivsacademy.edu.vn/images/banners/ivs_og_main.jpg" property="og:image"/>
+<meta content="https://ivsacademy.edu.vn/auth.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<!-- Favicons -->
+<link href="images/favicon.ico" rel="icon" type="image/x-icon"/>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Tailwind CSS with Custom Config -->
+<link href="css/styles.css" rel="stylesheet"/>
+<style>
         body { font-family: 'Inter', sans-serif; }
         /* Auth Background video styles */
         .video-background {
@@ -92,75 +88,61 @@
             100% { transform: rotate(360deg); }
         }
     </style>
-    <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animations.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</link></head>
 <body class="bg-ivs-bg text-ivs-text-primary antialiased">
-
-    <header id="header-placeholder"></header>
-
-    <!-- Video Background -->
-    <div class="video-background">
-        <video autoplay loop muted playsinline>
-            <source src="videos/ivsblue.mp4" type="video/mp4">
+<header id="header-placeholder"></header>
+<!-- Video Background -->
+<div class="video-background">
+<video autoplay="" loop="" muted="" playsinline="">
+<source src="videos/ivsblue.mp4" type="video/mp4"/>
             Trình duyệt của bạn không hỗ trợ thẻ video.
         </video>
-    </div>
-    <div class="video-overlay"></div> <!-- Lớp phủ video -->
-
-    <main class="min-h-screen flex items-center justify-center p-4">
-        <div class="auth-card p-8 rounded-xl w-full max-w-md relative z-10"> <!-- z-10 để đảm bảo form nằm trên video -->
-            <h2 class="text-3xl font-bold font-display text-center text-ivs-text-primary mb-6" id="auth-title">Đăng nhập</h2>
-            
-            <form id="auth-form" class="space-y-5">
-                <div>
-                    <label for="email" class="block text-sm font-medium text-ivs-text-secondary mb-1">Email</label>
-                    <input type="email" id="email" name="email" required
-                           class="form-input mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none sm:text-sm">
-                </div>
-                <div>
-                    <label for="password" class="block text-sm font-medium text-ivs-text-secondary mb-1">Mật khẩu</label>
-                    <input type="password" id="password" name="password" required
-                           class="form-input mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none sm:text-sm">
-                </div>
-                
-                <div id="forgot-password-area" class="text-right text-sm">
-                    <button type="button" id="forgot-password-btn" class="font-medium text-ivs-blue hover:text-ivs-blue-darker focus:outline-none">
+</div>
+<div class="video-overlay"></div> <!-- Lớp phủ video -->
+<main class="min-h-screen flex items-center justify-center p-4">
+<div class="auth-card p-8 rounded-xl w-full max-w-md relative z-10"> <!-- z-10 để đảm bảo form nằm trên video -->
+<h2 class="text-3xl font-bold font-display text-center text-ivs-text-primary mb-6" id="auth-title">Đăng nhập</h2>
+<form class="space-y-5" id="auth-form">
+<div>
+<label class="block text-sm font-medium text-ivs-text-secondary mb-1" for="email">Email</label>
+<input class="form-input mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none sm:text-sm" id="email" name="email" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-ivs-text-secondary mb-1" for="password">Mật khẩu</label>
+<input class="form-input mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none sm:text-sm" id="password" name="password" required="" type="password"/>
+</div>
+<div class="text-right text-sm" id="forgot-password-area">
+<button class="font-medium text-ivs-blue hover:text-ivs-blue-darker focus:outline-none" id="forgot-password-btn" type="button">
                         Quên mật khẩu?
                     </button>
-                </div>
-
-                <button type="submit" id="submit-btn"
-                        class="w-full flex items-center justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-ivs-blue hover:bg-ivs-blue-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ivs-blue transition-colors duration-200">
-                    <span class="button-text">Đăng nhập</span>
-                    <span id="loading-spinner" class="loading-spinner hidden"></span>
-                </button>
-                
-                <p class="text-center text-sm text-ivs-text-secondary mt-4">
+</div>
+<button class="w-full flex items-center justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-ivs-blue hover:bg-ivs-blue-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ivs-blue transition-colors duration-200" id="submit-btn" type="submit">
+<span class="button-text">Đăng nhập</span>
+<span class="loading-spinner hidden" id="loading-spinner"></span>
+</button>
+<p class="text-center text-sm text-ivs-text-secondary mt-4">
                     Bạn chưa có tài khoản? 
-                    <button type="button" id="toggle-auth-mode" class="font-medium text-ivs-green hover:text-ivs-green focus:outline-none">
+                    <button class="font-medium text-ivs-green hover:text-ivs-green focus:outline-none" id="toggle-auth-mode" type="button">
                         Đăng ký ngay
                     </button>
-                </p>
-                <div id="auth-message" class="mt-4 p-3 text-center text-sm rounded-md hidden" role="alert"></div>
-            </form>
-        </div>
-    </main>
-
-    <footer id="footer-placeholder"></footer>
-    <div id="fab-container-placeholder"></div>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/loadComponents.js" defer></script>
-    <script type="module">
+</p>
+<div class="mt-4 p-3 text-center text-sm rounded-md hidden" id="auth-message" role="alert"></div>
+</form>
+</div>
+</main>
+<footer id="footer-placeholder"></footer>
+<div id="fab-container-placeholder"></div>
+<!-- Scripts -->
+<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer="" src="js/loadComponents.js"></script>
+<script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
         
@@ -363,4 +345,3 @@
     </script>
 </body>
 </html>
-

@@ -1,167 +1,149 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Suite - IVS Academy</title>
 
-    <link rel="stylesheet" href="css/tailwind.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/animations.css" rel="stylesheet">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-
+<html class="dark scroll-smooth" lang="vi">
+<head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Test Suite - IVS Academy</title>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet">
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</link><meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." name="description"/><meta content="Test Suite - IVS Academy" property="og:title"/><meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." property="og:description"/><meta content="website" property="og:type"/></head>
 <body class="bg-ivs-bg text-ivs-text-primary min-h-screen p-6">
-    <div class="max-w-6xl mx-auto">
-        <header class="mb-8">
-            <h1 class="text-3xl font-bold mb-2">IVS Academy - Comprehensive Test Suite</h1>
-            <p class="text-ivs-text-secondary">Testing all implemented features and optimizations</p>
-        </header>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Test Controls -->
-            <div class="lg:col-span-1">
-                <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                    <h2 class="text-xl font-bold mb-4">Test Controls</h2>
-
-                    <div class="space-y-4">
-                        <button id="runAllTests" class="w-full px-4 py-3 bg-ivs-blue hover:bg-blue-600 text-white rounded-lg transition-colors">
-                            <i class="fas fa-play mr-2"></i>Run All Tests
+<div class="max-w-6xl mx-auto">
+<header class="mb-8">
+<h1 class="text-3xl font-bold mb-2">IVS Academy - Comprehensive Test Suite</h1>
+<p class="text-ivs-text-secondary">Testing all implemented features and optimizations</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Test Controls -->
+<div class="lg:col-span-1">
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h2 class="text-xl font-bold mb-4">Test Controls</h2>
+<div class="space-y-4">
+<button class="w-full px-4 py-3 bg-ivs-blue hover:bg-blue-600 text-white rounded-lg transition-colors" id="runAllTests">
+<i class="fas fa-play mr-2"></i>Run All Tests
                         </button>
-
-                        <button id="runPerformanceTests" class="w-full px-4 py-3 bg-ivs-green hover:bg-green-600 text-white rounded-lg transition-colors">
-                            <i class="fas fa-tachometer-alt mr-2"></i>Performance Tests
+<button class="w-full px-4 py-3 bg-ivs-green hover:bg-green-600 text-white rounded-lg transition-colors" id="runPerformanceTests">
+<i class="fas fa-tachometer-alt mr-2"></i>Performance Tests
                         </button>
-
-                        <button id="runAccessibilityTests" class="w-full px-4 py-3 bg-ivs-purple hover:bg-purple-600 text-white rounded-lg transition-colors">
-                            <i class="fas fa-universal-access mr-2"></i>Accessibility Tests
+<button class="w-full px-4 py-3 bg-ivs-purple hover:bg-purple-600 text-white rounded-lg transition-colors" id="runAccessibilityTests">
+<i class="fas fa-universal-access mr-2"></i>Accessibility Tests
                         </button>
-
-                        <button id="runSecurityTests" class="w-full px-4 py-3 bg-ivs-orange hover:bg-orange-600 text-white rounded-lg transition-colors">
-                            <i class="fas fa-shield-alt mr-2"></i>Security Tests
+<button class="w-full px-4 py-3 bg-ivs-orange hover:bg-orange-600 text-white rounded-lg transition-colors" id="runSecurityTests">
+<i class="fas fa-shield-alt mr-2"></i>Security Tests
                         </button>
-
-                        <button id="clearResults" class="w-full px-4 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors">
-                            <i class="fas fa-trash mr-2"></i>Clear Results
+<button class="w-full px-4 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors" id="clearResults">
+<i class="fas fa-trash mr-2"></i>Clear Results
                         </button>
-                    </div>
-
-                    <div class="mt-6">
-                        <h3 class="font-semibold mb-2">Test Progress</h3>
-                        <div class="w-full bg-ivs-border rounded-full h-2">
-                            <div id="progressBar" class="bg-ivs-blue h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
-                        </div>
-                        <p id="progressText" class="text-sm text-ivs-text-secondary mt-1">Ready to test</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Test Results -->
-            <div class="lg:col-span-2">
-                <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                    <h2 class="text-xl font-bold mb-4">Test Results</h2>
-
-                    <!-- Summary -->
-                    <div id="testSummary" class="hidden mb-6 p-4 bg-ivs-bg rounded-lg border border-ivs-border">
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                            <div>
-                                <div class="text-2xl font-bold text-ivs-blue" id="totalTests">0</div>
-                                <div class="text-sm text-ivs-text-secondary">Total</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-ivs-green" id="passedTests">0</div>
-                                <div class="text-sm text-ivs-text-secondary">Passed</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-ivs-red" id="failedTests">0</div>
-                                <div class="text-sm text-ivs-text-secondary">Failed</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold text-ivs-purple" id="successRate">0%</div>
-                                <div class="text-sm text-ivs-text-secondary">Success Rate</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Results Log -->
-                    <div id="testResults" class="space-y-2 max-h-96 overflow-y-auto">
-                        <div class="text-ivs-text-secondary italic">No tests run yet</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Feature Status -->
-        <div class="mt-8">
-            <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-                <h2 class="text-xl font-bold mb-4">Feature Implementation Status</h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Image Optimization</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Lazy Loading</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Responsive Design</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Dark Mode Toggle</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>SEO Enhancements</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>AI Chatbot</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Interactive Learning</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Security Enhancements</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Content Management</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Analytics Tracking</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-check-circle text-ivs-green"></i>
-                        <span>Accessibility Features</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fas fa-clock text-ivs-blue"></i>
-                        <span>Comprehensive Testing</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Load Test Scripts -->
-    <script src="js/comprehensive-testing.js"></script>
-
-    <script>
+</div>
+<div class="mt-6">
+<h3 class="font-semibold mb-2">Test Progress</h3>
+<div class="w-full bg-ivs-border rounded-full h-2">
+<div class="bg-ivs-blue h-2 rounded-full transition-all duration-300" id="progressBar" style="width: 0%"></div>
+</div>
+<p class="text-sm text-ivs-text-secondary mt-1" id="progressText">Ready to test</p>
+</div>
+</div>
+</div>
+<!-- Test Results -->
+<div class="lg:col-span-2">
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h2 class="text-xl font-bold mb-4">Test Results</h2>
+<!-- Summary -->
+<div class="hidden mb-6 p-4 bg-ivs-bg rounded-lg border border-ivs-border" id="testSummary">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+<div>
+<div class="text-2xl font-bold text-ivs-blue" id="totalTests">0</div>
+<div class="text-sm text-ivs-text-secondary">Total</div>
+</div>
+<div>
+<div class="text-2xl font-bold text-ivs-green" id="passedTests">0</div>
+<div class="text-sm text-ivs-text-secondary">Passed</div>
+</div>
+<div>
+<div class="text-2xl font-bold text-ivs-red" id="failedTests">0</div>
+<div class="text-sm text-ivs-text-secondary">Failed</div>
+</div>
+<div>
+<div class="text-2xl font-bold text-ivs-purple" id="successRate">0%</div>
+<div class="text-sm text-ivs-text-secondary">Success Rate</div>
+</div>
+</div>
+</div>
+<!-- Results Log -->
+<div class="space-y-2 max-h-96 overflow-y-auto" id="testResults">
+<div class="text-ivs-text-secondary italic">No tests run yet</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature Status -->
+<div class="mt-8">
+<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
+<h2 class="text-xl font-bold mb-4">Feature Implementation Status</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Image Optimization</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Lazy Loading</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Responsive Design</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Dark Mode Toggle</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>SEO Enhancements</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>AI Chatbot</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Interactive Learning</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Security Enhancements</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Content Management</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Analytics Tracking</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-check-circle text-ivs-green"></i>
+<span>Accessibility Features</span>
+</div>
+<div class="flex items-center space-x-3">
+<i class="fas fa-clock text-ivs-blue"></i>
+<span>Comprehensive Testing</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Load Test Scripts -->
+<script src="js/comprehensive-testing.js"></script>
+<script>
         class TestRunnerUI {
             constructor() {
                 this.tester = new ComprehensiveTester();
@@ -276,17 +258,15 @@
             window.testRunner = new TestRunnerUI();
         });
     </script>
-
-    <!-- Chèn vào cuối <body> của mọi trang -->
-        <div id="fab-container-placeholder"></div>
-    <!-- Component Placeholders -->
-    <div id="header-placeholder"></div>
-    <div id="footer-placeholder"></div>
-    <div id="fab-container-placeholder"></div>
-    
-    <!-- Scripts -->
-    <script src="js/utils.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/loadComponents.js"></script>
+<!-- Chèn vào cuối <body> của mọi trang -->
+<div id="fab-container-placeholder"></div>
+<!-- Component Placeholders -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<div id="fab-container-placeholder"></div>
+<!-- Scripts -->
+<script src="js/utils.js"></script>
+<script defer="" src="js/animations.js"></script>
+<script src="js/loadComponents.js"></script>
 </body>
 </html>
