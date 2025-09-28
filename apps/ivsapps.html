@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="page_title">Website & Ứng Dụng | IVS Celestech</title>
+    <title data-lang-key="page_title_ivsapps">Website & Ứng Dụng | IVS Celestech</title>
     
     <!-- Tải Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -91,90 +91,9 @@
 </head>
 <body class="antialiased">
 
-    <!-- Language & Localization Data (Vietnamese only for this example) -->
-    <script>
-        const langData = {
-            "vi": {
-                "page_title": "Hồ Sơ Năng Lực: Website & Ứng Dụng Code-First | IVS Celestech",
-                "nav_home": "Trang chủ",
-                "nav_portfolio": "Hồ Sơ Năng Lực",
-                "nav_contact": "Tư vấn ngay",
-                
-                "hero_title": "Năng Lực Kỹ Thuật Số: Website & Hệ Thống Tùy Biến",
-                "hero_subtitle": "Xem chi tiết các dự án Code-First, từ Website Giới thiệu, E-commerce, đến các Ứng dụng Quản lý (ERP/LMS) phức tạp, thể hiện khả năng mở rộng không giới hạn của IVS Celestech.",
-                
-                "section_web_title": "1. WEBSITE & CỔNG THÔNG TIN",
-                "section_web_subtitle": "Xây dựng thương hiệu số, tối ưu SEO và tương tác khách hàng.",
-                
-                "project_ivsacademy_title": "IVS Academy (LMS/Cổng Thông Tin)",
-                "project_ivsacademy_desc": "Website trung tâm ngoại ngữ, tích hợp hệ thống quản lý học viên (LMS Lite), đăng ký khóa học và cổng thông tin nội bộ.",
-                
-                "project_khadock_title": "KhaDock (Website Chuyên B2B)",
-                "project_khadock_desc": "Website hồ sơ năng lực chuyên nghiệp cho lĩnh vực xây dựng bến thuyền, tối ưu cho giao tiếp đối tác B2B và hiển thị Digital Profile.",
-                
-                "project_khahome_title": "KhaHome (BĐS & TMĐT)",
-                "project_khahome_desc": "Nền tảng thương mại điện tử kết hợp bất động sản/cải tạo nhà cửa, tích hợp hệ thống quản lý sản phẩm phức tạp.",
-                
-                "project_suoicamp_title": "Suối Camp (Du Lịch/Giải Trí)",
-                "project_suoicamp_desc": "Website giới thiệu khu du lịch, cắm trại, nổi bật về thiết kế hình ảnh và tối ưu cho việc đặt chỗ, thu hút khách hàng tiềm năng.",
-                
-                "project_banhanh_title": "Tiệc cưới Ba Nhánh 2 (Sự Kiện)",
-                "project_banhanh_desc": "Mẫu website dịch vụ tiệc cưới, hội nghị, với giao diện tối ưu hiển thị hình ảnh chất lượng cao và tích hợp form tư vấn đặt tiệc.",
+    <!-- Page uses global language packs and shared components. -->
 
-                "section_app_title": "2. ỨNG DỤNG SỐ & HỆ THỐNG QUẢN LÝ",
-                "section_app_subtitle": "Phát triển các Web App tùy biến, tích hợp logic nghiệp vụ chuyên sâu.",
-
-                "app_ivseng_title": "IVS English (EdTech/LMS)",
-                "app_ivseng_desc": "Nền tảng học Tiếng Anh tích hợp sách điện tử tương tác, luyện tập AI và các tính năng gamification cho học sinh mầm non đến lớp 12.",
-                
-                "app_mandarin_title": "IVS Mandarin Learners (Học Tiếng Trung)",
-                "app_mandarin_desc": "Ứng dụng học Tiếng Trung toàn diện dựa trên giáo trình HSK, tập trung vào giao tiếp và lộ trình chinh phục ngôn ngữ bài bản.",
-                
-                "app_qlgx_title": "QLGX (Quản Lý Giáo Xứ)",
-                "app_qlgx_desc": "Ứng dụng chuyên biệt hỗ trợ Nhà Thờ và Giáo Xứ quản lý thông tin hộ gia đình, giúp việc lưu trữ và tra cứu dữ liệu giáo dân trở nên dễ dàng và hệ thống.",
-
-                "app_staysmart_title": "IVS Stay Smart (Quản Lý BĐS Thuê)",
-                "app_staysmart_desc": "Ứng dụng quản lý nhà trọ, giúp chủ nhà đơn giản hóa việc quản lý phòng, hồ sơ khách thuê, tạo hợp đồng và hóa đơn hiệu quả.",
-
-                "app_strivestreak_title": "StriveStreak (SaaS/Gamification)",
-                "app_strivestreak_desc": "Ứng dụng web hỗ trợ học tập, xây dựng thói quen và duy trì động lực qua game hóa và gợi ý AI cá nhân hóa.",
-                
-                "button_view_project": "Xem Dự Án",
-                "button_contact_email": "Yêu cầu Tư vấn Code-First",
-            }
-        };
-
-        const currentLang = 'vi';
-        const globalData = langData[currentLang];
-        
-        function applyLocalization(data) {
-            document.querySelectorAll('[data-lang-key]').forEach(el => {
-                const key = el.getAttribute('data-lang-key');
-                let content = data[key];
-                if (content !== undefined && content !== null) {
-                    el.innerHTML = content;
-                }
-            });
-            document.title = data['page_title'] || 'IVS Celestech Portfolio';
-        }
-
-        window.onload = () => {
-            applyLocalization(globalData);
-        };
-    </script>
-    <!-- END: Language & Localization Script -->
-
-    <!-- HEADER PLACEHOLDER -->
-    <header class="header-bg fixed top-0 left-0 w-full z-50 shadow-lg border-b border-ivs-card">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <a href="/" class="text-2xl font-black text-ivs-primary font-display">
-                    IVS<span class="text-ivs-secondary">.</span>Celestech
-                </a>
-            </div>
-            <a href="mailto:info@ivsacademy.edu.vn" class="px-4 py-2 text-sm font-semibold text-white rounded-lg bg-ivs-secondary hover:bg-ivs-primary transition-colors hidden sm:block" data-lang-key="nav_contact"></a>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
 
     <main class="pt-16">
         <!-- HERO SECTION - Portfolio Overview -->
