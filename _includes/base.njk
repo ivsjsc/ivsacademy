@@ -1,40 +1,87 @@
----
-layout: base.njk
-title: IVS JSC - Trang chủ
----
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="{{ lang | default('vi') }}" class="{{ htmlClass | default('dark scroll-smooth') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/css/bundle.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ description | default('IVS JSC: Tổ chức tiên phong kiến tạo giải pháp Công nghệ, Chuyển đổi số và Tối ưu nguồn lực cho Doanh nghiệp, Giáo dục.') }}">
+    <meta name="keywords" content="{{ keywords | default('IVS JSC, công nghệ, chuyển đổi số, integrate vision synergy, Nguyễn Minh Triết, giải pháp công nghệ') }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description | default('Tìm hiểu sâu hơn về IVS JSC: triết lý Integrate-Vision-Synergy, năng lực lập trình cốt lõi và cam kết thực thi.') }}">
+    <meta property="og:image" content="{{ ogImage | default('https://storage.googleapis.com/ivs-public-assets/images/banners/ivs_about_og.jpg') }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:type" content="website">
+    <meta name="author" content="{{ author | default('IVS JSC') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ favicon | default('https://storage.googleapis.com/ivs-public-assets/images/logo/ivs_logo_32.png') }}">
+
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     {% if env.isProd %}
-        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
+    <!-- Production CSS Bundle -->
+    <link rel="stylesheet" href="/css/bundle.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
     {% else %}
-        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <!-- Development CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
+    {% endif %}
+
+    {% if customStyles %}
+    <style>
+        {{ customStyles | safe }}
+    </style>
     {% endif %}
 </head>
-<body>
-    <!-- Header Component -->
+<body class="{{ bodyClass }}">
+    <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
     <!-- Main Content -->
-    {{ content }}
+    <main>
+        {{ content | safe }}
+    </main>
 
-    <!-- Footer Component -->
+    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
+    
+    <!-- FAB Container Placeholder -->
+    <div id="fab-container-placeholder"></div>
 
-    <!-- Scripts -->
     {% if env.isProd %}
-        <script src="/js/bundle.min.js" defer></script>
-    {% else %}
-        {{ bundleJS(page) | safe }}
-    {% endif %}
-
+    <!-- Production JS Bundle -->
+    <script src="/js/bundle.min.js" defer></script>
+    
     <!-- Third-party scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    {% else %}
+    <!-- Development JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    
+    <script src="/js/utils.js"></script>
+    <script src="/js/language.js" defer></script>
+    <script src="/js/fabController.js" defer></script>
+    <script src="/js/loadComponents.js" defer></script>
+    {% endif %}
+
+    {% if customScripts %}
+    <script>
+        {{ customScripts | safe }}
+    </script>
+    {% endif %}
 </body>
 </html>
