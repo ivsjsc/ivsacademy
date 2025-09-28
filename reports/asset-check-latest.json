@@ -1,5 +1,5 @@
 {
-  "generated": "2025-09-28T18:12:37.968265Z",
+  "generated": "2025-09-28T18:27:45.208469Z",
   "base": "http://127.0.0.1:8000",
   "results": {
     "about.html": {
@@ -58,7 +58,7 @@
         {
           "ref": "css/styles.min.css",
           "url": "http://127.0.0.1:8000/css/styles.min.css",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "css/animations.css",
@@ -93,7 +93,7 @@
         {
           "ref": "images/logo.png",
           "url": "http://127.0.0.1:8000/images/logo.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "Pages/ivs-academy.html",
@@ -103,7 +103,7 @@
         {
           "ref": "Pages/education.html",
           "url": "http://127.0.0.1:8000/Pages/education.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "Pages/ivscelestech-tcnoithat.html",
@@ -113,32 +113,32 @@
         {
           "ref": "Pages/consulting.html",
           "url": "http://127.0.0.1:8000/Pages/consulting.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/nguyen-minh-triet.png",
           "url": "http://127.0.0.1:8000/images/team/nguyen-minh-triet.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/rachid-belferar.png",
           "url": "http://127.0.0.1:8000/images/team/rachid-belferar.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/salma-mahzoum.png",
           "url": "http://127.0.0.1:8000/images/team/salma-mahzoum.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/kimball-allen-thomson.png",
           "url": "http://127.0.0.1:8000/images/team/kimball-allen-thomson.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/logo/thepowertoinspire.png",
           "url": "http://127.0.0.1:8000/images/logo/thepowertoinspire.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/logo/iivsa.jpg",
@@ -148,7 +148,7 @@
         {
           "ref": "images/pages/eov2025/iu-english-academy.png",
           "url": "http://127.0.0.1:8000/images/pages/eov2025/iu-english-academy.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "contact.html",
@@ -253,12 +253,12 @@
         {
           "ref": "images/logo.png",
           "url": "http://127.0.0.1:8000/images/logo.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/default-avatar.png",
           "url": "http://127.0.0.1:8000/images/team/default-avatar.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "js/security-enhancements.js",
@@ -358,7 +358,7 @@
         {
           "ref": "images/logo.png",
           "url": "http://127.0.0.1:8000/images/logo.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "js/security-enhancements.js",
@@ -463,7 +463,7 @@
         {
           "ref": "videos/ivsblue.mp4",
           "url": "http://127.0.0.1:8000/videos/ivsblue.mp4",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "js/utils.js",
@@ -588,7 +588,7 @@
         {
           "ref": "Pages/ivslanguages.html",
           "url": "http://127.0.0.1:8000/Pages/ivslanguages.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "Pages/ivslifeminds.html",
@@ -723,7 +723,7 @@
         {
           "ref": "css/styles.min.css",
           "url": "http://127.0.0.1:8000/css/styles.min.css",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "css/animations.css",
@@ -823,7 +823,7 @@
         {
           "ref": "pages/edtech.html",
           "url": "http://127.0.0.1:8000/pages/edtech.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "pages/steambyivs.html",
@@ -1377,7 +1377,7 @@
         {
           "ref": "Pages/ceo-message.html",
           "url": "http://127.0.0.1:8000/Pages/ceo-message.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://www.youtube.com/embed/WSFdBq4vprY?si=X1lIscHb06k3eJK_",
@@ -1512,7 +1512,7 @@
         {
           "ref": "js/dark-mode-toggle.js",
           "url": "http://127.0.0.1:8000/js/dark-mode-toggle.js",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "js/advanced-learning-features.js",
@@ -1592,7 +1592,7 @@
         {
           "ref": "dist/output.css",
           "url": "http://127.0.0.1:8000/dist/output.css",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "css/animations.css",
@@ -1662,12 +1662,12 @@
         {
           "ref": "Pages/ivslanguages.html",
           "url": "http://127.0.0.1:8000/Pages/ivslanguages.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "Pages/education.html",
           "url": "http://127.0.0.1:8000/Pages/education.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "Pages/ivscelestech-tcnoithat.html",
@@ -1677,7 +1677,7 @@
         {
           "ref": "Pages/consulting.html",
           "url": "http://127.0.0.1:8000/Pages/consulting.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "js/language.js",
@@ -1912,7 +1912,7 @@
         {
           "ref": "js/chatbotController.js",
           "url": "http://127.0.0.1:8000/js/chatbotController.js",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "js/loadComponents.js",
@@ -2017,7 +2017,7 @@
         {
           "ref": "js/dark-mode-toggle.js",
           "url": "http://127.0.0.1:8000/js/dark-mode-toggle.js",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "js/seo-enhancer.js",
@@ -2117,7 +2117,7 @@
         {
           "ref": "dist/output.css",
           "url": "http://127.0.0.1:8000/dist/output.css",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "css/animations.css",
@@ -2157,7 +2157,7 @@
         {
           "ref": "https://vssid.gov.vn/",
           "url": "https://vssid.gov.vn/",
-          "status": "HTTPSConnectionPool(host='vssid.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001FDCCB8F790>: Failed to resolve 'vssid.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
+          "status": "HTTPSConnectionPool(host='vssid.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001A900642990>: Failed to resolve 'vssid.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
           "ref": "https://dangkykinhdoanh.gov.vn/",
@@ -2172,7 +2172,7 @@
         {
           "ref": "https://csdlqgvedancu.gov.vn/",
           "url": "https://csdlqgvedancu.gov.vn/",
-          "status": "HTTPSConnectionPool(host='csdlqgvedancu.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001FDCCB98490>: Failed to resolve 'csdlqgvedancu.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
+          "status": "HTTPSConnectionPool(host='csdlqgvedancu.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000001A900678290>: Failed to resolve 'csdlqgvedancu.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
           "ref": "js/utils.js",
@@ -2262,42 +2262,42 @@
         {
           "ref": "images/team/nguyen-minh-triet.png",
           "url": "http://127.0.0.1:8000/images/team/nguyen-minh-triet.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "public/images/team/nguyen-minh-triet.png",
           "url": "http://127.0.0.1:8000/public/images/team/nguyen-minh-triet.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/rachid-belferar.png",
           "url": "http://127.0.0.1:8000/images/team/rachid-belferar.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "public/images/team/rachid-belferar.png",
           "url": "http://127.0.0.1:8000/public/images/team/rachid-belferar.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/salma-mahzoum.png",
           "url": "http://127.0.0.1:8000/images/team/salma-mahzoum.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "public/images/team/salma-mahzoum.png",
           "url": "http://127.0.0.1:8000/public/images/team/salma-mahzoum.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/kimball-allen-thomson.png",
           "url": "http://127.0.0.1:8000/images/team/kimball-allen-thomson.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "public/images/team/kimball-allen-thomson.png",
           "url": "http://127.0.0.1:8000/public/images/team/kimball-allen-thomson.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/ivsteams.jpg",
@@ -2307,17 +2307,17 @@
         {
           "ref": "public/images/team/ivsteams.jpg",
           "url": "http://127.0.0.1:8000/public/images/team/ivsteams.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "images/team/partners&amp;clients.png",
           "url": "http://127.0.0.1:8000/images/team/partners&amp;clients.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "public/images/team/partners&amp;clients.png",
           "url": "http://127.0.0.1:8000/public/images/team/partners&amp;clients.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://zalo.me/ivsjsc",
@@ -3066,6 +3066,14 @@
         }
       ]
     },
+    "pages/ceo-message.html": {
+      "page_status": 200,
+      "assets": []
+    },
+    "pages/consulting.html": {
+      "page_status": 200,
+      "assets": []
+    },
     "pages/document-library.html": {
       "page_status": 200,
       "assets": [
@@ -3256,6 +3264,14 @@
         }
       ]
     },
+    "pages/edtech.html": {
+      "page_status": 200,
+      "assets": []
+    },
+    "pages/education.html": {
+      "page_status": 200,
+      "assets": []
+    },
     "pages/english-placement.html": {
       "page_status": 200,
       "assets": [
@@ -3317,17 +3333,17 @@
         {
           "ref": "../images/pages/team/nguyen-minh-triet.png",
           "url": "http://127.0.0.1:8000/images/pages/team/nguyen-minh-triet.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/team/rachid-belferar.png",
           "url": "http://127.0.0.1:8000/images/pages/team/rachid-belferar.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/team/salma-mahzoum.png",
           "url": "http://127.0.0.1:8000/images/pages/team/salma-mahzoum.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/600x400/eee/ccc?text=Image+Error",
@@ -3337,27 +3353,27 @@
         {
           "ref": "../images/pages/baitest/english-placement-test01.png",
           "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test01.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/baitest/english-placement-test02.png",
           "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test02.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/baitest/english-placement-test03.png",
           "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test03.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/baitest/english-placement-test04.png",
           "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test04.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/baitest/english-placement-test05.png",
           "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test05.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://english-placement.netlify.app/",
@@ -3512,22 +3528,22 @@
         {
           "ref": "../apple-touch-icon.png",
           "url": "http://127.0.0.1:8000/apple-touch-icon.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../favicon-32x32.png",
           "url": "http://127.0.0.1:8000/favicon-32x32.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../favicon-16x16.png",
           "url": "http://127.0.0.1:8000/favicon-16x16.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../safari-pinned-tab.svg",
           "url": "http://127.0.0.1:8000/safari-pinned-tab.svg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://fonts.googleapis.com",
@@ -3637,7 +3653,7 @@
         {
           "ref": "../js/chatbotController.js",
           "url": "http://127.0.0.1:8000/js/chatbotController.js",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../js/loadComponents.js",
@@ -3692,12 +3708,12 @@
         {
           "ref": "../pages/videos/ivs-academy-hero.mp4",
           "url": "http://127.0.0.1:8000/pages/videos/ivs-academy-hero.mp4",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/videos/ivs-video-background.mp4",
           "url": "http://127.0.0.1:8000/pages/videos/ivs-video-background.mp4",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/logo/webbannermo.jpg",
@@ -3747,12 +3763,12 @@
         {
           "ref": "../pages/ivslanguages.html",
           "url": "http://127.0.0.1:8000/pages/ivslanguages.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/education.html",
           "url": "http://127.0.0.1:8000/pages/education.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/ivscelestech-tcnoithat.html",
@@ -3762,7 +3778,7 @@
         {
           "ref": "../pages/consulting.html",
           "url": "http://127.0.0.1:8000/pages/consulting.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../js/language.js",
@@ -3862,12 +3878,12 @@
         {
           "ref": "../pages/videos/ivs_background_video1.mp4",
           "url": "http://127.0.0.1:8000/pages/videos/ivs_background_video1.mp4",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/videos/ivs_background_video1.webm",
           "url": "http://127.0.0.1:8000/pages/videos/ivs_background_video1.webm",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/1920x1080/18181B/E4E4E7?text=Celestech+Hero+Fallback",
@@ -3882,7 +3898,7 @@
         {
           "ref": "../images/ivscelestech/noithat-amgphuocthai.png",
           "url": "http://127.0.0.1:8000/images/ivscelestech/noithat-amgphuocthai.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/600x400/27272A/E4E4E7?text=IELTS+STATION",
@@ -3892,7 +3908,7 @@
         {
           "ref": "../images/ivscelestech/noithat-ieltsstation.png",
           "url": "http://127.0.0.1:8000/images/ivscelestech/noithat-ieltsstation.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/600x400/27272A/E4E4E7?text=IVS+ACADEMY",
@@ -3902,7 +3918,7 @@
         {
           "ref": "../images/pages/ivs-academy.jpg",
           "url": "http://127.0.0.1:8000/images/pages/ivs-academy.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://docs.google.com/forms/d/e/1FAIpQLScy2U7Pa1Sy9Xzny4InhSLvUWYeBh3WTxAldelI6xOAzJ2FXg/viewform?usp=pp_url&amp;entry.1517655153=Nguy%E1%BB%85n+Minh+Tri%E1%BA%BFt&amp;entry.396944312=n.bi2993@gmail.com&amp;entry.138806801=0795555789&amp;entry.1102553479=Y%C3%AAu+c%E1%BA%A7u+t%E1%BB%AB+kh%C3%A1ch+h%C3%A0ng",
@@ -4022,17 +4038,17 @@
         {
           "ref": "../pages/videos/videowebdesign.mp4",
           "url": "http://127.0.0.1:8000/pages/videos/videowebdesign.mp4",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/videos/ivs-celestech.mp4",
           "url": "http://127.0.0.1:8000/pages/videos/ivs-celestech.mp4",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/ivsjscbackgroundletter.jpg",
           "url": "http://127.0.0.1:8000/images/ivsjscbackgroundletter.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/ivscelestech-tcnoithat.html",
@@ -4047,12 +4063,12 @@
         {
           "ref": "../pages/apps/ivsapps.html",
           "url": "http://127.0.0.1:8000/pages/apps/ivsapps.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/games/ivsgames.html",
           "url": "http://127.0.0.1:8000/pages/games/ivsgames.html",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/webdesign.html",
@@ -4100,6 +4116,10 @@
           "status": 200
         }
       ]
+    },
+    "pages/ivslanguages.html": {
+      "page_status": 200,
+      "assets": []
     },
     "pages/ivslifeminds.html": {
       "page_status": 200,
@@ -4257,7 +4277,7 @@
         {
           "ref": "../pages/dist/output.css",
           "url": "http://127.0.0.1:8000/pages/dist/output.css",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../css/animations.css",
@@ -4282,7 +4302,7 @@
         {
           "ref": "../images/logo/logoIVSMmedia.png",
           "url": "http://127.0.0.1:8000/images/logo/logoIVSMmedia.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/600x400/3b82f6/ffffff?text=Video+Ads",
@@ -4402,7 +4422,7 @@
         {
           "ref": "../images/pages/legal_consulting_intro.jpg",
           "url": "http://127.0.0.1:8000/images/pages/legal_consulting_intro.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/psb_introduction.html",
@@ -4507,7 +4527,7 @@
         {
           "ref": "../images/pages/haynoi_banner.png",
           "url": "http://127.0.0.1:8000/images/pages/haynoi_banner.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://www.youtube.com/embed/-U9JQvUYB94?si=sEtbTLxlxHMNilch&amp;start=8",
@@ -4842,7 +4862,7 @@
         {
           "ref": "../images/pages/ivs-academy.jpg",
           "url": "http://127.0.0.1:8000/images/pages/ivs-academy.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../pages/ivs-academy.html",
@@ -5147,12 +5167,12 @@
         {
           "ref": "../pages/videos/videowebdesign.mp4",
           "url": "http://127.0.0.1:8000/pages/videos/videowebdesign.mp4",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/aiphoto.png",
           "url": "http://127.0.0.1:8000/images/pages/aiphoto.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../contact.html",
@@ -5467,7 +5487,7 @@
         {
           "ref": "../images/pages/team/kimball-allen-thomson.png",
           "url": "http://127.0.0.1:8000/images/pages/team/kimball-allen-thomson.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://ivsacademy.edu.vn/Blogs/aboutkimballallenthomson.html",
@@ -5482,7 +5502,7 @@
         {
           "ref": "../images/pages/team/rachid-belferar.png",
           "url": "http://127.0.0.1:8000/images/pages/team/rachid-belferar.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV3",
@@ -5492,7 +5512,7 @@
         {
           "ref": "../images/pages/team/salma-mahzoum.png",
           "url": "http://127.0.0.1:8000/images/pages/team/salma-mahzoum.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV4",
@@ -5502,7 +5522,7 @@
         {
           "ref": "../images/pages/team/teachers/raphael.png",
           "url": "http://127.0.0.1:8000/images/pages/team/teachers/raphael.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV12",
@@ -5512,7 +5532,7 @@
         {
           "ref": "../images/pages/team/jannicar-nayve.png",
           "url": "http://127.0.0.1:8000/images/pages/team/jannicar-nayve.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV48",
@@ -5522,7 +5542,7 @@
         {
           "ref": "../images/pages/team/teachers/madison-schae-summers.jpg",
           "url": "http://127.0.0.1:8000/images/pages/team/teachers/madison-schae-summers.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV49",
@@ -5532,7 +5552,7 @@
         {
           "ref": "../images/pages/team/teachers/sloan-pierre-samuel-venter.png",
           "url": "http://127.0.0.1:8000/images/pages/team/teachers/sloan-pierre-samuel-venter.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV62",
@@ -5542,7 +5562,7 @@
         {
           "ref": "../images/pages/team/teachers/williams-nanji.jpg",
           "url": "http://127.0.0.1:8000/images/pages/team/teachers/williams-nanji.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV5",
@@ -5552,7 +5572,7 @@
         {
           "ref": "../images/pages/teachers/englishteacher5.png",
           "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher5.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV6",
@@ -5562,7 +5582,7 @@
         {
           "ref": "../images/pages/teachers/englishteacher6.png",
           "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher6.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV7",
@@ -5572,7 +5592,7 @@
         {
           "ref": "../images/pages/teachers/englishteacher7.png",
           "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher7.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV8",
@@ -5582,7 +5602,7 @@
         {
           "ref": "../images/pages/teachers/englishteacher8.png",
           "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher8.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV11",
@@ -5592,7 +5612,7 @@
         {
           "ref": "../images/pages/teachers/englishteacher3.png",
           "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher3.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV13",
@@ -5627,7 +5647,7 @@
         {
           "ref": "../images/pages/teachers/englishteacher4.png",
           "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher4.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV21",
@@ -5657,7 +5677,7 @@
         {
           "ref": "../images/pages/teachers/englishteacher2.png",
           "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher2.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV27",
@@ -5727,7 +5747,7 @@
         {
           "ref": "../images/pages/teachers/englishteacher1.png",
           "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher1.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV46",
@@ -5772,7 +5792,7 @@
         {
           "ref": "../js/fab-container.js",
           "url": "http://127.0.0.1:8000/js/fab-container.js",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../js/utils.js",
@@ -5847,17 +5867,17 @@
         {
           "ref": "../images/pages/teacher-placeholder-1.jpg",
           "url": "http://127.0.0.1:8000/images/pages/teacher-placeholder-1.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/teacher-placeholder-2.jpg",
           "url": "http://127.0.0.1:8000/images/pages/teacher-placeholder-2.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../images/pages/teacher-placeholder-3.jpg",
           "url": "http://127.0.0.1:8000/images/pages/teacher-placeholder-3.jpg",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "https://docs.google.com/forms/d/e/1FAIpQLSdxenvWDGAoWbNRlgaswG8MJJzSw-L9saG33oxTRIeT3d98EQ/viewform?embedded=true",
@@ -6147,7 +6167,7 @@
         {
           "ref": "../images/pages/tltt.png",
           "url": "http://127.0.0.1:8000/images/pages/tltt.png",
-          "status": 404
+          "status": 200
         },
         {
           "ref": "../js/language.js",
