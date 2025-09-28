@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    
+    <!-- CSS Bundle -->
+    <link rel="stylesheet" href="/css/bundle.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+        </nav>
+    </header>
+    
+    <main id="main">
+        {{ content | safe }}
+    </main>
+    
+    <footer>
+        <p>&copy; IVS JSC</p>
+    </footer>
+    
+    <script src="/js/bundle.min.js" defer></script>
+</body>
+</html>
