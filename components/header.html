@@ -345,13 +345,17 @@
         transition: width 0.3s ease;
     }
     
-    .desktop-nav-link:hover, .desktop-nav-dropdown-toggle:hover {
+    /* Remove hover-triggered motion. Apply visual feedback on click ( :active ) or when
+       the element receives an explicit .active class (set via JS on click). */
+    .desktop-nav-link:active, .desktop-nav-dropdown-toggle:active,
+    .desktop-nav-link.active, .desktop-nav-dropdown-toggle.active {
         color: var(--ivs-text-primary);
         background-position: left bottom;
         transform: translateY(-2px);
     }
-    
-    .desktop-nav-link:hover::before, .desktop-nav-dropdown-toggle:hover::before {
+
+    .desktop-nav-link:active::before, .desktop-nav-dropdown-toggle:active::before,
+    .desktop-nav-link.active::before, .desktop-nav-dropdown-toggle.active::before {
         width: 80%;
     }
     
