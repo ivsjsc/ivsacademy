@@ -1,5 +1,5 @@
 {
-  "generated": "2025-09-28T17:40:15.241879Z",
+  "generated": "2025-09-28T17:55:15.378045Z",
   "base": "http://127.0.0.1:8000",
   "results": {
     "about.html": {
@@ -1632,7 +1632,7 @@
         {
           "ref": "https://placehold.co/1200x800/111111/f4f4f5?text=IVS+Academy+Overview",
           "url": "https://placehold.co/1200x800/111111/f4f4f5?text=IVS+Academy+Overview",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out."
         },
         {
           "ref": "Pages/ivslifeminds.html",
@@ -2157,7 +2157,7 @@
         {
           "ref": "https://vssid.gov.vn/",
           "url": "https://vssid.gov.vn/",
-          "status": "HTTPSConnectionPool(host='vssid.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000002CB6076EC50>: Failed to resolve 'vssid.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
+          "status": "HTTPSConnectionPool(host='vssid.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000028B0E2BDF10>: Failed to resolve 'vssid.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
           "ref": "https://dangkykinhdoanh.gov.vn/",
@@ -2172,7 +2172,7 @@
         {
           "ref": "https://csdlqgvedancu.gov.vn/",
           "url": "https://csdlqgvedancu.gov.vn/",
-          "status": "HTTPSConnectionPool(host='csdlqgvedancu.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000002CB6076CE10>: Failed to resolve 'csdlqgvedancu.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
+          "status": "HTTPSConnectionPool(host='csdlqgvedancu.gov.vn', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000028B0E2B3510>: Failed to resolve 'csdlqgvedancu.gov.vn' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
           "ref": "js/utils.js",
@@ -2705,13 +2705,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -2875,8 +2875,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -3075,13 +3075,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -3142,27 +3142,27 @@
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+1",
           "url": "https://placehold.co/180x260/1e293b/ffffff?text=Book+1",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+2",
           "url": "https://placehold.co/180x260/1e293b/ffffff?text=Book+2",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+3",
           "url": "https://placehold.co/180x260/1e293b/ffffff?text=Book+3",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+4",
           "url": "https://placehold.co/180x260/1e293b/ffffff?text=Book+4",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+5",
           "url": "https://placehold.co/180x260/1e293b/ffffff?text=Book+5",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+6",
@@ -3172,7 +3172,7 @@
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+7",
           "url": "https://placehold.co/180x260/1e293b/ffffff?text=Book+7",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://books.google.com.vn/books?id=OLBnPneRd7gC&amp;newbks=0&amp;lpg=PA8&amp;dq=Th%E1%BB%B1c%20h%C3%A0nh%20k%E1%BB%B9%20n%C4%83ng%20s%E1%BB%91ng&amp;hl=vi&amp;pg=PA21&amp;output=embed",
@@ -3197,7 +3197,7 @@
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+10",
           "url": "https://placehold.co/180x260/1e293b/ffffff?text=Book+10",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+11",
@@ -3212,7 +3212,7 @@
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+13",
           "url": "https://placehold.co/180x260/1e293b/ffffff?text=Book+13",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/180x260/1e293b/ffffff?text=Book+14",
@@ -3265,8 +3265,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -3315,18 +3315,18 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/team/nguyen-minh-triet.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/nguyen-minh-triet.png",
+          "ref": "../images/pages/team/nguyen-minh-triet.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/nguyen-minh-triet.png",
           "status": 404
         },
         {
-          "ref": "../pages/images/team/rachid-belferar.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/rachid-belferar.png",
+          "ref": "../images/pages/team/rachid-belferar.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/rachid-belferar.png",
           "status": 404
         },
         {
-          "ref": "../pages/images/team/salma-mahzoum.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/salma-mahzoum.png",
+          "ref": "../images/pages/team/salma-mahzoum.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/salma-mahzoum.png",
           "status": 404
         },
         {
@@ -3335,28 +3335,28 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/baitest/english-placement-test01.png",
-          "url": "http://127.0.0.1:8000/pages/images/baitest/english-placement-test01.png",
+          "ref": "../images/pages/baitest/english-placement-test01.png",
+          "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test01.png",
           "status": 404
         },
         {
-          "ref": "../pages/images/baitest/english-placement-test02.png",
-          "url": "http://127.0.0.1:8000/pages/images/baitest/english-placement-test02.png",
+          "ref": "../images/pages/baitest/english-placement-test02.png",
+          "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test02.png",
           "status": 404
         },
         {
-          "ref": "../pages/images/baitest/english-placement-test03.png",
-          "url": "http://127.0.0.1:8000/pages/images/baitest/english-placement-test03.png",
+          "ref": "../images/pages/baitest/english-placement-test03.png",
+          "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test03.png",
           "status": 404
         },
         {
-          "ref": "../pages/images/baitest/english-placement-test04.png",
-          "url": "http://127.0.0.1:8000/pages/images/baitest/english-placement-test04.png",
+          "ref": "../images/pages/baitest/english-placement-test04.png",
+          "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test04.png",
           "status": 404
         },
         {
-          "ref": "../pages/images/baitest/english-placement-test05.png",
-          "url": "http://127.0.0.1:8000/pages/images/baitest/english-placement-test05.png",
+          "ref": "../images/pages/baitest/english-placement-test05.png",
+          "url": "http://127.0.0.1:8000/images/pages/baitest/english-placement-test05.png",
           "status": 404
         },
         {
@@ -3400,13 +3400,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -3572,7 +3572,7 @@
         {
           "ref": "https://placehold.co/120x120/4a90e2/ffffff?text=Inspire",
           "url": "https://placehold.co/120x120/4a90e2/ffffff?text=Inspire",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/120x120/28a745/ffffff?text=Kinderlink",
@@ -3587,7 +3587,7 @@
         {
           "ref": "https://placehold.co/120x120/17a2b8/ffffff?text=University",
           "url": "https://placehold.co/120x120/17a2b8/ffffff?text=University",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/120x120/6f42c1/ffffff?text=Business",
@@ -3700,9 +3700,9 @@
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/webbannermo.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/logo/webbannermo.jpg",
-          "status": 404
+          "ref": "../images/logo/webbannermo.jpg",
+          "url": "http://127.0.0.1:8000/images/logo/webbannermo.jpg",
+          "status": 200
         },
         {
           "ref": "../contact.html",
@@ -3717,7 +3717,7 @@
         {
           "ref": "https://placehold.co/1200x800/111111/f4f4f5?text=IVS+Academy+Overview",
           "url": "https://placehold.co/1200x800/111111/f4f4f5?text=IVS+Academy+Overview",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out."
         },
         {
           "ref": "../pages/ivslifeminds.html",
@@ -3810,13 +3810,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -3872,26 +3872,26 @@
         {
           "ref": "https://placehold.co/1920x1080/18181B/E4E4E7?text=Celestech+Hero+Fallback",
           "url": "https://placehold.co/1920x1080/18181B/E4E4E7?text=Celestech+Hero+Fallback",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/600x400/27272A/E4E4E7?text=ANH+MY+GROUP",
           "url": "https://placehold.co/600x400/27272A/E4E4E7?text=ANH+MY+GROUP",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
-          "ref": "../pages/images/pages/ivscelestech/noithat-amgphuocthai.png",
-          "url": "http://127.0.0.1:8000/pages/images/pages/ivscelestech/noithat-amgphuocthai.png",
+          "ref": "../images/pages/pages/ivscelestech/noithat-amgphuocthai.png",
+          "url": "http://127.0.0.1:8000/images/pages/pages/ivscelestech/noithat-amgphuocthai.png",
           "status": 404
         },
         {
           "ref": "https://placehold.co/600x400/27272A/E4E4E7?text=IELTS+STATION",
           "url": "https://placehold.co/600x400/27272A/E4E4E7?text=IELTS+STATION",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
-          "ref": "../pages/images/pages/ivscelestech/noithat-ieltsstation.png",
-          "url": "http://127.0.0.1:8000/pages/images/pages/ivscelestech/noithat-ieltsstation.png",
+          "ref": "../images/pages/pages/ivscelestech/noithat-ieltsstation.png",
+          "url": "http://127.0.0.1:8000/images/pages/pages/ivscelestech/noithat-ieltsstation.png",
           "status": 404
         },
         {
@@ -3900,8 +3900,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/ivs-academy.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/ivs-academy.jpg",
+          "ref": "../images/pages/ivs-academy.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/ivs-academy.jpg",
           "status": 404
         },
         {
@@ -3960,13 +3960,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -4030,8 +4030,8 @@
           "status": 404
         },
         {
-          "ref": "../pages/images/pages/ivsjscbackgroundletter.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/pages/ivsjscbackgroundletter.jpg",
+          "ref": "../images/pages/pages/ivsjscbackgroundletter.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/pages/ivsjscbackgroundletter.jpg",
           "status": 404
         },
         {
@@ -4147,7 +4147,7 @@
         {
           "ref": "https://placehold.co/100x100/EBF4FF/3B82F6?text=HS1",
           "url": "https://placehold.co/100x100/EBF4FF/3B82F6?text=HS1",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/100x100/FEF2F2/DC2626?text=HS2",
@@ -4205,13 +4205,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -4280,8 +4280,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/logo/logoIVSMmedia.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logoIVSMmedia.png",
+          "ref": "../images/logo/logoIVSMmedia.png",
+          "url": "http://127.0.0.1:8000/images/logo/logoIVSMmedia.png",
           "status": 404
         },
         {
@@ -4297,7 +4297,7 @@
         {
           "ref": "https://placehold.co/600x400/8b5cf6/ffffff?text=Product+Photography",
           "url": "https://placehold.co/600x400/8b5cf6/ffffff?text=Product+Photography",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "../pages/careervn.html",
@@ -4340,13 +4340,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -4400,8 +4400,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/pages/legal_consulting_intro.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/pages/legal_consulting_intro.jpg",
+          "ref": "../images/pages/pages/legal_consulting_intro.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/pages/legal_consulting_intro.jpg",
           "status": 404
         },
         {
@@ -4440,8 +4440,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -4502,11 +4502,11 @@
         {
           "ref": "https://placehold.co/600x450/cccccc/ffffff?text=H\u00c3\u00a3y+N\u00c3\u00b3i+Image",
           "url": "https://placehold.co/600x450/cccccc/ffffff?text=H\u00c3\u00a3y+N\u00c3\u00b3i+Image",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
-          "ref": "../pages/images/pages/haynoi_banner.png",
-          "url": "http://127.0.0.1:8000/pages/images/pages/haynoi_banner.png",
+          "ref": "../images/pages/pages/haynoi_banner.png",
+          "url": "http://127.0.0.1:8000/images/pages/pages/haynoi_banner.png",
           "status": 404
         },
         {
@@ -4555,13 +4555,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -4620,8 +4620,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -4670,8 +4670,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -4720,8 +4720,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -4770,13 +4770,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -4840,8 +4840,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/ivs-academy.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/ivs-academy.jpg",
+          "ref": "../images/pages/ivs-academy.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/ivs-academy.jpg",
           "status": 404
         },
         {
@@ -4970,13 +4970,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -5095,8 +5095,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -5150,8 +5150,8 @@
           "status": 404
         },
         {
-          "ref": "../pages/images/pages/aiphoto.png",
-          "url": "http://127.0.0.1:8000/pages/images/pages/aiphoto.png",
+          "ref": "../images/pages/pages/aiphoto.png",
+          "url": "http://127.0.0.1:8000/images/pages/pages/aiphoto.png",
           "status": 404
         },
         {
@@ -5270,8 +5270,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -5400,13 +5400,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -5465,8 +5465,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/team/kimball-allen-thomson.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/kimball-allen-thomson.png",
+          "ref": "../images/pages/team/kimball-allen-thomson.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/kimball-allen-thomson.png",
           "status": 404
         },
         {
@@ -5480,8 +5480,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/team/rachid-belferar.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/rachid-belferar.png",
+          "ref": "../images/pages/team/rachid-belferar.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/rachid-belferar.png",
           "status": 404
         },
         {
@@ -5490,8 +5490,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/team/salma-mahzoum.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/salma-mahzoum.png",
+          "ref": "../images/pages/team/salma-mahzoum.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/salma-mahzoum.png",
           "status": 404
         },
         {
@@ -5500,8 +5500,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/team/teachers/raphael.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/teachers/raphael.png",
+          "ref": "../images/pages/team/teachers/raphael.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/teachers/raphael.png",
           "status": 404
         },
         {
@@ -5510,8 +5510,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/team/jannicar-nayve.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/jannicar-nayve.png",
+          "ref": "../images/pages/team/jannicar-nayve.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/jannicar-nayve.png",
           "status": 404
         },
         {
@@ -5520,8 +5520,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/team/teachers/madison-schae-summers.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/team/teachers/madison-schae-summers.jpg",
+          "ref": "../images/pages/team/teachers/madison-schae-summers.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/team/teachers/madison-schae-summers.jpg",
           "status": 404
         },
         {
@@ -5530,28 +5530,28 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/team/teachers/sloan-pierre-samuel-venter.png",
-          "url": "http://127.0.0.1:8000/pages/images/team/teachers/sloan-pierre-samuel-venter.png",
+          "ref": "../images/pages/team/teachers/sloan-pierre-samuel-venter.png",
+          "url": "http://127.0.0.1:8000/images/pages/team/teachers/sloan-pierre-samuel-venter.png",
           "status": 404
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV62",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV62",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out."
         },
         {
-          "ref": "../pages/images/team/teachers/williams-nanji.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/team/teachers/williams-nanji.jpg",
+          "ref": "../images/pages/team/teachers/williams-nanji.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/team/teachers/williams-nanji.jpg",
           "status": 404
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV5",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV5",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
-          "ref": "../pages/images/teachers/englishteacher5.png",
-          "url": "http://127.0.0.1:8000/pages/images/teachers/englishteacher5.png",
+          "ref": "../images/pages/teachers/englishteacher5.png",
+          "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher5.png",
           "status": 404
         },
         {
@@ -5560,18 +5560,18 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/teachers/englishteacher6.png",
-          "url": "http://127.0.0.1:8000/pages/images/teachers/englishteacher6.png",
+          "ref": "../images/pages/teachers/englishteacher6.png",
+          "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher6.png",
           "status": 404
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV7",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV7",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
-          "ref": "../pages/images/teachers/englishteacher7.png",
-          "url": "http://127.0.0.1:8000/pages/images/teachers/englishteacher7.png",
+          "ref": "../images/pages/teachers/englishteacher7.png",
+          "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher7.png",
           "status": 404
         },
         {
@@ -5580,8 +5580,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/teachers/englishteacher8.png",
-          "url": "http://127.0.0.1:8000/pages/images/teachers/englishteacher8.png",
+          "ref": "../images/pages/teachers/englishteacher8.png",
+          "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher8.png",
           "status": 404
         },
         {
@@ -5590,8 +5590,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/teachers/englishteacher3.png",
-          "url": "http://127.0.0.1:8000/pages/images/teachers/englishteacher3.png",
+          "ref": "../images/pages/teachers/englishteacher3.png",
+          "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher3.png",
           "status": 404
         },
         {
@@ -5602,7 +5602,7 @@
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV14",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV14",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV15",
@@ -5625,8 +5625,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/teachers/englishteacher4.png",
-          "url": "http://127.0.0.1:8000/pages/images/teachers/englishteacher4.png",
+          "ref": "../images/pages/teachers/englishteacher4.png",
+          "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher4.png",
           "status": 404
         },
         {
@@ -5642,12 +5642,12 @@
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV23",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV23",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV24",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV24",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV26",
@@ -5655,8 +5655,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/teachers/englishteacher2.png",
-          "url": "http://127.0.0.1:8000/pages/images/teachers/englishteacher2.png",
+          "ref": "../images/pages/teachers/englishteacher2.png",
+          "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher2.png",
           "status": 404
         },
         {
@@ -5702,22 +5702,22 @@
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV37",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV37",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV38",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV38",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV39",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV39",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV40",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV40",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV41",
@@ -5725,8 +5725,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/teachers/englishteacher1.png",
-          "url": "http://127.0.0.1:8000/pages/images/teachers/englishteacher1.png",
+          "ref": "../images/pages/teachers/englishteacher1.png",
+          "url": "http://127.0.0.1:8000/images/pages/teachers/englishteacher1.png",
           "status": 404
         },
         {
@@ -5742,17 +5742,17 @@
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV52",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV52",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV57",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV57",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://placehold.co/112x112/161B22/FFFFFF?text=GV58",
           "url": "https://placehold.co/112x112/161B22/FFFFFF?text=GV58",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
           "ref": "https://unpkg.com/aos@2.3.1/dist/aos.js",
@@ -5790,8 +5790,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -5845,18 +5845,18 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/teacher-placeholder-1.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/teacher-placeholder-1.jpg",
+          "ref": "../images/pages/teacher-placeholder-1.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/teacher-placeholder-1.jpg",
           "status": 404
         },
         {
-          "ref": "../pages/images/teacher-placeholder-2.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/teacher-placeholder-2.jpg",
+          "ref": "../images/pages/teacher-placeholder-2.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/teacher-placeholder-2.jpg",
           "status": 404
         },
         {
-          "ref": "../pages/images/teacher-placeholder-3.jpg",
-          "url": "http://127.0.0.1:8000/pages/images/teacher-placeholder-3.jpg",
+          "ref": "../images/pages/teacher-placeholder-3.jpg",
+          "url": "http://127.0.0.1:8000/images/pages/teacher-placeholder-3.jpg",
           "status": 404
         },
         {
@@ -5995,13 +5995,13 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
-          "ref": "../pages/images/logo/logo-192.png",
-          "url": "http://127.0.0.1:8000/pages/images/logo/logo-192.png",
+          "ref": "../images/logo/logo-192.png",
+          "url": "http://127.0.0.1:8000/images/logo/logo-192.png",
           "status": 404
         },
         {
@@ -6085,8 +6085,8 @@
           "status": 200
         },
         {
-          "ref": "../pages/images/favicon.ico",
-          "url": "http://127.0.0.1:8000/pages/images/favicon.ico",
+          "ref": "../images/favicon.ico",
+          "url": "http://127.0.0.1:8000/images/favicon.ico",
           "status": 404
         },
         {
@@ -6142,11 +6142,11 @@
         {
           "ref": "https://placehold.co/400x300/e2e8f0/4a5568?text=Center+Establishment",
           "url": "https://placehold.co/400x300/e2e8f0/4a5568?text=Center+Establishment",
-          "status": 200
+          "status": "HTTPSConnectionPool(host='placehold.co', port=443): Read timed out. (read timeout=6)"
         },
         {
-          "ref": "../pages/images/pages/tltt.png",
-          "url": "http://127.0.0.1:8000/pages/images/pages/tltt.png",
+          "ref": "../images/pages/pages/tltt.png",
+          "url": "http://127.0.0.1:8000/images/pages/pages/tltt.png",
           "status": 404
         },
         {
