@@ -25,8 +25,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Tailwind CSS & Config -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS (built locally) -->
+    <link rel="stylesheet" href="/css/tailwind.css">
+    
+    <!-- Custom CSS -->
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/animations.css" rel="stylesheet">
     <script>
         // Cấu hình Tailwind CSS, sử dụng font Inter làm mặc định
         tailwind.config = {
@@ -1071,5 +1076,51 @@
             });
         }
     </script>
+
+    <!-- Footer Placeholder -->
+    <footer id="footer-placeholder" data-loading-text="Đang tải chân trang..." data-lang-key="placeholder_footer_loading">
+        <!-- This content will be dynamically loaded by loadComponents.js -->
+    </footer>
+
+    <!-- FAB Container Placeholder -->
+    <div id="fab-container-placeholder"></div>
+
+    <!-- Deferred JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+    <!-- Core Application Scripts - Order is crucial -->
+    <!-- 1. Firebase Init (if type="module", load first) -->
+    <script src="/js/firebase-init.js" type="module"></script>
+    <!-- 2. Global Utilities (componentLog, debounce) - MUST load synchronously first -->
+    <script src="/js/utils.js"></script>
+    <!-- 3. Language System (self-initializes, needed by Header) -->
+    <script src="/js/language.js" defer></script>
+    <!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->
+    <script src="/js/fabController.js" defer></script>
+    <!-- 5. Component Loader (loads HTML and then calls controller inits) -->
+    <script src="/js/loadComponents.js" defer></script>
+    <!-- 6. Main App Logic (if any, after all components are ready) -->
+    <script src="/js/app.js" defer></script>
+
+    <!-- Page-specific logic initialization -->
+    <script>
+        // Callback triggered by loadComponents.js after all common components are loaded
+        window.onPageComponentsLoadedCallback = function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-quad' });
+            }
+
+            // Initialize page-specific functionality
+            initVideos();
+            initAnimatedCounters();
+            initSmoothScroll();
+            initAudioMenu();
+
+            window.componentLog("Index page initialization completed.", "info");
+        };
+    </script>
+
 </body>
 </html>
