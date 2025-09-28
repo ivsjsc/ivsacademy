@@ -380,14 +380,28 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            loadComponent('header.html', 'header-placeholder', () => {
-                if (typeof initializeMenu === 'function') initializeMenu();
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            const footerPlaceholder = document.getElementById('footer-placeholder');
+            const hasGlobalLoader = typeof window.loadAndInject === 'function';
+            const headerAlreadyLoaded = headerPlaceholder && headerPlaceholder.querySelector('[data-component-src]');
+            const footerAlreadyLoaded = footerPlaceholder && footerPlaceholder.querySelector('[data-component-src]');
+
+            // If a global loader exists (loadComponents.js), let it handle component injection.
+            if (!hasGlobalLoader && !headerAlreadyLoaded) {
+                loadComponent('header.html', 'header-placeholder', () => {
+                    if (typeof initializeMenu === 'function') initializeMenu();
+                    applyLanguageIfReady();
+                });
+            } else {
+                // Ensure language is applied even when header was loaded by the global loader
                 applyLanguageIfReady();
-            });
-            loadComponent('footer.html', 'footer-placeholder', () => {
-                applyLanguageIfReady();
-            });
-            applyLanguageIfReady();
+            }
+
+            if (!hasGlobalLoader && !footerAlreadyLoaded) {
+                loadComponent('footer.html', 'footer-placeholder', () => {
+                    applyLanguageIfReady();
+                });
+            }
         });
     </script>
 
