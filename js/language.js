@@ -115,25 +115,42 @@ langSystem.applyDynamicTranslations = applyTranslationsToDOM;
  * @returns {Promise<Object>} Object chứa dữ liệu dịch.
  */
 async function fetchTranslation(lang) {
-    const filePath = `/lang/${lang}.json`; // Giả sử file nằm ở thư mục gốc /lang/
-    window.componentLog(`Fetching translation file: ${filePath}`);
+    // Try multiple path candidates for different deployment environments
+    const pathCandidates = [
+        `lang/${lang}.json`,           // Relative path for development
+        `/lang/${lang}.json`,          // Absolute path for production
+        `./lang/${lang}.json`          // Explicit relative path
+    ];
     
-    try {
-        const response = await fetch(filePath);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch ${filePath}: ${response.status} ${response.statusText}`);
+    let lastError = null;
+    
+    for (const filePath of pathCandidates) {
+        try {
+            window.componentLog(`Trying translation file: ${filePath}`);
+            const response = await fetch(filePath);
+            
+            if (response.ok) {
+                const data = await response.json();
+                window.componentLog(`Successfully loaded translation from: ${filePath}`);
+                return data;
+            } else {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+        } catch (error) {
+            lastError = error;
+            window.componentLog(`Failed to fetch ${filePath}: ${error.message}`, 'warn');
+            continue; // Try next path
         }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        window.componentLog(`Fetch error for ${filePath}: ${error.message}`, 'error');
-        // Reroute to default language on fetch failure
-        if (lang !== langSystem.defaultLanguage) {
-            window.componentLog(`Falling back to default language: ${langSystem.defaultLanguage}`, 'warn');
-            return await fetchTranslation(langSystem.defaultLanguage);
-        }
-        throw new Error(`Critical: Failed to load translation for both '${lang}' and default '${langSystem.defaultLanguage}'.`);
     }
+    
+    // If all paths failed, try fallback to default language
+    if (lang !== langSystem.defaultLanguage) {
+        window.componentLog(`All paths failed for '${lang}', falling back to default language: ${langSystem.defaultLanguage}`, 'warn');
+        return await fetchTranslation(langSystem.defaultLanguage);
+    }
+    
+    // Critical error if even default language fails
+    throw new Error(`Critical: Failed to load translation for both '${lang}' and default '${langSystem.defaultLanguage}'. Last error: ${lastError?.message}`);
 }
 
 
