@@ -363,7 +363,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> 
 
     <!-- Custom JS files for dynamic components and page logic -->
-    <script src="js/app.js"></script>
+    <script type="module" src="js/app.js"></script>
     <script src="js/language.js"></script>
     <!-- Removed this script tag as loadComponent is now inlined -->
     <!-- <script src="js/loadComponents.js"></script> -->
@@ -383,12 +383,25 @@
         // Define loadComponent function here to ensure it's available
         async function loadComponent(url, elementId) {
             try {
+                const placeholder = document.getElementById(elementId);
+                if (!placeholder) return;
+                // If global loader already injected, it'll add a wrapper with data-component-src
+                const normalized = url.replace(/^\//, '');
+                const already = placeholder.querySelector(`[data-component-src="${normalized}"]`) || placeholder.querySelector(`[data-component-src="/${normalized}"]`);
+                if (already) {
+                    console.log(`Component ${url} already injected; skipping manual load.`);
+                    return;
+                }
+                if (placeholder.innerHTML && placeholder.innerHTML.trim().length > 0) {
+                    console.log(`Placeholder ${elementId} already has content; skipping manual load for ${url}.`);
+                    return;
+                }
                 const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const html = await response.text();
-                document.getElementById(elementId).innerHTML = html;
+                placeholder.innerHTML = html;
             } catch (error) {
                 console.error(`Error loading component ${url}:`, error);
             }

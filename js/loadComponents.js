@@ -33,14 +33,27 @@ if (typeof window.debounce !== 'function') {
  * @returns {Promise<boolean>} A promise that resolves to true if successful, false otherwise.
  */
 async function loadAndInject(url, placeholderId) {
+    // Normalize component URL to be consistent with fetchWithRetry normalization
+    const normalize = (u) => (typeof u === 'string' ? u.replace(/^\/components\//, 'components/') : u);
+    const normalizedUrl = normalize(url);
+
     const placeholder = document.getElementById(placeholderId);
     if (!placeholder) {
         window.componentLog(`Placeholder '${placeholderId}' not found.`, "error");
         return false;
     }
+    // Prevent loading the same component into the same placeholder more than once
+    try {
+        if (placeholder.querySelector(`[data-component-src="${normalizedUrl}"]`)) {
+            window.componentLog(`Component '${normalizedUrl}' already loaded into placeholder '${placeholderId}'. Skipping.`, 'info');
+            return true;
+        }
+    } catch (e) {
+        // ignore selector errors and continue
+    }
     try {
         // Use fetchWithRetry to improve resilience against transient network errors
-        const response = await fetchWithRetry(url, { attempts: 3, timeout: 5000 });
+        const response = await fetchWithRetry(normalizedUrl, { attempts: 3, timeout: 5000 });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const text = await response.text();
@@ -53,13 +66,14 @@ async function loadAndInject(url, placeholderId) {
 
         // Remove scripts from tempDiv's innerHTML before injecting to avoid double execution
         scripts.forEach(script => script.parentNode?.removeChild(script));
-
     // Inject the HTML content (without scripts first).
-    // Use append rather than replace so multiple components can be loaded
-    // into the same placeholder (for example: fab-container + fab-assistant).
-    placeholder.insertAdjacentHTML('beforeend', tempDiv.innerHTML);
+    // Wrap injected content so we can mark the source and detect duplicates later.
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('data-component-src', normalizedUrl);
+    wrapper.innerHTML = tempDiv.innerHTML;
+    placeholder.appendChild(wrapper);
 
-        // Execute scripts sequentially
+        // Execute scripts sequentially and attach them into the wrapper so they are grouped
         for (const oldScript of scripts) {
             const newScript = document.createElement('script');
             Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
@@ -70,11 +84,11 @@ async function loadAndInject(url, placeholderId) {
                 await new Promise((resolve, reject) => {
                     newScript.onload = resolve;
                     newScript.onerror = reject;
-                    placeholder.appendChild(newScript); // Append to trigger load
+                    wrapper.appendChild(newScript); // Append to trigger load
                 });
             } else {
                 newScript.textContent = oldScript.textContent;
-                placeholder.appendChild(newScript); // Append to execute inline scripts
+                wrapper.appendChild(newScript); // Append to execute inline scripts
             }
         }
 
@@ -379,6 +393,13 @@ const IVSHeaderController = {
         }
     },
     updateLanguageButtonStates(currentLang) {
+        // Defensive: langToggleButtons may be undefined if header controller
+        // hasn't been initialized yet. Guard to avoid TypeError when called
+        // by the language system early.
+        if (!this.langToggleButtons || typeof this.langToggleButtons.forEach !== 'function') {
+            window.componentLog('IVSHeaderController.updateLanguageButtonStates: langToggleButtons not ready; skipping.', 'warn');
+            return;
+        }
         this.langToggleButtons.forEach(button => {
             if (button.dataset.lang === currentLang) {
                 button.classList.add('active-language');

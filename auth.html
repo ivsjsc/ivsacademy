@@ -169,10 +169,22 @@
         // SỬ DỤNG SERVER-SIDE RENDERING HOẶC BIẾN MÔI TRƯỜNG SERVER.
         const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
 
-        // Khởi tạo Firebase App
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+        // Khởi tạo Firebase App only if config contains an apiKey
+        if (!firebaseConfig || !firebaseConfig.apiKey) {
+            console.warn('Auth page: firebaseConfig.apiKey missing. Skipping Firebase initialization in auth.html.');
+        } else {
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
 
+            // Kiểm tra trạng thái đăng nhập khi trang tải
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // Người dùng đã đăng nhập, chuyển hướng về trang chính
+                    console.log("User already logged in, redirecting to home.");
+                    window.location.href = '/'; 
+                }
+            });
+        }
         // Cache DOM elements
         const authForm = document.getElementById('auth-form');
         const authTitle = document.getElementById('auth-title');

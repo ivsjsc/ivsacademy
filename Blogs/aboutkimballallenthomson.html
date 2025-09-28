@@ -191,25 +191,36 @@
         function initializePlaceholderComponents() {
             const headerPlaceholder = document.getElementById('header-placeholder');
             if (headerPlaceholder) {
-                fetch('components/header.html')
-                    .then(response => response.text())
-                    .then(html => {
-                        headerPlaceholder.innerHTML = html;
-                        const scripts = headerPlaceholder.querySelectorAll('script');
-                        scripts.forEach(script => {
-                            const newScript = document.createElement('script');
-                            Array.from(script.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                            newScript.textContent = script.textContent;
-                            script.parentNode.replaceChild(newScript, script);
-                        });
-                        if (typeof window.initializeHeader === 'function') {
-                            window.initializeHeader();
-                        }
-                        if (typeof window.initializeLanguageSystem === 'function') {
-                            window.initializeLanguageSystem();
-                        }
-                    })
-                    .catch(err => console.error('Error loading header:', err));
+                // Avoid double-loading: if a global loader already injected the component
+                // it will wrap it with data-component-src="components/header.html"
+                const alreadyInjected = headerPlaceholder.querySelector('[data-component-src="components/header.html"]')
+                    || headerPlaceholder.querySelector('[data-component-src="/components/header.html"]');
+                if (alreadyInjected) {
+                    console.log('Header already injected by global loader; skipping manual fetch.');
+                } else if (headerPlaceholder.innerHTML && headerPlaceholder.innerHTML.trim().length > 0) {
+                    // Placeholder already has content (server-rendered or previously-inserted) - skip
+                    console.log('Header placeholder already contains content; skipping manual fetch.');
+                } else {
+                    fetch('components/header.html')
+                        .then(response => response.text())
+                        .then(html => {
+                            headerPlaceholder.innerHTML = html;
+                            const scripts = headerPlaceholder.querySelectorAll('script');
+                            scripts.forEach(script => {
+                                const newScript = document.createElement('script');
+                                Array.from(script.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                                newScript.textContent = script.textContent;
+                                script.parentNode.replaceChild(newScript, script);
+                            });
+                            if (typeof window.initializeHeader === 'function') {
+                                window.initializeHeader();
+                            }
+                            if (typeof window.initializeLanguageSystem === 'function') {
+                                window.initializeLanguageSystem();
+                            }
+                        })
+                        .catch(err => console.error('Error loading header:', err));
+                }
             }
 
             const footerPlaceholder = document.getElementById('footer-placeholder');
