@@ -363,6 +363,63 @@ const IVSHeaderController = {
             window.componentLog(`IVSHeaderController: Đã gắn sự kiện click cho nút ngôn ngữ data-lang="${button.dataset.lang}".`);
         });
         
+        // Desktop dropdown toggles: open/close on click only (no hover)
+        try {
+            this.desktopDropdownToggles = document.querySelectorAll('.desktop-nav-dropdown-toggle');
+            this.desktopDropdownToggles.forEach((toggle, idx) => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const container = toggle.closest('.desktop-dropdown-container');
+                    if (!container) return;
+
+                    const isOpen = container.classList.contains('open');
+
+                    // Close other open desktop dropdowns first
+                    document.querySelectorAll('.desktop-dropdown-container.open').forEach(c => {
+                        if (c !== container) {
+                            c.classList.remove('open');
+                            const btn = c.querySelector('.desktop-nav-dropdown-toggle');
+                            if (btn) btn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    if (isOpen) {
+                        container.classList.remove('open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    } else {
+                        container.classList.add('open');
+                        toggle.setAttribute('aria-expanded', 'true');
+                    }
+                });
+                window.componentLog(`IVSHeaderController: Đã gắn sự kiện click cho desktop dropdown toggle ${idx}.`);
+            });
+
+            // Close desktop dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                document.querySelectorAll('.desktop-dropdown-container.open').forEach(c => {
+                    if (!c.contains(e.target)) {
+                        c.classList.remove('open');
+                        const btn = c.querySelector('.desktop-nav-dropdown-toggle');
+                        if (btn) btn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+
+            // Close desktop dropdowns on Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.desktop-dropdown-container.open').forEach(c => {
+                        c.classList.remove('open');
+                        const btn = c.querySelector('.desktop-nav-dropdown-toggle');
+                        if (btn) btn.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            });
+        } catch (err) {
+            window.componentLog('IVSHeaderController: Error attaching desktop dropdown handlers: ' + err.message, 'warn');
+        }
+        
         // Thêm logic cho logo menu và swipe gesture
         this.initMobileMenuLogoLogic();
         this.initSwipeGesture();
