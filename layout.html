@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <!-- Tailwind CSS (built locally) -->
-    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="css/tailwind.css">
 
     <!-- Fonts and Icons (Async loading for performance) -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -28,7 +28,7 @@
     
 
     <!-- External Stylesheet for custom effects -->
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         /* ... (giữ nguyên các style tùy chỉnh) ... */
         /* CSS cho menu di động để ngăn cuộn nền */
@@ -37,8 +37,8 @@
         }
     </style>
     <!-- CSS -->
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/animations.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -64,18 +64,18 @@
 
     <!-- Core Application Scripts - Order is crucial -->
     <!-- 1. Firebase Init (if type="module", load first) -->
-    <script src="/js/firebase-init.js" type="module"></script>
+    <script src="js/firebase-init.js" type="module"></script>
     <!-- 2. Global Utilities (componentLog, debounce) - MUST load synchronously first -->
-    <script src="/js/utils.js"></script>
+    <script src="js/utils.js"></script>
     <!-- 3. Language System (self-initializes, needed by Header) -->
-    <script src="/js/language.js" defer></script>
+    <script src="js/language.js" defer></script>
     <!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->
-    <script src="/js/fabController.js" defer></script>
-    <script src="/js/chatbotController.js" defer></script>
+    <script src="js/fabController.js" defer></script>
+    <script src="js/chatbotController.js" defer></script>
     <!-- 5. Component Loader (loads HTML and then calls controller inits) -->
-    <script src="/js/loadComponents.js" defer></script>
+    <script src="js/loadComponents.js" defer></script>
     <!-- 6. Main App Logic (if any, after all components are ready) -->
-    <script src="/js/app.js" defer></script>
+    <script src="js/app.js" defer></script>
 
 
     <!-- Page-specific logic initialization -->

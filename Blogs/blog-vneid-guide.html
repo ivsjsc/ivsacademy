@@ -20,8 +20,8 @@
     
 
     <!-- External Stylesheet for custom effects -->
-    <link rel="stylesheet" href="/css/tailwind.css">
-<link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/tailwind.css">
+<link rel="stylesheet" href="css/styles.css">
     <style>
         /* CSS từ website chính để ngăn cuộn nền */
         body.menu-open {
@@ -78,8 +78,8 @@
         }
     </style>
     <!-- CSS -->
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/animations.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -264,7 +264,7 @@
             <!-- Video Background Container -->
             <div class="absolute inset-0 w-full h-full z-0">
                 <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-                    <source src="/videos/ivsstarting.mp4" type="video/mp4">
+                    <source src="videos/ivsstarting.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <!-- Overlay to improve text readability -->
@@ -277,7 +277,7 @@
                     <p class="text-lg md:text-xl text-white mt-4 max-w-3xl mx-auto" data-lang-key="welcome_description">
                         Discover a world of opportunities in international education. The IVS Global Teacher Hub is your gateway to connecting with leading educational projects, enhancing your professional skills, and contributing to the future of learning.
                     </p>
-                    <a href="/ivs-global-teacher-hub.html" class="mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" data-lang-key="explore_opportunities_button">
+                    <a href="ivs-global-teacher-hub.html" class="mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" data-lang-key="explore_opportunities_button">
                         Explore Opportunities Now <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -299,20 +299,20 @@
 
     <!-- Core Application Scripts - Thứ tự tải rất quan trọng -->
     <!-- 1. Firebase Init (nếu type="module", tải đầu tiên) -->
-    <script src="/js/firebase-init.js" type="module"></script>
+    <script src="js/firebase-init.js" type="module"></script>
     <!-- 2. Global Utilities (componentLog, debounce) -->
-    <script src="/js/utils.js" defer></script>
+    <script src="js/utils.js" defer></script>
     <!-- 3. Language System (tự khởi tạo, cần cho Header) -->
-    <script src="/js/language.js" defer></script>
+    <script src="js/language.js" defer></script>
     <!-- 4. Specific Controllers (phải tải trước khi loadComponents.js gọi init của chúng) -->
-    <script src="/js/fabController.js" defer></script>
+    <script src="js/fabController.js" defer></script>
     <!-- Thêm chatbotController.js nếu có -->
-    <!-- <script src="/js/chatbotController.js" defer></script> -->
+    <!-- <script src="js/chatbotController.js" defer></script> -->
 
     <!-- 5. Component Loader (tải HTML và sau đó gọi init của controller) -->
-    <script src="/js/loadComponents.js" defer></script>
+    <script src="js/loadComponents.js" defer></script>
     <!-- 6. Main App Logic (nếu có, sau khi tất cả các component đã sẵn sàng) -->
-    <!-- <script src="/js/app.js" defer></script> -->
+    <!-- <script src="js/app.js" defer></script> -->
 
 
     <!-- Logic khởi tạo dành riêng cho trang blog này -->
