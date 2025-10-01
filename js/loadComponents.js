@@ -177,6 +177,13 @@ async function safeInitController(controller, id) {
  * Loads common components (header, fab-container, footer) and initializes their controllers.
  */
 async function loadCommonComponents() {
+    // Prevent multiple concurrent/duplicate runs
+    if (window.__IVS_components_loadingStarted) {
+        window.componentLog('loadCommonComponents: already started; skipping duplicate invocation.', 'info');
+        return;
+    }
+    window.__IVS_components_loadingStarted = true;
+
     window.componentLog("Initializing component sequence...", "info");
     // Canonical FAB component: use /components/fab-container.html
     // NOTE: there used to be multiple FAB fragments (e.g. fab-buttons.html).
@@ -265,6 +272,13 @@ async function loadCommonComponents() {
 // and its logic is not intended to be a separate file.
 const IVSHeaderController = {
     init() {
+        // Idempotent init: avoid binding events multiple times if init is called more than once
+        if (this._ivs_initialized) {
+            window.componentLog('IVSHeaderController: already initialized; skipping.', 'info');
+            return;
+        }
+        this._ivs_initialized = true;
+
         window.componentLog("IVSHeaderController: Bắt đầu khởi tạo.", "info");
         this.cacheDOM();
         if (!this.header) {
@@ -777,55 +791,16 @@ window.IVSHeaderController = IVSHeaderController; // Expose globally
 
 // Attach the main loading function to DOMContentLoaded
 // This will ensure all components are loaded and controllers initialized after the DOM is ready.
+// Ensure a single, consistent automatic startup: delegate to loadCommonComponents
 document.addEventListener('DOMContentLoaded', function() {
-    // Shared helper to compute correct component path. Use absolute paths to avoid
-    // relative-resolution bugs when pages live in subfolders or are served from
-    // different base paths. If you intentionally host the site from a subpath,
-    // update this function or set a global base path.
-    function getComponentPath(componentName) {
-        return `/components/${componentName}.html`;
+    if (window.__IVS_components_loadingStarted) {
+        window.componentLog('DOMContentLoaded: components loading already started; skipping automatic launch.', 'info');
+        return;
     }
 
-    // Use loadAndInject (which uses fetchWithRetry) for robust loading and ensure controllers init
     (async function() {
         try {
-            if (document.getElementById('header-placeholder')) {
-                const headerPath = getComponentPath('header');
-                const ok = await loadAndInject(headerPath, 'header-placeholder');
-                if (ok && window.IVSHeaderController?.init) {
-                    window.IVSHeaderController.init();
-                }
-            }
-
-            if (document.getElementById('fab-container-placeholder')) {
-                const fabPath = getComponentPath('fab-container');
-                const ok = await loadAndInject(fabPath, 'fab-container-placeholder');
-                if (ok && window.IVSFabController?.init) {
-                    window.IVSFabController.init();
-                }
-                // Also attempt to load the IVS Assistant into the same placeholder
-                try {
-                    const assistantOk = await loadAndInject(getComponentPath('fab-assistant'), 'fab-container-placeholder');
-                    if (assistantOk) {
-                        window.componentLog('fab-assistant loaded via DOMContentLoaded path', 'info');
-                        if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
-                            try {
-                                window.IVSFabController.init();
-                                window.componentLog('IVSFabController re-initialized after assistant injection (DOMContentLoaded path).', 'info');
-                            } catch (err) {
-                                window.componentLog('Error re-initializing IVSFabController after assistant injection: ' + err.message, 'error');
-                            }
-                        }
-                    }
-                } catch (err) {
-                    window.componentLog('Failed to load fab-assistant via DOMContentLoaded path: ' + err.message, 'warn');
-                }
-            }
-
-            if (document.getElementById('footer-placeholder')) {
-                const footerPath = getComponentPath('footer');
-                await loadAndInject(footerPath, 'footer-placeholder');
-            }
+            await loadCommonComponents();
         } catch (err) {
             window.componentLog(`Error during automatic component loading: ${err.message}`, 'error');
         }
