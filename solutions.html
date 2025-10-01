@@ -133,26 +133,18 @@
 <script defer src="js/script.js"></script>
 <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script defer>
+    // Register page callback for Solutions page
+    window.onPageComponentsLoadedCallback = function() {
+        console.log('[Solutions Page] Components loaded (callback)');
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ offset: 100, duration: 700, easing: 'ease-out-quad', once: true, mirror: false, anchorPlacement: 'top-bottom' });
+        }
+    };
+
+    // Fallback trigger
     document.addEventListener('DOMContentLoaded', function() {
-        if (typeof window.loadCommonComponents === 'function') {
-            window.loadCommonComponents().then(() => {
-                console.log("[Solutions Page] Components loaded");
-                // Initialize AOS
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        offset: 100,
-                        duration: 700,
-                        easing: 'ease-out-quad',
-                        once: true,
-                        mirror: false,
-                        anchorPlacement: 'top-bottom'
-                    });
-                }
-                // Call page callback if exists
-                if (typeof window.onPageComponentsLoadedCallback === 'function') {
-                    window.onPageComponentsLoadedCallback();
-                }
-            });
+        if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
         }
     });
 </script>

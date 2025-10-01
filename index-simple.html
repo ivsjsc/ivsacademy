@@ -50,6 +50,20 @@
     <script defer src="js/utils.js"></script>
     <script defer src="js/language.js"></script>
     <script defer src="js/loadComponents.js"></script>
+    <script>
+        window.onPageComponentsLoadedCallback = function() {
+            // Page-specific init for index-simple
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 700, once: true });
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+                window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
+            }
+        });
+    </script>
     <script defer>
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Page loaded');

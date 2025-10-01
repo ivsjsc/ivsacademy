@@ -75,9 +75,9 @@
 
     <!-- Finally initialize -->
     <script defer>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM Content Loaded');
-            
+        // Register callback to test after components are loaded
+        window.onPageComponentsLoadedCallback = function() {
+            console.log('Components loaded (callback)');
             // Test utils loading
             if (typeof window.componentLog === 'function') {
                 window.componentLog('Utils.js loaded successfully', 'info');
@@ -91,17 +91,11 @@
             } else {
                 console.error('Language system failed to load');
             }
+        };
 
-            // Test component loader
-            if (typeof window.loadCommonComponents === 'function') {
-                console.log('Loading components...');
-                window.loadCommonComponents().then(() => {
-                    console.log('Components loaded successfully');
-                }).catch(error => {
-                    console.error('Component loading failed:', error);
-                });
-            } else {
-                console.error('Component loader failed to load');
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+                window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
             }
         });
     </script>

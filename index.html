@@ -943,28 +943,27 @@
     </script>
 <script defer>
     // Khối script thứ hai, chỉ giữ lại logic init component
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof window.loadCommonComponents === 'function') {
-            window.loadCommonComponents().then(() => {
-                console.log('Page components loaded successfully');
-                
-                // Initialize AOS if available
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 700,
-                        once: true,
-                        offset: 50,
-                        easing: 'ease-out-cubic'
-                    });
-                }
-                
-                // Call page callback if exists
-                if (typeof window.onPageComponentsLoadedCallback === 'function') {
-                    window.onPageComponentsLoadedCallback();
-                }
-            }).catch(error => {
-                console.error('Failed to load components:', error);
+    // Register a page-level callback to run after common components are loaded.
+    window.onPageComponentsLoadedCallback = function() {
+        console.log('Page components loaded (callback)');
+
+        // Initialize AOS if available
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 700,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
             });
+        }
+
+        // Additional page-specific initialization can go here
+    };
+
+    // Fallback: if components loading hasn't started (older pages), trigger it once.
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
         }
     });
 </script>

@@ -106,35 +106,21 @@
 <div id="footer-placeholder"></div>
 <div id="fab-container-placeholder"></div>
 <!-- Scripts -->
-<script src="js/utils.js"></script>
-<script defer="" src="js/animations.js"></script>
-<script src="js/loadComponents.js"></script>
 <script defer src="js/utils.js"></script>
+<script defer src="js/animations.js"></script>
 <script defer src="js/language.js"></script>
-<script defer src="js/loadComponents.js"></script>
+<script src="js/loadComponents.js"></script>
 <script defer>
+    window.onPageComponentsLoadedCallback = function() {
+        console.log('fab-demo: components loaded (callback)');
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
+        }
+    };
+
     document.addEventListener('DOMContentLoaded', function() {
-        if (typeof window.loadCommonComponents === 'function') {
-            window.loadCommonComponents().then(() => {
-                console.log('Page components loaded successfully');
-                
-                // Initialize AOS if available
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 700,
-                        once: true,
-                        offset: 50,
-                        easing: 'ease-out-cubic'
-                    });
-                }
-                
-                // Call page callback if exists
-                if (typeof window.onPageComponentsLoadedCallback === 'function') {
-                    window.onPageComponentsLoadedCallback();
-                }
-            }).catch(error => {
-                console.error('Failed to load components:', error);
-            });
+        if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
         }
     });
 </script>
