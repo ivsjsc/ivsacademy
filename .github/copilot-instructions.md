@@ -5,13 +5,15 @@
 - Custom scripts are in `js/`, styles in `css/`, and assets in `images/`, `audios/`, and `videos/`.
 - No backend or build system is present; all logic is client-side JavaScript and HTML/CSS.
 - Deployment via GitHub Pages using static workflow (`.github/workflows/static.yml`).
+- Translation system supports Vietnamese (vi), English (en), and Chinese (zh) with automated workflows.
 
 ## Developer Workflows
-- No build step required; edit HTML, JS, and CSS files directly and refresh the browser to see changes.
-- For new pages, copy an existing HTML file from root or `Pages/` directory and update content/links as needed.
-- Use `js/loadComponents.js` to inject shared components (header, footer, FAB) into pages.
-- Language switching is handled by `js/language.js` and JSON files in `lang/` directory.
-- Test locally using `python3 -m http.server 8000` or similar static server.
+- **Development**: No build step required; edit HTML, JS, and CSS files directly and refresh browser.
+- **Testing**: Use Python test scripts (`test_all_pages.py`, `test_component_fixes.py`) to validate pages.
+- **Local Server**: Run `python -m http.server 8000` from root directory for testing.
+- **Page Creation**: Copy existing HTML file from root or `Pages/` directory, update content/links.
+- **Component System**: Use `js/loadComponents.js` to inject shared components (header, footer, FAB).
+- **Translations**: Use automated scripts in `scripts/translation/` for managing multilingual content.
 
 ## Project-Specific Conventions
 - Tailwind CSS is loaded via CDN; custom classes and overrides are in `css/styles.css`.
@@ -36,12 +38,14 @@
 - Responsive design using Tailwind's mobile-first approach with breakpoint prefixes.
 
 ## Examples & Patterns
-- To add a new language, create a JSON file in `lang/` and update `js/language.js`.
-- To add a new section, use Tailwind utility classes and follow the structure in `index.html` or other main pages.
-- For reusable UI, create a new HTML file in `components/` and load it via `js/loadComponents.js`.
-- Component loading pattern: Create placeholder div, fetch HTML, inject content, initialize JavaScript.
-- Language data-attributes: Use `data-lang-key="key_name"` for translatable text elements.
-- Dark mode styling: Use `dark:` prefixed classes alongside regular Tailwind classes.
+- **New Language**: Create JSON file in `lang/`, update `js/language.js`, use translation scripts for automation.
+- **New Section**: Use Tailwind utilities, follow structure in `index.html` or main pages.
+- **Reusable Components**: Create HTML in `components/`, load via `js/loadComponents.js` with placeholders.
+- **Component Loading**: Create `<div id="component-placeholder"></div>`, fetch HTML, inject content, init JS.
+- **Translation Keys**: Use `data-lang-key="key_name"` attributes for translatable elements.
+- **Dark Mode**: Use `dark:` prefixed Tailwind classes alongside light variants.
+- **Script Loading Order**: Always load `utils.js` first, then component-specific scripts.
+- **Versioned Components**: Use `@version X.Y` comments with author attribution in JS files.
 
 ## Common Development Tasks
 - **Adding a new page**: Copy existing HTML template, update title/meta tags, adjust content, ensure component placeholders exist.
@@ -65,9 +69,13 @@
 - `js/utils.js`: Shared utility functions (componentLog, debounce, etc.).
 - `js/fabController.js`: Controls floating action button behavior.
 - `css/styles.css`: Custom styles and Tailwind overrides.
-- `lang/vi.json`, `lang/en.json`: Translation files for Vietnamese and English.
+- `lang/vi.json`, `lang/en.json`, `lang/zh.json`: Translation files for Vietnamese, English, and Chinese.
+- `scripts/translation/`: Automated translation workflow tools and utilities.
+- `scripts/`: Python automation scripts for maintenance, testing, and content management.
+- `test_all_pages.py`, `test_component_fixes.py`: Comprehensive testing utilities.
 - `audios/`: Contains all audio files for player features.
 - `.github/workflows/static.yml`: GitHub Pages deployment configuration.
+- `.github/workflows/translation-check.yml`: Automated translation validation workflow.
 
 ## Security & Best Practices
 - All external CDN resources should include integrity checks where possible.
@@ -89,6 +97,28 @@
 - Check component loading across different pages.
 - Test with JavaScript disabled to ensure graceful degradation.
 - Validate HTML and check for accessibility issues.
+
+## Translation System Workflows
+- **Check Translation Status**: `node scripts/translation/check_translations_status.js` for coverage reports.
+- **Create Translation Candidates**: Use `create_full_zh_candidate.js` to generate candidate files.
+- **Auto-Translation**: Use `translate_zh_auto.js` with Google API or mock mode for batch translation.
+- **Python Translation Tools**: `merge_translate_locales.py` with deep-translator for advanced workflows.
+- **Apply Translations**: Use `apply_zh_translation.js` after manual review of candidates.
+- **Version Control**: Use `commit_translations.ps1` to create branches for translation PRs.
+
+## Maintenance & Automation Scripts
+- **Page Testing**: `test_all_pages.py` and `test_component_fixes.py` for comprehensive validation.
+- **Content Fixes**: Scripts in `scripts/` for batch HTML fixes, link normalization, and path corrections.
+- **Backup System**: Automated timestamped backups created in `.backups/` before modifications.
+- **DNS/Infrastructure**: PowerShell and batch scripts in `scripts/ops/` for monitoring and troubleshooting.
+- **Translation Validation**: Automated checks via GitHub Actions for translation file integrity.
+
+## Advanced Patterns
+- **Component Versioning**: All JS components use `@version X.Y` with author attribution for tracking changes.
+- **Error Handling**: Comprehensive logging via `utils.js` with fallback mechanisms for all components.
+- **Placeholder Protection**: Translation scripts preserve `{0}`, `%s`, and similar placeholders during auto-translation.
+- **Batch Processing**: Scripts support batch operations with rate limiting and manual review flags for sensitive content.
+- **Centralized Utilities**: Global `componentLog` and `debounce` functions available across all modules.
 
 ---
 

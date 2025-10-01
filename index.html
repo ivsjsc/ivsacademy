@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html class="scroll-smooth" lang="vi">
-<head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//storage.googleapis.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+<head><link href="//storage.googleapis.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>IVS JSC - Hệ sinh thái Giáo dục, Công nghệ &amp; Nhân lực - I...</title>
@@ -10,17 +10,15 @@
 <meta content="IVS JSC, về chúng tôi, tầm nhìn, sứ mệnh, integrate vision synergy, Nguyễn Minh Triết, giáo dục, EdTech, hồ sơ năng lực, IVS Academy" name="keywords"/>
 <meta content="Về IVS JSC - Tầm Nhìn &amp; Sứ Mệnh" property="og:title"/>
 <meta content="Tìm hiểu sâu hơn về IVS JSC: triết lý Integrate-Vision-Synergy, hành trình phát triển, đội ngũ chuyên gia và cam kết đối với một nền giáo dục toàn cầu." property="og:description"/>
-<meta content="https://storage.googleapis.com/ivs-public-assets/images/banners/ivs_about_og.jpg" property="og:image"/>
+<meta content="/images/banners/ivs_about_og.jpg" property="og:image"/>
 <meta content="https://ivsacademy.edu.vn/index.html" property="og:url"/>
 <meta content="website" property="og:type"/>
 <meta content="IVS JSC" name="author"/>
-<!-- Favicon - Đã sửa ivs.edu.vn thành ivsacademy.edu.vn -->
-<link href="https://storage.googleapis.com/ivs-public-assets/images/logo/ivs_logo_32.png" rel="icon" type="image/png"/>
+<!-- Favicon -->
+<link href="/favicon-32x32.png" rel="icon" type="image/png"/>
 <!-- Fonts and Icons -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="css/tailwind.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Poppins:wght@700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="css/local-fonts-fallback.css" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <!-- Tailwind CSS & Config -->
@@ -169,9 +167,9 @@
 <!-- SECTION 1: HERO - IVS ACADEMY - CHINH PHỤC TƯƠNG LAI -->
 <section class="hero-section">
 <video autoplay="" class="hero-video" id="heroVideo" loop="" muted="" playsinline="">
-<source src="https://storage.googleapis.com/ivs-public-assets/videos/ivs-video-background.mp4" type="video/mp4"/>
-<source src="https://storage.googleapis.com/ivs-public-assets/videos/hero-background.webm" type="video/webm"/>
-<img alt="Hình nền giới thiệu IVS Academy" class="hero-fallback-image" decoding="async" src="https://storage.googleapis.com/ivs-public-assets/images/banners/ivs_about_og.jpg"/>
+    <source src="/pages/videos/ivs-video-background.mp4" type="video/mp4"/>
+    <!-- local placeholder webm not available; mp4 will be used as fallback in dev -->
+    <img alt="Hình nền giới thiệu IVS Academy" class="hero-fallback-image" decoding="async" src="/images/banners/ivs_about_og.jpg"/>
 </video>
 <div class="hero-overlay"></div>
 <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -330,35 +328,35 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
 <!-- App Card: IVS English -->
-<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-blue" data-aos="fade-up" data-aos-delay="100" href="https://ivseng.netlify.app/" rel="noopener noreferrer" target="_blank">
+                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-blue" data-aos="fade-up" data-aos-delay="100" href="https://ivseng.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-book-open-reader text-5xl text-ivs-blue"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_english_title">IVS English (EdTech)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_english_desc">Nền tảng học Tiếng Anh tích hợp cho học sinh, với sách điện tử, luyện tập AI và gamification.</p>
 <span class="mt-auto font-semibold text-ivs-blue hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
 <!-- App Card: IVS Stay Smart (Quản lý) -->
-<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-green" data-aos="fade-up" data-aos-delay="200" href="https://ivs-staysmart.netlify.app/" rel="noopener noreferrer" target="_blank">
+                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-green" data-aos="fade-up" data-aos-delay="200" href="https://ivs-staysmart.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-house-chimney-crack text-5xl text-ivs-green"></i> <!-- Icon mới cho quản lý tài sản/nhà trọ -->
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_staysmart_title">IVS Stay Smart (Quản lý Bất động sản)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_staysmart_desc">Ứng dụng quản lý nhà trọ tích hợp, giúp chủ nhà đơn giản hóa việc quản lý thông tin phòng, khách thuê và hợp đồng.</p>
 <span class="mt-auto font-semibold text-ivs-green hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
 <!-- App Card: QLGX (Quản lý cộng đồng) -->
-<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-purple" data-aos="fade-up" data-aos-delay="300" href="https://qlgx.netlify.app/" rel="noopener noreferrer" target="_blank">
+                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-purple" data-aos="fade-up" data-aos-delay="300" href="https://qlgx.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-people-group text-5xl text-ivs-purple"></i> <!-- Icon mới cho quản lý cộng đồng/giáo xứ -->
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_qlgx_title">QLGX – Quản Lý Cộng đồng (Custom App)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_qlgx_desc">Hỗ trợ Nhà Thờ và Giáo Xứ quản lý thông tin hộ gia đình, giúp việc tra cứu dữ liệu giáo dân trở nên dễ dàng.</p>
 <span class="mt-auto font-semibold text-ivs-purple hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
 <!-- App Card: StriveStreak -->
-<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-amber" data-aos="fade-up" data-aos-delay="400" href="https://strivestreak.netlify.app/" rel="noopener noreferrer" target="_blank">
+                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-amber" data-aos="fade-up" data-aos-delay="400" href="https://strivestreak.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-fire text-5xl text-ivs-amber"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_strivestreak_title">StriveStreak (Habit/AI)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_strivestreak_desc">Ứng dụng hỗ trợ học tập, giúp xây dựng thói quen, đặt mục tiêu và duy trì động lực qua game hóa và gợi ý AI.</p>
 <span class="mt-auto font-semibold text-ivs-amber hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
 <!-- App Card: IVS Mandarin Learners -->
-<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-orange" data-aos="fade-up" data-aos-delay="500" href="https://mandarinbyivs.netlify.app/" rel="noopener noreferrer" target="_blank">
+                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-orange" data-aos="fade-up" data-aos-delay="500" href="https://mandarinbyivs.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-language text-5xl text-ivs-orange"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_mandarin_title">IVS Mandarin Learners (Language App)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_mandarin_desc">Ứng dụng học Tiếng Trung toàn diện dựa trên giáo trình HSK, đảm bảo lộ trình học tập bài bản.</p>
@@ -411,7 +409,7 @@
 </div>
 <h4 class="font-bold text-white text-xl mb-1" data-lang-key="project_banhanh_title">1. Trang web Tiệc cưới Ba Nhánh 2</h4>
 <p class="text-sm text-ivs-text-secondary flex-grow mb-4" data-lang-key="project_banhanh_field">Lĩnh vực: Sự kiện, Nhà hàng</p>
-<a class="inline-flex items-center justify-center px-4 py-2 bg-ivs-cyan text-white font-medium rounded-lg hover:bg-cyan-600 transition-colors shadow-md shadow-cyan-500/20" data-lang-key="btn_view_demo" href="https://trungtamhoinghitieccuoi-banhanh.netlify.app" target="_blank">
+                        <a class="inline-flex items-center justify-center px-4 py-2 bg-ivs-cyan text-white font-medium rounded-lg hover:bg-cyan-600 transition-colors shadow-md shadow-cyan-500/20" data-lang-key="btn_view_demo" href="https://trungtamhoinghitieccuoi-banhanh.netlify.app" target="_blank">
                             Xem Demo <i class="fas fa-external-link-alt ml-2"></i>
 </a>
 </div>
@@ -424,7 +422,7 @@
 </div>
 <h4 class="font-bold text-white text-xl mb-1" data-lang-key="project_suoicamp_title">2. Trang web Suối Camp</h4>
 <p class="text-sm text-ivs-text-secondary flex-grow mb-4" data-lang-key="project_suoicamp_field">Lĩnh vực: Du lịch, Giải trí</p>
-<a class="inline-flex items-center justify-center px-4 py-2 bg-ivs-green text-white font-medium rounded-lg hover:bg-green-600 transition-colors shadow-md shadow-green-500/20" data-lang-key="btn_view_demo" href="https://suoicamp.netlify.app" target="_blank">
+                        <a class="inline-flex items-center justify-center px-4 py-2 bg-ivs-green text-white font-medium rounded-lg hover:bg-green-600 transition-colors shadow-md shadow-green-500/20" data-lang-key="btn_view_demo" href="https://suoicamp.netlify.app" target="_blank">
                             Xem Demo <i class="fas fa-external-link-alt ml-2"></i>
 </a>
 </div>
@@ -717,19 +715,25 @@
 </div>
 <!-- Hidden Audio Player (Giữ nguyên) -->
 <audio id="audioPlayer" preload="auto" style="display:none;">
-<source src="https://storage.googleapis.com/ivs-public-assets/audios/IVSJSC.mp3" type="audio/mpeg"/>
-<source src="https://storage.googleapis.com/ivs-public-assets/audios/IVSJSC_ENGLISH.mp3" type="audio/mpeg"/>
-        Your browser does not support the audio element.
-    </audio>
+    <source src="/audios/IVSJSC.mp3" type="audio/mpeg"/>
+    <source src="/audios/IVSJSC_ENGLISH.mp3" type="audio/mpeg"/>
+    Your browser does not support the audio element.
+</audio>
 <!-- Floating Action Button Placeholder -->
 <div id="fab-container-placeholder"></div>
-<!-- START OF SCRIPT LOADING BLOCK -->
+
+<!-- START OF SCRIPT LOADING BLOCK (Đã tối ưu) -->
+<!-- Thư viện bên ngoài (Alpine, AOS) -->
 <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!-- Custom IVS Scripts for dynamic components and language -->
-<script defer="" src="js/loadComponents.js"></script>
-<script defer="" src="js/language.js"></script>
-<script defer="" src="js/fabController.js"></script>
+
+<!-- Custom IVS Scripts: Utils và Language PHẢI LOAD TRƯỚC LoadComponents/FabController -->
+<script src="js/utils.js"></script>
+<script src="js/language.js"></script>
+<script src="js/loadComponents.js"></script>
+<script src="js/fabController.js"></script>
+
+<!-- Khối script khởi tạo trang -->
 <script>
         // Start of initialization logic (Non-component scripts)
         // Lưu ý: Các chức năng liên quan đến Menu Mobile (initMobileMenu) đã được loại bỏ 
@@ -779,8 +783,8 @@
             const playEnglishAudioButton = document.getElementById('playEnglishAudio');
             const audioPlayer = document.getElementById('audioPlayer');
 
-            let vietnameseAudioSource = 'https://storage.googleapis.com/ivs-public-assets/audios/IVSJSC.mp3';
-            let englishAudioSource = 'https://storage.googleapis.com/ivs-public-assets/audios/IVSJSC_ENGLISH.mp3';
+            let vietnameseAudioSource = '/audios/IVSJSC.mp3';
+            let englishAudioSource = '/audios/IVSJSC_ENGLISH.mp3';
             let currentPlayingAudioSrc = null;
 
             if (!audioMenuButton || !audioPlayer) return;
@@ -937,10 +941,8 @@
             });
         }
     </script>
-<script defer src="js/utils.js"></script>
-<script defer src="js/language.js"></script>
-<script defer src="js/loadComponents.js"></script>
 <script defer>
+    // Khối script thứ hai, chỉ giữ lại logic init component
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof window.loadCommonComponents === 'function') {
             window.loadCommonComponents().then(() => {
