@@ -22,7 +22,7 @@
             <!-- Mobile language button placed next to logo (small screens only) -->
             <div class="md:hidden ml-2 flex items-center">
                 <button id="lang-main-btn-mobile" aria-haspopup="true" aria-expanded="false" class="p-2 rounded-full bg-white/5 backdrop-blur-sm shadow-sm focus:outline-none" onclick="(function(e){e.preventDefault();var dd=document.getElementById('lang-dropdown-mobile'); if(dd){ var isOpen=!dd.classList.contains('hidden'); dd.classList.toggle('hidden', isOpen); e.currentTarget.setAttribute('aria-expanded', String(!isOpen)); } else { var panel=document.getElementById('ivs-mobile-menu-panel'); var container=document.getElementById('ivs-mobile-menu-container'); if(panel && container){ panel.classList.remove('hidden'); setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); },10); } } })(event)">
-                    <img id="lang-main-mobile-flag" src="/images/flags/en.png" alt="Lang" class="h-6 w-8 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                    <span class="flag-circle flag-circle-sm" aria-hidden="true"><img id="lang-main-mobile-flag" src="/images/flags/en.png" alt="Lang" onerror="this.onerror=null; this.src='https://placehold.co/36x36/1f2937/ffffff?text=EN';"></span>
                 </button>
             </div>
 
@@ -138,19 +138,22 @@
             <!-- Desktop language selector moved next to Contact -->
             <div class="relative ml-3 hidden md:block" id="desktop-lang-container">
                 <button id="lang-main-btn" class="flex items-center p-2 rounded-md hover:bg-ivs-bg-light focus:outline-none" aria-haspopup="true" aria-expanded="false" aria-controls="lang-dropdown">
-                    <img id="lang-main-flag" src="/images/flags/en.png" alt="Lang" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                    <span class="flag-circle flag-circle-sm" aria-hidden="true"><img id="lang-main-flag" src="/images/flags/en.png" alt="Lang" onerror="this.onerror=null; this.src='https://placehold.co/36x36/1f2937/ffffff?text=EN';"></span>
                     <span id="lang-main-label" class="ml-2 text-sm">EN</span>
                     <i class="fas fa-chevron-down ml-2 text-xs"></i>
                 </button>
                 <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg py-1" role="menu" aria-labelledby="lang-main-btn">
                     <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="vi" role="menuitem">
-                        <img src="/images/flags/vn.png" class="h-4 w-6 mr-2" alt="VI">Tiếng Việt
+                        <span class="flag-circle mr-3" aria-hidden="true"><img src="/images/flags/vn.png" alt="VI" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=VI';"></span>
+                        <span class="lang-name">Tiếng Việt</span>
                     </button>
                     <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="en" role="menuitem">
-                        <img src="/images/flags/en.png" class="h-4 w-6 mr-2" alt="EN">English
+                        <span class="flag-circle mr-3" aria-hidden="true"><img src="/images/flags/en.png" alt="EN" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=EN';"></span>
+                        <span class="lang-name">English</span>
                     </button>
                     <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="zh" role="menuitem">
-                        <img src="/images/flags/zh.png" class="h-4 w-6 mr-2" alt="ZH">中文
+                        <span class="flag-circle mr-3" aria-hidden="true"><img src="/images/flags/zh.png" alt="ZH" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=ZH';"></span>
+                        <span class="lang-name">中文</span>
                     </button>
                 </div>
             </div>
@@ -456,13 +459,16 @@
                 <div class="relative ml-4 hidden md:block" id="desktop-lang-container">
                     <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg py-1" role="menu" aria-labelledby="lang-main-btn">
                         <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="vi" role="menuitem">
-                            <img src="/images/flags/vn.png" class="h-4 w-6 mr-2" alt="VI">Tiếng Việt
+                            <span class="flag-circle mr-3" aria-hidden="true"><img src="/images/flags/vn.png" alt="VI" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=VI';"></span>
+                            <span class="lang-name">Tiếng Việt</span>
                         </button>
                         <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="en" role="menuitem">
-                            <img src="/images/flags/en.png" class="h-4 w-6 mr-2" alt="EN">English
+                            <span class="flag-circle mr-3" aria-hidden="true"><img src="/images/flags/en.png" alt="EN" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=EN';"></span>
+                            <span class="lang-name">English</span>
                         </button>
                         <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="zh" role="menuitem">
-                            <img src="/images/flags/zh.png" class="h-4 w-6 mr-2" alt="ZH">中文
+                            <span class="flag-circle mr-3" aria-hidden="true"><img src="/images/flags/zh.png" alt="ZH" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=ZH';"></span>
+                            <span class="lang-name">中文</span>
                         </button>
                     </div>
                 </div>
@@ -559,14 +565,17 @@
             </div>
             <div class="mobile-menu-group card-menu-group mobile-menu-lang-group">
                 <div class="flex justify-center gap-3 mt-2">
-                    <button class="lang-toggle-btn group rounded-full shadow-md border border-orange-300 bg-white/10 hover:bg-orange-100/20 focus:ring-2 focus:ring-orange-400 w-10 h-10 flex items-center justify-center" data-lang="vi" aria-label="Chọn Tiếng Việt">
-                        <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
+                    <button class="lang-toggle-btn group inline-flex items-center rounded-full shadow-md border border-orange-300 bg-white/10 hover:bg-orange-100/20 focus:ring-2 focus:ring-orange-400 px-3 py-2" data-lang="vi" aria-label="Chọn Tiếng Việt">
+                        <span class="flag-circle mr-3"><img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-6 rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/36x36/1f2937/ffffff?text=VI';"></span>
+                        <span class="lang-name text-sm">Tiếng Việt</span>
                     </button>
-                    <button class="lang-toggle-btn group rounded-full shadow-md border border-blue-300 bg-white/10 hover:bg-blue-100/20 focus:ring-2 focus:ring-blue-400 w-10 h-10 flex items-center justify-center" data-lang="en" aria-label="Select English">
-                        <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                    <button class="lang-toggle-btn group inline-flex items-center rounded-full shadow-md border border-blue-300 bg-white/10 hover:bg-blue-100/20 focus:ring-2 focus:ring-blue-400 px-3 py-2" data-lang="en" aria-label="Select English">
+                        <span class="flag-circle mr-3"><img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-6 rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/36x36/1f2937/ffffff?text=EN';"></span>
+                        <span class="lang-name text-sm">English</span>
                     </button>
-                    <button class="lang-toggle-btn group rounded-full shadow-md border border-red-300 bg-white/10 hover:bg-red-100/20 focus:ring-2 focus:ring-red-400 w-10 h-10 flex items-center justify-center" data-lang="zh" aria-label="中文">
-                        <img src="/images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
+                    <button class="lang-toggle-btn group inline-flex items-center rounded-full shadow-md border border-red-300 bg-white/10 hover:bg-red-100/20 focus:ring-2 focus:ring-red-400 px-3 py-2" data-lang="zh" aria-label="中文">
+                        <span class="flag-circle mr-3"><img src="/images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-6 rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/36x36/1f2937/ffffff?text=ZH';"></span>
+                        <span class="lang-name text-sm">中文</span>
                     </button>
                 </div>
             </div>
@@ -850,6 +859,33 @@
     .lang-toggle-btn:hover img {
         transform: scale(1.1);
     }
+
+    /* Flag circle & label used in both desktop dropdown and mobile buttons */
+    .flag-circle {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.06);
+    }
+    .flag-circle img { width: 100%; height: auto; display: block; }
+    .lang-name { white-space: nowrap; color: var(--ivs-text-secondary); }
+    .lang-option .lang-name, .lang-toggle-btn .lang-name { color: var(--ivs-text-primary); }
+    /* Compact labels on very small screens */
+    @media (max-width:420px) {
+        .lang-toggle-btn .lang-name { display: none; }
+        #lang-dropdown { width: 180px; }
+        .flag-circle { width: 32px; height: 32px; }
+    }
+
+    /* small flag variant used in header compact areas */
+    .flag-circle-sm { width: 28px; height: 28px; }
+    .flag-circle-sm img { width: 100%; height: 100%; object-fit: cover; }
 
     /* Mobile menu styles */
     /* Updated to use 'hidden' class with JS toggle */
