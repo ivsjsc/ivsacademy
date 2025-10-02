@@ -505,7 +505,8 @@ const IVSFabController = {
 async function ensureFabInit(retries = 6) {
     const delay = 25;
     for (let i = 0; i < retries; i++) {
-        if (typeof window.componentLog === 'function' && document.getElementById('fab-container')) {
+        // Wait until componentLog exists and either FAB container or assistant container
+        if (typeof window.componentLog === 'function' && (document.getElementById('fab-container') || document.getElementById('fab-assistant-container'))) {
             try {
                 if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
                     window.IVSFabController.init();
@@ -699,9 +700,9 @@ try {
 // Điều này đảm bảo FAB được thiết lập ngay cả khi loadComponents.js không gọi init một cách rõ ràng,
 // hoặc nếu fab-container được bao gồm trực tiếp trong một trang.
 document.addEventListener('DOMContentLoaded', () => {
-    // Khởi tạo IVSFabController nếu có bất kỳ container FAB nào xuất hiện ngay khi DOM sẵn sàng.
-    // Trước đây chỉ kiểm tra 'fab-container' dẫn đến trường hợp assistant-only không được khởi tạo.
-    if (document.getElementById('fab-container') || document.getElementById('fab-assistant-container')) {
+    // If containers are already present, initialize immediately.
+    const alreadyPresent = document.querySelector('#fab-container, #fab-assistant-container');
+    if (alreadyPresent) {
         IVSFabController.init();
         // Apply initial theme after init
         const savedTheme = localStorage.theme;
@@ -710,8 +711,38 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             document.body.classList.remove('dark');
         }
-    } else {
-        // Nếu không tìm thấy bất kỳ container nào, giữ hành vi trước đó: chờ loadComponents.js hoặc gọi init() thủ công.
-        window.componentLog("IVSFabController: Không tìm thấy FAB hoặc Assistant container trên DOMContentLoaded. Giả định tải động. Đảm bảo init() được gọi thủ công sau khi chèn.", "warn");
+        return;
     }
+
+    // If not present, observe DOM for dynamic insertion (e.g., loadComponents.js injects the FAB)
+    const observer = new MutationObserver((mutations, obs) => {
+        if (document.querySelector('#fab-container, #fab-assistant-container')) {
+            try {
+                IVSFabController.init();
+            } catch (err) {
+                window.componentLog('IVSFabController.init() error after mutation: ' + err.message, 'warn');
+            }
+            // Apply initial theme after init
+            const savedTheme = localStorage.theme;
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.body.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+            }
+            obs.disconnect();
+            clearTimeout(timeoutHandle);
+        }
+    });
+
+    observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+
+    // After a reasonable timeout, stop observing and log a concise note so logs are not noisy.
+    const timeoutMs = 5000;
+    const timeoutHandle = setTimeout(() => {
+        try {
+            observer.disconnect();
+        } catch (e) {}
+        // Only warn once and provide a short hint for manual init if developers intentionally inject later.
+        window.componentLog('IVSFabController: Không tìm thấy FAB hoặc Assistant container sau khi chờ ' + (timeoutMs / 1000) + 's. Nếu bạn chèn container sau thời điểm này, gọi IVSFabController.init() thủ công.', 'info');
+    }, timeoutMs);
 });
