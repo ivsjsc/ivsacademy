@@ -1,24 +1,22 @@
-<!-- FILE: /components/header.html -->
-<!-- VERSION: 2.15 - Tối ưu hóa đường dẫn và CSS, bổ sung logic JS cho Mobile Submenu/Desktop Dropdown -->
+<!-- FILE: /public/components/header.html -->
+<!-- VERSION: 2.13 - Giới hạn chiều rộng của header và dropdown menu để tránh che khuất nội dung chính, đồng thời căn giữa header để cải thiện bố cục. -->
 <!-- DESCRIPTION: Optimized HTML structure for the main header with updated navigation menus and language selection. -->
 
-<!-- Load centralized CSS variables (Đã sửa thành Root-Relative Path) -->
+<!-- Load centralized CSS variables -->
 <link rel="stylesheet" href="/css/tailwind.css">
 <link rel="stylesheet" href="/css/vars.css">
-<!-- Đã thêm Font Awesome để hỗ trợ các icon (fas fa-...) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8g3gG0Iq8N56/zN3yJ11gN5uE+0Y/3A7N4T6bM6m3l7j7eI/S0Z3v9f0B8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <header id="ivs-main-header" class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
     <div class="max-w-6xl mx-auto px-4 h-full">
-        <div class="flex items-center justify-between h-full" style="height: var(--desktop-header-height, 72px);">
+        <div class="flex items-center justify-between h-full">
             <button id="mobile-menu-open-btn" aria-label="Mở menu di động" aria-haspopup="true" aria-expanded="false" aria-controls="ivs-mobile-menu-panel" class="md:hidden inline-flex items-center p-2 rounded-md text-neutral-300 hover:text-ivs-accent focus:outline-none focus:ring-2 focus:ring-ivs-accent focus:ring-offset-2 focus:ring-offset-ivs-bg transition-colors">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
-                <a href="/index.html" class="flex-shrink-0 flex items-center space-x-2" aria-label="IVS JSC Homepage">
-                <img src="/images/logo/logo.png" alt="IVS JSC Logo" class="h-9 md:h-10 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';">
-                <span class="hidden sm:inline text-lg md:text-xl font-bold">IVS <span class="text-ivs-accent">JSC</span></span>
+            <a href="/index.html" class="flex-shrink-0 flex items-center space-x-2 group" aria-label="IVS JSC Homepage">
+                <img src="/images/logo/logo.png" alt="IVS JSC Logo" class="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';">
+                <span class="hidden sm:inline text-lg md:text-xl font-bold group-hover:text-ivs-accent transition-colors">IVS <span class="text-ivs-accent">JSC</span></span>
             </a>
 
             <!-- Desktop Navigation -->
@@ -27,13 +25,13 @@
                 
                 <!-- Dropdown "Về IVS" -->
                 <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-id="about-ivs">
+                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
                         <span data-lang-key="nav_about_ivs">Về IVS</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div id="dropdown-about-ivs" class="desktop-dropdown p-2 space-y-1">
-                        <a href="/about.html" class="dropdown-item" data-lang-key="nav_about_us">Về chúng tôi</a>
+                    <div class="desktop-dropdown p-2 space-y-1">
+                        <a href="/about.html" class="dropdown-item" data-lang-key="nav_about_us">Về chúng tôi</a>                        
                         <a href="/Pages/non-profit.html" class="dropdown-item" data-lang-key="nav_non_profit">Phi lợi nhuận</a>
-                        <a href="/Pages/careervn.html" class="dropdown-item" data-lang-key="nav_career_opportunities">Cơ hội nghề nghiệp</a>
+                        <a href="/Pages/careervn.html" class="dropdown-item" data-lang-key="nav_career_opportunities">Cơ hội nghề nghiệp</a>                     
                         <a href="/ivs-global-teacher-hub.html" class="dropdown-item" data-lang-key="nav_foreign_teachers_applying">Teachers Applying</a>
                         <a href="/Pages/international-partnership.html" class="dropdown-item" data-lang-key="solution_international_coop_title">Hợp tác Quốc tế</a>
                     </div>
@@ -41,10 +39,10 @@
 
                 <!-- Dropdown "Dịch Vụ" -->
                 <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-id="services">
+                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
                         <span data-lang-key="nav_services">Dịch Vụ</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div id="dropdown-services" class="desktop-mega-menu left-1/2 -translate-x-1/2 max-w-4xl">
+                    <div class="desktop-mega-menu left-1/2 -translate-x-1/2 max-w-4xl">
                         <div class="grid grid-cols-2 gap-x-6 p-5"> <!-- Giảm số cột xuống 2 -->
                             <!-- Cột trái: Liên kết Giáo dục -->
                             <div class="space-y-2">
@@ -80,10 +78,10 @@
 
                 <!-- Dropdown "Giải pháp" - Updated to two columns -->
                 <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-id="solutions">
+                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
                         <span data-lang-key="nav_solutions">Giải pháp</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div id="dropdown-solutions" class="desktop-mega-menu left-1/2 -translate-x-1/2"> <!-- Changed to desktop-mega-menu -->
+                    <div class="desktop-mega-menu left-1/2 -translate-x-1/2"> <!-- Changed to desktop-mega-menu -->
                         <div class="grid grid-cols-2 gap-x-6 p-5">
                             <!-- Cột trái: Công nghệ ứng dụng -->
                             <div class="space-y-2">
@@ -91,7 +89,7 @@
                                 <a href="/solutions.html" class="dropdown-item" data-lang-key="nav_solutions_overview"><i class="fas fa-lightbulb fa-fw mr-3 text-ivs-accent/70"></i>Tổng quan</a>
                                 <a href="/Pages/ivscelestech.html" class="dropdown-item" data-lang-key="nav_solutions_edtech"><i class="fas fa-code fa-fw mr-3 text-ivs-accent/70"></i>Công nghệ GD</a>
                                 <a href="/Pages/upskill.html" class="dropdown-item" data-lang-key="nav_solutions_upskill"><i class="fas fa-arrow-up-right-dots fa-fw mr-3 text-ivs-accent/70"></i>Nâng cao Trình độ</a>
-                                <!-- Removed: <a href="Pages/webdesign.html" class="dropdown-item" data-lang-key="nav_solutions_webdesign"><i class="fas fa-globe fa-fw mr-3 text-ivs-accent/70"></i>Thiết kế Web</a> -->
+                                <!-- Removed: <a href="/Pages/webdesign.html" class="dropdown-item" data-lang-key="nav_solutions_webdesign"><i class="fas fa-globe fa-fw mr-3 text-ivs-accent/70"></i>Thiết kế Web</a> -->
                             </div>
                             <!-- Cột phải: Tư vấn Pháp lý -->
                             <div class="space-y-2">
@@ -111,18 +109,18 @@
                 </div>
 
                 <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-id="library">
+                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true">
                         <span data-lang-key="nav_library">Thư Viện</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div id="dropdown-library" class="desktop-dropdown left-1/2 -translate-x-1/2 p-2 space-y-1">
+                    <div class="desktop-dropdown left-1/2 -translate-x-1/2 p-2 space-y-1">
                         <a href="/gallery.html" class="dropdown-item" data-lang-key="nav_library_gallery">Thư viện</a>
                         <a href="/Pages/document-library.html" class="dropdown-item" data-lang-key="nav_library_docs">Tài liệu</a>
                         <a href="/learning-materials.html" class="dropdown-item">Tài Liệu Học Tập</a>
                         <a href="/admin.html" class="dropdown-item">Quản Lý Nội Dung</a>
                         <a href="/analytics.html" class="dropdown-item">Analytics Dashboard</a>
-                        <a href="/Pages/apps/story-repository.html" class="dropdown-item" data-lang-key="nav_library_stories">Kho truyện</a>
-                        <a href="/Pages/games/ivsgames.html" class="dropdown-item" data-lang-key="nav_library_games">IVS Games</a>
-                        <a href="/Pages/apps/ivsapps.html" class="dropdown-item" data-lang-key="nav_library_apps">IVS Apps</a>
+                        <a href="/apps/story-repository.html" class="dropdown-item" data-lang-key="nav_library_stories">Kho truyện</a>
+                        <a href="/games/ivsgames.html" class="dropdown-item" data-lang-key="nav_library_games">IVS Games</a>
+                        <a href="/apps/ivsapps.html" class="dropdown-item" data-lang-key="nav_library_apps">IVS Apps</a>
                     </div>
                 </div>
 
@@ -131,40 +129,135 @@
             </nav>
 
             <!-- Language Buttons (Desktop & Mobile) -->
-            <div class="flex items-center space-x-2 md:space-x-1 ml-auto md:ml-0 relative">
-                <button class="lang-toggle-btn" data-lang="vi" aria-label="Chọn Tiếng Việt">
-                    <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm transition-transform duration-200" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
+            </div>
+            </div>
+            </div>
+
+            <!-- Basic JS fallback to ensure header menus work even if the main controller
+                 hasn't initialized yet. Idempotent: attaches handlers only once per element. -->
+            <script>
+            // Run as soon as this script is parsed. It's safe because it only queries elements
+            // already present in this component and guards against double-binding.
+            (function(){
+                function addOnce(el, event, fn) {
+                    if (!el) return;
+                    if (el.dataset && el.dataset.ivsListenerAttached) return;
+                    el.addEventListener(event, fn);
+                    if (el.dataset) el.dataset.ivsListenerAttached = '1';
+                }
+
+                // Mobile open
+                addOnce(document.getElementById('mobile-menu-open-btn'), 'click', function(e){
+                    e.preventDefault();
+                    const panel = document.getElementById('ivs-mobile-menu-panel');
+                    const container = document.getElementById('ivs-mobile-menu-container');
+                    if (!panel || !container) return;
+                    panel.classList.remove('hidden');
+                    // small delay so transitions apply
+                    setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); }, 10);
+                });
+
+                // Mobile close
+                addOnce(document.getElementById('mobile-menu-close-btn'), 'click', function(e){
+                    e.preventDefault();
+                    const panel = document.getElementById('ivs-mobile-menu-panel');
+                    const container = document.getElementById('ivs-mobile-menu-container');
+                    if (!panel || !container) return;
+                    panel.classList.add('opacity-0');
+                    container.classList.add('-translate-x-full');
+                    setTimeout(function(){ panel.classList.add('hidden'); }, 300);
+                });
+
+                // Mobile backdrop close
+                addOnce(document.getElementById('ivs-mobile-menu-backdrop'), 'click', function(e){
+                    e.preventDefault();
+                    document.getElementById('mobile-menu-close-btn')?.click();
+                });
+
+                // Mobile submenu toggles
+                document.querySelectorAll('.mobile-submenu-toggle').forEach(function(toggle){
+                    if (toggle.dataset.ivsSubAttached) return;
+                    toggle.addEventListener('click', function(e){
+                        e.preventDefault();
+                        const content = toggle.nextElementSibling;
+                        if (!content) return;
+                        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                        toggle.setAttribute('aria-expanded', String(!isExpanded));
+                        if (isExpanded) {
+                            content.style.maxHeight = '0px';
+                            content.style.opacity = '0';
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                            content.style.opacity = '1';
+                        }
+                    });
+                    toggle.dataset.ivsSubAttached = '1';
+                });
+
+                // Desktop dropdown toggles (click only)
+                document.querySelectorAll('.desktop-nav-dropdown-toggle').forEach(function(toggle){
+                    if (toggle.dataset.ivsDesktopAttached) return;
+                    toggle.addEventListener('click', function(e){
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const container = toggle.closest('.desktop-dropdown-container');
+                        if (!container) return;
+                        const isOpen = container.classList.contains('open');
+                        // close others
+                        document.querySelectorAll('.desktop-dropdown-container.open').forEach(function(c){
+                            if (c !== container) {
+                                c.classList.remove('open');
+                                const b = c.querySelector('.desktop-nav-dropdown-toggle');
+                                if (b) b.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                        container.classList.toggle('open', !isOpen);
+                        toggle.setAttribute('aria-expanded', String(!isOpen));
+                    });
+                    toggle.dataset.ivsDesktopAttached = '1';
+                });
+
+                // Close desktop dropdowns on outside click
+                addOnce(document, 'click', function(e){
+                    document.querySelectorAll('.desktop-dropdown-container.open').forEach(function(container){
+                        if (!container.contains(e.target)) {
+                            container.classList.remove('open');
+                            const btn = container.querySelector('.desktop-nav-dropdown-toggle');
+                            if (btn) btn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+            })();
+            </script>
                 </button>
-                <button class="lang-toggle-btn" data-lang="en" aria-label="Select English">
-                    <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                <button class="lang-toggle-btn group" data-lang="en" aria-label="Select English">
+                    <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
                 </button>
                 <!-- Chinese language button -->
-                <button class="lang-toggle-btn" data-lang="zh" aria-label="中文">
-                    <img src="/images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm transition-transform duration-200" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
+                <button class="lang-toggle-btn group" data-lang="zh" aria-label="中文">
+                    <img src="/images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
                 </button>
                 
                 <!-- Language Change Confirmation Message -->
                 <div id="lang-confirm-message" class="absolute top-full mt-2 right-0 bg-gray-800 text-white text-xs px-3 py-1.5 rounded-md shadow-lg opacity-0 scale-90 transition-all duration-300 ease-out pointer-events-none origin-top-right whitespace-nowrap">
-                  Language changed!
+                 Language changed!
                 </div>
 
-                <!-- Dark Mode Toggle Button (Bổ sung nút Dark Mode cho Desktop) -->
-                <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 rounded-full text-white hover:text-ivs-accent transition duration-150 hidden md:block ml-2">
-                    <i id="theme-icon" class="fas fa-sun w-5 h-5"></i>
-                </button>
+                <!-- Mobile Menu Button (Hamburger) - hidden on desktop -->
+                <!-- This button is now moved to the left -->
             </div>
         </div>
     </div>
 </header>
 
 <!-- Mobile Menu Panel -->
-<div id="ivs-mobile-menu-panel" class="fixed inset-0 z-50 md:hidden hidden" aria-modal="true" role="dialog">
+<div id="ivs-mobile-menu-panel" class="fixed inset-0 md:hidden hidden" aria-modal="true" role="dialog" style="z-index:12000;">
     <!-- Backdrop with blur effect and background image -->
     <div id="ivs-mobile-menu-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-400 opacity-0" style="background: url('/images/ivsacademy.jpeg') center/cover no-repeat, rgba(0,0,0,0.7);"></div>
     <div id="ivs-mobile-menu-container" class="relative w-full max-w-sm h-full bg-ivs-bg-medium mr-auto flex flex-col transform -translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] rounded-r-3xl shadow-2xl p-2 md:p-4 glass-menu-panel">
         <div class="flex items-center justify-between p-4 border-b border-ivs-bg-light">
             <span class="text-lg font-semibold text-ivs-accent menu-title" data-lang-key="mobile_menu_title">Menu</span>
-            <img id="mobile-menu-logo" src="/images/logo/logo.png" alt="IVS Logo" class="h-9 w-auto mx-auto hidden" loading="lazy" width="120" height="36" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';">
+            <img id="mobile-menu-logo" src="/images/logo.png" alt="IVS Logo" class="h-9 w-auto mx-auto hidden" loading="lazy" width="120" height="36">
             <button id="mobile-menu-close-btn" type="button" class="p-2 rounded-xl hover:bg-ivs-bg-light shadow-md focus:outline-none focus:ring-2 focus:ring-ivs-accent" aria-label="Close menu">
                 <span class="sr-only">Close menu</span>
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -234,20 +327,14 @@
                 <a href="/contact.html" class="mobile-nav-link" data-lang-key="nav_contact"><i class="fas fa-envelope fa-sm mr-2 text-ivs-accent"></i>Liên Hệ</a>
             </div>
             <div class="mobile-menu-group card-menu-group mobile-menu-lang-group">
-                <!-- Dark Mode Toggle for Mobile -->
-                <button id="mobile-theme-toggle" class="mobile-nav-link w-full flex justify-between items-center" aria-label="Toggle dark mode">
-                    <span><i class="fas fa-lightbulb fa-sm mr-2 text-ivs-accent"></i>Chế độ Ban đêm</span>
-                    <i id="mobile-theme-icon" class="fas fa-toggle-off fa-lg text-gray-500"></i>
-                </button>
-
                 <div class="flex justify-center gap-3 mt-2">
-                    <button class="lang-toggle-btn rounded-full shadow-md border border-orange-300 bg-white/10 focus:ring-2 focus:ring-orange-400 w-10 h-10 flex items-center justify-center" data-lang="vi" aria-label="Chọn Tiếng Việt">
+                    <button class="lang-toggle-btn group rounded-full shadow-md border border-orange-300 bg-white/10 hover:bg-orange-100/20 focus:ring-2 focus:ring-orange-400 w-10 h-10 flex items-center justify-center" data-lang="vi" aria-label="Chọn Tiếng Việt">
                         <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
                     </button>
-                    <button class="lang-toggle-btn rounded-full shadow-md border border-blue-300 bg-white/10 focus:ring-2 focus:ring-blue-400 w-10 h-10 flex items-center justify-center" data-lang="en" aria-label="Select English">
+                    <button class="lang-toggle-btn group rounded-full shadow-md border border-blue-300 bg-white/10 hover:bg-blue-100/20 focus:ring-2 focus:ring-blue-400 w-10 h-10 flex items-center justify-center" data-lang="en" aria-label="Select English">
                         <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
                     </button>
-                    <button class="lang-toggle-btn rounded-full shadow-md border border-red-300 bg-white/10 focus:ring-2 focus:ring-red-400 w-10 h-10 flex items-center justify-center" data-lang="zh" aria-label="中文">
+                    <button class="lang-toggle-btn group rounded-full shadow-md border border-red-300 bg-white/10 hover:bg-red-100/20 focus:ring-2 focus:ring-red-400 w-10 h-10 flex items-center justify-center" data-lang="zh" aria-label="中文">
                         <img src="/images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
                     </button>
                 </div>
@@ -295,7 +382,6 @@
         --ivs-glass-blur: blur(10px);
     }
 
-    /* Ensure the header sits above page content (but below full-screen overlays like the mobile menu when opened) */
     #ivs-main-header {
         transition: all var(--ivs-hover-transition);
         /* default header background tuned for an elegant dark glass look */
@@ -303,9 +389,6 @@
         color: var(--ivs-text-primary);
         box-shadow: 0 2px 8px rgba(2,6,23,0.45);
         border-bottom: 1px solid rgba(255,255,255,0.02);
-        z-index: 1100; /* raised so header controls are not blocked by hero overlays */
-        pointer-events: auto; /* ensure header receives pointer events */
-        height: var(--desktop-header-height, 72px); /* Tăng chiều cao Header cố định */
     }
 
     #ivs-main-header.scrolled {
@@ -356,19 +439,7 @@
         transition: width 0.3s ease;
     }
     
-    /* Remove hover-triggered motion. Apply visual feedback on click ( :active ) or when
-        the element receives an explicit .active class (set via JS on click). */
-    .desktop-nav-link:active, .desktop-nav-dropdown-toggle:active,
-    .desktop-nav-link.active, .desktop-nav-dropdown-toggle.active {
-        color: var(--ivs-text-primary);
-        background-position: left bottom;
-        transform: translateY(-2px);
-    }
-
-    .desktop-nav-link:active::before, .desktop-nav-dropdown-toggle:active::before,
-    .desktop-nav-link.active::before, .desktop-nav-dropdown-toggle.active::before {
-        width: 80%;
-    }
+    /* Avoid hover-triggered visual motion; preserve active/click feedback below */
     
     .desktop-nav-link.active {
         color: var(--ivs-accent);
@@ -422,8 +493,10 @@
         transform: rotate(45deg);
     }
 
-    /* Dropdowns open only when JS toggles an .open class on the container or when the
-        toggle button has aria-expanded="true". This prevents hover-triggered opens. */
+    /* Open only on click/tap - JS toggles the .open class on the container
+       or sets aria-expanded="true" on the toggle. This prevents hover from
+       showing the menu on pointer hover while preserving keyboard/accessibility
+       patterns (aria-expanded). */
     .desktop-dropdown-container.open .desktop-dropdown,
     .desktop-dropdown-container.open .desktop-mega-menu,
     .desktop-dropdown-container .desktop-nav-dropdown-toggle[aria-expanded="true"] + .desktop-dropdown,
@@ -438,7 +511,7 @@
     }
 
     .desktop-dropdown { width: 240px; }
-    .desktop-mega-menu { width: 780px; } /* Increased width for 2 columns */
+    .desktop-mega-menu { width: 780px; } /* Increased width for 3 columns */
 
     .dropdown-item {
         display: flex;
@@ -461,15 +534,14 @@
         position: relative;
     }
 
-    /* Dropdown items get active styling only on :active or when .active is added via JS */
-    .dropdown-item:active, .dropdown-item.active {
+    .dropdown-item:hover {
         color: var(--ivs-text-primary);
         background-position: left bottom;
         padding-left: 20px;
     }
 
-    .dropdown-item:active i, .dropdown-item.active i {
-        transform: scale(1.1) rotate(3deg);
+    .dropdown-item:hover i {
+        transform: scale(1.2) rotate(5deg);
     }
 
     .dropdown-item::after {
@@ -517,14 +589,13 @@
         transition: left 0.5s ease;
     }
 
-    /* Lang buttons: visual feedback on :active or when .active-language is set */
-    .lang-toggle-btn:active, .lang-toggle-btn.active-language {
+    .lang-toggle-btn:hover {
         background-color: var(--ivs-bg-light);
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    .lang-toggle-btn:active::before, .lang-toggle-btn.active-language::before {
+    .lang-toggle-btn:hover::before {
         left: 100%;
     }
 
@@ -542,21 +613,18 @@
 
     .lang-toggle-btn img {
         filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-        transition: transform 0.2s ease;
+        transition: transform 0.3s ease;
     }
 
-    /* No hover scaling on flags; small scale on active/selected only */
-    .lang-toggle-btn:active img, .lang-toggle-btn.active-language img {
-        transform: scale(1.06);
+    .lang-toggle-btn:hover img {
+        transform: scale(1.1);
     }
 
     /* Mobile menu styles */
     /* Updated to use 'hidden' class with JS toggle */
     /* Mobile Menu Panel Styling */
-    /* Mobile menu panel should overlay the header when open */
     #ivs-mobile-menu-panel {
         transition: visibility 0.3s;
-        z-index: 1200; /* above #ivs-main-header so the menu/backdrop covers the header when active */
     }
     
     #ivs-mobile-menu-panel.hidden {
@@ -722,7 +790,7 @@
 .mobile-nav-link i, .mobile-submenu-item i {
     font-size: 1.08em;
     margin-right: 0.5em;
-    color: linear-gradient(90deg,#fdba74,#38bdf8);
+    color: #fdba74;
 }
     .mobile-nav-link:focus-visible, .mobile-submenu-toggle:focus-visible, .mobile-submenu-item:focus-visible {
     outline: 2px solid var(--ivs-accent);
@@ -746,7 +814,7 @@
     justify-content: space-between;
     font-weight: 600;
     font-size: 1.04rem;
-    padding: 0.7rem 1.1rem;
+    padding: 0.8rem 1rem;
     margin-bottom: 0.5rem;
 }
 .mobile-submenu-icon {
@@ -875,8 +943,6 @@
         box-shadow: 0 1px 4px 0 rgba(249,115,22,0.04);
         position: relative;
         overflow: hidden;
-        display: flex;
-        align-items: center;
     }
     .mobile-nav-link i, .mobile-submenu-item i {
         font-size: 1.08em;
@@ -898,8 +964,6 @@
     .mobile-nav-link:active, .mobile-submenu-item:active {
         background: rgba(249,115,22,0.22);
         color: #fff;
-        transform: translateX(0) scale(0.98);
-        transition: background 0.1s, transform 0.1s;
     }
     .mobile-submenu-toggle {
         justify-content: space-between;
@@ -987,3 +1051,6 @@
         width: 28px; height: 28px;
     }
 </style>
+
+
+

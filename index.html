@@ -76,7 +76,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 130%;
+            min-width: 10%;
             min-height: 100%;
             width: auto;
             height: auto;
@@ -166,10 +166,10 @@
 <main>
 <!-- SECTION 1: HERO - IVS ACADEMY - CHINH PHỤC TƯƠNG LAI -->
 <section class="hero-section">
-<video autoplay="" class="hero-video" id="heroVideo" loop="" muted="" playsinline="">
-    <source src="/videos/ivs-coding.mp4" type="video/mp4"/>
+<video autoplay="" class="absolute inset-0 w-full h-full object-cover" id="heroVideo" loop="" muted="" playsinline="">
+    <source src="/videos/videowebdesign.mp4" type="video/mp4"/>
     <!-- local placeholder webm not available; mp4 will be used as fallback in dev -->
-    <img alt="Hình nền giới thiệu IVS Academy" class="hero-fallback-image" decoding="async" src="/images/ivsacademy.jpg"/>
+    <img alt="Hình nền giới thiệu IVS Academy" class="absolute inset-0 w-full h-full object-cover" decoding="async" src="/images/ivsacademy.jpg"/>
 </video>
 <div class="hero-overlay"></div>
 <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -301,8 +301,9 @@
 </div>
 </div>
 </section>
-<!-- SECTION 4: TUYÊN BỐ SỨC MẠNH CỐT LÕI (CORE STRENGTH DECLARATION) -->
-<section class="py-20 lg:py-32 bg-ivs-bg border-y border-ivs-border" id="core-strength" style="background-image: url(''); background-size: cover; background-position: center; background-attachment: fixed;"></section>
+
+<!-- SECTION 5: TUYÊN BỐ SỨC MẠNH CỐT LÕI (CORE STRENGTH DECLARATION) -->
+<section class="py-20 lg:py-32 bg-ivs-bg border-y border-ivs-border" id="core-strength" style="background-image: url(''); background-size: cover; background-position: center; background-attachment: fixed;">
 <div class="container mx-auto px-6 lg:px-8 text-center max-w-5xl">
 <p class="text-ivs-cyan font-semibold tracking-wider text-xl mb-3" data-aos="fade-up" data-lang-key="strength_eyebrow">KHẢ NĂNG CỐT LÕI CỦA IVS CELESTECH</p>
 <h2 class="text-4xl lg:text-6xl font-extrabold font-display text-white mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100" data-lang-key="strength_title">
@@ -318,6 +319,21 @@
 </a>
 </div>
 </div>
+</section>
+<!-- SECTION 4: FULL-SCREEN VIDEO SECTION -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black" id="full-screen-video">
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover" id="fullScreenVideo">
+        <source src="/videos/ivs-coding.mp4" type="video/mp4"/>
+        <!-- Fallback image if video fails -->
+        <img alt="Video nền IVS" class="absolute inset-0 w-full h-full object-cover" src="/images/ivsacademy.jpg"/>
+    </video>
+    <!-- Optional overlay for better text readability -->
+    <div class="absolute inset-0 bg-black/30"></div>
+    <!-- Optional content overlay -->
+    <div class="relative z-10 text-center text-white px-4">
+        <h2 class="text-4xl md:text-6xl font-bold font-display mb-4" data-aos="fade-up" data-lang-key="video_section_title">Khám phá Sức mạnh IVS</h2>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-lang-key="video_section_subtitle">Xem video giới thiệu về các giải pháp công nghệ và giáo dục của chúng tôi.</p>
+    </div>
 </section>
 <!-- SECTION 5: DIGITAL ECOSYSTEM PORTAL (IVS APPS & GAMES) -->
 <section class="py-16 md:py-24 bg-ivs-card text-ivs-text-primary font-inter border-b border-ivs-border" id="ecosystem">

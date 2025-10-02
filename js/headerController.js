@@ -166,10 +166,19 @@ const IVSHeaderController = {
     
     // Hàm khởi tạo chính
     init() {
-        if (this._ivs_initialized) return;
-        this._ivs_initialized = true;
+        // If already initialized and header exists, nothing to do
+        if (this._ivs_initialized && document.getElementById('ivs-main-header')) return;
 
+        // Attempt to cache DOM; if header not present yet, do not mark initialized
         this.cacheDOM();
+
+        if (!this.header) {
+            // Header not in DOM yet. Log and exit; a later observer or loader should call init again.
+            window.componentLog && window.componentLog("IVSHeaderController: Header not found during init. Will retry when header is available.", "warn");
+            return;
+        }
+
+        // Bind events and finalize initialization
         this.bindEvents();
         this.updateActiveLinks();
         this.onScroll(); 
@@ -178,8 +187,9 @@ const IVSHeaderController = {
         if (typeof window.registerLanguageUpdateCallback === 'function') {
             window.registerLanguageUpdateCallback(this.updateLanguageButtonStates.bind(this));
         }
-        
-        window.componentLog("IVSHeaderController: Khởi tạo hoàn tất.", "info");
+
+        this._ivs_initialized = true;
+        window.componentLog && window.componentLog("IVSHeaderController: Khởi tạo hoàn tất.", "info");
     },
     
     // Hàm này được gọi bởi Language System khi ngôn ngữ thay đổi
