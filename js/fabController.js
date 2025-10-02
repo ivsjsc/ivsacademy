@@ -22,10 +22,12 @@ if (typeof window.componentLog !== 'function') {
     };
     window.__componentLogFallback = true;
 }
-if (typeof window.debounce !== 'function') {
-    window.debounce = (fn) => fn;
-}
-
+            // Allow initialization when either the main fab container or the assistant container
+            // is present. Some pages include only the assistant component (fab-assistant).
+            if (!this.fabContainer && !this.assistantContainer) {
+                window.componentLog("IVSFabController: Kh\u00f4ng t\u00ecm th\u1ea5y ph\u1ea7n t\u1eed FAB container (#fab-container) ho\u1eb7c assistant container (#fab-assistant-container). Logic FAB s\u1ebd kh\u00f4ng ch\u1ea1y.", "warn");
+                return;
+            }
 /**
  * Lấy chuỗi dịch từ langSystem nếu khả dụng, nếu không trả về fallback.
  * @param {string} key
@@ -111,8 +113,12 @@ const IVSFabController = {
      * Thêm hiệu ứng ripple cho các nút FAB.
      */
     addRippleEffect() {
-        const fabButtons = this.fabContainer?.querySelectorAll('.fab-item') || [];
-        fabButtons.forEach(button => {
+        // Attach ripple effect to any .fab-item inside either the canonical fab container
+        // or the assistant container so assistant buttons get the same UI affordance.
+        const buttons = [];
+        if (this.fabContainer) buttons.push(...Array.from(this.fabContainer.querySelectorAll('.fab-item')));
+        if (this.assistantContainer) buttons.push(...Array.from(this.assistantContainer.querySelectorAll('.fab-item')));
+        buttons.forEach(button => {
             button.addEventListener('click', (e) => {
                 this.createRipple(e, button);
             });
@@ -243,8 +249,9 @@ const IVSFabController = {
         // Create a single button that triggers the assistant. For now it opens a new window/tab
         // or toggles a panel if a chatbot controller is present.
         const assistantLabel = getTranslationValue('fab_assistant_button_label', 'Mở IVS Assistant AI');
-        const btn = document.createElement('button');
-        btn.className = 'fab-submenu-item group w-full';
+    const btn = document.createElement('button');
+    // include 'fab-item' so global FAB wiring (ripple, aria handling) applies
+    btn.className = 'fab-item fab-submenu-item group w-full';
         btn.setAttribute('role', 'menuitem');
         btn.id = 'assistant-open-btn';
         btn.setAttribute('aria-label', assistantLabel);
@@ -429,9 +436,11 @@ const IVSFabController = {
             window.componentLog("IVSFabController: Đã gắn sự kiện click/focus cho các nút có submenu.");
         }
 
-        // Đóng submenu khi click ra ngoài FAB container
+        // Đóng submenu khi click ra ngoài FAB hoặc Assistant container
         document.addEventListener('click', (e) => {
-            if (this.fabContainer && !this.fabContainer.contains(e.target)) {
+            const insideFab = this.fabContainer && this.fabContainer.contains(e.target);
+            const insideAssistant = this.assistantContainer && this.assistantContainer.contains(e.target);
+            if (!insideFab && !insideAssistant) {
                 if (this.buttonsWithSubmenu && this.buttonsWithSubmenu.forEach) {
                     this.buttonsWithSubmenu.forEach(btn => this.closeSubmenu(btn));
                 }
