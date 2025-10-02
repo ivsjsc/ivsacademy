@@ -1,246 +1,193 @@
 /**
- * @fileoverview This script manages all Header and Mobile Menu interactions.
- * It is designed to be loaded dynamically via loadComponents.js.
- * @version 1.5 - Re-enabled language toggle on header, refined mobile menu logic.
- * @author IVS-Technical-Team
+ * @fileoverview IVSHeaderController: Xử lý toàn bộ logic tương tác của Header.
+ * Được gọi bởi loadComponents.js sau khi component header.html được inject.
+ * Giả định window.componentLog, window.debounce, window.changeLanguage có sẵn.
+ * @version 2.0 - Tách ra từ componentLoader.js, bổ sung logic Dark Mode/Submenu/Dropdown.
  */
 
 'use strict';
 
-// GLOBAL UTILITIES (Now assumed to be provided by loadComponents.js)
-// No longer duplicated here. 'window.componentLog' and 'window.debounce' are expected to be available.
-
-/**
- * All logic related to the Header and Mobile Menu.
- * Handles responsive menu, submenus, and scroll effects.
- */
 const IVSHeaderController = {
-    init() {
-        window.componentLog("IVSHeaderController: Bắt đầu khởi tạo.", "info");
-        this.cacheDOM();
-        if (!this.header) {
-            window.componentLog("IVSHeaderController: Không tìm thấy phần tử Header. Logic UI sẽ không chạy.", "error");
-            return;
-        }
-        this.bindEvents();
-        this.updateActiveLinks();
-        this.onScroll();
-        // Initial setup for mobile menu panel state
-        if (this.mobilePanel) {
-            // Ensure it starts hidden and off-screen
-            this.mobilePanel.classList.add('hidden', 'opacity-0');
-            this.mobileMenuContainer.classList.add('translate-x-full');
-        }
-        window.componentLog("IVSHeaderController: Khởi tạo hoàn tất.", "info");
-    },
-
+    _ivs_initialized: false, 
+    
+    // Khởi tạo các phần tử DOM
     cacheDOM() {
         this.header = document.getElementById('ivs-main-header');
         this.mobilePanel = document.getElementById('ivs-mobile-menu-panel');
         this.mobileOpenBtn = document.getElementById('mobile-menu-open-btn');
         this.mobileCloseBtn = document.getElementById('mobile-menu-close-btn');
         this.mobileBackdrop = document.getElementById('ivs-mobile-menu-backdrop');
-        this.mobileMenuContainer = document.getElementById('ivs-mobile-menu-container'); // Added for slide effect
-        this.bottomNavMenuBtn = document.getElementById('bottom-nav-menu-btn');
-        // Language buttons on desktop header
-        this.langToggleButtons = document.querySelectorAll('.lang-toggle-btn'); 
-        // Language confirmation message element
-        this.langConfirmMessage = document.getElementById('lang-confirm-message'); 
+        this.mobileMenuContainer = document.getElementById('ivs-mobile-menu-container');
+        this.langToggleButtons = document.querySelectorAll('.lang-toggle-btn');
+        this.desktopDropdownToggles = document.querySelectorAll('.desktop-nav-dropdown-toggle');
         this.submenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
         this.navLinks = document.querySelectorAll('a.desktop-nav-link, .dropdown-item, #ivs-mobile-main-nav a, a.bottom-nav-item');
-
-        window.componentLog(`IVSHeaderController: Header: ${!!this.header}, Mobile Panel: ${!!this.mobilePanel}, Open Btn: ${!!this.mobileOpenBtn}, Close Btn: ${!!this.mobileCloseBtn}, Backdrop: ${!!this.mobileBackdrop}, Mobile Menu Container: ${!!this.mobileMenuContainer}`, 'info');
-        window.componentLog(`IVSHeaderController: Bottom Nav Menu Btn: ${!!this.bottomNavMenuBtn}`, 'info');
-        window.componentLog(`IVSHeaderController: Language Toggle Buttons count: ${this.langToggleButtons.length}`, 'info');
-        window.componentLog(`IVSHeaderController: Language Confirm Message: ${!!this.langConfirmMessage}`, 'info');
-        window.componentLog(`IVSHeaderController: Submenu Toggles count: ${this.submenuToggles.length}`, 'info');
     },
 
-    bindEvents() {
-        window.componentLog("IVSHeaderController: Bắt đầu gắn kết sự kiện.", "info");
-
-        window.addEventListener('scroll', window.debounce(() => this.onScroll(), 50), { passive: true });
-        window.componentLog("IVSHeaderController: Đã gắn sự kiện Scroll.");
-
-        // Mobile Menu Toggles
-        if (this.mobileOpenBtn) {
-            this.mobileOpenBtn.addEventListener('click', () => this.toggleMobileMenu(true));
-            window.componentLog("IVSHeaderController: Đã gắn sự kiện click cho mobile-menu-open-btn.");
-        }
-        if (this.mobileCloseBtn) {
-            this.mobileCloseBtn.addEventListener('click', () => this.toggleMobileMenu(false));
-            window.componentLog("IVSHeaderController: Đã gắn sự kiện click cho mobile-menu-close-btn.");
-        }
-        if (this.mobileBackdrop) {
-            this.mobileBackdrop.addEventListener('click', () => this.toggleMobileMenu(false));
-            window.componentLog("IVSHeaderController: Đã gắn sự kiện click cho mobile-menu-backdrop.");
-        }
-        if (this.bottomNavMenuBtn) {
-            this.bottomNavMenuBtn.addEventListener('click', () => this.toggleMobileMenu(true));
-            window.componentLog("IVSHeaderController: Đã gắn sự kiện click cho bottom-nav-menu-btn.");
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !this.mobilePanel.classList.contains('hidden')) { // Check if not hidden
-                this.toggleMobileMenu(false);
-            }
-        });
-        window.componentLog("IVSHeaderController: Đã gắn sự kiện Keydown (Escape).");
-
-        this.submenuToggles.forEach((toggle, index) => {
-            toggle.addEventListener('click', () => this.toggleSubmenu(toggle));
-            window.componentLog(`IVSHeaderController: Đã gắn sự kiện click cho Submenu Toggle ${index}.`);
-        });
-
-        // Re-adding Event listeners for language toggle buttons on desktop header
-        this.langToggleButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const lang = button.dataset.lang;
-                if (lang) {
-                    this.setLanguage(lang);
-                }
-            });
-            window.componentLog(`IVSHeaderController: Đã gắn sự kiện click cho nút ngôn ngữ data-lang="${button.dataset.lang}".`);
-        });
-
-        window.componentLog("IVSHeaderController: Gắn kết sự kiện hoàn tất.", "info");
-    },
-
-    setLanguage(lang) {
-        window.componentLog(`IVSHeaderController: Attempting to switch language to ${lang}`, "info");
-        
-        // Call the global language change function
-        if (typeof window.changeLanguage === 'function') {
-            window.changeLanguage(lang)
-                .then(() => {
-                    // Update active state of language toggle buttons
-                    this.langToggleButtons.forEach(btn => {
-                        btn.classList.toggle('active', btn.dataset.lang === lang);
-                    });
-                    
-                    // Show confirmation message if it exists
-                    if (this.langConfirmMessage) {
-                        this.langConfirmMessage.textContent = lang === 'vi' ? 'Đã chuyển sang Tiếng Việt' : 'Switched to English';
-                        this.langConfirmMessage.classList.remove('hidden');
-                        setTimeout(() => {
-                            this.langConfirmMessage.classList.add('hidden');
-                        }, 2000);
-                    }
-                })
-                .catch(error => {
-                    window.componentLog(`IVSHeaderController: Error switching language: ${error}`, "error");
-                });
-        } else {
-            window.componentLog("IVSHeaderController: window.changeLanguage function not found", "error");
-        }
-    },
-
-    // New function to update active state of language buttons
-    updateLanguageButtonStates(currentLang) {
-        this.langToggleButtons.forEach(button => {
-            if (button.dataset.lang === currentLang) {
-                button.classList.add('active-language');
-            } else {
-                button.classList.remove('active-language');
-            }
-        });
-    },
-
-    showLangConfirmation() {
-        if (this.langConfirmMessage) {
-            const currentLang = window.langSystem?.currentLanguage || 'en';
-            if (currentLang === 'vi') {
-                this.langConfirmMessage.textContent = 'Ngôn ngữ đã đổi!';
-            } else {
-                this.langConfirmMessage.textContent = 'Language changed!';
-            }
-
-            // Apply Tailwind transition classes for smooth animation
-            this.langConfirmMessage.classList.remove('opacity-0', 'scale-90', 'pointer-events-none', 'hidden');
-            this.langConfirmMessage.classList.add('opacity-100', 'scale-100');
-
-            setTimeout(() => {
-                this.langConfirmMessage.classList.remove('opacity-100', 'scale-100');
-                this.langConfirmMessage.classList.add('opacity-0', 'scale-90');
-                // Hide completely after transition for accessibility/clickability
-                this.langConfirmMessage.addEventListener('transitionend', () => {
-                    if (this.langConfirmMessage.classList.contains('opacity-0')) {
-                        this.langConfirmMessage.classList.add('hidden', 'pointer-events-none');
-                    }
-                }, { once: true });
-            }, 1500); // Hide after 1.5 seconds
-        }
-    },
-
-    onScroll() {
-        if (this.header) {
-            this.header.classList.toggle('scrolled', window.scrollY > 10);
-        }
-    },
-
+    // Mở/Đóng Mobile Menu
     toggleMobileMenu(show) {
-        if (!this.mobilePanel || !this.mobileMenuContainer) {
-            window.componentLog("IVSHeaderController: Missing mobile menu elements", "error");
-            return;
-        }
-
+        if (!this.mobilePanel || !this.mobileMenuContainer) return;
+        
         if (show) {
-            // Show menu
-            this.mobilePanel.classList.remove('hidden');
-            // Use setTimeout to trigger animation after display
-            setTimeout(() => {
-                this.mobilePanel.classList.remove('opacity-0');
-                this.mobileMenuContainer.classList.remove('translate-x-full');
-            }, 10);
+            this.mobilePanel.classList.remove('hidden', 'opacity-0');
+            document.body.classList.add('menu-open'); 
+            
+            requestAnimationFrame(() => {
+                this.mobileMenuContainer.classList.remove('-translate-x-full');
+            });
+
+            // Reset Submenus on open
+            this.submenuToggles.forEach(toggle => {
+                toggle.setAttribute('aria-expanded', 'false');
+                const content = toggle.nextElementSibling;
+                if (content) { content.style.maxHeight = '0px'; content.style.opacity = '0'; content.classList.remove('submenu-open'); }
+                const icon = toggle.querySelector('i.fa-chevron-down');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            });
         } else {
-            // Hide menu
             this.mobilePanel.classList.add('opacity-0');
-            this.mobileMenuContainer.classList.add('translate-x-full');
-            // Wait for animation to complete before hiding
+            this.mobileMenuContainer.classList.add('-translate-x-full');
+            
             setTimeout(() => {
                 this.mobilePanel.classList.add('hidden');
-            }, 300); // Match this with your CSS transition duration
+                document.body.classList.remove('menu-open');
+            }, 400);
         }
     },
 
+    // Mở/Đóng Mobile Submenu
     toggleSubmenu(toggle) {
         const content = toggle.nextElementSibling;
         const icon = toggle.querySelector('i.fa-chevron-down');
-        if (!content) {
-            window.componentLog("IVSHeaderController: Nội dung submenu không tìm thấy.", 'warn');
-            return;
-        }
+        if (!content) return;
 
-        const isExpanded = content.style.maxHeight && content.style.maxHeight !== '0px';
-
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !isExpanded);
+        
         if (icon) {
             icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
         }
-
-        toggle.setAttribute('aria-expanded', !isExpanded);
-
-        // Smooth transition for max-height
-        content.style.maxHeight = isExpanded ? '0px' : `${content.scrollHeight}px`;
-        window.componentLog(`IVSHeaderController: Submenu ${isExpanded ? 'đóng' : 'mở'} cho ${toggle.textContent.trim()}.`);
+        
+        if (isExpanded) {
+            // Đóng submenu
+            content.style.maxHeight = '0px';
+            content.style.opacity = '0';
+        } else {
+            // Mở submenu
+            content.classList.add('submenu-open');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.opacity = '1';
+        }
     },
-
+    
+    // Cập nhật trạng thái link Active
     updateActiveLinks() {
         const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
-
         this.navLinks.forEach(link => {
             const linkPath = (link.getAttribute('href') || "").replace(/\/$/, "") || "/";
-
             link.classList.remove('active');
-
             if (linkPath === currentPath) {
                 link.classList.add('active');
             } else if (linkPath !== "/" && currentPath.startsWith(linkPath)) {
                 link.classList.add('active');
             }
         });
-        window.componentLog("IVSHeaderController: Đã cập nhật các liên kết đang hoạt động.");
+    },
+
+    // Xử lý hiệu ứng Scroll trên Header
+    onScroll() {
+        if (this.header) {
+            this.header.classList.toggle('scrolled', window.scrollY > 10);
+        }
+    },
+    
+    // Khởi tạo các sự kiện
+    bindEvents() {
+        if (typeof window.debounce !== 'function') window.debounce = (f, d) => f; // Fallback
+        
+        window.addEventListener('scroll', window.debounce(() => this.onScroll(), 50), { passive: true });
+        
+        // Mobile Menu
+        if (this.mobileOpenBtn) this.mobileOpenBtn.addEventListener('click', (e) => { e.preventDefault(); this.toggleMobileMenu(true); });
+        if (this.mobileCloseBtn) this.mobileCloseBtn.addEventListener('click', (e) => { e.preventDefault(); this.toggleMobileMenu(false); });
+        if (this.mobileBackdrop) this.mobileBackdrop.addEventListener('click', (e) => { e.preventDefault(); this.toggleMobileMenu(false); });
+
+        // Mobile Submenu
+        this.submenuToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => { e.preventDefault(); this.toggleSubmenu(toggle); });
+        });
+        
+        // Desktop Dropdown
+        this.desktopDropdownToggles.forEach(toggle => {
+            const container = toggle.closest('.desktop-dropdown-container');
+            if (container) {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isOpen = container.classList.contains('open');
+
+                    document.querySelectorAll('.desktop-dropdown-container.open').forEach(c => {
+                        if (c !== container) {
+                            c.classList.remove('open');
+                            const btn = c.querySelector('.desktop-nav-dropdown-toggle');
+                            if (btn) btn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    container.classList.toggle('open', !isOpen);
+                    toggle.setAttribute('aria-expanded', !isOpen);
+                });
+            }
+        });
+
+        // Close Desktop Dropdown on outside click
+        document.addEventListener('click', (e) => {
+            this.desktopDropdownToggles.forEach(toggle => {
+                const container = toggle.closest('.desktop-dropdown-container');
+                if (container && container.classList.contains('open') && !container.contains(e.target)) {
+                    container.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+        
+        // Language Toggle (Giả định window.changeLanguage từ language.js)
+        this.langToggleButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = button.dataset.lang;
+                if (lang && typeof window.changeLanguage === 'function') {
+                    window.changeLanguage(lang).catch(err => window.componentLog(`Language switch error: ${err.message}`, 'error'));
+                }
+            });
+        });
+
+    },
+    
+    // Hàm khởi tạo chính
+    init() {
+        if (this._ivs_initialized) return;
+        this._ivs_initialized = true;
+
+        this.cacheDOM();
+        this.bindEvents();
+        this.updateActiveLinks();
+        this.onScroll(); 
+
+        // Đăng ký hàm cập nhật trạng thái nút ngôn ngữ vào Language System (giả định tồn tại)
+        if (typeof window.registerLanguageUpdateCallback === 'function') {
+            window.registerLanguageUpdateCallback(this.updateLanguageButtonStates.bind(this));
+        }
+        
+        window.componentLog("IVSHeaderController: Khởi tạo hoàn tất.", "info");
+    },
+    
+    // Hàm này được gọi bởi Language System khi ngôn ngữ thay đổi
+    updateLanguageButtonStates(currentLang) {
+        if (!this.langToggleButtons) return;
+        this.langToggleButtons.forEach(button => {
+            button.classList.toggle('active-language', button.dataset.lang === currentLang);
+        });
     }
 };
-
-// Expose IVSHeaderController globally for loadComponents.js
 window.IVSHeaderController = IVSHeaderController;
