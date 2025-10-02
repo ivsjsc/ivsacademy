@@ -24,12 +24,7 @@ async function fetchWithRetry(resource, options = {}) {
     const attempts = options.attempts || 3;
     const timeout = options.timeout || 5000;
     
-    try {
-        if (typeof resource === 'string' && resource.startsWith('/components/')) {
-            // Tạm thời sửa đường dẫn tuyệt đối sang tương đối nếu cần
-            resource = resource.replace(/^\/components\//, 'components/');
-        }
-    } catch (e) {}
+    // keep root-relative component paths (do not rewrite /components/ to relative)
 
     for (let attempt = 1; attempt <= attempts; attempt++) {
         try {
@@ -50,7 +45,13 @@ async function fetchWithRetry(resource, options = {}) {
 }
 
 async function loadAndInject(url, placeholderId) {
-    const normalize = (u) => (typeof u === 'string' ? u.replace(/^\/components\//, 'components/') : u);
+    const normalize = (u) => {
+        if (typeof u !== 'string') return u;
+        // Ensure components are fetched from the site root so pages in subfolders work.
+        if (u.startsWith('/components/')) return u; // already root-relative
+        if (u.startsWith('components/')) return '/' + u; // make root-relative
+        return u;
+    };
     const normalizedUrl = normalize(url);
     const placeholder = document.getElementById(placeholderId);
     if (!placeholder) {
