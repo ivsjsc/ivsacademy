@@ -1,5 +1,5 @@
 <!-- FILE: /components/header.html -->
-<!-- VERSION: 2.14 - Cập nhật đường dẫn sang Root-Relative (/) và tích hợp toàn bộ cấu trúc/CSS mới. -->
+<!-- VERSION: 2.15 - Tối ưu hóa đường dẫn và CSS, bổ sung logic JS cho Mobile Submenu/Desktop Dropdown -->
 <!-- DESCRIPTION: Optimized HTML structure for the main header with updated navigation menus and language selection. -->
 
 <!-- Load centralized CSS variables (Đã sửa thành Root-Relative Path) -->
@@ -10,7 +10,7 @@
 
 <header id="ivs-main-header" class="fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
     <div class="max-w-6xl mx-auto px-4 h-full">
-        <div class="flex items-center justify-between h-full">
+        <div class="flex items-center justify-between h-full" style="height: var(--desktop-header-height, 72px);">
             <button id="mobile-menu-open-btn" aria-label="Mở menu di động" aria-haspopup="true" aria-expanded="false" aria-controls="ivs-mobile-menu-panel" class="md:hidden inline-flex items-center p-2 rounded-md text-neutral-300 hover:text-ivs-accent focus:outline-none focus:ring-2 focus:ring-ivs-accent focus:ring-offset-2 focus:ring-offset-ivs-bg transition-colors">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -27,10 +27,10 @@
                 
                 <!-- Dropdown "Về IVS" -->
                 <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-id="about-ivs">
                         <span data-lang-key="nav_about_ivs">Về IVS</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div class="desktop-dropdown p-2 space-y-1">
+                    <div id="dropdown-about-ivs" class="desktop-dropdown p-2 space-y-1">
                         <a href="/about.html" class="dropdown-item" data-lang-key="nav_about_us">Về chúng tôi</a>
                         <a href="/Pages/non-profit.html" class="dropdown-item" data-lang-key="nav_non_profit">Phi lợi nhuận</a>
                         <a href="/Pages/careervn.html" class="dropdown-item" data-lang-key="nav_career_opportunities">Cơ hội nghề nghiệp</a>
@@ -41,10 +41,10 @@
 
                 <!-- Dropdown "Dịch Vụ" -->
                 <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-id="services">
                         <span data-lang-key="nav_services">Dịch Vụ</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div class="desktop-mega-menu left-1/2 -translate-x-1/2 max-w-4xl">
+                    <div id="dropdown-services" class="desktop-mega-menu left-1/2 -translate-x-1/2 max-w-4xl">
                         <div class="grid grid-cols-2 gap-x-6 p-5"> <!-- Giảm số cột xuống 2 -->
                             <!-- Cột trái: Liên kết Giáo dục -->
                             <div class="space-y-2">
@@ -80,10 +80,10 @@
 
                 <!-- Dropdown "Giải pháp" - Updated to two columns -->
                 <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-id="solutions">
                         <span data-lang-key="nav_solutions">Giải pháp</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div class="desktop-mega-menu left-1/2 -translate-x-1/2"> <!-- Changed to desktop-mega-menu -->
+                    <div id="dropdown-solutions" class="desktop-mega-menu left-1/2 -translate-x-1/2"> <!-- Changed to desktop-mega-menu -->
                         <div class="grid grid-cols-2 gap-x-6 p-5">
                             <!-- Cột trái: Công nghệ ứng dụng -->
                             <div class="space-y-2">
@@ -111,10 +111,10 @@
                 </div>
 
                 <div class="desktop-dropdown-container">
-                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="desktop-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-dropdown-id="library">
                         <span data-lang-key="nav_library">Thư Viện</span><i class="fas fa-chevron-down text-xs ml-2"></i>
                     </button>
-                    <div class="desktop-dropdown left-1/2 -translate-x-1/2 p-2 space-y-1">
+                    <div id="dropdown-library" class="desktop-dropdown left-1/2 -translate-x-1/2 p-2 space-y-1">
                         <a href="/gallery.html" class="dropdown-item" data-lang-key="nav_library_gallery">Thư viện</a>
                         <a href="/Pages/document-library.html" class="dropdown-item" data-lang-key="nav_library_docs">Tài liệu</a>
                         <a href="/learning-materials.html" class="dropdown-item">Tài Liệu Học Tập</a>
@@ -148,9 +148,10 @@
                   Language changed!
                 </div>
 
-                <!-- Dark Mode Toggle Button (Used only if JS is not available/fallback) -->
-                <!-- The actual Dark Mode logic and button is handled by JS/Mobile menu panel, but keeping the utility in the header is common -->
-                <!-- <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150">...</button> -->
+                <!-- Dark Mode Toggle Button (Bổ sung nút Dark Mode cho Desktop) -->
+                <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 rounded-full text-white hover:text-ivs-accent transition duration-150 hidden md:block ml-2">
+                    <i id="theme-icon" class="fas fa-sun w-5 h-5"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -233,6 +234,12 @@
                 <a href="/contact.html" class="mobile-nav-link" data-lang-key="nav_contact"><i class="fas fa-envelope fa-sm mr-2 text-ivs-accent"></i>Liên Hệ</a>
             </div>
             <div class="mobile-menu-group card-menu-group mobile-menu-lang-group">
+                <!-- Dark Mode Toggle for Mobile -->
+                <button id="mobile-theme-toggle" class="mobile-nav-link w-full flex justify-between items-center" aria-label="Toggle dark mode">
+                    <span><i class="fas fa-lightbulb fa-sm mr-2 text-ivs-accent"></i>Chế độ Ban đêm</span>
+                    <i id="mobile-theme-icon" class="fas fa-toggle-off fa-lg text-gray-500"></i>
+                </button>
+
                 <div class="flex justify-center gap-3 mt-2">
                     <button class="lang-toggle-btn rounded-full shadow-md border border-orange-300 bg-white/10 focus:ring-2 focus:ring-orange-400 w-10 h-10 flex items-center justify-center" data-lang="vi" aria-label="Chọn Tiếng Việt">
                         <img src="/images/flags/vn.png" alt="Cờ Việt Nam" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=VI';">
@@ -298,6 +305,7 @@
         border-bottom: 1px solid rgba(255,255,255,0.02);
         z-index: 1100; /* raised so header controls are not blocked by hero overlays */
         pointer-events: auto; /* ensure header receives pointer events */
+        height: var(--desktop-header-height, 72px); /* Tăng chiều cao Header cố định */
     }
 
     #ivs-main-header.scrolled {
