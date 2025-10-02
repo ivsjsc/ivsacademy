@@ -1,0 +1,118 @@
+﻿NAME: ivsapps
+  E:\IVS\Website\ivs.github.io\apps\ivsapps.html
+  E:\IVS\Website\ivs.github.io\Pages\apps\ivsapps.html
+
+NAME: letstalkdongnai
+  E:\IVS\Website\ivs.github.io\Blogs\letstalkdongnai.html
+  E:\IVS\Website\ivs.github.io\Pages\letstalkdongnai.html
+
+NAME: fab-assistant
+  E:\IVS\Website\ivs.github.io\components\fab-assistant.html
+  E:\IVS\Website\ivs.github.io\_pages\fab-assistant.md
+  E:\IVS\Website\ivs.github.io\fab-assistant.html
+
+NAME: fab-container
+  E:\IVS\Website\ivs.github.io\components\fab-container.html
+  E:\IVS\Website\ivs.github.io\_pages\fab-container.md
+  E:\IVS\Website\ivs.github.io\fab-container.html
+
+NAME: ivsgames
+  E:\IVS\Website\ivs.github.io\games\ivsgames.html
+  E:\IVS\Website\ivs.github.io\Pages\games\ivsgames.html
+
+NAME: consulting
+  E:\IVS\Website\ivs.github.io\Pages\consulting.html
+  E:\IVS\Website\ivs.github.io\_pages\consulting.md
+  E:\IVS\Website\ivs.github.io\consulting.html
+
+NAME: education
+  E:\IVS\Website\ivs.github.io\Pages\education.html
+  E:\IVS\Website\ivs.github.io\_pages\education.md
+  E:\IVS\Website\ivs.github.io\education.html
+
+NAME: ivs-academy
+  E:\IVS\Website\ivs.github.io\Pages\ivs-academy.html
+  E:\IVS\Website\ivs.github.io\_pages\ivs-academy.md
+  E:\IVS\Website\ivs.github.io\ivs-academy.html
+
+NAME: translations
+  E:\IVS\Website\ivs.github.io\scripts\translation\docs\TRANSLATIONS.md
+  E:\IVS\Website\ivs.github.io\TRANSLATIONS.md
+
+NAME: translation_guide_zh
+  E:\IVS\Website\ivs.github.io\scripts\translation\docs\TRANSLATION_GUIDE_ZH.md
+  E:\IVS\Website\ivs.github.io\TRANSLATION_GUIDE_ZH.md
+
+NAME: about
+  E:\IVS\Website\ivs.github.io\_pages\about.md
+  E:\IVS\Website\ivs.github.io\about.html
+
+NAME: admin
+  E:\IVS\Website\ivs.github.io\_pages\admin.md
+  E:\IVS\Website\ivs.github.io\admin.html
+
+NAME: analytics
+  E:\IVS\Website\ivs.github.io\_pages\analytics.md
+  E:\IVS\Website\ivs.github.io\analytics.html
+
+NAME: auth
+  E:\IVS\Website\ivs.github.io\_pages\auth.md
+  E:\IVS\Website\ivs.github.io\auth.html
+
+NAME: contact
+  E:\IVS\Website\ivs.github.io\_pages\contact.md
+  E:\IVS\Website\ivs.github.io\contact.html
+
+NAME: fab-demo
+  E:\IVS\Website\ivs.github.io\_pages\fab-demo.md
+  E:\IVS\Website\ivs.github.io\fab-demo.html
+
+NAME: gallery
+  E:\IVS\Website\ivs.github.io\_pages\gallery.md
+  E:\IVS\Website\ivs.github.io\gallery.html
+
+NAME: index
+  E:\IVS\Website\ivs.github.io\_pages\index.md
+  E:\IVS\Website\ivs.github.io\index.html
+
+NAME: ivs-academy-2
+  E:\IVS\Website\ivs.github.io\_pages\ivs-academy-2.md
+  E:\IVS\Website\ivs.github.io\ivs-academy-2.html
+
+NAME: ivs-global-teacher-hub
+  E:\IVS\Website\ivs.github.io\_pages\ivs-global-teacher-hub.md
+  E:\IVS\Website\ivs.github.io\ivs-global-teacher-hub.html
+
+NAME: layout
+  E:\IVS\Website\ivs.github.io\_pages\layout.md
+  E:\IVS\Website\ivs.github.io\layout.html
+
+NAME: learning-materials
+  E:\IVS\Website\ivs.github.io\_pages\learning-materials.md
+  E:\IVS\Website\ivs.github.io\learning-materials.html
+
+NAME: news-archive
+  E:\IVS\Website\ivs.github.io\_pages\news-archive.md
+  E:\IVS\Website\ivs.github.io\news-archive.html
+
+NAME: profile-company-ivsjsc
+  E:\IVS\Website\ivs.github.io\_pages\profile-company-ivsjsc.md
+  E:\IVS\Website\ivs.github.io\profile-company-ivsjsc.html
+
+NAME: solutions
+  E:\IVS\Website\ivs.github.io\_pages\solutions.md
+  E:\IVS\Website\ivs.github.io\solutions.html
+
+NAME: test-loader
+  E:\IVS\Website\ivs.github.io\_pages\test-loader.md
+  E:\IVS\Website\ivs.github.io\test-loader.html
+
+NAME: test-suite
+  E:\IVS\Website\ivs.github.io\_pages\test-suite.md
+  E:\IVS\Website\ivs.github.io\test-suite.html
+
+NAME: thank-you
+  E:\IVS\Website\ivs.github.io\_pages\thank-you.md
+  E:\IVS\Website\ivs.github.io\thank-you.html
+
+

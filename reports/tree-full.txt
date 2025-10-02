@@ -1,0 +1,675 @@
+Folder PATH listing for volume New Volume
+Volume serial number is 569D-956C
+E:.
+|   .gitignore
+|   about.html
+|   admin.html
+|   analytics.html
+|   apple-touch-icon.png
+|   auth.html
+|   BACKUPS_README.md
+|   CNAME
+|   consulting.html
+|   contact.html
+|   CONTRIBUTING.md
+|   debug.html
+|   DEBUG_REPORT.md
+|   education.html
+|   education_backup.html
+|   fab-assistant.html
+|   fab-container.html
+|   fab-demo.html
+|   favicon-16x16.png
+|   favicon-32x32.png
+|   fix_component_loading.py
+|   fix_pages.py
+|   gallery.html
+|   hello.html
+|   index-simple.html
+|   index.html
+|   ivs-academy-2.html
+|   ivs-academy.html
+|   ivs-global-teacher-hub.html
+|   layout.html
+|   learning-materials.html
+|   manifest.json
+|   news-archive.html
+|   profile-company-ivsjsc.html
+|   safari-pinned-tab.svg
+|   simple-test.html
+|   sitemap.xml
+|   solutions.html
+|   test-dns-fix.bat
+|   test-index.html
+|   test-loader.html
+|   test-suite.html
+|   test_all_pages.py
+|   test_component_fixes.py
+|   test_server.py
+|   thank-you.html
+|   TRANSLATIONS.md
+|   TRANSLATION_GUIDE_ZH.md
+|   
++---.githooks
+|       pre-commit
+|       
++---.github
+|   |   copilot-instructions.md
+|   |   
+|   \---workflows
+|           static.yml
+|           translation-check.yml
+|           
++---.idx
+|       dev.nix
+|       
++---.vscode
+|       settings.json
+|       
++---apps
+|       cautruc.docx
+|       ivsapps.html
+|       ivscentercare.html
+|       ivskinderlink.html
+|       ivsquicktest.html
+|       LanguageCenterCRM.jsx
+|       story-repository.html
+|       teacherlistsavailable.html
+|       
++---audios
+|       IVSJSC.MP3
+|       IVSJSC_ENGLISH.mp3
+|       
++---Blogs
+|       aboutkimballallenthomson.html
+|       aboutthepowertoinsprie.html
+|       ai-thinking-guide.html
+|       blog-vneid-guide.html
+|       chinhsach2025ivs.html
+|       eov2025.html
+|       health-luvyoga.html
+|       health-yensao.html
+|       IntlMastersHCMC.html
+|       ivsjsc.html
+|       july2025ai.html
+|       letstalkdongnai.html
+|       talktask-ivsuniversitieshcmc.html
+|       
++---components
+|       ai-assistant.html
+|       fab-assistant.html
+|       fab-buttons-placeholder.html
+|       fab-buttons.html
+|       fab-container.html
+|       footer.html
+|       header.html
+|       
++---css
+|       animations.css
+|       fab-styles.css
+|       fab.css
+|       hero-styles.css
+|       responsive-enhancements.css
+|       style.css
+|       styles.css
+|       styles.min.css
+|       tailwind.css
+|       vars.css
+|       
++---data
+|   \---novels
+|       |   novelguide.txt
+|       |   
+|       +---legnaxe_part1
+|       |       chapter_01.json
+|       |       chapter_02.json
+|       |       chapter_03.json
+|       |       chapter_04.json
+|       |       chapter_05.json
+|       |       chapter_06.json
+|       |       chapter_07.json
+|       |       chapter_08.json
+|       |       chapter_09.json
+|       |       chapter_10.json
+|       |       chapter_11.json
+|       |       chapter_12.json
+|       |       chapter_13.json
+|       |       chapter_14.json
+|       |       chapter_15.json
+|       |       chapter_16.json
+|       |       chapter_17.json
+|       |       chapter_18.json
+|       |       chapter_19.json
+|       |       chapter_20.json
+|       |       chapter_21.json
+|       |       chapter_22.json
+|       |       chapter_23.json
+|       |       chapter_24.json
+|       |       chapter_25.json
+|       |       chapter_26.json
+|       |       chapter_27.json
+|       |       epilogue.json
+|       |       
+|       +---legnaxe_part2
+|       |       chapter_01.json
+|       |       chapter_02.json
+|       |       chapter_03.json
+|       |       chapter_04.json
+|       |       chapter_05.json
+|       |       chapter_06.json
+|       |       chapter_07.json
+|       |       chapter_08.json
+|       |       chapter_09.json
+|       |       chapter_10.json
+|       |       chapter_11.json
+|       |       chapter_12.json
+|       |       chapter_13.json
+|       |       chapter_14.json
+|       |       chapter_15.json
+|       |       chapter_16.json
+|       |       chapter_17.json
+|       |       chapter_18.json
+|       |       chapter_19.json
+|       |       chapter_20.json
+|       |       chapter_21.json
+|       |       chapter_22.json
+|       |       chapter_23.json
+|       |       chapter_24.json
+|       |       chapter_25.json
+|       |       chapter_26.json
+|       |       chapter_27.json
+|       |       chapter_28.json
+|       |       chapter_29.json
+|       |       chapter_30.json
+|       |       
+|       \---m?u
+|               chapter_01.json
+|               chapter_02.json
+|               chapter_03.json
+|               chapter_04.json
+|               chapter_05.json
+|               chapter_06.json
+|               chapter_07.json
+|               chapter_08.json
+|               chapter_09.json
+|               chapter_10.json
+|               chapter_11.json
+|               chapter_12.json
+|               chapter_13.json
+|               chapter_14.json
+|               chapter_15.json
+|               chapter_16.json
+|               chapter_17.json
+|               chapter_18.json
+|               chapter_19.json
+|               chapter_20.json
+|               chapter_21.json
+|               chapter_22.json
+|               chapter_23.json
+|               chapter_24.json
+|               chapter_25.json
+|               chapter_26.json
+|               chapter_27.json
+|               chapter_28.json
+|               chapter_29.json
+|               chapter_30.json
+|               
++---docs
+|   \---ops
+|           DEPLOYMENT-CHECKLIST.md
+|           DNS-FIX-CRITICAL.md
+|           EMERGENCY-DNS-RESTORE.md
+|           fix-ssl-certificate.md
+|           fix-ssl-guide.sh
+|           
++---games
+|       htmlivsgame_memorymatch.html
+|       ivsgames.html
+|       
++---images
+|   |   favicon.ico
+|   |   ivs-academy.jpg
+|   |   ivs-kindergarten.jpg
+|   |   ivsacademy.jpg
+|   |   ivsjscbackgroundletter.jpg
+|   |   logo.jpg
+|   |   logo.png
+|   |   mission&vison.jpg
+|   |   
+|   +---angels
+|   |       angel-gabriel1.jpg
+|   |       angel-gabriel2.jpg
+|   |       angel-lucifer1.jpg
+|   |       angel-michael1.jpg
+|   |       angel-michael2.jpg
+|   |       angel1.jpg
+|   |       angel2.jpg
+|   |       angel3.jpg
+|   |       angel4.jpg
+|   |       angel5.jpg
+|   |       angel6.jpg
+|   |       angel7.jpg
+|   |       legnaxeauthor.jpg
+|   |       legnaxeuniverse.jpg
+|   |       
+|   +---apps
+|   |       centercare.jpg
+|   |       Gemini_Generated_Image_6nu1tk6nu1tk6nu1.png
+|   |       Gemini_Generated_Image_gto4engto4engto4 (1).png
+|   |       Gemini_Generated_Image_gto4engto4engto4 (2).png
+|   |       Gemini_Generated_Image_gto4engto4engto4 (3).png
+|   |       Gemini_Generated_Image_gto4engto4engto4 (4).png
+|   |       ivskinderlink.jpg
+|   |       
+|   +---baitest
+|   |       english-placement-test01.jpg
+|   |       english-placement-test02.jpg
+|   |       english-placement-test03.jpg
+|   |       english-placement-test04.jpg
+|   |       english-placement-test05.jpg
+|   |       
+|   +---banners
+|   |       eov_section_bg.jpg
+|   |       
+|   +---flags
+|   |       en.png
+|   |       vn.png
+|   |       zh.png
+|   |       
+|   +---games
+|   |       ivsapps.jpg
+|   |       ivsgames.jpg
+|   |       ivslibrary.jpg
+|   |       ivsplaycard.jpg
+|   |       
+|   +---ivscelestech
+|   |       noithat-amgphuocthai.png
+|   |       noithat-ieltsstation.png
+|   |       
+|   +---logo
+|   |       career.jpg
+|   |       iivsa.jpg
+|   |       ivsblue.jpg
+|   |       logo-144.jpg
+|   |       logo-192.jpg
+|   |       logo.png
+|   |       logo1.png
+|   |       logoIVSMmedia.jpg
+|   |       logoIVSMmedia.png
+|   |       LogoTim.jpg
+|   |       LogoVang.jpg
+|   |       thepowertoinspire.jpg
+|   |       thepowertoinspire.png
+|   |       webbanner.jpg
+|   |       webbannermo.jpg
+|   |       webbannermo1.jpg
+|   |       
+|   +---pages
+|   |   |   aiphoto.jpg
+|   |   |   aiphoto.png
+|   |   |   daotao-gv.jpg
+|   |   |   daotao-nn-kn.jpg
+|   |   |   footer.jpg
+|   |   |   haynoi_banner.jpg
+|   |   |   haynoi_banner.png
+|   |   |   ivs-academy.jpg
+|   |   |   ivs-contact-banner.jpg
+|   |   |   ivsjscbackgroundletter.jpg
+|   |   |   ivs_solutions.jpg
+|   |   |   legal_consulting_intro.jpg
+|   |   |   litigation_consulting.jpg
+|   |   |   talktask.jpg
+|   |   |   teacher-placeholder-1.jpg
+|   |   |   teacher-placeholder-2.jpg
+|   |   |   teacher-placeholder-3.jpg
+|   |   |   tltt.png
+|   |   |   
+|   |   +---albums
+|   |   |       20242011thcspt.jpg
+|   |   |       2024thcslp.jpg
+|   |   |       2024thcspt.jpg
+|   |   |       2024thcsth.jpg
+|   |   |       2024thptlp.jpg
+|   |   |       2024thtp.jpg
+|   |   |       2024thtp1.jpg
+|   |   |       2024thtp2.jpg
+|   |   |       2024thtpht.jpg
+|   |   |       2025thcspt.jpg
+|   |   |       2025thptlp.jpg
+|   |   |       2025thptlt.jpg
+|   |   |       
+|   |   +---baitest
+|   |   |       english-placement-test01.png
+|   |   |       english-placement-test02.png
+|   |   |       english-placement-test03.png
+|   |   |       english-placement-test04.png
+|   |   |       english-placement-test05.png
+|   |   |       
+|   |   +---careers
+|   |   |   \---website
+|   |   |           web-doanhnghiep.jpg
+|   |   |           web-khudulich.jpg
+|   |   |           web-nhahang.jpg
+|   |   |           web-plus.jpg
+|   |   |           web-TMDT.jpg
+|   |   |           
+|   |   +---eov2025
+|   |   |       eov2025.jpg
+|   |   |       eov2025activities.jpg
+|   |   |       eov2025award.jpg
+|   |   |       eov2025round.jpg
+|   |   |       iu-english-academy.jpg
+|   |   |       iu-english-academy.png
+|   |   |       
+|   |   +---healths
+|   |   |       luvyoga1.jpg
+|   |   |       luvyoga2.jpg
+|   |   |       luvyoga3.jpg
+|   |   |       luvyoga4.jpg
+|   |   |       yensao1.jpg
+|   |   |       yensao2.jpg
+|   |   |       yensaocover.jpg
+|   |   |       
+|   |   +---ivscelestech
+|   |   |       noithat-amgphuocthai.jpg
+|   |   |       noithat-ieltsstation.jpg
+|   |   |       
+|   |   +---novels
+|   |   |       author-legnaxe.jpg
+|   |   |       legnaxe.jpg
+|   |   |       legnaxe1horizontal.jpg
+|   |   |       legnaxe1vertical.jpg
+|   |   |       legnaxe2horizontal.jpg
+|   |   |       legnaxe2vertical.jpg
+|   |   |       logo-legnaxe.jpg
+|   |   |       pic-legnaxe3.jpg
+|   |   |       pic-legnaxe4.jpg
+|   |   |       pic-legnaxe5.jpg
+|   |   |       pic-legnaxe6.jpg
+|   |   |       
+|   |   +---teachers
+|   |   |       englishteacher1.png
+|   |   |       englishteacher2.png
+|   |   |       englishteacher3.png
+|   |   |       englishteacher4.png
+|   |   |       englishteacher5.png
+|   |   |       englishteacher6.png
+|   |   |       englishteacher7.png
+|   |   |       englishteacher8.png
+|   |   |       
+|   |   +---team
+|   |   |   |   jannicar-nayve.png
+|   |   |   |   kimball-allen-thomson.png
+|   |   |   |   nguyen-minh-triet.png
+|   |   |   |   rachid-belferar.png
+|   |   |   |   salma-mahzoum.png
+|   |   |   |   
+|   |   |   \---teachers
+|   |   |           madison-schae-summers.jpg
+|   |   |           raphael.png
+|   |   |           sloan-pierre-samuel-venter.png
+|   |   |           williams-nanji.jpg
+|   |   |           
+|   |   \---webs
+|   |       |   webbds.jpg
+|   |       |   webblog.jpg
+|   |       |   webgd.jpg
+|   |       |   
+|   |       \---KhaDock.com
+|   |               khadock-contact.jpg
+|   |               khadock-design.jpg
+|   |               khadock-home.jpg
+|   |               khadock-projects.jpg
+|   |               khadock-services.jpg
+|   |               
+|   \---team
+|       |   default-avatar.png
+|       |   ivsteams.jpg
+|       |   jannicar-nayve.jpg
+|       |   kimball-allen-thomson.jpg
+|       |   kimball-allen-thomson.png
+|       |   nguyen-minh-triet.jpg
+|       |   nguyen-minh-triet.png
+|       |   partners&amp;clients.png
+|       |   partners&clients.jpg
+|       |   rachid-belferar.jpg
+|       |   rachid-belferar.png
+|       |   salma-mahzoum.jpg
+|       |   salma-mahzoum.png
+|       |   
+|       \---teachers
+|               madison-schae-summers.jpg
+|               raphael.jpg
+|               sloan-pierre-samuel-venter.jpg
+|               williams-nanji.jpg
+|               
++---js
+|       accessibility-enhancements.js
+|       advanced-learning-features.js
+|       ai-chatbot.js
+|       analytics-tracking.js
+|       animations.js
+|       app.js
+|       bundle-entry.js
+|       bundle.min.js
+|       chapter-loader.js
+|       chatbotController.js
+|       check-translations.js
+|       componentLoader.js
+|       comprehensive-testing.js
+|       contact-page.js
+|       content-management.js
+|       dark-mode-toggle.js
+|       fab-container.js
+|       fabController.js
+|       firebase-init.js
+|       grok-chat.js
+|       headerController.js
+|       interactive-learning.js
+|       language.js
+|       lazy-loading.js
+|       loadComponents.js
+|       posts-loader.js
+|       rss-loader.js
+|       script.js
+|       security-enhancements.js
+|       seo-enhancer.js
+|       tailwind.config.js
+|       typescript.js
+|       upload-image.js
+|       utils.js
+|       yourApp.js
+|       
++---lang
+|   |   en.json
+|   |   en.json.backup-2025-09-28T14-37-25-453Z
+|   |   README.md
+|   |   vi.json
+|   |   vi.json.backup-2025-09-28T14-37-25-453Z
+|   |   zh.json
+|   |   zh.json.backup-2025-09-28T14-37-25-453Z
+|   |   
+|   \---backups
+|           en.json.backup_20250928_032707
+|           vi.json.backup_20250928_032707
+|           zh.json.bak_auto_20250927_170959
+|           
++---Pages
+|   |   bang-gia-tham-khao-gvnn-ivs.html
+|   |   bosungchungchi.html
+|   |   careervn.html
+|   |   ceo-message.html
+|   |   consulting.html
+|   |   document-library.html
+|   |   edtech.html
+|   |   education.html
+|   |   english-placement.html
+|   |   foreign-teacher-services.html
+|   |   international-partnership.html
+|   |   ivs-academy.html
+|   |   ivscelestech-tcnoithat.html
+|   |   ivscelestech.html
+|   |   ivslanguages.html
+|   |   ivslifeminds.html
+|   |   ivsmedia.html
+|   |   legal_consulting.html
+|   |   letstalkdongnai.html
+|   |   litigation_consulting.html
+|   |   lkmamnon.html
+|   |   lkthcsthpt.html
+|   |   lktieuhoc.html
+|   |   lkttnn.html
+|   |   non-profit.html
+|   |   privacy.html
+|   |   psb_introduction.html
+|   |   rnd-curriculum.html
+|   |   siunna.html
+|   |   steambyivs.html
+|   |   tailieu.html
+|   |   teacher-lists-available.html
+|   |   teachertrain.html
+|   |   tech_devices.html
+|   |   terms.html
+|   |   thanhlaptrungtam.html
+|   |   upskill.html
+|   |   webdesign.html
+|   |   
+|   +---apps
+|   |       ivsapps.html
+|   |       
+|   +---careers
+|   |       Qwen_html_20250926_lbm82tfgs.html
+|   |       sale-website.html
+|   |       unnamed.png
+|   |       
+|   +---games
+|   |       ivsgames.html
+|   |       
+|   +---Novels
+|   |       author-about.html
+|   |       legnaxeintheuniver.html
+|   |       read-legnaxe_part1_en.html
+|   |       read-legnaxe_part1_vi.html
+|   |       read-legnaxe_part2s_en.html
+|   |       read-legnaxe_part2_en.html
+|   |       read-legnaxe_part2_vi.html
+|   |       
+|   \---videos
+|           ivs-academy-hero.mp4
+|           ivs-celestech.mp4
+|           ivs-video-background.mp4
+|           ivs_background_video1.mp4
+|           ivs_background_video1.webm
+|           videowebdesign.mp4
+|           
++---public
+|   \---images
+|       \---team
+|               ivsteams.jpg
+|               kimball-allen-thomson.png
+|               nguyen-minh-triet.png
+|               partners&amp;clients.png
+|               rachid-belferar.png
+|               salma-mahzoum.png
+|               
++---reports
+|       asset-check-latest.json
+|       diagnostics-20250928.md
+|       fab-placeholder-files.csv
+|       fab-placeholder-files.json
+|       fab-placeholder-files.txt
+|       link-check-20250927.txt
+|       pr-manual-edits-20250927.md
+|       tree-full.txt
+|       
++---scripts
+|   |   check_pages.py
+|   |   check_pages_resources.py
+|   |   check_zh_lang.py
+|   |   compare_langs.py
+|   |   create_placeholders_from_report.py
+|   |   fix_all_html.py
+|   |   fix_mailto_tel.py
+|   |   fix_pages_internal_links.py
+|   |   fix_pages_paths.py
+|   |   fix_root_html_paths.py
+|   |   gather_and_complete_langs.py
+|   |   link_check.py
+|   |   make_links_relative.py
+|   |   normalize_pages_image_paths.py
+|   |   patch_logo_references.py
+|   |   remove_tailwind_runtime.py
+|   |   ssl-check.ps1
+|   |   
+|   +---ops
+|   |       DNS-PROPAGATION-MONITOR.bat
+|   |       DNS-STATUS-CHECK.bat
+|   |       EMERGENCY-DNS-FIX.ps1
+|   |       optimize-images.ps1
+|   |       test-dns-fix.bat
+|   |       
+|   \---translation
+|       |   apply_zh_translation.js
+|       |   check_translations_status.js
+|       |   check_translation_quality.js
+|       |   check_zh_candidate_full.js
+|       |   commit_translations.ps1
+|       |   create_full_zh_candidate.js
+|       |   dev_static_server.js
+|       |   merge_translate_locales.py
+|       |   requirements.txt
+|       |   translate_zh_auto.js
+|       |   translate_zh_deep.py
+|       |   
+|       \---docs
+|               LANGUAGE_SYSTEM_GUIDE.md
+|               TRANSLATIONS.md
+|               TRANSLATION_GUIDE_ZH.md
+|               
++---templates
+|       base.html
+|       
++---videos
+|       ivs-video-background.mp4
+|       ivs-video-background.png
+|       ivsblue.mp4
+|       ivs_background_video1.mp4
+|       videowebdesign.mp4
+|       
++---_data
+|       site.json
+|       
++---_includes
+|       base.njk
+|       page.njk
+|       
++---_layouts
+|       base.njk
+|       page.njk
+|       
+\---_pages
+        about.md
+        admin.md
+        analytics.md
+        auth.md
+        consulting.md
+        contact.md
+        education.md
+        fab-assistant.md
+        fab-container.md
+        fab-demo.md
+        gallery.md
+        index.md
+        index3.md
+        ivs-academy-2.md
+        ivs-academy.md
+        ivs-global-teacher-hub.md
+        layout.md
+        learning-materials.md
+        news-archive.md
+        profile-company-ivsjsc.md
+        solutions.md
+        test-loader.md
+        test-suite.md
+        thank-you.md
+        
