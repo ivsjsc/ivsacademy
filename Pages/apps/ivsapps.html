@@ -1,1 +1,282 @@
-placeholder
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-lang-key="page_title_ivsapps">Website &amp; Ứng Dụng | IVS Celestech</title>
+<!-- Tải Tailwind CSS CDN -->
+<style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--tw-colors-ivs-dark);
+            color: var(--tw-colors-ivs-text-light);
+            line-height: 1.6;
+        }
+        .header-bg {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #6366F1, #22D3EE, #6366F1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-separator {
+            width: 50px;
+            height: 4px;
+            border-radius: 2px;
+            margin: 0 auto 2rem;
+        }
+        .card-base {
+            background-color: var(--tw-colors-ivs-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .card-base:hover {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+            transform: translateY(-5px);
+        }
+        .project-icon-container {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Custom styles for the two sections */
+        .website-card:hover {
+            border-top-color: var(--tw-colors-ivs-primary);
+        }
+        .app-card:hover {
+            border-top-color: var(--tw-colors-ivs-secondary);
+        }
+        .project-link {
+            transition: color 0.2s ease;
+            font-weight: 600;
+        }
+        .project-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." name="description"/><meta content="Website &amp; Ứng Dụng | IVS Celestech" property="og:title"/><meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." property="og:description"/><meta content="website" property="og:type"/></head>
+<body class="antialiased">
+<!-- Page uses global language packs and shared components. -->
+<div id="header-placeholder"></div>
+<main class="pt-16">
+<!-- HERO SECTION - Portfolio Overview -->
+<section class="bg-ivs-dark pt-20 pb-16 md:pt-28 md:pb-24 border-b border-ivs-card" id="hero">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
+<span class="text-gradient block" data-lang-key="hero_title_ivsapps"></span>
+</h1>
+<p class="text-lg text-ivs-text-muted max-w-3xl mx-auto mb-10" data-lang-key="hero_subtitle_ivsapps"></p>
+<div class="h-1 bg-ivs-secondary section-separator w-12 opacity-50"></div>
+</div>
+</section>
+<!-- SECTION 1: WEBSITES & CỔNG THÔNG TIN (Indigo Accent) -->
+<section class="py-20 bg-ivs-dark" id="websites">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-4xl mx-auto mb-12">
+<h2 class="text-3xl sm:text-4xl font-bold text-ivs-primary mb-2" data-lang-key="section_web_title_ivsapps"></h2>
+<p class="text-lg text-ivs-text-muted" data-lang-key="section_web_subtitle_ivsapps"></p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project Card: IVS Academy -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-primary/10">
+<i class="fas fa-graduation-cap text-ivs-primary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_ivsacademy_title"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_ivsacademy_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-primary block text-sm mb-2" href="https://ivsacademy.edu.vn/" rel="noopener noreferrer" target="_blank">ivsacademy.edu.vn</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- Project Card: KhaDock -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-primary/10">
+<i class="fas fa-handshake text-ivs-primary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_khadock_title"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_khadock_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-primary block text-sm mb-2" href="https://khadock.com/" rel="noopener noreferrer" target="_blank">khadock.com</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- Project Card: KhaHome -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-primary/10">
+<i class="fas fa-home text-ivs-primary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_khahome_title_ivsapps"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_khahome_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-primary block text-sm mb-2" href="https://khahome.com/" rel="noopener noreferrer" target="_blank">khahome.com</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- Project Card: Suối Camp -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-primary/10">
+<i class="fas fa-campground text-ivs-primary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_suoicamp_title_ivsapps"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_suoicamp_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-primary block text-sm mb-2" href="https://suoicamp.netlify.app/" rel="noopener noreferrer" target="_blank">suoicamp.netlify.app</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- Project Card: Ba Nhánh 2 -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-primary/10">
+<i class="fas fa-glass-cheers text-ivs-primary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_banhanh_title_ivsapps"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_banhanh_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-primary block text-sm mb-2" href="https://trungtamhoinghitieccuoi-banhanh.netlify.app/" rel="noopener noreferrer" target="_blank">banhanh.netlify.app</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- CTA for Website -->
+<div class="md:col-span-2 lg:col-span-3 card-base p-8 rounded-xl bg-ivs-card/50 border-dashed border-ivs-text-muted/30 text-center flex flex-col items-center justify-center">
+<h4 class="text-2xl font-bold text-ivs-primary mb-3">Bạn muốn Website của mình ở đây?</h4>
+<p class="text-ivs-text-muted mb-6">Chúng tôi có thể biến mọi ý tưởng giao diện thành hiện thực với Code-First.</p>
+<a class="px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg inline-block bg-ivs-primary hover:bg-ivs-secondary transition-colors" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: ỨNG DỤNG SỐ & HỆ THỐNG QUẢN LÝ (Amber Accent) -->
+<section class="py-20 bg-ivs-card border-t border-ivs-dark" id="apps">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-4xl mx-auto mb-12">
+<h2 class="text-3xl sm:text-4xl font-bold text-ivs-secondary mb-2" data-lang-key="section_app_title_ivsapps"></h2>
+<p class="text-lg text-ivs-text-muted" data-lang-key="section_app_subtitle_ivsapps"></p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- App Card: IVS English -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-secondary/10">
+<i class="fas fa-globe-americas text-ivs-secondary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_ivseng_title_ivsapps"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_ivseng_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://ivseng.netlify.app/" rel="noopener noreferrer" target="_blank">ivseng.netlify.app</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- App Card: IVS Mandarin -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-secondary/10">
+<i class="fas fa-language text-ivs-secondary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_mandarin_title_ivsapps"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_mandarin_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://mandarinbyivs.netlify.app/" rel="noopener noreferrer" target="_blank">mandarinbyivs.netlify.app</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- App Card: QLGX -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-secondary/10">
+<i class="fas fa-church text-ivs-secondary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_qlgx_title_ivsapps"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_qlgx_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://qlgx.netlify.app/" rel="noopener noreferrer" target="_blank">qlgx.netlify.app</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- App Card: IVS Stay Smart -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-secondary/10">
+<i class="fas fa-home text-ivs-secondary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_staysmart_title_ivsapps"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_staysmart_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://ivs-staysmart.netlify.app/" rel="noopener noreferrer" target="_blank">ivs-staysmart.netlify.app</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- App Card: StriveStreak -->
+<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
+<div class="flex items-start">
+<div class="project-icon-container bg-ivs-secondary/10">
+<i class="fas fa-trophy text-ivs-secondary text-xl"></i>
+</div>
+<div class="ml-4 flex-grow">
+<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_strivestreak_title_ivsapps"></h3>
+<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_strivestreak_desc_ivsapps"></p>
+</div>
+</div>
+<div>
+<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://strivestreak.netlify.app/" rel="noopener noreferrer" target="_blank">strivestreak.netlify.app</a>
+<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+<!-- CTA for App -->
+<div class="md:col-span-3 card-base p-8 rounded-xl bg-ivs-card/50 border-dashed border-ivs-text-muted/30 text-center flex flex-col items-center justify-center">
+<h4 class="text-2xl font-bold text-ivs-secondary mb-3">Bạn có ý tưởng cho Ứng dụng Quản lý độc quyền?</h4>
+<p class="text-ivs-text-muted mb-6">Chúng tôi chuyên biến các quy trình nghiệp vụ phức tạp thành giải pháp phần mềm tùy biến.</p>
+<a class="px-8 py-3 text-lg font-bold text-ivs-dark rounded-xl shadow-lg inline-block bg-ivs-secondary hover:bg-ivs-primary hover:text-white transition-colors" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div id="fab-container-placeholder"></div>
+<div id="footer-placeholder"></div>
+<!-- Load shared components and the language system (injects header, FAB, footer) -->
+<script defer="" src="js/loadComponents.js"></script>
+</body>
+</html>
