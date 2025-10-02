@@ -1,8 +1,0 @@
-Fill missing langs run: 20251002030927
-scanned ~291 files
-backups: {'en': 'E:\\IVS\\Website\\ivs.github.io\\lang\\en.json.bak.fill.20251002030927', 'vi': 'E:\\IVS\\Website\\ivs.github.io\\lang\\vi.json.bak.fill.20251002030927', 'zh': 'E:\\IVS\\Website\\ivs.github.io\\lang\\zh.json.bak.fill.20251002030927'}
-
-Filled vi: your_new_key <= 'Default text'  (from en, prefixed as TODO if zh)
-Filled zh: your_new_key <= 'TODO-TRANSLATE: Default text'  (from en, prefixed as TODO if zh)
-
-Summary filled: {'en': 0, 'vi': 1, 'zh': 1}
