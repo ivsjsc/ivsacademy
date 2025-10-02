@@ -19,6 +19,13 @@
                 <span class="hidden sm:inline text-lg md:text-xl font-bold group-hover:text-ivs-accent transition-colors">IVS <span class="text-ivs-accent">JSC</span></span>
             </a>
 
+            <!-- Mobile language button placed next to logo (small screens only) -->
+            <div class="md:hidden ml-2 flex items-center">
+                <button id="lang-main-btn-mobile" aria-haspopup="true" aria-expanded="false" class="p-2 rounded-full bg-white/5 backdrop-blur-sm shadow-sm focus:outline-none" onclick="(function(e){e.preventDefault();var dd=document.getElementById('lang-dropdown-mobile'); if(dd){ var isOpen=!dd.classList.contains('hidden'); dd.classList.toggle('hidden', isOpen); e.currentTarget.setAttribute('aria-expanded', String(!isOpen)); } else { var panel=document.getElementById('ivs-mobile-menu-panel'); var container=document.getElementById('ivs-mobile-menu-container'); if(panel && container){ panel.classList.remove('hidden'); setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); },10); } } })(event)">
+                    <img id="lang-main-mobile-flag" src="/images/flags/en.png" alt="Lang" class="h-6 w-8 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                </button>
+            </div>
+
             <!-- Desktop Navigation -->
             <nav id="main-navigation" class="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
                 <a href="/index.html" class="desktop-nav-link" data-lang-key="nav_home">Trang Chủ</a>
@@ -128,6 +135,26 @@
                 <a href="/contact.html" class="desktop-nav-link bg-ivs-accent hover:bg-ivs-accent-dark text-white font-bold" data-lang-key="nav_contact">Liên Hệ</a>
             </nav>
 
+            <!-- Desktop language selector moved next to Contact -->
+            <div class="relative ml-3 hidden md:block" id="desktop-lang-container">
+                <button id="lang-main-btn" class="flex items-center p-2 rounded-md hover:bg-ivs-bg-light focus:outline-none" aria-haspopup="true" aria-expanded="false" aria-controls="lang-dropdown">
+                    <img id="lang-main-flag" src="/images/flags/en.png" alt="Lang" class="h-5 w-7 rounded-sm" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
+                    <span id="lang-main-label" class="ml-2 text-sm">EN</span>
+                    <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                </button>
+                <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg py-1" role="menu" aria-labelledby="lang-main-btn">
+                    <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="vi" role="menuitem">
+                        <img src="/images/flags/vn.png" class="h-4 w-6 mr-2" alt="VI">Tiếng Việt
+                    </button>
+                    <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="en" role="menuitem">
+                        <img src="/images/flags/en.png" class="h-4 w-6 mr-2" alt="EN">English
+                    </button>
+                    <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="zh" role="menuitem">
+                        <img src="/images/flags/zh.png" class="h-4 w-6 mr-2" alt="ZH">中文
+                    </button>
+                </div>
+            </div>
+
             <!-- Language Buttons (Desktop & Mobile) -->
             </div>
             </div>
@@ -227,17 +254,219 @@
                         }
                     });
                 });
+
+                // --- Language handler: desktop main toggle + language option clicks (desktop & mobile) ---
+                function showLangConfirm() {
+                    const msg = document.getElementById('lang-confirm-message');
+                    if (!msg) return;
+                    msg.classList.remove('opacity-0','scale-90');
+                    msg.classList.remove('pointer-events-none');
+                    setTimeout(function(){
+                        msg.classList.add('opacity-0','scale-90');
+                        msg.classList.add('pointer-events-none');
+                    }, 1400);
+                }
+
+                // Toggle desktop language dropdown
+                addOnce(document.getElementById('lang-main-btn'), 'click', function(e){
+                    e.preventDefault();
+                    const dd = document.getElementById('lang-dropdown');
+                    const btn = document.getElementById('lang-main-btn');
+                    if (!dd || !btn) return;
+                    const isOpen = !dd.classList.contains('hidden');
+                    if (isOpen) {
+                        dd.classList.add('hidden');
+                        btn.setAttribute('aria-expanded','false');
+                    } else {
+                        dd.classList.remove('hidden');
+                        btn.setAttribute('aria-expanded','true');
+                    }
+                });
+
+                // Close lang dropdown on outside click
+                addOnce(document, 'click', function(e){
+                    const dd = document.getElementById('lang-dropdown');
+                    const btn = document.getElementById('lang-main-btn');
+                    if (!dd || !btn) return;
+                    if (!dd.classList.contains('hidden') && !dd.contains(e.target) && !btn.contains(e.target)) {
+                        dd.classList.add('hidden');
+                        btn.setAttribute('aria-expanded','false');
+                    }
+                });
+
+                // Utility to update desktop main button UI after language change
+                function updateDesktopLangUI(lang) {
+                    const flag = document.getElementById('lang-main-flag');
+                    const label = document.getElementById('lang-main-label');
+                    if (flag) flag.src = '/images/flags/' + (lang === 'vi' ? 'vn' : lang) + '.png';
+                    if (label) label.textContent = (lang === 'vi' ? 'VI' : (lang === 'zh' ? '中文' : 'EN'));
+                }
+
+                // Attach click listeners to all language buttons (mobile and dropdown options)
+                function bindLangButtons() {
+                    document.querySelectorAll('.lang-option, .lang-toggle-btn').forEach(function(btn){
+                        if (btn.dataset.ivsLangAttached) return;
+                        btn.addEventListener('click', function(e){
+                            e.preventDefault();
+                            const lang = btn.getAttribute('data-lang');
+                            if (!lang) return;
+                            // call the global changeLanguage API if available
+                            if (window.changeLanguage && typeof window.changeLanguage === 'function') {
+                                window.changeLanguage(lang).then(function(){
+                                    updateDesktopLangUI(lang);
+                                    showLangConfirm();
+                                    // close dropdown if desktop
+                                    const dd = document.getElementById('lang-dropdown');
+                                    if (dd) dd.classList.add('hidden');
+                                    const mainBtn = document.getElementById('lang-main-btn');
+                                    if (mainBtn) mainBtn.setAttribute('aria-expanded','false');
+                                }).catch(function(err){
+                                    console.error('Language change failed', err);
+                                });
+                            } else {
+                                // Fallback: set html lang attribute and update UI
+                                document.documentElement.lang = lang;
+                                updateDesktopLangUI(lang);
+                                showLangConfirm();
+                            }
+                        });
+                        btn.dataset.ivsLangAttached = '1';
+                    });
+                }
+
+                // Bind now in case elements already exist
+                bindLangButtons();
+
+                // Initialize desktop language UI from <html lang> or default to 'en'
+                try {
+                    var initialLang = document.documentElement.lang || 'en';
+                    updateDesktopLangUI(initialLang);
+                } catch (e) {
+                    /* ignore */
+                }
+
+                // Mobile language button: use delegated click so it works even if direct binding was prevented
+                addOnce(document, 'click', function(e){
+                    const btn = e.target.closest && e.target.closest('#lang-main-btn-mobile');
+                    if (!btn) return; // not our click
+                    e.preventDefault();
+                    // If a small mobile dropdown exists (legacy), toggle it. Otherwise open mobile menu panel
+                    const dd = document.getElementById('lang-dropdown-mobile');
+                    if (dd) {
+                        const isOpen = !dd.classList.contains('hidden');
+                        if (isOpen) {
+                            dd.classList.add('hidden');
+                            btn.setAttribute('aria-expanded','false');
+                        } else {
+                            dd.classList.remove('hidden');
+                            btn.setAttribute('aria-expanded','true');
+                        }
+                        return;
+                    }
+
+                    // Fallback: open the mobile menu panel and focus the language area
+                    const panel = document.getElementById('ivs-mobile-menu-panel');
+                    const container = document.getElementById('ivs-mobile-menu-container');
+                    if (!panel || !container) return;
+                    panel.classList.remove('hidden');
+                    setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); }, 10);
+                    // focus the first mobile language button when panel opens
+                    setTimeout(function(){
+                        const firstLangBtn = panel.querySelector('.mobile-menu-lang-group .lang-toggle-btn');
+                        if (firstLangBtn) firstLangBtn.focus();
+                    }, 300);
+                });
+
+                // Ensure mobile main flag updates when language changes
+                function updateMobileLangUI(lang) {
+                    const flag = document.getElementById('lang-main-mobile-flag');
+                    if (flag) flag.src = '/images/flags/' + (lang === 'vi' ? 'vn' : lang) + '.png';
+                }
+
+                // Extend bindLangButtons to also update mobile UI and close mobile dropdown after selection
+                // (re-run to attach any elements added after initial bind)
+                bindLangButtons();
+                document.querySelectorAll('.lang-option, .lang-toggle-btn').forEach(function(btn){
+                    // already attached by bindLangButtons; add small post-selection behavior
+                    btn.addEventListener('click', function(){
+                        try {
+                            const lang = btn.getAttribute('data-lang');
+                            updateMobileLangUI(lang);
+                        } catch (e) {}
+                        const ddm = document.getElementById('lang-dropdown-mobile');
+                        if (ddm) ddm.classList.add('hidden');
+                        const mainBtn = document.getElementById('lang-main-btn-mobile');
+                        if (mainBtn) mainBtn.setAttribute('aria-expanded','false');
+                    });
+                });
+
+                // --- Swipe gestures for mobile menu open/close ---
+                (function(){
+                    let touchStartX = 0;
+                    let touchStartY = 0;
+                    let touchCurrentX = 0;
+                    let isSwiping = false;
+                    const threshold = 60; // px
+                    const restraint = 80; // max Y delta
+
+                    function onTouchStart(e) {
+                        if (!e.touches || e.touches.length !== 1) return;
+                        touchStartX = e.touches[0].clientX;
+                        touchStartY = e.touches[0].clientY;
+                        isSwiping = true;
+                    }
+
+                    function onTouchMove(e) {
+                        if (!isSwiping || !e.touches || e.touches.length !== 1) return;
+                        touchCurrentX = e.touches[0].clientX;
+                    }
+
+                    function onTouchEnd(e) {
+                        if (!isSwiping) return;
+                        const dx = touchCurrentX - touchStartX;
+                        const dy = (e.changedTouches && e.changedTouches[0]) ? Math.abs(e.changedTouches[0].clientY - touchStartY) : 0;
+                        isSwiping = false;
+                        // ignore mostly vertical swipes
+                        if (dy > restraint) return;
+
+                        const panel = document.getElementById('ivs-mobile-menu-panel');
+                        const container = document.getElementById('ivs-mobile-menu-container');
+                        if (!panel || !container) return;
+
+                        if (dx > threshold) {
+                            // swipe right -> open menu
+                            panel.classList.remove('hidden');
+                            setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); }, 10);
+                        } else if (dx < -threshold) {
+                            // swipe left -> close menu
+                            panel.classList.add('opacity-0');
+                            container.classList.add('-translate-x-full');
+                            setTimeout(function(){ panel.classList.add('hidden'); }, 300);
+                        }
+                    }
+
+                    addOnce(document, 'touchstart', onTouchStart);
+                    addOnce(document, 'touchmove', onTouchMove);
+                    addOnce(document, 'touchend', onTouchEnd);
+                })();
+
             })();
             </script>
-                </button>
-                <button class="lang-toggle-btn group" data-lang="en" aria-label="Select English">
-                    <img src="/images/flags/en.png" alt="Cờ Anh" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=EN';">
-                </button>
-                <!-- Chinese language button -->
-                <button class="lang-toggle-btn group" data-lang="zh" aria-label="中文">
-                    <img src="/images/flags/zh.png" alt="Cờ Trung Quốc" class="h-5 w-7 rounded-sm transition-transform duration-200 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/28x20/1f2937/ffffff?text=ZH';">
-                </button>
-                
+                <!-- Desktop Language Selector (single main button with dropdown) -->
+                <div class="relative ml-4 hidden md:block" id="desktop-lang-container">
+                    <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-40 bg-white text-black rounded-md shadow-lg py-1" role="menu" aria-labelledby="lang-main-btn">
+                        <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="vi" role="menuitem">
+                            <img src="/images/flags/vn.png" class="h-4 w-6 mr-2" alt="VI">Tiếng Việt
+                        </button>
+                        <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="en" role="menuitem">
+                            <img src="/images/flags/en.png" class="h-4 w-6 mr-2" alt="EN">English
+                        </button>
+                        <button class="lang-option flex items-center w-full px-3 py-2 text-sm hover:bg-ivs-bg-light" data-lang="zh" role="menuitem">
+                            <img src="/images/flags/zh.png" class="h-4 w-6 mr-2" alt="ZH">中文
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Language Change Confirmation Message -->
                 <div id="lang-confirm-message" class="absolute top-full mt-2 right-0 bg-gray-800 text-white text-xs px-3 py-1.5 rounded-md shadow-lg opacity-0 scale-90 transition-all duration-300 ease-out pointer-events-none origin-top-right whitespace-nowrap">
                  Language changed!
@@ -249,6 +478,8 @@
         </div>
     </div>
 </header>
+
+<!-- Mobile language dropdown will be shown inline next to logo; dropdown options exist later in the DOM as .lang-option -->
 
 <!-- Mobile Menu Panel -->
 <div id="ivs-mobile-menu-panel" class="fixed inset-0 md:hidden hidden" aria-modal="true" role="dialog" style="z-index:12000;">
