@@ -15,13 +15,8 @@
     </style>
 </head>
 <body class="text-gray-800 antialiased">
-    <!-- Thanh điều hướng đơn giản, tập trung vào di động -->
-    <header class="bg-white shadow-md sticky top-0 z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-green-600">IVS Community</h1>
-            <a href="#contact" class="text-sm font-medium text-green-600 hover:text-green-800 transition duration-150">Tham Gia</a>
-        </div>
-    </header>
+    <!-- Header placeholder: will be injected by loadComponents.js -->
+    <header id="header-placeholder" data-loading-text="Đang tải Header..."></header>
 
     <main class="pt-4 pb-12">
         <!-- Phần Hero - Sứ Mệnh -->
@@ -117,9 +112,16 @@
         </section>
     </main>
 
-    <!-- Footer đơn giản -->
-    <footer class="bg-gray-800 text-white p-4 text-center text-sm">
-        <p>&copy; 2024 IVS JSC. Mọi quyền được bảo lưu.</p>
-    </footer>
+    <!-- Floating Action Button container placeholder -->
+    <div id="fab-container-placeholder"></div>
+
+    <!-- Footer placeholder: will be injected by loadComponents.js -->
+    <footer id="footer-placeholder" data-loading-text="Đang tải Footer..."></footer>
+
+    <!-- Common scripts required by component loader -->
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/language.js" defer></script>
+    <script src="../js/fabController.js" defer></script>
+    <script src="../js/loadComponents.js" defer></script>
 </body>
 </html>
