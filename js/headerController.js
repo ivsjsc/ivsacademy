@@ -191,3 +191,36 @@ const IVSHeaderController = {
     }
 };
 window.IVSHeaderController = IVSHeaderController;
+
+// Auto-initialize helper: ensure header controller is initialized when the
+// header is present. This covers pages where header HTML is inlined,
+// injected dynamically, or loaded via component loader at different times.
+(function autoInitHeaderController() {
+    function tryInit() {
+        try {
+            if (!window.IVSHeaderController) return;
+            // Only init if header exists and controller wasn't initialized yet
+            const headerExists = !!document.getElementById('ivs-main-header');
+            if (headerExists && !window.IVSHeaderController._ivs_initialized) {
+                window.IVSHeaderController.init();
+            }
+        } catch (err) {
+            console.error('IVSHeaderController auto-init error:', err);
+        }
+    }
+
+    // Try immediately in case DOM already has the header
+    tryInit();
+
+    // Init on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', tryInit);
+
+    // Observe DOM for late injection (e.g. loadComponents.js) and init once when header appears
+    const observer = new MutationObserver((mutations, obs) => {
+        if (document.getElementById('ivs-main-header')) {
+            tryInit();
+            obs.disconnect();
+        }
+    });
+    observer.observe(document.documentElement || document, { childList: true, subtree: true });
+})();
