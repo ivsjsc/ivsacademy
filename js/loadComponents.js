@@ -134,7 +134,9 @@ async function loadCommonComponents() {
     const components = [
         { id: 'header-placeholder', url: '/components/header.html', controller: window.IVSHeaderController },
         // Giả định IVSFabController từ fabController.js đã định nghĩa
-        { id: 'fab-container-placeholder', url: '/components/fab-container.html', controller: window.IVSFabController }
+        { id: 'fab-container-placeholder', url: '/components/fab-container.html', controller: window.IVSFabController },
+        // Cookie consent component - site-wide privacy / cookie banner
+        { id: 'cookie-consent-placeholder', url: '/components/cookie-consent.html', controller: window.IVSCookieConsentController }
     ];
 
     const footerComponent = { id: 'footer-placeholder', url: '/components/footer.html', controller: window.IVSFooterController };

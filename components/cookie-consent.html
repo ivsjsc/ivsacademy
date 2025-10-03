@@ -1,0 +1,73 @@
+<!-- components/cookie-consent.html -->
+<!-- Simple, accessible cookie consent banner that remembers choice in localStorage. Uses data-lang-key keys when language system is active. -->
+<div id="ivs-cookie-consent" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-60 max-w-3xl w-[94%] md:w-[720px] shadow-lg rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 ring-1 ring-gray-200 dark:ring-gray-800 p-4 flex items-start gap-4" role="dialog" aria-live="polite" aria-label="Cookie consent" style="display:none;">
+  <div class="flex-1">
+    <h3 class="text-lg font-semibold" data-lang-key="cookie_banner_title">We value your privacy</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-1" data-lang-key="cookie_banner_desc">We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+    <div class="mt-3 flex flex-wrap gap-2 items-center">
+      <button id="ivs-accept-cookies" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none" data-lang-key="cookie_accept">Accept All</button>
+      <button id="ivs-reject-cookies" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none" data-lang-key="cookie_reject">Reject All</button>
+      <button id="ivs-customize-cookies" class="ml-2 px-3 py-2 text-sm text-gray-700 underline bg-transparent hover:bg-gray-50 rounded-md" data-lang-key="cookie_customize">Customize</button>
+      <a href="/Pages/privacy.html" class="ml-auto text-xs text-gray-500 hover:text-gray-700" data-lang-key="cookie_policy_link">Cookie policy</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Expose a simple controller used by loadComponents.js
+  window.IVSCookieConsentController = (function(){
+    const storageKey = 'ivs_cookie_consent_v1';
+    function readConsent(){
+      try{const v=localStorage.getItem(storageKey); return v?JSON.parse(v):null;}catch(e){return null}
+    }
+    function writeConsent(obj){
+      try{localStorage.setItem(storageKey, JSON.stringify(obj));}catch(e){/* ignore */}
+    }
+    function hide(el){ if(!el) return; el.style.display='none'; }
+    function show(el){ if(!el) return; el.style.display='flex'; }
+
+    function init(){
+      const root = document.getElementById('ivs-cookie-consent');
+      if(!root) return;
+      const acceptBtn = document.getElementById('ivs-accept-cookies');
+      const rejectBtn = document.getElementById('ivs-reject-cookies');
+      const customBtn = document.getElementById('ivs-customize-cookies');
+
+      const existing = readConsent();
+      if(existing && existing.choice){
+        // already decided -> nothing to show
+        hide(root);
+        return;
+      }
+
+      // Show banner
+      show(root);
+
+      acceptBtn?.addEventListener('click', function(){
+        writeConsent({ choice: 'accept', date: new Date().toISOString() });
+        hide(root);
+        // Optionally, trigger analytics enable event
+        window.dispatchEvent(new CustomEvent('ivs:cookie-consent', { detail: { choice: 'accept' } }));
+      });
+
+      rejectBtn?.addEventListener('click', function(){
+        writeConsent({ choice: 'reject', date: new Date().toISOString() });
+        hide(root);
+        window.dispatchEvent(new CustomEvent('ivs:cookie-consent', { detail: { choice: 'reject' } }));
+      });
+
+      customBtn?.addEventListener('click', function(e){
+        e.preventDefault();
+        // For now, open the privacy page in a new tab for customization.
+        window.open('/Pages/privacy.html', '_blank');
+      });
+
+      // Small accessibility keyboard handler
+      root.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') { hide(root); }
+      });
+    }
+
+    return { init };
+  })();
+</script>

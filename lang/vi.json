@@ -2447,8 +2447,6 @@
   "cta_final_contact_email": "Hoặc gửi email đến: <a class=\"underline hover:text-ivs-cyan transition-colors\" href=\"mailto:info@ivsacademy.edu.vn\">info@ivsacademy.edu.vn</a>",
   
   "modal_close": "Đóng",
-{
-  "hero_tagline": "IVS JSC: HỆ SINH THÁI GIÁO DỤC, CÔNG NGHỆ & NHÂN LỰC",   
   "nav_home": "Trang Chủ",
   "nav_about_ivs": "Về IVS",
   "nav_about_us": "Về chúng tôi",
@@ -2528,8 +2526,14 @@
   "footer_ivs_mastery_title": "IVS Trading Services JSC",
   "footer_ivs_mastery_facebook_embed_title": "Công ty IVS JSC Facebook Page Embed Small",
   "footer_visit_page_mastery": "Truy cập Fanpage",
-  
   "fab_scroll_to_top": "Lên đầu trang",
   "fab_share": "Chia sẻ",
   "ivs_toolbox_cta": "AI ToolBox - tổng hợp AI tốt nhất hiện nay."
+  ,
+  "cookie_banner_title": "Chúng tôi tôn trọng quyền riêng tư của bạn",
+  "cookie_banner_desc": "Chúng tôi sử dụng cookie để cải thiện trải nghiệm duyệt web của bạn, phục vụ nội dung hoặc quảng cáo cá nhân hóa và phân tích lưu lượng truy cập. Bằng cách nhấp \"Chấp nhận tất cả\", bạn đồng ý với việc sử dụng cookie của chúng tôi.",
+  "cookie_accept": "Chấp nhận tất cả",
+  "cookie_reject": "Từ chối tất cả",
+  "cookie_customize": "Tùy chỉnh",
+  "cookie_policy_link": "Chính sách cookie"
 }
