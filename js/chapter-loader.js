@@ -264,27 +264,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Khởi tạo Chapter Loader
-    window.initializeChapterLoader = function(path, total, lang) { // Đã thêm lại tham số 'total'
+    window.initializeChapterLoader = async function(path, total, lang) { // Đã thêm async để phát hiện tệp chương thực tế
         storyBasePath = path;
         currentLanguage = lang; // Lưu trữ ngôn ngữ hiện tại
-        console.log(`Chapter Loader đã khởi tạo: Đường dẫn truyện = ${storyBasePath}, Tổng số chương = ${totalChapters}, Ngôn ngữ = ${currentLanguage}`); // Debug log
+        console.log(`Chapter Loader initializing: storyPath=${storyBasePath}, requestedTotal=${total}, lang=${currentLanguage}`);
 
-        // Xác định tổng số chương và danh sách tên chương dựa trên storyBasePath
+        // Chọn mảng tiêu đề phù hợp
         if (storyBasePath === 'legnaxe_part1') {
-            allChapterTitles = chapterTitlesPart1;
+            allChapterTitles = chapterTitlesPart1.slice();
         } else if (storyBasePath === 'legnaxe_part2') {
-            allChapterTitles = chapterTitlesPart2;
+            allChapterTitles = chapterTitlesPart2.slice();
         } else {
             allChapterTitles = []; // Mặc định nếu không khớp
         }
-        totalChapters = allChapterTitles.length;
 
+        // Phát hiện số chương thực tế trong thư mục data/novels/<storyPath>
+        // Đây là cách an toàn hơn để tránh mismatch giữa mảng tiêu đề và các tệp JSON hiện có.
+        let detectedNumericChapters = 0;
+        const maxProbe = 60; // an upper bound to avoid infinite loops
+        for (let i = 1; i <= maxProbe; i++) {
+            const fileName = `chapter_${String(i).padStart(2, '0')}.json`;
+            const url = `/data/novels/${storyBasePath}/${fileName}`;
+            try {
+                // Try HEAD first to be lighter; some servers may not support HEAD, fallback to GET
+                let res = await fetch(url, { method: 'HEAD' });
+                if (!res.ok) {
+                    // If HEAD not allowed, try GET
+                    res = await fetch(url);
+                }
+                if (!res.ok) break; // stop when missing
+                detectedNumericChapters++;
+            } catch (err) {
+                // If fetch throws (network or CORS), stop probing
+                break;
+            }
+        }
+
+        // Check for epilogue.json existence
+        let hasEpilogue = false;
+        try {
+            let r = await fetch(`/data/novels/${storyBasePath}/epilogue.json`, { method: 'HEAD' });
+            if (!r.ok) r = await fetch(`/data/novels/${storyBasePath}/epilogue.json`);
+            hasEpilogue = r.ok;
+        } catch (e) { hasEpilogue = false; }
+
+        totalChapters = detectedNumericChapters + (hasEpilogue ? 1 : 0);
+        console.log(`Detected chapters for ${storyBasePath}: numeric=${detectedNumericChapters}, epilogue=${hasEpilogue}, total=${totalChapters}`);
+
+        // Ensure allChapterTitles length matches detected total to avoid out-of-range titles
+        if (allChapterTitles.length > totalChapters) {
+            allChapterTitles = allChapterTitles.slice(0, totalChapters);
+        } else if (allChapterTitles.length < totalChapters) {
+            // Pad with generic titles if necessary
+            const missing = totalChapters - allChapterTitles.length;
+            for (let i = 0; i < missing; i++) {
+                const idx = allChapterTitles.length + 1;
+                allChapterTitles.push({ vi: `Chương ${idx}`, en: `Chapter ${idx}` });
+            }
+        }
 
         // Xóa danh sách chương cũ trong modal và tạo mới
         modalChapterList.innerHTML = '';
-        allChapterTitles.forEach((titleObj, index) => { // Đã đổi tên biến thành titleObj
+        allChapterTitles.forEach((titleObj, index) => {
             const chapterNum = index + 1;
-            const chapterId = (chapterNum === totalChapters && storyBasePath === 'legnaxe_part1') ? 'epilogue' : `chapter-${chapterNum}`;
+            const chapterId = (chapterNum === totalChapters && hasEpilogue) ? 'epilogue' : `chapter-${chapterNum}`;
             const chapterLink = document.createElement('a');
             chapterLink.href = `#${chapterId}`;
             chapterLink.classList.add(
@@ -300,25 +343,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 'text-black',
                 'dark:text-white'
             );
-            // Sử dụng tên chương từ mảng allChapterTitles
-            chapterLink.textContent = `${lang === 'vi' ? 'Chương' : 'Chapter'} ${chapterNum}: ${titleObj[lang] || titleObj.en}`; // Chọn tiêu đề theo ngôn ngữ hoặc fallback về tiếng Anh
-            chapterLink.dataset.chapterId = chapterId; // Đặt data-chapter-id để dễ dàng tra cứu
+            chapterLink.textContent = `${lang === 'vi' ? 'Chương' : 'Chapter'} ${chapterNum}: ${titleObj[lang] || titleObj.en}`;
+            chapterLink.dataset.chapterId = chapterId;
             modalChapterList.appendChild(chapterLink);
         });
-
 
         // Lấy chương từ URL hash hoặc mặc định là chương 1
         const hash = window.location.hash.substring(1);
         let initialChapter = 1;
         if (hash) {
             const match = hash.match(/chapter-(\d+)/);
-            if (match && parseInt(match[1]) >= 1 && parseInt(match[1]) < totalChapters) { // chapter-1 đến chapter-(totalChapters-1)
+            if (match && parseInt(match[1]) >= 1 && parseInt(match[1]) <= totalChapters) {
                 initialChapter = parseInt(match[1]);
-            } else if (hash === 'epilogue' && storyBasePath === 'legnaxe_part1') {
-                initialChapter = totalChapters; // Ánh xạ epilogue tới số chương cuối cùng của phần 1
+            } else if (hash === 'epilogue' && hasEpilogue) {
+                initialChapter = totalChapters; // map epilogue to last
             }
         }
-        navigateToChapter(initialChapter, currentLanguage); // Truyền ngôn ngữ khi khởi tạo
+        // Start navigation (async)
+        navigateToChapter(initialChapter, currentLanguage);
 
         // Event listeners cho nút điều hướng
         prevButton?.addEventListener('click', () => {
