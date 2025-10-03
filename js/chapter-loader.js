@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
     const dynamicChapterContent = document.getElementById('dynamic-chapter-content');
     const prevButton = document.getElementById('prev-chapter-btn');
     const nextButton = document.getElementById('next-chapter-btn');
@@ -33,8 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Gọi hàm thiết lập chủ đề khi DOM được tải
+    // Gọi hàm thiết lập chủ đề (an toàn khi script được tải deferred)
     setupThemeToggle();
+
     // Kết thúc: Chức năng chuyển đổi chế độ Sáng/Tối
 
     // Định nghĩa danh sách tên chương dựa trên tài liệu đã cung cấp
@@ -451,5 +451,4 @@ document.addEventListener('DOMContentLoaded', () => {
         updateNavigationButtons();
         updateProgressBar();
     };
-});
 // Script này được thiết kế để tải và hiển thị động các chương của một câu chuyện từ các tệp JSON.
