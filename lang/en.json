@@ -3315,8 +3315,7 @@
   "legal_why_3_title": "Confidentiality & Dedication",
   "our_legal_expertise": "Our Areas of Expertise",
   "our_legal_expertise_desc": "We provide comprehensive legal solutions in two main areas: Corporate and Civil.",
-  "why_choose_ivs_legal": "Why Choose IVS JSC's Legal Services?"
-}
+  "why_choose_ivs_legal": "Why Choose IVS JSC's Legal Services?",
   "job_desc_head_it": "TODO: translate (en): job_desc_head_it",
   "job_desc_head_marketing": "TODO: translate (en): job_desc_head_marketing",
   "job_desc_head_partnership": "TODO: translate (en): job_desc_head_partnership",
@@ -5289,15 +5288,15 @@
     "cta_final_button": "Request Code-First Consultation",
     "button_select": "Select this package",
     "button_contact_exclusive": "Contact for Exclusive Quote",
-    "demo_eyebrow": "BREAKTHROUGH EDTECH PRODUCT",
-    "demo_title": "IVS English: AI-Integrated Learning Platform",
-    "demo_description": "Experience a comprehensive English learning solution, built upon international standard curricula, integrated with AI technology to personalize learning paths, support writing (Writing Grader), and speaking practice (Speaking Partner) for all learners.",
-    "demo_feature1": "AI Tutor & Grading",
-    "demo_feature2": "Progress Analytics",
-    "demo_feature3": "Curriculum & Ebook",
-    "demo_feature4": "Teacher Management",
-    "demo_cta": "Try the Demo now",
+    "demo_app_eyebrow": "BREAKTHROUGH EDTECH PRODUCT",
+    "demo_app_title": "IVS English Learners App: AI-Integrated Learning Platform",
+    "demo_app_description": "Experience a comprehensive English learning solution built on international standard curriculum, integrated with AI technology to personalize learning paths, support writing (Writing Grader) and speaking practice (Speaking Partner) for all learners.",
+    "demo_app_feature1": "AI Tutor & Grading",
+    "demo_app_feature2": "Progress Analytics",
+    "demo_app_feature3": "Curriculum & Ebook",
+    "demo_app_feature4": "Teacher Management",
+    "demo_app_cta": "Try the Demo now",
     "demo_app_hover_text": "View Album of 10 Photos",
     "demo_app_mobile_note": "Tap the image to view details of 10 different app interfaces.",
-    "lightbox_title": "IVS English Learners App: Feature Album (1/10)"
+    "lightbox_title": "IVS English Learners App: Feature Album (1/10)"   
 }

@@ -2420,7 +2420,7 @@
   "company_video_caption": "Video giới thiệu doanh nghiệp và ca khúc chủ đề",
   "company_intro_desc": "IVS JSC là đơn vị tiên phong trong việc cung cấp các giải pháp giáo dục toàn diện và đổi mới sáng tạo tại Việt Nam, tự hào là thành viên chính của <span class=\"font-bold\">IIVSA – Liên minh giáo dục toàn cầu</span>.",
   "btn_view_profile": "Xem Hồ sơ năng lực chi tiết",
-  "cta_final_title": "Sẵn sàng để Bứt phá cùng Công nghệ?",
+
   "cta_final_subtitle": "Hãy để các chuyên gia của IVS lắng nghe và tư vấn giải pháp chiến lược được thiết kế riêng cho tầm nhìn và mục tiêu <span class=\"font-semibold\">không giới hạn</span> của bạn.",
   "cta_final_button": "Yêu cầu Tư vấn Ngay",
   "cta_final_contact_email": "Hoặc gửi email đến: <a class=\"underline hover:text-ivs-cyan transition-colors\" href=\"mailto:info@ivsacademy.edu.vn\">info@ivsacademy.edu.vn</a>",
@@ -3187,13 +3187,12 @@
   "lkttnn_other_desc": "Ngoài mô hình nhượng quyền, IVS Academy luôn sẵn sàng lắng nghe và thảo luận các hình thức hợp tác đa dạng khác như: liên kết đào tạo theo chương trình cụ thể, cung cấp giáo trình và học liệu, cung ứng giáo viên chất lượng cao, triển khai giải pháp công nghệ EdTech,... Chúng tôi tin rằng luôn có giải pháp phù hợp để cùng bạn phát triển.",
   "lkttnn_other_button": "Thảo luận Hợp tác Ngay",
   "page_title": "Giải Pháp Toàn Diện: Website & Hệ Thống Số | IVS Celestech",
-  "nav_home": "Trang chủ",
+
   "nav_philosophy": "Triết lý Code-First",
-  "nav_solutions": "Giải pháp",
+
   "nav_showcase": "Hồ sơ Năng lực",
   "nav_pricing": "Bảng giá",
-  "nav_contact": "Tư vấn ngay",
-  "hero_tagline": "DỊCH VỤ CODE-FIRST, TÍCH HỢP QUẢN LÝ",
+
   "hero_title": "Website Chuyên Nghiệp: Xây dựng nền tảng số phù hợp mọi quy mô kinh doanh.",
   "hero_subtitle": "Từ Landing Page cơ bản đến Hệ thống Quản lý (CRM/ERP) phức tạp. Chúng tôi lập trình tùy biến, đảm bảo website của bạn hoạt động hiệu quả, dễ dùng, và dễ dàng mở rộng.",
   "hero_cta": "Yêu cầu Tư vấn & Báo giá",
@@ -3318,15 +3317,16 @@
   "our_legal_expertise": "Lĩnh Vực Chuyên Môn Của Chúng Tôi",
   "our_legal_expertise_desc": "Chúng tôi cung cấp giải pháp pháp lý toàn diện trên hai lĩnh vực chính: Doanh nghiệp và Dân sự.",
   "why_choose_ivs_legal": "Tại Sao Chọn Dịch Vụ Pháp Lý Của IVS JSC?",
-    "demo_eyebrow": "SẢN PHẨM EDTECH ĐỘT PHÁ",
-    "demo_title": "IVS English Learners App: Nền tảng Học tập Tích hợp AI",
-    "demo_description": "Trải nghiệm giải pháp học Tiếng Anh toàn diện, được xây dựng dựa trên giáo trình chuẩn quốc tế, tích hợp công nghệ AI để cá nhân hóa lộ trình học, hỗ trợ viết (Writing Grader) và luyện nói (Speaking Partner) cho mọi học viên.",
-    "demo_feature1": "AI Tutor & Grading",
-    "demo_feature2": "Progress Analytics",
-    "demo_feature3": "Curriculum & Ebook",
-    "demo_feature4": "Teacher Management",
-    "demo_cta": "Trải nghiệm Demo ngay",
-    "demo_app_hover_text": "Xem Album 10 Ảnh",
-    "demo_app_mobile_note": "Nhấn vào ảnh để xem chi tiết 10 giao diện khác nhau của ứng dụng.",
-    "lightbox_title": "IVS English Learners App: Album Tính năng (1/10)"
+  "demo_app_eyebrow": "SẢN PHẨM EDTECH ĐỘT PHÁ",
+  "demo_app_title": "IVS English Learners App: Nền tảng Học tập Tích hợp AI",
+  "demo_app_description": "Trải nghiệm giải pháp học Tiếng Anh toàn diện, được xây dựng dựa trên giáo trình chuẩn quốc tế, tích hợp công nghệ AI để cá nhân hóa lộ trình học, hỗ trợ viết (Writing Grader) và luyện nói (Speaking Partner) cho mọi học viên.",
+  "demo_app_feature1": "AI Tutor & Grading",
+  "demo_app_feature2": "Progress Analytics",
+  "demo_app_feature3": "Curriculum & Ebook",
+  "demo_app_feature4": "Teacher Management",
+  "demo_app_cta": "Trải nghiệm Demo ngay",
+  "demo_app_hover_text": "Xem Album 10 Ảnh",
+  "demo_app_mobile_note": "Nhấn vào ảnh để xem chi tiết 10 giao diện khác nhau của ứng dụng.",
+  "lightbox_title": "IVS English Learners App: Album Tính năng (1/10)"
+  
 }
