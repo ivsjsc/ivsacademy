@@ -40,8 +40,8 @@
         }
         .hero-section {
             background-color: var(--tw-colors-ivs-dark);
-            background-image: radial-gradient(var(--tw-colors-ivs-card) 1px, transparent 1px); /* Sử dụng màu nền tối hơn cho pattern */
-            background-size: 40px 40px;
+            min-height: 80vh; /* Ensure minimum height for video */
+            position: relative;
         }
         .card-base {
             background-color: var(--tw-colors-ivs-card);
@@ -284,7 +284,14 @@
 <header id="header-placeholder"></header>
 <main class="pt-16">
 <!-- SECTION 1: HERO - Code-First, Zero-Limit -->
-<section class="hero-section pt-20 pb-20 md:pt-32 md:pb-24" id="hero">
+<section class="hero-section pt-20 pb-20 md:pt-32 md:pb-24 relative overflow-hidden" id="hero">
+<!-- Background Video -->
+<video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline>
+    <source src="/videos/videowebdesign.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<!-- Overlay for better text readability -->
+<div class="absolute inset-0 bg-black bg-opacity-50 z-5"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
 <p class="text-ivs-accent text-sm sm:text-base font-semibold uppercase tracking-wider mb-3" data-lang-key="hero_tagline"></p>
 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
