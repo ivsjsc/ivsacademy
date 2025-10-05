@@ -107,7 +107,6 @@
             <!-- Controls (Chapter List & Settings) -->
             <div class="flex items-center space-x-3">
                 <!-- Chapter List Button (Sử dụng ID cũ: list-chapter-btn-top) -->
-                <!-- Nút này mở modal Mục Lục, chức năng tương đương với nút Mục Lục ở dưới -->
                 <button class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-2 rounded-full transition-colors" id="list-chapter-btn-top" aria-label="Mục lục chương">
                     <i class="fas fa-list-ul text-xl"></i>
                 </button>
@@ -181,7 +180,6 @@
     </div>
 
     <!-- 4. CHAPTER LIST MODAL -->
-    <!-- Modal này sẽ được mở bởi cả #list-chapter-btn và #list-chapter-btn-top, giữ nguyên ID và nội dung JS để đảm bảo chức năng cũ -->
     <div class="modal fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none" id="chapter-modal">
         <div class="modal-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-sm relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
             <span class="close absolute top-3 right-4 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 text-3xl cursor-pointer transition-colors leading-none font-light" id="close-modal-btn">&times;</span>
@@ -193,7 +191,6 @@
     </div>
     
     <!-- 5. NEW SETTINGS MODAL (Modal Cài Đặt) -->
-    <!-- Chứa chức năng font size và dark mode, tương đương với chức năng cũ nhưng đặt ở một modal tập trung -->
     <div class="modal fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none" id="settings-modal">
         <div class="modal-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-xs relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
             <span class="close absolute top-3 right-4 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 text-3xl cursor-pointer transition-colors leading-none font-light" id="close-settings-modal-btn">&times;</span>
@@ -238,7 +235,7 @@
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
     
-    <!-- Deferred JavaScript Libraries (Giữ nguyên) -->
+    <!-- Deferred JavaScript Libraries (Đường dẫn tuyệt đối) -->
     <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -250,7 +247,7 @@
     <script defer="" src="/js/chapter-loader.js"></script>
     <script defer="" src="/js/loadComponents.js"></script>
     <script>
-        // Global variables and setup
+        // Global variables and setup (Giữ nguyên cho các chức năng điều khiển)
         const bodyElement = document.body;
         const fontSizeMultipliers = [0.8, 1.0, 1.2, 1.4];
         let currentFontSizeIndex = 1;
@@ -281,13 +278,11 @@
 
         // --- Theme Functions ---
         function updateThemeToggleIcon(isDark) {
-             // Cập nhật icon và vị trí toggle
              if (moonIcon && sunIcon) {
-                // Toggle visible icons
+                // Đảm bảo trạng thái hidden của icon chính xác
                 moonIcon.classList.toggle('hidden', isDark);
                 sunIcon.classList.toggle('hidden', !isDark);
                 
-                // Toggle position
                 const toggleSpan = darkModeToggle.querySelector('span');
                 if (isDark) {
                     darkModeToggle.classList.add('bg-blue-600');
@@ -311,8 +306,8 @@
 
         function loadInitialTheme() {
             const savedTheme = localStorage.getItem('theme');
-            // Mặc định là dark mode nếu không có cài đặt lưu, hoặc nếu hệ thống chọn dark mode
             let currentIsDarkMode = savedTheme === 'dark' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            // Áp dụng theme và cập nhật icon ngay lập tức
             applyTheme(currentIsDarkMode);
         }
         
@@ -320,7 +315,6 @@
         function applyFontSize() {
             bodyElement.style.setProperty('--font-size-multiplier', fontSizeMultipliers[currentFontSizeIndex]);
             localStorage.setItem('fontSizeIndex', currentFontSizeIndex);
-            // Cập nhật trạng thái disabled của các nút
             decreaseFontBtn.disabled = currentFontSizeIndex === 0;
             increaseFontBtn.disabled = currentFontSizeIndex === fontSizeMultipliers.length - 1;
         }
@@ -366,7 +360,6 @@
             
             // Apply translations (existing logic)
             if (window.system && typeof window.system.applyTranslations === 'function') {
-                // Chức năng ngôn ngữ sẽ tìm các data-lang-key và dịch thuật.
                 window.system.applyTranslations();
             }
 
@@ -378,24 +371,28 @@
             // Determine the current language from the html tag
             const currentLang = document.documentElement.lang;
 
-            // Initialize Chapter Loader (existing logic)
+            // Initialize Chapter Loader: CẬP NHẬT THEO CÔNG THỨC MỚI CỦA BẠN
             const storyPath = 'legnaxe_part1'; 
+            // Giữ nguyên 27 chương như file gốc
             const totalChapters = 27; 
+            
             if (typeof window.initializeChapterLoader === 'function') {
+                // Hàm initializeChapterLoader sẽ thiết lập các listener cho nút prev/next, modal, và tải chương đầu tiên.
                 window.initializeChapterLoader(storyPath, totalChapters, currentLang); 
+                console.log(`Chapter Loader initialized for ${storyPath} with ${totalChapters} chapters.`);
             } else {
-                console.error("Error: initializeChapterLoader is not defined.");
+                console.error("Error: initializeChapterLoader is not defined. Please ensure chapter-loader.js is loaded correctly.");
             }
 
-            // --- Event Listeners for NEW Layout ---
+            // --- Event Listeners for MODALS ---
 
-            // 1. Theme Toggle Listener
+            // 1. Theme Toggle Listener (Chức năng cũ)
             darkModeToggle?.addEventListener('click', () => {
                 let currentIsDarkMode = !htmlElement.classList.contains('dark');
                 applyTheme(currentIsDarkMode);
             });
 
-            // 2. Font Size Controls Listeners
+            // 2. Font Size Controls Listeners (Chức năng cũ)
             decreaseFontBtn?.addEventListener('click', () => {
                 if (currentFontSizeIndex > 0) {
                     currentFontSizeIndex--;
@@ -415,16 +412,19 @@
                 }
             });
 
-            // 3. Chapter List Modal Listeners (Using original IDs)
+            // 3. Chapter List Modal Listeners (Kích hoạt Modal Mục Lục)
+            // Cả nút trên Top Bar và nút dưới Bottom Bar đều gọi hàm openModal
             listChapterBtnTop?.addEventListener('click', () => { openModal(chapterModal); });
-            // Gán listener cho nút Mục Lục ở thanh dưới
             listChapterBtnBottom?.addEventListener('click', () => { openModal(chapterModal); }); 
             
+            // Đóng Modal Mục Lục
             closeModalBtn?.addEventListener('click', () => { closeModal(chapterModal); });
             chapterModal?.addEventListener('click', (event) => { if (event.target === chapterModal) { closeModal(chapterModal); } });
             
-            // 4. NEW Settings Modal Listeners
+            // 4. Settings Modal Listeners (Kích hoạt Modal Cài Đặt)
             openSettingsModalBtn?.addEventListener('click', () => { openModal(settingsModal); });
+            
+            // Đóng Modal Cài Đặt
             closeSettingsModalBtn?.addEventListener('click', () => { closeModal(settingsModal); });
             settingsModal?.addEventListener('click', (event) => { if (event.target === settingsModal) { closeModal(settingsModal); } });
 
@@ -442,7 +442,7 @@
                 }
             });
             
-            // 6. Copy to Clipboard (Existing logic, ensured global)
+            // 6. Copy to Clipboard
             function copyToClipboard(text) {
                 const textarea = document.createElement('textarea');
                 textarea.value = text;
@@ -451,7 +451,6 @@
                 try {
                     document.execCommand('copy');
                     const messageBox = document.createElement('div');
-                    // Cập nhật message box sang tiếng Việt
                     messageBox.textContent = 'Liên kết đã được sao chép vào clipboard!';
                     messageBox.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000; opacity: 0; transition: opacity 0.5s;';
                     document.body.appendChild(messageBox);
