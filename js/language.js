@@ -26,6 +26,8 @@ window.langSystem = window.langSystem || {
     defaultLanguage: 'vi', // Changed default to Vietnamese as per standard practice
     currentLanguage: 'vi',
     languageStorageKey: 'userPreferredLanguage',
+    isLoading: false, // Add loading state tracking
+    lastError: null,  // Track last error for debugging
     // Expose utility for dynamic content
     applyDynamicTranslations: null // Will be set to applyTranslationsToDOM
 };
@@ -43,11 +45,13 @@ function translate(key, lang = langSystem.currentLanguage) {
         window.componentLog(`Translation data for language '${lang}' not loaded.`, 'warn');
         return key;
     }
-    // Sử dụng optional chaining (?.) cho an toàn
+    // Sử dụng optional chaining (?.) cho an toàn và thêm kiểm tra undefined
     const translation = langSystem.translations[lang]?.[key];
-
-    if (!translation) {
+    
+    if (translation === undefined) {
         window.componentLog(`Missing translation key: '${key}' in language '${lang}'`, 'warn');
+        // Return key if translation is undefined, but return empty string if translation is explicitly null
+        return translation === null ? '' : key;
         // Fallback: nếu không có trong ngôn ngữ hiện tại, thử ngôn ngữ mặc định.
         if (lang !== langSystem.defaultLanguage && langSystem.translations[langSystem.defaultLanguage]?.[key]) {
             return langSystem.translations[langSystem.defaultLanguage][key];
@@ -115,14 +119,18 @@ langSystem.applyDynamicTranslations = applyTranslationsToDOM;
  * @returns {Promise<Object>} Object chứa dữ liệu dịch.
  */
 async function fetchTranslation(lang) {
+    window.componentLog(`Attempting to fetch translations for language: ${lang}`);
+    
     // Try multiple path candidates for different deployment environments
     const pathCandidates = [
         `lang/${lang}.json`,           // Relative path for development
         `/lang/${lang}.json`,          // Absolute path for production
-        `./lang/${lang}.json`          // Explicit relative path
+        `./lang/${lang}.json`,         // Explicit relative path
+        `../lang/${lang}.json`         // One level up (for subdirectories)
     ];
     
     let lastError = null;
+    window.componentLog(`Current page URL: ${window.location.href}`);
     
     for (const filePath of pathCandidates) {
         try {
