@@ -1,184 +1,209 @@
-'use strict';
+// js/chapter-loader.js
 
 /**
- * @version 1.0
- * @author IVS JSC
- * Chapter Loader for Dynamic Story Reading
+ * Hàm khởi tạo bộ tải chương.
+ * @param {string} storyPath - Tên thư mục chứa các tệp JSON (ví dụ: 'legnaxe_part1').
+ * @param {number} totalChapters - Tổng số chương (bao gồm epilogue nếu có).
+ * @param {string} lang - Ngôn ngữ hiện tại ('en' hoặc 'vi').
  */
+function initializeChapterLoader(storyPath, totalChapters, lang = 'en') {
+    // Biến lưu trữ trạng thái hiện tại
+    let currentChapterIndex = 0; // Chỉ số chương hiện tại (bắt đầu từ 0)
+    const chapterIds = []; // Mảng lưu trữ ID của các chương
 
-let currentChapter = 1;
-let totalChapters = 0;
-let storyPath = '';
-let currentLang = 'en'; // Default to English
+    // Lấy các phần tử DOM cần thiết
+    const dynamicContent = document.getElementById('dynamic-chapter-content');
+    const prevBtn = document.getElementById('prev-chapter-btn');
+    const nextBtn = document.getElementById('next-chapter-btn');
+    const listBtnTop = document.getElementById('list-chapter-btn-top');
+    const listBtnBottom = document.getElementById('list-chapter-btn');
+    const chapterModal = document.getElementById('chapter-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalList = document.getElementById('modal-chapter-list');
 
-/**
- * Fetches chapter content from JSON file
- * @param {string} storyPath - Path to the story directory
- * @param {string} chapterId - Chapter ID (e.g., 'chapter-1')
- * @param {string} lang - Language ('en' or 'vi')
- * @returns {Promise<Object>} Chapter data
- */
-async function fetchChapterContent(storyPath, chapterId, lang) {
-    const chapterNumber = chapterId.replace('chapter-', '');
-    const paddedNumber = chapterNumber.padStart(2, '0');
-    const url = `/data/novels/${storyPath}/chapter_${paddedNumber}.json`;
+    // Khởi tạo danh sách chương trong modal
+    function initChapterList() {
+        modalList.innerHTML = ''; // Xóa nội dung cũ
+        for (let i = 1; i <= totalChapters; i++) {
+            const chapterId = `chapter-${i}`;
+            const chapterTitle = lang === 'en' ? `Chapter ${i}: Title Not Loaded` : `Chương ${i}: Tiêu đề chưa tải`;
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${chapterId}`;
+            link.dataset.chapterId = chapterId;
+            link.className = 'modal-chapter-link block p-3 rounded-md text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors';
+            link.textContent = chapterTitle;
+            listItem.appendChild(link);
+            modalList.appendChild(listItem);
 
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            // Lưu ID chương vào mảng để tiện sử dụng sau
+            chapterIds.push(chapterId);
         }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching chapter:', error);
-        throw error;
+        // Thêm epilogue nếu có (giả sử epilogue là chương cuối cùng)
+        if (totalChapters > 0) {
+            const epilogueId = 'epilogue';
+            const epilogueTitle = lang === 'en' ? 'Epilogue: The Soul Meteor Shower' : 'Hồi Kết: Cơn Mưa Sao Băng Linh Hồn';
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${epilogueId}`;
+            link.dataset.chapterId = epilogueId;
+            link.className = 'modal-chapter-link block p-3 rounded-md text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors';
+            link.textContent = epilogueTitle;
+            listItem.appendChild(link);
+            modalList.appendChild(listItem);
+            chapterIds.push(epilogueId);
+        }
     }
-}
 
-/**
- * Renders chapter content to the page
- * @param {Object} chapterData - Chapter data from JSON
- * @param {string} lang - Language ('en' or 'vi')
- */
-function renderChapter(chapterData, lang) {
-    const contentDiv = document.getElementById('dynamic-chapter-content');
-    if (!contentDiv) return;
-
-    const title = lang === 'vi' ? chapterData.title_vi : chapterData.title_en;
-    const content = lang === 'vi' ? chapterData.content_vi : chapterData.content_en;
-
-    contentDiv.innerHTML = `
-        <h2 class="text-2xl font-bold mb-4">${title}</h2>
-        <div class="chapter-content">${content}</div>
-    `;
-
-    // Update progress bar
-    updateProgressBar();
-
-    // Update URL hash
-    window.location.hash = chapterData.chapter_id;
-}
-
-/**
- * Navigates to a specific chapter
- * @param {number} chapterNumber - Chapter number
- * @param {string} lang - Language
- */
-async function navigateToChapter(chapterNumber, lang) {
-    if (chapterNumber < 1 || chapterNumber > totalChapters) return;
-
-    currentChapter = chapterNumber;
-    const chapterId = `chapter-${chapterNumber}`;
-
-    try {
-        const chapterData = await fetchChapterContent(storyPath, chapterId, lang);
-        renderChapter(chapterData, lang);
-        updateNavigationButtons();
-    } catch (error) {
-        console.error('Error navigating to chapter:', error);
-        // Show error message
-        const contentDiv = document.getElementById('dynamic-chapter-content');
-        contentDiv.innerHTML = '<p class="text-red-500">Error loading chapter. Please try again.</p>';
-    }
-}
-
-/**
- * Updates the progress bar based on current chapter
- */
-function updateProgressBar() {
-    const progressBar = document.querySelector('.progress-bar');
-    if (progressBar) {
-        const progress = (currentChapter / totalChapters) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-}
-
-/**
- * Updates navigation buttons state
- */
-function updateNavigationButtons() {
-    const prevBtn = document.getElementById('prev-chapter');
-    const nextBtn = document.getElementById('next-chapter');
-
-    if (prevBtn) {
-        prevBtn.disabled = currentChapter <= 1;
-        prevBtn.classList.toggle('opacity-50', currentChapter <= 1);
-    }
-    if (nextBtn) {
-        nextBtn.disabled = currentChapter >= totalChapters;
-        nextBtn.classList.toggle('opacity-50', currentChapter >= totalChapters);
-    }
-}
-
-/**
- * Initializes the chapter loader
- * @param {string} path - Story path
- * @param {number} chapters - Total chapters
- */
-function initializeChapterLoader(path, chapters) {
-    storyPath = path;
-    totalChapters = chapters;
-
-    // Determine language from URL or default
-    currentLang = window.location.pathname.includes('_vi.html') ? 'vi' : 'en';
-
-    // Get chapter from URL hash or default to 1
-    const hash = window.location.hash.replace('#', '');
-    const initialChapter = hash ? parseInt(hash.replace('chapter-', '')) : 1;
-
-    // Load initial chapter
-    navigateToChapter(initialChapter, currentLang);
-
-    // Set up navigation event listeners
-    const prevBtn = document.getElementById('prev-chapter');
-    const nextBtn = document.getElementById('next-chapter');
-
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            if (currentChapter > 1) {
-                navigateToChapter(currentChapter - 1, currentLang);
+    // Hàm lấy nội dung chương từ JSON
+    async function fetchChapterContent(chapterId) {
+        try {
+            // Xác định tên tệp JSON dựa trên chapterId
+            let fileName = '';
+            if (chapterId === 'epilogue') {
+                fileName = 'epilogue.json';
+            } else {
+                // Giả sử chapterId có dạng 'chapter-1', 'chapter-2', ...
+                const num = chapterId.split('-')[1];
+                fileName = `chapter_${num.padStart(2, '0')}.json`; // Ví dụ: chapter_01.json
             }
-        });
-    }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            if (currentChapter < totalChapters) {
-                navigateToChapter(currentChapter + 1, currentLang);
+            // Gửi yêu cầu fetch
+            const response = await fetch(`data/novels/${storyPath}/${fileName}`);
+            if (!response.ok) {
+                throw new Error(`Không thể tải chương: ${chapterId}`);
             }
-        });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Lỗi khi tải nội dung chương:', error);
+            return null;
+        }
     }
 
-    // Set up modal
-    setupChapterModal();
-}
+    // Hàm hiển thị nội dung chương
+    function renderChapter(chapterData) {
+        if (!chapterData) {
+            dynamicContent.innerHTML = '<p class="text-red-500">Không thể tải nội dung chương. Vui lòng thử lại sau.</p>';
+            return;
+        }
 
-/**
- * Sets up the chapter selection modal
- */
-function setupChapterModal() {
-    const modal = document.getElementById('chapter-modal');
-    const closeBtn = document.getElementById('close-modal');
+        // Xây dựng HTML cho nội dung chương
+        const contentHtml = `
+            <h3>${chapterData[`title_${lang}`]}</h3>
+            <div class="prose">
+                ${chapterData[`content_${lang}`]}
+            </div>
+        `;
+        dynamicContent.innerHTML = contentHtml;
 
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
+        // Cập nhật tiêu đề trang (nếu cần)
+        document.title = `${chapterData[`title_${lang}`]} - LEGNAXE Part 1`;
     }
 
-    // Add click listeners to chapter links
-    const chapterLinks = modal.querySelectorAll('[data-chapter-id]');
-    chapterLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const chapterId = link.getAttribute('data-chapter-id');
-            const chapterNumber = parseInt(chapterId.replace('chapter-', ''));
-            navigateToChapter(chapterNumber, currentLang);
-            modal.classList.add('hidden');
-        });
+    // Hàm điều hướng đến chương cụ thể
+    async function navigateToChapter(chapterId) {
+        const chapterData = await fetchChapterContent(chapterId);
+        if (chapterData) {
+            renderChapter(chapterData);
+            // Cập nhật chỉ số chương hiện tại
+            currentChapterIndex = chapterIds.indexOf(chapterId);
+            // Cập nhật trạng thái nút điều hướng
+            updateNavigationButtons();
+            // Cập nhật URL hash
+            window.location.hash = chapterId;
+        }
+    }
+
+    // Hàm cập nhật trạng thái nút điều hướng (Previous/Next)
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentChapterIndex <= 0;
+        nextBtn.disabled = currentChapterIndex >= chapterIds.length - 1;
+    }
+
+    // Hàm xử lý sự kiện khi người dùng nhấp vào liên kết trong modal
+    function handleModalLinkClick(event) {
+        event.preventDefault();
+        const chapterId = event.target.dataset.chapterId;
+        navigateToChapter(chapterId);
+        closeModal(); // Đóng modal sau khi chọn
+    }
+
+    // Hàm mở modal danh sách chương
+    function openModal() {
+        chapterModal.style.display = 'flex';
+        setTimeout(() => {
+            chapterModal.classList.add('modal-active');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Hàm đóng modal danh sách chương
+    function closeModal() {
+        chapterModal.classList.remove('modal-active');
+        setTimeout(() => {
+            if (!chapterModal.classList.contains('modal-active')) {
+                chapterModal.style.display = 'none';
+            }
+        }, 300);
+        document.body.style.overflow = '';
+    }
+
+    // Hàm xử lý sự kiện khi người dùng thay đổi URL hash (ví dụ: khi nhấn nút back/forward)
+    function handleHashChange() {
+        const hash = window.location.hash.substring(1); // Loại bỏ ký tự '#'
+        if (hash && chapterIds.includes(hash)) {
+            navigateToChapter(hash);
+        }
+    }
+
+    // Khởi tạo
+    initChapterList();
+    updateNavigationButtons();
+
+    // Gắn sự kiện cho các nút điều hướng
+    prevBtn.addEventListener('click', () => {
+        if (currentChapterIndex > 0) {
+            navigateToChapter(chapterIds[currentChapterIndex - 1]);
+        }
     });
 
-    // Optional: Add a button to open modal (not in HTML yet)
-    // You can add a button with id="open-chapter-modal" to trigger modal
+    nextBtn.addEventListener('click', () => {
+        if (currentChapterIndex < chapterIds.length - 1) {
+            navigateToChapter(chapterIds[currentChapterIndex + 1]);
+        }
+    });
+
+    listBtnTop.addEventListener('click', openModal);
+    listBtnBottom.addEventListener('click', openModal);
+
+    closeModalBtn.addEventListener('click', closeModal);
+
+    // Gắn sự kiện cho các liên kết trong modal
+    modalList.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A') {
+            handleModalLinkClick(event);
+        }
+    });
+
+    // Gắn sự kiện khi người dùng click ngoài modal để đóng
+    chapterModal.addEventListener('click', (event) => {
+        if (event.target === chapterModal) {
+            closeModal();
+        }
+    });
+
+    // Gắn sự kiện khi URL hash thay đổi
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Tải chương đầu tiên khi trang được tải (hoặc chương từ URL hash nếu có)
+    const initialHash = window.location.hash.substring(1);
+    if (initialHash && chapterIds.includes(initialHash)) {
+        navigateToChapter(initialHash);
+    } else {
+        navigateToChapter(chapterIds[0]); // Tải chương đầu tiên
+    }
 }
+
+// Đảm bảo hàm này có sẵn trong phạm vi toàn cục để HTML có thể gọi
+window.initializeChapterLoader = initializeChapterLoader;
