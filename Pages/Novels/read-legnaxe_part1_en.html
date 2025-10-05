@@ -9,16 +9,16 @@
 <meta content="LEGNAXE: The Secret of Great Heaven War - ENGLISH (Part 1)" property="og:title"/>
 <meta content="Read LEGNAXE Part 1, and discover the events leading to the great war in Heaven." property="og:description"/>
 <meta content="/images/pages/novels/legnaxe1.png" property="og:image"/>
-<meta content="https://ivsacademy.edu.vn/Pages/Novels/read-legnaxe_part1_en.html" property="og:url"/>
+<meta content="https://ivsacademy.edu.vn/Pages/Novels/read-legnaxe_part1_en.html  " property="og:url"/>
 <meta content="article" property="og:type"/>
 <meta content="Long Story" property="article:section"/>
 <meta content="NMT" property="article:author"/>
 <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com  " rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com  " rel="preconnect"/>
 <link href="css/tailwind.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet">
+<link crossorigin="anonymous" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css  " referrerpolicy="no-referrer" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet"/>
 <style>
         html {scroll-behavior: smooth;}
@@ -55,6 +55,35 @@
         .dark .chapter h3 { color: #ffffff; border-bottom-color: #374151; }
         #scroll-to-top-btn { transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; pointer-events: auto; }
         #scroll-to-top-btn.hidden { opacity: 0; transform: translateY(10px); pointer-events: none; }
+        
+        /* New Layout Styles */
+        .container { display: grid; grid-template-columns: 1fr; grid-template-rows: auto auto auto; gap: 1rem; }
+        .header-section { order: 1; padding: 1rem; text-align: center; }
+        .banner-section { order: 2; }
+        .controls-section { order: 3; padding: 0 1rem; }
+        .nav-section { order: 4; padding: 0 1rem; }
+        .content-section { order: 5; padding: 0 1rem; }
+        .footer-nav-section { order: 6; padding: 0 1rem; }
+        
+        @media (min-width: 768px) {
+          .container { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto auto; }
+          .header-section { grid-column: 1 / -1; }
+          .banner-section { grid-column: 1 / -1; }
+          .controls-section { grid-column: 1 / -1; }
+          .nav-section { grid-column: 1 / -1; }
+          .content-section { grid-column: 1 / -1; }
+          .footer-nav-section { grid-column: 1 / -1; }
+        }
+        
+        @media (min-width: 1024px) {
+          .container { grid-template-columns: 1fr 3fr 1fr; }
+          .header-section { grid-column: 1 / -1; }
+          .banner-section { grid-column: 1 / -1; }
+          .controls-section { grid-column: 2; }
+          .nav-section { grid-column: 2; }
+          .content-section { grid-column: 2; }
+          .footer-nav-section { grid-column: 2; }
+        }
     </style>
 <!-- CSS -->
 <link href="css/style.css" rel="stylesheet"/>
@@ -62,46 +91,70 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css  " rel="stylesheet"/>
 </link></head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300 ease-in-out font-sans antialiased" id="page-readnovel">
 <div id="header-placeholder"></div>
-<main class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-12">
-<h1 class="text-4xl sm:text-5xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8">LEGNAXE: Part 1 - The Secret of Great Heaven War</h1>
-<img alt="LEGNAXE Part 1 Banner" class="mb-8 rounded-lg shadow-md w-full max-h-[300px] sm:max-h-[400px] object-cover" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/1200x400/374151/ffffff?text=Hero+Banner+IVS';" src="images/pages/novels/legnaxe1horizontal.png"/>
-<div class="progress-bar h-1 bg-blue-600 dark:bg-blue-400 mb-6" style="width: 0%"></div>
-<div class="font-size-controls flex items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
-<button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" id="decrease-font-btn">A-</button>
-<button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" id="reset-font-btn">Reset</button>
-<button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" id="increase-font-btn">A+</button>
-</div>
-<!-- New Chapter List button at the top -->
-<div class="navigation flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
-<a class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" href="apps/story-repository.html">
-<i class="fas fa-book-open mr-2"></i>Back to Story Repository
-            </a>
-<a class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" href="Pages/Novels/author-about.html">
-<i class="fas fa-user-edit mr-2"></i>About the Author
-            </a>
-<button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="list-chapter-btn-top">
-<i class="fas fa-list-ul mr-2"></i>Chapter List
-            </button>
-</div>
-<div class="story-content-wrapper bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg transition-colors duration-300 ease-in-out">
-<!-- Dynamic chapter content area -->
-<div id="dynamic-chapter-content"></div>
-<div class="navigation flex flex-col sm:flex-row justify-between items-center mt-10 mb-6 space-y-4 sm:space-y-0">
-<button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="list-chapter-btn">
-<i class="fas fa-list-ul mr-2"></i>Chapter List
-                </button>
-<button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" disabled="" id="prev-chapter-btn">
-<i class="fas fa-arrow-left mr-2"></i>Previous Chapter
-                </button>
-<button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="next-chapter-btn">
-                    Next Chapter<i class="fas fa-arrow-right ml-2"></i>
-</button>
-</div>
-</div>
+<main class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-12">
+  <div class="container">
+    <!-- Header Section -->
+    <section class="header-section">
+      <h1 class="text-4xl sm:text-5xl font-bold text-center text-gray-800 dark:text-gray-100 mb-4">LEGNAXE: Part 1 - The Secret of Great Heaven War</h1>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+      <img alt="LEGNAXE Part 1 Banner" class="w-full rounded-lg shadow-md max-h-[300px] sm:max-h-[400px] object-cover" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/1200x400/374151/ffffff?text=Hero+Banner+IVS';" src="images/pages/novels/legnaxe1horizontal.png"/>
+    </section>
+
+    <!-- Controls Section -->
+    <section class="controls-section">
+      <div class="progress-bar h-1 bg-blue-600 dark:bg-blue-400 mb-6" style="width: 0%"></div>
+      <div class="font-size-controls flex items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
+        <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" id="decrease-font-btn">A-</button>
+        <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" id="reset-font-btn">Reset</button>
+        <button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" id="increase-font-btn">A+</button>
+      </div>
+    </section>
+
+    <!-- Navigation Section (Top) -->
+    <section class="nav-section">
+      <div class="navigation flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
+        <a class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" href="apps/story-repository.html">
+          <i class="fas fa-book-open mr-2"></i>Back to Story Repository
+        </a>
+        <a class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" href="Pages/Novels/author-about.html">
+          <i class="fas fa-user-edit mr-2"></i>About the Author
+        </a>
+        <button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="list-chapter-btn-top">
+          <i class="fas fa-list-ul mr-2"></i>Chapter List
+        </button>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+      <div class="story-content-wrapper bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg transition-colors duration-300 ease-in-out">
+        <!-- Dynamic chapter content area -->
+        <div id="dynamic-chapter-content"></div>
+      </div>
+    </section>
+
+    <!-- Footer Navigation Section -->
+    <section class="footer-nav-section">
+      <div class="navigation flex flex-col sm:flex-row justify-between items-center mt-10 mb-6 space-y-4 sm:space-y-0">
+        <button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="list-chapter-btn">
+          <i class="fas fa-list-ul mr-2"></i>Chapter List
+        </button>
+        <button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" disabled="" id="prev-chapter-btn">
+          <i class="fas fa-arrow-left mr-2"></i>Previous Chapter
+        </button>
+        <button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="next-chapter-btn">
+          Next Chapter<i class="fas fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+    </section>
+  </div>
 </main>
 <div class="modal fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none" id="chapter-modal">
 <div class="modal-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-2xl w-full max-w-md relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
@@ -115,9 +168,9 @@
 <div id="footer-placeholder"></div>
 <div id="fab-container-placeholder"></div>
 <!-- Deferred JavaScript Libraries -->
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer="" src="  https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js  "></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js  "></script>
+<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js  "></script>
 <!-- Core Application Scripts - Order is crucial -->
 <script defer="" src="js/firebase-init.js" type="module"></script>
 <script defer="" src="js/utils.js"></script>
@@ -318,6 +371,3 @@
     </script>
 </body>
 </html>
-
-
-

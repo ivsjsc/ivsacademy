@@ -1,222 +1,331 @@
 <!DOCTYPE html>
-
 <html lang="vi">
-<head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title data-lang-key="readnovel_part1_title">LEGNAXE: Bí mật cuộc đại chiến Thiên Đàng</title>
-<meta content="LEGNAXE Phần 1: Bí mật cuộc đại chiến Thiên Đàng. Khám phá nguồn gốc xung đột giữa các thiên thần, sự tạo dựng loài người và những lựa chọn định mệnh." name="description"/>
-<meta content="LEGNAXE: Bí mật cuộc đại chiến Thiên Đàng (Phần 1)" data-lang-key="og_title_part1_full" property="og:title"/>
-<meta content="Đọc LEGNAXE Phần 1, khám phá những sự kiện dẫn đến cuộc đại chiến vĩ đại trên Thiên Đàng." data-lang-key="og_description_part1_full" property="og:description"/>
-<meta content="/images/pages/novels/legnaxe1.png" property="og:image"/>
-<meta content="https://ivsacademy.edu.vn/Pages/Novels/read-legnaxe_part1_vi.html" property="og:url"/>
-<meta content="article" property="og:type"/>
-<meta content="Long Story" property="article:section"/>
-<meta content="NMT" property="article:author"/>
-<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="css/tailwind.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet">
-<link href="css/styles.css" rel="stylesheet"/>
-<style>
-        html {scroll-behavior: smooth;}
-        .chapter {transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; opacity: 0; transform: translateY(15px); display: none;}
-        .chapter.active {opacity: 1; transform: translateY(0); display: block;}
-        #chapter-modal {transition: opacity 0.3s ease-in-out;}
-        #chapter-modal .modal-content {transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;}
-        #chapter-modal.modal-active {opacity: 1 !important; pointer-events: auto;}
-        #chapter-modal.modal-active .modal-content {transform: scale(1); opacity: 1;}
-        /* CSS cho nút active trong header động (nếu cần) */
-        #header-placeholder button.active-lang {background-color: #3b82f6; color: white;}
-        body {--font-size-multiplier: 1.0;}
-        .story-content-wrapper .prose p {font-size: calc(1.125rem * var(--font-size-multiplier)) !important;}
-        .story-content-wrapper .prose h4 {font-size: calc(1.25rem * var(--font-size-multiplier)) !important;}
-        .story-content-wrapper .chapter h3 {font-size: calc(1.875rem * var(--font-size-multiplier)) !important;}
-        .dark body::-webkit-scrollbar {width: 10px;}
-        .dark body::-webkit-scrollbar-track {background: #111827;}
-        .dark body::-webkit-scrollbar-thumb {background-color: #4b5563; border-radius: 20px; border: 2px solid #111827;}
-        .dark body::-webkit-scrollbar-thumb:hover {background-color: #6b7280;}
-        .dark #chapter-modal .modal-content ul::-webkit-scrollbar {width: 8px;}
-        .dark #chapter-modal .modal-content ul::-webkit-scrollbar-track {background: #1f2937;}
-        .dark #chapter-modal .modal-content ul::-webkit-scrollbar-thumb {background: #4b5563; border-radius: 4px;}
-        .dark #chapter-modal .modal-content ul::-webkit-scrollbar-thumb:hover {background: #6b7280;}
-        .prose {max-width: none; font-family: 'Merriweather', serif; color: #111827;}
-        .dark .prose { color: #ffffff; }
-        .prose p {margin-bottom: 1rem; line-height: 1.75; text-align: justify; color: #111827;}
-        .dark .prose p { color: #ffffff; }
-        .prose strong {font-weight: 600; color: #111827;}
-        .dark .prose strong { color: #ffffff; }
-        .prose h4 {font-size: 1.125rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #111827;}
-        .dark .prose h4 { color: #ffffff; }
-        .chapter h3 {font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; margin-top: 1rem; color: #111827; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.75rem;}
-        .dark .chapter h3 { color: #ffffff; border-bottom-color: #374151; }
-        #scroll-to-top-btn {transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; pointer-events: auto;}
-        #scroll-to-top-btn.hidden {opacity: 0; transform: translateY(10px); pointer-events: none;}
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Sử dụng Inter cho giao diện và Merriweather cho nội dung đọc để tối ưu trải nghiệm -->
+    <title data-lang-key="readnovel_part1_title">LEGNAXE: Bí mật cuộc đại chiến Thiên Đàng</title>
+    <meta content="LEGNAXE Phần 1: Bí mật cuộc đại chiến Thiên Đàng. Khám phá nguồn gốc xung đột giữa các thiên thần, sự tạo dựng loài người và những lựa chọn định mệnh." name="description"/>
+    
+    <!-- Tải Tailwind CSS CDN (Đảm bảo hoạt động trong môi trường độc lập) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Cấu hình Tailwind và Fonts */
+        :root {
+            --font-size-multiplier: 1.0;
+        }
+        body {
+            /* Sử dụng font Inter cho toàn bộ giao diện, trừ phần nội dung truyện */
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding-top: 64px; /* Dành chỗ cho Fixed Top Bar */
+            padding-bottom: 80px; /* Dành chỗ cho Fixed Bottom Nav */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        /* Custom scrollbar cho chế độ Dark */
+        .dark body::-webkit-scrollbar { width: 10px; }
+        .dark body::-webkit-scrollbar-track { background: #111827; }
+        .dark body::-webkit-scrollbar-thumb { background-color: #4b5563; border-radius: 20px; border: 2px solid #111827; }
+        .dark body::-webkit-scrollbar-thumb:hover { background-color: #6b7280; }
+
+        /* Prose Overrides: Tối ưu hóa phông chữ và kích thước */
+        .story-content-wrapper .prose {
+            max-width: none;
+            /* Font Merriweather cho trải nghiệm đọc tiểu thuyết cổ điển */
+            font-family: 'Merriweather', serif;
+            color: #111827;
+        }
+        .dark .story-content-wrapper .prose { color: #ffffff; }
+
+        .story-content-wrapper .prose p {
+            font-size: calc(1.125rem * var(--font-size-multiplier)) !important; /* Mặc định 18px */
+            margin-bottom: 1.5rem;
+            line-height: 1.8; /* Tăng khoảng cách dòng để dễ đọc */
+            text-align: justify;
+        }
+        .story-content-wrapper .chapter h3 {
+            font-size: calc(1.875rem * var(--font-size-multiplier)) !important;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.75rem;
+        }
+        .dark .chapter h3 { border-bottom-color: #374151; }
+
+        /* Chapter transition logic (Giữ nguyên cũ) */
+        .chapter { transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; opacity: 0; transform: translateY(15px); display: none; }
+        .chapter.active { opacity: 1; transform: translateY(0); display: block; }
+
+        /* Modal transition logic (Giữ nguyên cũ) */
+        #chapter-modal { transition: opacity 0.3s ease-in-out; }
+        #chapter-modal .modal-content { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+        #chapter-modal.modal-active { opacity: 1 !important; pointer-events: auto; z-index: 50; }
+        #chapter-modal.modal-active .modal-content { transform: scale(1); opacity: 1; }
+        
+        #settings-modal { transition: opacity 0.3s ease-in-out; }
+        #settings-modal .modal-content { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+        #settings-modal.modal-active { opacity: 1 !important; pointer-events: auto; z-index: 50; }
+        #settings-modal.modal-active .modal-content { transform: scale(1); opacity: 1; }
+
+        /* Ẩn nút cuộn lên khi không cần thiết */
+        #scroll-to-top-btn { transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; pointer-events: auto; }
+        #scroll-to-top-btn.hidden { opacity: 0; transform: translateY(10px); pointer-events: none; }
+
+        /* Fixed Top Bar (Cấu trúc mới) */
+        .fixed-top-bar {
+            z-index: 40;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .dark .fixed-top-bar {
+            box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05), 0 2px 4px -2px rgba(255, 255, 255, 0.05);
+        }
+        /* Cấu trúc mới cho Bottom Nav: 3 nút ngang nhau trên mobile */
+        .fixed-bottom-nav .nav-button {
+            width: 33.33%; /* 3 nút chia đều 100% */
+        }
     </style>
-<!-- CSS -->
-<link href="css/style.css" rel="stylesheet"/>
-<link href="css/animations.css" rel="stylesheet"/>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<!-- Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-</link></head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300 ease-in-out font-sans antialiased" id="page-readnovel">
-<div id="header-placeholder"></div>
-<main class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-12">
-<h1 class="text-4xl sm:text-5xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8" data-lang-key="readnovel_part1_title">LEGNAXE: Phần 1 - Bí mật cuộc đại chiến Thiên Đàng</h1>
-<img alt="LEGNAXE Part 1 Banner" class="mb-8 rounded-lg shadow-md w-full max-h-[300px] sm:max-h-[400px] object-cover" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/1200x400/374151/ffffff?text=Hero+Banner+IVS';" src="images/pages/novels/legnaxe1horizontal.png"/>
-<div class="progress-bar h-1 bg-blue-600 dark:bg-blue-400 mb-6" style="width: 0%"></div>
-<div class="font-size-controls flex items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
-<button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" data-lang-key="font_size_decrease" id="decrease-font-btn">A-</button>
-<button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" data-lang-key="font_size_reset" id="reset-font-btn">Reset</button>
-<button class="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" data-lang-key="font_size_increase" id="increase-font-btn">A+</button>
-</div>
-<!-- New Chapter List button at the top -->
-<div class="navigation flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
-<a class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" href="apps/story-repository.html">
-<i class="fas fa-book-open mr-2"></i>Back to Story Repository
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300 ease-in-out" id="page-readnovel">
+
+    <!-- 1. FIXED TOP CONTROL BAR (Thanh Điều Khiển Cố Định) -->
+    <div class="fixed-top-bar fixed top-0 left-0 w-full bg-white dark:bg-gray-800 p-3 sm:px-6">
+        <div class="max-w-4xl mx-auto flex justify-between items-center h-10">
+            <!-- Back Button -->
+            <!-- Đường dẫn trở về Kho Truyện đã được cập nhật: http://faivsacademy.edu.vn/Pages/apps/story-repository.html -->
+            <a class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-2 rounded-full transition-colors" href="http://faivsacademy.edu.vn/Pages/apps/story-repository.html" aria-label="Quay lại Kho Truyện">
+                <i class="fas fa-arrow-left text-xl"></i>
             </a>
-<a class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" href="Pages/Novels/author-about.html">
-<i class="fas fa-user-edit mr-2"></i>About the Author
+
+            <!-- Chapter Info (Placeholder for dynamic update) -->
+            <h2 id="current-chapter-title" class="text-lg font-semibold truncate max-w-[40vw] text-gray-700 dark:text-gray-200" data-lang-key="readnovel_part1_title_short">
+                LEGNAXE: Phần 1
+            </h2>
+
+            <!-- Controls (Chapter List & Settings) -->
+            <div class="flex items-center space-x-3">
+                <!-- Chapter List Button (Sử dụng ID cũ: list-chapter-btn-top) -->
+                <!-- Nút này mở modal Mục Lục, chức năng tương đương với nút Mục Lục ở dưới -->
+                <button class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-2 rounded-full transition-colors" id="list-chapter-btn-top" aria-label="Mục lục chương">
+                    <i class="fas fa-list-ul text-xl"></i>
+                </button>
+
+                <!-- Settings Button (Triggers settings modal) -->
+                <button class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-2 rounded-full transition-colors relative" id="open-settings-modal-btn" aria-label="Cài đặt đọc">
+                    <i class="fas fa-cog text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MAIN READING CONTENT (Nội Dung Chính) -->
+    <main class="max-w-4xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+        <!-- Title and Banner -->
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center text-gray-900 dark:text-gray-50 mb-6 mt-4" data-lang-key="readnovel_part1_title">
+            LEGNAXE: Phần 1 - Bí mật cuộc đại chiến Thiên Đàng
+        </h1>
+        <img alt="LEGNAXE Part 1 Banner" class="mb-8 rounded-xl shadow-xl w-full max-h-72 object-cover transition-transform duration-500 ease-out transform hover:scale-[1.01]" 
+             decoding="async" 
+             onerror="this.onerror=null; this.src='https://placehold.co/1200x300/374151/ffffff?text=LEGNAXE+Hero+Banner';" 
+             src="/images/pages/novels/legnaxe1horizontal.png"/>
+        
+        <!-- Progress Bar -->
+        <div class="progress-bar h-1 bg-blue-600 dark:bg-blue-400 mb-6 rounded-full" style="width: 0%"></div>
+        
+        <!-- About Author Link -->
+        <div class="flex justify-center mb-8">
+             <!-- Đường dẫn Về Tác Giả đã được cập nhật: /Pages/Novels/author-about.html -->
+             <a class="px-4 py-2 rounded-lg font-medium text-blue-600 dark:text-blue-400 border border-blue-600 dark:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors duration-200 ease-in-out flex items-center" href="/Pages/Novels/author-about.html" data-lang-key="about_the_author">
+                <i class="fas fa-user-edit mr-2"></i>Về Tác Giả
             </a>
-<button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="list-chapter-btn-top">
-<i class="fas fa-list-ul mr-2"></i>Chapter List
+        </div>
+
+        <!-- Story Content Wrapper -->
+        <div class="story-content-wrapper bg-white dark:bg-gray-800 p-6 sm:p-10 rounded-2xl shadow-2xl transition-colors duration-300 ease-in-out min-h-[500px]">
+            <!-- Dynamic chapter content area -->
+            <div class="prose" id="dynamic-chapter-content">
+                <!-- Nội dung chương sẽ được tải vào đây -->
+            </div>
+        </div>
+
+        <!-- Spacer for Bottom Fixed Nav -->
+        <div class="h-20 sm:h-24"></div> 
+    </main>
+    
+    <!-- 3. FIXED BOTTOM NAVIGATION (Thanh Điều Hướng Cố Định Dưới) -->
+    <div class="fixed-bottom-nav fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-3 shadow-top-2xl z-40">
+        <div class="max-w-4xl mx-auto flex justify-between items-center space-x-3">
+            <!-- Previous Chapter Button -->
+            <button class="nav-button flex items-center justify-center px-2 py-3 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 dark:disabled:bg-gray-600 transition-all duration-200 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    disabled="" id="prev-chapter-btn" data-lang-key="previous_chapter">
+                <i class="fas fa-chevron-left text-lg"></i>
+                <span class="ml-2 hidden sm:inline">Chương Trước</span>
             </button>
-</div>
-<div class="story-content-wrapper bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg transition-colors duration-300 ease-in-out">
-<!-- Dynamic chapter content area -->
-<div id="dynamic-chapter-content"></div>
-<div class="navigation flex flex-col sm:flex-row justify-between items-center mt-10 mb-6 space-y-4 sm:space-y-0">
-<button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="list-chapter-btn">
-<i class="fas fa-list-ul mr-2"></i>Chapter List
+            
+            <!-- Chapter List Button (ID list-chapter-btn được giữ nguyên chức năng cũ) -->
+            <button class="nav-button flex items-center justify-center px-2 py-3 rounded-xl font-semibold text-white bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition-all duration-200 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    id="list-chapter-btn" data-lang-key="chapter_list_title">
+                <i class="fas fa-list-ul text-lg"></i>
+                <span class="ml-2 hidden sm:inline">Mục Lục</span>
+            </button>
+
+            <!-- Next Chapter Button -->
+            <button class="nav-button flex items-center justify-center px-2 py-3 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 dark:disabled:bg-gray-600 transition-all duration-200 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    id="next-chapter-btn" data-lang-key="next_chapter">
+                <span class="mr-2 hidden sm:inline">Chương Tiếp</span>
+                <i class="fas fa-chevron-right text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 4. CHAPTER LIST MODAL -->
+    <!-- Modal này sẽ được mở bởi cả #list-chapter-btn và #list-chapter-btn-top, giữ nguyên ID và nội dung JS để đảm bảo chức năng cũ -->
+    <div class="modal fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none" id="chapter-modal">
+        <div class="modal-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-sm relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
+            <span class="close absolute top-3 right-4 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 text-3xl cursor-pointer transition-colors leading-none font-light" id="close-modal-btn">&times;</span>
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2" data-lang-key="chapter_list_title">Mục Lục Chương</h3>
+            <ul class="space-y-2 max-h-96 overflow-y-auto pr-2" id="modal-chapter-list">
+                <!-- Chapter links will be dynamically loaded here by chapter-loader.js -->
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 5. NEW SETTINGS MODAL (Modal Cài Đặt) -->
+    <!-- Chứa chức năng font size và dark mode, tương đương với chức năng cũ nhưng đặt ở một modal tập trung -->
+    <div class="modal fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none" id="settings-modal">
+        <div class="modal-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-xs relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
+            <span class="close absolute top-3 right-4 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 text-3xl cursor-pointer transition-colors leading-none font-light" id="close-settings-modal-btn">&times;</span>
+            <h3 class="text-xl font-bold mb-6 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2" data-lang-key="settings_title">Cài Đặt Đọc</h3>
+            
+            <!-- 5.1. Theme Toggle (Chế độ tối) -->
+            <div class="flex justify-between items-center mb-6 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <span class="font-medium text-gray-700 dark:text-gray-300" data-lang-key="dark_mode_toggle">Chế Độ Tối</span>
+                <button id="darkModeToggle" class="relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-300 dark:bg-blue-600" aria-label="Chuyển đổi chế độ tối">
+                    <span id="moonIcon" class="transform translate-x-1 transition-transform inline-block w-4 h-4 bg-white rounded-full">
+                         <i class="fas fa-moon text-gray-600 text-xs"></i>
+                    </span>
+                    <span id="sunIcon" class="transform translate-x-6 transition-transform hidden inline-block w-4 h-4 bg-white rounded-full">
+                        <i class="fas fa-sun text-yellow-500 text-xs"></i>
+                    </span>
                 </button>
-<button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" disabled="" id="prev-chapter-btn">
-<i class="fas fa-arrow-left mr-2"></i>Previous Chapter
-                </button>
-<button class="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center" id="next-chapter-btn">
-                    Next Chapter<i class="fas fa-arrow-right ml-2"></i>
-</button>
-</div>
-</div>
-</main>
-<!-- display is controlled by JS adding/removing the 'modal-active' class -->
-<div class="modal fixed inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out opacity-0 pointer-events-none" id="chapter-modal">
-<div class="modal-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-2xl w-full max-w-md relative transform transition-all duration-300 ease-in-out scale-95 opacity-0">
-<span class="close absolute top-3 right-4 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 text-3xl cursor-pointer transition-colors leading-none" id="close-modal-btn">×</span>
-<h3 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white">Danh Sách Chương</h3>
-<ul class="space-y-1 max-h-80 sm:max-h-96 overflow-y-auto pr-2" id="modal-chapter-list">
-<!-- Chapter links will be dynamically loaded here by chapter-loader.js -->
-</ul>
-</div>
-</div>
-<div id="footer-placeholder"></div>
-<div id="fab-container-placeholder"></div>
-<!-- Deferred JavaScript Libraries -->
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!-- Core Application Scripts - Order is crucial -->
-<script defer="" src="js/firebase-init.js" type="module"></script>
-<script defer="" src="js/utils.js"></script>
-<script defer="" src="js/language.js"></script>
-<script defer="" src="js/fabController.js"></script>
-<script defer="" src="js/chapter-loader.js"></script>
-<script defer="" src="js/loadComponents.js"></script>
-<script>
-        // This callback will be triggered by loadComponents.js after it finishes injecting HTML
-        window.onPageComponentsLoadedCallback = function() {
-            console.log("onPageComponentsLoadedCallback triggered.");
+            </div>
 
-            // Initialize AOS
-            AOS.init({
-                duration: 700, // Animation duration
-                once: true,    // Whether animation should happen only once - while scrolling down
-                offset: 50,    // Offset (in px) from the original trigger point
-                easing: 'ease-out-cubic', // Easing function for animation
-            });
-            console.log("AOS initialized.");
+            <!-- 5.2. Font Size Controls (Tăng giảm cỡ chữ) -->
+            <div class="space-y-4">
+                <label class="block font-medium text-gray-700 dark:text-gray-300 mb-2" data-lang-key="font_size_label">Kích Thước Chữ</label>
+                <div class="flex justify-between items-center space-x-2 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                    <button class="w-1/3 bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50" id="decrease-font-btn" data-lang-key="font_size_decrease">
+                        <i class="fas fa-minus mr-1"></i> A
+                    </button>
+                    <button class="w-1/3 bg-blue-600 hover:bg-blue-700 text-white py-2 px-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="reset-font-btn" data-lang-key="font_size_reset">
+                        Mặc Định
+                    </button>
+                    <button class="w-1/3 bg-white dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-2 px-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50" id="increase-font-btn" data-lang-key="font_size_increase">
+                        A <i class="fas fa-plus ml-1"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
-            // Apply translations (assuming language.js defines window.system.applyTranslations)
-            if (window.system && typeof window.system.applyTranslations === 'function') {
-                window.system.applyTranslations();
-                console.log("Translations applied.");
-            } else {
-                console.warn("window.system or applyTranslations not found. Language system might not be fully initialized.");
+    <div id="footer-placeholder"></div>
+    <div id="fab-container-placeholder"></div>
+    <!-- Scroll to Top Button (Vị trí mới ở góc phải dưới) -->
+    <button id="scroll-to-top-btn" class="hidden fixed bottom-24 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 z-30" aria-label="Cuộn lên đầu trang">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+    
+    <!-- Deferred JavaScript Libraries (Giữ nguyên) -->
+    <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Core Application Scripts - Order is crucial (Tất cả đã được thêm "/") -->
+    <script defer="" src="/js/firebase-init.js" type="module"></script>
+    <script defer="" src="/js/utils.js"></script>
+    <script defer="" src="/js/language.js"></script>
+    <script defer="" src="/js/fabController.js"></script>
+    <script defer="" src="/js/chapter-loader.js"></script>
+    <script defer="" src="/js/loadComponents.js"></script>
+    <script>
+        // Global variables and setup
+        const bodyElement = document.body;
+        const fontSizeMultipliers = [0.8, 1.0, 1.2, 1.4];
+        let currentFontSizeIndex = 1;
+
+        // Theme elements
+        const htmlElement = document.documentElement;
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+        
+        // Modal elements
+        const chapterModal = document.getElementById('chapter-modal');
+        const listChapterBtnTop = document.getElementById('list-chapter-btn-top');
+        const listChapterBtnBottom = document.getElementById('list-chapter-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        
+        // New Settings Modal elements
+        const settingsModal = document.getElementById('settings-modal');
+        const openSettingsModalBtn = document.getElementById('open-settings-modal-btn');
+        const closeSettingsModalBtn = document.getElementById('close-settings-modal-btn');
+
+        // Font controls
+        const decreaseFontBtn = document.getElementById('decrease-font-btn');
+        const resetFontBtn = document.getElementById('reset-font-btn');
+        const increaseFontBtn = document.getElementById('increase-font-btn');
+        const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+
+
+        // --- Theme Functions ---
+        function updateThemeToggleIcon(isDark) {
+             // Cập nhật icon và vị trí toggle
+             if (moonIcon && sunIcon) {
+                // Toggle visible icons
+                moonIcon.classList.toggle('hidden', isDark);
+                sunIcon.classList.toggle('hidden', !isDark);
+                
+                // Toggle position
+                const toggleSpan = darkModeToggle.querySelector('span');
+                if (isDark) {
+                    darkModeToggle.classList.add('bg-blue-600');
+                    darkModeToggle.classList.remove('bg-gray-300');
+                    toggleSpan.classList.add('translate-x-6');
+                    toggleSpan.classList.remove('translate-x-1');
+                } else {
+                    darkModeToggle.classList.remove('bg-blue-600');
+                    darkModeToggle.classList.add('bg-gray-300');
+                    toggleSpan.classList.remove('translate-x-6');
+                    toggleSpan.classList.add('translate-x-1');
+                }
             }
+        }
 
-            // Initialize FAB Controller (assuming fabController.js defines window.IVSFabController.init)
-            if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
-                window.IVSFabController.init();
-                console.log("FAB Controller initialized.");
-            } else {
-                console.warn("window.IVSFabController or init method not found. FAB might not be fully functional.");
-            }
+        function applyTheme(isDark) {
+            htmlElement.classList.toggle('dark', isDark);
+            updateThemeToggleIcon(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
 
-            // Determine the current language from the html tag
-            const currentLang = document.documentElement.lang;
+        function loadInitialTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            // Mặc định là dark mode nếu không có cài đặt lưu, hoặc nếu hệ thống chọn dark mode
+            let currentIsDarkMode = savedTheme === 'dark' || (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            applyTheme(currentIsDarkMode);
+        }
+        
+        // --- Font Size Functions ---
+        function applyFontSize() {
+            bodyElement.style.setProperty('--font-size-multiplier', fontSizeMultipliers[currentFontSizeIndex]);
+            localStorage.setItem('fontSizeIndex', currentFontSizeIndex);
+            // Cập nhật trạng thái disabled của các nút
+            decreaseFontBtn.disabled = currentFontSizeIndex === 0;
+            increaseFontBtn.disabled = currentFontSizeIndex === fontSizeMultipliers.length - 1;
+        }
 
-            // Initialize Chapter Loader
-            const storyPath = 'legnaxe_part1'; // Directory name containing JSON chapters
-            const totalChapters = 27; // Tổng số chương (Chương 1-27)
-            if (typeof window.initializeChapterLoader === 'function') {
-                window.initializeChapterLoader(storyPath, totalChapters, currentLang); // Pass currentLang
-                console.log("Chapter Loader initialized with language:", currentLang);
-            } else {
-                console.error("Error: initializeChapterLoader is not defined. chapter-loader.js might not be loaded correctly or its definition is not global.");
-            }
-
-            // Event listener for the new top chapter list button
-            const listChapterBtnTop = document.getElementById('list-chapter-btn-top');
-            const chapterModal = document.getElementById('chapter-modal');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-
-            if (listChapterBtnTop && chapterModal && closeModalBtn) {
-                listChapterBtnTop.addEventListener('click', () => {
-                    chapterModal.style.display = 'flex'; // Ensure it's visible before adding active class
-                    setTimeout(() => {
-                        chapterModal.classList.add('modal-active');
-                    }, 10); // Small delay to allow display change to register before transition
-                    document.body.style.overflow = 'hidden'; // Prevent body scroll when modal is open
-                });
-
-                closeModalBtn.addEventListener('click', () => {
-                    chapterModal.classList.remove('modal-active');
-                    setTimeout(() => {
-                        // Ensure display: none is applied only after transition completes
-                        if (!chapterModal.classList.contains('modal-active')) {
-                            chapterModal.style.display = 'none';
-                        }
-                    }, 300); // Matches transition duration in CSS
-                    document.body.style.overflow = ''; // Restore body scroll
-                });
-
-                // Close modal when clicking outside the content
-                chapterModal.addEventListener('click', (event) => {
-                    if (event.target === chapterModal) {
-                        chapterModal.classList.remove('modal-active');
-                        setTimeout(() => {
-                            if (!chapterModal.classList.contains('modal-active')) {
-                                chapterModal.style.display = 'none';
-                            }
-                        }, 300);
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-
-
-            // Other existing logic (font size controls, scroll to top, etc.)
-            const decreaseFontBtn = document.getElementById('decrease-font-btn');
-            const resetFontBtn = document.getElementById('reset-font-btn');
-            const increaseFontBtn = document.getElementById('increase-font-btn');
-            const bodyElement = document.body;
-
-            const fontSizeMultipliers = [0.8, 1.0, 1.2, 1.4];
-            let currentFontSizeIndex = 1;
-
+        function loadInitialFontSize() {
             const savedFontSizeIndex = localStorage.getItem('fontSizeIndex');
             if (savedFontSizeIndex !== null) {
                 currentFontSizeIndex = parseInt(savedFontSizeIndex);
@@ -224,16 +333,69 @@
                     currentFontSizeIndex = 1;
                 }
             }
+            applyFontSize();
+        }
 
-            function applyFontSize() {
-                bodyElement.style.setProperty('--font-size-multiplier', fontSizeMultipliers[currentFontSizeIndex]);
-                localStorage.setItem('fontSizeIndex', currentFontSizeIndex);
-                decreaseFontBtn.disabled = currentFontSizeIndex === 0;
-                increaseFontBtn.disabled = currentFontSizeIndex === fontSizeMultipliers.length - 1;
+        // --- Modal Control Functions (Chapter List & Settings) ---
+        function openModal(modalElement) {
+            modalElement.style.display = 'flex';
+            setTimeout(() => { modalElement.classList.add('modal-active'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalElement) {
+            modalElement.classList.remove('modal-active');
+            setTimeout(() => {
+                if (!modalElement.classList.contains('modal-active')) {
+                    modalElement.style.display = 'none';
+                }
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+
+        // --- Main Initialization Block ---
+        window.onPageComponentsLoadedCallback = function() {
+            console.log("onPageComponentsLoadedCallback triggered. Initializing UI...");
+
+            loadInitialTheme();
+            loadInitialFontSize();
+            
+            // Initialize AOS
+            AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
+            
+            // Apply translations (existing logic)
+            if (window.system && typeof window.system.applyTranslations === 'function') {
+                // Chức năng ngôn ngữ sẽ tìm các data-lang-key và dịch thuật.
+                window.system.applyTranslations();
             }
 
-            applyFontSize();
+            // Initialize FAB Controller (existing logic)
+            if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
+                window.IVSFabController.init();
+            }
 
+            // Determine the current language from the html tag
+            const currentLang = document.documentElement.lang;
+
+            // Initialize Chapter Loader (existing logic)
+            const storyPath = 'legnaxe_part1'; 
+            const totalChapters = 27; 
+            if (typeof window.initializeChapterLoader === 'function') {
+                window.initializeChapterLoader(storyPath, totalChapters, currentLang); 
+            } else {
+                console.error("Error: initializeChapterLoader is not defined.");
+            }
+
+            // --- Event Listeners for NEW Layout ---
+
+            // 1. Theme Toggle Listener
+            darkModeToggle?.addEventListener('click', () => {
+                let currentIsDarkMode = !htmlElement.classList.contains('dark');
+                applyTheme(currentIsDarkMode);
+            });
+
+            // 2. Font Size Controls Listeners
             decreaseFontBtn?.addEventListener('click', () => {
                 if (currentFontSizeIndex > 0) {
                     currentFontSizeIndex--;
@@ -253,7 +415,21 @@
                 }
             });
 
-            const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+            // 3. Chapter List Modal Listeners (Using original IDs)
+            listChapterBtnTop?.addEventListener('click', () => { openModal(chapterModal); });
+            // Gán listener cho nút Mục Lục ở thanh dưới
+            listChapterBtnBottom?.addEventListener('click', () => { openModal(chapterModal); }); 
+            
+            closeModalBtn?.addEventListener('click', () => { closeModal(chapterModal); });
+            chapterModal?.addEventListener('click', (event) => { if (event.target === chapterModal) { closeModal(chapterModal); } });
+            
+            // 4. NEW Settings Modal Listeners
+            openSettingsModalBtn?.addEventListener('click', () => { openModal(settingsModal); });
+            closeSettingsModalBtn?.addEventListener('click', () => { closeModal(settingsModal); });
+            settingsModal?.addEventListener('click', (event) => { if (event.target === settingsModal) { closeModal(settingsModal); } });
+
+
+            // 5. Scroll to Top Listener
             scrollToTopBtn?.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
@@ -265,37 +441,8 @@
                     scrollToTopBtn.classList.add('hidden');
                 }
             });
-
-            const currentYearSpan = document.getElementById('current-year');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
-
-            // Theme toggle functionality (existing)
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            const htmlElement = document.documentElement;
-            const moonIcon = document.getElementById('moonIcon');
-            const sunIcon = document.getElementById('sunIcon');
-
-            function applyTheme(isDark) {
-                htmlElement.classList.toggle('dark', isDark);
-                if (moonIcon && sunIcon) {
-                    moonIcon.classList.toggle('hidden', isDark);
-                    sunIcon.classList.toggle('hidden', !isDark);
-                }
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            }
             
-            const savedTheme = localStorage.getItem('theme');
-            // Mặc định là chủ đề tối trừ khi chủ đề sáng được lưu rõ ràng.
-            let currentIsDarkMode = savedTheme !== 'light';
-            applyTheme(currentIsDarkMode);
-
-            darkModeToggle?.addEventListener('click', () => {
-                currentIsDarkMode = !htmlElement.classList.contains('dark');
-                applyTheme(currentIsDarkMode);
-            });
-
+            // 6. Copy to Clipboard (Existing logic, ensured global)
             function copyToClipboard(text) {
                 const textarea = document.createElement('textarea');
                 textarea.value = text;
@@ -304,6 +451,7 @@
                 try {
                     document.execCommand('copy');
                     const messageBox = document.createElement('div');
+                    // Cập nhật message box sang tiếng Việt
                     messageBox.textContent = 'Liên kết đã được sao chép vào clipboard!';
                     messageBox.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000; opacity: 0; transition: opacity 0.5s;';
                     document.body.appendChild(messageBox);
@@ -312,207 +460,9 @@
                 } catch (err) { console.error('Failed to copy: ', err); }
                 document.body.removeChild(textarea);
             }
-            // Expose copyToClipboard globally for use in dynamically loaded share options
             window.copyToClipboard = copyToClipboard;
+
         };
     </script>
 </body>
 </html>
-            // Initialize AOS
-            AOS.init({
-                duration: 700, // Animation duration
-                once: true,    // Whether animation should happen only once - while scrolling down
-                offset: 50,    // Offset (in px) from the original trigger point
-                easing: 'ease-out-cubic', // Easing function for animation
-            });
-            console.log("AOS initialized.");
-
-            // Apply translations (assuming language.js defines window.system.applyTranslations)
-            if (window.system && typeof window.system.applyTranslations === 'function') {
-                window.system.applyTranslations();
-                console.log("Translations applied.");
-            } else {
-                console.warn("window.system or applyTranslations not found. Language system might not be fully initialized.");
-            }
-
-            // Initialize FAB Controller (assuming fabController.js defines window.IVSFabController.init)
-            if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
-                window.IVSFabController.init();
-                console.log("FAB Controller initialized.");
-            } else {
-                console.warn("window.IVSFabController or init method not found. FAB might not be fully functional.");
-            }
-
-            // Determine the current language from the html tag
-            const currentLang = document.documentElement.lang;
-
-            // Initialize Chapter Loader
-            const storyPath = 'legnaxe_part1'; // Directory name containing JSON chapters
-            const totalChapters = 27; // Tổng số chương (Chương 1-27)
-            if (typeof window.initializeChapterLoader === 'function') {
-                window.initializeChapterLoader(storyPath, totalChapters, currentLang); // Pass currentLang
-                console.log("Chapter Loader initialized with language:", currentLang);
-            } else {
-                console.error("Error: initializeChapterLoader is not defined. chapter-loader.js might not be loaded correctly or its definition is not global.");
-            }
-
-            // Event listener for the new top chapter list button
-            const listChapterBtnTop = document.getElementById('list-chapter-btn-top');
-            const chapterModal = document.getElementById('chapter-modal');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-
-            if (listChapterBtnTop && chapterModal && closeModalBtn) {
-                listChapterBtnTop.addEventListener('click', () => {
-                    chapterModal.style.display = 'flex'; // Ensure it's visible before adding active class
-                    setTimeout(() => {
-                        chapterModal.classList.add('modal-active');
-                    }, 10); // Small delay to allow display change to register before transition
-                    document.body.style.overflow = 'hidden'; // Prevent body scroll when modal is open
-                });
-
-                closeModalBtn.addEventListener('click', () => {
-                    chapterModal.classList.remove('modal-active');
-                    setTimeout(() => {
-                        // Ensure display: none is applied only after transition completes
-                        if (!chapterModal.classList.contains('modal-active')) {
-                            chapterModal.style.display = 'none';
-                        }
-                    }, 300); // Matches transition duration in CSS
-                    document.body.style.overflow = ''; // Restore body scroll
-                });
-
-                // Close modal when clicking outside the content
-                chapterModal.addEventListener('click', (event) => {
-                    if (event.target === chapterModal) {
-                        chapterModal.classList.remove('modal-active');
-                        setTimeout(() => {
-                            if (!chapterModal.classList.contains('modal-active')) {
-                                chapterModal.style.display = 'none';
-                            }
-                        }, 300);
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-
-
-            // Other existing logic (font size controls, scroll to top, etc.)
-            const decreaseFontBtn = document.getElementById('decrease-font-btn');
-            const resetFontBtn = document.getElementById('reset-font-btn');
-            const increaseFontBtn = document.getElementById('increase-font-btn');
-            const bodyElement = document.body;
-
-            const fontSizeMultipliers = [0.8, 1.0, 1.2, 1.4];
-            let currentFontSizeIndex = 1;
-
-            const savedFontSizeIndex = localStorage.getItem('fontSizeIndex');
-            if (savedFontSizeIndex !== null) {
-                currentFontSizeIndex = parseInt(savedFontSizeIndex);
-                if (currentFontSizeIndex < 0 || currentFontSizeIndex >= fontSizeMultipliers.length) {
-                    currentFontSizeIndex = 1;
-                }
-            }
-
-            function applyFontSize() {
-                bodyElement.style.setProperty('--font-size-multiplier', fontSizeMultipliers[currentFontSizeIndex]);
-                localStorage.setItem('fontSizeIndex', currentFontSizeIndex);
-                decreaseFontBtn.disabled = currentFontSizeIndex === 0;
-                increaseFontBtn.disabled = currentFontSizeIndex === fontSizeMultipliers.length - 1;
-            }
-
-            applyFontSize();
-
-            decreaseFontBtn?.addEventListener('click', () => {
-                if (currentFontSizeIndex > 0) {
-                    currentFontSizeIndex--;
-                    applyFontSize();
-                }
-            });
-
-            resetFontBtn?.addEventListener('click', () => {
-                currentFontSizeIndex = 1;
-                applyFontSize();
-            });
-
-            increaseFontBtn?.addEventListener('click', () => {
-                if (currentFontSizeIndex < fontSizeMultipliers.length - 1) {
-                    currentFontSizeIndex++;
-                    applyFontSize();
-                }
-            });
-
-            const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
-            scrollToTopBtn?.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.remove('hidden');
-                } else {
-                    scrollToTopBtn.classList.add('hidden');
-                }
-            });
-
-            const currentYearSpan = document.getElementById('current-year');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
-
-            // Theme toggle functionality (existing)
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            const htmlElement = document.documentElement;
-            const moonIcon = document.getElementById('moonIcon');
-            const sunIcon = document.getElementById('sunIcon');
-
-            function applyTheme(isDark) {
-                htmlElement.classList.toggle('dark', isDark);
-                if (moonIcon && sunIcon) {
-                    moonIcon.classList.toggle('hidden', isDark);
-                    sunIcon.classList.toggle('hidden', !isDark);
-                }
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            }
-            
-            const savedTheme = localStorage.getItem('theme');
-            // Mặc định là chủ đề tối trừ khi chủ đề sáng được lưu trữ rõ ràng.
-            let currentIsDarkMode = savedTheme !== 'light';
-            applyTheme(currentIsDarkMode);
-
-            darkModeToggle?.addEventListener('click', () => {
-                currentIsDarkMode = !htmlElement.classList.contains('dark');
-                applyTheme(currentIsDarkMode);
-            });
-
-            function copyToClipboard(text) {
-                const textarea = document.createElement('textarea');
-                textarea.value = text;
-                document.body.appendChild(textarea);
-                textarea.select();
-                try {
-                    document.execCommand('copy');
-                    const messageBox = document.createElement('div');
-                    messageBox.textContent = 'Liên kết đã được sao chép vào clipboard!';
-                    messageBox.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000; opacity: 0; transition: opacity 0.5s;';
-                    document.body.appendChild(messageBox);
-                    setTimeout(() => {
-                        messageBox.style.opacity = 1;
-                    }, 10);
-                    setTimeout(() => {
-                        messageBox.style.opacity = 0;
-                        messageBox.addEventListener('transitionend', () => messageBox.remove());
-                    }, 3000);
-                } catch (err) {
-                    console.error('Failed to copy: ', err);
-                }
-                document.body.removeChild(textarea);
-            }
-            // Expose copyToClipboard globally for use in dynamically loaded share options
-            window.copyToClipboard = copyToClipboard;
-        };
-    </script>
-</body>
-</html>
-
-
-
