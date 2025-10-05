@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Story Part 1 - Tiếng Việt</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="container mx-auto px-4 py-8">
+        <div class="story-content-wrapper bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-xl">
+            <img src="/images/logo.jpg" alt="Sample Story Banner" class="mb-8 rounded-lg shadow-md w-full max-h-[300px] object-cover">
+            <div class="progress-bar h-1 bg-blue-600 mb-6" style="width: 0%"></div>
+            <div id="dynamic-chapter-content"></div>
+            <div class="navigation flex justify-between mt-10">
+                <button id="prev-chapter" class="px-4 py-2 bg-gray-500 text-white rounded">Trước</button>
+                <button id="next-chapter" class="px-4 py-2 bg-blue-500 text-white rounded">Tiếp</button>
+            </div>
+        </div>
+        <!-- Modal for chapter list -->
+        <div id="chapter-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white p-6 rounded-lg max-w-md w-full">
+                <h3 class="text-lg font-bold mb-4">Chương</h3>
+                <ul>
+                    <li><a href="#" data-chapter-id="chapter-1" class="block py-2">Chương 1</a></li>
+                    <li><a href="#" data-chapter-id="chapter-2" class="block py-2">Chương 2</a></li>
+                </ul>
+                <button id="close-modal" class="mt-4 px-4 py-2 bg-red-500 text-white rounded">Đóng</button>
+            </div>
+        </div>
+    </main>
+    <div id="fab-container-placeholder"></div>
+    <script src="/js/chapter-loader.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const storyPath = 'sample_story_part1';
+            const totalChapters = 2;
+            initializeChapterLoader(storyPath, totalChapters);
+        });
+    </script>
+</body>
+</html>
