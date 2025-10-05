@@ -2476,7 +2476,6 @@
   "about_philosophy_ivs": "The Integrate - Vision - Synergy philosophy guides all IVS activities and shapes our commitment to building a sustainable, comprehensive future for education.",
   "about_philosophy_synergy": "Synergy",
   "about_philosophy_synergy_desc": "True strength comes from collaboration. 'Synergy' emphasizes building a strong network of strategic partners, top experts, and the wider education community — together amplifying impact and achieving greater, sustainable outcomes.",
-  
   "academy_desc": "TODO: translate (en): academy_desc",
   "academy_item1": "TODO: translate (en): academy_item1",
   "academy_item2": "TODO: translate (en): academy_item2",
@@ -4592,7 +4591,6 @@
   "value_innovation_title": "TODO: translate (en): value_innovation_title",
   "value_quality_desc": "TODO: translate (en): value_quality_desc",
   "value_quality_title": "TODO: translate (en): value_quality_title",
-  
   "video_unsupported_browser": "TODO: translate (en): video_unsupported_browser",
   "vietnamese_staff_tab": "TODO: translate (en): vietnamese_staff_tab",
   "view_more_button": "TODO: translate (en): view_more_button",
@@ -4626,16 +4624,5 @@
   "cookie_reject": "Reject All",
   "cookie_customize": "Customize",
   "cookie_policy_link": "Cookie policy",
-  "video_section_title": "Explore the Power of IVS",
-  "affiliated_units_title": "IVS Group: Affiliated Units",
-  "affiliated_units_intro": "Each unit plays a key role in the IVS ecosystem, working together to deliver comprehensive education and technology solutions that create lasting impact.",
-  "unit_ivs_languages_desc": "IVS Academy is a partnership-focused training center offering integrated foreign language and life skills programs, providing international-grade curricula and teachers to help learners grow holistically and confidently enter the global stage.",
-  "unit_ivs_education_title": "IVS Education",
-  "unit_ivs_education_desc": "Focused on curriculum R&D, IVS Education authors STEAM and life-skills materials and delivers digital learning solutions (EdTech) for educational institutions, leading innovation in learning.",
-  "unit_ivs_celestech_title": "IVS Celestech",
-  "unit_ivs_celestech_desc": "The technology arm specializes in web/app design, digital transformation consulting, interior fit-out and supply of modern educational equipment including AI and VR/AR systems to optimize learning environments.",
-  "unit_ivs_consulting_title": "IVS Consulting",
-  "unit_ivs_consulting_desc": "Providing deep consulting services on digital transformation, education strategy and operational optimization to help organizations grow sustainably and meet strategic goals.",
-  "about_cta_final_title": "Ready to Partner with IVS?",
-  "about_cta_final_desc": "Whether you are an educational institution, a business seeking solutions, or an enthusiastic individual, connect with us to co-create sustainable impact."
+  "video_section_title": "Explore the Power of IVS"
 }

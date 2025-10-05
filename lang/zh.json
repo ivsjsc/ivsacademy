@@ -4605,7 +4605,7 @@
   "value_innovation_title": "TODO: translate (zh): value_innovation_title",
   "value_quality_desc": "TODO: translate (zh): value_quality_desc",
   "value_quality_title": "TODO: translate (zh): value_quality_title",
-  "video_section_title": "TODO: translate (zh): video_section_title",
+  "video_section_title": "探索 IVS 的力量",
   "video_unsupported_browser": "TODO: translate (zh): video_unsupported_browser",
   "vietnamese_staff_tab": "TODO: translate (zh): vietnamese_staff_tab",
   "view_more_button": "TODO: translate (zh): view_more_button",
@@ -4632,13 +4632,11 @@
   "why_partner_internationalcoop_values_desc": "TODO: translate (zh): why_partner_internationalcoop_values_desc",
   "why_partner_internationalcoop_values_title": "TODO: translate (zh): why_partner_internationalcoop_values_title",
   "why_partner_internationalcoop_vision_desc": "TODO: translate (zh): why_partner_internationalcoop_vision_desc",
-  "why_partner_internationalcoop_vision_title": "TODO: translate (zh): why_partner_internationalcoop_vision_title"
-  ,
+  "why_partner_internationalcoop_vision_title": "TODO: translate (zh): why_partner_internationalcoop_vision_title",
   "cookie_banner_title": "我们重视您的隐私",
   "cookie_banner_desc": "我们使用 cookies 提升浏览体验、提供个性化内容或广告，并分析流量。点击“全部接受”即表示您同意我们使用 cookies。",
   "cookie_accept": "全部接受",
   "cookie_reject": "全部拒绝",
   "cookie_customize": "自定义",
-  "cookie_policy_link": "Cookie 政策",
-  "video_section_title": "探索 IVS 的力量"
+  "cookie_policy_link": "Cookie 政策"
 }
