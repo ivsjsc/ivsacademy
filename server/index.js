@@ -11,8 +11,6 @@ app.use(express.json({ limit: '1mb' }));
 app.use(morgan('tiny'));
 
 const STORAGE_FILE = path.join(__dirname, '..', 'data', 'verified-id-callbacks.jsonl');
-const EXPECTED_API_KEY = process.env.CALLBACK_API_KEY || '';
-const EXPECTED_STATE = process.env.CALLBACK_STATE || '';
 
 // health
 app.get('/api/verified-id/health', (req, res) => {
@@ -29,6 +27,8 @@ app.post('/api/verified-id/callback', async (req, res) => {
 
     // Validate api-key header (sample request body shows headers.api-key)
     const incomingApiKeyHeader = (req.headers['api-key'] || req.headers['x-api-key'] || '').toString();
+    const EXPECTED_API_KEY = process.env.CALLBACK_API_KEY || '';
+    const EXPECTED_STATE = process.env.CALLBACK_STATE || '';
     if (EXPECTED_API_KEY) {
       if (!incomingApiKeyHeader) {
         return res.status(401).json({ error: 'Missing api-key header' });
