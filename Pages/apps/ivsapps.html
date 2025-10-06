@@ -17,6 +17,10 @@
             --tw-colors-ivs-secondary: #F59E0B; /* Amber accent for CTAs */
             --tw-colors-ivs-accent: #38BDF8;
             --tw-colors-ivs-border: #E5E7EB;
+            /* FAB / component compatibility variables */
+            --ivs-accent: var(--tw-colors-ivs-accent);
+            --fab-panel-bg: var(--tw-colors-ivs-card);
+            --fab-text-color: #ffffff;
         }
 
         body {
@@ -75,6 +79,11 @@
         .project-link:hover {
             text-decoration: underline;
         }
+        /* Ensure FAB submenu and items are visible in light mode (page does not use .dark) */
+        .fab-submenu-panel { color: #0f172a; background: var(--fab-panel-bg); }
+        .fab-submenu-item { color: #0f172a; }
+        /* Ensure FAB icon color contrasts on light background */
+        .fab-item i { color: var(--fab-text-color); }
     </style>
 <link href="/css/tailwind.css" rel="stylesheet"/>
 <meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." name="description"/>
@@ -299,6 +308,27 @@
 <div id="fab-container-placeholder"></div>
 <div id="footer-placeholder"></div>
 <!-- Load shared components and the language system (injects header, FAB, footer) -->
+<!-- Ensure key CSS variables are applied at runtime so component CSS loaded later doesn't override them -->
+<script>
+    (function(){
+        try {
+            const doc = document.documentElement;
+            // Light theme variables for this page (FAB and core colors)
+            doc.style.setProperty('--tw-colors-ivs-dark', '#F8FAFC');
+            doc.style.setProperty('--tw-colors-ivs-card', '#FFFFFF');
+            doc.style.setProperty('--tw-colors-ivs-text-light', '#0F172A');
+            doc.style.setProperty('--tw-colors-ivs-text-muted', '#6B7280');
+            doc.style.setProperty('--tw-colors-ivs-primary', '#6366F1');
+            doc.style.setProperty('--tw-colors-ivs-secondary', '#F59E0B');
+            doc.style.setProperty('--tw-colors-ivs-accent', '#38BDF8');
+            doc.style.setProperty('--tw-colors-ivs-border', '#E5E7EB');
+            // FAB specific
+            doc.style.setProperty('--ivs-accent', '#38BDF8');
+            doc.style.setProperty('--fab-panel-bg', '#ffffff');
+            doc.style.setProperty('--fab-text-color', '#ffffff');
+        } catch (e) { console.warn('Failed to set page-level CSS variables', e); }
+    })();
+</script>
 <script defer="" src="/js/loadComponents.js"></script>
 </body>
 </html>
