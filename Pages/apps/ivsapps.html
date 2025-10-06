@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth dark" lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title data-lang-key="page_title_ivsapps">Website &amp; Ứng Dụng | IVS Celestech</title>
 <!-- Tải Tailwind CSS CDN -->
 <style>
+        /* Light theme overrides for this page (keeps data-lang-key hooks) */
+        :root {
+            --tw-colors-ivs-dark: #F8FAFC; /* page background (light) */
+            --tw-colors-ivs-card: #FFFFFF; /* card background */
+            --tw-colors-ivs-text-light: #0F172A; /* primary text (dark) */
+            --tw-colors-ivs-text-muted: #6B7280; /* muted text */
+            --tw-colors-ivs-primary: #6366F1; /* Indigo-500 (kept) */
+            --tw-colors-ivs-secondary: #F59E0B; /* Amber accent for CTAs */
+            --tw-colors-ivs-accent: #38BDF8;
+            --tw-colors-ivs-border: #E5E7EB;
+        }
+
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
             background-color: var(--tw-colors-ivs-dark);
@@ -14,11 +26,12 @@
             line-height: 1.6;
         }
         .header-bg {
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(6px);
         }
         .text-gradient {
             background: linear-gradient(90deg, #6366F1, #22D3EE, #6366F1);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -30,13 +43,13 @@
         }
         .card-base {
             background-color: var(--tw-colors-ivs-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--tw-colors-ivs-border);
             transition: all 0.3s ease;
             height: 100%;
         }
         .card-base:hover {
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
-            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+            transform: translateY(-4px);
         }
         .project-icon-container {
             width: 3rem;
