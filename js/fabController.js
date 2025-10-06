@@ -101,6 +101,9 @@ const IVSFabController = {
     this.fabContainer = document.getElementById('fab-container');
     this.assistantContainer = document.getElementById('fab-assistant-container');
     this.scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+    this.shareMainBtn = document.getElementById('share-main-btn');
+    this.contactMainBtn = document.getElementById('contact-main-btn');
+    this.assistantMainBtn = document.getElementById('assistant-main-btn');
     // Collect submenu buttons from both the canonical fab container and the assistant container
     const buttonsInFab = this.fabContainer ? Array.from(this.fabContainer.querySelectorAll('button[aria-haspopup="true"]')) : [];
     const buttonsInAssistant = this.assistantContainer ? Array.from(this.assistantContainer.querySelectorAll('button[aria-haspopup="true"]')) : [];
@@ -405,6 +408,55 @@ const IVSFabController = {
             window.componentLog("IVSFabController: Đã gắn sự kiện cho nút cuộn lên đầu trang.");
         }
 
+        // Attach specific handlers for Share, Contact and Assistant main buttons
+        if (this.shareMainBtn) {
+            this.shareMainBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // If Web Share API available, use it directly
+                const shareData = { title: document.title, text: document.title, url: window.location.href };
+                if (navigator.share) {
+                    navigator.share(shareData).catch(err => {
+                        window.componentLog('Web Share failed: ' + err.message, 'warn');
+                        // Fallback to opening the submenu
+                        this.openSubmenu(this.shareMainBtn);
+                    });
+                } else {
+                    // Open the share submenu handled by populateShareOptions
+                    this.openSubmenu(this.shareMainBtn);
+                }
+            });
+            // Ensure the share button is not double-handled by generic submenu wiring below
+            this.buttonsWithSubmenu = (this.buttonsWithSubmenu || []).filter(b => b !== this.shareMainBtn);
+        }
+
+        if (this.contactMainBtn) {
+            this.contactMainBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Open our in-page contact modal if supported, otherwise open submenu
+                if (typeof this.openContactModal === 'function') {
+                    this.openContactModal();
+                } else {
+                    this.openSubmenu(this.contactMainBtn);
+                }
+            });
+            this.buttonsWithSubmenu = (this.buttonsWithSubmenu || []).filter(b => b !== this.contactMainBtn);
+        }
+
+        if (this.assistantMainBtn) {
+            this.assistantMainBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Toggle assistant overlay/modal via IVSChatbotController
+                if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
+                    // If open, close; if closed, open (fallback controller manages state)
+                    window.IVSChatbotController.open();
+                } else {
+                    // If no controller, show submenu as a fallback
+                    this.openSubmenu(this.assistantMainBtn);
+                }
+            });
+            this.buttonsWithSubmenu = (this.buttonsWithSubmenu || []).filter(b => b !== this.assistantMainBtn);
+        }
+
         // Đảm bảo chỉ một menu con mở tại một thời điểm, click lại sẽ đóng, focus/blur accessibility
         if (this.buttonsWithSubmenu && this.buttonsWithSubmenu.forEach) {
             this.buttonsWithSubmenu.forEach(btn => {
@@ -478,6 +530,58 @@ const IVSFabController = {
         btn.classList.add('fab-active');
         
         window.componentLog(`IVSFabController: Đã mở submenu cho nút: ${btn.id}`);
+    },
+
+    /**
+     * Open a lightweight in-page contact modal. This provides a better UX than forcing users
+     * to open a new tab. It includes mailto and phone links and a close button.
+     */
+    openContactModal() {
+        // If modal exists, focus it
+        if (document.getElementById('fab-contact-modal')) return;
+        const modal = document.createElement('div');
+        modal.id = 'fab-contact-modal';
+        modal.style.position = 'fixed';
+        modal.style.inset = '0';
+        modal.style.zIndex = '99998';
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        modal.style.background = 'rgba(0,0,0,0.35)';
+
+        const panel = document.createElement('div');
+        panel.style.width = '360px';
+        panel.style.maxWidth = 'calc(100% - 32px)';
+        panel.style.borderRadius = '12px';
+        panel.style.padding = '16px';
+        panel.style.background = '#fff';
+        panel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+
+        const title = document.createElement('h3');
+        title.textContent = 'Liên hệ IVS Academy';
+        title.style.margin = '0 0 8px 0';
+        title.style.fontSize = '1.05rem';
+        panel.appendChild(title);
+
+        const list = document.createElement('div');
+        list.innerHTML = `
+            <a href="tel:+84896920547" style="display:block;margin:8px 0">📞 Hotline: +84 89 692 0547</a>
+            <a href="mailto:info@ivsacademy.edu.vn" style="display:block;margin:8px 0">✉️ Email: info@ivsacademy.edu.vn</a>
+            <a href="https://zalo.me/1582587135739746654" target="_blank" rel="noopener" style="display:block;margin:8px 0">💬 Zalo</a>
+        `;
+        panel.appendChild(list);
+
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = 'Đóng';
+        closeBtn.style.marginTop = '12px';
+        closeBtn.addEventListener('click', () => {
+            modal.remove();
+        });
+        panel.appendChild(closeBtn);
+
+        modal.appendChild(panel);
+        modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+        document.body.appendChild(modal);
     },
 
     /**
