@@ -445,14 +445,23 @@ const IVSFabController = {
         if (this.assistantMainBtn) {
             this.assistantMainBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                // Toggle assistant overlay/modal via IVSChatbotController
-                if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
-                    // If open, close; if closed, open (fallback controller manages state)
-                    window.IVSChatbotController.open();
-                } else {
-                    // If no controller, show submenu as a fallback
-                    this.openSubmenu(this.assistantMainBtn);
+                // Toggle assistant overlay/modal via IVSChatbotController if available
+                try {
+                    const overlayExists = !!document.getElementById('ivs-chatbot-overlay');
+                    if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
+                        if (overlayExists && typeof window.IVSChatbotController.close === 'function') {
+                            window.IVSChatbotController.close();
+                        } else {
+                            window.IVSChatbotController.open();
+                        }
+                        return;
+                    }
+                } catch (err) {
+                    window.componentLog('Assistant toggle error: ' + err.message, 'warn');
                 }
+
+                // If no controller, show submenu as a fallback
+                this.openSubmenu(this.assistantMainBtn);
             });
             this.buttonsWithSubmenu = (this.buttonsWithSubmenu || []).filter(b => b !== this.assistantMainBtn);
         }
@@ -537,51 +546,48 @@ const IVSFabController = {
      * to open a new tab. It includes mailto and phone links and a close button.
      */
     openContactModal() {
-        // If modal exists, focus it
+        // If modal exists, bring to front
         if (document.getElementById('fab-contact-modal')) return;
         const modal = document.createElement('div');
         modal.id = 'fab-contact-modal';
-        modal.style.position = 'fixed';
-        modal.style.inset = '0';
-        modal.style.zIndex = '99998';
-        modal.style.display = 'flex';
-        modal.style.alignItems = 'center';
-        modal.style.justifyContent = 'center';
-        modal.style.background = 'rgba(0,0,0,0.35)';
+        modal.className = 'fab-contact-modal-overlay';
 
         const panel = document.createElement('div');
-        panel.style.width = '360px';
-        panel.style.maxWidth = 'calc(100% - 32px)';
-        panel.style.borderRadius = '12px';
-        panel.style.padding = '16px';
-        panel.style.background = '#fff';
-        panel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+        panel.className = 'fab-contact-panel';
 
         const title = document.createElement('h3');
         title.textContent = 'Liên hệ IVS Academy';
-        title.style.margin = '0 0 8px 0';
-        title.style.fontSize = '1.05rem';
+        title.className = 'fab-contact-title';
         panel.appendChild(title);
 
         const list = document.createElement('div');
+        list.className = 'fab-contact-list';
         list.innerHTML = `
-            <a href="tel:+84896920547" style="display:block;margin:8px 0">📞 Hotline: +84 89 692 0547</a>
-            <a href="mailto:info@ivsacademy.edu.vn" style="display:block;margin:8px 0">✉️ Email: info@ivsacademy.edu.vn</a>
-            <a href="https://zalo.me/1582587135739746654" target="_blank" rel="noopener" style="display:block;margin:8px 0">💬 Zalo</a>
+            <a href="tel:+84896920547">📞 Hotline: +84 89 692 0547</a>
+            <a href="mailto:info@ivsacademy.edu.vn">✉️ Email: info@ivsacademy.edu.vn</a>
+            <a href="https://zalo.me/1582587135739746654" target="_blank" rel="noopener">💬 Zalo</a>
         `;
         panel.appendChild(list);
 
         const closeBtn = document.createElement('button');
         closeBtn.textContent = 'Đóng';
-        closeBtn.style.marginTop = '12px';
-        closeBtn.addEventListener('click', () => {
-            modal.remove();
-        });
+        closeBtn.className = 'fab-contact-close';
+        closeBtn.addEventListener('click', () => this.closeContactModal());
         panel.appendChild(closeBtn);
 
         modal.appendChild(panel);
-        modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+        modal.addEventListener('click', (e) => { if (e.target === modal) this.closeContactModal(); });
         document.body.appendChild(modal);
+
+        // Force reflow then add 'show' class to trigger CSS transition
+        requestAnimationFrame(() => modal.classList.add('show'));
+    },
+
+    closeContactModal() {
+        const modal = document.getElementById('fab-contact-modal');
+        if (!modal) return;
+        modal.classList.remove('show');
+        modal.addEventListener('transitionend', () => modal.remove(), { once: true });
     },
 
     /**
