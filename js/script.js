@@ -37,7 +37,7 @@ function debounce(func, wait) {
 function initializeHeader() {
     const header = document.getElementById('navbar');
     if (!header) {
-        console.error('[IVS Script] Header element with id "navbar" not found for initialization.');
+        window.componentLog('Header element with id "navbar" not found for initialization.', 'error');
         return;
     }
 
@@ -112,7 +112,7 @@ function initializeHeader() {
         }
     });
 
-    console.log('[IVS Script] Header has been fully initialized.');
+    window.componentLog('Header has been fully initialized.', 'info');
 }
 window.initializeHeader = initializeHeader;
 
@@ -130,7 +130,7 @@ function initializeFabButtons() {
             e.stopPropagation();
             fabContainer.classList.toggle('open');
         });
-        console.log('[IVS Script] Main FAB menu toggle initialized.');
+        window.componentLog('Main FAB menu toggle initialized.', 'info');
     }
 
     // --- Scroll-to-Top FAB Logic ---
@@ -143,7 +143,7 @@ function initializeFabButtons() {
         scrollToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        console.log('[IVS Script] Scroll-to-top FAB initialized.');
+        window.componentLog('Scroll-to-top FAB initialized.', 'info');
     }
 }
 window.initializeFabButtons = initializeFabButtons;
@@ -156,7 +156,7 @@ function initializeFooter() {
     const yearSpan = document.getElementById('current-year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
-        console.log('[IVS Script] Footer initialized.');
+        window.componentLog('Footer initialized.', 'info');
     }
 }
 window.initializeFooter = initializeFooter;
@@ -183,7 +183,7 @@ const IVSHeader = {
      * This function should be called once the header component is loaded.
      */
     init() {
-        console.log('[IVSHeader] Initializing...');
+        window.componentLog('IVSHeader Initializing...', 'info');
         this.addEventListeners();
         this.updateActiveLinks();
         this.updateLanguageDisplay();
@@ -338,7 +338,7 @@ const IVSHeader = {
         if (window.langSystem && typeof window.langSystem.setLanguage === 'function') {
             window.langSystem.setLanguage(lang);
         } else {
-            console.warn('[IVSHeader] Language system (window.langSystem.setLanguage) not found.');
+            window.componentLog('Language system (window.langSystem.setLanguage) not found.', 'warn');
         }
         this.updateLanguageDisplay(lang);
         if (this.activeDesktopDropdown) this.toggleDesktopDropdown(this.activeDesktopDropdown, false);
