@@ -4,6 +4,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
+const fetch = require('node-fetch');
 require('dotenv').config();
 
 const app = express();
@@ -64,6 +65,63 @@ app.post('/api/verified-id/callback', async (req, res) => {
   } catch (err) {
     console.error('callback error', err);
     res.status(500).json({ error: 'internal_server_error' });
+  }
+});
+
+// OAuth2 callback for Microsoft Entra
+app.get('/auth/callback', async (req, res) => {
+  try {
+    const { code, state, error, error_description } = req.query;
+
+    if (error) {
+      console.error('OAuth error:', error, error_description);
+      return res.status(400).send(`Authentication error: ${error_description || error}`);
+    }
+
+    if (!code) {
+      return res.status(400).send('Missing authorization code');
+    }
+
+    // Exchange code for tokens
+    const tokenEndpoint = `https://login.microsoftonline.com/${process.env.OAUTH_TENANT_ID}/oauth2/v2.0/token`;
+    const params = new URLSearchParams({
+      client_id: process.env.OAUTH_CLIENT_ID,
+      client_secret: process.env.OAUTH_CLIENT_SECRET,
+      code: code,
+      grant_type: 'authorization_code',
+      redirect_uri: process.env.OAUTH_REDIRECT_URI
+    });
+
+    const tokenResponse = await fetch(tokenEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params
+    });
+
+    const tokenData = await tokenResponse.json();
+
+    if (!tokenResponse.ok) {
+      console.error('Token exchange failed:', tokenData);
+      return res.status(500).send('Failed to exchange authorization code for tokens');
+    }
+
+    // Here you would typically:
+    // - Validate the ID token
+    // - Create a session or JWT for the user
+    // - Redirect to the frontend with the session
+
+    // For demo purposes, just return the tokens (NOT recommended for production)
+    res.json({
+      message: 'Authentication successful',
+      tokens: tokenData,
+      state: state
+    });
+
+  } catch (err) {
+    console.error('OAuth callback error:', err);
+    res.status(500).send('Internal server error during authentication');
   }
 });
 
