@@ -9,13 +9,23 @@
 'use strict';
 
 // Defensive fallback for logging. If utils.js loads later, it will overwrite this.
+// This fallback uses the same utility pattern as componentLog to ensure consistency.
 if (typeof window.componentLog !== 'function') {
     window.componentLog = function(msg, level = 'log') {
-        try {
-            if (level === 'error') console.error(`[LANG_FALLBACK] ${msg}`);
-            else if (level === 'warn') console.warn(`[LANG_FALLBACK] ${msg}`);
-            else console.log(`[LANG_FALLBACK] ${msg}`);
-        } catch (e) { /* silent fail */ }
+        // Use the same pattern as utils.js componentLog
+        if (typeof console !== 'undefined' && console && typeof console[level] === 'function') {
+            try {
+                console[level](`[IVS App] ${msg}`);
+            } catch (error) {
+                if (typeof console.log === 'function') {
+                    console.log(`[IVS App] ${level.toUpperCase()}: ${msg}`);
+                }
+            }
+        } else {
+            if (typeof console !== 'undefined' && console && typeof console.log === 'function') {
+                console.log(`[IVS App] ${level.toUpperCase()}: ${msg}`);
+            }
+        }
     };
 }
 

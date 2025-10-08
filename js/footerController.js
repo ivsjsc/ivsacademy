@@ -81,7 +81,7 @@ const IVSFooterController = {
                 }
             }
         } catch (err) {
-            console.error('Newsletter submit error', err);
+            window.componentLog('Newsletter submit error: ' + err.message, 'error');
             if (messageOutput) { messageOutput.textContent = 'Lỗi khi gửi. Vui lòng thử lại sau.'; messageOutput.className = 'text-sm mt-3 text-red-400'; }
         } finally {
             if (submitBtn) { 

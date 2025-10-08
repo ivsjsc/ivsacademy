@@ -9,16 +9,24 @@
 'use strict';
 
 // Provide gentle fallbacks for global utilities to avoid hard crashes when
-// utils.js hasn't loaded yet. Existing code relied on immediate console.error
-// which floods logs and may break some environments; we'll use componentLog
-// fallback quietly (console.error only if console present and on explicit need).
+// utils.js hasn't loaded yet. This fallback uses the same utility pattern
+// as componentLog to ensure consistency across the codebase.
 if (typeof window.componentLog !== 'function') {
     window.componentLog = function(msg, level = 'log') {
-        try {
-            if (level === 'error') console.error(msg);
-            else if (level === 'warn') console.warn(msg);
-            else console.log(msg);
-        } catch (e) {}
+        // Use the same pattern as utils.js componentLog
+        if (typeof console !== 'undefined' && console && typeof console[level] === 'function') {
+            try {
+                console[level](`[IVS App] ${msg}`);
+            } catch (error) {
+                if (typeof console.log === 'function') {
+                    console.log(`[IVS App] ${level.toUpperCase()}: ${msg}`);
+                }
+            }
+        } else {
+            if (typeof console !== 'undefined' && console && typeof console.log === 'function') {
+                console.log(`[IVS App] ${level.toUpperCase()}: ${msg}`);
+            }
+        }
     };
     window.__componentLogFallback = true;
 }
