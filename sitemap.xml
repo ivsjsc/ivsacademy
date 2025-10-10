@@ -4,124 +4,526 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-    <!-- Generated sitemap (snapshot: 2025-10-02) -->
+    <!-- Generated sitemap (snapshot: 2025-10-11) -->
 
     <!-- Root and index -->
     <url>
         <loc>https://ivsacademy.edu.vn/</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://ivsacademy.edu.vn/index.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- Top-level pages -->
+    <!-- Root pages -->
     <url>
         <loc>https://ivsacademy.edu.vn/about.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/admin.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/analytics.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/auth.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/consulting.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/contact.html</loc>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://ivsacademy.edu.vn/contact.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <loc>https://ivsacademy.edu.vn/debug.html</loc>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.5</priority>
     </url>
     <url>
         <loc>https://ivsacademy.edu.vn/education.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://ivsacademy.edu.vn/consulting.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <loc>https://ivsacademy.edu.vn/fab-assistant.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/fab-container.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/fab-demo.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/gallery.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/hello.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/ivs-global-teacher-hub.html</loc>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/layout.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/learning-materials.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/live_index.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/news-archive.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/profile-company-ivsjsc.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/simple-test.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
     </url>
     <url>
         <loc>https://ivsacademy.edu.vn/solutions.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
-    <!-- Apps -->
     <url>
-        <loc>https://ivsacademy.edu.vn/apps/ivsapps.html</loc>
-        <lastmod>2025-10-02</lastmod>
-        <changefreq>weekly</changefreq>
+        <loc>https://ivsacademy.edu.vn/test-index.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/test-loader.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/test-suite.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/thank-you.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
-    <!-- News / Gallery -->
+    <!-- Pages directory -->
     <url>
-        <loc>https://ivsacademy.edu.vn/gallery.html</loc>
-        <lastmod>2025-10-02</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
+        <loc>https://ivsacademy.edu.vn/Pages/bang-gia-tham-khao-gvnn-ivs.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
-
-    <!-- Pages/ (selected) -->
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/bosungchungchi.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/careervn.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/consulting.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/edtech.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/education.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/english-placement.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/foreign-teacher-services.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/international-partnership.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
     <url>
         <loc>https://ivsacademy.edu.vn/Pages/ivs-academy.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/ivscelestech-tcnoithat.html</loc>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://ivsacademy.edu.vn/Pages/ivscelestech.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://ivsacademy.edu.vn/Pages/webdesign.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <loc>https://ivsacademy.edu.vn/Pages/ivslanguages.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/ivslifeminds.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/ivsmedia.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/legal_consulting.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/letstalkdongnai.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/litigation_consulting.html</loc>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://ivsacademy.edu.vn/Pages/lkmamnon.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.65</priority>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://ivsacademy.edu.vn/Pages/lkthcsthpt.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.65</priority>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/lktieuhoc.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/lkttnn.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/non-profit.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/psb_introduction.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/rnd-curriculum.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/siunna.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/steambyivs.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/tailieu.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/teacher-lists-available.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/teachertrain.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/tech_devices.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/thanhlaptrungtam.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/upskill.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/webdesign.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 
-    <!-- Blogs (examples) -->
+    <!-- Pages/apps -->
     <url>
-        <loc>https://ivsacademy.edu.vn/Blogs/july2025ai.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <loc>https://ivsacademy.edu.vn/Pages/apps/ivsapps.html</loc>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
+        <priority>0.6</priority>
     </url>
-
-    <!-- Games -->
     <url>
-        <loc>https://ivsacademy.edu.vn/games/ivsgames.html</loc>
-        <lastmod>2025-10-02</lastmod>
-        <changefreq>weekly</changefreq>
+        <loc>https://ivsacademy.edu.vn/Pages/apps/ivscentercare.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/apps/ivskinderlink.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/apps/ivsquicktest.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/apps/teacherlistsavailable.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
-    <!-- Novels and reading pages -->
+    <!-- Pages/blogs -->
     <url>
-        <loc>https://ivsacademy.edu.vn/Pages/Novels/read-legnaxe_part1_en.html</loc>
-        <lastmod>2025-10-02</lastmod>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/aboutkimballallenthomson.html</loc>
+        <lastmod>2025-10-11</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.4</priority>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/aboutthepowertoinsprie.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/ai-thinking-guide.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/blog-vneid-guide.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/chinhsach2025ivs.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/eov2025.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/health-luvyoga.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/health-yensao.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/IntlMastersHCMC.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/ivsjsc.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/july2025ai.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/letstalkdongnai.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/blogs/talktask-ivsuniversitieshcmc.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Pages/careers -->
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/careers/sale-website.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Pages/games -->
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/games/htmlivsgame_memorymatch.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/games/ivsgames.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Pages/legal -->
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/legal/privacy.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://ivsacademy.edu.vn/Pages/legal/terms.html</loc>
+        <lastmod>2025-10-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 
 </urlset>
