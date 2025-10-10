@@ -1,0 +1,16 @@
+{
+  "@context": "https://www.w3.org/ns/did/v1",
+  "id": "did:web:ivsacademy.edu.vn",
+  "verificationMethod": [
+    {
+      "id": "did:web:ivsacademy.edu.vn#key-1",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:ivsacademy.edu.vn",
+      "publicKeyJwk": {
+        "kty": "RSA",
+                "n": "yxsHKyau3GlssuZzxCdCFA-uZVLl9fDXYDyafNK64ivvbDw6TQqVNe-FQfzCoO8O380lkuz2rNg49BW8gNwkzVQ3ZYBL16xYo5KHPwzWhJ-CyBOp1WFtB6dDPFG9_MBWx430TA5QMu-QylcLUBf7ZJHg_Z5tXOTF44e3NNXXXQ6PaLsZaRf_AKXEHoNJ4z2iUcm0gDsM73YZ2xkVf6G4lxlZm8QYV-ARBnw5VZC0CBCRddMiNcrRwpgo7lhramAkr8_H80xQ-Q0VxornHSR8Cessu0VesKFIpbfbELRgFAJRe-rxyb8piJConRLqR06kMKXSSLib2MbzbUKw1q8BjQ",
+        "e": "AQAB"
+      }
+    }
+  ]
+}
