@@ -36,7 +36,7 @@
     </div>
     <!-- Nút FAB Trợ Lý (Assistant) - merged here -->
     <div class="relative group/fab">
-        <button id="assistant-main-btn" title="Mở IVS Assistant" aria-label="Mở IVS Assistant" aria-haspopup="true" aria-expanded="false" aria-controls="assistant-window"
+        <button id="assistant-main-btn" title="Mở IVS Assistant" aria-label="Mở IVS Assistant" 
                 class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
                 tabindex="0" role="button">
             <i class="fas fa-robot text-xl"></i>
@@ -159,6 +159,23 @@
 
             // Close panels when window resizes to avoid stuck panels
             window.addEventListener('resize', ()=> closeAllPanels());
+
+            // Handle assistant button click to open chat directly
+            const assistantMainBtn = document.getElementById('assistant-main-btn');
+            if (assistantMainBtn) {
+                assistantMainBtn.addEventListener('click', () => {
+                    if (window.IVSFABChatbot && typeof window.IVSFABChatbot.openChat === 'function') {
+                        window.IVSFABChatbot.openChat();
+                    } else if (window.IVSFABChatbot && typeof window.IVSFABChatbot.init === 'function') {
+                        window.IVSFABChatbot.init();
+                        setTimeout(() => {
+                            if (window.IVSFABChatbot && typeof window.IVSFABChatbot.openChat === 'function') {
+                                window.IVSFABChatbot.openChat();
+                            }
+                        }, 100);
+                    }
+                });
+            }
         });
     })();
 </script>
@@ -183,6 +200,321 @@
                 }catch(e){ console.error('FAB debug failed',e); }
             })();
         </script>
+
+<!-- AI Assistant Component -->
+<div id="ai-assistant-window" class="fixed bottom-20 right-6 z-40 hidden" style="z-index:10001;">
+    <!-- Chat Window -->
+    <div id="chat-window" class="absolute bottom-16 right-0 w-80 h-96 bg-white dark:bg-gray-800 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 hidden flex-col transition-all duration-300">
+        <!-- Chat Header -->
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-t-lg">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-sm">IVS Assistant</h3>
+                        <p class="text-xs opacity-90">Hỗ trợ 24/7</p>
+                    </div>
+                </div>
+                <button id="chat-close" class="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-1 transition-colors" type="button">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto bg-gray-50 dark:bg-gray-900">
+            <!-- Messages will be inserted here -->
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-b-lg">
+            <div class="flex space-x-2">
+                <input type="text" id="chat-input" placeholder="Nhập câu hỏi của bạn..." class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white text-sm">
+                <button id="chat-send" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex space-x-1 mt-2">
+                <button class="quick-reply px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors" data-reply="courses">Khóa học</button>
+                <button class="quick-reply px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors" data-reply="teachers">Giáo viên</button>
+                <button class="quick-reply px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors" data-reply="contact">Liên hệ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Assistant JavaScript -->
+<script>
+(function() {
+    'use strict';
+
+    // IVSFABChatbot class for intelligent responses
+    class IVSFABChatbot {
+        constructor() {
+            this.messages = [];
+            this.isTyping = false;
+            this.chatWindow = null;
+            this.chatMessages = null;
+            this.chatInput = null;
+            this.chatSend = null;
+            this.quickReplies = null;
+            this.isInitialized = false;
+        }
+
+        init() {
+            if (this.isInitialized) return;
+
+            this.chatWindow = document.getElementById('chat-window');
+            this.chatMessages = document.getElementById('chat-messages');
+            this.chatInput = document.getElementById('chat-input');
+            this.chatSend = document.getElementById('chat-send');
+            this.quickReplies = document.querySelectorAll('.quick-reply');
+
+            if (!this.chatWindow || !this.chatMessages || !this.chatInput || !this.chatSend) {
+                console.warn('IVSFABChatbot: Missing required DOM elements');
+                return;
+            }
+
+            this.bindEvents();
+            this.addWelcomeMessage();
+            this.isInitialized = true;
+            window.componentLog('IVSFABChatbot initialized', 'info');
+        }
+
+        bindEvents() {
+            // Send message on button click
+            this.chatSend.addEventListener('click', () => this.sendMessage());
+
+            // Send message on Enter key
+            this.chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    this.sendMessage();
+                }
+            });
+
+            // Quick reply buttons
+            this.quickReplies.forEach(button => {
+                button.addEventListener('click', () => {
+                    const reply = button.getAttribute('data-reply');
+                    this.handleQuickReply(reply);
+                });
+            });
+
+            // Close chat
+            const closeBtn = document.getElementById('chat-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => this.closeChat());
+            }
+        }
+
+        addWelcomeMessage() {
+            const welcomeMessage = {
+                type: 'bot',
+                content: 'Xin chào! Tôi là trợ lý AI của IVS Academy. Tôi có thể giúp bạn tìm hiểu về các khóa học, giáo viên, và thông tin liên hệ. Bạn cần hỗ trợ gì?',
+                timestamp: new Date()
+            };
+            this.addMessage(welcomeMessage);
+        }
+
+        sendMessage() {
+            const message = this.chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMessage = {
+                type: 'user',
+                content: message,
+                timestamp: new Date()
+            };
+            this.addMessage(userMessage);
+
+            // Clear input
+            this.chatInput.value = '';
+
+            // Show typing indicator
+            this.showTyping();
+
+            // Process response after delay
+            setTimeout(() => {
+                this.hideTyping();
+                this.generateResponse(message);
+            }, 1000 + Math.random() * 1000);
+        }
+
+        handleQuickReply(replyType) {
+            let message = '';
+            switch (replyType) {
+                case 'courses':
+                    message = 'Tôi muốn biết về các khóa học';
+                    break;
+                case 'teachers':
+                    message = 'Kể cho tôi về đội ngũ giáo viên';
+                    break;
+                case 'contact':
+                    message = 'Làm thế nào để liên hệ với IVS?';
+                    break;
+                default:
+                    message = replyType;
+            }
+
+            // Simulate user message
+            const userMessage = {
+                type: 'user',
+                content: message,
+                timestamp: new Date()
+            };
+            this.addMessage(userMessage);
+
+            // Show typing and respond
+            this.showTyping();
+            setTimeout(() => {
+                this.hideTyping();
+                this.generateResponse(message);
+            }, 800);
+        }
+
+        generateResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            let response = '';
+
+            // Intelligent responses based on keywords
+            if (message.includes('khóa học') || message.includes('course') || message.includes('học')) {
+                response = 'IVS Academy cung cấp các khóa học chất lượng cao về Tiếng Anh, Công nghệ, và Giáo dục. Chúng tôi có chương trình học phù hợp cho mọi lứa tuổi từ trẻ em đến người lớn. Bạn quan tâm đến lĩnh vực nào?';
+            } else if (message.includes('giáo viên') || message.includes('teacher') || message.includes('giảng viên')) {
+                response = 'Đội ngũ giáo viên của IVS Academy gồm các chuyên gia có kinh nghiệm và chứng chỉ quốc tế. Chúng tôi có giáo viên bản ngữ và giáo viên Việt Nam giàu kinh nghiệm. Tất cả đều được đào tạo chuyên nghiệp.';
+            } else if (message.includes('liên hệ') || message.includes('contact') || message.includes('liên lạc')) {
+                response = 'Bạn có thể liên hệ với IVS Academy qua:\n• Email: info@ivsacademy.edu.vn\n• Điện thoại: 1900 XXX XXX\n• Website: www.ivsacademy.edu.vn\n• Địa chỉ: Hà Nội và TP.HCM';
+            } else if (message.includes('giá') || message.includes('price') || message.includes('phí')) {
+                response = 'Thông tin về học phí sẽ được cung cấp chi tiết khi bạn đăng ký tư vấn. Mỗi khóa học có mức giá khác nhau tùy thuộc vào thời lượng và nội dung. Liên hệ để nhận báo giá cụ thể!';
+            } else if (message.includes('đăng ký') || message.includes('register') || message.includes('enroll')) {
+                response = 'Để đăng ký khóa học, bạn có thể:\n1. Điền form tư vấn trên website\n2. Gọi hotline: 1900 XXX XXX\n3. Đến trực tiếp văn phòng IVS\nChúng tôi sẽ hỗ trợ bạn chọn khóa học phù hợp nhất!';
+            } else {
+                response = 'Cảm ơn bạn đã liên hệ với IVS Academy! Tôi có thể giúp bạn tìm hiểu thêm về:\n• Các khóa học Tiếng Anh và Công nghệ\n• Thông tin tuyển dụng giáo viên\n• Tư vấn học tập\n• Liên hệ hợp tác\n\nBạn muốn biết thêm về vấn đề nào?';
+            }
+
+            const botMessage = {
+                type: 'bot',
+                content: response,
+                timestamp: new Date()
+            };
+            this.addMessage(botMessage);
+        }
+
+        addMessage(message) {
+            this.messages.push(message);
+            this.renderMessage(message);
+            this.scrollToBottom();
+        }
+
+        renderMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`;
+
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.className = `max-w-xs px-4 py-2 rounded-lg ${
+                message.type === 'user'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600'
+            }`;
+
+            // Handle multiline content
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'text-sm whitespace-pre-line';
+            contentDiv.textContent = message.content;
+            bubbleDiv.appendChild(contentDiv);
+
+            messageDiv.appendChild(bubbleDiv);
+            this.chatMessages.appendChild(messageDiv);
+        }
+
+        showTyping() {
+            if (this.isTyping) return;
+
+            this.isTyping = true;
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'flex justify-start';
+            typingDiv.id = 'typing-indicator';
+
+            const bubbleDiv = document.createElement('div');
+            bubbleDiv.className = 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 px-4 py-2 rounded-lg';
+
+            const typingText = document.createElement('div');
+            typingText.className = 'text-sm flex items-center space-x-1';
+            typingText.innerHTML = `
+                <span>Đang nhập</span>
+                <div class="flex space-x-1">
+                    <div class="w-1 h-1 bg-gray-500 rounded-full animate-bounce"></div>
+                    <div class="w-1 h-1 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-1 h-1 bg-gray-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                </div>
+            `;
+
+            bubbleDiv.appendChild(typingText);
+            typingDiv.appendChild(bubbleDiv);
+            this.chatMessages.appendChild(typingDiv);
+            this.scrollToBottom();
+        }
+
+        hideTyping() {
+            if (!this.isTyping) return;
+
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+            this.isTyping = false;
+        }
+
+        scrollToBottom() {
+            if (this.chatMessages) {
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
+        }
+
+        openChat() {
+            const assistantWindow = document.getElementById('ai-assistant-window');
+            if (assistantWindow) {
+                assistantWindow.classList.remove('hidden');
+                setTimeout(() => {
+                    if (this.chatWindow) {
+                        this.chatWindow.classList.remove('hidden');
+                    }
+                }, 100);
+            }
+        }
+
+        closeChat() {
+            if (this.chatWindow) {
+                this.chatWindow.classList.add('hidden');
+                setTimeout(() => {
+                    const assistantWindow = document.getElementById('ai-assistant-window');
+                    if (assistantWindow) {
+                        assistantWindow.classList.add('hidden');
+                    }
+                }, 300);
+            }
+        }
+    }
+
+    // Initialize chatbot when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        window.IVSFABChatbot = new IVSFABChatbot();
+    });
+
+    // Make chatbot available globally
+    window.IVSFABChatbot = new IVSFABChatbot();
+})();
+</script>
 
 
 

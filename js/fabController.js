@@ -251,12 +251,11 @@ const IVSFabController = {
      * @param {HTMLElement} element
      */
     populateAssistantOptions(element) {
-        // Create a single button that triggers the assistant. For now it opens a new window/tab
-        // or toggles a panel if a chatbot controller is present.
+        // Create a single button that triggers the integrated AI assistant
         const assistantLabel = getTranslationValue('fab_assistant_button_label', 'Mở IVS Assistant AI');
-    const btn = document.createElement('button');
-    // include 'fab-item' so global FAB wiring (ripple, aria handling) applies
-    btn.className = 'fab-item fab-submenu-item group w-full';
+        const btn = document.createElement('button');
+        // include 'fab-item' so global FAB wiring (ripple, aria handling) applies
+        btn.className = 'fab-item fab-submenu-item group w-full';
         btn.setAttribute('role', 'menuitem');
         btn.id = 'assistant-open-btn';
         btn.setAttribute('aria-label', assistantLabel);
@@ -264,28 +263,28 @@ const IVSFabController = {
         btn.setAttribute('data-lang-key', 'fab_assistant_button_label');
         btn.setAttribute('data-lang-target', 'aria-label,title');
         btn.innerHTML = `<i class="fas fa-robot fa-fw text-cyan-400"></i><span data-lang-key="fab_assistant_button_label">${assistantLabel}</span>`;
-        btn.addEventListener('click', async () => {
-            // If a dedicated chatbot controller exists, call it.
-            if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
-                window.IVSChatbotController.open();
+        btn.addEventListener('click', () => {
+            // Open the integrated AI assistant chat window
+            if (window.IVSFABChatbot && typeof window.IVSFABChatbot.openChat === 'function') {
+                window.IVSFABChatbot.openChat();
+                // Close the FAB submenu after opening chat
+                this.closeAllPanels();
                 return;
             }
 
-            // If a global script URL is provided (from another repo), try to load it dynamically
-            const externalUrl = window.IVS_CHATBOT_SCRIPT_URL || null;
-            if (externalUrl) {
-                try {
-                    await this.loadExternalScript(externalUrl);
-                    if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
-                        window.IVSChatbotController.open();
-                        return;
+            // Fallback: If chatbot not initialized, try to initialize it first
+            if (window.IVSFABChatbot && typeof window.IVSFABChatbot.init === 'function') {
+                window.IVSFABChatbot.init();
+                setTimeout(() => {
+                    if (window.IVSFABChatbot && typeof window.IVSFABChatbot.openChat === 'function') {
+                        window.IVSFABChatbot.openChat();
+                        this.closeAllPanels();
                     }
-                } catch (err) {
-                    window.componentLog('Failed to load external IVSChatbotController: ' + err.message, 'warn');
-                }
+                }, 100);
+                return;
             }
 
-            // Fallback: open a small popup to the assistant page (could be replaced with in-page modal)
+            // Final fallback: open a small popup to the assistant page
             const w = window.open('/apps/ivs-assistant.html', '_blank', 'toolbar=0,location=0,menubar=0,width=420,height=720');
             if (!w) window.componentLog('Popup blocked when opening IVS Assistant.');
         });
