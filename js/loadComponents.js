@@ -94,7 +94,20 @@ async function loadAndInject(url, placeholderId) {
     } catch (error) {
         window.componentLog(`Failed to load ${url}: ${error.message}`, 'error');
         const fallbackHTML = `<div class="p-4 text-center bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 shadow-md">Lỗi tải Component: ${url}</div>`;
-        if (placeholder) placeholder.innerHTML = fallbackHTML;
+        // If placeholder is empty, replace it; if it already has content (e.g. a parent component), append
+        if (placeholder) {
+            try {
+                if (placeholder.children && placeholder.children.length === 0) {
+                    placeholder.innerHTML = fallbackHTML;
+                } else {
+                    // Avoid clobbering existing injected component content
+                    placeholder.insertAdjacentHTML('beforeend', fallbackHTML);
+                }
+            } catch (e) {
+                // Last-resort: log but do not throw - we don't want a single missing nested component to break the page
+                window.componentLog(`Error while writing fallback HTML for ${url}: ${e.message}`, 'warn');
+            }
+        }
         return false;
     }
 }
@@ -151,19 +164,24 @@ async function loadCommonComponents() {
         }
     }
 
-    // Tải fab-assistant vào fab-container
-    if (document.getElementById('fab-container-placeholder')) {
-        try {
-            const assistantLoaded = await loadAndInject('/components/fab-assistant.html', 'fab-container-placeholder');
-            if (assistantLoaded) {
-                window.componentLog('fab-assistant loaded into fab-container-placeholder', 'info');
+    // Tải fab-assistant trực tiếp vào #fab-container bên trong fab-container.html (nếu có)
+    try {
+        const fabContainer = document.getElementById('fab-container');
+        if (fabContainer) {
+            // Only attempt to load the assistant into the actual container to avoid replacing the placeholder
+            const assistantSuccess = await loadAndInject('/components/fab-assistant.html', 'fab-container');
+            if (assistantSuccess) {
+                window.componentLog('fab-assistant loaded into #fab-container', 'info');
+                // Try to init FAB controller if available
                 if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
-                    await safeInitController(window.IVSFabController, 'fab-container-placeholder');
+                    await safeInitController(window.IVSFabController, 'fab-container');
                 }
             }
-        } catch (err) {
-            window.componentLog('Failed to load fab-assistant: ' + err.message, 'warn');
+        } else {
+            window.componentLog('fab-container element not present; skipping fab-assistant automatic load.', 'info');
         }
+    } catch (err) {
+        window.componentLog('Failed to load fab-assistant: ' + (err && err.message ? err.message : err), 'warn');
     }
 
     // Tải Footer sau cùng
