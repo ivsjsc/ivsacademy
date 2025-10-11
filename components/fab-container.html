@@ -1,4 +1,4 @@
-<div id="fab-container" class="fixed right-4 z-30 flex flex-col items-end space-y-5 bottom-5 md:bottom-3">
+<div id="fab-container" class="fixed right-4 z-30 flex flex-col items-end space-y-5 bottom-5 md:bottom-3" style="z-index:99999;">
     
     <!-- Nút Cuộn lên đầu trang -->
     <button id="scroll-to-top-btn" title="Lên đầu trang" aria-label="Lên đầu trang"
@@ -159,6 +159,27 @@
         });
     })();
 </script>
+
+        <!-- Debug helper: add ?fabdebug=1 to URL to outline blocking element and log stack -->
+        <script>
+            (function(){
+                try{
+                    const url = new URL(window.location.href);
+                    if(!url.searchParams.has('fabdebug')) return;
+                    const fab = document.getElementById('fab-container');
+                    if(!fab) return console.warn('FAB not found for debug');
+                    const rect = fab.getBoundingClientRect();
+                    const x = Math.round(rect.left + rect.width/2), y = Math.round(rect.top + rect.height/2);
+                    const els = document.elementsFromPoint(x,y);
+                    console.group('FAB Debug: elements over FAB at',x,y);
+                    els.forEach((el,i)=>{ const s=getComputedStyle(el); console.log(i, el, 'zIndex=', s.zIndex, 'pointerEvents=', s.pointerEvents, 'opacity=', s.opacity); });
+                    console.groupEnd();
+                    // highlight topmost non-body element
+                    const blocker = els.find(e=>e !== document.body && e !== document.documentElement);
+                    if(blocker){ blocker.style.outline = '3px solid rgba(255,0,0,0.9)'; blocker.style.outlineOffset = '2px'; console.warn('Outlined potential blocker:', blocker); }
+                }catch(e){ console.error('FAB debug failed',e); }
+            })();
+        </script>
 
 
 
