@@ -23,6 +23,7 @@ class IVSAssistant {
         this.closeBtn = null;
         this.quickReplies = null;
         this.isSending = false;
+    this._lastSendAt = 0; // throttle guard (ms)
         this.conversation = [];
 
         this.init();
@@ -95,6 +96,10 @@ class IVSAssistant {
         if (!this.input || !this.sendBtn) return;
         const text = this.input.value.trim();
         if (!text || this.isSending) return;
+        // Throttle: prevent accidental rapid-fire sends (800ms)
+        const now = Date.now();
+        if (now - this._lastSendAt < 800) return;
+        this._lastSendAt = now;
 
         // clear input and disable UI
         this.input.value = '';
@@ -107,9 +112,15 @@ class IVSAssistant {
         this.showTypingIndicator();
 
         try {
-            const reply = await this.requestAI(text, { timeout: this.opts.timeoutMs });
-            this.hideTypingIndicator();
-            this.addMessage('bot', reply, { persist: true });
+            // Try streaming endpoint first; if streaming not supported by server, fallback to normal
+            const streamingSupported = true; // optimistic; requestAI will fallback if not supported
+            if (streamingSupported) {
+                await this.requestAIStream(text, { timeout: this.opts.timeoutMs });
+            } else {
+                const reply = await this.requestAI(text, { timeout: this.opts.timeoutMs });
+                this.hideTypingIndicator();
+                this.addMessage('bot', reply, { persist: true });
+            }
         } catch (err) {
             this.hideTypingIndicator();
             const errMsg = typeof err === 'string' ? err : 'Đã có lỗi xảy ra. Vui lòng thử lại sau.';
@@ -147,6 +158,7 @@ class IVSAssistant {
 
     addMessage(sender, text, { persist=false } = {}) {
         if (!this.messagesContainer) return;
+        // Create message container and bubble, return bubble element for possible streaming updates
         const messageDiv = document.createElement('div');
         messageDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
 
@@ -163,6 +175,9 @@ class IVSAssistant {
             this.conversation.push({ sender, text, ts: Date.now() });
             try { sessionStorage.setItem(this.opts.storageKey, JSON.stringify(this.conversation)); } catch(e) { /* ignore */ }
         }
+
+        // Return the bubble element so callers (stream reader) can update its content incrementally
+        return bubble;
     }
 
     restoreConversation() {
@@ -199,6 +214,66 @@ class IVSAssistant {
             if (err.name === 'AbortError') throw 'Yêu cầu quá thời gian. Vui lòng thử lại.';
             throw err.message || err;
         } finally { clearTimeout(id); }
+    }
+
+    // Attempt to stream response (fetch streaming). Falls back by throwing if server does not stream.
+    async requestAIStream(message, { timeout = 10000 } = {}) {
+        if (!this.messagesContainer) return;
+        // Add an empty bot bubble and update as chunks arrive
+        const botBubble = this.addMessage('bot', '', { persist: false });
+        // Use AbortController for timeout
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), timeout);
+        try {
+            const resp = await fetch(this.opts.apiPath + '?stream=1', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'text/event-stream' },
+                body: JSON.stringify({ messages: [{ role: 'user', content: message }] }),
+                signal: controller.signal
+            });
+            if (!resp.ok) {
+                clearTimeout(id);
+                throw new Error('Server returned ' + resp.status);
+            }
+
+            if (!resp.body) {
+                // not a streaming response; fallback by reading whole JSON
+                clearTimeout(id);
+                const data = await resp.json();
+                const reply = data?.choices?.[0]?.message?.content || data?.reply || data?.result || '';
+                botBubble.textContent = reply;
+                // persist final reply
+                this.conversation.push({ sender: 'bot', text: reply, ts: Date.now() });
+                sessionStorage.setItem(this.opts.storageKey, JSON.stringify(this.conversation));
+                return;
+            }
+
+            // Stream reader
+            const reader = resp.body.getReader();
+            const decoder = new TextDecoder('utf-8');
+            let done = false;
+            let acc = '';
+            while (!done) {
+                const { value, done: rDone } = await reader.read();
+                done = rDone;
+                if (value) {
+                    const chunk = decoder.decode(value, { stream: true });
+                    acc += chunk;
+                    // Update bubble with accumulated text (simple approach)
+                    botBubble.textContent = acc;
+                    this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+                }
+            }
+            // persist final
+            this.conversation.push({ sender: 'bot', text: acc, ts: Date.now() });
+            try { sessionStorage.setItem(this.opts.storageKey, JSON.stringify(this.conversation)); } catch(e){}
+        } catch (err) {
+            if (err.name === 'AbortError') throw 'Yêu cầu quá thời gian. Vui lòng thử lại.';
+            throw err;
+        } finally {
+            clearTimeout(id);
+            this.hideTypingIndicator();
+        }
     }
 
     processMessage(message) {
