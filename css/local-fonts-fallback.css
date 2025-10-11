@@ -1,0 +1,50 @@
+/*
+ * Local Fonts Fallback CSS
+ * Provides fallback font definitions for IVS website
+ * Ensures proper font loading and fallbacks when Google Fonts fail
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Fallback font definitions */
+:root {
+  --font-be-vietnam-pro: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-poppins: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Ensure body font loads properly */
+body {
+  font-family: var(--font-be-vietnam-pro);
+}
+
+/* Font loading optimization */
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+/* Fallback for when Google Fonts don't load */
+@font-face {
+  font-family: 'Be Vietnam Pro Fallback';
+  src: local('Arial'), local('Helvetica'), local('sans-serif');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Helvetica'), local('sans-serif');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial'), local('Helvetica'), local('sans-serif');
+  font-weight: 400;
+  font-style: normal;
+}

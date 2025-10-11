@@ -30,12 +30,6 @@ if (typeof window.componentLog !== 'function') {
     };
     window.__componentLogFallback = true;
 }
-            // Allow initialization when either the main fab container or the assistant container
-            // is present. Some pages include only the assistant component (fab-assistant).
-            if (!this.fabContainer && !this.assistantContainer) {
-                window.componentLog("IVSFabController: Kh\u00f4ng t\u00ecm th\u1ea5y ph\u1ea7n t\u1eed FAB container (#fab-container) ho\u1eb7c assistant container (#fab-assistant-container). Logic FAB s\u1ebd kh\u00f4ng ch\u1ea1y.", "warn");
-                return;
-            }
 /**
  * Lấy chuỗi dịch từ langSystem nếu khả dụng, nếu không trả về fallback.
  * @param {string} key
