@@ -9,27 +9,23 @@
 'use strict';
 
 // Provide gentle fallbacks for global utilities to avoid hard crashes when
-// utils.js hasn't loaded yet. This fallback uses the same utility pattern
-// as componentLog to ensure consistency across the codebase.
+// utils.js hasn't loaded yet. Existing code relied on immediate console.error
+// which floods logs and may break some environments; we'll use componentLog
+// fallback quietly (console.error only if console present and on explicit need).
 if (typeof window.componentLog !== 'function') {
     window.componentLog = function(msg, level = 'log') {
-        // Use the same pattern as utils.js componentLog
-        if (typeof console !== 'undefined' && console && typeof console[level] === 'function') {
-            try {
-                console[level](`[IVS App] ${msg}`);
-            } catch (error) {
-                if (typeof console.log === 'function') {
-                    console.log(`[IVS App] ${level.toUpperCase()}: ${msg}`);
-                }
-            }
-        } else {
-            if (typeof console !== 'undefined' && console && typeof console.log === 'function') {
-                console.log(`[IVS App] ${level.toUpperCase()}: ${msg}`);
-            }
-        }
+        try {
+            if (level === 'error') console.error(msg);
+            else if (level === 'warn') console.warn(msg);
+            else console.log(msg);
+        } catch (e) {}
     };
     window.__componentLogFallback = true;
 }
+if (typeof window.debounce !== 'function') {
+    window.debounce = (fn) => fn;
+}
+
 /**
  * Lấy chuỗi dịch từ langSystem nếu khả dụng, nếu không trả về fallback.
  * @param {string} key
@@ -103,9 +99,6 @@ const IVSFabController = {
     this.fabContainer = document.getElementById('fab-container');
     this.assistantContainer = document.getElementById('fab-assistant-container');
     this.scrollToTopBtn = document.getElementById('scroll-to-top-btn');
-    this.shareMainBtn = document.getElementById('share-main-btn');
-    this.contactMainBtn = document.getElementById('contact-main-btn');
-    this.assistantMainBtn = document.getElementById('assistant-main-btn');
     // Collect submenu buttons from both the canonical fab container and the assistant container
     const buttonsInFab = this.fabContainer ? Array.from(this.fabContainer.querySelectorAll('button[aria-haspopup="true"]')) : [];
     const buttonsInAssistant = this.assistantContainer ? Array.from(this.assistantContainer.querySelectorAll('button[aria-haspopup="true"]')) : [];
@@ -118,12 +111,8 @@ const IVSFabController = {
      * Thêm hiệu ứng ripple cho các nút FAB.
      */
     addRippleEffect() {
-        // Attach ripple effect to any .fab-item inside either the canonical fab container
-        // or the assistant container so assistant buttons get the same UI affordance.
-        const buttons = [];
-        if (this.fabContainer) buttons.push(...Array.from(this.fabContainer.querySelectorAll('.fab-item')));
-        if (this.assistantContainer) buttons.push(...Array.from(this.assistantContainer.querySelectorAll('.fab-item')));
-        buttons.forEach(button => {
+        const fabButtons = this.fabContainer?.querySelectorAll('.fab-item') || [];
+        fabButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 this.createRipple(e, button);
             });
@@ -251,11 +240,11 @@ const IVSFabController = {
      * @param {HTMLElement} element
      */
     populateAssistantOptions(element) {
-        // Create a single button that triggers the integrated AI assistant
+        // Create a single button that triggers the assistant. For now it opens a new window/tab
+        // or toggles a panel if a chatbot controller is present.
         const assistantLabel = getTranslationValue('fab_assistant_button_label', 'Mở IVS Assistant AI');
         const btn = document.createElement('button');
-        // include 'fab-item' so global FAB wiring (ripple, aria handling) applies
-        btn.className = 'fab-item fab-submenu-item group w-full';
+        btn.className = 'fab-submenu-item group w-full';
         btn.setAttribute('role', 'menuitem');
         btn.id = 'assistant-open-btn';
         btn.setAttribute('aria-label', assistantLabel);
@@ -263,28 +252,28 @@ const IVSFabController = {
         btn.setAttribute('data-lang-key', 'fab_assistant_button_label');
         btn.setAttribute('data-lang-target', 'aria-label,title');
         btn.innerHTML = `<i class="fas fa-robot fa-fw text-cyan-400"></i><span data-lang-key="fab_assistant_button_label">${assistantLabel}</span>`;
-        btn.addEventListener('click', () => {
-            // Open the integrated AI assistant chat window
-            if (window.IVSFABChatbot && typeof window.IVSFABChatbot.openChat === 'function') {
-                window.IVSFABChatbot.openChat();
-                // Close the FAB submenu after opening chat
-                this.closeAllPanels();
+        btn.addEventListener('click', async () => {
+            // If a dedicated chatbot controller exists, call it.
+            if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
+                window.IVSChatbotController.open();
                 return;
             }
 
-            // Fallback: If chatbot not initialized, try to initialize it first
-            if (window.IVSFABChatbot && typeof window.IVSFABChatbot.init === 'function') {
-                window.IVSFABChatbot.init();
-                setTimeout(() => {
-                    if (window.IVSFABChatbot && typeof window.IVSFABChatbot.openChat === 'function') {
-                        window.IVSFABChatbot.openChat();
-                        this.closeAllPanels();
+            // If a global script URL is provided (from another repo), try to load it dynamically
+            const externalUrl = window.IVS_CHATBOT_SCRIPT_URL || null;
+            if (externalUrl) {
+                try {
+                    await this.loadExternalScript(externalUrl);
+                    if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
+                        window.IVSChatbotController.open();
+                        return;
                     }
-                }, 100);
-                return;
+                } catch (err) {
+                    window.componentLog('Failed to load external IVSChatbotController: ' + err.message, 'warn');
+                }
             }
 
-            // Final fallback: open a small popup to the assistant page
+            // Fallback: open a small popup to the assistant page (could be replaced with in-page modal)
             const w = window.open('/apps/ivs-assistant.html', '_blank', 'toolbar=0,location=0,menubar=0,width=420,height=720');
             if (!w) window.componentLog('Popup blocked when opening IVS Assistant.');
         });
@@ -409,64 +398,6 @@ const IVSFabController = {
             window.componentLog("IVSFabController: Đã gắn sự kiện cho nút cuộn lên đầu trang.");
         }
 
-        // Attach specific handlers for Share, Contact and Assistant main buttons
-        if (this.shareMainBtn) {
-            this.shareMainBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                // If Web Share API available, use it directly
-                const shareData = { title: document.title, text: document.title, url: window.location.href };
-                if (navigator.share) {
-                    navigator.share(shareData).catch(err => {
-                        window.componentLog('Web Share failed: ' + err.message, 'warn');
-                        // Fallback to opening the submenu
-                        this.openSubmenu(this.shareMainBtn);
-                    });
-                } else {
-                    // Open the share submenu handled by populateShareOptions
-                    this.openSubmenu(this.shareMainBtn);
-                }
-            });
-            // Ensure the share button is not double-handled by generic submenu wiring below
-            this.buttonsWithSubmenu = (this.buttonsWithSubmenu || []).filter(b => b !== this.shareMainBtn);
-        }
-
-        if (this.contactMainBtn) {
-            this.contactMainBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                // Open our in-page contact modal if supported, otherwise open submenu
-                if (typeof this.openContactModal === 'function') {
-                    this.openContactModal();
-                } else {
-                    this.openSubmenu(this.contactMainBtn);
-                }
-            });
-            this.buttonsWithSubmenu = (this.buttonsWithSubmenu || []).filter(b => b !== this.contactMainBtn);
-        }
-
-        if (this.assistantMainBtn) {
-            this.assistantMainBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                // Toggle assistant overlay/modal via IVSChatbotController if available
-                try {
-                    const overlayExists = !!document.getElementById('ivs-chatbot-overlay');
-                    if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
-                        if (overlayExists && typeof window.IVSChatbotController.close === 'function') {
-                            window.IVSChatbotController.close();
-                        } else {
-                            window.IVSChatbotController.open();
-                        }
-                        return;
-                    }
-                } catch (err) {
-                    window.componentLog('Assistant toggle error: ' + err.message, 'warn');
-                }
-
-                // If no controller, show submenu as a fallback
-                this.openSubmenu(this.assistantMainBtn);
-            });
-            this.buttonsWithSubmenu = (this.buttonsWithSubmenu || []).filter(b => b !== this.assistantMainBtn);
-        }
-
         // Đảm bảo chỉ một menu con mở tại một thời điểm, click lại sẽ đóng, focus/blur accessibility
         if (this.buttonsWithSubmenu && this.buttonsWithSubmenu.forEach) {
             this.buttonsWithSubmenu.forEach(btn => {
@@ -498,11 +429,9 @@ const IVSFabController = {
             window.componentLog("IVSFabController: Đã gắn sự kiện click/focus cho các nút có submenu.");
         }
 
-        // Đóng submenu khi click ra ngoài FAB hoặc Assistant container
+        // Đóng submenu khi click ra ngoài FAB container
         document.addEventListener('click', (e) => {
-            const insideFab = this.fabContainer && this.fabContainer.contains(e.target);
-            const insideAssistant = this.assistantContainer && this.assistantContainer.contains(e.target);
-            if (!insideFab && !insideAssistant) {
+            if (this.fabContainer && !this.fabContainer.contains(e.target)) {
                 if (this.buttonsWithSubmenu && this.buttonsWithSubmenu.forEach) {
                     this.buttonsWithSubmenu.forEach(btn => this.closeSubmenu(btn));
                 }
@@ -543,55 +472,6 @@ const IVSFabController = {
     },
 
     /**
-     * Open a lightweight in-page contact modal. This provides a better UX than forcing users
-     * to open a new tab. It includes mailto and phone links and a close button.
-     */
-    openContactModal() {
-        // If modal exists, bring to front
-        if (document.getElementById('fab-contact-modal')) return;
-        const modal = document.createElement('div');
-        modal.id = 'fab-contact-modal';
-        modal.className = 'fab-contact-modal-overlay';
-
-        const panel = document.createElement('div');
-        panel.className = 'fab-contact-panel';
-
-        const title = document.createElement('h3');
-        title.textContent = 'Liên hệ IVS Academy';
-        title.className = 'fab-contact-title';
-        panel.appendChild(title);
-
-        const list = document.createElement('div');
-        list.className = 'fab-contact-list';
-        list.innerHTML = `
-            <a href="tel:+84896920547">📞 Hotline: +84 89 692 0547</a>
-            <a href="mailto:info@ivsacademy.edu.vn">✉️ Email: info@ivsacademy.edu.vn</a>
-            <a href="https://zalo.me/1582587135739746654" target="_blank" rel="noopener">💬 Zalo</a>
-        `;
-        panel.appendChild(list);
-
-        const closeBtn = document.createElement('button');
-        closeBtn.textContent = 'Đóng';
-        closeBtn.className = 'fab-contact-close';
-        closeBtn.addEventListener('click', () => this.closeContactModal());
-        panel.appendChild(closeBtn);
-
-        modal.appendChild(panel);
-        modal.addEventListener('click', (e) => { if (e.target === modal) this.closeContactModal(); });
-        document.body.appendChild(modal);
-
-        // Force reflow then add 'show' class to trigger CSS transition
-        requestAnimationFrame(() => modal.classList.add('show'));
-    },
-
-    closeContactModal() {
-        const modal = document.getElementById('fab-contact-modal');
-        if (!modal) return;
-        modal.classList.remove('show');
-        modal.addEventListener('transitionend', () => modal.remove(), { once: true });
-    },
-
-    /**
      * Đóng một menu con cụ thể.
      * @param {HTMLElement} btn Nút có menu con cần đóng.
      */
@@ -625,8 +505,7 @@ const IVSFabController = {
 async function ensureFabInit(retries = 6) {
     const delay = 25;
     for (let i = 0; i < retries; i++) {
-        // Wait until componentLog exists and either FAB container or assistant container
-        if (typeof window.componentLog === 'function' && (document.getElementById('fab-container') || document.getElementById('fab-assistant-container'))) {
+        if (typeof window.componentLog === 'function' && document.getElementById('fab-container')) {
             try {
                 if (window.IVSFabController && typeof window.IVSFabController.init === 'function') {
                     window.IVSFabController.init();
@@ -820,9 +699,9 @@ try {
 // Điều này đảm bảo FAB được thiết lập ngay cả khi loadComponents.js không gọi init một cách rõ ràng,
 // hoặc nếu fab-container được bao gồm trực tiếp trong một trang.
 document.addEventListener('DOMContentLoaded', () => {
-    // If containers are already present, initialize immediately.
-    const alreadyPresent = document.querySelector('#fab-container, #fab-assistant-container');
-    if (alreadyPresent) {
+    // Khởi tạo IVSFabController nếu có bất kỳ container FAB nào xuất hiện ngay khi DOM sẵn sàng.
+    // Trước đây chỉ kiểm tra 'fab-container' dẫn đến trường hợp assistant-only không được khởi tạo.
+    if (document.getElementById('fab-container') || document.getElementById('fab-assistant-container')) {
         IVSFabController.init();
         // Apply initial theme after init
         const savedTheme = localStorage.theme;
@@ -831,38 +710,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             document.body.classList.remove('dark');
         }
-        return;
+    } else {
+        // Nếu không tìm thấy bất kỳ container nào, giữ hành vi trước đó: chờ loadComponents.js hoặc gọi init() thủ công.
+        window.componentLog("IVSFabController: Không tìm thấy FAB hoặc Assistant container trên DOMContentLoaded. Giả định tải động. Đảm bảo init() được gọi thủ công sau khi chèn.", "warn");
     }
-
-    // If not present, observe DOM for dynamic insertion (e.g., loadComponents.js injects the FAB)
-    const observer = new MutationObserver((mutations, obs) => {
-        if (document.querySelector('#fab-container, #fab-assistant-container')) {
-            try {
-                IVSFabController.init();
-            } catch (err) {
-                window.componentLog('IVSFabController.init() error after mutation: ' + err.message, 'warn');
-            }
-            // Apply initial theme after init
-            const savedTheme = localStorage.theme;
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.body.classList.add('dark');
-            } else {
-                document.body.classList.remove('dark');
-            }
-            obs.disconnect();
-            clearTimeout(timeoutHandle);
-        }
-    });
-
-    observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
-
-    // After a reasonable timeout, stop observing and log a concise note so logs are not noisy.
-    const timeoutMs = 5000;
-    const timeoutHandle = setTimeout(() => {
-        try {
-            observer.disconnect();
-        } catch (e) {}
-        // Only warn once and provide a short hint for manual init if developers intentionally inject later.
-        window.componentLog('IVSFabController: Không tìm thấy FAB hoặc Assistant container sau khi chờ ' + (timeoutMs / 1000) + 's. Nếu bạn chèn container sau thời điểm này, gọi IVSFabController.init() thủ công.', 'info');
-    }, timeoutMs);
 });
