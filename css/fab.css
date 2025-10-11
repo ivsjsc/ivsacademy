@@ -52,7 +52,7 @@ body.ivs-assistant-modal-open {
 .fab-submenu-panel { z-index: 1045; }
 
 /* Top-most utility for assistant window */
-.fab-topmost { z-index: 2147483647 !important; position: relative; }
+.fab-topmost { z-index: 2147483647 !important; }
 
 .fab-item:hover {
     transform: translateY(-3px) scale(1.04);
