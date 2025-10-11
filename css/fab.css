@@ -54,6 +54,19 @@ body.ivs-assistant-modal-open {
 /* Top-most utility for assistant window */
 .fab-topmost { z-index: 2147483647 !important; }
 
+/* Safety overrides: ensure FAB and assistant always receive pointer events */
+#fab-container, #fab-container * { pointer-events: auto !important; }
+#ai-assistant-window, #ai-assistant-window * { pointer-events: auto !important; }
+
+/* Ensure hidden overlays don't block clicks */
+.modal-backdrop:not(.show), .loading-overlay:not(.show), #lightbox-modal.hidden, .hidden[aria-hidden="true"] { pointer-events: none !important; }
+
+/* Specific common overlay IDs/classes used in the project */
+#mobileMenu:not(.show){ pointer-events: none !important; }
+#lightbox-modal.hidden { pointer-events: none !important; }
+#messageModal.hidden { pointer-events: none !important; }
+#loading-spinner.hidden { pointer-events: none !important; }
+
 .fab-item:hover {
     transform: translateY(-3px) scale(1.04);
     box-shadow: var(--fab-shadow-hover);
