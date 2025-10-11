@@ -11,6 +11,56 @@ const app = express();
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('tiny'));
 
+// Simple AI proxy endpoint for the frontend assistant.
+// POST /api/grok
+// Body is proxied to the configured backend URL. The server reads API keys from env and
+// forwards them in a safe way. This avoids exposing keys to the browser.
+app.post('/api/grok', async (req, res) => {
+  try {
+    const backendUrl = process.env.AI_BACKEND_URL || process.env.GOOGLE_API_URL || null;
+    const apiKey = process.env.GOOGLE_API_KEY || process.env.AI_API_KEY || process.env.OPENAI_API_KEY || null;
+
+    if (!backendUrl) {
+      return res.status(500).json({ error: 'AI backend not configured. Set AI_BACKEND_URL in server environment.' });
+    }
+
+    // Forward body as-is. The backend URL may expect a different payload shape depending on provider.
+    const forwardUrl = apiKey && backendUrl.includes('?') ? `${backendUrl}&key=${apiKey}` : (apiKey && backendUrl.includes('?') === false && backendUrl.includes('generativelanguage.googleapis.com') ? `${backendUrl}?key=${apiKey}` : backendUrl);
+
+    const fetchOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body),
+      // Do not attach user-sent headers which might leak client data
+    };
+
+    // If an OpenAI style key is provided and backend looks like OpenAI, send Authorization header
+    if (process.env.OPENAI_API_KEY && /api\.openai\.com/.test(forwardUrl)) {
+      fetchOptions.headers['Authorization'] = `Bearer ${process.env.OPENAI_API_KEY}`;
+    }
+
+    // If a custom AI_API_KEY is provided and backend does not use ?key=, send it in x-api-key
+    if (process.env.AI_API_KEY && !forwardUrl.includes('key=')) {
+      fetchOptions.headers['x-api-key'] = process.env.AI_API_KEY;
+    }
+
+    const backendResp = await fetch(forwardUrl, fetchOptions);
+    const contentType = backendResp.headers.get('content-type') || '';
+
+    // Proxy status and body
+    res.status(backendResp.status);
+    if (contentType.includes('application/json')) {
+      const json = await backendResp.json();
+      return res.json(json);
+    }
+    const text = await backendResp.text();
+    res.type('text/plain').send(text);
+  } catch (err) {
+    console.error('AI proxy error', err);
+    res.status(502).json({ error: 'bad_gateway', detail: String(err) });
+  }
+});
+
 const STORAGE_FILE = path.join(__dirname, '..', 'data', 'verified-id-callbacks.jsonl');
 
 // health
