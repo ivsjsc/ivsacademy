@@ -97,15 +97,18 @@
                 e.stopPropagation();
                 // Toggle assistant window visibility
                 if(!assistantWindow) return;
+                const chatWindow = assistantWindow.querySelector('#chat-window');
                 const isHidden = assistantWindow.classList.contains('hidden');
                 if(isHidden){
                     assistantWindow.classList.remove('hidden');
+                    if(chatWindow) chatWindow.classList.remove('hidden');
                     assistantBtn.setAttribute('aria-expanded','true');
                     // focus input if present
                     const input = assistantWindow.querySelector('#chat-input') || assistantWindow.querySelector('input, textarea');
                     if(input) setTimeout(()=>input.focus(), 120);
                 } else {
                     assistantWindow.classList.add('hidden');
+                    if(chatWindow) chatWindow.classList.add('hidden');
                     assistantBtn.setAttribute('aria-expanded','false');
                 }
             });

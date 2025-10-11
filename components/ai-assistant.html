@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/tailwind.css">
 <!-- FILE: ai-assistant.html -->
-<!-- This file contains the HTML structure for the floating AI Assistant chat window. -->
+<!-- Enhanced AI Assistant chat window integrated into FAB -->
 
 <div id="ai-assistant-window" class="fixed bottom-20 right-6 z-40 hidden" style="z-index:10001;">
     <!-- Chat Window -->
@@ -52,17 +52,216 @@
     </div>
 </div>
 
+<!-- Enhanced AI Chatbot Script -->
 <script>
-    document.addEventListener('click', function(e){
-        const close = document.getElementById('chat-close');
-        const assistantWindow = document.getElementById('ai-assistant-window');
-        if(!close || !assistantWindow) return;
-        close.addEventListener('click', function(){
-            assistantWindow.classList.add('hidden');
-            const assistantBtn = document.getElementById('assistant-main-btn');
-            if(assistantBtn) assistantBtn.setAttribute('aria-expanded','false');
+// AI Chatbot for IVS Website - Enhanced Version
+// Provides intelligent support for students, course recommendations, and general inquiries
+
+class IVSFABChatbot {
+    constructor() {
+        this.isOpen = false;
+        this.messages = [];
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.loadInitialMessage();
+    }
+
+    // Setup event listeners
+    setupEventListeners() {
+        const closeBtn = document.getElementById('chat-close');
+        const sendBtn = document.getElementById('chat-send');
+        const inputField = document.getElementById('chat-input');
+        const quickReplies = document.querySelectorAll('.quick-reply');
+
+        // Close chat window
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeChat());
+        }
+
+        // Send message
+        if (sendBtn) {
+            sendBtn.addEventListener('click', () => this.sendMessage());
+        }
+
+        if (inputField) {
+            inputField.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    this.sendMessage();
+                }
+            });
+        }
+
+        // Quick replies
+        quickReplies.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const reply = btn.dataset.reply;
+                this.handleQuickReply(reply);
+            });
         });
-    });
+    }
+
+    // Load initial welcome message
+    loadInitialMessage() {
+        setTimeout(() => {
+            this.addMessage('bot', 'Xin chào! 👋 Tôi là trợ lý AI của IVS. Tôi có thể giúp bạn tìm hiểu về các khóa học, dịch vụ giáo dục, và trả lời các câu hỏi về IVS Academy. Bạn cần hỗ trợ gì hôm nay?');
+        }, 500);
+    }
+
+    // Close chat window
+    closeChat() {
+        const assistantWindow = document.getElementById('ai-assistant-window');
+        const chatWindow = document.getElementById('chat-window');
+
+        this.isOpen = false;
+        if (chatWindow) chatWindow.classList.add('hidden');
+        if (assistantWindow) assistantWindow.classList.add('hidden');
+
+        const assistantBtn = document.getElementById('assistant-main-btn');
+        if (assistantBtn) assistantBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Send message
+    sendMessage() {
+        const inputField = document.getElementById('chat-input');
+        if (!inputField) return;
+
+        const message = inputField.value.trim();
+
+        if (message) {
+            this.addMessage('user', message);
+            inputField.value = '';
+            this.processMessage(message);
+        }
+    }
+
+    // Handle quick replies
+    handleQuickReply(type) {
+        const replies = {
+            courses: 'Tôi muốn tìm hiểu về các khóa học của IVS',
+            teachers: 'Cho tôi biết về dịch vụ giáo viên nước ngoài',
+            contact: 'Làm thế nào để liên hệ với IVS?'
+        };
+
+        if (replies[type]) {
+            this.addMessage('user', replies[type]);
+            this.processMessage(replies[type]);
+        }
+    }
+
+    // Add message to chat
+    addMessage(sender, text) {
+        const messagesContainer = document.getElementById('chat-messages');
+        if (!messagesContainer) return;
+
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+
+        const messageBubble = document.createElement('div');
+        messageBubble.className = `max-w-xs px-4 py-2 rounded-lg text-sm ${
+            sender === 'user'
+                ? 'bg-blue-500 text-white'
+                : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600'
+        }`;
+
+        messageBubble.textContent = text;
+        messageDiv.appendChild(messageBubble);
+        messagesContainer.appendChild(messageDiv);
+
+        // Scroll to bottom
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        // Add typing indicator for bot responses
+        if (sender === 'user') {
+            this.showTypingIndicator();
+        }
+    }
+
+    // Show typing indicator
+    showTypingIndicator() {
+        const messagesContainer = document.getElementById('chat-messages');
+        if (!messagesContainer) return;
+
+        const typingDiv = document.createElement('div');
+        typingDiv.id = 'typing-indicator';
+        typingDiv.className = 'flex justify-start';
+
+        typingDiv.innerHTML = `
+            <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg px-4 py-2">
+                <div class="flex space-x-1">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                </div>
+            </div>
+        `;
+
+        messagesContainer.appendChild(typingDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Hide typing indicator
+    hideTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+
+    // Process user message and generate response
+    processMessage(message) {
+        setTimeout(() => {
+            this.hideTypingIndicator();
+            const response = this.generateResponse(message.toLowerCase());
+            this.addMessage('bot', response);
+        }, 1000 + Math.random() * 1000); // Random delay for more natural feel
+    }
+
+    // Generate intelligent response based on user input
+    generateResponse(message) {
+        // Course-related queries
+        if (message.includes('khóa học') || message.includes('course') || message.includes('học')) {
+            return 'IVS Academy cung cấp đa dạng các khóa học: 📚\n\n• Tiếng Anh giao tiếp và học thuật\n• STEM và lập trình cho trẻ em\n• Khóa học giáo viên quốc tế\n• Tư vấn tuyển sinh du học\n\nBạn quan tâm đến lĩnh vực nào? Tôi có thể tư vấn chi tiết hơn!';
+        }
+
+        // Teacher-related queries
+        if (message.includes('giáo viên') || message.includes('teacher') || message.includes('gvnn')) {
+            return 'Dịch vụ giáo viên nước ngoài của IVS: 👨‍🏫\n\n• Tuyển dụng giáo viên bản ngữ\n• Đào tạo và phát triển chuyên môn\n• Hỗ trợ visa và pháp lý\n• Quản lý và theo dõi chất lượng\n\nChúng tôi có hơn 500 giáo viên từ 20+ quốc gia. Bạn cần giáo viên cho cấp nào?';
+        }
+
+        // Contact queries
+        if (message.includes('liên hệ') || message.includes('contact') || message.includes('liên lạc')) {
+            return 'Cách liên hệ với IVS: 📞\n\n• Hotline: 1900 XXX XXX\n• Email: info@ivsacademy.edu.vn\n• Website: ivsacademy.edu.vn\n• Văn phòng: Quận 1, TP.HCM\n\nHoặc bạn có thể để lại thông tin, đội ngũ của chúng tôi sẽ liên hệ ngay!';
+        }
+
+        // About IVS queries
+        if (message.includes('ivs') || message.includes('công ty') || message.includes('về')) {
+            return 'IVS JSC là hệ sinh thái giáo dục hàng đầu Việt Nam: 🌟\n\n• IVS Academy: Trung tâm đào tạo\n• IVS Celestech: Công nghệ giáo dục\n• Global Teacher Hub: Kết nối giáo viên quốc tế\n• 10+ năm kinh nghiệm\n• 50,000+ học sinh đã được phục vụ\n\nBạn muốn biết thêm về lĩnh vực nào?';
+        }
+
+        // EdTech queries
+        if (message.includes('công nghệ') || message.includes('edtech') || message.includes('phần mềm')) {
+            return 'Giải pháp EdTech từ IVS Celestech: 💻\n\n• Hệ thống quản lý học tập (LMS)\n• Ứng dụng di động giáo dục\n• Thiết bị công nghệ trường học\n• Thiết kế website giáo dục\n• Tư vấn nội thất trường học\n\nCông nghệ giúp học tập hiệu quả hơn 300%!';
+        }
+
+        // Default responses
+        const defaultResponses = [
+            'Cảm ơn bạn đã quan tâm đến IVS! Tôi có thể giúp gì thêm cho bạn?',
+            'Rất vui được hỗ trợ bạn. Bạn có câu hỏi nào khác không?',
+            'IVS luôn sẵn sàng đồng hành cùng bạn trên hành trình giáo dục. Còn điều gì tôi có thể giúp đỡ?',
+            'Cảm ơn bạn đã tin tưởng IVS. Chúng tôi cam kết mang đến trải nghiệm giáo dục tốt nhất!'
+        ];
+
+        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    }
+}
+
+// Initialize chatbot when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    window.IVSFABChatbot = new IVSFABChatbot();
+});
 </script>
 
 
