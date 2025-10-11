@@ -156,24 +156,35 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #60a5fa; }
     </style>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'ivs-blue': '#4c5ef7',
-                        'ivs-green': '#34d399',
-                        'ivs-cyan': '#22d3ee',
-                        'ivs-purple': '#a78bfa',
-                        'ivs-amber': '#fbbf24',
-                        'ivs-neutral-800': '#1f2937',
-                        'ivs-border': '#374151',
-                        'ivs-text-secondary': '#d1d5db',
-                    },
-                    fontFamily: {
-                        'display': ['Inter', 'sans-serif'],
+        // Guarded Tailwind config: some pages include the CDN runtime (https://cdn.tailwindcss.com)
+        // but on local/dev builds the global `tailwind` may be undefined. Only assign if present.
+        try {
+            if (typeof tailwind !== 'undefined' && tailwind && typeof tailwind.config === 'object') {
+                tailwind.config = Object.assign({}, tailwind.config || {}, {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'ivs-blue': '#4c5ef7',
+                                'ivs-green': '#34d399',
+                                'ivs-cyan': '#22d3ee',
+                                'ivs-purple': '#a78bfa',
+                                'ivs-amber': '#fbbf24',
+                                'ivs-neutral-800': '#1f2937',
+                                'ivs-border': '#374151',
+                                'ivs-text-secondary': '#d1d5db',
+                            },
+                            fontFamily: {
+                                'display': ['Inter', 'sans-serif'],
+                            }
+                        }
                     }
-                }
+                });
+            } else {
+                // No tailwind runtime available; skip JS configuration. Styles still work via compiled CSS.
+                console.debug('tailwind runtime not present; skipping tailwind.config assignment');
             }
+        } catch (e) {
+            console.warn('Error applying tailwind.config guard:', e && e.message ? e.message : e);
         }
     </script>
     <!-- Load Font Awesome Icons -->
@@ -194,6 +205,9 @@
     <source src="/videos/videowebdesign.mp4" type="video/mp4"/>
     <!-- local placeholder webm not available; mp4 will be used as fallback in dev -->
     <img alt="Hình nền giới thiệu IVS Academy" class="absolute inset-0 w-full h-full object-cover" decoding="async" src="/images/ivsacademy.jpg"/>
+        <img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/minhtriet.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+        <img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/webblog.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+    
 </video>
 <div class="hero-overlay"></div>
 <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -702,7 +716,7 @@
 <div class="project-card p-4 rounded-xl flex flex-col h-full" data-aos="fade-up" data-aos-delay="500">
 <!-- Simulated Screen Preview -->
 <div class="w-full h-32 bg-gray-900 rounded-lg mb-4 p-4 flex items-center justify-center border border-ivs-border/50 relative overflow-hidden">
-<img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/minhtriet.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+<img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/webblog.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
 <div class="absolute inset-0 bg-gradient-to-br from-ivs-red/10 to-transparent opacity-50 flex items-center justify-center" style="display: none;">
 <i class="fas fa-tv text-5xl text-ivs-red/50"></i>
 </div>
