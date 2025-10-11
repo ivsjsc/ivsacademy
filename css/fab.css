@@ -51,6 +51,9 @@ body.ivs-assistant-modal-open {
 .fab-item { z-index: 1050; }
 .fab-submenu-panel { z-index: 1045; }
 
+/* Top-most utility for assistant window */
+.fab-topmost { z-index: 2147483647 !important; position: relative; }
+
 .fab-item:hover {
     transform: translateY(-3px) scale(1.04);
     box-shadow: var(--fab-shadow-hover);
