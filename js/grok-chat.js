@@ -1,0 +1,223 @@
+/*
+ Unified IVS Assistant
+ - Merges useful features from previous GrokChat and IVSChatbot implementations
+ - Adds: AbortController with timeout, input/button disable while waiting, aria-live for accessibility,
+   sessionStorage conversation persistence, friendly error handling.
+ - Exposes: window.IVSAssistant and window.IVSFABChatbot (alias) for compatibility.
+*/
+
+class IVSAssistant {
+    constructor(opts = {}) {
+        this.opts = Object.assign({
+            apiPath: '/api/grok',
+            timeoutMs: 10000,
+            storageKey: 'ivs_assistant_conversation',
+            initialMessage: 'Xin chào! Tôi là IVS Assistant. Tôi có thể giúp gì cho bạn?'
+        }, opts);
+
+        this.container = document.getElementById('ai-assistant-window') || document.createElement('div');
+        this.chatWindow = null;
+        this.messagesContainer = null;
+        this.input = null;
+        this.sendBtn = null;
+        this.closeBtn = null;
+        this.quickReplies = null;
+        this.isSending = false;
+        this.conversation = [];
+
+        this.init();
+    }
+
+    init() {
+        // If component markup exists, wire into it; otherwise nothing destructive
+        this.chatWindow = document.getElementById('chat-window');
+        this.messagesContainer = document.getElementById('chat-messages');
+        this.input = document.getElementById('chat-input');
+        this.sendBtn = document.getElementById('chat-send');
+        this.closeBtn = document.getElementById('chat-close');
+        this.quickReplies = document.querySelectorAll('.quick-reply');
+        this.assistantBtn = document.getElementById('assistant-main-btn');
+
+        // Ensure messages container has aria-live for screen readers
+        if (this.messagesContainer) {
+            this.messagesContainer.setAttribute('role', 'log');
+            this.messagesContainer.setAttribute('aria-live', 'polite');
+        }
+
+        this.bindEvents();
+        this.restoreConversation();
+
+        if (!this.conversation || this.conversation.length === 0) {
+            this.addMessage('bot', this.opts.initialMessage, { persist: true });
+        }
+    }
+
+    bindEvents() {
+        if (this.sendBtn) {
+            this.sendBtn.addEventListener('click', () => this.sendMessage());
+        }
+        if (this.input) {
+            this.input.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.sendMessage(); });
+        }
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.closeChat());
+        }
+        if (this.assistantBtn) {
+            this.assistantBtn.addEventListener('click', () => this.openChat());
+        }
+        if (this.quickReplies && this.quickReplies.length) {
+            this.quickReplies.forEach(b => b.addEventListener('click', (ev) => {
+                const reply = b.dataset.reply || b.getAttribute('data-reply');
+                if (reply) {
+                    this.addMessage('user', reply, { persist: true });
+                    this.processMessage(reply);
+                }
+            }));
+        }
+    }
+
+    openChat() {
+        const assistantWindow = document.getElementById('ai-assistant-window');
+        if (assistantWindow) assistantWindow.classList.remove('hidden');
+        if (this.chatWindow) this.chatWindow.classList.remove('hidden');
+        if (this.assistantBtn) this.assistantBtn.setAttribute('aria-expanded','true');
+        if (this.input) setTimeout(()=>this.input.focus(), 120);
+    }
+
+    closeChat() {
+        const assistantWindow = document.getElementById('ai-assistant-window');
+        if (assistantWindow) assistantWindow.classList.add('hidden');
+        if (this.chatWindow) this.chatWindow.classList.add('hidden');
+        if (this.assistantBtn) this.assistantBtn.setAttribute('aria-expanded','false');
+    }
+
+    async sendMessage() {
+        if (!this.input || !this.sendBtn) return;
+        const text = this.input.value.trim();
+        if (!text || this.isSending) return;
+
+        // clear input and disable UI
+        this.input.value = '';
+        this.setSending(true);
+
+        // Add user message
+        this.addMessage('user', text, { persist: true });
+
+        // Show typing indicator
+        this.showTypingIndicator();
+
+        try {
+            const reply = await this.requestAI(text, { timeout: this.opts.timeoutMs });
+            this.hideTypingIndicator();
+            this.addMessage('bot', reply, { persist: true });
+        } catch (err) {
+            this.hideTypingIndicator();
+            const errMsg = typeof err === 'string' ? err : 'Đã có lỗi xảy ra. Vui lòng thử lại sau.';
+            console.warn('Assistant request error:', err);
+            this.addMessage('bot', errMsg, { persist: true });
+        } finally {
+            this.setSending(false);
+        }
+    }
+
+    setSending(flag) {
+        this.isSending = !!flag;
+        if (this.sendBtn) this.sendBtn.disabled = !!flag;
+        if (this.input) this.input.disabled = !!flag;
+    }
+
+    showTypingIndicator() {
+        if (!this.messagesContainer) return;
+        if (this._typingEl) return; // already shown
+        const typingDiv = document.createElement('div');
+        typingDiv.id = 'typing-indicator';
+        typingDiv.className = 'flex justify-start';
+        typingDiv.innerHTML = `<div class="bg-white dark:bg-gray-700 rounded-lg p-3"><i class="fas fa-ellipsis-h"></i></div>`;
+        this.messagesContainer.appendChild(typingDiv);
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+        this._typingEl = typingDiv;
+    }
+
+    hideTypingIndicator() {
+        if (this._typingEl && this._typingEl.parentNode) {
+            this._typingEl.parentNode.removeChild(this._typingEl);
+            this._typingEl = null;
+        }
+    }
+
+    addMessage(sender, text, { persist=false } = {}) {
+        if (!this.messagesContainer) return;
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+
+        const bubble = document.createElement('div');
+        bubble.className = `max-w-xs px-4 py-2 rounded-lg text-sm ${sender === 'user' ? 'bg-blue-500 text-white' : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600'}`;
+        bubble.textContent = text;
+
+        messageDiv.appendChild(bubble);
+        this.messagesContainer.appendChild(messageDiv);
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+
+        // persist
+        if (persist) {
+            this.conversation.push({ sender, text, ts: Date.now() });
+            try { sessionStorage.setItem(this.opts.storageKey, JSON.stringify(this.conversation)); } catch(e) { /* ignore */ }
+        }
+    }
+
+    restoreConversation() {
+        try {
+            const raw = sessionStorage.getItem(this.opts.storageKey);
+            if (!raw) return;
+            this.conversation = JSON.parse(raw) || [];
+            this.conversation.forEach(m => this.addMessage(m.sender, m.text));
+        } catch(e) { this.conversation = []; }
+    }
+
+    async requestAI(message, { timeout = 10000 } = {}) {
+        // Basic transport to backend '/api/grok' following existing expectations.
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), timeout);
+        try {
+            const resp = await fetch(this.opts.apiPath, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: [{ role: 'user', content: message }] }),
+                signal: controller.signal
+            });
+            clearTimeout(id);
+            if (!resp.ok) {
+                let text = `Lỗi mạng: ${resp.status}`;
+                try { const j = await resp.json(); if (j && j.error) text = j.error; } catch(_){}
+                throw new Error(text);
+            }
+            const data = await resp.json();
+            // support both { choices: [{ message: { content } }] } and { reply: '...' }
+            const reply = data?.choices?.[0]?.message?.content || data?.reply || data?.result || 'Xin lỗi, tôi chưa thể trả lời.';
+            return reply;
+        } catch (err) {
+            if (err.name === 'AbortError') throw 'Yêu cầu quá thời gian. Vui lòng thử lại.';
+            throw err.message || err;
+        } finally { clearTimeout(id); }
+    }
+
+    processMessage(message) {
+        // Local intelligent responses fallback (kept simple)
+        // If backend present, sendMessage() will call requestAI.
+        // This method used by quick replies to trigger a send.
+        this.sendMessage();
+    }
+}
+
+// Expose single instance (idempotent)
+if (!window.IVSAssistant) {
+    try {
+        window.IVSAssistant = new IVSAssistant();
+    } catch (e) {
+        console.warn('IVSAssistant init failed:', e);
+    }
+}
+
+// Back-compat alias used around the codebase
+if (!window.IVSFABChatbot) window.IVSFABChatbot = window.IVSAssistant;
+
