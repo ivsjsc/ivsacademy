@@ -184,6 +184,37 @@ async function loadCommonComponents() {
         window.componentLog('Failed to load fab-assistant: ' + (err && err.message ? err.message : err), 'warn');
     }
 
+    // Ensure the AI assistant window markup is present somewhere in the document.
+    // Some pages don't include an explicit placeholder for the assistant; create one
+    // and inject the component so IVSAssistant can find its DOM elements and bind events.
+    try {
+        if (!document.getElementById('ai-assistant-placeholder')) {
+            const ph = document.createElement('div');
+            ph.id = 'ai-assistant-placeholder';
+            // Append near end of body so it's available visually above other elements (fab-topmost ensures stacking)
+            document.body.appendChild(ph);
+        }
+        const aiSuccess = await loadAndInject('/components/ai-assistant.html', 'ai-assistant-placeholder');
+        if (aiSuccess) {
+            window.componentLog('ai-assistant component injected.', 'info');
+            // If the assistant class exists, ensure it's initialized now that DOM is present.
+            try {
+                if (window.IVSAssistant && typeof window.IVSAssistant.init === 'function') {
+                    window.IVSAssistant.init();
+                    window.componentLog('Existing IVSAssistant.init() called after injection.', 'info');
+                } else if (typeof IVSAssistant === 'function') {
+                    // Create a new instance if not already present
+                    window.IVSAssistant = new IVSAssistant();
+                    window.componentLog('IVSAssistant instance created after injection.', 'info');
+                }
+            } catch (e) {
+                window.componentLog('Error initializing IVSAssistant after injection: ' + (e && e.message ? e.message : e), 'warn');
+            }
+        }
+    } catch (err) {
+        window.componentLog('Failed to inject ai-assistant component: ' + (err && err.message ? err.message : err), 'warn');
+    }
+
     // Tải Footer sau cùng
     if (document.getElementById(footerComponent.id)) {
         const success = await loadAndInject(footerComponent.url, footerComponent.id);
