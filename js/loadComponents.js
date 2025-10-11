@@ -142,7 +142,20 @@ async function loadCommonComponents() {
     window.__IVS_components_loadingStarted = true;
 
     window.componentLog("Initializing component sequence...", "info");
-    
+    // Ensure common placeholders exist so components can be injected even on pages
+    // that didn't include placeholders explicitly in their HTML.
+    if (!document.getElementById('fab-container-placeholder')) {
+        const ph = document.createElement('div');
+        ph.id = 'fab-container-placeholder';
+        document.body.appendChild(ph);
+        window.componentLog('Created missing #fab-container-placeholder dynamically.', 'info');
+    }
+    if (!document.getElementById('ai-assistant-placeholder')) {
+        const ph2 = document.createElement('div');
+        ph2.id = 'ai-assistant-placeholder';
+        document.body.appendChild(ph2);
+        window.componentLog('Created missing #ai-assistant-placeholder dynamically.', 'info');
+    }
     // Sử dụng đường dẫn Root-Relative Path
     const components = [
         { id: 'header-placeholder', url: '/components/header.html', controller: window.IVSHeaderController },

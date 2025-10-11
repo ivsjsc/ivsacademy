@@ -259,6 +259,16 @@ const IVSFabController = {
                 return;
             }
 
+            // Prefer in-page IVSAssistant if available (no popup needed)
+            if (window.IVSAssistant && typeof window.IVSAssistant.openChat === 'function') {
+                try {
+                    window.IVSAssistant.openChat();
+                    return;
+                } catch (e) {
+                    window.componentLog('IVSAssistant.openChat() failed: ' + (e && e.message ? e.message : e), 'warn');
+                }
+            }
+
             // If a global script URL is provided (from another repo), try to load it dynamically
             const externalUrl = window.IVS_CHATBOT_SCRIPT_URL || null;
             if (externalUrl) {

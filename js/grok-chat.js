@@ -26,11 +26,30 @@ class IVSAssistant {
     this._lastSendAt = 0; // throttle guard (ms)
         this.conversation = [];
 
-        this.init();
+        // Defer initialization: allow caller to call init(), but also attempt auto-init
+        // in case DOM is already present. Use a small delay to allow loadComponents to inject markup.
+        setTimeout(() => this.init(), 50);
     }
 
     init() {
-        // If component markup exists, wire into it; otherwise nothing destructive
+        // If component markup exists, wire into it; otherwise keep retrying for a short period
+        const requiredSelectors = ['chat-window', 'chat-messages', 'chat-input', 'chat-send'];
+        const foundAll = requiredSelectors.every(id => document.getElementById(id));
+        if (!foundAll) {
+            // Retry a few times with backoff before giving up
+            if (!this._initAttempts) this._initAttempts = 0;
+            this._initAttempts++;
+            if (this._initAttempts <= 6) {
+                const delay = 50 * this._initAttempts;
+                setTimeout(() => this.init(), delay);
+                return;
+            } else {
+                // Give up gracefully; will try again if loadComponents explicitly calls IVSAssistant.init()
+                window.componentLog('IVSAssistant: DOM not ready for init after retries; defer until component injected.', 'warn');
+                return;
+            }
+        }
+
         this.chatWindow = document.getElementById('chat-window');
         this.messagesContainer = document.getElementById('chat-messages');
         this.input = document.getElementById('chat-input');
@@ -74,6 +93,18 @@ class IVSAssistant {
                     this.processMessage(reply);
                 }
             }));
+        }
+        // Clear conversation button
+        const clearBtn = document.getElementById('chat-clear');
+        if (clearBtn) {
+            clearBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.conversation = [];
+                try { sessionStorage.removeItem(this.opts.storageKey); } catch(e) {}
+                if (this.messagesContainer) this.messagesContainer.innerHTML = '';
+                // Add initial bot message
+                this.addMessage('bot', this.opts.initialMessage, { persist: true });
+            });
         }
     }
 
