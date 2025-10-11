@@ -171,6 +171,16 @@ body.ivs-assistant-modal-open {
 @media (max-width:768px) { #fab-container{ right:1rem; bottom:7rem } .fab-submenu-panel{ min-width:200px } }
 @media (max-width:480px) { #fab-container{ right:.5rem; bottom:6rem } .fab-item{ width:2.5rem; height:2.5rem } }
 
+/* Default accent used by FABs when not overridden by page */
+:root { --ivs-accent: #06b6d4; /* cyan-400 */ }
+
+/* Assistant-specific visual tweaks */
+.fab-item.bg-cyan-500, .fab-item.bg-cyan-500:hover { background-color: #06b6d4 !important; }
+.fab-item:focus-visible { outline-color: #0891b2; }
+
+/* Scroll-to-top hover contrast */
+#scroll-to-top-btn:hover { background-color: #111827 !important; transform: translateY(-3px) scale(1.02); }
+
 /* Contact modal styles and animations for FAB contact modal */
 .fab-contact-modal-overlay {
     position: fixed;
