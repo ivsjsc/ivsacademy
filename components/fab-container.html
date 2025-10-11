@@ -34,11 +34,131 @@
             <!-- Nội dung cho contact-options sẽ được JavaScript chèn vào đây -->
         </div>
     </div>
+    <!-- Nút FAB Trợ Lý (Assistant) - merged here -->
+    <div class="relative group/fab">
+        <button id="assistant-main-btn" title="Mở IVS Assistant" aria-label="Mở IVS Assistant" aria-haspopup="true" aria-expanded="false" aria-controls="assistant-window"
+                class="fab-item flex items-center justify-center w-14 h-14 md:w-16 md:h-16 shadow-xl hover:shadow-2xl focus:ring-2 focus:ring-orange-400 outline-none"
+                tabindex="0" role="button">
+            <i class="fas fa-robot text-xl"></i>
+        </button>
+    </div>
 </div>
 
 <!-- load shared FAB CSS (canonical) -->
 <link rel="stylesheet" href="css/tailwind.css">
 <link rel="stylesheet" href="css/fab.css">
+
+<!-- FAB behavior script: on-click toggles, keyboard support, click-outside, and scroll-to-top -->
+<script>
+    (function(){
+        'use strict';
+
+        const btn = (id) => document.getElementById(id);
+        const panelClass = 'fab-submenu-panel';
+
+        function togglePanel(panel, button){
+            if(!panel) return;
+            const isOpen = !panel.classList.contains('hidden');
+            if(isOpen){
+                panel.classList.add('hidden');
+                panel.classList.remove('opacity-100','scale-100');
+                if(button) button.setAttribute('aria-expanded','false');
+            } else {
+                panel.classList.remove('hidden');
+                panel.classList.add('opacity-100','scale-100');
+                if(button) button.setAttribute('aria-expanded','true');
+            }
+        }
+
+        function closeAllPanels(){
+            document.querySelectorAll('.' + panelClass).forEach(p=>{
+                p.classList.add('hidden');
+                p.classList.remove('opacity-100','scale-100');
+            });
+            ['share-main-btn','contact-main-btn','assistant-main-btn'].forEach(id=>{
+                const b = btn(id);
+                if(b) b.setAttribute('aria-expanded','false');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const shareBtn = btn('share-main-btn');
+            const sharePanel = btn('share-options');
+            const contactBtn = btn('contact-main-btn');
+            const contactPanel = btn('contact-options');
+            const assistantBtn = btn('assistant-main-btn');
+            const assistantWindow = document.getElementById('ai-assistant-window') || document.getElementById('assistant-window') || document.getElementById('chat-window') || document.getElementById('ai-assistant');
+            const scrollBtn = btn('scroll-to-top-btn');
+
+            // Toggle handlers
+            if(shareBtn) shareBtn.addEventListener('click', (e)=>{ e.stopPropagation(); togglePanel(sharePanel, shareBtn); });
+            if(contactBtn) contactBtn.addEventListener('click', (e)=>{ e.stopPropagation(); togglePanel(contactPanel, contactBtn); });
+            if(assistantBtn) assistantBtn.addEventListener('click', (e)=>{
+                e.stopPropagation();
+                // Toggle assistant window visibility
+                if(!assistantWindow) return;
+                const isHidden = assistantWindow.classList.contains('hidden');
+                if(isHidden){
+                    assistantWindow.classList.remove('hidden');
+                    assistantBtn.setAttribute('aria-expanded','true');
+                    // focus input if present
+                    const input = assistantWindow.querySelector('#chat-input') || assistantWindow.querySelector('input, textarea');
+                    if(input) setTimeout(()=>input.focus(), 120);
+                } else {
+                    assistantWindow.classList.add('hidden');
+                    assistantBtn.setAttribute('aria-expanded','false');
+                }
+            });
+
+            // Keyboard activation (Enter/Space)
+            ['share-main-btn','contact-main-btn','assistant-main-btn','scroll-to-top-btn'].forEach(id=>{
+                const b = btn(id);
+                if(!b) return;
+                b.addEventListener('keydown', (ev)=>{
+                    if(ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); b.click(); }
+                });
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', (ev)=>{
+                if(ev.key === 'Escape'){
+                    closeAllPanels();
+                    if(assistantBtn) assistantBtn.setAttribute('aria-expanded','false');
+                    if(assistantWindow) assistantWindow.classList.add('hidden');
+                }
+            });
+
+            // Click outside: close
+            document.addEventListener('click', (ev)=>{
+                const target = ev.target;
+                if(!target.closest('#fab-container') && !target.closest('#ai-assistant-window') && !target.closest('.fab-submenu-panel')){
+                    closeAllPanels();
+                    if(assistantWindow) assistantWindow.classList.add('hidden');
+                }
+            }, true);
+
+            // Scroll to top behaviour
+            if(scrollBtn){
+                scrollBtn.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+                // show/hide on scroll
+                const onScroll = ()=>{
+                    if(window.scrollY > 200){
+                        scrollBtn.classList.remove('opacity-0','invisible','scale-90','pointer-events-none');
+                        scrollBtn.classList.add('opacity-100');
+                    } else {
+                        scrollBtn.classList.add('opacity-0','invisible','scale-90','pointer-events-none');
+                        scrollBtn.classList.remove('opacity-100');
+                    }
+                };
+                document.addEventListener('scroll', onScroll, {passive:true});
+                onScroll();
+            }
+
+            // Close panels when window resizes to avoid stuck panels
+            window.addEventListener('resize', ()=> closeAllPanels());
+        });
+    })();
+</script>
 
 
 
