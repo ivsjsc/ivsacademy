@@ -118,6 +118,97 @@ app.post('/api/verified-id/callback', async (req, res) => {
   }
 });
 
+// Request a verification to be sent to a callback URL.
+// This endpoint accepts a payload in the form the frontend provided and forwards it
+// to the `callback.url` with the supplied `callback.headers`. For security we
+// optionally enforce a request secret and a callback whitelist, and a server-side
+// API key override may be applied via env var.
+app.post('/api/verified-id/request', async (req, res) => {
+  try {
+    const payload = req.body || {};
+    const callback = payload.callback || {};
+
+    // Optional request secret to avoid open relays (set VERIFY_REQUEST_SECRET)
+    const REQUEST_SECRET = process.env.VERIFY_REQUEST_SECRET || '';
+    if (REQUEST_SECRET) {
+      const incoming = (req.headers['x-verify-secret'] || '').toString();
+      if (!incoming || incoming !== REQUEST_SECRET) {
+        return res.status(401).json({ error: 'missing_or_invalid_request_secret' });
+      }
+    }
+
+    if (!callback.url) {
+      return res.status(400).json({ error: 'missing_callback_url' });
+    }
+
+    // Ensure the URL is HTTPS for safety
+    let parsedUrl;
+    try {
+      parsedUrl = new URL(callback.url);
+    } catch (err) {
+      return res.status(400).json({ error: 'invalid_callback_url' });
+    }
+    if (parsedUrl.protocol !== 'https:') {
+      return res.status(400).json({ error: 'callback_url_must_be_https' });
+    }
+
+    // Optional whitelist of allowed callback hosts (comma-separated)
+    const WHITELIST = (process.env.VERIFY_CALLBACK_WHITELIST || '').split(',').map(s => s.trim()).filter(Boolean);
+    if (WHITELIST.length > 0) {
+      const hostOk = WHITELIST.includes(parsedUrl.hostname) || WHITELIST.includes(parsedUrl.host);
+      if (!hostOk) {
+        return res.status(403).json({ error: 'callback_host_not_whitelisted', host: parsedUrl.hostname });
+      }
+    }
+
+    // Merge headers: start with callback.headers (if any), then apply server override
+    const outgoingHeaders = Object.assign({}, callback.headers || {});
+
+    // If a server-side VERIFY_API_KEY is provided, inject it under VERIFY_API_KEY_HEADER (default 'api-key')
+    const SERVER_API_KEY = process.env.VERIFY_API_KEY || '';
+    const SERVER_API_KEY_HEADER = process.env.VERIFY_API_KEY_HEADER || 'api-key';
+    if (SERVER_API_KEY) {
+      outgoingHeaders[SERVER_API_KEY_HEADER] = SERVER_API_KEY;
+    }
+
+    // Default Content-Type application/json
+    outgoingHeaders['Content-Type'] = outgoingHeaders['Content-Type'] || 'application/json';
+
+    // Timeout for the outbound request (ms)
+    const timeoutMs = parseInt(process.env.VERIFY_TIMEOUT_MS || '10000', 10);
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+    const fetchOptions = {
+      method: 'POST',
+      headers: outgoingHeaders,
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    };
+
+    const downstream = await fetch(callback.url, fetchOptions);
+    clearTimeout(timeoutId);
+
+    const contentType = downstream.headers.get('content-type') || '';
+    const status = downstream.status;
+
+    // Proxy response back to caller
+    if (contentType.includes('application/json')) {
+      const json = await downstream.json();
+      return res.status(status).json(json);
+    }
+    const text = await downstream.text();
+    return res.status(status).type('text/plain').send(text);
+  } catch (err) {
+    if (err && err.name === 'AbortError') {
+      return res.status(504).json({ error: 'downstream_timeout' });
+    }
+    console.error('verification request error', err);
+    return res.status(502).json({ error: 'bad_gateway', detail: String(err) });
+  }
+});
+
 // OAuth2 callback for Microsoft Entra
 app.get('/auth/callback', async (req, res) => {
   try {

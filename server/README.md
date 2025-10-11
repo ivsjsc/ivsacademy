@@ -1,3 +1,54 @@
+# Server helper endpoints
+
+This small server provides helper endpoints used by the static site during development.
+
+New endpoints added:
+
+- `POST /api/verified-id/request` - Forward a Verified ID verification request to the provided callback URL.
+
+Environment variables (optional):
+
+- `VERIFY_REQUEST_SECRET` - If set, callers must include `X-VERIFY-SECRET` header with this value when calling `/api/verified-id/request` to prevent open relays.
+- `VERIFY_CALLBACK_WHITELIST` - Comma-separated list of allowed callback hostnames. If set, callback URLs not matching this list will be rejected.
+- `VERIFY_API_KEY` - Server-side API key to inject into outgoing callback headers. Use this instead of sending secrets from the browser.
+- `VERIFY_API_KEY_HEADER` - Header name to use for `VERIFY_API_KEY` (defaults to `api-key`).
+- `VERIFY_TIMEOUT_MS` - Timeout in milliseconds for outbound callback requests (default 10000).
+
+Example curl (replace placeholders):
+
+```bash
+curl -X POST 'http://localhost:3000/api/verified-id/request' \
+  -H 'Content-Type: application/json' \
+  -H 'X-VERIFY-SECRET: your-secret-if-configured' \
+  -d '{
+    "callback": {
+      "headers": { "api-key": "{REPLACE-WITH-API-KEY}" },
+      "state": "{REPLACE-WITH-STATE}",
+      "url": "https://httpbin.org/post"
+    },
+    "registration": { "clientName": "{REPLACE-WITH-CLIENT-NAME}" },
+    "requestedCredentials": [ { "acceptedIssuers": ["did:web:www.linkedin.com"], "purpose": "{REPLACE-WITH-PURPOSE}", "type": "VerifiedEmployee" } ]
+  }'
+```
+
+Example browser usage (use `js/verifyClient.js`):
+
+```js
+import { requestVerifiedId, samplePayload } from '/js/verifyClient.js';
+
+(async () => {
+  try {
+    const resp = await requestVerifiedId(samplePayload);
+    console.log('verification response', resp);
+  } catch (err) {
+    console.error('verification error', err);
+  }
+})();
+```
+
+Notes:
+- The server will inject `VERIFY_API_KEY` into the outgoing headers if configured. This prevents the browser from needing to hold secrets.
+- The endpoint enforces HTTPS callback URLs and supports an optional whitelist for added safety.
 # IVS Verified ID Callback Endpoint (demo)
 
 This is a small Node.js/Express app that exposes a callback endpoint compatible with Microsoft Entra Verified ID custom issue flow.
