@@ -47,6 +47,10 @@ body.ivs-assistant-modal-open {
     touch-action: manipulation;
 }
 
+/* Ensure FABs and submenu panels overlay other page content */
+.fab-item { z-index: 1050; }
+.fab-submenu-panel { z-index: 1045; }
+
 .fab-item:hover {
     transform: translateY(-3px) scale(1.04);
     box-shadow: var(--fab-shadow-hover);
