@@ -120,3 +120,88 @@ curl -X POST http://localhost:3000/api/graph/lookup \
 ```
 
 This will return the first matching user object from Graph or a 404 if none found.
+
+## Emergency secret leak remediation (step-by-step)
+
+If a client secret (AAD client secret) was accidentally exposed, follow these steps immediately. The commands below are examples you must run from your machine — I will not execute them for you.
+
+1) Revoke the exposed secret (Azure Portal - fastest)
+  - Portal: Azure Active Directory → App registrations → select your app → Certificates & secrets → find the secret and Delete it.
+
+2) Revoke via Azure CLI (alternative)
+  - Login and delete by `key-id` (Secret ID shown in the Portal):
+
+```powershell
+az login
+az ad app credential delete --id <APP_CLIENT_ID> --key-id <SECRET_ID>
+```
+
+3) Create a new client secret (Portal or CLI)
+  - Portal: Certificates & secrets → New client secret → choose expiry → Copy the value now (it will not be shown again).
+  - CLI (returns new secret in `password`):
+
+```powershell
+az ad app credential reset --id <APP_CLIENT_ID> --append --years 1
+```
+
+4) Update your server configuration (do not commit secrets)
+  - Edit `server/.env` and set `AAD_CLIENT_SECRET` to the new value. Ensure `.gitignore` prevents `.env` from being committed.
+  - Restart the server process (examples):
+
+Systemd example:
+```powershell
+# on the server
+sudo systemctl restart ivs-verified-server.service
+```
+
+npm example (development):
+```powershell
+cd server
+npm install
+npm restart
+```
+
+PM2 example:
+```powershell
+pm2 restart ivs-verified-server
+```
+
+5) Audit and monitor
+  - Check Azure AD Sign-in logs and Audit logs for suspicious token requests from the app. In the Portal: Azure AD → Sign-ins / Audit logs. Filter by Application ID.
+  - Check your server logs for unexpected requests to `/api/graph/lookup` or other endpoints.
+
+6) Remove secret from Git history (only if it was committed)
+  - WARNING: rewriting git history is destructive and requires force-push. Coordinate with your team.
+
+Option A — `git-filter-repo` (recommended):
+
+```bash
+# Install: pip install git-filter-repo
+git clone --mirror https://github.com/<owner>/<repo>.git repo-mirror.git
+cd repo-mirror.git
+# create replacements.txt with a line containing the secret to replace, e.g.
+# ABY8Q~...======>***REMOVED***
+git filter-repo --replace-text ../replacements.txt
+git push --force --all
+git push --force --tags
+```
+
+Option B — BFG Repo-Cleaner (simpler):
+
+```bash
+# requires java and bfg jar
+bfg --replace-text passwords.txt repo.git
+cd repo.git
+git reflog expire --expire=now --all
+git gc --prune=now --aggressive
+git push --force
+```
+
+7) After scrub: rotate any rotated secrets (you created a new one in step 3) and notify your team.
+
+8) Long-term hardening (recommended)
+  - Use Managed Identity (if running in Azure) instead of client secrets when possible. This eliminates secrets.
+  - Use Azure Key Vault to store secrets and access them from your server at runtime.
+  - Reduce lifetime of client secrets; use certificate-based credentials if possible.
+
+If you want, I can add a helper script template to this repo to help you perform secret removal locally (you must run it yourself). See `scripts/scrub-secret.sh`.
