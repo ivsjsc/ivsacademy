@@ -205,3 +205,24 @@ git push --force
   - Reduce lifetime of client secrets; use certificate-based credentials if possible.
 
 If you want, I can add a helper script template to this repo to help you perform secret removal locally (you must run it yourself). See `scripts/scrub-secret.sh`.
+
+## XAI / third-party AI proxy (server-side)
+
+This server exposes a small proxy endpoint to call third-party AI chat completions without embedding the API key in the browser.
+
+- Endpoint: `POST /api/xai`
+- Body: Forwarded JSON as-is to X.ai /chat/completions endpoints.
+- Requires: `XAI_API_KEY` in environment (see `.env.example`).
+
+Example curl (server must have XAI_API_KEY set):
+
+```bash
+curl -X POST http://localhost:3000/api/xai \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"grok-4-latest","messages":[{"role":"system","content":"You are a test assistant."},{"role":"user","content":"Say hello"}]}'
+```
+
+Security notes:
+- Rotate any leaked XAI keys immediately (delete and reissue on provider portal).
+- Do not post secrets in chat or public repos.
+- Consider using a secret store (Key Vault) and rate limiting / authentication on this endpoint in production.

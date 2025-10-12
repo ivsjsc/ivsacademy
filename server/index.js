@@ -320,6 +320,44 @@ app.post('/api/graph/lookup', async (req, res) => {
   }
 });
 
+// Simple proxy to X.ai chat completions (server-side)
+// POST /api/xai
+// Body: { messages: [...], model: 'grok-4-latest', ... }
+app.post('/api/xai', async (req, res) => {
+  try{
+    const apiKey = process.env.XAI_API_KEY || process.env.AI_API_KEY || '';
+    if(!apiKey) return res.status(500).json({ error: 'xai_api_not_configured' });
+
+    // Basic rate-limiting guard (very small, replace with proper limiter in production)
+    const MAX_BODY = 20000;
+    const incomingSize = JSON.stringify(req.body).length;
+    if(incomingSize > MAX_BODY) return res.status(413).json({ error: 'payload_too_large' });
+
+    const endpoint = 'https://api.x.ai/v1/chat/completions';
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + apiKey
+      },
+      body: JSON.stringify(req.body)
+    };
+
+    const r = await fetch(endpoint, fetchOptions);
+    const ct = r.headers.get('content-type') || '';
+    res.status(r.status);
+    if(ct.includes('application/json')){
+      const j = await r.json();
+      return res.json(j);
+    }
+    const txt = await r.text();
+    return res.type('text/plain').send(txt);
+  }catch(err){
+    console.error('XAI proxy error', err);
+    return res.status(502).json({ error: 'bad_gateway', detail: String(err) });
+  }
+});
+
 // Start server when run directly
 if (require.main === module) {
   const port = process.env.PORT || 3000;
