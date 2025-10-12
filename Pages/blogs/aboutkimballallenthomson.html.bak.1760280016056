@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//placehold.co" rel="dns-prefetch"/><link href="//cdn.tailwindcss.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ông Kimball Allen Thomson - IVS JSC</title>
+<meta content="Tìm hiểu về Ông Kimball Allen Thomson, Đối tác Giáo dục và Cộng đồng của IVS JSC từ Hoa Kỳ. Tìm hiểu về IVS JSC - đối tác tin cậy trong lĩnh vực giáo dục với hơ" name="description"/>
+<meta content="Kimball Allen Thomson, IVS JSC, đối tác giáo dục, Hoa Kỳ, cộng đồng" name="keywords"/>
+<script defer="" src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,line-clamp"></script>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* light blue-gray */
+            color: #334155; /* slate-700 */
+        }
+        .text-primary { color: #004080; }
+        .bg-primary { background-color: #004080; }
+        .text-secondary { color: #ffc107; }
+        .bg-secondary { background-color: #ffc107; }
+        .hover\:bg-primary-dark:hover { background-color: #003366; }
+        .section-padding { padding-top: 4rem; padding-bottom: 4rem; } /* py-16 */
+        .container-padding { padding-left: 1.5rem; padding-right: 1.5rem; } /* px-6 */
+        @media (min-width: 768px) {
+            .container-padding { padding-left: 3rem; padding-right: 3rem; } /* md:px-12 */
+        }
+        @media (min-width: 1024px) {
+            .container-padding { padding-left: 6rem; padding-right: 6rem; } /* lg:px-24 */
+        }
+    </style>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</link><meta content="Ông Kimball Allen Thomson - IVS JSC" property="og:title"/><meta content="Tìm hiểu về Ông Kimball Allen Thomson, Đối tác Giáo dục và Cộng đồng của IVS JSC từ Hoa Kỳ. Tìm hiểu về IVS JSC - đối tác tin cậy trong lĩnh vực giáo dục với hơ" property="og:description"/><meta content="website" property="og:type"/></head>
+<body class="flex flex-col min-h-screen">
+<header id="header-placeholder"></header>
+<main class="flex-grow">
+<section class="bg-primary text-white py-20 text-center rounded-b-3xl shadow-lg">
+<div class="container mx-auto container-padding">
+<h1 class="text-5xl font-extrabold mb-4" data-lang-key="kimball_hero_title">Ông Kimball Allen Thomson</h1>
+<p class="text-xl max-w-3xl mx-auto" data-lang-key="kimball_hero_subtitle">
+                    Đối tác Giáo dục và Cộng đồng của IVS JSC từ Hoa Kỳ.
+                </p>
+</div>
+</section>
+<section class="section-padding bg-white shadow-md my-8 mx-auto max-w-7xl rounded-xl">
+<div class="container mx-auto container-padding">
+<div class="flex flex-col md:flex-row items-center md:space-x-8">
+<div class="md:w-1/3 mb-6 md:mb-0">
+<!-- CẬP NHẬT: Thay thế hình ảnh placeholder bằng đường dẫn thực tế -->
+<img alt="Ông Kimball Allen Thomson" class="rounded-full w-64 h-64 object-cover mx-auto shadow-lg border-4 border-primary" decoding="async" src="images\team\kimball-allen-thomson.jpg"/>
+</div>
+<div class="md:w-2/3 text-center md:text-left">
+<h2 class="text-3xl font-bold text-gray-800 mb-2" data-lang-key="kimball_name_heading">Ông Kimball Allen Thomson</h2>
+<p class="text-xl text-secondary mb-4" data-lang-key="kimball_position">Đối tác Giáo dục, Cộng đồng từ Hoa Kỳ</p>
+<p class="text-lg text-gray-700 leading-relaxed mb-4" data-lang-key="kimball_intro_short">
+                            Ông Kimball Allen Thomson là một đối tác chiến lược quan trọng của IVS JSC, mang đến kinh nghiệm sâu rộng từ hệ thống giáo dục và cộng đồng tại Hoa Kỳ. Với nền tảng học vấn vững chắc và hơn 25 năm kinh nghiệm trong nhiều lĩnh vực, ông đóng góp vào việc phát triển các chương trình chất lượng cao và thúc đẩy sự phát triển bền vững trong cộng đồng giáo dục toàn cầu.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<section class="section-padding bg-gray-100 shadow-md my-8 mx-auto max-w-7xl rounded-xl">
+<div class="container mx-auto container-padding">
+<h2 class="text-4xl font-bold text-primary mb-8 text-center" data-lang-key="kimball_professional_background_title">Nền Tảng Chuyên Môn</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4" data-lang-key="kimball_education_title">Học Vấn</h3>
+<ul class="text-lg text-gray-700 space-y-2 list-disc list-inside">
+<li data-lang-key="kimball_education_mba">Thạc sĩ Quản trị Kinh doanh (MBA) - Đại học Brigham Young.</li>
+<li data-lang-key="kimball_education_ba">Cử nhân Nghệ thuật (BA) chuyên ngành Văn học So sánh &amp; Kinh tế Chính trị - Đại học California, Berkeley.</li>
+</ul>
+</div>
+<div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-4" data-lang-key="kimball_skills_title">Kỹ Năng Chính</h3>
+<p class="text-lg text-gray-700 mb-4" data-lang-key="kimball_skills_intro">
+                            Ông Thomson sở hữu bộ kỹ năng đa dạng, phản ánh kinh nghiệm sâu rộng trong việc xây dựng, phát triển và quản lý các tổ chức và dự án.
+                        </p>
+<ul class="text-lg text-gray-700 space-y-2 list-disc list-inside">
+<li data-lang-key="kimball_skill_1">Quan hệ công chúng &amp; Truyền thông tiếp thị</li>
+<li data-lang-key="kimball_skill_2">Chiến lược kinh doanh &amp; Hoạch định chiến lược</li>
+<li data-lang-key="kimball_skill_3">Khởi nghiệp &amp; Phát triển kinh doanh</li>
+<li data-lang-key="kimball_skill_4">Quản lý điều hành &amp; Quản lý Lãi &amp; Lỗ (P&amp;L)</li>
+<li data-lang-key="kimball_skill_5">Quan hệ đối tác chiến lược &amp; Tư vấn quản lý</li>
+<li data-lang-key="kimball_skill_6">Sáp nhập &amp; Mua lại (M&amp;A)</li>
+<li data-lang-key="kimball_skill_7">Diễn thuyết trước công chúng &amp; Truyền thông xã hội</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="section-padding bg-white shadow-md my-8 mx-auto max-w-7xl rounded-xl">
+<div class="container mx-auto container-padding">
+<h2 class="text-4xl font-bold text-primary mb-8 text-center" data-lang-key="kimball_work_experience_title">Kinh Nghiệm Làm Việc</h2>
+<div class="space-y-8">
+<div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-2xl font-semibold text-gray-800 mb-2" data-lang-key="exp_inspire_org">The Power to Inspire</h3>
+<p class="text-lg text-secondary mb-1" data-lang-key="exp_inspire_role">Nhà Sáng lập &amp; CEO</p>
+<p class="text-sm text-gray-600 mb-3" data-lang-key="exp_inspire_dates">Hiện tại (từ tháng 2/2024) - Salt Lake, Hoa Kỳ</p>
+<p class="text-gray-700 leading-relaxed" data-lang-key="exp_inspire_summary">
+                            Tập trung vào nghệ thuật và khoa học của nguồn cảm hứng, cách cá nhân được truyền cảm hứng và truyền cảm hứng cho người khác để thúc đẩy sự thay đổi mang tính chuyển đổi. Nền tảng Substack (@thepowertoinspire) khám phá cách nguồn cảm hứng thúc đẩy sự thay đổi trong cuộc sống, tổ chức, cộng đồng và văn hóa.
+                        </p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-2xl font-semibold text-gray-800 mb-2" data-lang-key="exp_bioutah_org">BIOUTAH</h3>
+<p class="text-lg text-secondary mb-1" data-lang-key="exp_bioutah_role">Nhà Sáng lập, Chủ tịch &amp; CEO</p>
+<p class="text-sm text-gray-600 mb-3" data-lang-key="exp_bioutah_dates">Tháng 11/2012 – khoảng 2015 - Salt Lake, Hoa Kỳ</p>
+<p class="text-gray-700 leading-relaxed" data-lang-key="exp_bioutah_summary">
+                            Sáng lập và lãnh đạo hiệp hội khoa học đời sống của Utah, đại diện cho các công ty thiết bị y tế, dược phẩm sinh học, và các ngành liên quan. Hiệp hội này đã thu hút hơn 80 tổ chức hỗ trợ trong năm đầu tiên, tối đa hóa vị thế của Utah như một nam châm thu hút vốn, nhân tài và các công ty mang tính chuyển đổi.
+                        </p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-2xl font-semibold text-gray-800 mb-2" data-lang-key="exp_synaptic_org">Synaptic Strategy Group</h3>
+<p class="text-lg text-secondary mb-1" data-lang-key="exp_synaptic_role">Chủ tịch &amp; CEO</p>
+<p class="text-sm text-gray-600 mb-3" data-lang-key="exp_synaptic_dates">Không rõ cụ thể (bối cảnh sự nghiệp tổng thể hơn 25 năm) - Salt Lake City, UT</p>
+<p class="text-gray-700 leading-relaxed" data-lang-key="exp_synaptic_summary">
+                            Công ty tư vấn quản lý và quan hệ công chúng, tập trung vào kết nối và chiến lược tích hợp. Tên gọi 'Synaptic' gợi ý sự tập trung vào kết nối, giao tiếp và chiến lược tích hợp.
+                        </p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-2xl font-semibold text-gray-800 mb-2" data-lang-key="exp_nextphase_org">Next Phase Communications</h3>
+<p class="text-lg text-secondary mb-1" data-lang-key="exp_nextphase_role">Chủ tịch &amp; CEO</p>
+<p class="text-sm text-gray-600 mb-3" data-lang-key="exp_nextphase_dates">Khoảng 2007 (thời điểm sách "Utah, Life Elevated") - Salt Lake City, UT</p>
+<p class="text-gray-700 leading-relaxed" data-lang-key="exp_nextphase_summary">
+                            Công ty dịch vụ đầy đủ về quan hệ công chúng và tiếp thị, hỗ trợ khách hàng từ startup đến Ngân hàng Thế giới. Cung cấp chuyên môn về truyền thông, tiếp thị và chiến lược phát triển kinh doanh.
+                        </p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-2xl font-semibold text-gray-800 mb-2" data-lang-key="exp_editorial_org">Nhiều Ấn Phẩm</h3>
+<p class="text-lg text-secondary mb-1" data-lang-key="exp_editorial_role">Đồng sáng lập, Nhà xuất bản, Tổng biên tập, Biên tập viên</p>
+<p class="text-sm text-gray-600 mb-3" data-lang-key="exp_editorial_dates">Khoảng 2004-2006 - Utah</p>
+<p class="text-gray-700 leading-relaxed" data-lang-key="exp_editorial_summary">
+                            Kinh nghiệm biên tập và xuất bản sâu rộng, đóng góp vào các ấn phẩm kinh doanh và công nghệ của Utah, bao gồm Digital iQ magazine (Đồng sáng lập, Nhà xuất bản &amp; Tổng biên tập), Business Utah (Biên tập viên), và Utah Business magazine (Biên tập viên đóng góp).
+                        </p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- START: NỘI DUNG MỚI ĐƯỢC CẬP NHẬT - VAI TRÒ CHUYỂN TIẾP TẠI BIOUTAH -->
+<section class="section-padding bg-gray-50 shadow-md my-8 mx-auto max-w-7xl rounded-xl">
+    <div class="container mx-auto container-padding">
+        <h2 class="text-4xl font-bold text-primary mb-8 text-center" data-lang-key="kimball_bioutah_overview_title">Tổng quan về Vai trò tại BioUtah (2013)</h2>
+        <!-- Giới thiệu ngắn về vai trò -->
+        <p class="text-xl leading-relaxed mb-8 text-gray-700 font-medium border-b-2 border-primary/20 pb-4" data-lang-key="kimball_bioutah_overview_intro">
+            Ông Kimball Thomson giữ vai trò Chủ tịch kiêm Giám đốc điều hành (President & CEO) của BioUtah, kế nhiệm người sáng lập Rich Linder, chủ yếu trong năm 2013. Vai trò của ông diễn ra trong giai đoạn chuyển tiếp quan trọng, ngay sau năm đầu tiên thành lập của tổ chức, nhằm củng cố và định hình các chương trình cốt lõi.
+        </p>
+
+        <!-- 1. Vai trò và Tầm nhìn (2013) -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-bullseye text-secondary text-2xl w-8 mr-3"></i> <span data-lang-key="role_vision_title">1. Vai trò và Tầm nhìn (2013)</span>
+            </h3>
+            <div class="space-y-4 text-lg text-gray-700">
+                <div class="flex">
+                    <span class="font-semibold text-primary w-28 shrink-0" data-lang-key="role_vision_position">Chức vụ:</span>
+                    <span data-lang-key="role_vision_position_detail">Chủ tịch kiêm Giám đốc điều hành (President & CEO).</span>
+                </div>
+                <div class="flex">
+                    <span class="font-semibold text-primary w-28 shrink-0" data-lang-key="role_vision_focus">Tầm nhìn:</span>
+                    <span data-lang-key="role_vision_focus_detail">Thomson tập trung vào mở rộng tầm nhìn của BioUtah và phát triển quan hệ đối tác chiến lược trong cộng đồng khoa học để tạo ra sự tăng trưởng cho ngành khoa học đời sống ở Utah.</span>
+                </div>
+                <div class="flex">
+                    <span class="font-semibold text-primary w-28 shrink-0" data-lang-key="role_vision_commitment">Cam kết:</span>
+                    <span data-lang-key="role_vision_commitment_detail">Ông thể hiện cam kết của BioUtah trong việc tối đa hóa vị thế của Utah như một nơi thu hút vốn, nhân lực và các công ty có khả năng tạo ra sự thay đổi lớn trên thế giới.</span>
+                </div>
+                <div class="flex">
+                    <span class="font-semibold text-primary w-28 shrink-0" data-lang-key="role_vision_representation">Đại diện:</span>
+                    <span data-lang-key="role_vision_representation_detail">Dưới sự lãnh đạo của ông, BioUtah đại diện cho các lĩnh vực đa dạng như thiết bị y tế, dược phẩm sinh học, phòng thí nghiệm lâm sàng, chẩn đoán và các công ty chăm sóc sức khỏe.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Đóng góp Chính -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-cogs text-secondary text-2xl w-8 mr-3"></i> <span data-lang-key="key_contribution_title">2. Đóng góp Chính</span>
+            </h3>
+            <div class="space-y-4 text-lg text-gray-700">
+                <p data-lang-key="key_contribution_intro">Đóng góp nổi bật nhất của Kimball Thomson là việc tổ chức và chủ trì Hội nghị thượng đỉnh Khoa học Đời sống Utah năm 2013 (Utah Life Science Summit).</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li data-lang-key="key_contribution_event"><span class="font-semibold">Sự kiện quan trọng:</span> Đây là một sự kiện then chốt nhằm kết nối và thúc đẩy cộng đồng khoa học đời sống trong tiểu bang ngay sau năm thành lập.</li>
+                    <li data-lang-key="key_contribution_consolidation"><span class="font-semibold">Củng cố tổ chức:</span> Những nỗ lực của ông đã giúp củng cố BioUtah sau giai đoạn khởi lập, đặt nền tảng vững chắc về mạng lưới và sự kiện cho sự phát triển trong các năm tiếp theo.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. Sự Chuyển giao Lãnh đạo -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-exchange-alt text-secondary text-2xl w-8 mr-3"></i> <span data-lang-key="leadership_transition_title">3. Sự Chuyển giao Lãnh đạo</span>
+            </h3>
+            <div class="space-y-4 text-lg text-gray-700">
+                <p data-lang-key="leadership_transition_context">Ông Thomson rời vị trí sau một khoảng thời gian tương đối ngắn, nhưng việc này được coi là bình thường đối với các tổ chức mới thành lập cần thay đổi lãnh đạo để phù hợp với các giai đoạn phát triển khác nhau. Việc chuyển giao có thể là một phần của kế hoạch chiến lược ban đầu, nơi ông đóng vai trò tạo nền móng trước khi bàn giao cho người có kinh nghiệm quản lý lâu dài hơn.</p>
+                
+                <p class="font-semibold text-primary pt-2" data-lang-key="leadership_transition_successors">Người kế nhiệm tiêu biểu:</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li data-lang-key="leadership_successor_slone">Kelly Slone (bổ nhiệm năm 2015): Được giao nhiệm vụ mở rộng tầm nhìn của BioUtah.</li>
+                    <li data-lang-key="leadership_successor_cullimore">Kelvyn H. Cullimore Jr. (bổ nhiệm năm 2018): Tiếp tục vai trò lãnh đạo dài hạn và phát triển tổ chức lớn mạnh.</li>
+                </ul>
+                <p data-lang-key="leadership_transition_conclusion" class="mt-4 italic">Kimball Thomson đã thành công trong việc tạo ra bước đệm cần thiết, chuyển BioUtah từ năm thành lập ban đầu sang giai đoạn tập trung vào sự kiện và mở rộng mạng lưới, trước khi các lãnh đạo sau này đưa tổ chức vào giai đoạn vận động chính sách và tăng trưởng quy mô kinh tế.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: NỘI DUNG MỚI ĐƯỢC CẬP NHẬT -->
+
+<section class="section-padding bg-gray-100 my-8 mx-auto max-w-7xl rounded-xl">
+<div class="container mx-auto container-padding">
+<h2 class="text-4xl font-bold text-primary mb-8 text-center" data-lang-key="kimball_publications_title">Tác Phẩm và Ấn Phẩm</h2>
+<div class="space-y-6">
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="pub_utah_elevated_title">"Utah, Life Elevated" (sách bìa cứng, 2007)</h3>
+<p class="text-gray-700" data-lang-key="pub_utah_elevated_desc">Cuốn sách phát triển kinh tế chính thức của tiểu bang Utah.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="pub_light_clouds_title">"Light through the clouds: tech companies seeing vibrant futures..." (bài báo kỹ thuật số)</h3>
+<p class="text-gray-700" data-lang-key="pub_light_clouds_desc">Bài báo từ Utah Business, tập trung vào lĩnh vực công nghệ của Utah.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="pub_jeanette_herbert_title">Bài báo về Jeanette Herbert, Đệ nhất Phu nhân Utah (2012)</h3>
+<p class="text-gray-700" data-lang-key="pub_jeanette_herbert_desc">Xuất bản trên "Business In Utah - 2012".</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+<h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="pub_data_book_title">Sách Dữ liệu Utah chính thức hàng năm</h3>
+<p class="text-gray-700" data-lang-key="pub_data_book_desc">Đóng góp trong nhiều năm.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section-padding bg-primary text-white text-center rounded-xl shadow-lg my-8 mx-auto max-w-7xl">
+<div class="container mx-auto container-padding">
+<h2 class="text-4xl font-bold mb-6" data-lang-key="kimball_cta_title">Bạn muốn tìm hiểu thêm về các đối tác quốc tế của IVS?</h2>
+<p class="text-lg max-w-3xl mx-auto mb-8" data-lang-key="kimball_cta_subtitle">
+                    Hãy liên hệ với chúng tôi để khám phá những cơ hội hợp tác và phát triển cùng IVS JSC.
+                </p>
+<a class="inline-block bg-secondary hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md" data-lang-key="kimball_cta_button" href="contact.html">
+                    Liên Hệ Ngay
+                </a>
+</div>
+</section>
+</main>
+<footer id="footer-placeholder"></footer>
+<script>
+        function initializePlaceholderComponents() {
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            if (headerPlaceholder) {
+                // Guard: if the global loader exists or component already injected, skip manual fetch
+                const alreadyInjected = headerPlaceholder.querySelector('[data-component-src="components/header.html"]')
+                    || headerPlaceholder.querySelector('[data-component-src="/components/header.html"]');
+                if (window.loadAndInject || alreadyInjected || (headerPlaceholder.innerHTML && headerPlaceholder.innerHTML.trim().length > 0)) {
+                    console.log('Header already handled by global loader or server; skipping manual fetch.');
+                } else {
+                    fetch('components/header.html')
+                        .then(response => response.text())
+                        .then(html => {
+                            headerPlaceholder.innerHTML = html;
+                            const scripts = headerPlaceholder.querySelectorAll('script');
+                            scripts.forEach(script => {
+                                const newScript = document.createElement('script');
+                                Array.from(script.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                                newScript.textContent = script.textContent;
+                                script.parentNode.replaceChild(newScript, script);
+                            });
+                            if (typeof window.initializeHeader === 'function') {
+                                window.initializeHeader();
+                            }
+                            if (typeof window.initializeLanguageSystem === 'function') {
+                                window.initializeLanguageSystem();
+                            }
+                        })
+                        .catch(err => console.error('Error loading header:', err));
+                }
+            }
+
+            const footerPlaceholder = document.getElementById('footer-placeholder');
+            if (footerPlaceholder) {
+                fetch('components/footer.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        footerPlaceholder.innerHTML = html;
+                        const scripts = footerPlaceholder.querySelectorAll('script');
+                        scripts.forEach(script => {
+                            const newScript = document.createElement('script');
+                            Array.from(script.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                            newScript.textContent = script.textContent;
+                            script.parentNode.replaceChild(newScript, script);
+                        });
+                        if (typeof window.initializeFooter === 'function') {
+                            window.initializeFooter();
+                        }
+                    })
+                    .catch(err => console.error('Error loading footer:', err));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initializePlaceholderComponents);
+    </script>
+<script src="js/utils.js"></script>
+<script src="js/language.js"></script>
+<script src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+
+
+

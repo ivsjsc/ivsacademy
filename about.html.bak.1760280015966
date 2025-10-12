@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="vi">
+<head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-lang-key="about_page_title">Về IVS JSC - Tầm Nhìn &amp; Sứ Mệnh</title>
+<meta content="Khám phá câu chuyện, tầm nhìn, sứ mệnh, triết lý hoạt động và hệ sinh thái dịch vụ toàn diện của IVS JSC - Tổ chức tiên phong kiến tạo tương lai giáo dục." data-lang-key="about_meta_description" name="description"/>
+<meta content="IVS JSC, về chúng tôi, tầm nhìn, sứ mệnh, integrate vision synergy, Nguyễn Minh Triết, hệ sinh thái giáo dục, EdTech, tư vấn giáo dục, cung ứng giáo viên nước ngoài, STEAM, IVS Academy, IVS Education" data-lang-key="about_meta_keywords" name="keywords"/>
+<meta content="Về IVS JSC - Tầm Nhìn, Sứ Mệnh &amp; Giải Pháp" data-lang-key="about_og_title" property="og:title"/>
+<meta content="Tìm hiểu sâu hơn về IVS JSC: triết lý Integrate-Vision-Synergy, hành trình phát triển, đội ngũ chuyên gia và hệ sinh thái giải pháp toàn diện cho một nền giáo dục toàn cầu." data-lang-key="about_og_description" property="og:description"/>
+<meta content="https://ivsacademy.edu.vn/images/banners/ivs_about_og.jpg" property="og:image"/>
+<meta content="https://ivsacademy.edu.vn/about.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="IVS JSC" name="author"/>
+<meta content="IVS Academy - Hệ sinh thái giáo dục toàn diện, cung cấp giải pháp ngôn ngữ, kỹ năng và công nghệ giáo dục tiên tiến." name="description"/>
+<meta content="IVS, giáo dục, học tiếng Anh, học tiếng Trung, EdTech, IVS Academy" name="keywords"/>
+<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="images/logo/logo-192.jpg" rel="apple-touch-icon"/>
+<link href="manifest.json" rel="manifest"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<link href="css/styles.min.css" rel="stylesheet"/>
+<style>
+        .font-display { font-family: 'Lexend', sans-serif; }
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding-top: 10rem;
+            padding-bottom: 4rem;
+        }
+        .background-video {
+            position: absolute; top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            background-size: cover;
+            filter: brightness(0.4);
+        }
+        .hero-content-overlay { position: relative; z-index: 1; color: white; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; border-radius: 0.75rem; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .interactive-card { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+        .interactive-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4); }
+        .leader-card img { border: 3px solid #30363d; transition: all 0.3s ease; }
+        .leader-card:hover img { border-color: #58a6ff; transform: scale(1.05); }
+        .org-unit-card, .achievement-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .org-unit-card:hover, .achievement-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+    </style>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</link></head>
+<body class="bg-ivs-bg text-ivs-text-primary antialiased">
+<header id="header-placeholder"></header>
+<main>
+<section class="hero-section pt-28 pb-16 md:pt-40 md:pb-24 border-b border-ivs-border">
+<video autoplay="" class="background-video" loop="" muted="" playsinline="" poster="images/banners/ivs_about_og.jpg">
+<source src="videos/ivs_background_video1.mp4" type="video/mp4"/>
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+            </video>
+<div class="container mx-auto px-6 text-center hero-content-overlay">
+<h1 class="text-4xl lg:text-5xl font-bold font-display text-white mb-4" data-aos="fade-down" data-lang-key="about_hero_title">
+                    Về IVS JSC
+                </h1>
+<p class="text-lg text-ivs-text-secondary max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200" data-lang-key="about_hero_subtitle">
+                    Kiến tạo hệ sinh thái giáo dục toàn cầu với tầm nhìn chiến lược và đổi mới sáng tạo.
+                </p>
+</div>
+</section>
+<section class="py-16 md:py-24">
+<div class="container mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<div data-aos="fade-right">
+<h2 class="font-display text-3xl md:text-4xl font-semibold text-white mb-4" data-lang-key="about_intro_title">
+                            Giới Thiệu Chung
+                        </h2>
+<p class="text-ivs-text-secondary mb-8 leading-relaxed" data-lang-key="about_intro_desc">
+<strong class="text-ivs-blue">Công ty Cổ phần Dịch vụ Thương mại Integrate Vision Synergy (IVS JSC)</strong> là đơn vị tiên phong trong việc cung cấp các giải pháp giáo dục toàn diện và đổi mới sáng tạo tại Việt Nam. Chúng tôi cam kết mang lại những giá trị giáo dục vượt trội. IVS JSC tự hào là thành viên chính của <strong class="text-ivs-blue">IIVSA – Liên minh giáo dục toàn cầu</strong>, khẳng định vị thế và khả năng hợp tác quốc tế của mình. Chúng tôi không chỉ bán chương trình, chúng tôi đồng hành cùng tầm nhìn giáo dục.
+                        </p>
+<a class="inline-block bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20" href="profile-company-ivsjsc.html">
+<i class="fas fa-arrow-right mr-2"></i>
+<span data-lang-key="about_cta_view_profile">Xem Hồ sơ năng lực chi tiết</span>
+</a>
+</div>
+<div class="video-wrapper bg-black shadow-2xl border border-ivs-border" data-aos="fade-left">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/WSFdBq4vprY?si=X1lIscHb06k3eJK_" title="YouTube video player: IVS JSC Company Profile"></iframe>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-ivs-card border-y border-ivs-border">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12 md:mb-16">
+<!-- Logo added here -->
+<img alt="IVS Logo" class="mx-auto mb-6 w-32 h-auto object-contain" data-aos="fade-up" decoding="async" src="/images/logo/logo-144.jpg"/>
+<h2 class="font-display text-3xl md:text-4xl font-semibold text-white" data-aos="fade-up" data-lang-key="about_philosophy_title">Triết Lý Cốt Lõi: I-V-S</h2>
+<p class="text-lg text-ivs-text-secondary max-w-3xl mx-auto mt-4" data-aos="fade-up" data-aos-delay="100" data-lang-key="about_philosophy_ivs">
+                        Triết lý Integrate - Vision - Synergy là kim chỉ nam cho mọi hoạt động của IVS, định hình cam kết của chúng tôi trong việc kiến tạo một tương lai giáo dục bền vững và toàn diện.
+                    </p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Integrate Card -->
+<div class="philosophy-card p-8 rounded-lg text-center h-full relative overflow-hidden" data-aos="fade-up" data-aos-delay="100" style="--card-bg: #1E2A3B; --border-color: #3B4B5E; --hover-border-color: #81C784;">
+<div class="absolute inset-0 bg-gradient-to-br from-ivs-integrate-bg to-ivs-bg opacity-50 rounded-lg"></div>
+<div class="relative z-10">
+<i class="fas fa-project-diagram text-5xl text-ivs-integrate-icon mb-4"></i>
+<h3 class="text-2xl font-display font-semibold text-white mb-3" data-lang-key="about_philosophy_integrate">Integrate (Tích hợp)</h3>
+<p class="text-ivs-text-secondary text-base leading-relaxed" data-lang-key="about_philosophy_integrate_desc">
+                                Chúng tôi tin vào sức mạnh của sự kết nối. Triết lý "Tích hợp" thể hiện cam kết của IVS trong việc hợp nhất một cách hài hòa các yếu tố then chốt: **công nghệ tiên tiến, chương trình giáo dục chuẩn quốc tế và nhu cầu thực tiễn của xã hội.** Mục tiêu là tạo ra một hệ sinh thái đồng bộ, nơi mọi thành phần bổ trợ lẫn nhau, tối ưu hóa hiệu quả và mang lại giá trị vượt trội, không chỉ dừng lại ở lý thuyết mà còn ứng dụng sâu rộng vào thực tiễn.
+                            </p>
+</div>
+</div>
+<!-- Vision Card -->
+<div class="philosophy-card p-8 rounded-lg text-center h-full relative overflow-hidden" data-aos="fade-up" data-aos-delay="200" style="--card-bg: #1A2E3A; --border-color: #354B5E; --hover-border-color: #64B5F6;">
+<div class="absolute inset-0 bg-gradient-to-br from-ivs-vision-bg to-ivs-bg opacity-50 rounded-lg"></div>
+<div class="relative z-10">
+<i class="fas fa-eye text-5xl text-ivs-vision-icon mb-4"></i>
+<h3 class="text-2xl font-display font-semibold text-white mb-3" data-lang-key="about_philosophy_vision">Vision (Tầm nhìn)</h3>
+<p class="text-ivs-text-secondary text-base leading-relaxed" data-lang-key="about_philosophy_vision_desc">
+                                IVS không chỉ nhìn vào hiện tại mà còn định hình tương lai. "Tầm nhìn" của chúng tôi là trở thành ngọn hải đăng dẫn lối trong lĩnh vực giáo dục, tiên phong ứng dụng những đổi mới sáng tạo nhất. Chúng tôi hướng đến việc trang bị cho thế hệ trẻ những kỹ năng và tư duy cần thiết để không chỉ thích nghi mà còn chủ động kiến tạo một thế giới tốt đẹp hơn, sẵn sàng đối mặt với mọi thách thức của kỷ nguyên số và toàn cầu hóa.
+                            </p>
+</div>
+</div>
+<!-- Synergy Card -->
+<div class="philosophy-card p-8 rounded-lg text-center h-full relative overflow-hidden" data-aos="fade-up" data-aos-delay="300" style="--card-bg: #2A3B1E; --border-color: #4B5E3B; --hover-border-color: #FFD54F;">
+<div class="absolute inset-0 bg-gradient-to-br from-ivs-synergy-bg to-ivs-bg opacity-50 rounded-lg"></div>
+<div class="relative z-10">
+<i class="fas fa-hands-helping text-5xl text-ivs-synergy-icon mb-4"></i>
+<h3 class="text-2xl font-display font-semibold text-white mb-3" data-lang-key="about_philosophy_synergy">Synergy (Hợp lực)</h3>
+<p class="text-ivs-text-secondary text-base leading-relaxed" data-lang-key="about_philosophy_synergy_desc">
+                                Sức mạnh thực sự đến từ sự hợp tác. Triết lý "Hợp lực" nhấn mạnh tầm quan trọng của việc xây dựng và phát triển một mạng lưới vững chắc bao gồm các đối tác chiến lược, chuyên gia hàng đầu và cộng đồng giáo dục rộng lớn. Bằng cách kết nối và phát huy tối đa tiềm năng của từng cá nhân, tổ chức, chúng tôi tạo ra một sức mạnh tổng hợp, thúc đẩy sự phát triển bền vững và cùng nhau vươn xa, đạt được những mục tiêu lớn lao hơn.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: AFFILIATED UNITS - Cải tiến toàn diện (Phiên bản 3 - Cải thiện rõ ràng và thẩm mỹ) -->
+<section class="py-16 md:py-24 bg-ivs-card border-b border-ivs-border font-inter">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold font-display text-ivs-green mb-4 leading-tight" data-lang-key="affiliated_units_title">Hệ Thống Đơn Vị Trực Thuộc IVS JSC</h2>
+<p class="text-lg md:text-xl text-ivs-text-secondary leading-relaxed" data-lang-key="affiliated_units_intro">Mỗi đơn vị là một mảnh ghép quan trọng, cùng nhau tạo nên hệ sinh thái giáo dục toàn diện của IVS, mang đến giá trị bền vững và đột phá.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+<!-- IVS Academy Card -->
+<div class="unit-card bg-ivs-neutral-700 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col sm:flex-row items-start gap-6" data-aos="fade-right" data-aos-delay="100">
+<div class="flex-shrink-0 p-4 rounded-full bg-ivs-neutral-600">
+<i class="fas fa-book-open-reader text-5xl text-ivs-blue"></i>
+</div>
+<div class="flex-grow">
+<h3 class="text-2xl md:text-3xl font-semibold font-display text-ivs-text-primary mb-3">IVS Academy</h3>
+<p class="text-base md:text-lg text-ivs-text-secondary mb-4 leading-relaxed" data-lang-key="unit_ivs_languages_desc">IVS Academy là trung tâm đào tạo Liên kết Ngoại ngữ &amp; Kỹ năng sống tích hợp, cung cấp chương trình và giáo viên quốc tế chất lượng cao cho các cơ sở giáo dục, giúp học viên phát triển toàn diện và tự tin hội nhập quốc tế.</p>
+<a class="inline-flex items-center justify-center px-6 py-3 bg-ivs-blue text-white text-base font-semibold rounded-lg shadow-md hover:bg-ivs-blue-darker hover:shadow-lg transition-all duration-200 ease-in-out group" href="Pages/ivs-academy.html">
+                                Tìm hiểu thêm
+                                <svg class="ml-2 -mr-1 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200 ease-in-out" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+<!-- IVS Education Card -->
+<div class="unit-card bg-ivs-neutral-700 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col sm:flex-row items-start gap-6" data-aos="fade-left" data-aos-delay="200">
+<div class="flex-shrink-0 p-4 rounded-full bg-ivs-neutral-600">
+<i class="fas fa-lightbulb text-5xl text-ivs-purple"></i>
+</div>
+<div class="flex-grow">
+<h3 class="text-2xl md:text-3xl font-semibold font-display text-ivs-text-primary mb-3" data-lang-key="unit_ivs_education_title">IVS Education</h3>
+<p class="text-base md:text-lg text-ivs-text-secondary mb-4 leading-relaxed" data-lang-key="unit_ivs_education_desc">Chuyên phát triển chương trình giáo dục (R&amp;D), biên soạn học liệu STEAM, Kỹ năng sống, và cung cấp giải pháp học tập số (EdTech) cho các cơ sở giáo dục, tiên phong trong đổi mới giáo dục.</p>
+<a class="inline-flex items-center justify-center px-6 py-3 bg-ivs-purple text-white text-base font-semibold rounded-lg shadow-md hover:bg-ivs-purple-darker hover:shadow-lg transition-all duration-200 ease-in-out group" href="Pages/education.html">
+                                Tìm hiểu thêm
+                                <svg class="ml-2 -mr-1 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200 ease-in-out" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+<!-- IVS Celestech Card -->
+<div class="unit-card bg-ivs-neutral-700 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col sm:flex-row items-start gap-6" data-aos="fade-right" data-aos-delay="300">
+<div class="flex-shrink-0 p-4 rounded-full bg-ivs-neutral-600">
+<i class="fas fa-microchip text-5xl text-ivs-cyan"></i>
+</div>
+<div class="flex-grow">
+<h3 class="text-2xl md:text-3xl font-semibold font-display text-ivs-text-primary mb-3" data-lang-key="unit_ivs_celestech_title">IVS Celestech</h3>
+<p class="text-base md:text-lg text-ivs-text-secondary mb-4 leading-relaxed" data-lang-key="unit_ivs_celestech_desc">Đơn vị công nghệ chuyên tư vấn, thiết kế, thi công nội thất và cung cấp trang thiết bị giáo dục hiện đại, ứng dụng công nghệ AI, VR/AR để tối ưu không gian học tập và trải nghiệm giáo dục.</p>
+<a class="inline-flex items-center justify-center px-6 py-3 bg-ivs-cyan text-white text-base font-semibold rounded-lg shadow-md hover:bg-ivs-cyan-darker hover:shadow-lg transition-all duration-200 ease-in-out group" href="Pages/ivscelestech-tcnoithat.html">
+                                Tìm hiểu thêm
+                                <svg class="ml-2 -mr-1 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200 ease-in-out" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+<!-- IVS Consulting Card -->
+<div class="unit-card bg-ivs-neutral-700 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col sm:flex-row items-start gap-6" data-aos="fade-left" data-aos-delay="400">
+<div class="flex-shrink-0 p-4 rounded-full bg-ivs-neutral-600">
+<i class="fas fa-handshake-angle text-5xl text-ivs-amber"></i>
+</div>
+<div class="flex-grow">
+<h3 class="text-2xl md:text-3xl font-semibold font-display text-ivs-text-primary mb-3" data-lang-key="unit_ivs_consulting_title">IVS Consulting</h3>
+<p class="text-base md:text-lg text-ivs-text-secondary mb-4 leading-relaxed" data-lang-key="unit_ivs_consulting_desc">Cung cấp dịch vụ tư vấn chuyên sâu về chuyển đổi số, chiến lược giáo dục và tối ưu hóa vận hành, giúp các tổ chức phát triển bền vững trong kỷ nguyên số và đạt được mục tiêu.</p>
+<a class="inline-flex items-center justify-center px-6 py-3 bg-ivs-amber text-white text-base font-semibold rounded-lg shadow-md hover:bg-ivs-amber-darker hover:shadow-lg transition-all duration-200 ease-in-out group" href="Pages/consulting.html">
+                                Tìm hiểu thêm
+                                <svg class="ml-2 -mr-1 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200 ease-in-out" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-ivs-card border-y border-ivs-border">
+<div class="container mx-auto px-6">
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-display text-3xl md:text-4xl font-semibold" data-aos="fade-up" data-lang-key="about_team_title">Đội Ngũ Lãnh Đạo</h2>
+<p class="text-lg text-ivs-text-secondary max-w-3xl mx-auto mt-4" data-aos="fade-up" data-aos-delay="100" data-lang-key="about_team_subtitle">
+                        Thành công của IVS được dẫn dắt bởi đội ngũ chuyên gia tận tâm, giàu kinh nghiệm và chung một tầm nhìn chiến lược.
+                    </p>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center leader-card" data-aos="fade-up" data-aos-delay="100">
+<img alt="Ông Nguyễn Minh Triết, CEO IVS JSC" class="h-28 w-28 rounded-full object-cover mx-auto mb-4" decoding="async" loading="lazy" src="images/team/nguyen-minh-triet.jpg"/>
+<h4 class="font-semibold text-white" data-lang-key="about_team_member1_name">Ông Nguyễn Minh Triết</h4>
+<p class="text-ivs-blue text-sm font-medium" data-lang-key="about_team_member1_title">CEO &amp; Chủ tịch HĐQT</p>
+</div>
+<div class="text-center leader-card" data-aos="fade-up" data-aos-delay="200">
+<img alt="Ông Rachid Belferar, Giám đốc Kỹ thuật ParagonCoder" class="h-28 w-28 rounded-full object-cover mx-auto mb-4" decoding="async" loading="lazy" src="images/team/rachid-belferar.jpg"/>
+<h4 class="font-semibold text-white" data-lang-key="about_team_member2_name">Ông Rachid Belferar</h4>
+<p class="text-ivs-blue text-sm font-medium" data-lang-key="about_team_member2_title">Giám đốc Kỹ thuật, ParagonCoder</p>
+</div>
+<div class="text-center leader-card" data-aos="fade-up" data-aos-delay="300">
+<img alt="Bà Salma Mahzoum, Giám đốc R&amp;D" class="h-28 w-28 rounded-full object-cover mx-auto mb-4" decoding="async" loading="lazy" src="images/team/salma-mahzoum.jpg"/>
+<h4 class="font-semibold text-white" data-lang-key="about_team_member3_name">Bà Salma Mahzoum</h4>
+<p class="text-ivs-blue text-sm font-medium" data-lang-key="about_team_member3_title">Giám đốc R&amp;D</p>
+</div>
+<div class="text-center leader-card" data-aos="fade-up" data-aos-delay="400">
+<img alt="Ông Kimball Allen Thomson, Đại diện IIVSA tại Hoa Kỳ" class="h-28 w-28 rounded-full object-cover mx-auto mb-4" decoding="async" loading="lazy" src="images/team/kimball-allen-thomson.jpg"/>
+<h4 class="font-semibold text-white" data-lang-key="about_team_member4_name">Ông Kimball Allen Thomson</h4>
+<p class="text-ivs-blue text-sm font-medium" data-lang-key="about_team_member4_title">Đại diện IIVSA tại Hoa Kỳ</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24">
+<div class="container mx-auto px-6">
+<div class="grid lg:grid-cols-5 gap-16 items-start">
+<div class="lg:col-span-3" data-aos="fade-right">
+<div class="mb-12">
+<h2 class="font-display text-3xl font-semibold text-white mb-4" data-lang-key="about_achievements_title">Thành Tựu Nổi Bật</h2>
+<p class="text-ivs-text-secondary" data-lang-key="about_achievements_subtitle">
+                                Những cột mốc đáng tự hào trên hành trình phát triển của chúng tôi.
+                            </p>
+</div>
+<div class="space-y-8">
+<div class="flex items-start">
+<i class="fas fa-award text-amber-400 text-2xl mt-1 mr-4"></i>
+<div>
+<h3 class="font-semibold text-white" data-lang-key="achievement1_title">Bằng khen Huyện Đoàn Long Thành</h3>
+<p class="text-ivs-text-secondary text-sm" data-lang-key="achievement1_desc">Ghi nhận đóng góp của CEO Nguyễn Minh Triết cho các hoạt động cộng đồng và thanh niên.</p>
+</div>
+</div>
+<div class="flex items-start">
+<i class="fas fa-trophy text-amber-400 text-2xl mt-1 mr-4"></i>
+<div>
+<h3 class="font-semibold text-white" data-lang-key="achievement2_title">Giải thưởng Đổi mới Giáo dục</h3>
+<p class="text-ivs-text-secondary text-sm" data-lang-key="achievement2_desc">Vinh danh cho các giải pháp giáo dục STEAM và nền tảng học tập số sáng tạo.</p>
+</div>
+</div>
+<div class="flex items-start">
+<i class="fas fa-certificate text-amber-400 text-2xl mt-1 mr-4"></i>
+<div>
+<h3 class="font-semibold text-white" data-lang-key="achievement3_title">Đối tác Chiến lược Quốc tế</h3>
+<p class="text-ivs-text-secondary text-sm" data-lang-key="achievement3_desc">Được công nhận là đối tác quan trọng của các tổ chức giáo dục quốc tế uy tín.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2" data-aos="fade-left" data-aos-delay="200">
+<div class="mb-12">
+<h2 class="font-display text-3xl font-semibold text-white mb-4" data-lang-key="partners_title">Đối Tác Chiến Lược</h2>
+<p class="text-ivs-text-secondary" data-lang-key="about_partners_subtitle">
+                                Hợp tác cùng các tổ chức uy tín để mang lại giá trị tốt nhất.
+                            </p>
+</div>
+<div class="grid grid-cols-2 gap-8 items-center">
+<a href="#" title="The Power to Inspire"><img alt="Logo The Power to Inspire" class="max-h-16 mx-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 
+transition-all" decoding="async" loading="lazy" src="images/logo/thepowertoinspire.jpg"/></a>
+<a href="#" title="IIVSA"><img alt="Logo IIVSA" class="max-h-16 mx-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" decoding="async" loading="lazy" src="images/logo/iivsa.jpg"/></a>
+<a href="#" title="IU English Academy"><img alt="Logo IU English Academy" class="max-h-16 mx-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" decoding="async" loading="lazy" src="images/pages/eov2025/iu-english-academy.jpg"/></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 md:py-24 bg-ivs-card border-y border-ivs-border">
+<div class="container mx-auto px-6">
+<div class="bg-ivs-bg p-8 md:p-12 rounded-2xl text-center border border-ivs-border" data-aos="zoom-in">
+<h2 class="font-display text-2xl md:text-3xl font-semibold text-white mb-4" data-aos="fade-up" data-lang-key="about_cta_final_title">Sẵn Sàng Đồng Hành Cùng IVS?</h2>
+<p class="text-ivs-text-secondary max-w-2xl mx-auto mb-6" data-aos="fade-up" data-aos-delay="100" data-lang-key="about_cta_final_desc">
+                        Dù bạn là một tổ chức giáo dục, một doanh nghiệp đang tìm kiếm giải pháp, hay một cá nhân đầy nhiệt huyết, hãy kết nối với chúng tôi để cùng nhau kiến tạo những giá trị bền vững.
+                    </p>
+<a class="inline-block bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20" data-aos="fade-up" data-aos-delay="200" href="contact.html">
+<i class="fas fa-arrow-right mr-2"></i>
+<span data-lang-key="contact_us">Liên hệ ngay</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer-placeholder"></footer>
+<div id="fab-container-placeholder"></div>
+<!-- Deferred JavaScript Libraries -->
+<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Core Application Scripts - Order is crucial -->
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer src="js/bundle.min.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load components first
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                // Initialize AOS after components are loaded
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            });
+        }
+    });
+</script>
+<div id="fab-container-placeholder"></div>
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+
+
+

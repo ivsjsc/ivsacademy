@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="vi">
+<head><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IVS Auth - Đăng nhập / Đăng ký</title>
+<!-- SEO Meta Tags -->
+<meta content="Đăng nhập hoặc đăng ký tài khoản IVS JSC để trải nghiệm toàn bộ hệ sinh thái giáo dục, công nghệ và nhân sự. IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đ" data-lang-key="auth_meta_description" name="description"/>
+<meta content="IVS Auth, đăng nhập IVS, đăng ký IVS, tài khoản IVS, giáo dục, công nghệ, nhân sự" data-lang-key="auth_meta_keywords" name="keywords"/>
+<meta content="IVS Auth - Đăng nhập / Đăng ký" data-lang-key="auth_og_title" property="og:title"/>
+<meta content="Truy cập hệ sinh thái IVS JSC với tài khoản cá nhân của bạn." data-lang-key="auth_og_description" property="og:description"/>
+<meta content="https://ivsacademy.edu.vn/images/banners/ivs_og_main.jpg" property="og:image"/>
+<meta content="https://ivsacademy.edu.vn/auth.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<!-- Favicons -->
+<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Tailwind CSS with Custom Config -->
+<link href="css/styles.css" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Auth Background video styles */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Đặt video phía sau nội dung */
+        }
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover; /* Đảm bảo video bao phủ toàn bộ */
+            filter: brightness(0.4) grayscale(0.5); /* Tối và làm xám nhẹ video */
+        }
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 17, 23, 0.7); /* Lớp phủ màu tối */
+            z-index: -1; /* Đảm bảo nằm trên video nhưng dưới nội dung */
+        }
+
+        .auth-card {
+            background-color: var(--ivs-card); /* Màu nền thẻ đăng nhập */
+            border: 1px solid var(--ivs-border);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
+            backdrop-filter: blur(8px); /* Hiệu ứng mờ nền */
+        }
+        .form-input {
+            background-color: var(--ivs-bg);
+            border-color: var(--ivs-border);
+            color: var(--ivs-text-primary);
+        }
+        .form-input:focus {
+            border-color: var(--ivs-blue);
+            box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.5);
+        }
+        .loading-spinner {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            width: 1rem;
+            height: 1rem;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</link></head>
+<body class="bg-ivs-bg text-ivs-text-primary antialiased">
+<header id="header-placeholder"></header>
+<!-- Video Background -->
+<div class="video-background">
+<video autoplay="" loop="" muted="" playsinline="">
+<source src="videos/ivsblue.mp4" type="video/mp4"/>
+            Trình duyệt của bạn không hỗ trợ thẻ video.
+        </video>
+</div>
+<div class="video-overlay"></div> <!-- Lớp phủ video -->
+<main class="min-h-screen flex items-center justify-center p-4">
+<div class="auth-card p-8 rounded-xl w-full max-w-md relative z-10"> <!-- z-10 để đảm bảo form nằm trên video -->
+<h2 class="text-3xl font-bold font-display text-center text-ivs-text-primary mb-6" id="auth-title">Đăng nhập</h2>
+<form class="space-y-5" id="auth-form">
+<div>
+<label class="block text-sm font-medium text-ivs-text-secondary mb-1" for="email">Email</label>
+<input class="form-input mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none sm:text-sm" id="email" name="email" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-ivs-text-secondary mb-1" for="password">Mật khẩu</label>
+<input class="form-input mt-1 block w-full px-4 py-2 rounded-md shadow-sm focus:outline-none sm:text-sm" id="password" name="password" required="" type="password"/>
+</div>
+<div class="text-right text-sm" id="forgot-password-area">
+<button class="font-medium text-ivs-blue hover:text-ivs-blue-darker focus:outline-none" id="forgot-password-btn" type="button">
+                        Quên mật khẩu?
+                    </button>
+</div>
+<button class="w-full flex items-center justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-ivs-blue hover:bg-ivs-blue-darker focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ivs-blue transition-colors duration-200" id="submit-btn" type="submit">
+<span class="button-text">Đăng nhập</span>
+<span class="loading-spinner hidden" id="loading-spinner"></span>
+</button>
+<p class="text-center text-sm text-ivs-text-secondary mt-4">
+                    Bạn chưa có tài khoản? 
+                    <button class="font-medium text-ivs-green hover:text-ivs-green focus:outline-none" id="toggle-auth-mode" type="button">
+                        Đăng ký ngay
+                    </button>
+</p>
+<div class="mt-4 p-3 text-center text-sm rounded-md hidden" id="auth-message" role="alert"></div>
+</form>
+</div>
+</main>
+<footer id="footer-placeholder"></footer>
+<div id="fab-container-placeholder"></div>
+<!-- Scripts -->
+
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().then(() => {
+                console.log('Page components loaded successfully');
+                
+                // Initialize AOS if available
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 700,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-cubic'
+                    });
+                }
+                
+                // Call page callback if exists
+                if (typeof window.onPageComponentsLoadedCallback === 'function') {
+                    window.onPageComponentsLoadedCallback();
+                }
+            }).catch(error => {
+                console.error('Failed to load components:', error);
+            });
+        }
+    });
+</script>
+
+
+

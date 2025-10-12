@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IVS KinderLink</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            color: #333;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('/images/apps/ivskinderlink.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .login-box h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .school-info-login .school-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .school-info-login .school-details {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        #loginError {
+            color: #e74c3c;
+            margin-top: 15px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .app-container {
+            display: none;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-left h1 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .header-left .school-details-header {
+            color: #7f8c8d;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        
+        .app-name-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px 20px;
+            border-radius: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .user-details h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .user-role {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .logout-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #ee5a24;
+            transform: translateY(-1px);
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-tab {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #7f8c8d;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: #f0f2f5;
+        }
+        
+        .tab-content {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-title {
+            color: #2c3e50; 
+            margin-bottom: 25px; 
+            font-size: 2em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            grid-column: 1 / -1;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .week-navigator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .week-navigator button {
+            background: none;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+         .week-navigator span {
+            margin: 0 20px;
+            font-weight: 600;
+            font-size: 1.2em;
+         }
+
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e8ed;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            color: #343a40;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0, 0.05);
+            border-left: 5px solid #667eea;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: #7f8c8d;
+        }
+
+        .success-message, .permission-notice {
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .success-message {
+             background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .permission-notice {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            font-weight: 600;
+        }
+        
+        .parent-dashboard, .placeholder-tab {
+             background: rgba(255, 255, 255, 0.8);
+             padding: 25px;
+             border-radius: 15px;
+        }
+        
+        .ai-report-placeholder {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0, 0.05);
+        }
+        .ai-report-placeholder h4 {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .ai-report-placeholder .chart-placeholder {
+            background: #f0f2f5;
+            height: 150px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-weight: 600;
+        }
+        
+        .permission-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .permission-group {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .permission-group h4 {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .permission-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .permission-item label {
+            margin-left: 8px;
+        }
+
+        .camera-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .camera-feed {
+            background: #000;
+            border-radius: 15px;
+            position: relative;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .camera-feed img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .camera-label {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            background: rgba(102, 126, 234, 0.8);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        #notes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .note-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .note-card p {
+            margin-bottom: 10px;
+        }
+        .note-card .note-meta {
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+        .note-card .delete-note {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .app-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+        .app-footer a {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .app-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Styles for hidden forms */
+        .hidden-form-container {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0, 0.05);
+            margin-bottom: 20px;
+        }
+        /* AI report specific styles */
+        .ai-report-content {
+            background-color: #f9f9f9;
+            border: 1px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        .ai-report-content p {
+            margin-bottom: 10px;
+        }
+        .ai-report-content h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .ai-report-loading {
+            text-align: center;
+            padding: 20px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .header, .nav-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+<!-- CSS -->
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." name="description"/><meta content="IVS KinderLink" property="og:title"/><meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." property="og:description"/><meta content="website" property="og:type"/></head>
+<body>
+<div class="login-container" id="loginScreen">
+<div class="login-box">
+<h1>👋 Đăng Nhập</h1>
+<div class="school-info-login">
+<p class="school-name">Hệ thống Mầm non IVS</p>
+<p class="school-details">Cơ sở Long Thành | Hotline: 0912.345.678</p>
+</div>
+<form id="loginForm">
+<div class="form-group">
+<label for="username">👤 Tên đăng nhập (SĐT)</label>
+<input id="username" placeholder="Tên tài khoản do trường cấp" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="password">🔒 Mật khẩu</label>
+<input id="password" placeholder="Mật khẩu" required="" type="password"/>
+</div>
+<button class="login-btn" type="submit">🚀 Đăng Nhập</button>
+<p id="loginError">Tên đăng nhập hoặc mật khẩu không đúng.</p>
+</form>
+<div style="margin-top: 20px; padding: 15px; background: rgba(102, 126, 234, 0.1); border-radius: 10px; font-size: 14px; text-align: left;">
+<strong>Tài khoản Demo:</strong><br/>
+<small>
+                    • Hiệu trưởng: <b>admin</b> / <b>admin123</b><br/>
+                    • Giáo viên: <b>0987654321</b> / <b>123456</b><br/>
+                    • Phụ huynh: <b>0901234567</b> / <b>123456</b>
+</small>
+</div>
+</div>
+</div>
+<div class="container app-container" id="mainApp">
+<header class="header">
+<div class="header-left">
+<h1>Trường Mầm Non IVS - Cơ sở Long Thành</h1>
+<p class="school-details-header">Địa chỉ: 1104, Tổ 6, Ấp Đất Mới, X. Long Phước, H. Long Thành, Đồng Nai | Hotline: 0912.345.678</p>
+<span class="app-name-tag">IVS KinderLink</span>
+</div>
+<div class="user-info">
+<div class="user-avatar" id="userAvatar">A</div>
+<div class="user-details">
+<h3 id="currentUserName">Admin</h3>
+<span class="user-role" id="currentUserRole">Hiệu trưởng</span>
+</div>
+<button class="logout-btn" onclick="logout()">🚪 Đăng xuất</button>
+</div>
+</header>
+<div class="nav-tabs" id="navTabs">
+<button class="nav-tab active" data-tab="dashboard" onclick="showTab('dashboard')">📊 Tổng Quan</button>
+<button class="nav-tab" data-tab="teachers" onclick="showTab('teachers')">👩‍🏫 Giáo Viên</button>
+<button class="nav-tab" data-tab="children" onclick="showTab('children')">👶 Quản Lý Trẻ</button>
+<button class="nav-tab" data-tab="finance_nutrition" onclick="showTab('finance_nutrition')">💰 Tài chính &amp; Dinh dưỡng</button>
+<button class="nav-tab" data-tab="notes" onclick="showTab('notes')">📝 Ghi chú</button>
+<button class="nav-tab" data-tab="permissions" onclick="showTab('permissions')">🔑 Phân Quyền</button>
+<button class="nav-tab" data-tab="camera" onclick="showTab('camera')">📹 Camera</button>
+</div>
+<div class="tab-content active" id="dashboard"></div>
+<div class="tab-content" id="teachers">
+<h2 class="tab-title">👩‍🏫 Quản Lý Hồ Sơ Giáo Viên</h2>
+<div class="success-message" id="teacherSuccessMessage"></div>
+<button class="btn btn-primary" id="addTeacherBtn" style="margin-bottom: 20px;">+ Thêm Giáo Viên</button>
+<div class="hidden-form-container" id="teacherFormContainer">
+<h3 class="section-title">Thêm Giáo Viên Mới</h3>
+<form id="teacherForm">
+<div class="form-grid">
+<h3 class="section-title">Thông Tin Cá Nhân</h3>
+<div class="form-group"><label for="teacherName">Họ và tên</label><input id="teacherName" required="" type="text"/></div>
+<div class="form-group"><label for="teacherPhone">Số điện thoại</label><input id="teacherPhone" required="" type="tel"/></div>
+<div class="form-group"><label for="teacherCCCD">Số CCCD</label><input id="teacherCCCD" required="" type="text"/></div>
+<div class="form-group" style="grid-column: 1 / -1;"><label for="teacherAddress">Địa chỉ</label><input id="teacherAddress" required="" type="text"/></div>
+<h3 class="section-title">Thông Tin Công Tác &amp; Tài Khoản</h3>
+<div class="form-group"><label for="teacherClass">Lớp phụ trách</label><select id="teacherClass" required=""><option value="">Chọn lớp</option><option value="Lớp Chồi">Lớp Chồi</option><option value="Lớp Lá">Lớp Lá</option></select></div>
+<div class="form-group"><label for="teacherUsername">Tên đăng nhập KinderLink</label><input id="teacherUsername" placeholder="Ví dụ: comai, thayhung..." required="" type="text"/></div>
+<div class="form-group"><label for="teacherPassword">Mật khẩu</label><input id="teacherPassword" required="" type="password"/></div>
+</div>
+<button class="btn btn-primary" type="submit">💾 Lưu Hồ Sơ Giáo Viên</button>
+</form>
+</div>
+<div class="table-container">
+<table class="data-table">
+<thead><tr><th>Họ tên</th><th>Lớp</th><th>SĐT</th><th>Địa chỉ</th><th>Tài khoản KinderLink</th><th>Thao tác</th></tr></thead>
+<tbody id="teachersTableBody"></tbody>
+</table>
+</div>
+</div>
+<div class="tab-content" id="children">
+<h2 class="tab-title">👶 Quản Lý Hồ Sơ Trẻ &amp; Phụ Huynh</h2>
+<div class="success-message" id="childSuccessMessage"></div>
+<button class="btn btn-primary" id="addChildBtn" style="margin-bottom: 20px;">+ Thêm Trẻ</button>
+<div class="hidden-form-container" id="childFormContainer">
+<h3 class="section-title">Thêm Hồ Sơ Trẻ Mới</h3>
+<form id="childForm">
+<div class="form-grid">
+<h3 class="section-title">Thông Tin Trẻ</h3>
+<div class="form-group"><label>Họ và tên trẻ</label><input id="childName" required="" type="text"/></div>
+<div class="form-group"><label>Ngày sinh</label><input id="childBirthDate" required="" type="date"/></div>
+<div class="form-group"><label>Giới tính</label><select id="childGender" required=""><option value="">Chọn</option><option value="Nam">Nam</option><option value="Nữ">Nữ</option></select></div>
+<div class="form-group"><label>Lớp học</label><select id="childClassChild" required=""><option value="">Chọn</option><option value="Lớp Chồi">Lớp Chồi</option><option value="Lớp Lá">Lớp Lá</option></select></div>
+<div class="form-group" style="grid-column: 1 / -1;"><label>Địa chỉ</label><input id="childAddress" required="" type="text"/></div>
+<h3 class="section-title">Thông Tin Sức Khỏe &amp; Khẩn Cấp (Rất quan trọng)</h3>
+<div class="form-group"><label>Dị ứng (Thức ăn, thuốc...)</label><input id="childAllergies" placeholder="Ghi rõ nếu có, không thì bỏ trống" type="text"/></div>
+<div class="form-group"><label>Ghi chú sức khỏe khác</label><textarea id="childHealth" rows="2"></textarea></div>
+<div class="form-group"><label>Người liên hệ khẩn cấp (ngoài cha mẹ)</label><input id="emergencyContactName" type="text"/></div>
+<div class="form-group"><label>SĐT liên hệ khẩn cấp</label><input id="emergencyContactPhone" type="tel"/></div>
+<h3 class="section-title">Thông Tin Phụ Huynh &amp; Tài Khoản KinderLink</h3>
+<div class="form-group"><label>Họ tên cha</label><input id="fatherName" type="text"/></div>
+<div class="form-group"><label>Họ tên mẹ</label><input id="motherName" type="text"/></div>
+<div class="form-group"><label>SĐT cha (dùng làm tài khoản)</label><input id="fatherPhone" type="tel"/></div>
+<div class="form-group"><label>SĐT mẹ (dùng làm tài khoản)</label><input id="motherPhone" type="tel"/></div>
+<div class="form-group"><label>Email liên hệ</label><input id="parentEmail" required="" type="email"/></div>
+<div class="form-group"><label>Mật khẩu tài khoản PH</label><input id="parentPassword" placeholder="Bắt buộc nhập để tạo tài khoản" required="" type="password"/></div>
+</div>
+<button class="btn btn-primary" type="submit">💾 Lưu Hồ Sơ</button>
+</form>
+</div>
+<div class="table-container">
+<table class="data-table">
+<thead>
+<tr>
+<th>Họ tên Trẻ</th><th>Lớp</th><th>Họ tên Cha</th><th>Họ tên Mẹ</th><th>SĐT liên lạc</th><th>Tài khoản KinderLink</th><th>Thao tác</th><th>Báo cáo AI</th>
+</tr>
+</thead>
+<tbody id="childrenTableBody"></tbody>
+</table>
+</div>
+<div class="ai-report-placeholder" id="aiChildReportContainer" style="display: none;"></div>
+</div>
+<div class="tab-content" id="finance_nutrition">
+</div>
+<div class="tab-content" id="notes">
+<h2 class="tab-title">📝 Ghi Chú &amp; Nhắc Việc</h2>
+<div class="success-message" id="noteSuccessMessage"></div>
+<form id="noteForm">
+<div class="form-group">
+<label for="noteContent">Nội dung ghi chú</label>
+<textarea id="noteContent" placeholder="Ví dụ: Họp phụ huynh toàn trường vào 8:00 sáng T7 tuần này..." required="" rows="4"></textarea>
+</div>
+<button class="btn btn-primary" type="submit">Thêm Ghi Chú</button>
+</form>
+<div id="notes-container"></div>
+</div>
+<div class="tab-content" id="permissions">
+<h2 class="tab-title">🔑 Phân Quyền &amp; Bảo Mật</h2>
+<p>Lựa chọn một nhóm hoặc tài khoản cụ thể để tùy chỉnh quyền truy cập chi tiết vào các module của hệ thống.</p>
+<div class="form-group" style="max-width: 400px; margin-top: 20px;">
+<label for="permissionTarget">Chọn đối tượng phân quyền</label>
+<select class="form-control" id="permissionTarget"></select>
+</div>
+<div class="success-message" id="permissionSuccessMessage"></div>
+<div class="permission-matrix" id="permissionMatrixContainer" style="margin-top:20px;"></div>
+<div id="passwordResetContainer" style="display:none; margin-top: 20px; background: #fff; padding: 20px; border-radius: 10px;">
+<h3 class="section-title">Đặt lại mật khẩu</h3>
+<div class="form-group">
+<label for="newPasswordForUser">Mật khẩu mới</label>
+<input class="form-control" id="newPasswordForUser" type="password"/>
+</div>
+<button class="btn btn-danger" id="resetPasswordBtn">Xác nhận Đặt lại Mật khẩu</button>
+</div>
+</div>
+<div class="tab-content" id="users">
+<h2 class="tab-title">👥 Quản Lý Tài Khoản Đăng Nhập</h2>
+<p>Tài khoản được tạo tự động khi thêm hồ sơ giáo viên hoặc trẻ. Tại đây chỉ hiển thị để tra cứu và xóa.</p>
+<div class="table-container">
+<table class="data-table">
+<thead><tr><th>ID</th><th>Tên đăng nhập</th><th>Vai trò</th><th>Đối tượng liên kết</th><th>Thao tác</th></tr></thead>
+<tbody id="usersTableBody"></tbody>
+</table>
+</div>
+</div>
+<div class="tab-content" id="camera">
+<h2 class="tab-title">📹 Hệ Thống Camera Giám Sát</h2>
+<div class="permission-notice" id="cameraPermissionNotice" style="display: none;"></div>
+<div class="camera-grid" id="cameraGrid"></div>
+</div>
+<footer class="app-footer">
+<p><strong>IVS KinderLink</strong> - Nền tảng kết nối toàn diện cho giáo dục mầm non.</p>
+<p>Dữ liệu được bảo vệ bởi mã hóa AES-256. | Theo dõi chúng tôi trên <a href="https://www.facebook.com/ivsacademy.edu.vn" target="_blank">Fanpage Facebook</a>.</p>
+</footer>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    let db = {
+        users: [
+            { id: 1, username: 'admin', password: 'admin123', role: 'principal', name: 'Ban Giám Hiệu', linkedId: null },
+            { id: 2, username: '0987654321', password: '123456', role: 'teacher', name: 'Cô Mai', linkedId: 401 },
+            { id: 3, username: '0901234567', password: '123456', role: 'parent', name: 'PH bé An Nhiên', linkedId: 101 }
+        ],
+        teachers: [
+            { id: 401, name: 'Cô Mai', phone: '0987654321', cccd: '012345678901', address: '123 Đường ABC, TPHCM', assignedClass: 'Lớp Chồi' },
+            { id: 402, name: 'Cô Lan', phone: '0987111222', cccd: '012345678902', address: '456 Đường XYZ, TPHCM', assignedClass: 'Lớp Lá' }
+        ],
+        children: [
+            { id: 101, name: 'Nguyễn An Nhiên', birthDate: '2022-05-20', gender: 'Nữ', class: 'Lớp Chồi', address: '123 Đường ABC, Q1, TPHCM', health: 'Bình thường', allergies: 'Không', emergencyContactName: 'Bà ngoại - Trần Thị C', emergencyContactPhone: '0903333444' },
+            { id: 102, name: 'Trần Minh Khang', birthDate: '2022-03-15', gender: 'Nam', class: 'Lớp Chồi', address: '456 Đường XYZ, Q2, TPHCM', health: 'Dị ứng sữa', allergies: 'Sữa bò', emergencyContactName: 'Ông nội - Trần Văn B', emergencyContactPhone: '0902222333'},
+            { id: 103, name: 'Lê Thảo Vy', birthDate: '2021-08-10', gender: 'Nữ', class: 'Lớp Lá', address: '789 Đường KLM, Q3, TPHCM', health: 'Bình thường', allergies: 'Không', emergencyContactName: 'Bà nội - Lê Thị D', emergencyContactPhone: '0901111222' }
+        ],
+        parents: [
+            { id: 201, fatherName: 'Nguyễn Văn Khoa', motherName: 'Đặng Thị Bích', fatherPhone: '0901234567', motherPhone: '0908765432', email: 'khoa.nv@email.com', childId: 101 },
+            { id: 202, fatherName: 'Trần Văn An', motherName: 'Lý Thị Bình', fatherPhone: '0912345678', motherPhone: '0918765432', email: 'an.tv@email.com', childId: 102 }
+        ],
+        fees: [
+            { id: 501, childId: 101, description: 'Học phí Tháng 06/2025', amount: 5000000, dueDate: '2025-06-15', status: 'paid' },
+            { id: 502, childId: 102, description: 'Học phí Tháng 06/2025', amount: 5000000, dueDate: '2025-06-15', status: 'unpaid' },
+            { id: 503, childId: 101, description: 'Phí ăn Tháng 06/2025', amount: 1200000, dueDate: '2025-06-15', status: 'paid' },
+        ],
+        menus: [
+             { day: 'Thứ Hai', breakfast: 'Cháo yến mạch', lunch: 'Cơm, thịt kho, canh bí đỏ', snack: 'Sữa chua', calories: 1200 },
+             { day: 'Thứ Ba', breakfast: 'Phở bò', lunch: 'Cơm, cá chiên, canh rau ngót', snack: 'Bánh flan', calories: 1250 },
+             { day: 'Thứ Tư', breakfast: 'Bún bò Huế', lunch: 'Cơm gà xối mỡ', snack: 'Trái cây', calories: 1300 },
+             { day: 'Thứ Năm', breakfast: 'Xôi gấc', lunch: 'Mì Ý sốt bò bằm', snack: 'Đậu hũ non', calories: 1150 },
+             { day: 'Thứ Sáu', breakfast: 'Bánh mì ốp la', lunch: 'Cơm tấm sườn bì chả', snack: 'Chè hạt sen', calories: 1400 },
+        ],
+        foodOptions: {
+            breakfast: ['Cháo yến mạch', 'Phở bò', 'Bún bò Huế', 'Xôi gấc', 'Bánh mì ốp la', 'Hủ tiếu'],
+            lunch: ['Cơm, thịt kho, canh bí đỏ', 'Cơm, cá chiên, canh rau ngót', 'Cơm gà xối mỡ', 'Mì Ý sốt bò bằm', 'Cơm tấm sườn bì chả', 'Bò lúc lắc khoai tây chiên'],
+            snack: ['Sữa chua', 'Bánh flan', 'Trái cây', 'Đậu hũ non', 'Chè hạt sen', 'Sữa tươi']
+        },
+        notes: [
+            { id: 601, content: 'Họp phụ huynh toàn trường vào 8:00 sáng T7 tuần này.', createdBy: 'Ban Giám Hiệu', createdAt: '2025-06-10' }
+        ],
+        cameras: [
+            { id: 301, name: 'Sân chơi', class: 'Chung', url: 'https://placehold.co/600x400/000000/FFFFFF?text=Sân+Chơi+(Live)' },
+            { id: 302, name: 'Lớp Chồi - Góc học tập', class: 'Lớp Chồi', url: 'https://placehold.co/600x400/000000/FFFFFF?text=Lớp+Chồi+(Live)' },
+            { id: 303, name: 'Lớp Lá - Giờ ăn', class: 'Lớp Lá', url: 'https://placehold.co/600x400/000000/FFFFFF?text=Lớp+Lá+(Live)' },
+            { id: 304, name: 'Khu vệ sinh', class: 'Chung', url: 'https://placehold.co/600x400/000000/FFFFFF?text=Khu+Vệ+Sinh+(Live)' }
+        ],
+        permissions: {
+            roles: {
+                principal: {
+                    dashboard: true, teachers: true, children: true, finance_nutrition: true, notes: true, users: true, permissions: true, camera: true,
+                    cameras: [301, 302, 303, 304] 
+                },
+                teacher: {
+                    dashboard: true, teachers: false, children: true, finance_nutrition: false, notes: true, users: false, permissions: false, camera: true,
+                    cameras: [301, 302] 
+                },
+                parent: {
+                    dashboard: true, teachers: false, children: false, finance_nutrition: true, notes: false, users: false, permissions: false, camera: true,
+                    cameras: [301, 302] 
+                }
+            },
+            users: {
+                3: { 
+                    cameras: [301, 302] 
+                }
+            } 
+        },
+        modules: [
+            { id: 'dashboard', name: 'Tổng Quan' },
+            { id: 'teachers', name: 'Quản lý Giáo viên' },
+            { id: 'children', name: 'Quản lý Trẻ' },
+            { id: 'finance_nutrition', name: 'Tài chính & Dinh dưỡng' },
+            { id: 'notes', name: 'Ghi chú' },
+            { id: 'permissions', name: 'Phân quyền' },
+            { id: 'camera', name: 'Camera' }
+        ]
+    };
+
+    let currentUser = null;
+    let currentWeekOffset = 0; 
+    const loginScreen = document.getElementById('loginScreen');
+    const mainApp = document.getElementById('mainApp');
+    
+    // Xử lý đăng nhập
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const foundUser = db.users.find(user => user.username === username && user.password === password);
+        if (foundUser) {
+            currentUser = foundUser;
+            loginScreen.style.display = 'none';
+            mainApp.style.display = 'block';
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('loginForm').reset();
+            initializeApp();
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+        }
+    };
+
+    // Khởi tạo ứng dụng sau khi đăng nhập thành công
+    const initializeApp = () => {
+        setupPermissions();
+        renderAll();
+        showTab('dashboard');
+    };
+    
+    // Thiết lập quyền cho người dùng hiện tại
+    const setupPermissions = () => {
+        const userPermissions = db.permissions.users[currentUser.id] || db.permissions.roles[currentUser.role];
+        
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            const tabId = tab.getAttribute('data-tab');
+            if (currentUser.role === 'principal' || (userPermissions && userPermissions[tabId])) {
+                tab.style.display = 'flex';
+            } else {
+                tab.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('currentUserName').textContent = currentUser.name;
+        document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+        const roleNames = { principal: 'Hiệu trưởng', teacher: 'Giáo viên', parent: 'Phụ huynh' };
+        document.getElementById('currentUserRole').textContent = roleNames[currentUser.role];
+    };
+
+    // Render tất cả các phần của ứng dụng
+    const renderAll = () => {
+        renderDashboard();
+        renderTeachersTable();
+        renderChildrenTable();
+        renderFinanceAndNutrition();
+        renderNotes();
+        renderUsersTable();
+        renderCameras();
+        populatePermissionTargets();
+        renderPermissionMatrix();
+    };
+    
+    // Render trang tổng quan (Dashboard)
+    const renderDashboard = () => {
+        const dashboardContent = document.getElementById('dashboard');
+        if (currentUser.role === 'parent') {
+            const child = db.children.find(c => c.id === currentUser.linkedId);
+            const parentInfo = db.parents.find(p => p.childId === currentUser.linkedId);
+            dashboardContent.innerHTML = `<h2 class="tab-title">🌟 Thông tin của bé ${child.name}</h2>
+                <div class="parent-dashboard" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div><h3>Thông tin cơ bản</h3><p><strong>Ngày sinh:</strong> ${child.birthDate}</p><p><strong>Lớp:</strong> ${child.class}</p><p><strong>Sức khỏe:</strong> ${child.health}</p><p><strong>Dị ứng:</strong> ${child.allergies || 'Không'}</p></div>
+                    <div><h3>Thông tin Phụ huynh & Khẩn cấp</h3><p><strong>Cha:</strong> ${parentInfo.fatherName} - ${parentInfo.fatherPhone}</p><p><strong>Mẹ:</strong> ${parentInfo.motherName} - ${parentInfo.motherPhone}</p><p><strong>Email:</strong> ${parentInfo.email}</p><p><strong>Liên hệ khẩn cấp:</strong> ${child.emergencyContactName || 'Chưa có'} - ${child.emergencyContactPhone || ''}</p></div>
+                </div>`;
+        } else {
+            dashboardContent.innerHTML = `<h2 class="tab-title">📊 Tổng Quan Hoạt Động</h2>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-number">${db.teachers.length}</div><div class="stat-label">Giáo viên</div></div>
+                    <div class="stat-card"><div class="stat-number">${db.children.length}</div><div class="stat-label">Tổng số trẻ</div></div>
+                    <div class="stat-card"><div class="stat-number">${db.users.filter(u=>u.role==='parent').length}</div><div class="stat-label">Tài khoản PH</div></div>
+                    <div class="stat-card"><div class="stat-number">${db.cameras.length}</div><div class="stat-label">Camera</div></div>
+                </div>
+                <div class="ai-report-placeholder">
+                    <h4>Báo cáo Phân tích Thông minh (AI Demo)</h4>
+                    <div class="chart-placeholder">Biểu đồ phân tích xu hướng phát triển kỹ năng của trẻ</div>
+                </div>`;
+        }
+    };
+    
+    // Hiển thị thông báo thành công
+    const showSuccessMessage = (elementId, message) => {
+        const el = document.getElementById(elementId);
+        el.textContent = message;
+        el.style.display = 'block';
+        setTimeout(() => { el.style.display = 'none'; }, 2000);
+    };
+
+    // Render bảng giáo viên
+    const renderTeachersTable = () => {
+        const tableBody = document.getElementById('teachersTableBody');
+        tableBody.innerHTML = '';
+        db.teachers.forEach(t => {
+            const userAccount = db.users.find(u => u.role === 'teacher' && u.linkedId === t.id);
+            tableBody.innerHTML += `<tr>
+                <td>${t.name}</td><td>${t.assignedClass}</td><td>${t.phone}</td><td>${t.address}</td>
+                <td>${userAccount ? userAccount.username : 'Chưa tạo'}</td>
+                <td><button class="btn btn-danger" onclick="deleteTeacher(${t.id})">Xóa</button></td>
+            </tr>`;
+        });
+    };
+    
+    // Render bảng trẻ em
+    const renderChildrenTable = () => {
+        const tableBody = document.getElementById('childrenTableBody');
+        tableBody.innerHTML = '';
+        let childrenToShow = db.children;
+        if(currentUser.role === 'teacher') {
+            const teacher = db.teachers.find(t=>t.id===currentUser.linkedId);
+            childrenToShow = teacher ? db.children.filter(c => c.class === teacher.assignedClass) : [];
+        }
+        childrenToShow.forEach(c => {
+            const parentInfo = db.parents.find(p => p.childId === c.id) || {};
+            const userInfo = db.users.find(u => u.role === 'parent' && u.linkedId === c.id) || {};
+            tableBody.innerHTML += `<tr>
+                <td>${c.name}</td><td>${c.class}</td><td>${parentInfo.fatherName || 'N/A'}</td><td>${parentInfo.motherName || 'N/A'}</td>
+                <td>${parentInfo.fatherPhone || parentInfo.motherPhone || 'N/A'}</td>
+                <td>${userInfo.username || 'Chưa tạo'}</td>
+                <td><button class="btn btn-danger" onclick="deleteChild(${c.id})">Xóa</button></td>
+                <td><button class="btn btn-primary" onclick="generateChildReport(${c.id})">✨ Báo Cáo AI</button></td>
+            </tr>`;
+        });
+    };
+
+    // Render bảng tài khoản người dùng
+    const renderUsersTable = () => {
+        const tableBody = document.getElementById('usersTableBody');
+        tableBody.innerHTML = '';
+        db.users.filter(u => u.role !== 'principal').forEach(u => {
+            let linkedName = "N/A";
+            if (u.role === 'teacher') linkedName = `GV: ${db.teachers.find(t => t.id === u.linkedId)?.name || 'Không rõ'}`;
+            else if (u.role === 'parent') linkedName = `PH bé: ${db.children.find(c => c.id === u.linkedId)?.name || 'Không rõ'}`;
+            tableBody.innerHTML += `<tr><td>${u.id}</td><td>${u.username}</td><td>${u.role}</td><td>${linkedName}</td><td><button class="btn btn-danger" onclick="deleteUser(${u.id})">Xóa</button></td></tr>`;
+        });
+    };
+    
+    // Lấy khoảng ngày trong tuần
+    const getWeekDateRange = (offset) => {
+        const now = new Date();
+        now.setDate(now.getDate() + offset * 7);
+        const dayOfWeek = now.getDay();
+        const diffToMonday = now.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+        const monday = new Date(now.setDate(diffToMonday));
+        const friday = new Date(new Date(monday).setDate(monday.getDate() + 4));
+        const formatDate = (date) => `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}`;
+        return `Tuần từ ${formatDate(monday)} đến ${formatDate(friday)}, ${monday.getFullYear()}`;
+    };
+
+    // Render phần tài chính và dinh dưỡng
+    const renderFinanceAndNutrition = () => {
+        const container = document.getElementById('finance_nutrition');
+        let content = `<h2 class="tab-title">💰 Tài chính & Dinh dưỡng</h2>`;
+
+        let feesToShow = [];
+        if (currentUser.role === 'parent') {
+            const child = db.children.find(c => c.id === currentUser.linkedId);
+            feesToShow = db.fees.filter(f => f.childId === currentUser.linkedId);
+            content += `<h3 class="section-title">Học phí của bé ${child.name}</h3>`;
+        } else {
+            feesToShow = db.fees;
+            content += `<h3 class="section-title">Quản lý Học phí (Demo)</h3>`;
+        }
+
+        let feeTable = `<div class="table-container"><table class="data-table">
+            <thead><tr><th>Họ tên trẻ</th><th>Khoản thu</th><th>Số tiền</th><th>Hạn nộp</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+            <tbody>`;
+        
+        feesToShow.forEach(fee => {
+            const childName = db.children.find(c => c.id === fee.childId)?.name || 'N/A';
+            const statusStyle = fee.status === 'paid' ? 'color: green; font-weight: bold;' : 'color: red; font-weight: bold;';
+            const statusText = fee.status === 'paid' ? 'Đã nộp' : 'Chưa nộp';
+            const actionButton = fee.status === 'unpaid' && currentUser.role !== 'parent' ? `<button class="btn btn-primary btn-sm">Gửi nhắc nhở</button>` : `<button class="btn btn-primary btn-sm" disabled>Xem chi tiết</button>`;
+            feeTable += `<tr><td>${childName}</td><td>${fee.description}</td><td>${fee.amount.toLocaleString('vi-VN')} đ</td><td>${fee.dueDate}</td><td style="${statusStyle}">${statusText}</td><td>${actionButton}</td></tr>`;
+        });
+        feeTable += '</tbody></table></div>';
+        content += feeTable;
+
+        content += `<h3 class="section-title" style="margin-top: 40px;">Thực đơn & Dinh dưỡng</h3>
+            <div class="week-navigator">
+                <button id="prevWeekBtn">Tuần trước</button>
+                <span id="weekDisplay">${getWeekDateRange(currentWeekOffset)}</span>
+                <button id="nextWeekBtn">Tuần sau</button>
+            </div>
+            <div class="table-container"><table class="data-table">
+            <thead><tr><th>Thứ</th><th>Bữa sáng</th><th>Bữa trưa</th><th>Bữa xế</th><th>Lượng Calo (ước tính)</th></tr></thead>
+            <tbody id="menuTableBody">`;
+        
+        db.menus.forEach(menu => {
+            if (currentUser.role === 'principal') {
+                 content += `<tr><td>${menu.day}</td>
+                    <td><select class="form-control" data-day="${menu.day}" data-meal="breakfast">${db.foodOptions.breakfast.map(f => `<option ${f === menu.breakfast ? 'selected' : ''}>${f}</option>`).join('')}</select></td>
+                    <td><select class="form-control" data-day="${menu.day}" data-meal="lunch">${db.foodOptions.lunch.map(f => `<option ${f === menu.lunch ? 'selected' : ''}>${f}</option>`).join('')}</select></td>
+                    <td><select class="form-control" data-day="${menu.day}" data-meal="snack">${db.foodOptions.snack.map(f => `<option ${f === menu.snack ? 'selected' : ''}>${f}</option>`).join('')}</select></td>
+                    <td>${menu.calories} Kcal</td></tr>`;
+            } else {
+                content += `<tr><td>${menu.day}</td><td>${menu.breakfast}</td><td>${menu.lunch}</td><td>${menu.snack}</td><td>${menu.calories} Kcal</td></tr>`;
+            }
+        });
+        content += '</tbody></table></div>';
+        
+        container.innerHTML = content;
+        
+        document.getElementById('prevWeekBtn').addEventListener('click', () => { currentWeekOffset--; renderFinanceAndNutrition(); });
+        document.getElementById('nextWeekBtn').addEventListener('click', () => { currentWeekOffset++; renderFinanceAndNutrition(); });
+        
+        if (currentUser.role === 'principal') {
+            container.querySelectorAll('select[data-day]').forEach(select => {
+                select.addEventListener('change', (e) => {
+                    const day = e.target.getAttribute('data-day');
+                    const meal = e.target.getAttribute('data-meal');
+                    const value = e.target.value;
+                    const menuItem = db.menus.find(m => m.day === day);
+                    if(menuItem) menuItem[meal] = value;
+                    showSuccessMessage('permissionSuccessMessage', 'Đã cập nhật thực đơn!');
+                });
+            });
+        }
+    };
+    
+    // Render ghi chú
+    const renderNotes = () => {
+        const container = document.getElementById('notes-container');
+        container.innerHTML = '';
+        db.notes.slice().reverse().forEach(note => {
+            const noteCard = document.createElement('div');
+            noteCard.className = 'note-card';
+            noteCard.innerHTML = `
+                <p>${note.content}</p>
+                <div class="note-meta">Tạo bởi: ${note.createdBy} - ${note.createdAt}</div>
+                <button class="delete-note" onclick="deleteNote(${note.id})">X</button>
+            `;
+            container.appendChild(noteCard);
+        });
+    };
+
+    // Render camera dựa trên quyền của người dùng
+    const renderCameras = () => {
+        const cameraGrid = document.getElementById('cameraGrid');
+        const permissionNotice = document.getElementById('cameraPermissionNotice');
+        cameraGrid.innerHTML = '';
+        permissionNotice.style.display = 'none';
+        
+        const userPermissions = db.permissions.users[currentUser.id] || db.permissions.roles[currentUser.role];
+        const allowedCameraIds = userPermissions.cameras || [];
+
+        if (currentUser.role === 'principal' || (userPermissions && userPermissions.camera)) {
+            const camerasToShow = db.cameras.filter(cam => allowedCameraIds.includes(cam.id));
+
+            if (currentUser.role === 'parent') {
+                permissionNotice.textContent = '⚠️ Vì lý do bảo mật, phụ huynh chỉ có quyền xem camera của lớp con em mình và các khu vực sinh hoạt chung.';
+                permissionNotice.style.display = 'block';
+            }
+
+            if (camerasToShow.length === 0 && currentUser.role !== 'principal') {
+                cameraGrid.innerHTML = `<p style="text-align: center; color: #7f8c8d;">Bạn không có quyền xem camera nào.</p>`;
+            } else {
+                camerasToShow.forEach(cam => {
+                    cameraGrid.innerHTML += `
+                        <div class="camera-feed">
+                            <img src="${cam.url}" alt="${cam.name}" onerror="this.onerror=null;this.src='https://placehold.co/600x400/000000/FFFFFF?text=Error';">
+                            <div class="camera-label">${cam.name}</div>
+                        </div>
+                    `;
+                });
+            }
+        } else {
+            permissionNotice.textContent = '⛔ Bạn không có quyền truy cập vào mục Camera.';
+            permissionNotice.style.display = 'block';
+        }
+    };
+    
+    // Điền danh sách đối tượng phân quyền (vai trò và tài khoản)
+    const populatePermissionTargets = () => {
+        const select = document.getElementById('permissionTarget');
+        select.innerHTML = '<option value="">Chọn đối tượng...</option>';
+        select.innerHTML += '<optgroup label="Nhóm Vai trò">';
+        Object.keys(db.permissions.roles).forEach(role => {
+            const roleName = { principal: 'Hiệu trưởng', teacher: 'Giáo viên', parent: 'Phụ huynh' }[role] || role;
+            select.innerHTML += `<option value="role_${role}">Nhóm: ${roleName}</option>`;
+        });
+        select.innerHTML += '</optgroup><optgroup label="Tài khoản cá nhân">';
+        db.users.filter(u => u.role !== 'principal').forEach(user => {
+            select.innerHTML += `<option value="user_${user.id}">Tài khoản: ${user.name} (${user.username})</option>`;
+        });
+        select.innerHTML += '</optgroup>';
+    };
+    
+    // Render ma trận phân quyền
+    const renderPermissionMatrix = () => {
+        const target = document.getElementById('permissionTarget').value;
+        const container = document.getElementById('permissionMatrixContainer');
+        const passwordResetContainer = document.getElementById('passwordResetContainer');
+        container.innerHTML = '';
+        passwordResetContainer.style.display = 'none';
+        if (!target) return;
+
+        const [type, id] = target.split('_');
+        let targetPermissions = (type === 'user') 
+            ? (db.permissions.users[id] || { ...db.permissions.roles[db.users.find(u=>u.id==id).role] }) 
+            : db.permissions.roles[id];
+
+        if (type === 'user' && !db.permissions.users[id]) {
+            db.permissions.users[id] = { ...targetPermissions }; 
+        }
+        if (type === 'user' && !db.permissions.users[id].cameras) {
+            db.permissions.users[id].cameras = [];
+        }
+        if (type === 'role' && !db.permissions.roles[id].cameras) {
+            db.permissions.roles[id].cameras = [];
+        }
+
+
+        const moduleGroups = {
+            'Quản lý chung': ['dashboard', 'teachers', 'children'],
+            'Nghiệp vụ': ['finance_nutrition', 'notes'],
+            'Hệ thống': ['permissions', 'camera']
+        };
+
+        for (const groupName in moduleGroups) {
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'permission-group';
+            groupDiv.innerHTML = `<h4>${groupName}</h4>`;
+            moduleGroups[groupName].forEach(moduleId => {
+                const module = db.modules.find(m => m.id === moduleId);
+                if (module) {
+                    const isChecked = targetPermissions[moduleId] ? 'checked' : '';
+                    groupDiv.innerHTML += `
+                        <div class="permission-item">
+                            <input type="checkbox" id="perm_${moduleId}" data-module="${moduleId}" ${isChecked}>
+                            <label for="perm_${moduleId}">${module.name}</label>
+                        </div>`;
+                }
+            });
+            container.appendChild(groupDiv);
+        }
+
+        const cameraGroupDiv = document.createElement('div');
+        cameraGroupDiv.className = 'permission-group';
+        cameraGroupDiv.innerHTML = `<h4>Quyền xem Camera</h4>`;
+        db.cameras.forEach(camera => {
+            const isChecked = targetPermissions.cameras && targetPermissions.cameras.includes(camera.id) ? 'checked' : '';
+            cameraGroupDiv.innerHTML += `
+                <div class="permission-item">
+                    <input type="checkbox" id="camera_perm_${camera.id}" data-camera-id="${camera.id}" ${isChecked}>
+                    <label for="camera_perm_${camera.id}">${camera.name}</label>
+                </div>`;
+        });
+        container.appendChild(cameraGroupDiv);
+
+
+        if (type === 'user') {
+            passwordResetContainer.style.display = 'block';
+        }
+
+        container.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const moduleId = e.target.getAttribute('data-module');
+                const cameraId = parseInt(e.target.getAttribute('data-camera-id')); 
+                const isChecked = e.target.checked;
+
+                if (type === 'user') {
+                    if (!db.permissions.users[id]) {
+                        db.permissions.users[id] = { ...db.permissions.roles[db.users.find(u=>u.id==id).role] };
+                    }
+                    if (moduleId) { 
+                        db.permissions.users[id][moduleId] = isChecked;
+                    } else if (cameraId) { 
+                        if (!db.permissions.users[id].cameras) {
+                            db.permissions.users[id].cameras = [];
+                        }
+                        if (isChecked && !db.permissions.users[id].cameras.includes(cameraId)) {
+                            db.permissions.users[id].cameras.push(cameraId);
+                        } else if (!isChecked) {
+                            db.permissions.users[id].cameras = db.permissions.users[id].cameras.filter(c => c !== cameraId);
+                        }
+                    }
+                } else { 
+                    if (moduleId) {
+                        db.permissions.roles[id][moduleId] = isChecked;
+                    } else if (cameraId) {
+                        if (!db.permissions.roles[id].cameras) {
+                            db.permissions.roles[id].cameras = [];
+                        }
+                        if (isChecked && !db.permissions.roles[id].cameras.includes(cameraId)) {
+                            db.permissions.roles[id].cameras.push(cameraId);
+                        } else if (!isChecked) {
+                            db.permissions.roles[id].cameras = db.permissions.roles[id].cameras.filter(c => c !== cameraId);
+                        }
+                    }
+                }
+                showSuccessMessage('permissionSuccessMessage', '✅ Đã cập nhật quyền thành công!');
+                if (currentUser.role === 'principal' || currentUser.id == id) {
+                    renderCameras();
+                }
+            });
+        });
+    };
+    
+    // Lắng nghe sự kiện thay đổi đối tượng phân quyền để render lại ma trận
+    document.getElementById('permissionTarget').addEventListener('change', renderPermissionMatrix);
+    
+    // Xử lý submit form giáo viên
+    document.getElementById('teacherForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const teacherId = Date.now(), teacherName = document.getElementById('teacherName').value;
+        db.teachers.push({ 
+            id: teacherId, name: teacherName, phone: document.getElementById('teacherPhone').value,
+            cccd: document.getElementById('teacherCCCD').value, address: document.getElementById('teacherAddress').value,
+            assignedClass: document.getElementById('teacherClass').value 
+        });
+        db.users.push({
+            id: Date.now() + 1, username: document.getElementById('teacherUsername').value, password: document.getElementById('teacherPassword').value,
+            role: 'teacher', name: teacherName, linkedId: teacherId
+        });
+        renderAll(); 
+        e.target.reset();
+        document.getElementById('teacherFormContainer').style.display = 'none'; // Hide form after submission
+        showSuccessMessage('teacherSuccessMessage', '✅ Đã lưu hồ sơ và tạo tài khoản giáo viên thành công!');
+    });
+    
+    // Xử lý submit form trẻ em
+    document.getElementById('childForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const childId = Date.now(), password = document.getElementById('parentPassword').value;
+        const fatherPhone = document.getElementById('fatherPhone').value, motherPhone = document.getElementById('motherPhone').value;
+        const childName = document.getElementById('childName').value;
+        db.children.push({
+            id: childId, name: childName, birthDate: document.getElementById('childBirthDate').value,
+            gender: document.getElementById('childGender').value, class: document.getElementById('childClassChild').value,
+            address: document.getElementById('childAddress').value, health: document.getElementById('childHealth').value,
+            allergies: document.getElementById('childAllergies').value,
+            emergencyContactName: document.getElementById('emergencyContactName').value, emergencyContactPhone: document.getElementById('emergencyContactPhone').value
+        });
+        db.parents.push({
+            id: Date.now() + 1, fatherName: document.getElementById('fatherName').value, motherName: document.getElementById('motherName').value,
+            fatherPhone: fatherPhone, motherPhone: motherPhone, email: document.getElementById('parentEmail').value, childId: childId
+        });
+        const username = fatherPhone || motherPhone;
+        if (password && username) {
+            db.users.push({
+                id: Date.now() + 2, username: username, password: password,
+                role: 'parent', name: `PH bé ${childName}`, linkedId: childId
+            });
+        }
+        renderAll(); 
+        e.target.reset();
+        document.getElementById('childFormContainer').style.display = 'none'; // Hide form after submission
+        showSuccessMessage('childSuccessMessage', '✅ Đã lưu hồ sơ thành công!');
+    });
+    
+    // Xử lý submit form ghi chú
+    document.getElementById('noteForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const content = document.getElementById('noteContent').value;
+        const newNote = {
+            id: Date.now(),
+            content: content,
+            createdBy: currentUser.name,
+            createdAt: new Date().toLocaleDateString('vi-VN')
+        };
+        db.notes.push(newNote);
+        renderNotes();
+        e.target.reset();
+        showSuccessMessage('noteSuccessMessage', '✅ Đã thêm ghi chú thành công!');
+    });
+
+    // Xử lý đặt lại mật khẩu
+    document.getElementById('resetPasswordBtn').addEventListener('click', () => {
+        const target = document.getElementById('permissionTarget').value;
+        const newPassword = document.getElementById('newPasswordForUser').value;
+        if (!target || !newPassword || !target.startsWith('user_')) {
+            const modalMessage = document.createElement('div');
+            modalMessage.style.cssText = `
+                position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                z-index: 1000; text-align: center;
+            `;
+            modalMessage.innerHTML = `
+                <p>Vui lòng chọn một tài khoản và nhập mật khẩu mới.</p>
+                <button onclick="this.parentNode.remove()">Đóng</button>
+            `;
+            document.body.appendChild(modalMessage);
+            return;
+        }
+
+        const userId = parseInt(target.split('_')[1]);
+        const user = db.users.find(u => u.id === userId);
+        if (user) {
+            user.password = newPassword;
+            document.getElementById('newPasswordForUser').value = '';
+            showSuccessMessage('permissionSuccessMessage', `✅ Đã đặt lại mật khẩu cho tài khoản ${user.username} thành công!`);
+        }
+    });
+
+    // Các hàm xóa dữ liệu
+    window.deleteTeacher = (id) => { 
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000; text-align: center;
+        `;
+        modal.innerHTML = `
+            <p>Xóa giáo viên? Tài khoản liên kết cũng sẽ bị xóa.</p>
+            <button class="btn btn-danger" onclick="window.confirmAction(true, ${id}, 'teacher')">Xác nhận</button>
+            <button class="btn" onclick="window.confirmAction(false)">Hủy</button>
+        `;
+        document.body.appendChild(modal);
+    };
+
+    window.deleteChild = (id) => { 
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000; text-align: center;
+        `;
+        modal.innerHTML = `
+            <p>Xóa trẻ? Toàn bộ thông tin phụ huynh và tài khoản liên kết sẽ bị xóa.</p>
+            <button class="btn btn-danger" onclick="window.confirmAction(true, ${id}, 'child')">Xác nhận</button>
+            <button class="btn" onclick="window.confirmAction(false)">Hủy</button>
+        `;
+        document.body.appendChild(modal);
+    };
+
+    window.deleteUser = (id) => { 
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000; text-align: center;
+        `;
+        modal.innerHTML = `
+            <p>Xóa tài khoản?</p>
+            <button class="btn btn-danger" onclick="window.confirmAction(true, ${id}, 'user')">Xác nhận</button>
+            <button class="btn" onclick="window.confirmAction(false)">Hủy</button>
+        `;
+        document.body.appendChild(modal);
+    };
+
+    window.deleteNote = (id) => { 
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000; text-align: center;
+        `;
+        modal.innerHTML = `
+            <p>Xóa ghi chú này?</p>
+            <button class="btn btn-danger" onclick="window.confirmAction(true, ${id}, 'note')">Xác nhận</button>
+            <button class="btn" onclick="window.confirmAction(false)">Hủy</button>
+        `;
+        document.body.appendChild(modal);
+    };
+
+    // Hàm xử lý xác nhận từ modal tùy chỉnh
+    window.confirmAction = (confirmed, id, type) => {
+        const modal = document.querySelector('body > div[style*="position: fixed"]'); 
+        if (modal) modal.remove(); 
+
+        if (confirmed) {
+            if (type === 'teacher') {
+                db.teachers = db.teachers.filter(t=>t.id!==id);
+                db.users = db.users.filter(u=>!(u.role==='teacher' && u.linkedId===id));
+            } else if (type === 'child') {
+                db.children = db.children.filter(c=>c.id!==id);
+                db.parents = db.parents.filter(p=>p.childId!==id);
+                db.users = db.users.filter(u=>!(u.role==='parent' && u.linkedId===id));
+            } else if (type === 'user') {
+                db.users = db.users.filter(u=>u.id!==id);
+            } else if (type === 'note') {
+                db.notes = db.notes.filter(n=>n.id!==id);
+                renderNotes(); 
+                return; 
+            }
+            renderAll();
+        }
+    };
+
+    // Hiển thị tab
+    window.showTab = (tabName) => {
+        const tabButton = document.querySelector(`[data-tab="${tabName}"]`);
+        if(!tabButton || tabButton.style.display === 'none') return;
+        document.querySelectorAll('.tab-content, .nav-tab').forEach(el => el.classList.remove('active'));
+        document.getElementById(tabName).classList.add('active');
+        tabButton.classList.add('active');
+        // Reset form visibility when switching tabs
+        if (tabName === 'teachers') {
+            document.getElementById('teacherFormContainer').style.display = 'none';
+        } else if (tabName === 'children') {
+            document.getElementById('childFormContainer').style.display = 'none';
+            document.getElementById('aiChildReportContainer').style.display = 'none'; // Also hide AI report
+        }
+    };
+
+    // Đăng xuất
+    window.logout = () => {
+        currentUser = null;
+        mainApp.style.display = 'none';
+        loginScreen.style.display = 'flex';
+    };
+
+    // Lắng nghe sự kiện submit form đăng nhập
+    document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+    // Lắng nghe sự kiện click nút "+ Thêm Giáo Viên"
+    document.getElementById('addTeacherBtn').addEventListener('click', () => {
+        const formContainer = document.getElementById('teacherFormContainer');
+        formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Lắng nghe sự kiện click nút "+ Thêm Trẻ"
+    document.getElementById('addChildBtn').addEventListener('click', () => {
+        const formContainer = document.getElementById('childFormContainer');
+        formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
+        document.getElementById('aiChildReportContainer').style.display = 'none'; // Hide AI report when showing form
+    });
+
+    // Hàm tạo báo cáo AI cho trẻ
+    window.generateChildReport = async (childId) => {
+        const child = db.children.find(c => c.id === childId);
+        const parentInfo = db.parents.find(p => p.childId === childId);
+        const aiReportContainer = document.getElementById('aiChildReportContainer');
+        
+        if (!child) {
+            aiReportContainer.innerHTML = '<p style="color: red;">Không tìm thấy thông tin trẻ.</p>';
+            aiReportContainer.style.display = 'block';
+            return;
+        }
+
+        // Display loading indicator
+        aiReportContainer.innerHTML = `<div class="ai-report-loading">Đang tạo báo cáo cho bé ${child.name}... ✨</div>`;
+        aiReportContainer.style.display = 'block';
+
+        const prompt = `Tạo một báo cáo tóm tắt phát triển cho trẻ mầm non dựa trên thông tin sau:
+        Tên: ${child.name}
+        Ngày sinh: ${child.birthDate}
+        Giới tính: ${child.gender}
+        Lớp: ${child.class}
+        Tình trạng sức khỏe: ${child.health || 'Bình thường'}
+        Dị ứng: ${child.allergies || 'Không có'}
+        Người liên hệ khẩn cấp: ${child.emergencyContactName || 'Không có'} - ${child.emergencyContactPhone || ''}
+        Thông tin phụ huynh: Cha - ${parentInfo.fatherName || 'N/A'}, Mẹ - ${parentInfo.motherName || 'N/A'}, Email: ${parentInfo.email || 'N/A'}.
+
+        Báo cáo nên tập trung vào các điểm mạnh, khả năng phát triển, và đưa ra những gợi ý tích cực, chuyên nghiệp. Độ dài khoảng 150-200 từ, được định dạng thành các đoạn văn rõ ràng.`;
+
+        try {
+            const chatHistory = [];
+            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+            const payload = { contents: chatHistory };
+            const apiKey = ""; // Canvas will provide this at runtime
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const result = await response.json();
+
+            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
+                const text = result.candidates[0].content.parts[0].text;
+                aiReportContainer.innerHTML = `
+                    <h3>Báo cáo phát triển của bé ${child.name} (AI tạo)</h3>
+                    <div class="ai-report-content">${text.replace(/\n/g, '<br>')}</div>
+                    <button class="btn btn-primary" style="margin-top: 15px;" onclick="document.getElementById('aiChildReportContainer').style.display = 'none';">Đóng báo cáo</button>
+                `;
+            } else {
+                aiReportContainer.innerHTML = `<p style="color: red;">Không thể tạo báo cáo AI. Vui lòng thử lại sau.</p>`;
+            }
+        } catch (error) {
+            console.error("Error generating AI report:", error);
+            aiReportContainer.innerHTML = `<p style="color: red;">Đã xảy ra lỗi khi tạo báo cáo AI. Chi tiết lỗi: ${error.message}</p>`;
+        }
+    };
+});
+</script>
+<!-- Component Placeholders -->
+<div id="header-placeholder"></div>
+<div id="footer-placeholder"></div>
+<div id="fab-container-placeholder"></div>
+<!-- Scripts -->
+<script src="js/utils.js"></script>
+<script defer="" src="js/animations.js"></script>
+<script src="js/loadComponents.js"></script>
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+</head>
+<body class="bg-white text-black p-8">
+    
+    <h1 class="text-4xl font-bold text-blue-600 mb-4">Simple Test Page</h1>
+    <p class="text-lg mb-4">This is a very basic test to see if content displays.</p>
+    
+    <div class="bg-red-500 text-white p-4 rounded-lg mb-4">
+        <h2 class="text-xl font-semibold">Red Box Test</h2>
+        <p>If you see this red box, CSS is working</p>
+    </div>
+    
+    <div class="bg-ivs-bg text-ivs-text-primary p-4 rounded-lg">
+        <h2 class="text-xl font-semibold">IVS Colors Test</h2>
+        <p>Testing IVS custom colors</p>
+    </div>
+
+    <script>
+        console.log('Page loaded successfully');
+        alert('JavaScript is working!');
+    </script>
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+
+

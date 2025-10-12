@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="vi">
+<head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-lang-key="contact_page_title">Liên Hệ - IVS JSC</title>
+<meta content="Kết nối với IVS JSC để nhận tư vấn chuyên sâu về giáo dục, công nghệ và các giải pháp doanh nghiệp. Chúng tôi luôn sẵn sàng lắng nghe." data-lang-key="contact_meta_description" name="description"/>
+<meta content="IVS JSC, liên hệ, địa chỉ, hotline, email, tư vấn, form liên hệ" data-lang-key="contact_meta_keywords" name="keywords"/>
+<meta content="Liên Hệ IVS JSC - Kết Nối Để Cùng Phát Triển" data-lang-key="contact_og_title" property="og:title"/>
+<meta content="Gửi yêu cầu, câu hỏi hoặc đề xuất hợp tác đến IVS JSC qua form liên hệ, điện thoại, email hoặc ghé thăm văn phòng của chúng tôi." data-lang-key="contact_og_description" property="og:description"/>
+<meta content="https://ivsacademy.edu.vn/images/banners/ivs_contact_og.jpg" property="og:image"/>
+<meta content="https://ivsacademy.edu.vn/contact.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="IVS JSC" name="author"/>
+<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="images/logo/logo-192.jpg" rel="apple-touch-icon"/>
+<link href="manifest.json" rel="manifest"/>
+<meta content="IVS Academy - Hệ sinh thái giáo dục toàn diện, cung cấp giải pháp ngôn ngữ, kỹ năng và công nghệ giáo dục tiên tiến." name="description"/>
+<meta content="IVS, giáo dục, học tiếng Anh, học tiếng Trung, EdTech, IVS Academy" name="keywords"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<!-- External Stylesheet for custom effects -->
+<link href="css/styles.min.css" rel="stylesheet"/>
+<style>
+        /* ... (giữ nguyên các style tùy chỉnh) ... */
+        /* CSS for mobile menu to prevent background scroll */
+        body.menu-open {
+            overflow: hidden;
+        }
+        /* Custom scrollbar for chatbot messages */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111111; /* ivs-card */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #27272a; /* ivs-border */
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6; /* ivs-blue-darker */
+        }
+        .hero-section {
+            background-image: url('images/logo/webbannermo1.png'); /* Ảnh mặc định cho desktop */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Điều chỉnh cho màn hình nhỏ hơn 768px (điện thoại, tablet nhỏ) */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-image: url('images/logo/mobile-banner.png'); /* Ảnh dành riêng cho mobile */
+            }
+        }        
+    </style>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</link></head>
+<body class="bg-ivs-bg text-ivs-text-primary antialiased">
+<header id="header-placeholder"></header>
+<main class="container mx-auto px-4 py-8">
+<section class="text-center py-12">
+<h1 class="text-5xl font-extrabold text-white mb-4" data-lang-key="contact_hero_title">
+                Liên Hệ Với Chúng Tôi
+            </h1>
+<p class="text-xl text-gray-300 max-w-3xl mx-auto" data-lang-key="contact_hero_description">
+                Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn. Hãy kết nối với IVS JSC để nhận tư vấn chuyên sâu về giáo dục, công nghệ và các giải pháp doanh nghiệp.
+            </p>
+</section>
+<section class="bg-gray-800 rounded-xl shadow-lg p-8 mb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h2 class="text-3xl font-bold text-white mb-6 section-title" data-lang-key="contact_info_title">
+                        Thông Tin Liên Hệ
+                    </h2>
+<div class="space-y-6 text-lg">
+<p class="flex items-center">
+<svg class="h-7 w-7 text-blue-400 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span data-lang-key="contact_address">1104, Tổ 6, Ấp Đất Mới, Xã Long Phước, Huyện Long Thành, Tỉnh Đồng Nai</span>
+</p>
+<p class="flex items-center">
+<svg class="h-7 w-7 text-blue-400 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span data-lang-key="contact_phone">Hotline: (+84) 795 555 789</span>
+</p>
+<p class="flex items-center">
+<svg class="h-7 w-7 text-blue-400 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span data-lang-key="contact_email">Email: info@ivsacademy.edu.vn</span>
+</p>
+<p class="flex items-center">
+<svg class="h-7 w-7 text-blue-400 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span data-lang-key="contact_tax_code">Mã số thuế: 3603960189</span>
+</p>
+</div>
+</div>
+<div>
+<h2 class="text-3xl font-bold text-white mb-6 section-title" data-lang-key="contact_form_title">
+                        Gửi Yêu Cầu Cho Chúng Tôi
+                    </h2>
+<!-- Netlify-ready form: keep form-name hidden input and honeypot for spam protection -->
+<form action="/thank-you.html" class="space-y-6 contact-form" data-netlify="true" data-netlify-honeypot="bot-field" enctype="multipart/form-data" method="POST" name="contact" novalidate="">
+<input name="form-name" type="hidden" value="contact"/>
+<!-- Honeypot field (hidden) -->
+<div aria-hidden="true" style="display:none;">
+<label>Không điền trường này nếu bạn là người thật: <input name="bot-field"/></label>
+</div>
+<div>
+<label class="block text-lg font-medium text-gray-300 mb-2" for="name">Họ và Tên <span class="text-orange-400">*</span></label>
+<input aria-required="true" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="name" name="name" placeholder="Nguyễn Văn A" required="" type="text"/>
+</div>
+<div>
+<label class="block text-lg font-medium text-gray-300 mb-2" for="email">Email <span class="text-orange-400">*</span></label>
+<input aria-required="true" class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="email" name="email" placeholder="email@example.com" required="" type="email"/>
+</div>
+<div>
+<label class="block text-lg font-medium text-gray-300 mb-2" for="phone">Số Điện Thoại</label>
+<input class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="phone" name="phone" placeholder="0901234567" type="tel"/>
+</div>
+<div>
+<label class="block text-lg font-medium text-gray-300 mb-2" for="project_type">Loại dự án</label>
+<select class="w-full p-3 rounded-lg bg-gray-900 border border-gray-700" id="project_type" name="project_type">
+<option value="">-- chọn --</option>
+<option value="dock-construction">Dock Construction</option>
+<option value="remodel">Remodel</option>
+<option value="repair">Repairs &amp; Maintenance</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div>
+<label class="block text-lg font-medium text-gray-300 mb-2" for="message">Nội Dung Yêu Cầu</label>
+<textarea class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="message" name="message" placeholder="Tôi muốn tìm hiểu về..." rows="5"></textarea>
+</div>
+<div>
+<label class="block text-lg font-medium text-gray-300 mb-2" for="attachment">Tệp đính kèm (tuỳ chọn)</label>
+<input accept=".jpg,.png,.pdf,.docx" class="w-full text-sm text-gray-300" id="attachment" name="attachment" type="file"/>
+<p class="text-xs text-gray-500 mt-1">Tối đa theo giới hạn Netlify (kiểm tra tài liệu Netlify cho kích thước tối đa).</p>
+</div>
+<div class="flex items-start space-x-3">
+<input aria-required="true" class="mt-1" id="consent" name="consent" required="" type="checkbox">
+<label class="text-sm text-gray-300" for="consent">Tôi đồng ý được liên hệ về yêu cầu này. <span class="text-orange-400">*</span></label>
+</input></div>
+<div>
+<button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800" data-netlify="true" type="submit">Gửi Yêu Cầu</button>
+</div>
+<!-- Optional quick Google Form button retained -->
+<a class="block text-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800 mt-4" href="https://docs.google.com/forms/d/e/1FAIpQLScy2U7Pa1Sy9Xzny4InhSLvUWYeBh3WTxAldelI6xOAzJ2FXg/viewform?usp=pp_url&amp;entry.1517655153=Nguy%E1%BB%85n+Minh+Tri%E1%BA%BFt&amp;entry.396944312=n.bi2993@gmail.com&amp;entry.138806801=0795555789&amp;entry.1102553479=Y%C3%AAu+c%E1%BA%A7u+t%E1%BB%AB+kh%C3%A1ch+h%C3%A0ng" rel="noopener noreferrer" target="_blank">
+                            Hoặc Gửi Yêu Cầu Nhanh qua Google Form
+                        </a>
+</form>
+<!-- Progressive enhancement: AJAX submit that still triggers Netlify form processing -->
+
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const philosophyContent = document.getElementById('philosophyContent');
+            const ivsLogoContainer = document.getElementById('ivsLogoContainer');
+
+            // Sử dụng Intersection Observer để phát hiện khi phần tử vào viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Khi phần tử philosophyContent vào viewport
+                        philosophyContent.classList.add('is-visible');
+                        // Ẩn logo sau một khoảng thời gian ngắn để tạo hiệu ứng cuộn xuống
+                        setTimeout(() => {
+                            ivsLogoContainer.classList.add('hidden-on-scroll');
+                        }, 500); // Ẩn logo sau 0.5 giây khi các ô bắt đầu xuất hiện
+                        observer.unobserve(entry.target); // Ngừng quan sát sau khi đã hiển thị
+                    }
+                });
+            }, {
+                threshold: 0.2 // Kích hoạt khi 20% của phần tử hiển thị trong viewport
+            });
+
+            // Bắt đầu quan sát phần tử philosophyContent
+            observer.observe(philosophyContent);
+
+            // Đảm bảo logo hiển thị ban đầu nếu trang tải ở vị trí không cuộn
+            // (Thực tế không cần thiết nếu logo ở đầu trang và philosophyContent ở dưới)
+            // Tuy nhiên, nếu philosophyContent có thể hiển thị ngay khi tải, cần xử lý
+            if (philosophyContent.getBoundingClientRect().top < window.innerHeight) {
+                philosophyContent.classList.add('is-visible');
+                ivsLogoContainer.classList.add('hidden-on-scroll');
+            }
+        });
+    </script>
+    <div id="fab-container-placeholder"></div>
+    
+<script src="/js/loadComponents.js" defer></script>
+</body>
+    </html>
+    <script defer src="js/utils.js"></script>
+    <script defer src="js/language.js"></script>
+    <script defer src="js/loadComponents.js"></script>
+    <script defer>
+        window.onPageComponentsLoadedCallback = function() {
+            console.log('contact: components loaded (callback)');
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+                window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
+            }
+        });
+    </script>
+
+
+

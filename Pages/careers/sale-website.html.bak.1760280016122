@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Tuyển Dụng Thực Tập Sinh Sale Website - IVS Celestech</title>
+    <!-- SEO Meta Tags -->
+    <meta content="Tuyển dụng thực tập sinh Sale Website tại IVS Celestech, đơn vị trực thuộc IVS JSC. Tìm hiểu về cơ hội việc làm, hoa hồng hấp dẫn và môi trường làm việc chuyên nghiệp." name="description"/>
+    <meta content="tuyển dụng, thực tập sinh, sale website, IVS Celestech, IVS JSC, hoa hồng cao, cơ hội việc làm" name="keywords"/>
+    <meta content="IVS Celestech - Nơi Khởi Đầu Sự Nghiệp Sales Công Nghệ" property="og:title"/>
+    <meta content="Cơ hội thực tập Sale Website với mức hoa hồng hấp dẫn, đào tạo chuyên sâu và cơ hội lên chính thức tại IVS Celestech." property="og:description"/>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="../js/utils.js"></script>
+    <script src="../js/language.js"></script>
+    <script src="../js/loadComponents.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #e5e7eb; }
+        .hero-bg { background-image: linear-gradient(to right, #1f2937, #111827); }
+        .cta-button { transition: all 0.3s ease; background-color: #3b82f6; }
+        .cta-button:hover { background-color: #2563eb; }
+        .shadow-glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+        .faq-answer { display: none; overflow: hidden; transition: all 0.3s ease; }
+    </style>
+</head>
+
+<body>
+    <!-- 1. Placeholder cho Header -->
+    <div data-loading-text="Đang tải thanh điều hướng..." id="header-placeholder"></div>
+
+    <main class="min-h-screen pt-16 md:pt-20">
+        <!-- Phần Loading Overlay (giữ nguyên theo mẫu gốc) -->
+        <div id="loading-overlay" class="fixed inset-0 bg-gray-900 z-50 flex items-center justify-center transition-opacity duration-500 opacity-100">
+            <div class="animate-spin rounded-full h-12 w-12 border-4 border-t-4 border-blue-500 border-gray-700"></div>
+        </div>
+
+        <!-- Phần HERO - Tuyển Dụng -->
+        <section id="hero" class="hero-bg py-12 px-4 sm:px-6 lg:px-8 text-center rounded-b-xl shadow-2xl">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4 leading-tight" data-aos="fade-up">
+                    TUYỂN DỤNG THỰC TẬP SINH <br class="hidden sm:inline"/> SALE WEBSITE
+                </h1>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    Cơ hội vàng tại **IVS Celestech** - Đơn vị Phát triển Công nghệ thuộc IVS JSC. Nhận hoa hồng thực chiến ngay từ ngày đầu!
+                </p>
+                <a href="#application" class="cta-button text-white font-bold py-3 px-8 rounded-full text-lg shadow-glow inline-block hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
+                    ỨNG TUYỂN NGAY! (HOA HỒNG LÊN ĐẾN 50%)
+                </a>
+            </div>
+        </section>
+
+        <!-- Phần Lợi Ích & Quyền Lợi -->
+        <section id="benefits" class="py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-white mb-10 border-b-2 border-blue-500 inline-block mx-auto pb-2" data-aos="fade-up">
+                    Quyền Lợi & Lương Thưởng
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                    <!-- Lợi ích 1: Hoa hồng -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-md border-l-4 border-yellow-500" data-aos="fade-up">
+                        <span class="text-3xl mb-3 block text-yellow-500">💰</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">Hoa Hồng Siêu Hấp Dẫn (Tối đa 50%)</h3>
+                        <p class="text-gray-400 text-sm">Nhận hoa hồng **trên giá trị hợp đồng** ngay khi chốt Sale thành công. Cơ hội kiếm thu nhập **không giới hạn**.</p>
+                    </div>
+                    <!-- Lợi ích 2: Đào tạo -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-md border-l-4 border-green-500" data-aos="fade-up" data-aos-delay="100">
+                        <span class="text-3xl mb-3 block text-green-500">🎓</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">Đào Tạo Chuyên Sâu Kỹ Năng Sales</h3>
+                        <p class="text-gray-400 text-sm">Được huấn luyện về quy trình Sales chuyên nghiệp, kiến thức **Website/Platform**, và kỹ năng giao tiếp, đàm phán.</p>
+                    </div>
+                    <!-- Lợi ích 3: Chính thức -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-md border-l-4 border-blue-500" data-aos="fade-up" data-aos-delay="200">
+                        <span class="text-3xl mb-3 block text-blue-500">🚀</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">Cơ Hội Trở Thành Nhân Viên Chính Thức</h3>
+                        <p class="text-gray-400 text-sm">Sau thời gian thực tập, nếu đạt hiệu suất tốt, bạn sẽ được xem xét ký hợp đồng chính thức với phúc lợi đầy đủ.</p>
+                    </div>
+                    <!-- Lợi ích 4: Môi trường -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-md border-l-4 border-pink-500" data-aos="fade-up">
+                        <span class="text-3xl mb-3 block text-pink-500">🤝</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">Môi Trường Công Nghệ Chuyên Nghiệp</h3>
+                        <p class="text-gray-400 text-sm">Làm việc trong môi trường trẻ, năng động, tiếp xúc với các giải pháp EdTech, Microservices và AI của IVS JSC.</p>
+                    </div>
+                    <!-- Lợi ích 5: Thời gian linh hoạt -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-md border-l-4 border-purple-500" data-aos="fade-up" data-aos-delay="100">
+                        <span class="text-3xl mb-3 block text-purple-500">⏰</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">Thời Gian Linh Hoạt</h3>
+                        <p class="text-gray-400 text-sm">Lịch làm việc linh hoạt (tối thiểu 3 buổi/tuần), phù hợp cho sinh viên đang theo học. Làm việc **Online** là chủ yếu.</p>
+                    </div>
+                    <!-- Lợi ích 6: Hỗ trợ chi phí (Mới) -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-md border-l-4 border-red-500" data-aos="fade-up" data-aos-delay="200">
+                        <span class="text-3xl mb-3 block text-red-500">💳</span>
+                        <h3 class="text-xl font-bold mb-2 text-white">Phụ Cấp Cơ Bản</h3>
+                        <p class="text-gray-400 text-sm">Hỗ trợ một phần chi phí xăng xe/đi lại hoặc chi phí điện thoại hàng tháng (theo quy định).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phần Mô Tả Công Việc -->
+        <section id="job-description" class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-8">Nội Dung Công Việc</h2>
+                <div class="space-y-6 text-left">
+                    <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-blue-400" data-aos="fade-right">
+                        <p class="text-lg font-semibold text-white mb-2">1. Tìm kiếm và phát triển Khách hàng tiềm năng</p>
+                        <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 pl-4">
+                            <li>Nghiên cứu thị trường mục tiêu (các doanh nghiệp, trung tâm giáo dục có nhu cầu website/app).</li>
+                            <li>Sử dụng các kênh online (LinkedIn, Facebook, Zalo) và offline để tiếp cận khách hàng.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-blue-400" data-aos="fade-right" data-aos-delay="100">
+                        <p class="text-lg font-semibold text-white mb-2">2. Tư vấn và Chốt Sale</p>
+                        <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 pl-4">
+                            <li>Trình bày các giải pháp Website/App của IVS Celestech một cách chuyên nghiệp.</li>
+                            <li>Tư vấn gói dịch vụ phù hợp, đàm phán hợp đồng và chốt giao dịch.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-blue-400" data-aos="fade-right" data-aos-delay="200">
+                        <p class="text-lg font-semibold text-white mb-2">3. Hỗ trợ và Báo cáo</p>
+                        <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 pl-4">
+                            <li>Hỗ trợ bộ phận Kỹ thuật và Chăm sóc Khách hàng sau khi ký hợp đồng.</li>
+                            <li>Báo cáo kết quả hoạt động hàng tuần/tháng cho Quản lý Sale.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phần Yêu Cầu -->
+        <section id="requirements" class="py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-8">Yêu Cầu Tối Thiểu</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-800 p-5 rounded-xl shadow-md border-t-4 border-indigo-500" data-aos="flip-up">
+                        <p class="font-bold text-lg text-white">Nhiệt Huyết & Đam Mê</p>
+                        <p class="text-sm text-gray-400">Yêu thích kinh doanh, không ngại bị từ chối và có tinh thần cầu tiến.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-xl shadow-md border-t-4 border-indigo-500" data-aos="flip-up" data-aos-delay="100">
+                        <p class="font-bold text-lg text-white">Kỹ Năng Giao Tiếp</p>
+                        <p class="text-sm text-gray-400">Có khả năng nói chuyện, thuyết phục tốt, tự tin khi gặp khách hàng.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-xl shadow-md border-t-4 border-indigo-500" data-aos="flip-up" data-aos-delay="200">
+                        <p class="font-bold text-lg text-white">Am hiểu Công nghệ</p>
+                        <p class="text-sm text-gray-400">Có kiến thức cơ bản về website/digital marketing (SEO, Facebook Ads) là một lợi thế.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phần CTA & Form Ứng Tuyển -->
+        <section id="application" class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900">
+            <div class="max-w-lg mx-auto">
+                <h2 class="text-3xl font-bold text-center text-white mb-6">Đăng Ký Ứng Tuyển Nhanh</h2>
+                <form action="#" method="POST" class="space-y-4 bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
+                    <div>
+                        <label for="full_name" class="block text-sm font-medium mb-1 text-gray-300">Họ và Tên (*)</label>
+                        <input type="text" id="full_name" name="full_name" required placeholder="Nguyễn Văn A" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium mb-1 text-gray-300">Số Điện Thoại (*)</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="0901 234 567" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-1 text-gray-300">Email (*)</label>
+                        <input type="email" id="email" name="email" required placeholder="email@example.com" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="cv_link" class="block text-sm font-medium mb-1 text-gray-300">Link CV/Hồ sơ Online (*)</label>
+                        <input type="url" id="cv_link" name="cv_link" required placeholder="drive.google.com/your-cv-link" class="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-blue-500 focus:border-blue-500">
+                        <p class="mt-1 text-xs text-gray-400">Vui lòng đảm bảo link có quyền truy cập công khai.</p>
+                    </div>
+                    <button type="submit" class="cta-button w-full text-white font-bold py-3 rounded-lg text-lg shadow-xl mt-4">
+                        HOÀN TẤT ỨNG TUYỂN
+                    </button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Phần FAQ -->
+        <section id="faq" class="py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-white mb-8">Câu Hỏi Thường Gặp (FAQ)</h2>
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                        <button class="faq-toggle w-full flex justify-between items-center text-lg font-semibold text-white">
+                            Thực tập có lương cứng không?
+                            <span class="faq-icon text-blue-400">+</span>
+                        </button>
+                        <div class="faq-answer mt-2 text-gray-400 text-sm">
+                            <p>Vị trí này chủ yếu tập trung vào **hoa hồng hiệu suất (Sales)**. Bạn sẽ nhận được hoa hồng hấp dẫn ngay khi chốt hợp đồng. Tuy nhiên, IVS Celestech có hỗ trợ **phụ cấp cơ bản** theo chính sách nội bộ để hỗ trợ chi phí đi lại/điện thoại.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                        <button class="faq-toggle w-full flex justify-between items-center text-lg font-semibold text-white">
+                            Thời gian thực tập kéo dài bao lâu?
+                            <span class="faq-icon text-blue-400">+</span>
+                        </button>
+                        <div class="faq-answer mt-2 text-gray-400 text-sm">
+                            <p>Thời gian thực tập tối thiểu là **3 tháng**. Sau đó, nếu bạn có nhu cầu và đạt yêu cầu, chúng tôi sẽ xem xét ký hợp đồng chính thức (full-time).</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                        <button class="faq-toggle w-full flex justify-between items-center text-lg font-semibold text-white">
+                            Có cần phải có kinh nghiệm Sale Website không?
+                            <span class="faq-icon text-blue-400">+</span>
+                        </button>
+                        <div class="faq-answer mt-2 text-gray-400 text-sm">
+                            <p>Không bắt buộc. Chúng tôi chào đón cả các bạn sinh viên/thực tập sinh **chưa có kinh nghiệm**. IVS Celestech sẽ cung cấp khóa đào tạo chuyên sâu về sản phẩm và kỹ năng Sales trước khi bạn bắt đầu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 4. Placeholder cho FAB và Footer -->
+    <div id="fab-container-placeholder"></div>
+    <div data-loading-text="Đang tải chân trang..." id="footer-placeholder"></div>
+
+    <script defer src="/js/utils.js"></script>
+    <script defer src="/js/language.js"></script>
+    <script defer src="/js/loadComponents.js"></script>
+
+    <script defer>
+        // Toggle FAQ answers
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.textContent = '+';
+                } else {
+                    answer.style.display = 'block';
+                    icon.textContent = '–';
+                }
+            });
+        });
+
+        // Initialize AOS and common components loading
+        window.onPageComponentsLoadedCallback = function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 700, once: true, offset: 50 });
+            }
+            // Fade out loading overlay once components are loaded
+            const overlay = document.getElementById('loading-overlay');
+            if (overlay) {
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.remove(), 600);
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+                window.loadCommonComponents();
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+
+
+

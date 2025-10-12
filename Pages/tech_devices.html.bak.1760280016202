@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="vi">
+<head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//connect.facebook.net" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-lang-key="tech_devices_page_title">Thiết Bị Công Nghệ &amp; Giải Pháp Cơ Sở - IVS JSC</title>
+<meta content="Khám phá các giải pháp công nghệ và thiết bị văn phòng chất lượng cao từ IVS JSC. Cung cấp giải pháp toàn diện cho doanh nghiệp và tổ chức." data-lang-key="tech_devices_meta_description" name="description"/>
+<meta content="Thiết Bị Công Nghệ &amp; Giải Pháp Văn Phòng - IVS JSC" data-lang-key="tech_devices_og_title" property="og:title"/>
+<meta content="Giải pháp công nghệ toàn diện, thiết bị văn phòng chất lượng cao và dịch vụ chuyên nghiệp từ IVS JSC." data-lang-key="tech_devices_og_description" property="og:description"/>
+<meta content="/images/banners/tech-devices-banner.jpg" property="og:image"/>
+<!-- Grok Chat Integration -->
+<!-- CSS -->
+<link href="../css/tailwind.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<meta content="website" property="og:type"/></head>
+<body class="bg-neutral-50 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 antialiased font-serif">
+<div id="header-placeholder"></div>
+<main class="flex-grow pt-[var(--header-height)] md:pt-[var(--desktop-header-height)]">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-4xl mx-auto">
+<section class="mb-12" data-aos="fade-up">
+<h1 class="text-4xl md:text-5xl font-extrabold text-center mb-6 text-indigo-700 dark:text-indigo-400">
+<span data-lang-key="tech_devices_hero_title">Thiết Bị Công Nghệ &amp; Giải Pháp Cơ Sở</span>
+</h1>
+<p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8" data-lang-key="tech_devices_hero_subtitle">
+                    IVS JSC cung cấp các giải pháp công nghệ tiên tiến và thiết bị chất lượng cao, đáp ứng mọi nhu cầu của doanh nghiệp và tổ chức giáo dục.
+                </p>
+</section>
+<!-- Featured Products -->
+<section class="mb-12">
+<div class="grid lg:grid-cols-2 gap-8">
+<!-- Apple Products Showcase -->
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden" data-aos="fade-right">
+<div class="p-6">
+<h2 class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-4" data-lang-key="tech_devices_apple_title">
+                                Apple Products
+                            </h2>
+<div class="fb-post mb-6" data-href="https://www.facebook.com/permalink.php?story_fbid=pfbid0GoRxryZpqgVYZMBz2wqhP4aSahAzTBgcEyYpoMqV1bKmghQ8qrnzD2YUuLYYmZcsl&amp;id=61557353867835" data-show-text="true" data-width="500"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<i class="fas fa-desktop text-indigo-500"></i>
+<span data-lang-key="tech_devices_apple_item_1">iMac &amp; Mac Pro</span>
+</div>
+<div class="flex items-center gap-2">
+<i class="fas fa-laptop text-indigo-500"></i>
+<span data-lang-key="tech_devices_apple_item_2">MacBook Pro &amp; Air</span>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<i class="fas fa-tablet-alt text-indigo-500"></i>
+<span data-lang-key="tech_devices_apple_item_3">iPad Pro &amp; Accessories</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Office Equipment -->
+<section class="mb-12">
+<div class="grid md:grid-cols-2 gap-4" data-aos="fade-left">
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+<h2 class="text-2xl font-bold text-indigo-600 dark:text-indigo-300 mb-4" data-lang-key="tech_devices_office_title">Thiết Bị Văn Phòng</h2>
+<div class="space-y-3">
+<div class="flex items-start gap-3">
+<i class="fas fa-chair text-blue-500 mt-1"></i>
+<div>
+<h3 class="font-semibold" data-lang-key="tech_devices_office_item_1">Bàn ghế văn phòng cao cấp</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Ergonomic &amp; Modern Design</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<i class="fas fa-desktop text-green-500 mt-1"></i>
+<div>
+<h3 class="font-semibold" data-lang-key="tech_devices_office_item_2">Trang thiết bị quầy lễ tân</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Professional Reception Setup</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+<h2 class="text-2xl font-bold text-indigo-600 dark:text-indigo-300 mb-4" data-lang-key="tech_devices_it_title">Giải Pháp CNTT</h2>
+<div class="space-y-3">
+<div class="flex items-start gap-3">
+<i class="fas fa-network-wired text-purple-500 mt-1"></i>
+<div>
+<h3 class="font-semibold" data-lang-key="tech_devices_it_item_1">Hệ thống mạng &amp; bảo mật</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Enterprise Security</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<i class="fas fa-cloud text-cyan-500 mt-1"></i>
+<div>
+<h3 class="font-semibold" data-lang-key="tech_devices_it_item_2">Giải pháp lưu trữ đám mây</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400">Cloud Solutions</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></div>
+<section class="mb-12" data-aos="fade-up">
+<h1 class="text-4xl md:text-5xl font-extrabold text-center mb-6 text-indigo-700 dark:text-indigo-400">
+<span data-lang-key="tech_devices_hero_title">Thiết Bị Công Nghệ &amp; Giải Pháp Cơ Sở</span>
+</h1>
+<p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8" data-lang-key="tech_devices_hero_subtitle">
+                    IVS JSC cung cấp các giải pháp công nghệ tiên tiến và thiết bị chất lượng cao, đáp ứng mọi nhu cầu của doanh nghiệp và tổ chức giáo dục.
+                </p>
+</section>
+<section class="grid md:grid-cols-2 gap-8 mb-12">
+<!-- Thiết bị công nghệ -->
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-right">
+<h2 class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-4" data-lang-key="tech_devices_category_1_title">Thiết Bị Công Nghệ</h2>
+<p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-key="tech_devices_category_1_description">
+                        Chúng tôi cung cấp đa dạng các thiết bị công nghệ hiện đại, từ máy tính, thiết bị mạng đến các giải pháp phần mềm chuyên biệt.
+                    </p>
+<ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
+<li data-lang-key="tech_devices_item_1">Máy tính cá nhân và máy chủ</li>
+<li data-lang-key="tech_devices_item_2">Thiết bị mạng (router, switch, firewall)</li>
+<li data-lang-key="tech_devices_item_3">Thiết bị ngoại vi (máy in, máy chiếu, màn hình tương tác)</li>
+<li data-lang-key="tech_devices_item_4">Phần mềm quản lý và ứng dụng chuyên ngành</li>
+</ul>
+</div>
+<!-- Giải pháp cơ sở hạ tầng -->
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-left">
+<h2 class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-4" data-lang-key="tech_devices_category_2_title">Giải Pháp Cơ Sở Hạ Tầng</h2>
+<p class="text-gray-700 dark:text-gray-300 mb-4" data-lang-key="tech_devices_category_2_description">
+                        Xây dựng và tối ưu hóa hệ thống cơ sở hạ tầng công nghệ thông tin vững chắc cho doanh nghiệp của bạn.
+                    </p>
+<ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
+<li data-lang-key="tech_devices_item_5">Thiết kế và triển khai hệ thống mạng</li>
+<li data-lang-key="tech_devices_item_6">Giải pháp lưu trữ dữ liệu và bảo mật</li>
+<li data-lang-key="tech_devices_item_7">Hệ thống điện toán đám mây (Cloud Computing)</li>
+<li data-lang-key="tech_devices_item_8">Tư vấn và hỗ trợ kỹ thuật 24/7</li>
+</ul>
+</div>
+</section>
+<!-- Mục tiêu và Cam kết -->
+<section class="bg-indigo-50 dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-12" data-aos="fade-up">
+<h2 class="text-3xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-6" data-lang-key="tech_devices_commitment_title">Mục Tiêu và Cam Kết</h2>
+<div class="grid md:grid-cols-3 gap-6 text-center">
+<div class="p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+<i class="fas fa-lightbulb text-4xl text-yellow-500 mb-3"></i>
+<h3 class="text-xl font-semibold mb-2" data-lang-key="tech_devices_commitment_1_title">Sáng Tạo</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_commitment_1_description">Luôn tìm kiếm và áp dụng các công nghệ mới nhất.</p>
+</div>
+<div class="p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+<i class="fas fa-shield-alt text-4xl text-green-500 mb-3"></i>
+<h3 class="text-xl font-semibold mb-2" data-lang-key="tech_devices_commitment_2_title">Chất Lượng</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_commitment_2_description">Đảm bảo sản phẩm và dịch vụ đạt tiêu chuẩn cao nhất.</p>
+</div>
+<div class="p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+<i class="fas fa-handshake text-4xl text-blue-500 mb-3"></i>
+<h3 class="text-xl font-semibold mb-2" data-lang-key="tech_devices_commitment_3_title">Đối Tác</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_commitment_3_description">Đồng hành cùng khách hàng phát triển bền vững.</p>
+</div>
+</div>
+</section>
+<!-- Quy trình triển khai -->
+<section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-12" data-aos="fade-up">
+<h2 class="text-3xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-6" data-lang-key="tech_devices_process_title">Quy Trình Triển Khai</h2>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">1</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200" data-lang-key="tech_devices_process_step_1_title">Tư vấn &amp; Phân tích nhu cầu</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_process_step_1_description">Đội ngũ chuyên gia của chúng tôi sẽ lắng nghe và phân tích kỹ lưỡng các yêu cầu cụ thể của bạn.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">2</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200" data-lang-key="tech_devices_process_step_2_title">Thiết kế giải pháp</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_process_step_2_description">Xây dựng kiến trúc và lựa chọn thiết bị, phần mềm phù hợp nhất với ngân sách và mục tiêu.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">3</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200" data-lang-key="tech_devices_process_step_3_title">Triển khai &amp; Cài đặt</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_process_step_3_description">Thực hiện lắp đặt, cấu hình và tích hợp hệ thống một cách chuyên nghiệp.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">4</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200" data-lang-key="tech_devices_process_step_4_title">Kiểm thử &amp; Bàn giao</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_process_step_4_description">Đảm bảo hệ thống hoạt động ổn định trước khi bàn giao và hướng dẫn sử dụng chi tiết.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="flex-shrink-0 w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">5</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200" data-lang-key="tech_devices_process_step_5_title">Hỗ trợ &amp; Bảo trì</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_process_step_5_description">Cung cấp dịch vụ hỗ trợ kỹ thuật và bảo trì định kỳ để đảm bảo hiệu suất tối ưu.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Lợi ích khi hợp tác -->
+<section class="bg-indigo-50 dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-12" data-aos="fade-up">
+<h2 class="text-3xl font-bold text-center text-indigo-700 dark:text-indigo-400 mb-6" data-lang-key="tech_devices_benefits_title">Lợi Ích Khi Hợp Tác Với IVS JSC</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="flex items-start p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+<i class="fas fa-check-circle text-3xl text-green-500 mr-4"></i>
+<div>
+<h3 class="text-xl font-semibold mb-2" data-lang-key="tech_devices_benefit_1_title">Tối ưu hóa chi phí</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_benefit_1_description">Giải pháp hiệu quả, giúp tiết kiệm ngân sách dài hạn.</p>
+</div>
+</div>
+<div class="flex items-start p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+<i class="fas fa-chart-line text-3xl text-blue-500 mr-4"></i>
+<div>
+<h3 class="text-xl font-semibold mb-2" data-lang-key="tech_devices_benefit_2_title">Nâng cao hiệu suất</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_benefit_2_description">Hệ thống ổn định, tăng cường năng suất làm việc.</p>
+</div>
+</div>
+<div class="flex items-start p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+<i class="fas fa-lock text-3xl text-red-500 mr-4"></i>
+<div>
+<h3 class="text-xl font-semibold mb-2" data-lang-key="tech_devices_benefit_3_title">Bảo mật dữ liệu</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_benefit_3_description">Giải pháp bảo mật toàn diện, an toàn thông tin.</p>
+</div>
+</div>
+<div class="flex items-start p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+<i class="fas fa-users-cog text-3xl text-purple-500 mr-4"></i>
+<div>
+<h3 class="text-xl font-semibold mb-2" data-lang-key="tech_devices_benefit_4_title">Đội ngũ chuyên nghiệp</h3>
+<p class="text-gray-700 dark:text-gray-300" data-lang-key="tech_devices_benefit_4_description">Đội ngũ kỹ sư giàu kinh nghiệm, đảm bảo dự án được triển khai đúng tiến độ và đạt chất lượng cao nhất.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="bg-gradient-to-br from-indigo-600 to-blue-600 text-white rounded-xl shadow-lg p-8 mb-12" data-aos="fade-up">
+<div class="text-center max-w-3xl mx-auto">
+<h2 class="text-3xl font-bold mb-4" data-lang-key="tech_devices_cta_title">
+                        Bắt đầu nâng cấp không gian làm việc của bạn
+                    </h2>
+<p class="text-lg mb-8 text-white/90" data-lang-key="tech_devices_cta_description">
+                        Liên hệ với chúng tôi ngay hôm nay để được tư vấn giải pháp phù hợp nhất cho doanh nghiệp của bạn
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-lg font-semibold rounded-full hover:bg-white hover:text-indigo-600 transition-colors duration-300" data-lang-key="tech_devices_cta_button_contact" href="../contact.html">
+                            Liên hệ ngay
+                        </a>
+<a class="inline-flex items-center justify-center px-6 py-3 bg-white text-indigo-600 text-lg font-semibold rounded-full hover:bg-indigo-100 transition-colors duration-300" data-lang-key="tech_devices_cta_button_catalog" href="../#">
+                            Xem catalog
+                        </a>
+</div>
+</div>
+</section>
+</div>
+</main>
+<div id="footer-placeholder"></div>
+<div id="fab-container-placeholder"></div>
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script async="" crossorigin="anonymous" defer="" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v23.0"></script>
+<!-- Third party libraries -->
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Application scripts -->
+<script src="../js/firebase-init.js" type="module"></script>
+<script defer="" src="../js/utils.js"></script>
+<script defer="" src="../js/language.js"></script>
+<script defer="" src="../js/fabController.js"></script>
+<script defer="" src="../js/loadComponents.js"></script>
+<script>
+        // Initialize page components after everything is loaded
+        window.onPageComponentsLoadedCallback = function() {
+            AOS.init({
+                duration: 700,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
+
+            // Apply translations after components are loaded and AOS is initialized
+            if (window.system && typeof window.system.applyTranslations === 'function') {
+                window.system.applyTranslations();
+            }
+
+            // Re-render Facebook plugins after component load
+            if (typeof FB !== 'undefined' && FB !== null) {
+                FB.XFBML.parse();
+            }
+        };
+    </script>
+<!-- Chèn vào cuối <body> của mọi trang -->
+<div id="fab-container-placeholder"></div>
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+
+
+

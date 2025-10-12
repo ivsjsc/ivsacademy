@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth dark" lang="vi">
+<head><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title data-lang-key="page_title_ivsgames">IVS Games Arcade - Học Mà Chơi, Chơi Mà Học</title>
+<meta content="Khám phá bộ sưu tập trò chơi giáo dục và tài nguyên học tập từ IVS JSC. Rèn luyện tư duy, học từ vựng và nhiều hơn nữa qua các trò chơi tương tác." data-lang-key="meta_description_ivsgames_updated" name="description"/>
+<meta content="IVS Games, trò chơi giáo dục, game IVS, học mà chơi, IVS Memory Match, game toán học, game từ vựng" data-lang-key="meta_keywords_ivsgames_updated" name="keywords"/>
+<meta content="IVS Games Arcade - Sân Chơi Tri Thức Sáng Tạo" data-lang-key="og_title_ivsgames_updated" property="og:title"/>
+<meta content="Tham gia các trò chơi giáo dục hấp dẫn từ IVS JSC, khám phá tài liệu học tập và đón chờ nhiều nội dung mới!" data-lang-key="og_description_ivsgames_updated" property="og:description"/>
+<meta content="/images/banners/ivs-games-banner.png" property="og:image"/>
+<meta content="https://ivsacademy.edu.vn/Pages/games/ivsgames.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="IVS JSC" name="author"/>
+<!-- Preconnect and basic meta -->
+<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="images/logo/logo-192.jpg" rel="apple-touch-icon"/>
+<link href="manifest.json" rel="manifest"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!-- Fonts and Icons -->
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/></noscript>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- Scripts and Styles -->
+<style>
+        .section-title { font-family: 'Lexend', sans-serif; }
+        .game-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .game-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        .game-card img {
+            transition: transform 0.4s ease;
+        }
+        .game-card:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+<!-- CSS -->
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 antialiased">
+<div data-loading-text="Đang tải menu..." id="header-placeholder"></div>
+<main class="flex-grow pt-[var(--header-height)] md:pt-[var(--desktop-header-height)]">
+<!-- Hero Section -->
+<section aria-labelledby="games-main-title" class="relative bg-game-bg text-white overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('/images/backgrounds/game-pattern.svg');"></div>
+<div class="container mx-auto px-4 py-24 md:py-32 text-center relative z-10">
+<span class="inline-block p-4 bg-white/10 rounded-2xl mb-6" data-aos="fade-down">
+<i class="fas fa-gamepad fa-3x text-white"></i>
+</span>
+<h1 class="section-title text-4xl md:text-6xl font-bold mb-4" data-lang-key="ivsgames_hero_title" id="games-main-title">IVS Games Arcade</h1>
+<p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90" data-lang-key="ivsgames_hero_subtitle">
+                   Sân chơi tri thức, nơi việc học trở thành một cuộc phiêu lưu kỳ thú.
+                </p>
+</div>
+</section>
+<!-- Games List Section -->
+<section aria-labelledby="games-list-title" class="py-16 md:py-24">
+<div class="container mx-auto px-4">
+<div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+<h2 class="section-title text-3xl md:text-4xl font-bold text-neutral-800 dark:text-white mb-4" data-lang-key="games_list_title" id="games-list-title">Gaming, Chating, Writting</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Game Card 1: Memory Match -->
+<article class="game-card bg-white dark:bg-neutral-800 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+<div class="relative">
+<img alt="Banner trò chơi IVS Memory Match" class="w-full h-56 object-cover" decoding="async" onerror="this.src='https://placehold.co/600x400/003366/FFFFFF?text=Memory+Match';" src="images/games/memory-match-banner.jpg"/>
+</div>
+<div class="p-6">
+<h3 class="section-title text-xl font-semibold mb-2 text-primary dark:text-secondary" data-lang-key="game_memorymatch_title">IVS Memory Match</h3>
+<p class="text-sm text-neutral-600 dark:text-neutral-400 mb-6" data-lang-key="game_memorymatch_desc">Rèn luyện trí nhớ và học từ vựng Anh-Việt qua các cặp thẻ hình ảnh và từ ngữ sinh động.</p>
+<a class="w-full text-center block bg-game-bg hover:bg-game-bg-dark text-white font-bold py-3 px-6 rounded-lg transition" data-lang-key="button_play_now" href="/Pages/games/memory-match/index.html">Chơi Ngay</a>
+</div>
+</article>
+<!-- External Resource Card: AdaptedMind -->
+<article class="game-card bg-white dark:bg-neutral-800 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+<div class="relative">
+<img alt="Banner tài liệu AdaptedMind Math" class="w-full h-56 object-cover" decoding="async" loading="lazy" onerror="this.src='https://placehold.co/600x400/166534/FFFFFF?text=AdaptedMind';" src="images/games/adaptedmind-banner.jpg"/>
+</div>
+<div class="p-6">
+<h3 class="section-title text-xl font-semibold mb-2 text-green-700 dark:text-green-400" data-lang-key="resource_adaptedmind_title">AdaptedMind Math</h3>
+<p class="text-sm text-neutral-600 dark:text-neutral-400 mb-6" data-lang-key="resource_adaptedmind_desc">Hàng ngàn bài tập Toán tương tác giúp xây dựng nền tảng vững chắc. (Tài nguyên ngoài)</p>
+<a class="w-full text-center block bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg transition" data-lang-key="button_access_external_resource" href="https://www.adaptedmind.com/Math-Worksheets.html" rel="noopener noreferrer" target="_blank">Truy Cập</a>
+</div>
+</article>
+<!-- Coming Soon Card -->
+<div class="rounded-2xl border-2 border-dashed border-neutral-300 dark:border-neutral-700 p-8 text-center flex flex-col justify-center items-center" data-aos="fade-up" data-aos-delay="300">
+<i class="fas fa-puzzle-piece fa-3x text-neutral-400 dark:text-neutral-500 mb-4"></i>
+<h3 class="section-title text-xl font-semibold text-neutral-700 dark:text-neutral-300 mb-2" data-lang-key="game_coming_soon_title">For the New game comming soon</h3>
+<p class="text-sm text-neutral-500 dark:text-neutral-400" data-lang-key="game_coming_soon_desc">IVS is developing more thinking and academic games. Stay tuned!</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div id="fab-container-placeholder"></div>
+<div data-loading-text="Đang tải chân trang..." id="footer-placeholder"></div>
+<!-- Scripts -->
+<script defer src="/js/language.js"></script>
+<script defer src="/js/loadComponents.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+        window.onPageComponentsLoadedCallback = function() {
+            AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-quad' });
+            if (window.system && typeof window.system.applyTranslations === 'function') {
+                window.system.applyTranslations();
+            }
+        };
+    </script>
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+
+
+

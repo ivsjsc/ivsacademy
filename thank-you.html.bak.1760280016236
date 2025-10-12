@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head><link as="style" href="css/style.css" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Cám ơn — IVS JSC</title>
+<link href="css/tailwind.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." name="description"/><meta content="Cám ơn — IVS JSC" property="og:title"/><meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." property="og:description"/><meta content="website" property="og:type"/></head>
+<body class="bg-ivs-bg text-ivs-text-primary antialiased">
+<header id="header-placeholder"></header>
+<main class="container mx-auto px-4 py-16 text-center">
+<h1 class="text-4xl font-bold mb-4">Cám ơn bạn đã liên hệ!</h1>
+<p class="text-lg text-gray-300 mb-8">Chúng tôi đã nhận được yêu cầu của bạn. Đội ngũ IVS sẽ liên hệ sớm nhất có thể.</p>
+<a class="inline-block bg-orange-600 hover:bg-orange-700 text-white py-3 px-6 rounded-lg" href="/">Quay về trang chủ</a>
+</main>
+<footer id="footer-placeholder"></footer>
+<script defer src="js/utils.js"></script>
+<script defer src="js/language.js"></script>
+<script defer src="js/loadComponents.js"></script>
+<script defer>
+    // Register a page callback for thank-you page
+    window.onPageComponentsLoadedCallback = function() {
+        console.log('thank-you: components loaded (callback)');
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
+        }
+    };
+
+    // Fallback to trigger loader if it hasn't started yet
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
+        }
+    });
+</script>
+
+<script src="/js/loadComponents.js" defer></script>
+</body>
+</html>
+
+
