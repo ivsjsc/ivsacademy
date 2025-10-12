@@ -257,6 +257,37 @@ window.loadComponentsAndInitialize = loadCommonComponents;
 
 // Tự động khởi động khi DOMContentLoaded, nếu chưa được khởi động
 document.addEventListener('DOMContentLoaded', function() {
+    // Defensive: if multiple <script> tags referencing loadComponents.js were accidentally
+    // inserted into the page (some pages historically contain both "js/loadComponents.js"
+    // and "/js/loadComponents.js"), dedupe them now to avoid double initialization
+    // and duplicate network loads. We keep the currently executing script element and
+    // remove other script elements that reference loadComponents.js.
+    try {
+        const currentScript = document.currentScript;
+        if (currentScript) {
+            const srcMatchers = ['js/loadComponents.js', '/js/loadComponents.js'];
+            const allScripts = Array.from(document.getElementsByTagName('script'));
+            let removed = 0;
+            for (const s of allScripts) {
+                try {
+                    const src = s.getAttribute && s.getAttribute('src');
+                    if (!src) continue;
+                    // If this is a different script element referencing the same loader, remove it
+                    if (srcMatchers.includes(src) && s !== currentScript) {
+                        s.parentNode && s.parentNode.removeChild(s);
+                        removed++;
+                    }
+                } catch (e) {
+                    // ignore individual script removal errors
+                }
+            }
+            if (removed > 0) window.componentLog(`Removed ${removed} duplicate loadComponents.js <script> tag(s)`, 'info');
+        }
+    } catch (e) {
+        // Non-fatal; continue to initialization
+        window.componentLog(`Dedupe check failed: ${e && e.message ? e.message : e}`, 'warn');
+    }
+
     if (!window.__IVS_components_loadingStarted) {
         loadCommonComponents().catch(err => window.componentLog(`Error during automatic component loading: ${err.message}`, 'error'));
     }

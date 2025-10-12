@@ -158,7 +158,20 @@ class IVSAssistant {
             }
         } catch (err) {
             this.hideTypingIndicator();
-            const errMsg = typeof err === 'string' ? err : 'Đã có lỗi xảy ra. Vui lòng thử lại sau.';
+            let errMsg = 'Đã có lỗi xảy ra. Vui lòng thử lại sau.';
+            try {
+                // If server returned structured error string
+                const errStr = typeof err === 'string' ? err : (err && err.message) ? err.message : '';
+                if (errStr && errStr.toLowerCase().includes('not_configured')) {
+                    errMsg = 'Assistant tạm thời chưa được cấu hình trên máy chủ. Vui lòng kiểm tra cấu hình server hoặc thử lại sau.';
+                } else if (errStr && errStr.toLowerCase().includes('xai_api_not_configured')) {
+                    errMsg = 'XAI proxy chưa được cấu hình trên server. Vui lòng khởi động server với XAI_API_KEY.';
+                } else if (errStr && errStr.toLowerCase().includes('timeout')) {
+                    errMsg = 'Yêu cầu quá thời gian. Vui lòng thử lại.';
+                } else if (errStr) {
+                    errMsg = errStr;
+                }
+            } catch (e) {}
             console.warn('Assistant request error:', err);
             this.addMessage('bot', errMsg, { persist: true });
         } finally {
@@ -236,9 +249,33 @@ class IVSAssistant {
                 signal: controller.signal
             });
             clearTimeout(id);
+            // If primary endpoint indicates not configured or server error, attempt fallback
             if (!resp.ok) {
+                let jsonBody = null;
+                try { jsonBody = await resp.json(); } catch(_){}
+                const errCode = jsonBody && jsonBody.error ? String(jsonBody.error) : '';
+                // Common server-side not-configured error codes used in our server: 'xai_api_not_configured' or 'server_not_configured'
+                if (resp.status >= 500 || errCode.includes('not_configured') || errCode.includes('xai_api_not_configured')) {
+                    // try fallback to /api/grok if configured and different
+                    if (this.opts.apiPath !== '/api/grok') {
+                        try {
+                            console.info('Primary AI endpoint failed; retrying with /api/grok');
+                            const fallbackResp = await fetch('/api/grok', {
+                                method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{ role: 'user', content: message }] }), signal: controller.signal
+                            });
+                            if (fallbackResp.ok) {
+                                const data = await fallbackResp.json();
+                                const reply = data?.choices?.[0]?.message?.content || data?.reply || data?.result || 'Xin lỗi, tôi chưa thể trả lời.';
+                                return reply;
+                            }
+                        } catch (fallErr) {
+                            // swallow and fall through to original error handling
+                            console.warn('Fallback /api/grok attempt failed', fallErr);
+                        }
+                    }
+                }
                 let text = `Lỗi mạng: ${resp.status}`;
-                try { const j = await resp.json(); if (j && j.error) text = j.error; } catch(_){}
+                try { if (jsonBody && jsonBody.error) text = jsonBody.error; } catch(_){ }
                 throw new Error(text);
             }
             const data = await resp.json();
@@ -268,6 +305,27 @@ class IVSAssistant {
             });
             if (!resp.ok) {
                 clearTimeout(id);
+                // inspect json body for not-configured signals
+                let jsonBody = null;
+                try { jsonBody = await resp.json(); } catch(_){}
+                const errCode = jsonBody && jsonBody.error ? String(jsonBody.error) : '';
+                if (resp.status >= 500 || errCode.includes('not_configured') || errCode.includes('xai_api_not_configured')) {
+                    // attempt fallback non-streaming call to /api/grok
+                    if (this.opts.apiPath !== '/api/grok') {
+                        try {
+                            console.info('Streaming primary endpoint failed; retrying non-streaming /api/grok fallback');
+                            const fallback = await fetch('/api/grok', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{ role: 'user', content: message }] }), signal: controller.signal });
+                            if (fallback.ok) {
+                                const data = await fallback.json();
+                                const reply = data?.choices?.[0]?.message?.content || data?.reply || data?.result || '';
+                                botBubble.textContent = reply;
+                                this.conversation.push({ sender: 'bot', text: reply, ts: Date.now() });
+                                try { sessionStorage.setItem(this.opts.storageKey, JSON.stringify(this.conversation)); } catch(e){}
+                                return;
+                            }
+                        } catch (fallErr) { console.warn('Fallback /api/grok attempt failed', fallErr); }
+                    }
+                }
                 throw new Error('Server returned ' + resp.status);
             }
 
