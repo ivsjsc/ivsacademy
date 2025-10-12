@@ -266,6 +266,60 @@ app.get('/auth/callback', async (req, res) => {
   }
 });
 
+// --- Microsoft Graph lookup using client credentials (server-side)
+// POST /api/graph/lookup { employeeId: 'EMP-1001' }
+// Requires env: AAD_TENANT_ID, AAD_CLIENT_ID, AAD_CLIENT_SECRET
+async function getClientCredentialsToken(tenantId, clientId, clientSecret){
+  const tokenEndpoint = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`;
+  const params = new URLSearchParams();
+  params.append('client_id', clientId);
+  params.append('scope', 'https://graph.microsoft.com/.default');
+  params.append('client_secret', clientSecret);
+  params.append('grant_type', 'client_credentials');
+
+  const resp = await fetch(tokenEndpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params.toString()
+  });
+  if(!resp.ok){
+    const txt = await resp.text();
+    throw new Error('Token fetch failed: '+resp.status+' '+txt);
+  }
+  const j = await resp.json();
+  return j.access_token;
+}
+
+app.post('/api/graph/lookup', async (req, res) => {
+  try{
+    const employeeId = (req.body && req.body.employeeId) ? String(req.body.employeeId).trim() : '';
+    if(!employeeId) return res.status(400).json({ error: 'missing employeeId' });
+
+    const tenantId = process.env.AAD_TENANT_ID || process.env.OAUTH_TENANT_ID;
+    const clientId = process.env.AAD_CLIENT_ID || process.env.OAUTH_CLIENT_ID;
+    const clientSecret = process.env.AAD_CLIENT_SECRET || process.env.OAUTH_CLIENT_SECRET;
+    if(!tenantId || !clientId || !clientSecret) return res.status(500).json({ error: 'server_not_configured' });
+
+    const token = await getClientCredentialsToken(tenantId, clientId, clientSecret);
+
+    // Query Graph for user with matching employeeId
+    const filter = encodeURIComponent(`employeeId eq '${employeeId.replace(/'/g, "''")}'`);
+    const url = `https://graph.microsoft.com/v1.0/users?$filter=${filter}`;
+    const gresp = await fetch(url, { headers: { Authorization: 'Bearer '+token } });
+    if(!gresp.ok){
+      const txt = await gresp.text();
+      return res.status(502).json({ error: 'graph_error', detail: txt });
+    }
+    const data = await gresp.json();
+    if(!data.value || data.value.length === 0) return res.status(404).json({ error: 'not_found' });
+    // return first match
+    return res.json({ ok: true, user: data.value[0] });
+  }catch(err){
+    console.error('graph lookup error', err);
+    return res.status(500).json({ error: 'internal_error', detail: String(err) });
+  }
+});
+
 // Start server when run directly
 if (require.main === module) {
   const port = process.env.PORT || 3000;
