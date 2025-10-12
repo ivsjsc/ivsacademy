@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>IVS Verified Card Renderer</title>
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <style>
+    body{font-family:Inter,system-ui,Arial; background:#0f1724; color:#e6eef8}
+    .card{background:linear-gradient(180deg,#0b1220,#071027);border:1px solid rgba(255,255,255,0.04);padding:1rem;border-radius:12px}
+    .btn{background:#2563eb;color:white;padding:0.5rem 0.75rem;border-radius:8px}
+    .muted{color:#9fb0c9}
+  </style>
+</head>
+<body class="p-8">
+  <main class="max-w-3xl mx-auto">
+    <h1 class="text-2xl font-semibold mb-4">IVS - Renderer thẻ Verified ID</h1>
+    <div class="card mb-4">
+      <label class="block mb-2">Dán hoặc tải lên file JSON credential</label>
+      <textarea id="jsonInput" rows="8" class="w-full mb-3" placeholder='Paste JSON credential here'></textarea>
+      <div class="flex gap-3">
+        <input id="fileInput" type="file" accept="application/json" />
+        <button id="renderBtn" class="btn">Render</button>
+        <button id="downloadBtn" class="btn" style="background:#10b981;">Download PNG</button>
+        <button id="copyUrlBtn" class="btn" style="background:#64748b;">Copy data URL</button>
+      </div>
+      <div id="error" class="text-red-400 mt-2"></div>
+    </div>
+
+    <div class="card mb-4">
+      <h2 class="text-lg font-medium mb-2">Preview</h2>
+      <div id="previewArea" style="display:flex;gap:1rem;align-items:center">
+        <div id="cardCanvas" style="width:320px;height:180px;display:flex;flex-direction:column;justify-content:center;padding:12px;border-radius:10px;background:#0b2140;color:#fff"></div>
+        <div id="qrcode"></div>
+      </div>
+    </div>
+
+    <div class="muted text-sm">Ghi chú: QR code sẽ chứa data:application/json;base64,... hoặc hosted URL nếu manifest được host. Tránh public thông tin nhạy cảm nếu không muốn lộ.</div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="/js/verified-renderer.js"></script>
+</body>
+</html>
