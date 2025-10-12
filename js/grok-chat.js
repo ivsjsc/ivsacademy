@@ -9,11 +9,15 @@
 class IVSAssistant {
     constructor(opts = {}) {
         this.opts = Object.assign({
-            apiPath: '/api/grok',
+            // Prefer the server-side X.ai proxy when available. Fall back to legacy /api/grok.
+            apiPath: '/api/xai',
             timeoutMs: 10000,
             storageKey: 'ivs_assistant_conversation',
             initialMessage: 'Xin chào! Tôi là IVS Assistant. Tôi có thể giúp gì cho bạn?'
         }, opts);
+
+    // Debug: indicate which API path assistant will call (visible in browser console)
+    try { if (typeof console !== 'undefined' && console.info) console.info('IVSAssistant configured apiPath =', this.opts.apiPath); } catch(e) {}
 
         this.container = document.getElementById('ai-assistant-window') || document.createElement('div');
         this.chatWindow = null;
@@ -315,15 +319,20 @@ class IVSAssistant {
     }
 }
 
-// Expose single instance (idempotent)
-if (!window.IVSAssistant) {
-    try {
-        window.IVSAssistant = new IVSAssistant();
-    } catch (e) {
-        console.warn('IVSAssistant init failed:', e);
+// Only run browser-only initialization when in a window environment
+if (typeof window !== 'undefined') {
+    // Expose single instance (idempotent)
+    if (!window.IVSAssistant) {
+        try {
+            window.IVSAssistant = new IVSAssistant();
+            // expose helper to change API path at runtime (useful for debugging)
+            window.IVSAssistant.setApiPath = function(p) { this.opts.apiPath = p; console.info('IVSAssistant apiPath set to', p); };
+        } catch (e) {
+            console.warn('IVSAssistant init failed:', e);
+        }
     }
-}
 
-// Back-compat alias used around the codebase
-if (!window.IVSFABChatbot) window.IVSFABChatbot = window.IVSAssistant;
+    // Back-compat alias used around the codebase
+    if (!window.IVSFABChatbot) window.IVSFABChatbot = window.IVSAssistant;
+}
 

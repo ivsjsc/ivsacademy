@@ -70,20 +70,25 @@ Notes for Azure Entra Verified ID
 
 ## AI Proxy for Assistant (new)
 
-This server now exposes a small proxy endpoint used by the static frontend assistant to avoid embedding API keys in browser code.
+This server exposes small proxy endpoints used by the static frontend assistant to avoid embedding API keys in browser code.
 
-- Endpoint: `POST /api/grok`
+- Primary endpoint: `POST /api/xai` — forwards requests to X.ai chat completions (https://api.x.ai/v1/chat/completions) and requires `XAI_API_KEY` in the server environment.
+- Backward-compatible endpoint: `POST /api/grok` — a generic proxy that forwards the request body to the configured `AI_BACKEND_URL` and supports Google/OpenAI key styles via `AI_BACKEND_URL`, `GOOGLE_API_KEY`, or `OPENAI_API_KEY` environment variables.
 
 Configuration (example `.env` entries):
 
 ```
+# For X.ai proxy
+XAI_API_KEY=sk-...            # X.ai secret (do NOT commit)
+
+# Or, for generic AI_BACKEND_URL proxy
 AI_BACKEND_URL=https://generativelanguage.googleapis.com/v1beta2/models/your-model:generate
 GOOGLE_API_KEY=AIzaSy...   # set to your Google API key (do NOT commit this)
 # or for OpenAI:
 OPENAI_API_KEY=sk-...
 ```
 
-The proxy will forward the JSON body of the request to the configured backend. It attempts to add an API key either via `?key=` if the backend uses Google key style, or via `Authorization: Bearer` when `OPENAI_API_KEY` is set and the backend URL looks like OpenAI.
+The proxies forward the JSON body of the request to the configured backend. The server attempts to add an API key either via `?key=` when using Google-style endpoints, or via `Authorization: Bearer` for OpenAI-like endpoints. Use `POST /api/xai` if you specifically want to target X.ai and `POST /api/grok` for a generic backend configured via `AI_BACKEND_URL`.
 
 Run locally:
 
@@ -95,7 +100,7 @@ npm install
 npm run dev
 ```
 
-Security note: Keep your `.env` secret and never commit actual API keys. This proxy is intentionally minimal for local/dev use; for production consider authentication and rate limits.
+Security note: Keep your `.env` secret and never commit actual API keys. These proxies are intentionally minimal for local/dev use; for production consider authentication, rate limits, and monitoring.
 
 ## Server-side Graph lookup (new)
 
