@@ -96,3 +96,27 @@ npm run dev
 ```
 
 Security note: Keep your `.env` secret and never commit actual API keys. This proxy is intentionally minimal for local/dev use; for production consider authentication and rate limits.
+
+## Server-side Graph lookup (new)
+
+This server also exposes a convenience endpoint to lookup a user by `employeeId` using the Microsoft Graph API and client credentials.
+
+- Endpoint: `POST /api/graph/lookup`
+- Body: `{ "employeeId": "EMP-1001" }`
+- Requires environment variables: `AAD_TENANT_ID`, `AAD_CLIENT_ID`, `AAD_CLIENT_SECRET` (see `.env.example`).
+
+Azure App registration summary for this endpoint:
+1. Create an App registration in Azure AD.
+2. Under API permissions → Add permission → Microsoft Graph → Application permissions → add `User.Read.All`.
+3. Click "Grant admin consent".
+4. Create a client secret in Certificates & secrets and copy it into `AAD_CLIENT_SECRET`.
+
+Example curl (after server is running):
+
+```bash
+curl -X POST http://localhost:3000/api/graph/lookup \
+  -H 'Content-Type: application/json' \
+  -d '{"employeeId":"EMP-1001"}'
+```
+
+This will return the first matching user object from Graph or a 404 if none found.

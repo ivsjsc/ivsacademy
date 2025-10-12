@@ -77,6 +77,33 @@
       el('copyUrlBtn').onclick = function(){ navigator.clipboard.writeText(dataUrl).then(function(){ alert('Copied'); }, function(){ alert('Copy failed'); }); };
     });
 
+    el('lookupBtn').addEventListener('click', async function(){
+      showError('');
+      var useServer = el('useServerLookup').checked;
+      var emp = (el('lookupEmployeeId').value||'').trim();
+      if(!emp){ showError('Nhập employeeId để tìm'); return; }
+      if(!useServer){ showError('Vui lòng bật option "Tự động lấy thông tin từ Entra"'); return; }
+      try{
+        var resp = await fetch('/api/graph/lookup', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ employeeId: emp }) });
+        if(!resp.ok){ var txt = await resp.text(); showError('Lookup failed: '+resp.status+' '+txt); return; }
+        var j = await resp.json();
+        if(!j.user){ showError('Không tìm thấy user'); return; }
+        // Build a simple credential JSON from returned user
+        var user = j.user;
+        var cred = {
+          '@context': 'https://www.w3.org/2018/credentials/v1',
+          type: ['VerifiableCredential','EmployeeID'],
+          issuer: { id: 'did:web:ivs.academy', name: 'IVS Academy' },
+          credentialSubject: { id: user.id || '', employeeId: user.employeeId || emp, name: user.displayName || user.userPrincipalName, title: user.jobTitle || '' },
+          issuanceDate: new Date().toISOString(),
+          proof: { type: 'LinkedDataSignature', created: new Date().toISOString(), proofPurpose: 'assertionMethod' }
+        };
+        el('jsonInput').value = JSON.stringify(cred, null, 2);
+        // auto-render
+        el('renderBtn').click();
+      }catch(err){ console.error(err); showError('Lookup error: '+err.message); }
+    });
+
     el('fileInput').addEventListener('change', function(e){
       var f = e.target.files[0]; if(!f) return; var reader = new FileReader(); reader.onload = function(ev){ el('jsonInput').value = ev.target.result; }; reader.readAsText(f);
     });

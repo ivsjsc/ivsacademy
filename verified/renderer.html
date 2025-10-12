@@ -24,6 +24,12 @@
         <button id="downloadBtn" class="btn" style="background:#10b981;">Download PNG</button>
         <button id="copyUrlBtn" class="btn" style="background:#64748b;">Copy data URL</button>
       </div>
+      <div class="flex items-center gap-2 mt-2">
+        <input type="checkbox" id="useServerLookup" />
+        <label for="useServerLookup" class="muted">Tự động lấy thông tin từ Entra (server-side)</label>
+        <input id="lookupEmployeeId" placeholder="Nhập EmployeeId để tìm" class="ml-3 p-1 rounded bg-[#081122]" />
+        <button id="lookupBtn" class="btn ml-2" style="background:#7c3aed">Tìm</button>
+      </div>
       <div id="error" class="text-red-400 mt-2"></div>
     </div>
 
