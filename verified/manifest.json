@@ -1,0 +1,23 @@
+{
+  "@context": ["https://www.w3.org/2018/credentials/v1"],
+  "id": "urn:uuid:ivs-verified-employee-v1",
+  "name": "IVS Verified Employee",
+  "description": "Credential contract for IVS employees (demo).",
+  "issuer": {
+    "id": "did:web:ivs.academy",
+    "name": "IVS Academy"
+  },
+  "display": {
+    "title": "IVS Verified Employee",
+    "logo": "https://ivs.academy/images/logo.png"
+  },
+  "verifiableCredential": {
+    "type": ["VerifiableCredential", "EmployeeID"],
+    "claims": [
+      { "name": "employeeId", "displayName": "Employee ID", "required": true },
+      { "name": "name", "displayName": "Full name", "required": false },
+      { "name": "title", "displayName": "Title", "required": false },
+      { "name": "department", "displayName": "Department", "required": false }
+    ]
+  }
+}
