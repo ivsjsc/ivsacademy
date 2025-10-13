@@ -5,6 +5,7 @@ export default function AssistantFull(){
   const [messages, setMessages] = useState<Array<{from:'user'|'bot', text:string}>>([])
   const inputRef = useRef<HTMLInputElement | null>(null)
   const mediaRef = useRef<MediaRecorder | null>(null)
+  const storageKey = 'ivs_assistant_history'
 
   useEffect(()=>{
     // expose open function
@@ -18,20 +19,61 @@ export default function AssistantFull(){
     return ()=> window.removeEventListener('ivs:open-assistant', handler as EventListener)
   }, [])
 
+  // load persisted history
+  useEffect(()=>{
+    try{
+      const raw = localStorage.getItem(storageKey)
+      if (raw){
+        const parsed = JSON.parse(raw)
+        if (Array.isArray(parsed)) setMessages(parsed)
+      }
+    }catch(e){ console.warn('load history', e) }
+  }, [])
+
+  // persist history on changes
+  useEffect(()=>{
+    try{ localStorage.setItem(storageKey, JSON.stringify(messages)) }catch(e){ }
+  }, [messages])
+
   function sendMessage(text:string){
     if (!text) return
     setMessages(m => [...m, {from:'user', text}])
     inputRef.current!.value = ''
     // call server-side AI proxy
+    // try fetch and support streaming responses (text/event-stream or chunked)
     fetch('/api/xai', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt: text })
     }).then(async res=>{
       if (!res.ok) throw new Error('AI proxy error')
-      const data = await res.json()
-      const reply = data && (data.reply || data.output || data.text) ? (data.reply || data.output || data.text) : JSON.stringify(data)
-      setMessages(m=>[...m, {from:'bot', text: String(reply)}])
+      const ct = res.headers.get('content-type') || ''
+      if (ct.includes('text/event-stream') || ct.includes('stream')){
+        // streaming: create a bot placeholder and append chunks
+        setMessages(m=>[...m, {from:'bot', text: ''}])
+        const reader = res.body!.getReader()
+        const decoder = new TextDecoder()
+        let done = false
+        let botIndex = -1
+        // find last bot placeholder index
+        setMessages(prev=>{ botIndex = prev.length - 1; return prev })
+        while(!done){
+          const { value, done: d } = await reader.read()
+          if (value) {
+            const chunk = decoder.decode(value)
+            setMessages(prev=>{
+              const copy = prev.slice()
+              if (copy[botIndex]) copy[botIndex].text += chunk
+              return copy
+            })
+          }
+          done = d
+        }
+      } else {
+        const data = await res.json()
+        const reply = data && (data.reply || data.output || data.text) ? (data.reply || data.output || data.text) : JSON.stringify(data)
+        setMessages(m=>[...m, {from:'bot', text: String(reply)}])
+      }
     }).catch(err=>{
       console.warn('xai send err', err)
       setMessages(m=>[...m, {from:'bot', text: 'Xin lỗi, không thể trả lời lúc này.'}])
