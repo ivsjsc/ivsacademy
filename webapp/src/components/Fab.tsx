@@ -1,9 +1,9 @@
 import React from 'react'
+import RemoteComponent from './RemoteComponent'
 
 export default function Fab(){
-  return (
-    <div id="ivs-react-fab" style={{position:'fixed',right:24,bottom:24}}>
-      <button style={{background:'#0b5fff',color:'#fff',padding:'12px 16px',borderRadius:999}}>Chat</button>
-    </div>
-  )
+  return <RemoteComponent src="/components/fab-container.html" onInit={() => {
+    // ensure the global controller is initialized if script executed
+    try { window.IVSFabController && typeof window.IVSFabController.init === 'function' && window.IVSFabController.init() } catch(e){}
+  }} />
 }
