@@ -77,6 +77,8 @@ const IVSFabController = {
         }
         this.populateMenus();
         this.bindEvents();
+    // Ensure assistant main button opens assistant directly
+    this.ensureAssistantMainButton();
         this.addRippleEffect();
         this.isInitialized = true; // Đánh dấu đã khởi tạo
         
@@ -680,6 +682,50 @@ if (!window.IVSChatbotController) {
                     // Fallback to opening in a new window/tab
                     const w = window.open('/apps/ivs-assistant.html', '_blank', 'toolbar=0,location=0,menubar=0,width=420,height=720');
                     if (!w) window.componentLog('Popup blocked when opening IVS Assistant fallback.', 'warn');
+                }
+            },
+
+            /**
+             * Ensure assistant main FAB opens the assistant directly.
+             * This handler runs in the capture phase and stops other click handlers
+             * so the main FAB reliably opens the assistant regardless of submenu state.
+             */
+            ensureAssistantMainButton() {
+                try {
+                    const main = document.getElementById('assistant-main-btn');
+                    if (!main) return;
+                    // Use capture-phase listener so we can stop other handlers and provide a direct open behavior
+                    main.addEventListener('click', (e) => {
+                        try {
+                            e.stopImmediatePropagation();
+                            e.preventDefault();
+                        } catch (_) {}
+                        // Prefer in-page assistant. If it doesn't exist yet, try to instantiate it
+                        try {
+                            if (!window.IVSAssistant && typeof IVSAssistant === 'function') {
+                                try {
+                                    window.IVSAssistant = new IVSAssistant();
+                                    // give it a moment to init (it will attempt init in constructor)
+                                } catch (e) {
+                                    window.componentLog('Failed to construct IVSAssistant: ' + e, 'warn');
+                                }
+                            }
+                            if (window.IVSAssistant && typeof window.IVSAssistant.openChat === 'function') {
+                                try { window.IVSAssistant.openChat(); return; } catch (err) { window.componentLog('IVSAssistant.openChat failed: ' + err, 'warn'); }
+                            }
+                        } catch (err) {
+                            window.componentLog('Error checking/creating IVSAssistant: ' + err, 'warn');
+                        }
+                        // Fallback to chat controller overlay
+                        if (window.IVSChatbotController && typeof window.IVSChatbotController.open === 'function') {
+                            try { window.IVSChatbotController.open(); return; } catch (err) { window.componentLog('IVSChatbotController.open failed: ' + err, 'warn'); }
+                        }
+                        // As last resort, open submenu
+                        try { IVSFabController.openSubmenu(main); } catch (e) { window.componentLog('Failed to open assistant submenu: ' + e, 'warn'); }
+                    }, { capture: true });
+                    window.componentLog('ensureAssistantMainButton: capture handler attached to #assistant-main-btn', 'info');
+                } catch (err) {
+                    window.componentLog('ensureAssistantMainButton error: ' + err, 'warn');
                 }
             },
             close() {
