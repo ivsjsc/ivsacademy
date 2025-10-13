@@ -98,6 +98,19 @@ class IVSAssistant {
                 }
             }));
         }
+        // Microphone record button
+        const recordBtn = document.getElementById('chat-record');
+        if (recordBtn) {
+            recordBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                try {
+                    await this.handleRecordFlow(recordBtn);
+                } catch (err) {
+                    console.warn('Recording flow error', err);
+                    this.addMessage('bot', 'Không thể ghi âm lúc này. Vui lòng thử lại bằng gõ văn bản.', { persist: true });
+                }
+            });
+        }
         // Clear conversation button
         const clearBtn = document.getElementById('chat-clear');
         if (clearBtn) {
@@ -109,6 +122,68 @@ class IVSAssistant {
                 // Add initial bot message
                 this.addMessage('bot', this.opts.initialMessage, { persist: true });
             });
+        }
+    }
+
+    async handleRecordFlow(recordBtn) {
+        // Toggle recording: start if not recording, stop if recording
+        const audio = window.IVSAssistantAudio;
+        if (!audio) throw new Error('audio_helper_missing');
+        if (!audio.isRecording()) {
+            const ok = await audio.start();
+            if (ok) {
+                // update UI - simple: change icon color
+                recordBtn.classList.add('recording');
+                recordBtn.setAttribute('aria-pressed', 'true');
+                // Optionally show small timer — omitted for brevity
+            } else {
+                throw new Error('record_start_failed');
+            }
+            return;
+        }
+
+        // Stop recording and upload
+        const result = audio.stop();
+        recordBtn.classList.remove('recording');
+        recordBtn.setAttribute('aria-pressed', 'false');
+        if (!result || !result.blob) throw new Error('no_audio_blob');
+
+        // Show uploading and placeholder transcription
+        const uploadingBubble = this.addMessage('user', 'Đang tải file âm thanh...', { persist: false });
+        try {
+            // send audio; pass current input value as prompt if present
+            const prompt = (this.input && this.input.value) ? this.input.value.trim() : '';
+            const resp = await audio.sendAudio(result.blob, { prompt, sessionId: (sessionStorage.getItem('ivs_session') || '') });
+            // replace uploading text with transcription (if provided)
+            const transcribed = resp && resp.text ? resp.text : (resp && resp.transcript) ? resp.transcript : '';
+            if (transcribed) {
+                uploadingBubble.textContent = transcribed;
+                // persist transcription as user message
+                this.conversation.push({ sender: 'user', text: transcribed, ts: Date.now() });
+                try { sessionStorage.setItem(this.opts.storageKey, JSON.stringify(this.conversation)); } catch(e){}
+            } else {
+                uploadingBubble.textContent = '(Không có nội dung được nhận dạng)';
+            }
+
+            // If server also included assistant reply, render it; otherwise call requestAI with transcribed text
+            const assistantReply = resp && (resp.reply || resp.result || resp.assistant || resp.data);
+            if (assistantReply) {
+                this.addMessage('bot', assistantReply, { persist: true });
+            } else if (transcribed) {
+                // make the assistant respond to the transcribed text
+                this.showTypingIndicator();
+                try {
+                    await this.requestAIStream(transcribed, { timeout: this.opts.timeoutMs });
+                } catch (err) {
+                    this.hideTypingIndicator();
+                    this.addMessage('bot', 'Không thể lấy phản hồi từ assistant. Vui lòng thử lại.', { persist: true });
+                }
+            }
+        } catch (err) {
+            console.error('Audio upload error', err);
+            // replace bubble content with error message
+            if (uploadingBubble) uploadingBubble.textContent = 'Lỗi khi tải âm thanh. Vui lòng thử lại.';
+            throw err;
         }
     }
 
