@@ -12,30 +12,58 @@ export default function AssistantFull(){
   }, [])
 
   useEffect(()=>{
-    // simple handler to allow external scripts to open the assistant
-    const handler = (e:any) => { if (e.detail === 'open-assistant') setOpen(true) }
-    window.addEventListener('ivs-open-assistant', handler as EventListener)
-    return ()=> window.removeEventListener('ivs-open-assistant', handler as EventListener)
+    // handler to allow external scripts to open the assistant using CustomEvent 'ivs:open-assistant'
+    const handler = (e:Event) => setOpen(true)
+    window.addEventListener('ivs:open-assistant', handler as EventListener)
+    return ()=> window.removeEventListener('ivs:open-assistant', handler as EventListener)
   }, [])
 
   function sendMessage(text:string){
     if (!text) return
     setMessages(m => [...m, {from:'user', text}])
     inputRef.current!.value = ''
-    // naive echo bot: replace with real /api/xai calls later
-    setTimeout(()=> setMessages(m=>[...m, {from:'bot', text: 'Echo: '+text}]), 400)
+    // call server-side AI proxy
+    fetch('/api/xai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: text })
+    }).then(async res=>{
+      if (!res.ok) throw new Error('AI proxy error')
+      const data = await res.json()
+      const reply = data && (data.reply || data.output || data.text) ? (data.reply || data.output || data.text) : JSON.stringify(data)
+      setMessages(m=>[...m, {from:'bot', text: String(reply)}])
+    }).catch(err=>{
+      console.warn('xai send err', err)
+      setMessages(m=>[...m, {from:'bot', text: 'Xin lỗi, không thể trả lời lúc này.'}])
+    })
   }
 
   async function startRecording(){
+    // prefer the shared helper if present
     try{
+      const helper = (window as any).IVSAssistantAudio
+      if (helper && helper.start && helper.stop){
+        helper.start()
+        return
+      }
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       const mr = new MediaRecorder(stream)
       const chunks: BlobPart[] = []
       mr.ondataavailable = e => chunks.push(e.data)
       mr.onstop = async ()=>{
         const blob = new Blob(chunks, { type: 'audio/webm' })
-        // send to /api/xai/audio in future; for now add placeholder message
-        setMessages(m=>[...m, {from:'user', text: '[Recorded audio sent]'}])
+        // upload to server /api/xai/audio
+        const fd = new FormData()
+        fd.append('file', blob, 'record.webm')
+        try{
+          const r = await fetch('/api/xai/audio', { method: 'POST', body: fd })
+          if (r.ok){
+            const j = await r.json()
+            setMessages(m=>[...m, {from:'bot', text: j.transcript || '[Đã nhận audio]'}])
+          } else {
+            setMessages(m=>[...m, {from:'bot', text: 'Không thể gửi audio.'}])
+          }
+        }catch(e){ setMessages(m=>[...m, {from:'bot', text: 'Lỗi gửi audio.'}]) }
       }
       mr.start()
       mediaRef.current = mr
