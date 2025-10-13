@@ -8,7 +8,11 @@ const fetch = require('node-fetch');
 require('dotenv').config();
 
 const app = express();
-app.use(express.json({ limit: '1mb' }));
+// Increase JSON limit slightly (some endpoints may POST metadata)
+app.use(express.json({ limit: '5mb' }));
+// For multipart handling (file uploads)
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: (parseInt(process.env.XAI_MAX_AUDIO_MB || '15', 10) * 1024 * 1024) } });
 app.use(morgan('tiny'));
 
 // Simple AI proxy endpoint for the frontend assistant.
@@ -355,6 +359,92 @@ app.post('/api/xai', async (req, res) => {
   }catch(err){
     console.error('XAI proxy error', err);
     return res.status(502).json({ error: 'bad_gateway', detail: String(err) });
+  }
+});
+
+// POST /api/xai/audio - accept audio uploads (multipart/form-data) and forward to configured provider
+app.post('/api/xai/audio', upload.single('audio'), async (req, res) => {
+  try {
+    // Basic config
+    const apiKey = process.env.XAI_API_KEY || process.env.AI_API_KEY || '';
+    const provider = process.env.XAI_PROVIDER || 'gpt4o';
+
+    // Require API Key for providers that will be used directly
+    if (!apiKey && provider === 'gpt4o') return res.status(500).json({ error: 'xai_api_not_configured' });
+
+    // Accept either multipart upload or base64 in JSON
+    let audioBuffer = null;
+    let filename = 'recording.webm';
+    if (req.file && req.file.buffer) {
+      audioBuffer = req.file.buffer;
+      filename = req.file.originalname || filename;
+    } else if (req.body && req.body.audio_base64) {
+      // allow JSON payload with base64
+      const base64 = req.body.audio_base64;
+      audioBuffer = Buffer.from(base64, 'base64');
+      filename = req.body.filename || filename;
+    } else {
+      return res.status(400).json({ error: 'missing_audio' });
+    }
+
+    // Quick size guard
+    const maxBytes = parseInt(process.env.XAI_MAX_AUDIO_MB || '15', 10) * 1024 * 1024;
+    if (audioBuffer.length > maxBytes) return res.status(413).json({ error: 'audio_too_large' });
+
+    // If provider supports audio directly (e.g., gpt-4o-audio-preview), forward multipart
+    if (provider === 'gpt4o') {
+      // We'll forward to a sample expected endpoint. Update based on actual provider API.
+      const endpoint = process.env.GPT_AUDIO_ENDPOINT || 'https://api.openai.com/v1/audio/transcriptions';
+      // Use node-fetch multipart
+      const FormData = require('form-data');
+      const form = new FormData();
+      form.append('file', audioBuffer, { filename });
+      if (req.body && req.body.prompt) form.append('prompt', req.body.prompt);
+
+      const headers = Object.assign({}, form.getHeaders());
+      headers['Authorization'] = `Bearer ${process.env.OPENAI_API_KEY || apiKey}`;
+
+      const upstream = await fetch(endpoint, { method: 'POST', headers, body: form });
+      const txt = await upstream.text();
+      const contentType = upstream.headers.get('content-type') || '';
+      if (!upstream.ok) return res.status(upstream.status).type(contentType).send(txt);
+      // If JSON, parse and return unified shape
+      if (contentType.includes('application/json')) {
+        const j = JSON.parse(txt);
+        // Try to extract transcription text (varies by provider)
+        const transcript = j.text || j.transcript || (j.data && j.data[0] && j.data[0].text) || null;
+        return res.json({ ok: true, model: provider, text: transcript || '', meta: { size: audioBuffer.length } });
+      }
+      return res.type(contentType).send(txt);
+    }
+
+    // Fallback: do STT with upstream if available, then forward text to /api/xai
+    // For now, attempt a simple flow: if process.env.STT_API and STT_API_KEY are present, call them.
+    if (process.env.STT_API && process.env.STT_API_KEY) {
+      const sttEndpoint = process.env.STT_API;
+      const FormData = require('form-data');
+      const form = new FormData();
+      form.append('file', audioBuffer, { filename });
+      const headers = Object.assign({}, form.getHeaders());
+      headers['Authorization'] = `Bearer ${process.env.STT_API_KEY}`;
+      const upr = await fetch(sttEndpoint, { method: 'POST', headers, body: form });
+      if (!upr.ok) {
+        const t = await upr.text();
+        return res.status(502).json({ error: 'stt_failed', detail: t });
+      }
+      const sttJson = await upr.json();
+      const text = sttJson.text || sttJson.transcript || '';
+      // Forward to xai endpoint for reasoning
+      const forwardResp = await fetch('http://localhost:' + (process.env.PORT || 3000) + '/api/xai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{ role: 'user', content: (req.body.prompt ? req.body.prompt + '\n' : '') + text }] }) });
+      const j = await forwardResp.json();
+      return res.json({ ok: true, model: 'stt+' + (process.env.XAI_PROVIDER || 'unknown'), text: j?.choices?.[0]?.message?.content || j?.reply || j?.result || '', meta: { stt: sttJson } });
+    }
+
+    // If we get here, we don't have an upstream to process audio
+    return res.status(501).json({ error: 'audio_processing_not_configured' });
+  } catch (err) {
+    console.error('audio endpoint error', err);
+    return res.status(500).json({ error: 'internal_error', detail: String(err) });
   }
 });
 
