@@ -194,6 +194,9 @@
 <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" data-loading-text="Đang tải menu..." id="header-placeholder">
 <!-- This content will be dynamically loaded by loadComponents.js -->
 </header>
+<!-- React placeholders for incremental mount -->
+<div id="fab-placeholder" aria-hidden="true"></div>
+<div id="assistant-placeholder" aria-hidden="true"></div>
 <!-- MOBILE MENU OVERLAY PLACEHOLDER -->
 <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu">
 <!-- This content will be dynamically loaded by loadComponents.js -->
@@ -1224,6 +1227,55 @@
     });
 </script>
 
+<!-- Mount React components if present (tries sync then async loader) -->
+<script>
+        (function(){
+            // Attempt to mount if bundle already present, else inject the built bundle and mount after load.
+            const builtBundle = '/webapp-dist/assets/index-_Tmnr9SX.js';
+            function doMountOnce(m){
+                try {
+                    if (!m) return;
+                    m.mountFab && m.mountFab('#fab-placeholder');
+                    m.mountAssistant && m.mountAssistant('#assistant-placeholder');
+                } catch(e){ console.warn('mount error', e); }
+            }
+
+            async function tryMount(){
+                if (window.mountIVSReactComponents) {
+                    doMountOnce(window.mountIVSReactComponents);
+                    return;
+                }
+                if (window.mountIVSReactComponentsAsync) {
+                    try {
+                        const m = await window.mountIVSReactComponentsAsync('/webapp-dist');
+                        doMountOnce(m);
+                        return;
+                    } catch(e) { /* ignore and fallthrough to dynamic loader */ }
+                }
+
+                // If we reached here, load the built bundle script (one-time)
+                if (!document.querySelector('script[data-ivs-react-bundle]')) {
+                    const s = document.createElement('script');
+                    s.src = builtBundle;
+                    s.defer = true;
+                    s.setAttribute('data-ivs-react-bundle', '1');
+                    s.onload = function(){
+                        // The built bundle exposes window.mountIVSReactComponents
+                        if (window.mountIVSReactComponents) {
+                            doMountOnce(window.mountIVSReactComponents);
+                        } else if (window.mountIVSReactComponentsAsync) {
+                            window.mountIVSReactComponentsAsync('/webapp-dist').then(doMountOnce).catch(()=>{});
+                        }
+                    };
+                    s.onerror = function(){ console.warn('Failed to load React bundle:', builtBundle); };
+                    document.head.appendChild(s);
+                }
+            }
+
+            window.addEventListener('load', tryMount);
+            setTimeout(tryMount, 1000);
+        })();
+</script>
 <script src="/js/loadComponents.js" defer></script>
 </body>
 </html>
