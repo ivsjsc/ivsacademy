@@ -1,4 +1,4 @@
-// Simple script to dynamically load built React bundle and call mount API
+// Runtime loader: discovers the built React bundle in webapp-dist and loads it
 (function(){
   function loadScript(src){
     return new Promise((resolve, reject)=>{
@@ -11,10 +11,40 @@
     })
   }
 
-  // call this from pages after loadComponents has injected placeholders
-  (window as any).mountIVSReactComponentsAsync = async function(basePath='/webapp-dist'){
-    if ((window as any).mountIVSReactComponents) return window.mountIVSReactComponents
-    await loadScript(basePath + '/assets/index.js')
-    return (window as any).mountIVSReactComponents
+  async function findBundle(basePath='/webapp-dist'){
+    try{
+      const resp = await fetch(basePath + '/index.html', {cache: 'no-store'})
+      if (!resp.ok) return null
+      const text = await resp.text()
+      // find first script src like /assets/index-*.js
+      const m = text.match(/src=["']?(.*?)assets\/index(-[\w]+)?\.js["']?/) || text.match(/href=["']?(.*?)assets\/index(-[\w]+)?\.js["']?/)
+      if (m && m[1]){
+        // m[1] may be absolute path or relative; construct absolute
+        const prefix = m[1].endsWith('/') ? m[1] : (m[1].length? m[1].replace(/index\.html$/, '') : '/')
+        return (prefix || '/') + 'assets/index' + (m[2]||'') + '.js'
+      }
+      // fallback: try common path
+      return basePath + '/assets/index.js'
+    } catch(e){
+      return null
+    }
+  }
+
+  (window).mountIVSReactComponentsAsync = async function(basePath='/webapp-dist'){
+    if ((window).mountIVSReactComponents) return (window).mountIVSReactComponents
+    // try existing helper first
+    try{
+      const candidate = await findBundle(basePath)
+      if (!candidate) return null
+      // If candidate is relative, ensure it starts with '/'
+      const src = candidate.startsWith('/') ? candidate : (basePath + '/' + candidate)
+      if (!document.querySelector('script[data-ivs-react-bundle]')){
+        await loadScript(src)
+      }
+      return (window).mountIVSReactComponents || null
+    } catch(e){
+      console.warn('mountIVSReactComponentsAsync failed', e)
+      return null
+    }
   }
 })();
