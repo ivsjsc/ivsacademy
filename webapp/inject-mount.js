@@ -19,9 +19,11 @@
       // find first script src like /assets/index-*.js
       const m = text.match(/src=["']?(.*?)assets\/index(-[\w]+)?\.js["']?/) || text.match(/href=["']?(.*?)assets\/index(-[\w]+)?\.js["']?/)
       if (m && m[1]){
-        // m[1] may be absolute path or relative; construct absolute
-        const prefix = m[1].endsWith('/') ? m[1] : (m[1].length? m[1].replace(/index\.html$/, '') : '/')
-        return (prefix || '/') + 'assets/index' + (m[2]||'') + '.js'
+        // m[1] may be absolute path or relative; construct a path we can fetch.
+        const candidatePath = (m[1].endsWith('/') ? m[1] : (m[1].length? m[1].replace(/index\.html$/, '') : '/')) + 'assets/index' + (m[2]||'') + '.js'
+        // If the candidate is absolute like /assets/..., rewrite to basePath + /assets/...
+        if (candidatePath.startsWith('/assets/')) return basePath + candidatePath
+        return candidatePath
       }
       // fallback: try common path
       return basePath + '/assets/index.js'
