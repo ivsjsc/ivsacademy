@@ -1,50 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="vi">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>IVS Verified Card Renderer</title>
-  <link rel="stylesheet" href="/css/tailwind.css">
-  <style>
+<head><link href="https://fonts.googleapis.com" rel="preconnect" crossorigin><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>IVS Verified Card Renderer</title>
+<link href="/css/tailwind.css" rel="stylesheet"/>
+<style>
     body{font-family:Inter,system-ui,Arial; background:#0f1724; color:#e6eef8}
     .card{background:linear-gradient(180deg,#0b1220,#071027);border:1px solid rgba(255,255,255,0.04);padding:1rem;border-radius:12px}
     .btn{background:#2563eb;color:white;padding:0.5rem 0.75rem;border-radius:8px}
     .muted{color:#9fb0c9}
   </style>
-</head>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/></head>
 <body class="p-8">
-  <main class="max-w-3xl mx-auto">
-    <h1 class="text-2xl font-semibold mb-4">IVS - Renderer thẻ Verified ID</h1>
-    <div class="card mb-4">
-      <label class="block mb-2">Dán hoặc tải lên file JSON credential</label>
-      <textarea id="jsonInput" rows="8" class="w-full mb-3" placeholder='Paste JSON credential here'></textarea>
-      <div class="flex gap-3">
-        <input id="fileInput" type="file" accept="application/json" />
-        <button id="renderBtn" class="btn">Render</button>
-        <button id="downloadBtn" class="btn" style="background:#10b981;">Download PNG</button>
-        <button id="copyUrlBtn" class="btn" style="background:#64748b;">Copy data URL</button>
-      </div>
-      <div class="flex items-center gap-2 mt-2">
-        <input type="checkbox" id="useServerLookup" />
-        <label for="useServerLookup" class="muted">Tự động lấy thông tin từ Entra (server-side)</label>
-        <input id="lookupEmployeeId" placeholder="Nhập EmployeeId để tìm" class="ml-3 p-1 rounded bg-[#081122]" />
-        <button id="lookupBtn" class="btn ml-2" style="background:#7c3aed">Tìm</button>
-      </div>
-      <div id="error" class="text-red-400 mt-2"></div>
-    </div>
-
-    <div class="card mb-4">
-      <h2 class="text-lg font-medium mb-2">Preview</h2>
-      <div id="previewArea" style="display:flex;gap:1rem;align-items:center">
-        <div id="cardCanvas" style="width:320px;height:180px;display:flex;flex-direction:column;justify-content:center;padding:12px;border-radius:10px;background:#0b2140;color:#fff"></div>
-        <div id="qrcode"></div>
-      </div>
-    </div>
-
-    <div class="muted text-sm">Ghi chú: QR code sẽ chứa data:application/json;base64,... hoặc hosted URL nếu manifest được host. Tránh public thông tin nhạy cảm nếu không muốn lộ.</div>
-  </main>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script src="/js/verified-renderer.js"></script>
+<main class="max-w-3xl mx-auto">
+<h1 class="text-2xl font-semibold mb-4">IVS - Renderer thẻ Verified ID</h1>
+<div class="card mb-4">
+<label class="block mb-2">Dán hoặc tải lên file JSON credential</label>
+<textarea class="w-full mb-3" id="jsonInput" placeholder="Paste JSON credential here" rows="8"></textarea>
+<div class="flex gap-3">
+<input accept="application/json" id="fileInput" type="file"/>
+<button class="btn" id="renderBtn">Render</button>
+<button class="btn" id="downloadBtn" style="background:#10b981;">Download PNG</button>
+<button class="btn" id="copyUrlBtn" style="background:#64748b;">Copy data URL</button>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<input id="useServerLookup" type="checkbox"/>
+<label class="muted" for="useServerLookup">Tự động lấy thông tin từ Entra (server-side)</label>
+<input class="ml-3 p-1 rounded bg-[#081122]" id="lookupEmployeeId" placeholder="Nhập EmployeeId để tìm"/>
+<button class="btn ml-2" id="lookupBtn" style="background:#7c3aed">Tìm</button>
+</div>
+<div class="text-red-400 mt-2" id="error"></div>
+</div>
+<div class="card mb-4">
+<h2 class="text-lg font-medium mb-2">Preview</h2>
+<div id="previewArea" style="display:flex;gap:1rem;align-items:center">
+<div id="cardCanvas" style="width:320px;height:180px;display:flex;flex-direction:column;justify-content:center;padding:12px;border-radius:10px;background:#0b2140;color:#fff"></div>
+<div id="qrcode"></div>
+</div>
+</div>
+<div class="muted text-sm">Ghi chú: QR code sẽ chứa data:application/json;base64,... hoặc hosted URL nếu manifest được host. Tránh public thông tin nhạy cảm nếu không muốn lộ.</div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="/js/verified-renderer.js"></script>
 </body>
 </html>

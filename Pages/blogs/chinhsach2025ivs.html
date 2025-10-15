@@ -1,16 +1,14 @@
 ﻿<!DOCTYPE html>
 
 <html class="scroll-smooth" lang="vi">
-<head><link href="//cdn.tailwindcss.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<head><link href="https://fonts.googleapis.com" rel="preconnect" crossorigin><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//cdn.tailwindcss.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Dashboard TÆ°Æ¡ng tÃ¡c: CÆ¡ há»™i ChÃ­nh sÃ¡ch cho IVS JSC 2025</title>
 <script defer="" src="https://cdn.tailwindcss.com"></script>
 <script defer="" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="css/tailwind.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Chosen Palette: Calm Harmony -->
 <!-- Application Structure Plan: TÃ´i Ä‘Ã£ thiáº¿t káº¿ má»™t á»©ng dá»¥ng dashboard má»™t trang vá»›i cáº¥u trÃºc theo chá»§ Ä‘á», thay vÃ¬ theo cáº¥u trÃºc tuyáº¿n tÃ­nh cá»§a bÃ¡o cÃ¡o. Cáº¥u trÃºc nÃ y bao gá»“m: 1) Pháº§n tá»•ng quan ná»•i báº­t, 2) Khu vá»±c khÃ¡m phÃ¡ cÃ¡c cÆ¡ há»™i chÃ­nh (Thá»‹ trÆ°á»ng Nháº­t Báº£n, An sinh xÃ£ há»™i) qua cÃ¡c tab tÆ°Æ¡ng tÃ¡c, 3) Biá»ƒu Ä‘á»“ so sÃ¡nh cÃ¡c lá»™ trÃ¬nh xuáº¥t kháº©u lao Ä‘á»™ng, 4) DÃ²ng thá»i gian phÃ¡p lÃ½, vÃ  5) Lá»™ trÃ¬nh chiáº¿n lÆ°á»£c cÃ³ thá»ƒ tÆ°Æ¡ng tÃ¡c. CÃ¡ch tiáº¿p cáº­n nÃ y cho phÃ©p ngÆ°á»i dÃ¹ng (quáº£n lÃ½ IVS) nhanh chÃ³ng náº¯m báº¯t cÃ¡c Ä‘iá»ƒm chÃ­nh vÃ  Ä‘i sÃ¢u vÃ o cÃ¡c lÄ©nh vá»±c há» quan tÃ¢m nháº¥t, thÃºc Ä‘áº©y viá»‡c ra quyáº¿t Ä‘á»‹nh chiáº¿n lÆ°á»£c hiá»‡u quáº£ hÆ¡n. Luá»“ng ngÆ°á»i dÃ¹ng Ä‘Æ°á»£c thiáº¿t káº¿ Ä‘á»ƒ dáº«n dáº¯t tá»« viá»‡c xÃ¡c Ä‘á»‹nh cÆ¡ há»™i Ä‘áº¿n viá»‡c lÃªn káº¿ hoáº¡ch hÃ nh Ä‘á»™ng. -->
 <!-- Visualization & Content Choices: BÃ¡o cÃ¡o -> Má»¥c tiÃªu -> PhÆ°Æ¡ng phÃ¡p -> TÆ°Æ¡ng tÃ¡c -> LÃ½ do -> ThÆ° viá»‡n. 1) So sÃ¡nh cÃ¡c Lá»™ trÃ¬nh XKLÄ -> So sÃ¡nh -> Biá»ƒu Ä‘á»“ ngang -> Click Ä‘á»ƒ xem chi tiáº¿t -> Trá»±c quan hÃ³a lá»£i Ã­ch, dá»… so sÃ¡nh -> Chart.js. 2) Giáº£i thÃ­ch Luáº­t BHXH -> ThÃ´ng tin -> CÃ¡c tháº» thÃ´ng tin tÆ°Æ¡ng tÃ¡c -> Click Ä‘á»ƒ láº­t tháº» -> ÄÆ¡n giáº£n hÃ³a cÃ¡c quy Ä‘á»‹nh phá»©c táº¡p -> HTML/CSS/JS. 3) TrÃ¬nh bÃ y cÃ¡c ngÃ nh Tokutei Ginou -> Tá»• chá»©c -> LÆ°á»›i cÃ¡c tháº» cÃ³ thá»ƒ lá»c -> Click Ä‘á»ƒ xem chi tiáº¿t -> Giao diá»‡n trá»±c quan, dá»… tÃ¬m kiáº¿m -> HTML/CSS/JS. 4) Hiá»ƒn thá»‹ Lá»™ trÃ¬nh chiáº¿n lÆ°á»£c -> HÆ°á»›ng dáº«n -> Dáº¡ng accordion -> Click Ä‘á»ƒ má»Ÿ rá»™ng -> TrÃ¬nh bÃ y thÃ´ng tin chi tiáº¿t má»™t cÃ¡ch gá»n gÃ ng -> HTML/CSS/JS. -->
@@ -71,7 +69,6 @@
 <link href="css/style.css" rel="stylesheet"/>
 <link href="css/animations.css" rel="stylesheet"/>
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 <meta content="Blog chia sáº» xu hÆ°á»›ng giÃ¡o dá»¥c má»›i nháº¥t, phÆ°Æ¡ng phÃ¡p há»c táº­p hiá»‡u quáº£ vÃ  kinh nghiá»‡m tá»« cÃ¡c chuyÃªn gia giÃ¡o dá»¥c hÃ ng Ä‘áº§u." name="description"/><meta content="Dashboard TÆ°Æ¡ng tÃ¡c: CÆ¡ há»™i ChÃ­nh sÃ¡ch cho IVS JSC 2025" property="og:title"/><meta content="Blog chia sáº» xu hÆ°á»›ng giÃ¡o dá»¥c má»›i nháº¥t, phÆ°Æ¡ng phÃ¡p há»c táº­p hiá»‡u quáº£ vÃ  kinh nghiá»‡m tá»« cÃ¡c chuyÃªn gia giÃ¡o dá»¥c hÃ ng Ä‘áº§u." property="og:description"/><meta content="website" property="og:type"/></head>
@@ -424,11 +421,9 @@
 <!-- Scripts -->
 <script src="js/utils.js"></script>
 <script defer="" src="js/animations.js"></script>
-
-<script defer src="js/utils.js"></script>
-<script defer src="js/language.js"></script>
-
-<script defer>
+<script defer="" src="js/utils.js"></script>
+<script defer="" src="js/language.js"></script>
+<script defer="">
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof window.loadCommonComponents === 'function') {
             window.loadCommonComponents().then(() => {
@@ -454,13 +449,6 @@
         }
     });
 </script>
-
-
-
-<script src="/ai/js/loadComponents.js" defer></script>
+<script defer="" src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
-
-
-
-

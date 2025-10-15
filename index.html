@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html class="scroll-smooth" lang="vi">
-<head><link href="//storage.googleapis.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+<head><link href="https://fonts.googleapis.com" rel="preconnect" crossorigin><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//storage.googleapis.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>IVS JSC - Hệ sinh thái Giáo dục, Công nghệ &amp; Nhân lực - I...</title>
@@ -18,11 +18,10 @@
 <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
 <!-- Fonts and Icons -->
 <link href="css/tailwind.css" rel="stylesheet"/>
-<link href="css/local-fonts-fallback.css" rel="stylesheet"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
 <!-- Language System -->
-<script src="js/language-init.js" defer></script>
+<script defer="" src="js/language-init.js"></script>
 <!-- Tailwind CSS & Config -->
 <style>
         /* CSS tuỳ chỉnh cho giao diện tối */
@@ -155,7 +154,7 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 2px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #60a5fa; }
     </style>
-    <script>
+<script>
         // Guarded Tailwind config: some pages include the CDN runtime (https://cdn.tailwindcss.com)
         // but on local/dev builds the global `tailwind` may be undefined. Only assign if present.
         try {
@@ -187,8 +186,8 @@
             console.warn('Error applying tailwind.config guard:', e && e.message ? e.message : e);
         }
     </script>
-    <!-- Load Font Awesome Icons -->
-</link></head>
+<!-- Load Font Awesome Icons -->
+</head>
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
 <!-- HEADER PLACEHOLDER -->
 <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" data-loading-text="Đang tải menu..." id="header-placeholder">
@@ -198,8 +197,8 @@
     Set window.DISABLE_IVS_WEBAPP_MOUNT = false in a console or a build step to re-enable. -->
 <script>window.DISABLE_IVS_WEBAPP_MOUNT = true;</script>
 <!-- React placeholders for incremental mount -->
-<div id="fab-placeholder" aria-hidden="true"></div>
-<div id="assistant-placeholder" aria-hidden="true"></div>
+<div aria-hidden="true" id="fab-placeholder"></div>
+<div aria-hidden="true" id="assistant-placeholder"></div>
 <!-- MOBILE MENU OVERLAY PLACEHOLDER -->
 <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu">
 <!-- This content will be dynamically loaded by loadComponents.js -->
@@ -208,12 +207,11 @@
 <!-- SECTION 1: HERO - IVS ACADEMY - CHINH PHỤC TƯƠNG LAI -->
 <section class="hero-section">
 <video autoplay="" class="absolute inset-0 w-full h-full object-cover" id="heroVideo" loop="" muted="" playsinline="">
-    <source src="/videos/videowebdesign.mp4" type="video/mp4"/>
-    <!-- local placeholder webm not available; mp4 will be used as fallback in dev -->
-    <img alt="Hình nền giới thiệu IVS Academy" class="absolute inset-0 w-full h-full object-cover" decoding="async" src="/images/ivsacademy.jpg"/>
-        <img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/minhtriet.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
-        <img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/webblog.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
-    
+<source src="/videos/videowebdesign.mp4" type="video/mp4"/>
+<!-- local placeholder webm not available; mp4 will be used as fallback in dev -->
+<img alt="Hình nền giới thiệu IVS Academy" class="absolute inset-0 w-full h-full object-cover" decoding="async" src="/images/ivsacademy.jpg"/>
+<img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="/images/pages/webs/minhtriet.png"/>
+<img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="/images/pages/webs/webblog.jpg"/>
 </video>
 <div class="hero-overlay"></div>
 <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -258,7 +256,6 @@
 </div>
 </div>
 </a>
-
 </div>
 </div>
 <!-- Scroll Down Indicator -->
@@ -267,7 +264,7 @@
 <i class="fas fa-chevron-down text-ivs-blue text-lg"></i>
 </a>
 </div>
-</section>
+</div></section>
 <!-- SECTION 2: IMPACT COUNTERS -->
 <section class="py-16 lg:py-24 bg-ivs-bg border-b border-ivs-border" id="impact-counters">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -292,103 +289,88 @@
 </section>
 <!-- START: SECTION 2.5 - DEMO APP SPOTLIGHT (IVS ENGLISH) -->
 <section class="py-16 md:py-24 bg-ivs-neutral-800 border-b border-ivs-border" id="demo-app-spotlight">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Left Side: Content & CTA -->
-            <div class="text-center lg:text-left">
-                <p class="text-xl font-semibold text-ivs-blue mb-3 tracking-wider uppercase" data-lang-key="demo_app_eyebrow">SẢN PHẨM EDTECH ĐỘT PHÁ</p>
-                <h2 class="text-4xl lg:text-5xl font-extrabold font-display text-white mb-4 leading-tight" data-lang-key="demo_app_title">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Left Side: Content & CTA -->
+<div class="text-center lg:text-left">
+<p class="text-xl font-semibold text-ivs-blue mb-3 tracking-wider uppercase" data-lang-key="demo_app_eyebrow">SẢN PHẨM EDTECH ĐỘT PHÁ</p>
+<h2 class="text-4xl lg:text-5xl font-extrabold font-display text-white mb-4 leading-tight" data-lang-key="demo_app_title">
                     IVS English Learners App: Nền tảng Học tập Tích hợp AI
                 </h2>
-                <p class="text-lg text-ivs-text-secondary mb-6 leading-relaxed" data-lang-key="demo_app_description">
+<p class="text-lg text-ivs-text-secondary mb-6 leading-relaxed" data-lang-key="demo_app_description">
                     Trải nghiệm giải pháp học Tiếng Anh toàn diện, được xây dựng dựa trên giáo trình chuẩn quốc tế, tích hợp công nghệ AI để cá nhân hóa lộ trình học, hỗ trợ viết (Writing Grader) và luyện nói (Speaking Partner) cho mọi học viên.
                 </p>
-                <!-- Key Features -->
-                <div class="grid grid-cols-2 gap-4 mb-8">
-                    <div class="flex items-start space-x-3">
-                        <i class="fas fa-robot text-ivs-cyan text-2xl mt-1 shrink-0"></i>
-                        <span class="text-white font-medium" data-lang-key="demo_app_feature1">AI Tutor & Grading</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <i class="fas fa-chart-line text-ivs-green text-2xl mt-1 shrink-0"></i>
-                        <span class="text-white font-medium" data-lang-key="demo_app_feature2">Progress Analytics</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <i class="fas fa-book-open text-ivs-purple text-2xl mt-1 shrink-0"></i>
-                        <span class="text-white font-medium" data-lang-key="demo_app_feature3">Curriculum & Ebook</span>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <i class="fas fa-users-viewfinder text-ivs-amber text-2xl mt-1 shrink-0"></i>
-                        <span class="text-white font-medium" data-lang-key="demo_app_feature4">Teacher Management</span>
-                    </div>
-                </div>
-                <!-- CTA Button -->
-                <a id="cta-button" class="inline-block bg-ivs-blue hover:bg-ivs-green text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 shadow-xl shadow-ivs-blue/40" href="https://eng.ivsacademy.edu.vn/" target="_blank" data-lang-key="demo_app_cta">
-                    <i class="fas fa-arrow-right-to-bracket mr-2"></i> Trải nghiệm Demo ngay
+<!-- Key Features -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="flex items-start space-x-3">
+<i class="fas fa-robot text-ivs-cyan text-2xl mt-1 shrink-0"></i>
+<span class="text-white font-medium" data-lang-key="demo_app_feature1">AI Tutor &amp; Grading</span>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-chart-line text-ivs-green text-2xl mt-1 shrink-0"></i>
+<span class="text-white font-medium" data-lang-key="demo_app_feature2">Progress Analytics</span>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-book-open text-ivs-purple text-2xl mt-1 shrink-0"></i>
+<span class="text-white font-medium" data-lang-key="demo_app_feature3">Curriculum &amp; Ebook</span>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-users-viewfinder text-ivs-amber text-2xl mt-1 shrink-0"></i>
+<span class="text-white font-medium" data-lang-key="demo_app_feature4">Teacher Management</span>
+</div>
+</div>
+<!-- CTA Button -->
+<a class="inline-block bg-ivs-blue hover:bg-ivs-green text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 shadow-xl shadow-ivs-blue/40" data-lang-key="demo_app_cta" href="https://eng.ivsacademy.edu.vn/" id="cta-button" target="_blank">
+<i class="fas fa-arrow-right-to-bracket mr-2"></i> Trải nghiệm Demo ngay
                 </a>
-            </div>
-            
-            <!-- Right Side: Image Grid/Mockup -->
-            <div class="relative flex justify-center p-4 md:p-8 bg-black/50 rounded-3xl shadow-2xl border border-ivs-border/50">
-                
-                <!-- Main Mockup Image (Tập trung vào AI Assistant) -->
-                <div class="relative w-full max-w-lg lg:max-w-none">
-                    <img id="main-mockup" src="/images/pages/englishlearners/10.jpg" alt="Giao diện IVS English AI Lesson Assistant (Click để xem Album)" 
-                         class="rounded-xl shadow-2xl ring-4 ring-ivs-blue/50 transform rotate-1 transition-all duration-500 hover:rotate-0 main-mockup" 
-                         onclick="openLightbox(9)" 
-                         decoding="async" loading="lazy">
-                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 rounded-xl pointer-events-none transition-opacity duration-300 opacity-0 hover:opacity-100">
-                        <span class="text-white text-xl font-bold p-3 bg-ivs-blue/70 rounded-full" data-lang-key="demo_app_hover_text">
-                            <i class="fas fa-search-plus mr-2"></i> Xem Album 10 Ảnh
+</div>
+<!-- Right Side: Image Grid/Mockup -->
+<div class="relative flex justify-center p-4 md:p-8 bg-black/50 rounded-3xl shadow-2xl border border-ivs-border/50">
+<!-- Main Mockup Image (Tập trung vào AI Assistant) -->
+<div class="relative w-full max-w-lg lg:max-w-none">
+<img alt="Giao diện IVS English AI Lesson Assistant (Click để xem Album)" class="rounded-xl shadow-2xl ring-4 ring-ivs-blue/50 transform rotate-1 transition-all duration-500 hover:rotate-0 main-mockup" decoding="async" id="main-mockup" loading="lazy" onclick="openLightbox(9)" src="/images/pages/englishlearners/10.jpg"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 rounded-xl pointer-events-none transition-opacity duration-300 opacity-0 hover:opacity-100">
+<span class="text-white text-xl font-bold p-3 bg-ivs-blue/70 rounded-full" data-lang-key="demo_app_hover_text">
+<i class="fas fa-search-plus mr-2"></i> Xem Album 10 Ảnh
                         </span>
-                    </div>
-                </div>
-
-                <!-- Chú thích nhỏ cho mobile -->
-                <p class="text-sm text-ivs-text-secondary mt-4 block lg:hidden text-center" data-lang-key="demo_app_mobile_note">
+</div>
+</div>
+<!-- Chú thích nhỏ cho mobile -->
+<p class="text-sm text-ivs-text-secondary mt-4 block lg:hidden text-center" data-lang-key="demo_app_mobile_note">
                     Nhấn vào ảnh để xem chi tiết 10 giao diện khác nhau của ứng dụng.
                 </p>
-            </div>
-        </div>
-    </div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- START: LIGHTBOX ALBUM MODAL -->
 <!-- Thêm class hidden của Tailwind để đảm bảo modal bị ẩn ngay từ đầu, và thêm opacity-0 để chuẩn bị cho transition -->
-<div id="lightbox-modal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden opacity-0 lightbox-transition" onclick="closeLightbox()">
-    <div class="relative w-11/12 max-w-5xl h-5/6 bg-ivs-neutral-800 rounded-lg shadow-2xl" onclick="event.stopPropagation()">
-        
-        <!-- Nút Đóng -->
-        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-3xl hover:text-ivs-red transition z-10">
-            <i class="fas fa-times-circle"></i>
-        </button>
-
-        <!-- Tiêu đề & Chỉ số -->
-        <div class="p-4 text-center">
-            <h3 class="text-xl font-bold text-ivs-blue" data-lang-key="lightbox_title">IVS English Learners App: Album Tính năng (1/10)</h3>
-        </div>
-
-        <!-- Carousel Nội dung -->
-        <div class="relative w-full h-[calc(100%-80px)] p-4 flex items-center justify-center">
-            <!-- Ảnh Lớn -->
-            <img id="lightbox-image" src="" alt="Album Ảnh Ứng dụng" class="max-w-full max-h-full object-contain rounded-lg shadow-xl">
-            
-            <!-- Nút Prev -->
-            <button onclick="changeImage(-1)" class="absolute left-0 lg:left-4 p-3 bg-white/10 hover:bg-white/30 text-white text-2xl rounded-full transition transform hover:scale-110">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            
-            <!-- Nút Next -->
-            <button onclick="changeImage(1)" class="absolute right-0 lg:right-4 p-3 bg-white/10 hover:bg-white/30 text-white text-2xl rounded-full transition transform hover:scale-110">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-
-    </div>
+<div class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden opacity-0 lightbox-transition" id="lightbox-modal" onclick="closeLightbox()">
+<div class="relative w-11/12 max-w-5xl h-5/6 bg-ivs-neutral-800 rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+<!-- Nút Đóng -->
+<button class="absolute top-4 right-4 text-white text-3xl hover:text-ivs-red transition z-10" onclick="closeLightbox()">
+<i class="fas fa-times-circle"></i>
+</button>
+<!-- Tiêu đề & Chỉ số -->
+<div class="p-4 text-center">
+<h3 class="text-xl font-bold text-ivs-blue" data-lang-key="lightbox_title">IVS English Learners App: Album Tính năng (1/10)</h3>
+</div>
+<!-- Carousel Nội dung -->
+<div class="relative w-full h-[calc(100%-80px)] p-4 flex items-center justify-center">
+<!-- Ảnh Lớn -->
+<img alt="Album Ảnh Ứng dụng" class="max-w-full max-h-full object-contain rounded-lg shadow-xl" id="lightbox-image" src=""/>
+<!-- Nút Prev -->
+<button class="absolute left-0 lg:left-4 p-3 bg-white/10 hover:bg-white/30 text-white text-2xl rounded-full transition transform hover:scale-110" onclick="changeImage(-1)">
+<i class="fas fa-chevron-left"></i>
+</button>
+<!-- Nút Next -->
+<button class="absolute right-0 lg:right-4 p-3 bg-white/10 hover:bg-white/30 text-white text-2xl rounded-full transition transform hover:scale-110" onclick="changeImage(1)">
+<i class="fas fa-chevron-right"></i>
+</button>
+</div>
+</div>
 </div>
 <!-- END: LIGHTBOX ALBUM MODAL -->
-
-
 <script>
     // Danh sách 10 ảnh (sử dụng cấu trúc đường dẫn mới)
     const imageFiles = [
@@ -525,7 +507,6 @@
 </div>
 </div>
 </section>
-
 <!-- SECTION 5: TUYÊN BỐ SỨC MẠNH CỐT LÕI (CORE STRENGTH DECLARATION) -->
 <section class="py-20 lg:py-32 bg-ivs-bg border-y border-ivs-border" id="core-strength" style="background-image: url(''); background-size: cover; background-position: center; background-attachment: fixed;">
 <div class="container mx-auto px-6 lg:px-8 text-center max-w-5xl">
@@ -546,21 +527,21 @@
 </section>
 <!-- SECTION 4: FULL-SCREEN VIDEO SECTION -->
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black" id="full-screen-video">
-    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover" id="fullScreenVideo">
-        <source src="/videos/ivs-coding.mp4" type="video/mp4"/>
-        <!-- Fallback image if video fails -->
-        <img alt="Video nền IVS" class="absolute inset-0 w-full h-full object-cover" src="/images/ivsacademy.jpg"/>
-    </video>
-    <!-- Optional overlay for better text readability -->
-    <div class="absolute inset-0 bg-black/30"></div>
-    <!-- Optional content overlay -->
-    <div class="relative z-10 text-center text-white px-4">
-        <h2 class="text-4xl md:text-6xl font-bold font-display mb-4" data-aos="fade-up" data-lang-key="video_section_title">Khám phá Sức mạnh IVS</h2>        
-        <a href="https://minhtrietonline.netlify.app/ivs-aitool" class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-bold rounded-full shadow-lg text-white bg-blue-600 hover:bg-blue-700 transition transform hover:scale-105" data-lang-key="ivs_toolbox_cta">
+<video autoplay="" class="absolute inset-0 w-full h-full object-cover" id="fullScreenVideo" loop="" muted="" playsinline="">
+<source src="/videos/ivs-coding.mp4" type="video/mp4"/>
+<!-- Fallback image if video fails -->
+<img alt="Video nền IVS" class="absolute inset-0 w-full h-full object-cover" src="/images/ivsacademy.jpg"/>
+</video>
+<!-- Optional overlay for better text readability -->
+<div class="absolute inset-0 bg-black/30"></div>
+<!-- Optional content overlay -->
+<div class="relative z-10 text-center text-white px-4">
+<h2 class="text-4xl md:text-6xl font-bold font-display mb-4" data-aos="fade-up" data-lang-key="video_section_title">Khám phá Sức mạnh IVS</h2>
+<a class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-bold rounded-full shadow-lg text-white bg-blue-600 hover:bg-blue-700 transition transform hover:scale-105" data-lang-key="ivs_toolbox_cta" href="https://minhtrietonline.netlify.app/ivs-aitool">
             AI ToolBox - tổng hợp AI tốt nhất hiện nay.
-            <svg class="ml-2 -mr-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </a>
-    </div>
+            <svg class="ml-2 -mr-1 h-5 w-5" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
 </section>
 <!-- SECTION 5: DIGITAL ECOSYSTEM PORTAL (IVS APPS & GAMES) -->
 <section class="py-16 md:py-24 bg-ivs-card text-ivs-text-primary font-inter border-b border-ivs-border" id="ecosystem">
@@ -571,35 +552,35 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
 <!-- App Card: IVS English -->
-                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-blue" data-aos="fade-up" data-aos-delay="100" href="https://ivseng.netlify.app/" rel="noopener noreferrer" target="_blank">
+<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-blue" data-aos="fade-up" data-aos-delay="100" href="https://ivseng.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-book-open-reader text-5xl text-ivs-blue"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_english_title">IVS English (EdTech)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_english_desc">Nền tảng học Tiếng Anh tích hợp cho học sinh, với sách điện tử, luyện tập AI và gamification.</p>
 <span class="mt-auto font-semibold text-ivs-blue hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
 <!-- App Card: IVS Stay Smart (Quản lý) -->
-                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-green" data-aos="fade-up" data-aos-delay="200" href="https://ivs-staysmart.netlify.app/" rel="noopener noreferrer" target="_blank">
+<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-green" data-aos="fade-up" data-aos-delay="200" href="https://ivs-staysmart.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-house-chimney-crack text-5xl text-ivs-green"></i> <!-- Icon mới cho quản lý tài sản/nhà trọ -->
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_staysmart_title">IVS Stay Smart (Quản lý Bất động sản)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_staysmart_desc">Ứng dụng quản lý nhà trọ tích hợp, giúp chủ nhà đơn giản hóa việc quản lý thông tin phòng, khách thuê và hợp đồng.</p>
 <span class="mt-auto font-semibold text-ivs-green hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
 <!-- App Card: QLGX (Quản lý cộng đồng) -->
-                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-purple" data-aos="fade-up" data-aos-delay="300" href="https://qlgx.netlify.app/" rel="noopener noreferrer" target="_blank">
+<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-purple" data-aos="fade-up" data-aos-delay="300" href="https://qlgx.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-people-group text-5xl text-ivs-purple"></i> <!-- Icon mới cho quản lý cộng đồng/giáo xứ -->
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_qlgx_title">QLGX – Quản Lý Cộng đồng (Custom App)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_qlgx_desc">Hỗ trợ Nhà Thờ và Giáo Xứ quản lý thông tin hộ gia đình, giúp việc tra cứu dữ liệu giáo dân trở nên dễ dàng.</p>
 <span class="mt-auto font-semibold text-ivs-purple hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
 <!-- App Card: StriveStreak -->
-                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-amber" data-aos="fade-up" data-aos-delay="400" href="https://strivestreak.netlify.app/" rel="noopener noreferrer" target="_blank">
+<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-amber" data-aos="fade-up" data-aos-delay="400" href="https://strivestreak.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-fire text-5xl text-ivs-amber"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_strivestreak_title">StriveStreak (Habit/AI)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_strivestreak_desc">Ứng dụng hỗ trợ học tập, giúp xây dựng thói quen, đặt mục tiêu và duy trì động lực qua game hóa và gợi ý AI.</p>
 <span class="mt-auto font-semibold text-ivs-amber hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
 <!-- App Card: IVS Mandarin Learners -->
-                    <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-orange" data-aos="fade-up" data-aos-delay="500" href="https://mandarinbyivs.netlify.app/" rel="noopener noreferrer" target="_blank">
+<a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-orange" data-aos="fade-up" data-aos-delay="500" href="https://mandarinbyivs.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-language text-5xl text-ivs-orange"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_mandarin_title">IVS Mandarin Learners (Language App)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_mandarin_desc">Ứng dụng học Tiếng Trung toàn diện dựa trên giáo trình HSK, đảm bảo lộ trình học tập bài bản.</p>
@@ -647,7 +628,7 @@
 <div class="project-card p-4 rounded-xl flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
 <!-- Simulated Screen Preview -->
 <div class="w-full h-32 bg-gray-900 rounded-lg mb-4 p-4 flex items-center justify-center border border-ivs-border/50 relative overflow-hidden">
-<img alt="Screenshot of KhaDock website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/khadock.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+<img alt="Screenshot of KhaDock website" class="w-full h-full object-cover rounded-lg" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="/images/pages/webs/khadock.png"/>
 <div class="absolute inset-0 bg-gradient-to-br from-ivs-blue/10 to-transparent opacity-50 flex items-center justify-center" style="display: none;">
 <i class="fas fa-tv text-5xl text-ivs-blue/50"></i>
 </div>
@@ -662,7 +643,7 @@
 <div class="project-card p-4 rounded-xl flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
 <!-- Simulated Screen Preview -->
 <div class="w-full h-32 bg-gray-900 rounded-lg mb-4 p-4 flex items-center justify-center border border-ivs-border/50 relative overflow-hidden">
-<img alt="Screenshot of KhaHome.com website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/khahome.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+<img alt="Screenshot of KhaHome.com website" class="w-full h-full object-cover rounded-lg" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="/images/pages/webs/khahome.png"/>
 <div class="absolute inset-0 bg-gradient-to-br from-ivs-amber/10 to-transparent opacity-50 flex items-center justify-center" style="display: none;">
 <i class="fas fa-tv text-5xl text-ivs-amber/50"></i>
 </div>
@@ -677,7 +658,7 @@
 <div class="project-card p-4 rounded-xl flex flex-col h-full" data-aos="fade-up" data-aos-delay="300">
 <!-- Simulated Screen Preview -->
 <div class="w-full h-32 bg-gray-900 rounded-lg mb-4 p-4 flex items-center justify-center border border-ivs-border/50 relative overflow-hidden">
-<img alt="Screenshot of IVS Academy website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/ivs.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+<img alt="Screenshot of IVS Academy website" class="w-full h-full object-cover rounded-lg" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="/images/pages/webs/ivs.png"/>
 <div class="absolute inset-0 bg-gradient-to-br from-ivs-purple/10 to-transparent opacity-50 flex items-center justify-center" style="display: none;">
 <i class="fas fa-tv text-5xl text-ivs-purple/50"></i>
 </div>
@@ -692,7 +673,7 @@
 <div class="project-card p-4 rounded-xl flex flex-col h-full" data-aos="fade-up" data-aos-delay="400">
 <!-- Simulated Screen Preview -->
 <div class="w-full h-32 bg-gray-900 rounded-lg mb-4 p-4 flex items-center justify-center border border-ivs-border/50 relative overflow-hidden">
-<img alt="Screenshot of Suối Camp website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/suoicamp.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+<img alt="Screenshot of Suối Camp website" class="w-full h-full object-cover rounded-lg" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="/images/pages/webs/suoicamp.png"/>
 <div class="absolute inset-0 bg-gradient-to-br from-ivs-green/10 to-transparent opacity-50 flex items-center justify-center" style="display: none;">
 <i class="fas fa-tv text-5xl text-ivs-green/50"></i>
 </div>
@@ -707,7 +688,7 @@
 <div class="project-card p-4 rounded-xl flex flex-col h-full" data-aos="fade-up" data-aos-delay="500">
 <!-- Simulated Screen Preview -->
 <div class="w-full h-32 bg-gray-900 rounded-lg mb-4 p-4 flex items-center justify-center border border-ivs-border/50 relative overflow-hidden">
-<img alt="Screenshot of Tiệc cưới Ba Nhánh 2 website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/banhanh.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+<img alt="Screenshot of Tiệc cưới Ba Nhánh 2 website" class="w-full h-full object-cover rounded-lg" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="/images/pages/webs/banhanh.png"/>
 <div class="absolute inset-0 bg-gradient-to-br from-ivs-cyan/10 to-transparent opacity-50 flex items-center justify-center" style="display: none;">
 <i class="fas fa-tv text-5xl text-ivs-cyan/50"></i>
 </div>
@@ -716,13 +697,12 @@
 <p class="text-sm text-ivs-text-secondary flex-grow mb-4" data-lang-key="project_banhanh_field">Lĩnh vực: Sự kiện, Nhà hàng</p>
 <a class="inline-flex items-center justify-center px-4 py-2 bg-ivs-cyan text-white font-medium rounded-lg hover:bg-cyan-600 transition-colors shadow-md shadow-cyan-500/20" data-lang-key="btn_view_demo" href="https://trungtamhoinghitieccuoi-banhanh.netlify.app" target="_blank"></a>
                             Xem Demo <i class="fas fa-external-link-alt ml-2"></i>
-</a>
 </div>
 <!-- Project 6: Minh Triết Online -->
 <div class="project-card p-4 rounded-xl flex flex-col h-full" data-aos="fade-up" data-aos-delay="500">
 <!-- Simulated Screen Preview -->
 <div class="w-full h-32 bg-gray-900 rounded-lg mb-4 p-4 flex items-center justify-center border border-ivs-border/50 relative overflow-hidden">
-<img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" src="/images/pages/webs/webblog.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"/>
+<img alt="Screenshot of Minh Triết Online website" class="w-full h-full object-cover rounded-lg" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" src="/images/pages/webs/webblog.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-br from-ivs-red/10 to-transparent opacity-50 flex items-center justify-center" style="display: none;">
 <i class="fas fa-tv text-5xl text-ivs-red/50"></i>
 </div>
@@ -744,7 +724,7 @@
 </span>
 </div>
 </div>
-</section>
+</div></section>
 <!-- SECTION 7: EDUCATION SPOTLIGHT (LIÊN KẾT GIÁO DỤC) -->
 <section class="py-16 md:py-24 bg-ivs-card border-b border-ivs-border" id="education-spotlight">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -923,7 +903,7 @@
                             </blockquote>
 </div>
 <div class="text-lg md:text-xl text-ivs-text-secondary mt-auto pt-6 border-t border-ivs-border/50">
-<img alt="Ảnh đại diện Ông Nguyễn Minh Triết" src="/images/team/nguyen-minh-triet.jpg" class="w-24 h-24 rounded-full mx-auto mb-3 border-4 border-ivs-blue shadow-lg object-cover" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='images/team/nguyen-minh-triet4x6.jpg'"/>
+<img alt="Ảnh đại diện Ông Nguyễn Minh Triết" class="w-24 h-24 rounded-full mx-auto mb-3 border-4 border-ivs-blue shadow-lg object-cover" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='images/team/nguyen-minh-triet4x6.jpg'" src="/images/team/nguyen-minh-triet.jpg"/>
 <p class="font-bold text-ivs-blue" data-lang-key="ceo_name">Ông Nguyễn Minh Triết</p>
 <p class="text-base text-ivs-text-secondary" data-lang-key="ceo_position">Tổng Giám đốc (CEO)</p>
 <a class="inline-block mt-3 text-sm font-semibold text-ivs-blue hover:text-white transition-colors" data-lang-key="btn_view_bio" href="https://minhtrietonline.netlify.app/">Xem chi tiết tiểu sử →</a>
@@ -980,20 +960,15 @@
             </button>
 </div>
 </div>
-
 <div id="fab-container-placeholder"></div>
-
 <!-- START OF SCRIPT LOADING BLOCK (Đã tối ưu) -->
 <!-- Thư viện bên ngoài (Alpine, AOS) -->
 <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 <!-- Custom IVS Scripts: Utils và Language PHẢI LOAD TRƯỚC LoadComponents/FabController -->
 <script src="js/utils.js"></script>
 <script src="js/language.js"></script>
-
 <script src="ai/js/fabController.js"></script>
-
 <!-- Khối script khởi tạo trang -->
 <script>
         // Start of initialization logic (Non-component scripts)
@@ -1202,8 +1177,7 @@
             });
         }
     </script>
-
-<script defer>
+<script defer="">
     // Khối script thứ hai, chỉ giữ lại logic init component
     // Register a page-level callback to run after common components are loaded.
     window.onPageComponentsLoadedCallback = function() {
@@ -1229,7 +1203,6 @@
         }
     });
 </script>
-
 <!-- Mount React components if present (tries sync then async loader) -->
 <script>
         (function(){
@@ -1287,9 +1260,6 @@
             setTimeout(tryMount, 1000);
         })();
 </script>
-<script src="/ai/js/loadComponents.js" defer></script>
+<script defer="" src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
-
-
-
