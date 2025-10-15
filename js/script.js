@@ -163,8 +163,6 @@ window.initializeFooter = initializeFooter;
 /**
  * @fileoverview IVS Header Logic - Controls all header, dropdown, and menu interactions.
  * This script should be loaded after the main components (header, footer) are in the DOM.
- * @version 2.0
- * @author IVS-Technical-Team
  */
 
 // Ensure global language system compatibility for header

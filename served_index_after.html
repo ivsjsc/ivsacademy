@@ -358,7 +358,6 @@
 <div id="lightbox-modal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden opacity-0 lightbox-transition" onclick="closeLightbox()">
     <div class="relative w-11/12 max-w-5xl h-5/6 bg-ivs-neutral-800 rounded-lg shadow-2xl" onclick="event.stopPropagation()">
         
-        <!-- Nút Đóng -->
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-3xl hover:text-ivs-red transition z-10">
             <i class="fas fa-times-circle"></i>
         </button>
@@ -373,12 +372,10 @@
             <!-- Ảnh Lớn -->
             <img id="lightbox-image" src="" alt="Album Ảnh Ứng dụng" class="max-w-full max-h-full object-contain rounded-lg shadow-xl">
             
-            <!-- Nút Prev -->
             <button onclick="changeImage(-1)" class="absolute left-0 lg:left-4 p-3 bg-white/10 hover:bg-white/30 text-white text-2xl rounded-full transition transform hover:scale-110">
                 <i class="fas fa-chevron-left"></i>
             </button>
             
-            <!-- Nút Next -->
             <button onclick="changeImage(1)" class="absolute right-0 lg:right-4 p-3 bg-white/10 hover:bg-white/30 text-white text-2xl rounded-full transition transform hover:scale-110">
                 <i class="fas fa-chevron-right"></i>
             </button>

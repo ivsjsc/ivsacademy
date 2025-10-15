@@ -2,9 +2,7 @@
  * @fileoverview Firebase Initialization Script for IVS JSC Applications.
  * This script initializes Firebase services (App, Auth, Firestore) and handles
  * user authentication using custom tokens provided by the Canvas environment.
- * @version 1.1 - Integrated Firebase config from user-provided image,
  * ensured proper initialization and authentication.
- * @author IVS-Technical-Team
  */
 
 "use strict";

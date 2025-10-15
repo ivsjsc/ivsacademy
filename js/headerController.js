@@ -2,7 +2,6 @@
  * @fileoverview IVSHeaderController: Xử lý toàn bộ logic tương tác của Header.
  * Được gọi bởi loadComponents.js sau khi component header.html được inject.
  * Giả định window.componentLog, window.debounce, window.changeLanguage có sẵn.
- * @version 2.0 - Tách ra từ componentLoader.js, bổ sung logic Dark Mode/Submenu/Dropdown.
  */
 
 'use strict';

@@ -1,7 +1,6 @@
 /**
  * @fileoverview IVSFooterController: Xử lý logic tương tác của Footer.
  * Được gọi bởi loadComponents.js sau khi component footer.html được inject.
- * @version 1.0 - Tách ra từ componentLoader.js, bổ sung logic Scroll-to-Top và Newsletter.
  */
 
 'use strict';

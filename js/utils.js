@@ -2,8 +2,6 @@
  * @fileoverview Global utility functions for IVS JSC applications.
  * This script provides common helper functions like logging and debouncing
  * to be used across various JavaScript modules.
- * @version 1.0
- * @author IVS-Technical-Team
  */
 
 'use strict';

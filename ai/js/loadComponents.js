@@ -2,7 +2,6 @@
  * js/componentLoader.js
  * * Logic trung tâm chịu trách nhiệm tải component (Header, Footer, Fab Container)
  * * Sử dụng IVSHeaderController và IVSFooterController từ file riêng.
- * @version 5.0 - Đã tách Controllers. Chỉ giữ lại logic tải component nâng cao.
  */
 
 'use strict';

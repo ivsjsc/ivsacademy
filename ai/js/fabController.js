@@ -2,8 +2,6 @@
  * @fileoverview IVSFabController - Quản lý các chức năng của Floating Action Button (FAB).
  * Script này xử lý các nút cuộn lên đầu trang, tùy chọn liên hệ, tùy chọn chia sẻ và các menu con của chúng.
  * Nó phụ thuộc vào các hàm tiện ích toàn cục từ utils.js (componentLog, debounce).
- * @version 2.1 - Cải thiện chức năng đóng/mở submenu và hiệu ứng animation.
- * @author IVS-Technical-Team
  */
 
 'use strict';
