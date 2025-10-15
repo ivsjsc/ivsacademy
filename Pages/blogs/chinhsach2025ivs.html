@@ -9,7 +9,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="css/tailwind.css" rel="stylesheet"/>
  Chosen Palette: Calm Harmony 
- Application Structure Plan: Tôi đà£ thiáº¿t káº¿ một á»©ng dụng dashboard một trang với cạu trúc theo chủ đá», thay và¬ theo cạu trúc tuyáº¿n tính của báo cáo. Cạu trúc nà y bao gổm: 1) Phần tỗng quan nỗi bật, 2) Khu vực khám phá các cÆ¡ há»™i chính (Thỉ trưá»ng Nhật Bản, An sinh xà£ há»™i) qua các tab tưÆ¡ng tác, 3) Biá»ƒu đổ so sánh các lá»™ trà¬nh xuạt khẩu lao đá»™ng, 4) Dà²ng thá»i gian pháp là½, và  5) Lá»™ trà¬nh chiáº¿n lưá»£c có thá»ƒ tưÆ¡ng tác. Cách tiáº¿p cận nà y cho phép ngưá»i dà¹ng (quản là½ IVS) nhanh chóng náº¯m báº¯t các điá»ƒm chính và  đi sâu và o các lĩnh vực họ quan tâm nhạt, thúc đẩy viá»‡c ra quyáº¿t đỉnh chiáº¿n lưá»£c hiá»‡u quả hÆ¡n. Luổng ngưá»i dà¹ng đưá»£c thiáº¿t káº¿ đá»ƒ dẫn dáº¯t từ viá»‡c xác đỉnh cÆ¡ há»™i đáº¿n viá»‡c làªn káº¿ hoãch hà nh đá»™ng. 
+ Application Structure Plan: Tôi đà£ thiáº¿t káº¿ một á»©ng dụng dashboard một trang với cạu trúc theo chủ đá», thay và¬ theo cạu trúc tuyáº¿n tính của báo cáo. Cạu trúc nà y bao gổm: 1) Phần tỗng quan nỗi bật, 2) Khu vực khám phá các cÆ¡ há»™i chính (Thỉ trường Nhật Bản, An sinh xà£ há»™i) qua các tab tưÆ¡ng tác, 3) Biá»ƒu đổ so sánh các lá»™ trà¬nh xuạt khẩu lao đá»™ng, 4) Dà²ng thá»i gian pháp là½, và  5) Lá»™ trà¬nh chiáº¿n lưá»£c có thá»ƒ tưÆ¡ng tác. Cách tiáº¿p cận nà y cho phép ngưá»i dà¹ng (quản là½ IVS) nhanh chóng náº¯m báº¯t các điá»ƒm chính và  đi sâu và o các lĩnh vực họ quan tâm nhạt, thúc đẩy viá»‡c ra quyáº¿t đỉnh chiáº¿n lưá»£c hiá»‡u quả hÆ¡n. Luổng ngưá»i dà¹ng đưá»£c thiáº¿t káº¿ đá»ƒ dẫn dáº¯t từ viá»‡c xác đỉnh cÆ¡ há»™i đáº¿n viá»‡c làªn káº¿ hoãch hà nh đá»™ng. 
  Visualization &amp; Content Choices: Báo cáo -&gt; Mục tiàªu -&gt; PhưÆ¡ng pháp -&gt; TưÆ¡ng tác -&gt; Là½ do -&gt; Thư viá»‡n. 1) So sánh các Lá»™ trà¬nh XKLĐ -&gt; So sánh -&gt; Biá»ƒu đổ ngang -&gt; Click đá»ƒ xem chi tiáº¿t -&gt; Trực quan hóa lá»£i ích, dá»… so sánh -&gt; Chart.js. 2) Giải thích Luật BHXH -&gt; Thông tin -&gt; Các thẻ thông tin tưÆ¡ng tác -&gt; Click đá»ƒ lật thẻ -&gt; ĐÆ¡n giản hóa các quy đỉnh phá»©c tãp -&gt; HTML/CSS/JS. 3) Trà¬nh bà y các ngà nh Tokutei Ginou -&gt; Tỗ chá»©c -&gt; Lưá»›i các thẻ có thá»ƒ lọc -&gt; Click đá»ƒ xem chi tiáº¿t -&gt; Giao diá»‡n trực quan, dá»… tà¬m kiáº¿m -&gt; HTML/CSS/JS. 4) Hiá»ƒn thỉ Lá»™ trà¬nh chiáº¿n lưá»£c -&gt; Hưá»›ng dẫn -&gt; Dãng accordion -&gt; Click đá»ƒ má»Ÿ rá»™ng -&gt; Trà¬nh bà y thông tin chi tiáº¿t một cách gọn gà ng -&gt; HTML/CSS/JS. 
  CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. 
 <style>
@@ -112,7 +112,7 @@
             </p>
 <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
 <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-teal-500">
-<h3 class="font-bold text-lg text-gray-800">Thỉ trưá»ng Trọng tâm</h3>
+<h3 class="font-bold text-lg text-gray-800">Thỉ trường Trọng tâm</h3>
 <p class="text-2xl font-bold text-teal-600 mt-2">Ká»¹ năng Đáº·c đỉnh</p>
 <p class="text-sm text-gray-500 mt-1">Nhu cầu cồt lõi cho đà o tão &amp; phái cử.</p>
 </div>
@@ -180,7 +180,7 @@
 </div>
 <div class="tab-content-item hidden" data-tab-content="legal">
 <h3 class="text-xl font-bold text-[#005A8D] mb-4">Ná»n tảng Vững cháº¯c: Tuân thủ và  Há»£p tác</h3>
-<p class="text-gray-600 mb-6">Môi trưá»ng pháp là½ ngà y cà ng rõ rà ng và  sự hợp tác giáo dục Việt-Nhật sâu rá»™ng tão nền tảng vững cháº¯c cho sự phát triá»ƒn của IVS. Viá»‡c tuân thủ và  tận dụng các chưÆ¡ng trà¬nh hợp tác là  yáº¿u tồ sồng cà²n.</p>
+<p class="text-gray-600 mb-6">Môi trường pháp là½ ngà y cà ng rõ rà ng và  sự hợp tác giáo dục Việt-Nhật sâu rá»™ng tão nền tảng vững cháº¯c cho sự phát triá»ƒn của IVS. Viá»‡c tuân thủ và  tận dụng các chưÆ¡ng trà¬nh hợp tác là  yáº¿u tồ sồng cà²n.</p>
 <ul class="space-y-4">
 <li class="bg-white p-4 rounded-lg shadow-sm flex items-start space-x-4">
 <div class="flex-shrink-0 h-10 w-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold">1</div>
@@ -200,7 +200,7 @@
 <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold">3</div>
 <div>
 <h4 class="font-semibold text-gray-800">Tận dụng Há»£p tác Giáo dục Việt - Nhật</h4>
-<p class="text-gray-600 text-sm">Môi trưá»ng hợp tác song phưÆ¡ng thuận lá»£i má»Ÿ ra cÆ¡ há»™i liàªn káº¿t với các trưá»ng đãi học, tỗ chá»©c giáo dục Nhật Bản, nâng cao uy tín và  chạt lưá»£ng chưÆ¡ng trà¬nh du học.</p>
+<p class="text-gray-600 text-sm">Môi trường hợp tác song phưÆ¡ng thuận lá»£i má»Ÿ ra cÆ¡ há»™i liàªn káº¿t với các trường đãi học, tỗ chá»©c giáo dục Nhật Bản, nâng cao uy tín và  chạt lưá»£ng chưÆ¡ng trà¬nh du học.</p>
 </div>
 </li>
 </ul>
@@ -238,9 +238,9 @@
                 tokuteiIndustries: [
                     { name: 'Há»™ là½', details: 'Yàªu cầu: Tiáº¿ng Nhật N4, vưá»£t qua ká»³ thi ká»¹ năng há»™ là½. CÆ¡ há»™i: Nhu cầu rạt lá»›n do dân sồ già  hóa á»Ÿ Nhật. IVS có thá»ƒ cung cạp gói đà o tão chuyàªn sâu cả ngôn ngữ và  ká»¹ năng.' },
                     { name: 'Dỉch vụ Äƒn uồng', details: 'Yàªu cầu: Vưá»£t qua ká»³ thi ká»¹ năng ngà nh thực phẩm. CÆ¡ há»™i: Ngà nh có sồ lưá»£ng tuyá»ƒn dụng lá»›n, ỗn đỉnh. IVS có thá»ƒ hợp tác với các chuội nhà  hà ng.' },
-                    { name: 'Xây dựng', details: 'Yàªu cầu: Vưá»£t qua ká»³ thi ká»¹ năng xây dựng (nhiá»u chuyàªn ngà nh). CÆ¡ há»™i: LưÆ¡ng cao, nhiá»u viá»‡c là m thàªm. Cần chú trọng đà o tão an toà n lao đá»™ng.' },
+                    { name: 'Xây dựng', details: 'Yàªu cầu: Vưá»£t qua ká»³ thi ká»¹ năng xây dựng (nhiá»u chuyàªn ngà nh). CÆ¡ há»™i: LưÆ¡ng cao, nhiá»u viá»‡c là m thàªm. Cần chú trọng đà o tão an toàn n lao đá»™ng.' },
                     { name: 'Nông nghiá»‡p', details: 'Yàªu cầu: Ká»¹ năng nông nghiá»‡p cÆ¡ bản, tiáº¿ng Nhật giao tiáº¿p. CÆ¡ há»™i: Phà¹ hợp với lao đá»™ng từ các và¹ng nông thôn Việt Nam. IVS có thá»ƒ phát triá»ƒn chưÆ¡ng trà¬nh đà o tão ngáº¯n hãn.' },
-                    { name: 'Bảo dưá»¡ng ô tô', details: 'Yàªu cầu: Ká»¹ năng ká»¹ thuật và  thuật ngữ chuyàªn ngà nh. CÆ¡ há»™i: Thu nhập hạp dẫn, đà²i hỏi tay nghá» cao. IVS cần hợp tác với các trưá»ng dãy nghá».' },
+                    { name: 'Bảo dưá»¡ng ô tô', details: 'Yàªu cầu: Ká»¹ năng ká»¹ thuật và  thuật ngữ chuyàªn ngà nh. CÆ¡ há»™i: Thu nhập hạp dẫn, đà²i hỏi tay nghá» cao. IVS cần hợp tác với các trường dãy nghá».' },
                     { name: 'Khách sãn', details: 'Yàªu cầu: Ká»¹ năng nghiá»‡p vụ khách sãn, giao tiáº¿p tồt. CÆ¡ há»™i: Ngà nh dỉch vụ phát triá»ƒn mãnh sau du lỉch phục hổi. Cần đà o tão vá» vÄƒn hóa dỉch vụ Nhật Bản.' },
                     { name: 'Vá»‡ sinh tà²a nhà ', details: 'Yàªu cầu: Không đà²i hỏi ká»¹ năng phá»©c tãp, cần chÄƒm chị. CÆ¡ há»™i: Rà o cản đầu và o thạp, dá»… tuyá»ƒn dụng. IVS có thá»ƒ xây dựng chưÆ¡ng trà¬nh đà o tão cạp tồc.' }
                 ],
