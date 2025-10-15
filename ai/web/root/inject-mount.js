@@ -32,8 +32,14 @@
     }
   }
 
+  // Expose an async mount helper but respect a global flag to disable mounting.
   (window).mountIVSReactComponentsAsync = async function(basePath='/webapp-dist'){
-    if ((window).mountIVSReactComponents) return (window).mountIVSReactComponents
+      if (window.DISABLE_IVS_WEBAPP_MOUNT) {
+        console.info('mountIVSReactComponentsAsync disabled by DISABLE_IVS_WEBAPP_MOUNT flag');
+        return null;
+      }
+
+      if ((window).mountIVSReactComponents) return (window).mountIVSReactComponents
     // try existing helper first
     try{
       const candidate = await findBundle(basePath)
