@@ -1,4 +1,48 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const l of document.querySelectorAll('link[rel="modulepreload"]'))r(l);new MutationObserver(l=>{for(const u of l)if(u.type==="childList")for(const o of u.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&r(o)}).observe(document,{childList:!0,subtree:!0});function n(l){const u={};return l.integrity&&(u.integrity=l.integrity),l.referrerPolicy&&(u.referrerPolicy=l.referrerPolicy),l.crossOrigin==="use-credentials"?u.credentials="include":l.crossOrigin==="anonymous"?u.credentials="omit":u.credentials="same-origin",u}function r(l){if(l.ep)return;l.ep=!0;const u=n(l);fetch(l.href,u)}})();var Ki={exports:{}},tl={},Yi={exports:{}},T={};/**
+// Minimal safe stub to prevent unexpected runtime injection.
+// Reversible: restore original bundle from git history or from a backup file if available.
+(function(){
+	'use strict';
+
+	// Provide a no-op mount function that returns an object describing available mounts.
+	function safeMount(selectorMap){
+		// selectorMap: { rootSelector: elementIdOrSelector, ... }
+		console.info('[IVS Stub] safeMount called with', selectorMap);
+
+		// Try to mount only allowed AI components if an initializer exists under window.IVS_Ai_Init
+		try {
+			if (window.IVS_Ai_Init && typeof window.IVS_Ai_Init === 'function') {
+				try {
+					window.IVS_Ai_Init();
+					console.info('[IVS Stub] IVS_Ai_Init executed');
+				} catch (e) {
+					console.warn('[IVS Stub] IVS_Ai_Init failed', e);
+				}
+			}
+		} catch (e) {
+			console.warn('[IVS Stub] safeMount error', e);
+		}
+
+		// Return a lightweight API compatible object
+		return {
+			mounted: true,
+			mountedSelectors: Object.keys(selectorMap || {}),
+			info: 'stub - no UI rendered',
+		};
+	}
+
+	// Expose synchronous mount (legacy) and async helper
+	window.mountIVSReactComponents = safeMount;
+	window.mountIVSReactComponentsAsync = async function(base){
+		console.info('[IVS Stub] mountIVSReactComponentsAsync called', base);
+		return window.mountIVSReactComponents;
+	};
+
+	// Prevent auto-mount attempts by default; host page should explicitly call the mount.
+	try { if (!('DISABLE_IVS_WEBAPP_MOUNT' in window)) window.DISABLE_IVS_WEBAPP_MOUNT = true; } catch(e){}
+
+})();
+
+
  * @license React
  * react.production.min.js
  *
