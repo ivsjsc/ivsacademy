@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="vi">
 <head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
@@ -21,19 +21,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." name="description"/><meta content="IVS Component Loader Test" property="og:title"/><meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." property="og:description"/><meta content="website" property="og:type"/></head>
+<meta content="IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, Ä‘Ã o táº¡o tiáº¿ng Anh, giáº£i phÃ¡p cÃ´ng nghá»‡ giÃ¡o dá»¥c vÃ  tÆ° váº¥n phÃ¡t triá»ƒn trÆ°á»ng há»c táº¡i Viá»‡t Nam." name="description"/><meta content="IVS Component Loader Test" property="og:title"/><meta content="IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, Ä‘Ã o táº¡o tiáº¿ng Anh, giáº£i phÃ¡p cÃ´ng nghá»‡ giÃ¡o dá»¥c vÃ  tÆ° váº¥n phÃ¡t triá»ƒn trÆ°á»ng há»c táº¡i Viá»‡t Nam." property="og:description"/><meta content="website" property="og:type"/></head>
 <body>
-<h1>Trang chẩn đoán lỗi tải thành phần IVS</h1>
-<p>Trang này chỉ thử tải duy nhất tệp <strong>/components/header.html</strong> bằng đường dẫn tuyệt đối.</p>
+<h1>Trang cháº©n Ä‘oÃ¡n lá»—i táº£i thÃ nh pháº§n IVS</h1>
+<p>Trang nÃ y chá»‰ thá»­ táº£i duy nháº¥t tá»‡p <strong>/components/header.html</strong> báº±ng Ä‘Æ°á»ng dáº«n tuyá»‡t Ä‘á»‘i.</p>
 <div id="header-test-placeholder">
-<p>Đang chờ tải...</p>
+<p>Äang chá» táº£i...</p>
 </div>
-<h2 id="result-heading">Kết quả:</h2>
-<pre id="result-log">Khởi tạo kiểm tra...</pre>
+<h2 id="result-heading">Káº¿t quáº£:</h2>
+<pre id="result-log">Khá»Ÿi táº¡o kiá»ƒm tra...</pre>
 <script>
-        // --- SCRIPT CHẨN ĐOÁN CÔ LẬP ---
-        // Mục tiêu: Chỉ kiểm tra fetch() tới /components/header.html
-        // Không phụ thuộc vào bất kỳ tệp JS nào khác.
+        // --- SCRIPT CHáº¨N ÄOÃN CÃ” Láº¬P ---
+        // Má»¥c tiÃªu: Chá»‰ kiá»ƒm tra fetch() tá»›i /components/header.html
+        // KhÃ´ng phá»¥ thuá»™c vÃ o báº¥t ká»³ tá»‡p JS nÃ o khÃ¡c.
 
         const placeholder = document.getElementById('header-test-placeholder');
         const logElement = document.getElementById('result-log');
@@ -46,48 +46,48 @@
         }
 
         async function runTest() {
-            log(`Bắt đầu fetch tới: ${componentUrl}`);
+            log(`Báº¯t Ä‘áº§u fetch tá»›i: ${componentUrl}`);
             try {
                 const response = await fetch(componentUrl);
-                log(`Nhận được phản hồi từ máy chủ. Status: ${response.status} ${response.statusText}`);
+                log(`Nháº­n Ä‘Æ°á»£c pháº£n há»“i tá»« mÃ¡y chá»§. Status: ${response.status} ${response.statusText}`);
 
                 if (!response.ok) {
-                    // Ném lỗi nếu status không phải là 2xx (ví dụ: 404, 500)
-                    throw new Error(`Máy chủ phản hồi với lỗi HTTP ${response.status}.`);
+                    // NÃ©m lá»—i náº¿u status khÃ´ng pháº£i lÃ  2xx (vÃ­ dá»¥: 404, 500)
+                    throw new Error(`MÃ¡y chá»§ pháº£n há»“i vá»›i lá»—i HTTP ${response.status}.`);
                 }
 
                 const html = await response.text();
-                log('Fetch và đọc nội dung HTML thành công.');
+                log('Fetch vÃ  Ä‘á»c ná»™i dung HTML thÃ nh cÃ´ng.');
 
                 if (html.trim() === '') {
-                    log('Cảnh báo: Tệp header.html có nội dung rỗng.');
-                    placeholder.innerHTML = '<p>Thành công, nhưng tệp header rỗng.</p>';
+                    log('Cáº£nh bÃ¡o: Tá»‡p header.html cÃ³ ná»™i dung rá»—ng.');
+                    placeholder.innerHTML = '<p>ThÃ nh cÃ´ng, nhÆ°ng tá»‡p header rá»—ng.</p>';
                 } else {
                     placeholder.innerHTML = html;
-                    log('Đã chèn thành công HTML vào placeholder.');
+                    log('ÄÃ£ chÃ¨n thÃ nh cÃ´ng HTML vÃ o placeholder.');
                 }
                 
-                // Báo cáo thành công
-                resultHeading.textContent = "Kết quả: THÀNH CÔNG";
+                // BÃ¡o cÃ¡o thÃ nh cÃ´ng
+                resultHeading.textContent = "Káº¿t quáº£: THÃ€NH CÃ”NG";
                 resultHeading.className = 'success';
                 placeholder.classList.add('success');
-                log('Kiểm tra hoàn tất thành công.');
+                log('Kiá»ƒm tra hoÃ n táº¥t thÃ nh cÃ´ng.');
 
             } catch (error) {
-                // Báo cáo thất bại
-                log(`GẶP LỖI: ${error.message}`);
-                resultHeading.textContent = "Kết quả: THẤT BẠI";
+                // BÃ¡o cÃ¡o tháº¥t báº¡i
+                log(`Gáº¶P Lá»–I: ${error.message}`);
+                resultHeading.textContent = "Káº¿t quáº£: THáº¤T Báº I";
                 resultHeading.className = 'error';
                 placeholder.classList.add('error');
-                placeholder.innerHTML = `<p>Không thể tải header. Vui lòng kiểm tra Console (F12) để xem chi tiết lỗi mạng (Network tab).</p><p><strong>Thông điệp lỗi:</strong> ${error.message}</p>`;
-                log('Kiểm tra hoàn tất với lỗi.');
+                placeholder.innerHTML = `<p>KhÃ´ng thá»ƒ táº£i header. Vui lÃ²ng kiá»ƒm tra Console (F12) Ä‘á»ƒ xem chi tiáº¿t lá»—i máº¡ng (Network tab).</p><p><strong>ThÃ´ng Ä‘iá»‡p lá»—i:</strong> ${error.message}</p>`;
+                log('Kiá»ƒm tra hoÃ n táº¥t vá»›i lá»—i.');
             }
         }
 
-        // Chờ DOM sẵn sàng rồi chạy kiểm tra
+        // Chá» DOM sáºµn sÃ ng rá»“i cháº¡y kiá»ƒm tra
         document.addEventListener('DOMContentLoaded', runTest);
     </script>
-<!-- Chèn vào cuối <body> của mọi trang -->
+<!-- ChÃ¨n vÃ o cuá»‘i <body> cá»§a má»i trang -->
 <div id="fab-container-placeholder"></div>
 <!-- Component Placeholders -->
 <div id="header-placeholder"></div>
@@ -115,9 +115,10 @@
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>
+
 
 
 

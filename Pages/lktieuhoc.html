@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="lktieuhoc_page_title">IVS Academy - Liên kết Giáo dục Tiểu học | IVS JSC</title>
-    <meta name="description" content="IVS Academy đồng hành cùng trường Tiểu học tại Đồng Nai và các tỉnh lân cận với các chương trình liên kết tiếng Anh Cambridge, Kỹ năng sống, STEAM và EdTech." data-lang-key="lktieuhoc_meta_description">
-    <meta property="og:title" content="IVS Academy - Nâng tầm Giáo dục Tiểu học" data-lang-key="lktieuhoc_og_title">
-    <meta property="og:description" content="Khám phá các giải pháp liên kết toàn diện của IVS Academy dành cho bậc Tiểu học: Tiếng Anh, Kỹ năng sống, STEAM, Công nghệ giáo dục, Bồi dưỡng giáo viên." data-lang-key="lktieuhoc_og_description">
+    <title data-lang-key="lktieuhoc_page_title">IVS Academy - LiÃªn káº¿t GiÃ¡o dá»¥c Tiá»ƒu há»c | IVS JSC</title>
+    <meta name="description" content="IVS Academy Ä‘á»“ng hÃ nh cÃ¹ng trÆ°á»ng Tiá»ƒu há»c táº¡i Äá»“ng Nai vÃ  cÃ¡c tá»‰nh lÃ¢n cáº­n vá»›i cÃ¡c chÆ°Æ¡ng trÃ¬nh liÃªn káº¿t tiáº¿ng Anh Cambridge, Ká»¹ nÄƒng sá»‘ng, STEAM vÃ  EdTech." data-lang-key="lktieuhoc_meta_description">
+    <meta property="og:title" content="IVS Academy - NÃ¢ng táº§m GiÃ¡o dá»¥c Tiá»ƒu há»c" data-lang-key="lktieuhoc_og_title">
+    <meta property="og:description" content="KhÃ¡m phÃ¡ cÃ¡c giáº£i phÃ¡p liÃªn káº¿t toÃ n diá»‡n cá»§a IVS Academy dÃ nh cho báº­c Tiá»ƒu há»c: Tiáº¿ng Anh, Ká»¹ nÄƒng sá»‘ng, STEAM, CÃ´ng nghá»‡ giÃ¡o dá»¥c, Bá»“i dÆ°á»¡ng giÃ¡o viÃªn." data-lang-key="lktieuhoc_og_description">
     <meta property="og:image" content="https://ivsjsc.github.io/images/banners/tieuhoc-banner.png"> 
     <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/education.html#tieuhoc"> 
     <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     
     <style>
-        /* Các biến CSS tùy chỉnh của IVS */
+        /* CÃ¡c biáº¿n CSS tÃ¹y chá»‰nh cá»§a IVS */
         :root {
             --ivs-primary: #004080;
             --ivs-secondary: #ffc107;
@@ -49,7 +49,7 @@
             color: #d1d5db; /* dark:text-gray-300 */
         }
 
-        /* Các lớp tiện ích Tailwind tùy chỉnh */
+        /* CÃ¡c lá»›p tiá»‡n Ã­ch Tailwind tÃ¹y chá»‰nh */
         .bg-primary { background-color: var(--ivs-primary); }
         .text-primary { color: var(--ivs-primary); }
         .hover\:bg-primary-dark:hover { background-color: var(--ivs-primary-dark); }
@@ -59,7 +59,7 @@
         .text-purple-accent { color: #8B5CF6; }
         .text-warning { color: #F59E0B; }
 
-        /* Điều chỉnh Header Placeholder */
+        /* Äiá»u chá»‰nh Header Placeholder */
         #header-placeholder {
             height: var(--header-height);
             transition: transform 0.3s ease;
@@ -69,31 +69,31 @@
                 height: var(--header-height-mobile);
             }
         }
-        /* Đảm bảo nội dung không bị ẩn dưới header cố định */
+        /* Äáº£m báº£o ná»™i dung khÃ´ng bá»‹ áº©n dÆ°á»›i header cá»‘ Ä‘á»‹nh */
         main {
             position: relative;
             z-index: 1;
-            padding-top: var(--header-height); /* Đẩy nội dung xuống dưới header */
+            padding-top: var(--header-height); /* Äáº©y ná»™i dung xuá»‘ng dÆ°á»›i header */
         }
         @media (max-width: 768px) {
             main {
                 padding-top: var(--header-height-mobile);
             }
         }
-        /* Ẩn header khi cuộn xuống */
+        /* áº¨n header khi cuá»™n xuá»‘ng */
         .header-hidden {
             transform: translateY(-100%);
         }
-        /* Hiển thị header khi cuộn lên */
+        /* Hiá»ƒn thá»‹ header khi cuá»™n lÃªn */
         .header-visible {
             transform: translateY(0);
         }
 
-        /* Các kiểu cho phần Hero Section */
+        /* CÃ¡c kiá»ƒu cho pháº§n Hero Section */
         .hero-section-banner {
             background-size: cover;
             background-position: center;
-            min-height: 50vh; /* Điều chỉnh chiều cao cho trang nội dung */
+            min-height: 50vh; /* Äiá»u chá»‰nh chiá»u cao cho trang ná»™i dung */
         }
         .hero-section-banner .hero-content {
             position: relative; z-index: 2;
@@ -112,19 +112,19 @@
         }
         .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
 
-        /* Các kiểu cho feature card */
+        /* CÃ¡c kiá»ƒu cho feature card */
         .feature-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
 
-        /* Các kiểu cho gallery item */
+        /* CÃ¡c kiá»ƒu cho gallery item */
         .gallery-item img { transition: transform 0.3s ease-in-out; }
         .gallery-item:hover img { transform: scale(1.05); }
 
-        /* Các kiểu cho benefit item */
+        /* CÃ¡c kiá»ƒu cho benefit item */
         .benefit-item i { transition: color 0.3s ease; }
-        .benefit-item:hover i { color: var(--ivs-secondary); } /* Sử dụng biến CSS */
+        .benefit-item:hover i { color: var(--ivs-secondary); } /* Sá»­ dá»¥ng biáº¿n CSS */
 
-        /* Kiểu cho placeholder khi tải component */
+        /* Kiá»ƒu cho placeholder khi táº£i component */
         #header-placeholder:empty::before,
         #footer-placeholder:empty::before {
             content: attr(data-loading-text);
@@ -142,7 +142,7 @@
             color: #9ca3af;
         }
 
-        /* Kiểu cho Floating Action Buttons (FABs) */
+        /* Kiá»ƒu cho Floating Action Buttons (FABs) */
         .fab-hidden { display: none !important; }
         #contact-options:not(.fab-hidden),
         #share-options:not(.fab-hidden) {
@@ -150,12 +150,12 @@
         }
         #contact-options, #share-options { z-index: 1000; }
         
-        /* Kiểu cho nút ngôn ngữ đang hoạt động */
+        /* Kiá»ƒu cho nÃºt ngÃ´n ngá»¯ Ä‘ang hoáº¡t Ä‘á»™ng */
         #header-placeholder button.active-lang {
             background-color: var(--ivs-primary) !important;
             color: var(--ivs-text-white) !important;
         }
-        /* Hiệu ứng hover cho dropdown/mega menu */
+        /* Hiá»‡u á»©ng hover cho dropdown/mega menu */
         .group:hover .group-hover\:opacity-100 {
             opacity: 1 !important; visibility: visible !important;
         }
@@ -171,19 +171,19 @@
     <main>
         <section class="relative bg-gradient-to-r from-orange-500 to-amber-600 text-white py-20 md:py-28 text-center overflow-hidden" data-aos="fade-in" data-aos-duration="1000">
              <div class="absolute inset-0 bg-black opacity-10 z-10"></div>            
-             <img src="/images/banners/tieuhoc-bg.jpg" alt="Hình ảnh nền Tiểu học" class="absolute inset-0 w-full h-full object-cover opacity-20 z-0 mix-blend-multiply" loading="lazy" onerror="this.style.display='none'"> 
+             <img src="/images/banners/tieuhoc-bg.jpg" alt="HÃ¬nh áº£nh ná»n Tiá»ƒu há»c" class="absolute inset-0 w-full h-full object-cover opacity-20 z-0 mix-blend-multiply" loading="lazy" onerror="this.style.display='none'"> 
              <div class="container mx-auto px-4 relative z-20">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 hero-text-shadow" data-lang-key="lkth_heading" data-aos="fade-down" data-aos-delay="200">Liên kết Giáo dục Tiểu học</h1>
-                <p class="text-lg md:text-xl lg:text-2xl opacity-95 max-w-3xl mx-auto hero-text-shadow" data-lang-key="lkth_subheading" data-aos="fade-up" data-aos-delay="400">IVS Academy - Đồng hành cùng Trường Tiểu học Xây dựng Nền tảng Vững chắc cho Tương lai</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 hero-text-shadow" data-lang-key="lkth_heading" data-aos="fade-down" data-aos-delay="200">LiÃªn káº¿t GiÃ¡o dá»¥c Tiá»ƒu há»c</h1>
+                <p class="text-lg md:text-xl lg:text-2xl opacity-95 max-w-3xl mx-auto hero-text-shadow" data-lang-key="lkth_subheading" data-aos="fade-up" data-aos-delay="400">IVS Academy - Äá»“ng hÃ nh cÃ¹ng TrÆ°á»ng Tiá»ƒu há»c XÃ¢y dá»±ng Ná»n táº£ng Vá»¯ng cháº¯c cho TÆ°Æ¡ng lai</p>
             </div>
         </section>
 
         <section class="py-12 md:py-16 bg-white">
             <div class="container mx-auto px-4 max-w-4xl" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8" data-lang-key="lkth_intro_title">Ươm mầm Tài năng Việt từ Bậc Tiểu học</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8" data-lang-key="lkth_intro_title">Æ¯Æ¡m máº§m TÃ i nÄƒng Viá»‡t tá»« Báº­c Tiá»ƒu há»c</h2>
                 <div class="prose max-w-none text-gray-700 text-center text-lg leading-relaxed mb-10">
                     <p data-lang-key="lkth_intro_desc">
-                        Bậc Tiểu học là giai đoạn vàng để hình thành niềm yêu thích học tập, khám phá thế giới và phát triển các kỹ năng nền tảng quan trọng. IVS Academy thấu hiểu điều đó và mong muốn được trở thành đối tác tin cậy, đồng hành cùng các trường Tiểu học thông qua các chương trình liên kết được thiết kế đặc biệt, sinh động và hiệu quả. Chúng tôi không chỉ giúp học sinh giỏi tiếng Anh mà còn hướng đến việc nuôi dưỡng sự tự tin, khả năng sáng tạo và các kỹ năng sống thiết yếu cho thế kỷ 21.
+                        Báº­c Tiá»ƒu há»c lÃ  giai Ä‘oáº¡n vÃ ng Ä‘á»ƒ hÃ¬nh thÃ nh niá»m yÃªu thÃ­ch há»c táº­p, khÃ¡m phÃ¡ tháº¿ giá»›i vÃ  phÃ¡t triá»ƒn cÃ¡c ká»¹ nÄƒng ná»n táº£ng quan trá»ng. IVS Academy tháº¥u hiá»ƒu Ä‘iá»u Ä‘Ã³ vÃ  mong muá»‘n Ä‘Æ°á»£c trá»Ÿ thÃ nh Ä‘á»‘i tÃ¡c tin cáº­y, Ä‘á»“ng hÃ nh cÃ¹ng cÃ¡c trÆ°á»ng Tiá»ƒu há»c thÃ´ng qua cÃ¡c chÆ°Æ¡ng trÃ¬nh liÃªn káº¿t Ä‘Æ°á»£c thiáº¿t káº¿ Ä‘áº·c biá»‡t, sinh Ä‘á»™ng vÃ  hiá»‡u quáº£. ChÃºng tÃ´i khÃ´ng chá»‰ giÃºp há»c sinh giá»i tiáº¿ng Anh mÃ  cÃ²n hÆ°á»›ng Ä‘áº¿n viá»‡c nuÃ´i dÆ°á»¡ng sá»± tá»± tin, kháº£ nÄƒng sÃ¡ng táº¡o vÃ  cÃ¡c ká»¹ nÄƒng sá»‘ng thiáº¿t yáº¿u cho tháº¿ ká»· 21.
                     </p>
                 </div>
             </div>
@@ -191,72 +191,72 @@
 
         <section class="py-12 md:py-16 bg-gradient-to-b from-blue-50 to-gray-50" aria-labelledby="collaboration-heading-th">
             <div class="container mx-auto px-4">
-                <h2 id="collaboration-heading-th" class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 md:mb-16" data-lang-key="lkth_collab_title" data-aos="fade-up">Giải pháp Liên kết Toàn diện & Linh hoạt</h2>
+                <h2 id="collaboration-heading-th" class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 md:mb-16" data-lang-key="lkth_collab_title" data-aos="fade-up">Giáº£i phÃ¡p LiÃªn káº¿t ToÃ n diá»‡n & Linh hoáº¡t</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                     <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-primary" data-aos="fade-up" data-aos-delay="100">
                         <div class="flex items-center mb-4">
                             <div class="mr-4 text-primary text-4xl"><i class="fas fa-book-reader"></i></div>
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_lang_title">Tiếng Anh Cambridge Super Minds</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_lang_title">Tiáº¿ng Anh Cambridge Super Minds</h3>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_lang_desc">Chương trình chuẩn Cambridge, phát triển toàn diện 4 kỹ năng Nghe-Nói-Đọc-Viết, lồng ghép tư duy sáng tạo và phản biện qua các bài học, dự án vui nhộn, phù hợp tâm lý lứa tuổi.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_lang_desc">ChÆ°Æ¡ng trÃ¬nh chuáº©n Cambridge, phÃ¡t triá»ƒn toÃ n diá»‡n 4 ká»¹ nÄƒng Nghe-NÃ³i-Äá»c-Viáº¿t, lá»“ng ghÃ©p tÆ° duy sÃ¡ng táº¡o vÃ  pháº£n biá»‡n qua cÃ¡c bÃ i há»c, dá»± Ã¡n vui nhá»™n, phÃ¹ há»£p tÃ¢m lÃ½ lá»©a tuá»•i.</p>
                         <a href="ivslanguages.html#superminds" class="text-primary hover:underline font-semibold text-sm inline-flex items-center gap-1">
-                            <span data-lang-key="details_link">Xem chi tiết</span> <i class="fas fa-arrow-right text-xs"></i>
+                            <span data-lang-key="details_link">Xem chi tiáº¿t</span> <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
 
                     <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-purple-500" data-aos="fade-up" data-aos-delay="150">
                          <div class="flex items-center mb-4">
                             <div class="mr-4 text-purple-500 text-4xl"><i class="fas fa-users"></i></div>
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_lifeskills_title">Kỹ năng sống IVS LIFEMinds</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_lifeskills_title">Ká»¹ nÄƒng sá»‘ng IVS LIFEMinds</h3>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_lifeskills_desc">Trang bị những kỹ năng thiết yếu như giao tiếp hiệu quả, tự lập, làm việc nhóm, quản lý cảm xúc, giải quyết vấn đề và tư duy tích cực thông qua các hoạt động trải nghiệm, trò chơi thực tế.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_lifeskills_desc">Trang bá»‹ nhá»¯ng ká»¹ nÄƒng thiáº¿t yáº¿u nhÆ° giao tiáº¿p hiá»‡u quáº£, tá»± láº­p, lÃ m viá»‡c nhÃ³m, quáº£n lÃ½ cáº£m xÃºc, giáº£i quyáº¿t váº¥n Ä‘á» vÃ  tÆ° duy tÃ­ch cá»±c thÃ´ng qua cÃ¡c hoáº¡t Ä‘á»™ng tráº£i nghiá»‡m, trÃ² chÆ¡i thá»±c táº¿.</p>
                         <a href="ivslifeminds.html" class="text-purple-500 hover:underline font-semibold text-sm inline-flex items-center gap-1">
-                           <span data-lang-key="details_link">Xem chi tiết</span> <i class="fas fa-arrow-right text-xs"></i>
+                           <span data-lang-key="details_link">Xem chi tiáº¿t</span> <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
 
                     <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-secondary" data-aos="fade-up" data-aos-delay="200">
                         <div class="flex items-center mb-4">
                             <div class="mr-4 text-secondary text-4xl"><i class="fas fa-rocket"></i></div>
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_steam_title">Hoạt động STEAM Khám phá</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_steam_title">Hoáº¡t Ä‘á»™ng STEAM KhÃ¡m phÃ¡</h3>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_steam_desc">Tổ chức các dự án, câu lạc bộ STEAM định kỳ, giúp học sinh ứng dụng kiến thức liên môn vào giải quyết vấn đề thực tế, khơi dậy niềm đam mê khoa học, công nghệ, kỹ thuật, nghệ thuật và toán học.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_steam_desc">Tá»• chá»©c cÃ¡c dá»± Ã¡n, cÃ¢u láº¡c bá»™ STEAM Ä‘á»‹nh ká»³, giÃºp há»c sinh á»©ng dá»¥ng kiáº¿n thá»©c liÃªn mÃ´n vÃ o giáº£i quyáº¿t váº¥n Ä‘á» thá»±c táº¿, khÆ¡i dáº­y niá»m Ä‘am mÃª khoa há»c, cÃ´ng nghá»‡, ká»¹ thuáº­t, nghá»‡ thuáº­t vÃ  toÃ¡n há»c.</p>
                         <a href="steambyivs.html" class="text-secondary hover:underline font-semibold text-sm inline-flex items-center gap-1">
-                            <span data-lang-key="details_link">Xem chi tiết</span> <i class="fas fa-arrow-right text-xs"></i>
+                            <span data-lang-key="details_link">Xem chi tiáº¿t</span> <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
 
                     <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-indigo-600" data-aos="fade-up" data-aos-delay="250">
                          <div class="flex items-center mb-4">
                             <div class="mr-4 text-indigo-600 text-4xl"><i class="fas fa-tablet-alt"></i></div>
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_edtech_title">Hỗ trợ Công nghệ Giáo dục</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_edtech_title">Há»— trá»£ CÃ´ng nghá»‡ GiÃ¡o dá»¥c</h3>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_edtech_desc">Cung cấp và tư vấn triển khai các giải pháp lớp học tương tác thông minh, phần mềm học tiếng Anh hiệu quả, ứng dụng quản lý học tập và các công cụ EdTech tiên tiến phù hợp với bậc Tiểu học.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_edtech_desc">Cung cáº¥p vÃ  tÆ° váº¥n triá»ƒn khai cÃ¡c giáº£i phÃ¡p lá»›p há»c tÆ°Æ¡ng tÃ¡c thÃ´ng minh, pháº§n má»m há»c tiáº¿ng Anh hiá»‡u quáº£, á»©ng dá»¥ng quáº£n lÃ½ há»c táº­p vÃ  cÃ¡c cÃ´ng cá»¥ EdTech tiÃªn tiáº¿n phÃ¹ há»£p vá»›i báº­c Tiá»ƒu há»c.</p>
                          <a href="ivscelestech.html" class="text-indigo-600 hover:underline font-semibold text-sm inline-flex items-center gap-1">
-                           <span data-lang-key="details_link">Xem chi tiết</span> <i class="fas fa-arrow-right text-xs"></i>
+                           <span data-lang-key="details_link">Xem chi tiáº¿t</span> <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
 
                     <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-warning" data-aos="fade-up" data-aos-delay="300">
                         <div class="flex items-center mb-4">
                             <div class="mr-4 text-warning text-4xl"><i class="fas fa-chalkboard-teacher"></i></div> 
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_teachertrain_title">Bồi dưỡng & Phát triển Giáo viên</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_teachertrain_title">Bá»“i dÆ°á»¡ng & PhÃ¡t triá»ƒn GiÃ¡o viÃªn</h3>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_teachertrain_desc">Tổ chức các buổi workshop, tập huấn chuyên sâu về phương pháp giảng dạy tiếng Anh hiện đại (CLIL, PBL), kỹ năng quản lý lớp học và ứng dụng công nghệ trong giảng dạy cho giáo viên Tiểu học.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_teachertrain_desc">Tá»• chá»©c cÃ¡c buá»•i workshop, táº­p huáº¥n chuyÃªn sÃ¢u vá» phÆ°Æ¡ng phÃ¡p giáº£ng dáº¡y tiáº¿ng Anh hiá»‡n Ä‘áº¡i (CLIL, PBL), ká»¹ nÄƒng quáº£n lÃ½ lá»›p há»c vÃ  á»©ng dá»¥ng cÃ´ng nghá»‡ trong giáº£ng dáº¡y cho giÃ¡o viÃªn Tiá»ƒu há»c.</p>
                          <a href="teachertrain.html" class="text-warning hover:underline font-semibold text-sm inline-flex items-center gap-1">
-                           <span data-lang-key="details_link">Xem chi tiết</span> <i class="fas fa-arrow-right text-xs"></i>
+                           <span data-lang-key="details_link">Xem chi tiáº¿t</span> <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
 
                     <div class="feature-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-red-500" data-aos="fade-up" data-aos-delay="350">
                          <div class="flex items-center mb-4">
                             <div class="mr-4 text-red-500 text-4xl"><i class="fas fa-campground"></i></div>
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_extracurricular_title">Ngoại khóa & Sự kiện Hấp dẫn</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white" data-lang-key="lkth_collab_extracurricular_title">Ngoáº¡i khÃ³a & Sá»± kiá»‡n Háº¥p dáº«n</h3>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_extracurricular_desc">Phối hợp tổ chức các ngày hội tiếng Anh sôi động, cuộc thi Rung chuông vàng trí tuệ, trại hè bổ ích, hoạt động trải nghiệm thực tế... tạo sân chơi lành mạnh, lý thú cho học sinh.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5" data-lang-key="lkth_collab_extracurricular_desc">Phá»‘i há»£p tá»• chá»©c cÃ¡c ngÃ y há»™i tiáº¿ng Anh sÃ´i Ä‘á»™ng, cuá»™c thi Rung chuÃ´ng vÃ ng trÃ­ tuá»‡, tráº¡i hÃ¨ bá»• Ã­ch, hoáº¡t Ä‘á»™ng tráº£i nghiá»‡m thá»±c táº¿... táº¡o sÃ¢n chÆ¡i lÃ nh máº¡nh, lÃ½ thÃº cho há»c sinh.</p>
                         <a href="gallery.html" class="text-red-500 hover:underline font-semibold text-sm inline-flex items-center gap-1">
-                            <span data-lang-key="details_link">Xem chi tiết</span> <i class="fas fa-arrow-right text-xs"></i>
+                            <span data-lang-key="details_link">Xem chi tiáº¿t</span> <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
 
@@ -266,39 +266,39 @@
 
          <section class="py-12 md:py-16 bg-white" aria-labelledby="gallery-heading-th">
             <div class="container mx-auto px-4">
-                <h2 id="gallery-heading-th" class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10 md:mb-12" data-lang-key="lkth_gallery_title" data-aos="fade-up">Hình ảnh Kết nối Ý nghĩa cùng Trường Tiểu học</h2>
+                <h2 id="gallery-heading-th" class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10 md:mb-12" data-lang-key="lkth_gallery_title" data-aos="fade-up">HÃ¬nh áº£nh Káº¿t ná»‘i Ã nghÄ©a cÃ¹ng TrÆ°á»ng Tiá»ƒu há»c</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="/images/pages/albums/2024thtp.jpg" alt="Hoạt động toàn trường Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
-                        <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_1">TH Tập Phước - Toàn trường</p>
+                        <img src="/images/pages/albums/2024thtp.jpg" alt="Hoáº¡t Ä‘á»™ng toÃ n trÆ°á»ng Tiá»ƒu há»c Táº­p PhÆ°á»›c" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=áº¢nh+Lá»—i'; this.classList.add('object-contain');">
+                        <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_1">TH Táº­p PhÆ°á»›c - ToÃ n trÆ°á»ng</p>
                     </div>
                      <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="/images/pages/albums/2024thtp1.jpg" alt="Hoạt động toàn trường Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
-                        <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_2">TH Tập Phước - Hoạt động</p>
+                        <img src="/images/pages/albums/2024thtp1.jpg" alt="Hoáº¡t Ä‘á»™ng toÃ n trÆ°á»ng Tiá»ƒu há»c Táº­p PhÆ°á»›c" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=áº¢nh+Lá»—i'; this.classList.add('object-contain');">
+                        <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_2">TH Táº­p PhÆ°á»›c - Hoáº¡t Ä‘á»™ng</p>
                     </div>
                      <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="/images/pages/albums/2024thtp2.jpg" alt="Tặng quà tại Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
-                        <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_3">TH Tập Phước - Tặng quà</p>
+                        <img src="/images/pages/albums/2024thtp2.jpg" alt="Táº·ng quÃ  táº¡i Tiá»ƒu há»c Táº­p PhÆ°á»›c" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=áº¢nh+Lá»—i'; this.classList.add('object-contain');">
+                        <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_3">TH Táº­p PhÆ°á»›c - Táº·ng quÃ </p>
                     </div>
                      <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="/images/pages/albums/2024thtpht.jpg" alt="Kỷ niệm cùng Hiệu trưởng Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
-                        <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_4">TH Tập Phước - Kỷ niệm cùng Hiệu trưởng</p>
+                        <img src="/images/pages/albums/2024thtpht.jpg" alt="Ká»· niá»‡m cÃ¹ng Hiá»‡u trÆ°á»Ÿng Tiá»ƒu há»c Táº­p PhÆ°á»›c" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=áº¢nh+Lá»—i'; this.classList.add('object-contain');">
+                        <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_4">TH Táº­p PhÆ°á»›c - Ká»· niá»‡m cÃ¹ng Hiá»‡u trÆ°á»Ÿng</p>
                     </div>
                 </div>
                  <div class="text-center mt-8" data-aos="fade-up">
-                     <a href="contact.html?interest=school_partnership_primary_gallery" class="text-primary hover:underline font-medium text-sm" data-lang-key="view_more_photos_link">Xem thêm hình ảnh (sắp có)...</a>
+                     <a href="contact.html?interest=school_partnership_primary_gallery" class="text-primary hover:underline font-medium text-sm" data-lang-key="view_more_photos_link">Xem thÃªm hÃ¬nh áº£nh (sáº¯p cÃ³)...</a>
                  </div>
             </div>
         </section>
 
          <section class="py-16 md:py-20 bg-gradient-to-r from-orange-100 to-amber-100">
             <div class="container mx-auto px-4 text-center max-w-3xl" data-aos="zoom-in-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-6" data-lang-key="lkth_cta_title">Chung Tay Xây Dựng Tương Lai Giáo Dục Tiểu Học</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-6" data-lang-key="lkth_cta_title">Chung Tay XÃ¢y Dá»±ng TÆ°Æ¡ng Lai GiÃ¡o Dá»¥c Tiá»ƒu Há»c</h2>
                 <p class="text-gray-800 mb-10 text-lg leading-relaxed" data-lang-key="lkth_cta_desc">
-                    IVS Academy tin rằng sự hợp tác chặt chẽ giữa nhà trường và các đơn vị giáo dục tâm huyết sẽ tạo nên sức mạnh cộng hưởng, mang đến những giá trị tốt đẹp nhất cho học sinh. Hãy cùng chúng tôi kiến tạo một môi trường học tập tiểu học năng động, sáng tạo và hiệu quả!
+                    IVS Academy tin ráº±ng sá»± há»£p tÃ¡c cháº·t cháº½ giá»¯a nhÃ  trÆ°á»ng vÃ  cÃ¡c Ä‘Æ¡n vá»‹ giÃ¡o dá»¥c tÃ¢m huyáº¿t sáº½ táº¡o nÃªn sá»©c máº¡nh cá»™ng hÆ°á»Ÿng, mang Ä‘áº¿n nhá»¯ng giÃ¡ trá»‹ tá»‘t Ä‘áº¹p nháº¥t cho há»c sinh. HÃ£y cÃ¹ng chÃºng tÃ´i kiáº¿n táº¡o má»™t mÃ´i trÆ°á»ng há»c táº­p tiá»ƒu há»c nÄƒng Ä‘á»™ng, sÃ¡ng táº¡o vÃ  hiá»‡u quáº£!
                 </p>
                 <a href="contact.html?interest=school_partnership_primary" class="inline-block bg-warning hover:bg-orange-700 text-white font-bold py-4 px-10 rounded-lg transition duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 text-lg">
-                    <span data-lang-key="contact_partnership_button">Liên hệ Hợp tác Ngay</span> <i class="fas fa-hands-helping ml-2"></i>
+                    <span data-lang-key="contact_partnership_button">LiÃªn há»‡ Há»£p tÃ¡c Ngay</span> <i class="fas fa-hands-helping ml-2"></i>
                 </a>
             </div>
         </section>
@@ -309,30 +309,30 @@
 
     <script src="/js/script.js" defer></script>
     <script src="/js/language.js" defer></script>
-    <script src="/js/fabController.js" defer></script>
+    <script src="/ai/js/fabController.js" defer></script>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Khởi tạo toàn bộ trang sau khi DOM đã tải hoàn chỉnh
+        // Khá»Ÿi táº¡o toÃ n bá»™ trang sau khi DOM Ä‘Ã£ táº£i hoÃ n chá»‰nh
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                // Khởi tạo hệ thống ngôn ngữ
+                // Khá»Ÿi táº¡o há»‡ thá»‘ng ngÃ´n ngá»¯
                 if (window.initializeLanguageSystem) {
                     await window.initializeLanguageSystem();
                 }
                 
-                // Tải và khởi tạo các component (header, footer, FABs)
+                // Táº£i vÃ  khá»Ÿi táº¡o cÃ¡c component (header, footer, FABs)
                 if (window.loadComponentsAndInitialize) {
                     await window.loadComponentsAndInitialize();
                 }
                 
-                // Chạy bất kỳ khởi tạo cụ thể nào của trang này (nếu có)
+                // Cháº¡y báº¥t ká»³ khá»Ÿi táº¡o cá»¥ thá»ƒ nÃ o cá»§a trang nÃ y (náº¿u cÃ³)
                 if (typeof window.onPageComponentsLoadedCallback === 'function') {
                     window.onPageComponentsLoadedCallback();
                 }
 
-                // Khởi tạo thư viện AOS (Animate On Scroll)
+                // Khá»Ÿi táº¡o thÆ° viá»‡n AOS (Animate On Scroll)
                 AOS.init({
                     offset: 100,
                     duration: 700,
@@ -346,8 +346,8 @@
             }
         });
 
-        // Hàm initializeTheme được giữ lại ở đây để đảm bảo tính nhất quán nếu trang này được truy cập trực tiếp
-        // Hàm này sẽ được gọi bởi loadComponentsAndInitialize hoặc trực tiếp nếu trang được tải độc lập
+        // HÃ m initializeTheme Ä‘Æ°á»£c giá»¯ láº¡i á»Ÿ Ä‘Ã¢y Ä‘á»ƒ Ä‘áº£m báº£o tÃ­nh nháº¥t quÃ¡n náº¿u trang nÃ y Ä‘Æ°á»£c truy cáº­p trá»±c tiáº¿p
+        // HÃ m nÃ y sáº½ Ä‘Æ°á»£c gá»i bá»Ÿi loadComponentsAndInitialize hoáº·c trá»±c tiáº¿p náº¿u trang Ä‘Æ°á»£c táº£i Ä‘á»™c láº­p
         window.initializeTheme = function() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -357,15 +357,16 @@
                 document.documentElement.classList.toggle('dark', prefersDark);
             }
         };
-        // Gọi hàm khởi tạo chủ đề ngay khi script được tải
-        // Điều này đảm bảo theme được áp dụng nhanh chóng, tránh FOUC (Flash of Unstyled Content)
+        // Gá»i hÃ m khá»Ÿi táº¡o chá»§ Ä‘á» ngay khi script Ä‘Æ°á»£c táº£i
+        // Äiá»u nÃ y Ä‘áº£m báº£o theme Ä‘Æ°á»£c Ã¡p dá»¥ng nhanh chÃ³ng, trÃ¡nh FOUC (Flash of Unstyled Content)
         initializeTheme();
     </script>
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>
+
 
 
 

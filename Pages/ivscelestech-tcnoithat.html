@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html class="dark scroll-smooth" lang="vi">
 <head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//placehold.co" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title data-lang-key="interior_page_title">IVS Celestech - Thiết Kế &amp; Thi Công Nội Thất Giáo dục Chu...</title>
-<meta content="Biến không gian sống và làm việc của bạn thành những kiệt tác đầy cảm hứng cùng IVS Celestech. IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng A" data-lang-key="interior_meta_description" name="description"/>
-<meta content="IVS Celestech - Thiết Kế &amp; Thi Công Nội Thất Chuyên Nghiệp" data-lang-key="interior_og_title" property="og:title"/>
-<meta content="IVS Celestech cam kết kiến tạo những không gian không chỉ đẹp về mặt thẩm mỹ mà còn tối ưu về công năng và phản ánh rõ nét cá tính của gia chủ hoặc văn hóa doanh nghiệp." data-lang-key="interior_og_description" property="og:description"/>
+<title data-lang-key="interior_page_title">IVS Celestech - Thiáº¿t Káº¿ &amp; Thi CÃ´ng Ná»™i Tháº¥t GiÃ¡o dá»¥c Chu...</title>
+<meta content="Biáº¿n khÃ´ng gian sá»‘ng vÃ  lÃ m viá»‡c cá»§a báº¡n thÃ nh nhá»¯ng kiá»‡t tÃ¡c Ä‘áº§y cáº£m há»©ng cÃ¹ng IVS Celestech. IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, Ä‘Ã o táº¡o tiáº¿ng A" data-lang-key="interior_meta_description" name="description"/>
+<meta content="IVS Celestech - Thiáº¿t Káº¿ &amp; Thi CÃ´ng Ná»™i Tháº¥t ChuyÃªn Nghiá»‡p" data-lang-key="interior_og_title" property="og:title"/>
+<meta content="IVS Celestech cam káº¿t kiáº¿n táº¡o nhá»¯ng khÃ´ng gian khÃ´ng chá»‰ Ä‘áº¹p vá» máº·t tháº©m má»¹ mÃ  cÃ²n tá»‘i Æ°u vá» cÃ´ng nÄƒng vÃ  pháº£n Ã¡nh rÃµ nÃ©t cÃ¡ tÃ­nh cá»§a gia chá»§ hoáº·c vÄƒn hÃ³a doanh nghiá»‡p." data-lang-key="interior_og_description" property="og:description"/>
 <meta content="https://placehold.co/1200x630/161B22/E4E4E7?text=IVS+Celestech+Interior+Design" property="og:image"/>
 <meta content="https://ivsacademy.edu.vn/Pages/ivscelestech-tcnoithat.html" property="og:url"/>
 <meta content="website" property="og:type"/>
@@ -24,13 +24,13 @@
 <!-- AOS for animations -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-        /* Các biến CSS cho header-height (giữ lại nếu được sử dụng ở các component khác) */
+        /* CÃ¡c biáº¿n CSS cho header-height (giá»¯ láº¡i náº¿u Ä‘Æ°á»£c sá»­ dá»¥ng á»Ÿ cÃ¡c component khÃ¡c) */
         :root {
             --header-height: 4rem;       /* 64px */
             --header-height-mobile: 3.5rem; /* 56px */
         }
 
-        /* Điều chỉnh Header Placeholder */
+        /* Äiá»u chá»‰nh Header Placeholder */
         #header-placeholder {
             height: var(--header-height);
             transition: transform 0.3s ease;
@@ -40,22 +40,22 @@
                 height: var(--header-height-mobile);
             }
         }
-        /* Đảm bảo nội dung không bị ẩn dưới header cố định */
+        /* Äáº£m báº£o ná»™i dung khÃ´ng bá»‹ áº©n dÆ°á»›i header cá»‘ Ä‘á»‹nh */
         main {
             position: relative;
             z-index: 1;
-            padding-top: var(--header-height); /* Đẩy nội dung xuống dưới header */
+            padding-top: var(--header-height); /* Äáº©y ná»™i dung xuá»‘ng dÆ°á»›i header */
         }
         @media (max-width: 768px) {
             main {
                 padding-top: var(--header-height-mobile);
             }
         }
-        /* Ẩn header khi cuộn xuống */
+        /* áº¨n header khi cuá»™n xuá»‘ng */
         .header-hidden {
             transform: translateY(-100%);
         }
-        /* Hiển thị header khi cuộn lên */
+        /* Hiá»ƒn thá»‹ header khi cuá»™n lÃªn */
         .header-visible {
             transform: translateY(0);
         }
@@ -68,7 +68,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* Kiểu cho placeholder khi tải component */
+        /* Kiá»ƒu cho placeholder khi táº£i component */
         #header-placeholder:empty::before,
         #footer-placeholder:empty::before {
             content: attr(data-loading-text);
@@ -88,12 +88,12 @@
 
         /* FAB helpers moved to /css/fab.css */
         
-        /* Kiểu cho nút ngôn ngữ đang hoạt động */
+        /* Kiá»ƒu cho nÃºt ngÃ´n ngá»¯ Ä‘ang hoáº¡t Ä‘á»™ng */
         #header-placeholder button.active-lang {
             background-color: var(--ivs-primary) !important;
             color: var(--ivs-text-white) !important;
         }
-        /* Hiệu ứng hover cho dropdown/mega menu */
+        /* Hiá»‡u á»©ng hover cho dropdown/mega menu */
         .group:hover .group-hover\:opacity-100 {
             opacity: 1 !important; visibility: visible !important;
         }
@@ -101,7 +101,7 @@
             visibility: visible !important;
         }
 
-        /* Thêm các kiểu dáng cho nút chuyển đổi chế độ tối */
+        /* ThÃªm cÃ¡c kiá»ƒu dÃ¡ng cho nÃºt chuyá»ƒn Ä‘á»•i cháº¿ Ä‘á»™ tá»‘i */
         #darkModeToggle {
             position: fixed;
             bottom: 2rem;
@@ -183,7 +183,7 @@
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 </link></head>
-<!-- Điều chỉnh màu nền body cho chủ đề tối -->
+<!-- Äiá»u chá»‰nh mÃ u ná»n body cho chá»§ Ä‘á» tá»‘i -->
 <body class="flex flex-col min-h-screen font-sans bg-ivs-neutral-50 text-ivs-neutral-700 dark:bg-ivs-neutral-800 dark:text-ivs-neutral-200">
 <!-- Header component will be loaded here -->
 <div id="header-placeholder"></div>
@@ -194,173 +194,173 @@
 <source src="../pages/videos/ivs_background_video1.mp4" type="video/mp4"/>
 <source src="../pages/videos/ivs_background_video1.webm" type="video/webm"/>
 <!-- Fallback Image if video fails to load -->
-<img alt="Hình ảnh nền Hero IVS Celestech" class="w-full h-full object-cover" decoding="async" src="https://placehold.co/1920x1080/18181B/E4E4E7?text=Celestech+Hero+Fallback"/>
+<img alt="HÃ¬nh áº£nh ná»n Hero IVS Celestech" class="w-full h-full object-cover" decoding="async" src="https://placehold.co/1920x1080/18181B/E4E4E7?text=Celestech+Hero+Fallback"/>
 </video>
 <div class="overlay"></div>
 <div class="content max-w-4xl mx-auto backdrop-blur-sm bg-black/30 p-6 md:p-8 rounded-2xl border border-white/10" data-aos="fade-up">
 <h1 class="text-3xl md:text-5xl font-extrabold font-display mb-4 leading-tight text-white" data-lang-key="interior_hero_title">
-                    IVS Celestech: Kiến Tạo Không Gian Giáo Dục &amp; Cung Cấp Trang Thiết Bị Hiện Đại
+                    IVS Celestech: Kiáº¿n Táº¡o KhÃ´ng Gian GiÃ¡o Dá»¥c &amp; Cung Cáº¥p Trang Thiáº¿t Bá»‹ Hiá»‡n Äáº¡i
                 </h1>
 <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-ivs-neutral-100" data-lang-key="interior_hero_subtitle">
-                    Chuyên nghiệp, hiệu quả, chất lượng, sang trọng, vững vàng – Chúng tôi kiến tạo môi trường học tập lý tưởng cho thế hệ tương lai.
+                    ChuyÃªn nghiá»‡p, hiá»‡u quáº£, cháº¥t lÆ°á»£ng, sang trá»ng, vá»¯ng vÃ ng â€“ ChÃºng tÃ´i kiáº¿n táº¡o mÃ´i trÆ°á»ng há»c táº­p lÃ½ tÆ°á»Ÿng cho tháº¿ há»‡ tÆ°Æ¡ng lai.
                 </p>
 <a class="inline-block bg-accent hover:bg-secondary-dark text-ivs-neutral-800 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" data-lang-key="interior_hero_cta" href="../#contact-us">
-                    Tư Vấn Miễn Phí Ngay
+                    TÆ° Váº¥n Miá»…n PhÃ­ Ngay
                 </a>
 </div>
 </section>
-<!-- Giới Thiệu IVS Celestech -->
+<!-- Giá»›i Thiá»‡u IVS Celestech -->
 <section class="bg-white dark:bg-neutral-900 text-gray-800 dark:text-gray-100 p-8 md:p-12 rounded-xl shadow-md mb-12" data-aos="fade-up" data-aos-delay="100" id="intro">
-    <h2 class="text-2xl md:text-3xl font-bold font-display text-gray-900 dark:text-white mb-6 text-center" data-lang-key="interior_intro_title">Giới Thiệu IVS Celestech</h2>
-    <p class="text-lg leading-relaxed text-justify" data-lang-key="interior_intro_content_1">IVS Celestech, một đơn vị trực thuộc Công ty Cổ phần Dịch vụ Thương mại Integrate Vision Synergy (IVS JSC), chuyên cung cấp các giải pháp thiết kế, thi công nội thất và trang thiết bị cho các công trình giáo dục. Chúng tôi cam kết kiến tạo những không gian học tập không chỉ đẹp về mặt thẩm mỹ mà còn tối ưu về công năng, an toàn và phản ánh rõ nét triết lý giáo dục của nhà trường.</p>
-    <p class="text-lg leading-relaxed text-justify mt-4" data-lang-key="interior_intro_content_2">Với đội ngũ kiến trúc sư, kỹ sư và thợ thi công giàu kinh nghiệm trong lĩnh vực giáo dục, IVS Celestech luôn đặt chất lượng, sự tận tâm và sáng tạo lên hàng đầu trong mỗi dự án. Chúng tôi tin rằng, một môi trường học tập được thiết kế tỉ mỉ sẽ truyền cảm hứng, thúc đẩy sự phát triển toàn diện cho học sinh và nâng cao hiệu suất giảng dạy cho giáo viên.</p>
+    <h2 class="text-2xl md:text-3xl font-bold font-display text-gray-900 dark:text-white mb-6 text-center" data-lang-key="interior_intro_title">Giá»›i Thiá»‡u IVS Celestech</h2>
+    <p class="text-lg leading-relaxed text-justify" data-lang-key="interior_intro_content_1">IVS Celestech, má»™t Ä‘Æ¡n vá»‹ trá»±c thuá»™c CÃ´ng ty Cá»• pháº§n Dá»‹ch vá»¥ ThÆ°Æ¡ng máº¡i Integrate Vision Synergy (IVS JSC), chuyÃªn cung cáº¥p cÃ¡c giáº£i phÃ¡p thiáº¿t káº¿, thi cÃ´ng ná»™i tháº¥t vÃ  trang thiáº¿t bá»‹ cho cÃ¡c cÃ´ng trÃ¬nh giÃ¡o dá»¥c. ChÃºng tÃ´i cam káº¿t kiáº¿n táº¡o nhá»¯ng khÃ´ng gian há»c táº­p khÃ´ng chá»‰ Ä‘áº¹p vá» máº·t tháº©m má»¹ mÃ  cÃ²n tá»‘i Æ°u vá» cÃ´ng nÄƒng, an toÃ n vÃ  pháº£n Ã¡nh rÃµ nÃ©t triáº¿t lÃ½ giÃ¡o dá»¥c cá»§a nhÃ  trÆ°á»ng.</p>
+    <p class="text-lg leading-relaxed text-justify mt-4" data-lang-key="interior_intro_content_2">Vá»›i Ä‘á»™i ngÅ© kiáº¿n trÃºc sÆ°, ká»¹ sÆ° vÃ  thá»£ thi cÃ´ng giÃ u kinh nghiá»‡m trong lÄ©nh vá»±c giÃ¡o dá»¥c, IVS Celestech luÃ´n Ä‘áº·t cháº¥t lÆ°á»£ng, sá»± táº­n tÃ¢m vÃ  sÃ¡ng táº¡o lÃªn hÃ ng Ä‘áº§u trong má»—i dá»± Ã¡n. ChÃºng tÃ´i tin ráº±ng, má»™t mÃ´i trÆ°á»ng há»c táº­p Ä‘Æ°á»£c thiáº¿t káº¿ tá»‰ má»‰ sáº½ truyá»n cáº£m há»©ng, thÃºc Ä‘áº©y sá»± phÃ¡t triá»ƒn toÃ n diá»‡n cho há»c sinh vÃ  nÃ¢ng cao hiá»‡u suáº¥t giáº£ng dáº¡y cho giÃ¡o viÃªn.</p>
 </section>
-<!-- Tại Sao Chọn IVS Celestech? -->
+<!-- Táº¡i Sao Chá»n IVS Celestech? -->
 <section class="bg-white dark:bg-neutral-900 text-gray-800 dark:text-gray-100 p-8 md:p-12 rounded-xl shadow-md mb-12" data-aos="fade-up" data-aos-delay="200" id="why-choose">
-    <h2 class="text-2xl md:text-3xl font-bold font-display text-gray-900 dark:text-white mb-8 text-center" data-lang-key="interior_why_choose_title">Tại Sao Chọn IVS Celestech?</h2>
+    <h2 class="text-2xl md:text-3xl font-bold font-display text-gray-900 dark:text-white mb-8 text-center" data-lang-key="interior_why_choose_title">Táº¡i Sao Chá»n IVS Celestech?</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="flex flex-col items-center text-center p-6 bg-gray-50 dark:bg-neutral-800 rounded-lg shadow-sm card-hover-effect" data-aos="zoom-in-up" data-aos-delay="300">
-            <div class="text-4xl text-accent dark:text-secondary mb-4">💡</div>
-            <h3 class="text-xl font-semibold font-display mb-2 text-gray-900 dark:text-white" data-lang-key="interior_why_quality_title">Chất Lượng Vượt Trội</h3>
-            <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-key="interior_why_quality_desc">Cam kết vật liệu cao cấp, trang thiết bị giáo dục hiện đại và quy trình thi công chuẩn mực, đảm bảo độ bền và thẩm mỹ tối ưu.</p>
+            <div class="text-4xl text-accent dark:text-secondary mb-4">ðŸ’¡</div>
+            <h3 class="text-xl font-semibold font-display mb-2 text-gray-900 dark:text-white" data-lang-key="interior_why_quality_title">Cháº¥t LÆ°á»£ng VÆ°á»£t Trá»™i</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-key="interior_why_quality_desc">Cam káº¿t váº­t liá»‡u cao cáº¥p, trang thiáº¿t bá»‹ giÃ¡o dá»¥c hiá»‡n Ä‘áº¡i vÃ  quy trÃ¬nh thi cÃ´ng chuáº©n má»±c, Ä‘áº£m báº£o Ä‘á»™ bá»n vÃ  tháº©m má»¹ tá»‘i Æ°u.</p>
         </div>
         <div class="flex flex-col items-center text-center p-6 bg-gray-50 dark:bg-neutral-800 rounded-lg shadow-sm card-hover-effect" data-aos="zoom-in-up" data-aos-delay="400">
-            <div class="text-4xl text-red-500 dark:text-red-400 mb-4">❤️</div>
-            <h3 class="text-xl font-semibold font-display mb-2 text-gray-900 dark:text-white" data-lang-key="interior_why_dedication_title">Tận Tâm Với Giáo Dục</h3>
-            <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-key="interior_why_dedication_desc">Luôn lắng nghe, thấu hiểu đặc thù của từng cơ sở giáo dục để đưa ra những giải pháp thiết kế và cung cấp thiết bị phù hợp nhất.</p>
+            <div class="text-4xl text-red-500 dark:text-red-400 mb-4">â¤ï¸</div>
+            <h3 class="text-xl font-semibold font-display mb-2 text-gray-900 dark:text-white" data-lang-key="interior_why_dedication_title">Táº­n TÃ¢m Vá»›i GiÃ¡o Dá»¥c</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-key="interior_why_dedication_desc">LuÃ´n láº¯ng nghe, tháº¥u hiá»ƒu Ä‘áº·c thÃ¹ cá»§a tá»«ng cÆ¡ sá»Ÿ giÃ¡o dá»¥c Ä‘á»ƒ Ä‘Æ°a ra nhá»¯ng giáº£i phÃ¡p thiáº¿t káº¿ vÃ  cung cáº¥p thiáº¿t bá»‹ phÃ¹ há»£p nháº¥t.</p>
         </div>
         <div class="flex flex-col items-center text-center p-6 bg-gray-50 dark:bg-neutral-800 rounded-lg shadow-sm card-hover-effect" data-aos="zoom-in-up" data-aos-delay="500">
-            <div class="text-4xl text-blue-500 dark:text-blue-400 mb-4">🎨</div>
-            <h3 class="text-xl font-semibold font-display mb-2 text-gray-900 dark:text-white" data-lang-key="interior_why_creativity_title">Thiết Kế Sáng Tạo &amp; Thân Thiện</h3>
-            <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-key="interior_why_creativity_desc">Đội ngũ kiến trúc sư tài năng không ngừng đổi mới, mang đến những ý tưởng độc đáo, tạo nên không gian học tập sống động và truyền cảm hứng.</p>
+            <div class="text-4xl text-blue-500 dark:text-blue-400 mb-4">ðŸŽ¨</div>
+            <h3 class="text-xl font-semibold font-display mb-2 text-gray-900 dark:text-white" data-lang-key="interior_why_creativity_title">Thiáº¿t Káº¿ SÃ¡ng Táº¡o &amp; ThÃ¢n Thiá»‡n</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-key="interior_why_creativity_desc">Äá»™i ngÅ© kiáº¿n trÃºc sÆ° tÃ i nÄƒng khÃ´ng ngá»«ng Ä‘á»•i má»›i, mang Ä‘áº¿n nhá»¯ng Ã½ tÆ°á»Ÿng Ä‘á»™c Ä‘Ã¡o, táº¡o nÃªn khÃ´ng gian há»c táº­p sá»‘ng Ä‘á»™ng vÃ  truyá»n cáº£m há»©ng.</p>
         </div>
         <div class="flex flex-col items-center text-center p-6 bg-gray-50 dark:bg-neutral-800 rounded-lg shadow-sm card-hover-effect" data-aos="zoom-in-up" data-aos-delay="600">
-            <div class="text-4xl text-green-500 dark:text-green-400 mb-4">🤝</div>
-            <h3 class="text-xl font-semibold font-display mb-2 text-gray-900 dark:text-white" data-lang-key="interior_why_transparency_title">Giải Pháp Toàn Diện &amp; Minh Bạch</h3>
-            <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-key="interior_why_transparency_desc">Cung cấp giải pháp trọn gói từ tư vấn, thiết kế, thi công đến cung cấp thiết bị, với mọi giao dịch và quy trình đều minh bạch, rõ ràng.</p>
+            <div class="text-4xl text-green-500 dark:text-green-400 mb-4">ðŸ¤</div>
+            <h3 class="text-xl font-semibold font-display mb-2 text-gray-900 dark:text-white" data-lang-key="interior_why_transparency_title">Giáº£i PhÃ¡p ToÃ n Diá»‡n &amp; Minh Báº¡ch</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm" data-lang-key="interior_why_transparency_desc">Cung cáº¥p giáº£i phÃ¡p trá»n gÃ³i tá»« tÆ° váº¥n, thiáº¿t káº¿, thi cÃ´ng Ä‘áº¿n cung cáº¥p thiáº¿t bá»‹, vá»›i má»i giao dá»‹ch vÃ  quy trÃ¬nh Ä‘á»u minh báº¡ch, rÃµ rÃ ng.</p>
         </div>
     </div>
 </section>
-<!-- Quy Trình Thiết Kế & Thi Công Nội Thất -->
+<!-- Quy TrÃ¬nh Thiáº¿t Káº¿ & Thi CÃ´ng Ná»™i Tháº¥t -->
 <section class="bg-white dark:bg-ivs-neutral-700 p-8 md:p-12 rounded-xl shadow-md mb-12" data-aos="fade-up" id="process">
-<h2 class="text-2xl md:text-3xl font-bold font-display text-primary dark:text-primary mb-8 text-center" data-lang-key="interior_process_title">Quy Trình Thiết Kế &amp; Thi Công Công Trình Giáo Dục</h2>
+<h2 class="text-2xl md:text-3xl font-bold font-display text-primary dark:text-primary mb-8 text-center" data-lang-key="interior_process_title">Quy TrÃ¬nh Thiáº¿t Káº¿ &amp; Thi CÃ´ng CÃ´ng TrÃ¬nh GiÃ¡o Dá»¥c</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 <!-- Step 1 -->
 <div class="flex items-start p-6 bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm card-hover-effect" data-aos="fade-right">
 <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full text-lg font-bold mr-4">1</div>
 <div>
-<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step1_title">Tiếp Nhận Thông Tin &amp; Tư Vấn Sơ Bộ</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step1_desc">Chúng tôi lắng nghe nhu cầu, mong muốn và ngân sách của nhà trường để đưa ra những tư vấn ban đầu về phong cách, vật liệu và giải pháp tối ưu cho không gian giáo dục.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step1_title">Tiáº¿p Nháº­n ThÃ´ng Tin &amp; TÆ° Váº¥n SÆ¡ Bá»™</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step1_desc">ChÃºng tÃ´i láº¯ng nghe nhu cáº§u, mong muá»‘n vÃ  ngÃ¢n sÃ¡ch cá»§a nhÃ  trÆ°á»ng Ä‘á»ƒ Ä‘Æ°a ra nhá»¯ng tÆ° váº¥n ban Ä‘áº§u vá» phong cÃ¡ch, váº­t liá»‡u vÃ  giáº£i phÃ¡p tá»‘i Æ°u cho khÃ´ng gian giÃ¡o dá»¥c.</p>
 </div>
 </div>
 <!-- Step 2 -->
 <div class="flex items-start p-6 bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm card-hover-effect" data-aos="fade-right" data-aos-delay="100">
 <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full text-lg font-bold mr-4">2</div>
 <div>
-<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step2_title">Khảo Sát Hiện Trạng &amp; Lên Ý Tưởng Thiết Kế</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step2_desc">Đội ngũ IVS Celestech sẽ tiến hành khảo sát thực tế mặt bằng, thu thập dữ liệu và bắt đầu phác thảo các ý tưởng thiết kế sơ bộ, tập trung vào tính sư phạm và an toàn.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step2_title">Kháº£o SÃ¡t Hiá»‡n Tráº¡ng &amp; LÃªn Ã TÆ°á»Ÿng Thiáº¿t Káº¿</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step2_desc">Äá»™i ngÅ© IVS Celestech sáº½ tiáº¿n hÃ nh kháº£o sÃ¡t thá»±c táº¿ máº·t báº±ng, thu tháº­p dá»¯ liá»‡u vÃ  báº¯t Ä‘áº§u phÃ¡c tháº£o cÃ¡c Ã½ tÆ°á»Ÿng thiáº¿t káº¿ sÆ¡ bá»™, táº­p trung vÃ o tÃ­nh sÆ° pháº¡m vÃ  an toÃ n.</p>
 </div>
 </div>
 <!-- Step 3 -->
 <div class="flex items-start p-6 bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm card-hover-effect" data-aos="fade-right" data-aos-delay="200">
 <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full text-lg font-bold mr-4">3</div>
 <div>
-<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step3_title">Ký Kết Hợp Đồng Thiết Kế &amp; Triển Khai Hồ Sơ</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step3_desc">Sau khi thống nhất ý tưởng, chúng ta sẽ ký kết hợp đồng thiết kế và IVS Celestech sẽ triển khai hồ sơ thiết kế chi tiết (2D, 3D), bao gồm cả vị trí trang thiết bị.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step3_title">KÃ½ Káº¿t Há»£p Äá»“ng Thiáº¿t Káº¿ &amp; Triá»ƒn Khai Há»“ SÆ¡</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step3_desc">Sau khi thá»‘ng nháº¥t Ã½ tÆ°á»Ÿng, chÃºng ta sáº½ kÃ½ káº¿t há»£p Ä‘á»“ng thiáº¿t káº¿ vÃ  IVS Celestech sáº½ triá»ƒn khai há»“ sÆ¡ thiáº¿t káº¿ chi tiáº¿t (2D, 3D), bao gá»“m cáº£ vá»‹ trÃ­ trang thiáº¿t bá»‹.</p>
 </div>
 </div>
 <!-- Step 4 -->
 <div class="flex items-start p-6 bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm card-hover-effect" data-aos="fade-right" data-aos-delay="300">
 <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full text-lg font-bold mr-4">4</div>
 <div>
-<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step4_title">Duyệt Thiết Kế &amp; Báo Giá Thi Công</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step4_desc">Khách hàng duyệt bản vẽ thiết kế cuối cùng. Chúng tôi sẽ lập báo giá thi công chi tiết dựa trên hồ sơ thiết kế đã được duyệt, bao gồm cả chi phí thiết bị.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step4_title">Duyá»‡t Thiáº¿t Káº¿ &amp; BÃ¡o GiÃ¡ Thi CÃ´ng</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step4_desc">KhÃ¡ch hÃ ng duyá»‡t báº£n váº½ thiáº¿t káº¿ cuá»‘i cÃ¹ng. ChÃºng tÃ´i sáº½ láº­p bÃ¡o giÃ¡ thi cÃ´ng chi tiáº¿t dá»±a trÃªn há»“ sÆ¡ thiáº¿t káº¿ Ä‘Ã£ Ä‘Æ°á»£c duyá»‡t, bao gá»“m cáº£ chi phÃ­ thiáº¿t bá»‹.</p>
 </div>
 </div>
 <!-- Step 5 -->
 <div class="flex items-start p-6 bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm card-hover-effect" data-aos="fade-right" data-aos-delay="400">
 <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full text-lg font-bold mr-4">5</div>
 <div>
-<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step5_title">Thi Công &amp; Lắp Đặt Nội Thất &amp; Thiết Bị</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step5_desc">Tiến hành thi công và lắp đặt nội thất theo bản vẽ đã duyệt, đồng thời cung cấp và lắp đặt các trang thiết bị giáo dục hiện đại, đảm bảo chất lượng và tiến độ.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step5_title">Thi CÃ´ng &amp; Láº¯p Äáº·t Ná»™i Tháº¥t &amp; Thiáº¿t Bá»‹</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step5_desc">Tiáº¿n hÃ nh thi cÃ´ng vÃ  láº¯p Ä‘áº·t ná»™i tháº¥t theo báº£n váº½ Ä‘Ã£ duyá»‡t, Ä‘á»“ng thá»i cung cáº¥p vÃ  láº¯p Ä‘áº·t cÃ¡c trang thiáº¿t bá»‹ giÃ¡o dá»¥c hiá»‡n Ä‘áº¡i, Ä‘áº£m báº£o cháº¥t lÆ°á»£ng vÃ  tiáº¿n Ä‘á»™.</p>
 </div>
 </div>
 <!-- Step 6 -->
 <div class="flex items-start p-6 bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm card-hover-effect" data-aos="fade-right" data-aos-delay="500">
 <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full text-lg font-bold mr-4">6</div>
 <div>
-<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step6_title">Nghiệm Thu &amp; Bàn Giao</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step7_desc">Khách hàng nghiệm thu toàn bộ công trình và trang thiết bị. IVS Celestech bàn giao không gian giáo dục hoàn thiện đúng như thiết kế và cam kết.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-ivs-neutral-800 dark:text-ivs-neutral-100" data-lang-key="interior_process_step6_title">Nghiá»‡m Thu &amp; BÃ n Giao</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 text-sm" data-lang-key="interior_process_step7_desc">KhÃ¡ch hÃ ng nghiá»‡m thu toÃ n bá»™ cÃ´ng trÃ¬nh vÃ  trang thiáº¿t bá»‹. IVS Celestech bÃ n giao khÃ´ng gian giÃ¡o dá»¥c hoÃ n thiá»‡n Ä‘Ãºng nhÆ° thiáº¿t káº¿ vÃ  cam káº¿t.</p>
 </div>
 </div>
 </div>
 </section>
-<!-- Các Dịch Vụ Chính -->
+<!-- CÃ¡c Dá»‹ch Vá»¥ ChÃ­nh -->
 <section class="bg-white dark:bg-neutral-900 text-gray-800 dark:text-gray-100 p-8 md:p-12 rounded-xl shadow-md mb-12" data-aos="fade-up" id="services">
-    <h2 class="text-2xl md:text-3xl font-bold font-display text-gray-900 dark:text-white mb-8 text-center" data-lang-key="interior_main_services_title">Các Dịch Vụ Chính</h2>
+    <h2 class="text-2xl md:text-3xl font-bold font-display text-gray-900 dark:text-white mb-8 text-center" data-lang-key="interior_main_services_title">CÃ¡c Dá»‹ch Vá»¥ ChÃ­nh</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="p-6 bg-gray-50 dark:bg-neutral-800 rounded-lg shadow-sm card-hover-effect" data-aos="zoom-in-up">
-            <h3 class="text-xl font-semibold font-display text-secondary dark:text-secondary mb-3" data-lang-key="interior_service_design_title"><i class="fas fa-drafting-compass mr-2"></i>Thiết Kế &amp; Thi Công Nội Thất Giáo Dục</h3>
+            <h3 class="text-xl font-semibold font-display text-secondary dark:text-secondary mb-3" data-lang-key="interior_service_design_title"><i class="fas fa-drafting-compass mr-2"></i>Thiáº¿t Káº¿ &amp; Thi CÃ´ng Ná»™i Tháº¥t GiÃ¡o Dá»¥c</h3>
             <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                <li data-lang-key="interior_service_design_item1">Thiết kế phòng học đa năng, linh hoạt, tối ưu diện tích.</li>
-                <li data-lang-key="interior_service_design_item2">Thiết kế khu vực thư viện, phòng đọc sáng tạo, khuyến khích văn hóa đọc.</li>
-                <li data-lang-key="interior_service_design_item3">Thiết kế không gian vui chơi, hoạt động ngoại khóa an toàn, truyền cảm hứng.</li>
-                <li data-lang-key="interior_service_design_item4">Thiết kế phòng thí nghiệm, xưởng thực hành STEAM hiện đại, đạt chuẩn.</li>
-                <li data-lang-key="interior_service_design_item5">Thiết kế khu vực văn phòng, phòng giáo viên tiện nghi, hỗ trợ tối đa công việc.</li>
-                <li data-lang-key="interior_service_design_item6">Thi công trọn gói theo bản vẽ thiết kế, đảm bảo chất lượng và tiến độ.</li>
+                <li data-lang-key="interior_service_design_item1">Thiáº¿t káº¿ phÃ²ng há»c Ä‘a nÄƒng, linh hoáº¡t, tá»‘i Æ°u diá»‡n tÃ­ch.</li>
+                <li data-lang-key="interior_service_design_item2">Thiáº¿t káº¿ khu vá»±c thÆ° viá»‡n, phÃ²ng Ä‘á»c sÃ¡ng táº¡o, khuyáº¿n khÃ­ch vÄƒn hÃ³a Ä‘á»c.</li>
+                <li data-lang-key="interior_service_design_item3">Thiáº¿t káº¿ khÃ´ng gian vui chÆ¡i, hoáº¡t Ä‘á»™ng ngoáº¡i khÃ³a an toÃ n, truyá»n cáº£m há»©ng.</li>
+                <li data-lang-key="interior_service_design_item4">Thiáº¿t káº¿ phÃ²ng thÃ­ nghiá»‡m, xÆ°á»Ÿng thá»±c hÃ nh STEAM hiá»‡n Ä‘áº¡i, Ä‘áº¡t chuáº©n.</li>
+                <li data-lang-key="interior_service_design_item5">Thiáº¿t káº¿ khu vá»±c vÄƒn phÃ²ng, phÃ²ng giÃ¡o viÃªn tiá»‡n nghi, há»— trá»£ tá»‘i Ä‘a cÃ´ng viá»‡c.</li>
+                <li data-lang-key="interior_service_design_item6">Thi cÃ´ng trá»n gÃ³i theo báº£n váº½ thiáº¿t káº¿, Ä‘áº£m báº£o cháº¥t lÆ°á»£ng vÃ  tiáº¿n Ä‘á»™.</li>
             </ul>
         </div>
         <div class="p-6 bg-gray-50 dark:bg-neutral-800 rounded-lg shadow-sm card-hover-effect" data-aos="zoom-in-up" data-aos-delay="100">
-            <h3 class="text-xl font-semibold font-display text-secondary dark:text-secondary mb-3" data-lang-key="interior_service_equipment_title"><i class="fas fa-laptop-house mr-2"></i>Cung Cấp Trang Thiết Bị Giáo Dục Hiện Đại</h3>
+            <h3 class="text-xl font-semibold font-display text-secondary dark:text-secondary mb-3" data-lang-key="interior_service_equipment_title"><i class="fas fa-laptop-house mr-2"></i>Cung Cáº¥p Trang Thiáº¿t Bá»‹ GiÃ¡o Dá»¥c Hiá»‡n Äáº¡i</h3>
             <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-                <li data-lang-key="interior_service_equipment_item1">Cung cấp và lắp đặt nội thất chuyên dụng cho giáo dục (bàn ghế, tủ kệ, bảng tương tác, v.v.).</li>
-                <li data-lang-key="interior_service_equipment_item2">Thiết bị công nghệ giáo dục (màn hình tương tác, máy chiếu, hệ thống âm thanh, VR/AR).</li>
-                <li data-lang-key="interior_service_equipment_item3">Máy tính, máy in, laptop (đa số hàng nội địa Nhật chất lượng cao).</li>
-                <li data-lang-key="interior_service_equipment_item4">Giải pháp quản lý học tập thông minh (LMS, phần mềm quản lý trường học).</li>
+                <li data-lang-key="interior_service_equipment_item1">Cung cáº¥p vÃ  láº¯p Ä‘áº·t ná»™i tháº¥t chuyÃªn dá»¥ng cho giÃ¡o dá»¥c (bÃ n gháº¿, tá»§ ká»‡, báº£ng tÆ°Æ¡ng tÃ¡c, v.v.).</li>
+                <li data-lang-key="interior_service_equipment_item2">Thiáº¿t bá»‹ cÃ´ng nghá»‡ giÃ¡o dá»¥c (mÃ n hÃ¬nh tÆ°Æ¡ng tÃ¡c, mÃ¡y chiáº¿u, há»‡ thá»‘ng Ã¢m thanh, VR/AR).</li>
+                <li data-lang-key="interior_service_equipment_item3">MÃ¡y tÃ­nh, mÃ¡y in, laptop (Ä‘a sá»‘ hÃ ng ná»™i Ä‘á»‹a Nháº­t cháº¥t lÆ°á»£ng cao).</li>
+                <li data-lang-key="interior_service_equipment_item4">Giáº£i phÃ¡p quáº£n lÃ½ há»c táº­p thÃ´ng minh (LMS, pháº§n má»m quáº£n lÃ½ trÆ°á»ng há»c).</li>
             </ul>
         </div>
     </div>
 </section>
-<!-- Dự Án Đã Tham Gia -->
+<!-- Dá»± Ãn ÄÃ£ Tham Gia -->
 <section class="bg-white dark:bg-ivs-neutral-700 p-8 md:p-12 rounded-xl shadow-md mb-12" data-aos="fade-up" id="projects">
-<h2 class="text-2xl md:text-3xl font-bold font-display text-primary dark:text-primary mb-8 text-center" data-lang-key="interior_projects_title">Dự Án Tiêu Biểu Trong Lĩnh Vực Giáo Dục</h2>
+<h2 class="text-2xl md:text-3xl font-bold font-display text-primary dark:text-primary mb-8 text-center" data-lang-key="interior_projects_title">Dá»± Ãn TiÃªu Biá»ƒu Trong LÄ©nh Vá»±c GiÃ¡o Dá»¥c</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Project 1: ANH MỸ GROUP -->
+<!-- Project 1: ANH Má»¸ GROUP -->
 <div class="bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm overflow-hidden card-hover-effect" data-aos="zoom-in-up">
-<img alt="Hình ảnh dự án Trung tâm Ngoại ngữ ANH MỸ GROUP" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/27272A/E4E4E7?text=ANH+MY+GROUP';" src="../images/pages/ivscelestech/noithat-amgphuocthai.jpg"/>
+<img alt="HÃ¬nh áº£nh dá»± Ã¡n Trung tÃ¢m Ngoáº¡i ngá»¯ ANH Má»¸ GROUP" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/27272A/E4E4E7?text=ANH+MY+GROUP';" src="../images/pages/ivscelestech/noithat-amgphuocthai.jpg"/>
 <div class="p-6">
-<h3 class="text-xl font-semibold font-display mb-2 text-secondary dark:text-secondary" data-lang-key="interior_project_amg_title">Thiết Kế &amp; Thi Công Trung Tâm Ngoại Ngữ ANH MỸ GROUP</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 mb-4" data-lang-key="interior_project_amg_desc">Dự án trọng điểm về thiết kế và thi công nội thất giáo dục, tối ưu không gian học tập và làm việc.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-secondary dark:text-secondary" data-lang-key="interior_project_amg_title">Thiáº¿t Káº¿ &amp; Thi CÃ´ng Trung TÃ¢m Ngoáº¡i Ngá»¯ ANH Má»¸ GROUP</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 mb-4" data-lang-key="interior_project_amg_desc">Dá»± Ã¡n trá»ng Ä‘iá»ƒm vá» thiáº¿t káº¿ vÃ  thi cÃ´ng ná»™i tháº¥t giÃ¡o dá»¥c, tá»‘i Æ°u khÃ´ng gian há»c táº­p vÃ  lÃ m viá»‡c.</p>
 <ul class="list-disc list-inside text-ivs-neutral-600 dark:text-ivs-neutral-300 mb-4">
-<li data-lang-key="interior_project_amg_item1">Thiết kế không gian đa năng cho các lớp học (Kids, Bees, Teens Leaders).</li>
-<li data-lang-key="interior_project_amg_item2">Khu vực lễ tân và chờ được tối ưu hóa về thẩm mỹ và công năng.</li>
-<li data-lang-key="interior_project_amg_item3">Văn phòng quản lý và giáo vụ được bố trí khoa học, tiện nghi.</li>
+<li data-lang-key="interior_project_amg_item1">Thiáº¿t káº¿ khÃ´ng gian Ä‘a nÄƒng cho cÃ¡c lá»›p há»c (Kids, Bees, Teens Leaders).</li>
+<li data-lang-key="interior_project_amg_item2">Khu vá»±c lá»… tÃ¢n vÃ  chá» Ä‘Æ°á»£c tá»‘i Æ°u hÃ³a vá» tháº©m má»¹ vÃ  cÃ´ng nÄƒng.</li>
+<li data-lang-key="interior_project_amg_item3">VÄƒn phÃ²ng quáº£n lÃ½ vÃ  giÃ¡o vá»¥ Ä‘Æ°á»£c bá»‘ trÃ­ khoa há»c, tiá»‡n nghi.</li>
 </ul>
 </div>
 </div>
 <!-- Project 2: IELTS STATION -->
 <div class="bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm overflow-hidden card-hover-effect" data-aos="zoom-in-up" data-aos-delay="100">
-<img alt="Hình ảnh dự án IELTS STATION" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/27272A/E4E4E7?text=IELTS+STATION';" src="../images/pages/ivscelestech/noithat-ieltsstation.jpg"/>
+<img alt="HÃ¬nh áº£nh dá»± Ã¡n IELTS STATION" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/27272A/E4E4E7?text=IELTS+STATION';" src="../images/pages/ivscelestech/noithat-ieltsstation.jpg"/>
 <div class="p-6">
-<h3 class="text-xl font-semibold font-display mb-2 text-secondary dark:text-secondary" data-lang-key="interior_project_ielts_title">Thiết Kế &amp; Thi Công Trung Tâm IELTS STATION</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 mb-4" data-lang-key="interior_project_ielts_desc">Dự án tạo ra môi trường học tập chuyên biệt, hiện đại cho luyện thi IELTS.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-secondary dark:text-secondary" data-lang-key="interior_project_ielts_title">Thiáº¿t Káº¿ &amp; Thi CÃ´ng Trung TÃ¢m IELTS STATION</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 mb-4" data-lang-key="interior_project_ielts_desc">Dá»± Ã¡n táº¡o ra mÃ´i trÆ°á»ng há»c táº­p chuyÃªn biá»‡t, hiá»‡n Ä‘áº¡i cho luyá»‡n thi IELTS.</p>
 <ul class="list-disc list-inside text-ivs-neutral-600 dark:text-ivs-neutral-300 mb-4">
-<li data-lang-key="interior_project_ielts_item1">Các phòng học được thiết kế linh hoạt, phù hợp với nhiều hình thức giảng dạy.</li>
-<li data-lang-key="interior_project_ielts_item2">Khu vực tự học và thư viện yên tĩnh, khuyến khích sự tập trung.</li>
-<li data-lang-key="interior_project_ielts_item3">Không gian chung và khu vực chờ hiện đại, thân thiện.</li>
+<li data-lang-key="interior_project_ielts_item1">CÃ¡c phÃ²ng há»c Ä‘Æ°á»£c thiáº¿t káº¿ linh hoáº¡t, phÃ¹ há»£p vá»›i nhiá»u hÃ¬nh thá»©c giáº£ng dáº¡y.</li>
+<li data-lang-key="interior_project_ielts_item2">Khu vá»±c tá»± há»c vÃ  thÆ° viá»‡n yÃªn tÄ©nh, khuyáº¿n khÃ­ch sá»± táº­p trung.</li>
+<li data-lang-key="interior_project_ielts_item3">KhÃ´ng gian chung vÃ  khu vá»±c chá» hiá»‡n Ä‘áº¡i, thÃ¢n thiá»‡n.</li>
 </ul>
 </div>
 </div>
 <!-- Project 3: IVS Academy -->
 <div class="bg-ivs-neutral-50 dark:bg-ivs-neutral-600 rounded-lg shadow-sm overflow-hidden card-hover-effect" data-aos="zoom-in-up" data-aos-delay="200">
-<img alt="Hình ảnh dự án IVS Academy" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/27272A/E4E4E7?text=IVS+ACADEMY';" src="../images/pages/ivscelestech/ivs.jpg"/>
+<img alt="HÃ¬nh áº£nh dá»± Ã¡n IVS Academy" class="w-full h-48 object-cover" decoding="async" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/27272A/E4E4E7?text=IVS+ACADEMY';" src="../images/pages/ivscelestech/ivs.jpg"/>
 <div class="p-6">
-<h3 class="text-xl font-semibold font-display mb-2 text-secondary dark:text-secondary" data-lang-key="interior_project_ivs_academy_title">Thiết Kế &amp; Thi Công Trụ Sở IVS Academy</h3>
-<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 mb-4" data-lang-key="interior_project_ivs_academy_desc">Dự án kiến tạo không gian giáo dục hiện đại và truyền cảm hứng cho trụ sở chính của IVS Academy.</p>
+<h3 class="text-xl font-semibold font-display mb-2 text-secondary dark:text-secondary" data-lang-key="interior_project_ivs_academy_title">Thiáº¿t Káº¿ &amp; Thi CÃ´ng Trá»¥ Sá»Ÿ IVS Academy</h3>
+<p class="text-ivs-neutral-700 dark:text-ivs-neutral-300 mb-4" data-lang-key="interior_project_ivs_academy_desc">Dá»± Ã¡n kiáº¿n táº¡o khÃ´ng gian giÃ¡o dá»¥c hiá»‡n Ä‘áº¡i vÃ  truyá»n cáº£m há»©ng cho trá»¥ sá»Ÿ chÃ­nh cá»§a IVS Academy.</p>
 <ul class="list-disc list-inside text-ivs-neutral-600 dark:text-ivs-neutral-300 mb-4">
-<li data-lang-key="interior_project_ivs_academy_item1">Khu vực ghi danh và tư vấn tuyển sinh hiện đại, thân thiện.</li>
-<li data-lang-key="interior_project_ivs_academy_item2">Các phòng học được tối ưu hóa cho nhiều mô hình đào tạo (ngôn ngữ, kỹ năng, STEAM).</li>
-<li data-lang-key="interior_project_ivs_academy_item3">Khu vực sinh hoạt chung, pantry và nhà vệ sinh được thiết kế tiện nghi, sạch sẽ.</li>
+<li data-lang-key="interior_project_ivs_academy_item1">Khu vá»±c ghi danh vÃ  tÆ° váº¥n tuyá»ƒn sinh hiá»‡n Ä‘áº¡i, thÃ¢n thiá»‡n.</li>
+<li data-lang-key="interior_project_ivs_academy_item2">CÃ¡c phÃ²ng há»c Ä‘Æ°á»£c tá»‘i Æ°u hÃ³a cho nhiá»u mÃ´ hÃ¬nh Ä‘Ã o táº¡o (ngÃ´n ngá»¯, ká»¹ nÄƒng, STEAM).</li>
+<li data-lang-key="interior_project_ivs_academy_item3">Khu vá»±c sinh hoáº¡t chung, pantry vÃ  nhÃ  vá»‡ sinh Ä‘Æ°á»£c thiáº¿t káº¿ tiá»‡n nghi, sáº¡ch sáº½.</li>
 </ul>
 </div>
 </div>
@@ -368,17 +368,17 @@
 </section>
 <section class="text-center py-12">
 <h1 class="text-5xl font-extrabold text-white mb-4" data-lang-key="contact_hero_title">
-                Liên Hệ Với Chúng Tôi
+                LiÃªn Há»‡ Vá»›i ChÃºng TÃ´i
             </h1>
 <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-lang-key="contact_hero_description">
-                Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn. Hãy kết nối với IVS JSC để nhận tư vấn chuyên sâu về giáo dục, công nghệ và các giải pháp doanh nghiệp.
+                ChÃºng tÃ´i luÃ´n sáºµn sÃ ng láº¯ng nghe vÃ  há»— trá»£ báº¡n. HÃ£y káº¿t ná»‘i vá»›i IVS JSC Ä‘á»ƒ nháº­n tÆ° váº¥n chuyÃªn sÃ¢u vá» giÃ¡o dá»¥c, cÃ´ng nghá»‡ vÃ  cÃ¡c giáº£i phÃ¡p doanh nghiá»‡p.
             </p>
 </section>
 <section class="bg-gray-800 rounded-xl shadow-lg p-8 mb-12">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div>
 <h2 class="text-3xl font-bold text-white mb-6 section-title" data-lang-key="contact_info_title">
-                        Thông Tin Liên Hệ
+                        ThÃ´ng Tin LiÃªn Há»‡
                     </h2>
 <div class="space-y-6 text-lg">
 <p class="flex items-center">
@@ -386,7 +386,7 @@
 <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"></path>
 <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
-<span data-lang-key="contact_address">1104, Tổ 6, Ấp Đất Mới, Xã Long Phước, Huyện Long Thành, Tỉnh Đồng Nai</span>
+<span data-lang-key="contact_address">1104, Tá»• 6, áº¤p Äáº¥t Má»›i, XÃ£ Long PhÆ°á»›c, Huyá»‡n Long ThÃ nh, Tá»‰nh Äá»“ng Nai</span>
 </p>
 <p class="flex items-center">
 <svg class="h-7 w-7 text-blue-400 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -404,38 +404,38 @@
 <svg class="h-7 w-7 text-blue-400 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
-<span data-lang-key="contact_tax_code">Mã số thuế: 3603960189</span>
+<span data-lang-key="contact_tax_code">MÃ£ sá»‘ thuáº¿: 3603960189</span>
 </p>
 </div>
 </div>
 <div>
 <h2 class="text-3xl font-bold text-white mb-6 section-title" data-lang-key="contact_form_title">
-                        Gửi Yêu Cầu Cho Chúng Tôi
+                        Gá»­i YÃªu Cáº§u Cho ChÃºng TÃ´i
                     </h2>
 <form action="/" class="space-y-6" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="ivscelestech_inquiry" novalidate="">
 <input name="form-name" type="hidden" value="ivscelestech_inquiry"/>
 <div aria-hidden="true" style="display:none;">
-<label>Không điền nếu bạn là người thật: <input name="bot-field"/></label>
+<label>KhÃ´ng Ä‘iá»n náº¿u báº¡n lÃ  ngÆ°á»i tháº­t: <input name="bot-field"/></label>
 </div>
 <div>
-<label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_name_label" for="name">Họ và Tên</label>
-<input class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" data-lang-key="form_name_placeholder" id="name" name="name" placeholder="Nguyễn Văn A" required="" type="text"/>
+<label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_name_label" for="name">Há» vÃ  TÃªn</label>
+<input class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" data-lang-key="form_name_placeholder" id="name" name="name" placeholder="Nguyá»…n VÄƒn A" required="" type="text"/>
 </div>
 <div>
 <label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_email_label" for="email">Email</label>
 <input class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" data-lang-key="form_email_placeholder" id="email" name="email" placeholder="email@example.com" required="" type="email"/>
 </div>
 <div>
-<label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_phone_label" for="phone">Số Điện Thoại</label>
+<label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_phone_label" for="phone">Sá»‘ Äiá»‡n Thoáº¡i</label>
 <input class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" data-lang-key="form_phone_placeholder" id="phone" name="phone" placeholder="0901234567" type="tel"/>
 </div>
 <div>
-<label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_message_label" for="message">Nội Dung Yêu Cầu</label>
-<textarea class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" data-lang-key="form_message_placeholder" id="message" name="message" placeholder="Tôi muốn tìm hiểu về..." required="" rows="5"></textarea>
+<label class="block text-lg font-medium text-gray-300 mb-2" data-lang-key="form_message_label" for="message">Ná»™i Dung YÃªu Cáº§u</label>
+<textarea class="w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" data-lang-key="form_message_placeholder" id="message" name="message" placeholder="TÃ´i muá»‘n tÃ¬m hiá»ƒu vá»..." required="" rows="5"></textarea>
 </div>
 <div>
 <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800" data-lang-key="form_submit_button" type="submit">
-                                Gửi Yêu Cầu
+                                Gá»­i YÃªu Cáº§u
                             </button>
 </div>
 <div class="text-sm mt-2" id="ivscelestechMessage"></div>
@@ -449,7 +449,7 @@
                                 if (form.querySelector('[name="bot-field"]').value) return; // bot
                                 const submit = form.querySelector('button[type="submit"]');
                                 const orig = submit ? submit.textContent : '';
-                                if (submit) { submit.disabled = true; submit.textContent = 'Đang gửi...'; }
+                                if (submit) { submit.disabled = true; submit.textContent = 'Äang gá»­i...'; }
                                 const out = document.getElementById('ivscelestechMessage');
                                 out.textContent = '';
                                 try {
@@ -459,12 +459,12 @@
                                     if (res.ok) {
                                         window.location.href = form.getAttribute('action') || '/thank-you.html';
                                     } else {
-                                        out.textContent = 'Gửi thất bại. Vui lòng thử lại sau.';
+                                        out.textContent = 'Gá»­i tháº¥t báº¡i. Vui lÃ²ng thá»­ láº¡i sau.';
                                         out.className = 'text-sm mt-2 text-red-400';
                                     }
                                 } catch (err) {
                                     console.error(err);
-                                    out.textContent = 'Lỗi khi gửi. Vui lòng thử lại sau.';
+                                    out.textContent = 'Lá»—i khi gá»­i. Vui lÃ²ng thá»­ láº¡i sau.';
                                     out.className = 'text-sm mt-2 text-red-400';
                                 } finally {
                                     if (submit) { submit.disabled = false; submit.textContent = orig; }
@@ -472,9 +472,9 @@
                             });
                         });
                     </script>
-<!-- Thêm nút liên kết Google Form đã điền sẵn -->
+<!-- ThÃªm nÃºt liÃªn káº¿t Google Form Ä‘Ã£ Ä‘iá»n sáºµn -->
 <a class="block text-center w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800 mt-4" data-lang-key="google_form_button" href="https://docs.google.com/forms/d/e/1FAIpQLScy2U7Pa1Sy9Xzny4InhSLvUWYeBh3WTxAldelI6xOAzJ2FXg/viewform?usp=pp_url&amp;entry.1517655153=Nguy%E1%BB%85n+Minh+Tri%E1%BA%BFt&amp;entry.396944312=n.bi2993@gmail.com&amp;entry.138806801=0795555789&amp;entry.1102553479=Y%C3%AAu+c%E1%BA%A7u+t%E1%BB%AB+kh%C3%A1ch+h%C3%A0ng" rel="noopener noreferrer" target="_blank">
-                            Hoặc Gửi Yêu Cầu Nhanh qua Google Form
+                            Hoáº·c Gá»­i YÃªu Cáº§u Nhanh qua Google Form
                         </a>
 </div>
 </div>
@@ -482,7 +482,7 @@
 </main>
 <footer id="footer-placeholder"></footer>
 <div id="fab-container-placeholder"></div>
-<!-- Nút chuyển đổi chế độ tối/sáng -->
+<!-- NÃºt chuyá»ƒn Ä‘á»•i cháº¿ Ä‘á»™ tá»‘i/sÃ¡ng -->
 <button aria-label="Toggle dark mode" id="darkModeToggle">
 <svg class="h-6 w-6" fill="none" id="moonIcon" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
@@ -499,10 +499,10 @@
 <script src="../js/firebase-init.js" type="module"></script>
 <script defer="" src="../js/utils.js"></script>
 <script defer="" src="../js/language.js"></script>
-<script defer="" src="../js/fabController.js"></script>
+<script defer="" src="../ai/js/fabController.js"></script>
 
 <script>
-        // Hàm để áp dụng hoặc loại bỏ chế độ tối
+        // HÃ m Ä‘á»ƒ Ã¡p dá»¥ng hoáº·c loáº¡i bá» cháº¿ Ä‘á»™ tá»‘i
         function applyDarkMode(isDark) {
             if (isDark) {
                 document.documentElement.classList.add('dark');
@@ -515,27 +515,27 @@
             }
         }
 
-        // Kiểm tra cài đặt chế độ tối của người dùng hoặc lưu trữ cục bộ
+        // Kiá»ƒm tra cÃ i Ä‘áº·t cháº¿ Ä‘á»™ tá»‘i cá»§a ngÆ°á»i dÃ¹ng hoáº·c lÆ°u trá»¯ cá»¥c bá»™
         const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
         let isDarkMode = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && prefersDarkMode.matches);
         applyDarkMode(isDarkMode);
 
-        // Lắng nghe sự kiện click trên nút chuyển đổi
+        // Láº¯ng nghe sá»± kiá»‡n click trÃªn nÃºt chuyá»ƒn Ä‘á»•i
         document.getElementById('darkModeToggle').addEventListener('click', () => {
             isDarkMode = !isDarkMode;
             applyDarkMode(isDarkMode);
             localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         });
 
-        // Lắng nghe thay đổi cài đặt hệ thống
+        // Láº¯ng nghe thay Ä‘á»•i cÃ i Ä‘áº·t há»‡ thá»‘ng
         prefersDarkMode.addEventListener('change', (e) => {
-            if (localStorage.getItem('theme') === null) { // Chỉ thay đổi nếu người dùng chưa đặt tùy chọn thủ công
+            if (localStorage.getItem('theme') === null) { // Chá»‰ thay Ä‘á»•i náº¿u ngÆ°á»i dÃ¹ng chÆ°a Ä‘áº·t tÃ¹y chá»n thá»§ cÃ´ng
                 isDarkMode = e.matches;
                 applyDarkMode(isDarkMode);
             }
         });
 
-        // Khởi tạo AOS sau khi DOM đã tải hoàn chỉnh
+        // Khá»Ÿi táº¡o AOS sau khi DOM Ä‘Ã£ táº£i hoÃ n chá»‰nh
         document.addEventListener('DOMContentLoaded', () => {
             AOS.init({
                 offset: 100,
@@ -547,8 +547,8 @@
             });
         });
 
-        // Hàm initializeTheme được giữ lại ở đây để đảm bảo tính nhất quán nếu trang này được truy cập trực tiếp
-        // Hàm này sẽ được gọi bởi loadComponentsAndInitialize hoặc trực tiếp nếu trang được tải độc lập
+        // HÃ m initializeTheme Ä‘Æ°á»£c giá»¯ láº¡i á»Ÿ Ä‘Ã¢y Ä‘á»ƒ Ä‘áº£m báº£o tÃ­nh nháº¥t quÃ¡n náº¿u trang nÃ y Ä‘Æ°á»£c truy cáº­p trá»±c tiáº¿p
+        // HÃ m nÃ y sáº½ Ä‘Æ°á»£c gá»i bá»Ÿi loadComponentsAndInitialize hoáº·c trá»±c tiáº¿p náº¿u trang Ä‘Æ°á»£c táº£i Ä‘á»™c láº­p
         window.initializeTheme = function() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -558,16 +558,17 @@
                 document.documentElement.classList.toggle('dark', prefersDark);
             }
         };
-        // Gọi hàm khởi tạo chủ đề ngay khi script được tải
-        // Điều này đảm bảo theme được áp dụng nhanh chóng, tránh FOUC (Flash of Unstyled Content)
+        // Gá»i hÃ m khá»Ÿi táº¡o chá»§ Ä‘á» ngay khi script Ä‘Æ°á»£c táº£i
+        // Äiá»u nÃ y Ä‘áº£m báº£o theme Ä‘Æ°á»£c Ã¡p dá»¥ng nhanh chÃ³ng, trÃ¡nh FOUC (Flash of Unstyled Content)
         initializeTheme();
     </script>
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>
+
 
 
 

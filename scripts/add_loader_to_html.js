@@ -1,5 +1,5 @@
-#!/usr/bin/env node
-// Adds <script src="/js/loadComponents.js" defer></script> before </body> in HTML files that don't have it.
+﻿#!/usr/bin/env node
+// Adds <script src="/ai/js/loadComponents.js" defer></script> before </body> in HTML files that don't have it.
 // Run from repository root: node scripts/add_loader_to_html.js
 
 const fs = require('fs');
@@ -7,14 +7,14 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const IGNORED_DIRS = ['components', 'server', '.git', 'scripts', 'node_modules', 'verified'];
-const LOADER_SNIPPET = '<script src="/js/loadComponents.js" defer></script>';
+const LOADER_SNIPPET = '<script src="/ai/js/loadComponents.js" defer></script>';
 // Variants we want to replace/remove when canonicalizing
 const LOADER_VARIANTS = [
-  'src="js/loadComponents.js"',
+  'src="ai/js/loadComponents.js"',
   "src='js/loadComponents.js'",
-  'src="/js/loadComponents.js"',
+  'src="/ai/js/loadComponents.js"',
   "src='/js/loadComponents.js'",
-  'src="../js/loadComponents.js"',
+  'src="../ai/js/loadComponents.js"',
   "src='../js/loadComponents.js'",
   'src="./js/loadComponents.js"',
   "src='./js/loadComponents.js'"
@@ -110,3 +110,4 @@ function main() {
 }
 
 main();
+

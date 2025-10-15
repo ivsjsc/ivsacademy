@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html class="dark scroll-smooth" lang="vi">
 <head><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Analytics Dashboard - IVS Academy</title>
-<meta content="Dashboard phân tích và thống kê hiệu suất của IVS Academy - theo dõi tương tác người dùng và hiệu quả học tập IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, " name="description"/>
+<meta content="Dashboard phÃ¢n tÃ­ch vÃ  thá»‘ng kÃª hiá»‡u suáº¥t cá»§a IVS Academy - theo dÃµi tÆ°Æ¡ng tÃ¡c ngÆ°á»i dÃ¹ng vÃ  hiá»‡u quáº£ há»c táº­p IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, " name="description"/>
 <meta content="noindex, nofollow" name="robots"/>
 <!-- Favicon -->
 <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
@@ -25,7 +25,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-</link><meta content="Analytics Dashboard - IVS Academy" property="og:title"/><meta content="Dashboard phân tích và thống kê hiệu suất của IVS Academy - theo dõi tương tác người dùng và hiệu quả học tập IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, " property="og:description"/><meta content="website" property="og:type"/></head>
+</link><meta content="Analytics Dashboard - IVS Academy" property="og:title"/><meta content="Dashboard phÃ¢n tÃ­ch vÃ  thá»‘ng kÃª hiá»‡u suáº¥t cá»§a IVS Academy - theo dÃµi tÆ°Æ¡ng tÃ¡c ngÆ°á»i dÃ¹ng vÃ  hiá»‡u quáº£ há»c táº­p IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, " property="og:description"/><meta content="website" property="og:type"/></head>
 <body class="bg-ivs-bg text-ivs-text-primary min-h-screen">
 <!-- Analytics Header -->
 <header class="bg-ivs-card border-b border-ivs-border px-6 py-4">
@@ -34,15 +34,15 @@
 <img alt="IVS Logo" class="h-8 w-auto" decoding="async" src="images/logo.png"/>
 <div>
 <h1 class="text-xl font-bold">Analytics Dashboard</h1>
-<p class="text-sm text-ivs-text-secondary">Thống kê và phân tích hiệu suất</p>
+<p class="text-sm text-ivs-text-secondary">Thá»‘ng kÃª vÃ  phÃ¢n tÃ­ch hiá»‡u suáº¥t</p>
 </div>
 </div>
 <div class="flex items-center space-x-4">
 <select class="px-3 py-2 bg-ivs-bg border border-ivs-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ivs-blue" id="timeRange">
-<option value="1d">24 giờ qua</option>
-<option selected="" value="7d">7 ngày qua</option>
-<option value="30d">30 ngày qua</option>
-<option value="90d">90 ngày qua</option>
+<option value="1d">24 giá» qua</option>
+<option selected="" value="7d">7 ngÃ y qua</option>
+<option value="30d">30 ngÃ y qua</option>
+<option value="90d">90 ngÃ y qua</option>
 </select>
 <button class="px-4 py-2 bg-ivs-blue hover:bg-blue-600 text-white rounded-lg transition-colors" id="exportBtn">
 <i class="fas fa-download mr-2"></i>Export
@@ -56,10 +56,10 @@
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
 <div class="flex items-center justify-between">
 <div>
-<p class="text-ivs-text-secondary text-sm">Tổng Lượt Truy Cập</p>
+<p class="text-ivs-text-secondary text-sm">Tá»•ng LÆ°á»£t Truy Cáº­p</p>
 <p class="text-2xl font-bold text-ivs-blue" id="totalPageViews">0</p>
 <p class="text-xs text-green-500 mt-1">
-<i class="fas fa-arrow-up mr-1"></i>+12% so với tuần trước
+<i class="fas fa-arrow-up mr-1"></i>+12% so vá»›i tuáº§n trÆ°á»›c
                         </p>
 </div>
 <i class="fas fa-eye text-3xl text-ivs-blue opacity-50"></i>
@@ -68,10 +68,10 @@
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
 <div class="flex items-center justify-between">
 <div>
-<p class="text-ivs-text-secondary text-sm">Tương Tác Khóa Học</p>
+<p class="text-ivs-text-secondary text-sm">TÆ°Æ¡ng TÃ¡c KhÃ³a Há»c</p>
 <p class="text-2xl font-bold text-ivs-green" id="courseInteractions">0</p>
 <p class="text-xs text-green-500 mt-1">
-<i class="fas fa-arrow-up mr-1"></i>+8% so với tuần trước
+<i class="fas fa-arrow-up mr-1"></i>+8% so vá»›i tuáº§n trÆ°á»›c
                         </p>
 </div>
 <i class="fas fa-book text-3xl text-ivs-green opacity-50"></i>
@@ -80,10 +80,10 @@
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
 <div class="flex items-center justify-between">
 <div>
-<p class="text-ivs-text-secondary text-sm">Tải Tài Liệu</p>
+<p class="text-ivs-text-secondary text-sm">Táº£i TÃ i Liá»‡u</p>
 <p class="text-2xl font-bold text-ivs-purple" id="materialDownloads">0</p>
 <p class="text-xs text-red-500 mt-1">
-<i class="fas fa-arrow-down mr-1"></i>-3% so với tuần trước
+<i class="fas fa-arrow-down mr-1"></i>-3% so vá»›i tuáº§n trÆ°á»›c
                         </p>
 </div>
 <i class="fas fa-download text-3xl text-ivs-purple opacity-50"></i>
@@ -92,10 +92,10 @@
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
 <div class="flex items-center justify-between">
 <div>
-<p class="text-ivs-text-secondary text-sm">Hoàn Thành Quiz</p>
+<p class="text-ivs-text-secondary text-sm">HoÃ n ThÃ nh Quiz</p>
 <p class="text-2xl font-bold text-ivs-orange" id="quizCompletions">0</p>
 <p class="text-xs text-green-500 mt-1">
-<i class="fas fa-arrow-up mr-1"></i>+15% so với tuần trước
+<i class="fas fa-arrow-up mr-1"></i>+15% so vá»›i tuáº§n trÆ°á»›c
                         </p>
 </div>
 <i class="fas fa-brain text-3xl text-ivs-orange opacity-50"></i>
@@ -106,12 +106,12 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 <!-- Traffic Overview -->
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Tổng Quan Lưu Lượng</h3>
+<h3 class="text-lg font-bold mb-4">Tá»•ng Quan LÆ°u LÆ°á»£ng</h3>
 <canvas height="200" id="trafficChart" width="400"></canvas>
 </div>
 <!-- User Engagement -->
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Tương Tác Người Dùng</h3>
+<h3 class="text-lg font-bold mb-4">TÆ°Æ¡ng TÃ¡c NgÆ°á»i DÃ¹ng</h3>
 <canvas height="200" id="engagementChart" width="400"></canvas>
 </div>
 </div>
@@ -119,38 +119,38 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 <!-- Top Courses -->
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Khóa Học Phổ Biến Nhất</h3>
+<h3 class="text-lg font-bold mb-4">KhÃ³a Há»c Phá»• Biáº¿n Nháº¥t</h3>
 <div class="space-y-3" id="topCourses">
 <!-- Courses will be populated by JavaScript -->
 </div>
 </div>
 <!-- Learning Progress -->
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Tiến Độ Học Tập</h3>
+<h3 class="text-lg font-bold mb-4">Tiáº¿n Äá»™ Há»c Táº­p</h3>
 <canvas height="200" id="progressChart" width="400"></canvas>
 </div>
 </div>
 <!-- Performance Metrics -->
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Chỉ Số Hiệu Suất Website</h3>
+<h3 class="text-lg font-bold mb-4">Chá»‰ Sá»‘ Hiá»‡u Suáº¥t Website</h3>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <div class="text-center">
 <div class="text-2xl font-bold text-ivs-blue" id="avgLoadTime">0ms</div>
-<p class="text-sm text-ivs-text-secondary">Thời Gian Tải Trung Bình</p>
+<p class="text-sm text-ivs-text-secondary">Thá»i Gian Táº£i Trung BÃ¬nh</p>
 </div>
 <div class="text-center">
 <div class="text-2xl font-bold text-ivs-green" id="bounceRate">0%</div>
-<p class="text-sm text-ivs-text-secondary">Tỷ Lệ Thoát Trang</p>
+<p class="text-sm text-ivs-text-secondary">Tá»· Lá»‡ ThoÃ¡t Trang</p>
 </div>
 <div class="text-center">
 <div class="text-2xl font-bold text-ivs-purple" id="sessionDuration">0m</div>
-<p class="text-sm text-ivs-text-secondary">Thời Gian Truy Cập Trung Bình</p>
+<p class="text-sm text-ivs-text-secondary">Thá»i Gian Truy Cáº­p Trung BÃ¬nh</p>
 </div>
 </div>
 </div>
 <!-- Recent Events -->
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Sự Kiện Gần Đây</h3>
+<h3 class="text-lg font-bold mb-4">Sá»± Kiá»‡n Gáº§n ÄÃ¢y</h3>
 <div class="space-y-3 max-h-96 overflow-y-auto" id="recentEvents">
 <!-- Events will be populated by JavaScript -->
 </div>
@@ -275,7 +275,7 @@
                     data: {
                         labels: this.getLast7Days(),
                         datasets: [{
-                            label: 'Lượt Truy Cập',
+                            label: 'LÆ°á»£t Truy Cáº­p',
                             data: this.generateRandomData(7, 50, 150),
                             borderColor: '#60a5fa',
                             backgroundColor: 'rgba(96, 165, 250, 0.1)',
@@ -317,7 +317,7 @@
                 this.charts.engagement = new Chart(ctx, {
                     type: 'doughnut',
                     data: {
-                        labels: ['Khóa Học', 'Tài Liệu', 'Quiz', 'Tìm Kiếm'],
+                        labels: ['KhÃ³a Há»c', 'TÃ i Liá»‡u', 'Quiz', 'TÃ¬m Kiáº¿m'],
                         datasets: [{
                             data: [35, 25, 20, 20],
                             backgroundColor: [
@@ -347,9 +347,9 @@
                 this.charts.progress = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                        labels: ['Tuáº§n 1', 'Tuáº§n 2', 'Tuáº§n 3', 'Tuáº§n 4'],
                         datasets: [{
-                            label: 'Hoàn Thành Khóa Học',
+                            label: 'HoÃ n ThÃ nh KhÃ³a Há»c',
                             data: [12, 19, 15, 25],
                             backgroundColor: '#4ade80',
                             borderRadius: 4
@@ -405,7 +405,7 @@
                             </div>
                             <div>
                                 <p class="font-semibold">${this.formatCourseName(course.courseId)}</p>
-                                <p class="text-sm text-ivs-text-secondary">${course.interactions} tương tác</p>
+                                <p class="text-sm text-ivs-text-secondary">${course.interactions} tÆ°Æ¡ng tÃ¡c</p>
                             </div>
                         </div>
                         <div class="w-20 bg-ivs-border rounded-full h-2">
@@ -450,9 +450,9 @@
 
             formatCourseName(courseId) {
                 const names = {
-                    'english-basic': 'Tiếng Anh Cơ Bản',
-                    'stem-intro': 'Giới Thiệu STEM',
-                    'business-english': 'Tiếng Anh Thương Mại'
+                    'english-basic': 'Tiáº¿ng Anh CÆ¡ Báº£n',
+                    'stem-intro': 'Giá»›i Thiá»‡u STEM',
+                    'business-english': 'Tiáº¿ng Anh ThÆ°Æ¡ng Máº¡i'
                 };
                 return names[courseId] || courseId;
             }
@@ -460,9 +460,9 @@
             formatEventName(eventName) {
                 const names = {
                     'page_view': 'Xem trang',
-                    'course_interaction': 'Tương tác khóa học',
-                    'material_download': 'Tải tài liệu',
-                    'quiz_completion': 'Hoàn thành quiz'
+                    'course_interaction': 'TÆ°Æ¡ng tÃ¡c khÃ³a há»c',
+                    'material_download': 'Táº£i tÃ i liá»‡u',
+                    'quiz_completion': 'HoÃ n thÃ nh quiz'
                 };
                 return names[eventName] || eventName;
             }
@@ -548,9 +548,10 @@
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>
+
 
 
 

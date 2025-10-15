@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html class="scroll-smooth" lang="vi">
 <head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//placehold.co" rel="dns-prefetch"/><link href="//cdn.tailwindcss.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
@@ -158,7 +158,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." name="description"/><meta content="IVS Quick Learning Advisor" property="og:title"/><meta content="Khám phá bộ sưu tập ứng dụng giáo dục IVS với công nghệ AI, game học tập và các công cụ hỗ trợ giảng dạy hiện đại." property="og:description"/><meta content="website" property="og:type"/></head>
+<meta content="KhÃ¡m phÃ¡ bá»™ sÆ°u táº­p á»©ng dá»¥ng giÃ¡o dá»¥c IVS vá»›i cÃ´ng nghá»‡ AI, game há»c táº­p vÃ  cÃ¡c cÃ´ng cá»¥ há»— trá»£ giáº£ng dáº¡y hiá»‡n Ä‘áº¡i." name="description"/><meta content="IVS Quick Learning Advisor" property="og:title"/><meta content="KhÃ¡m phÃ¡ bá»™ sÆ°u táº­p á»©ng dá»¥ng giÃ¡o dá»¥c IVS vá»›i cÃ´ng nghá»‡ AI, game há»c táº­p vÃ  cÃ¡c cÃ´ng cá»¥ há»— trá»£ giáº£ng dáº¡y hiá»‡n Ä‘áº¡i." property="og:description"/><meta content="website" property="og:type"/></head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4 advisor-container">
 <div class="lang-switcher fixed top-4 right-4 flex rounded-md overflow-hidden shadow-lg z-50">
 <button class="active" data-lang="vi">VIE</button>
@@ -167,17 +167,17 @@
 <div class="w-full max-w-2xl mx-auto relative" id="advisorApp">
 <div class="screen visible-screen text-center p-8 rounded-xl question-card" id="welcomeScreen">
 <img alt="IVS Logo" class="mx-auto mb-6 h-16 object-contain" decoding="async" onerror="this.src='https://placehold.co/150x80/FFFFFF/0a3d4a?text=IVS'; this.alt='IVS Placeholder Logo';" src="https://placehold.co/150x80/FFFFFF/0a3d4a?text=IVS+Logo"/>
-<h1 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-4" data-lang-key="welcome_title">Chào mừng đến với IVS</h1>
-<p class="text-gray-700 mb-8 text-lg" data-lang-key="welcome_subtitle">Khám phá giải pháp giáo dục tối ưu dành cho bạn chỉ với vài bước đơn giản.</p>
+<h1 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-4" data-lang-key="welcome_title">ChÃ o má»«ng Ä‘áº¿n vá»›i IVS</h1>
+<p class="text-gray-700 mb-8 text-lg" data-lang-key="welcome_subtitle">KhÃ¡m phÃ¡ giáº£i phÃ¡p giÃ¡o dá»¥c tá»‘i Æ°u dÃ nh cho báº¡n chá»‰ vá»›i vÃ i bÆ°á»›c Ä‘Æ¡n giáº£n.</p>
 <button class="control-button primary-action-button font-semibold py-3.5 px-10 rounded-lg text-lg" id="startButton">
-<span data-lang-key="start_button">Bắt đầu</span> <i class="fas fa-arrow-right ml-2"></i>
+<span data-lang-key="start_button">Báº¯t Ä‘áº§u</span> <i class="fas fa-arrow-right ml-2"></i>
 </button>
 </div>
 <div class="screen hidden-screen" id="questionScreen">
 <div class="p-6 md:p-8 rounded-xl question-card">
 <div class="mb-6">
 <div class="flex justify-between items-center mb-2">
-<span class="text-sm font-medium text-[#0a3d4a]" data-lang-key="progress_text">Tiến độ</span>
+<span class="text-sm font-medium text-[#0a3d4a]" data-lang-key="progress_text">Tiáº¿n Ä‘á»™</span>
 <span class="text-sm font-medium text-[#c89c4a]" id="progressPercentage">0%</span>
 </div>
 <div class="w-full bg-gray-200 rounded-full h-3">
@@ -189,10 +189,10 @@
 </div>
 <div class="mt-10 flex justify-between items-center">
 <button class="control-button secondary-action-button font-medium py-3 px-7 rounded-lg" id="prevButton">
-<i class="fas fa-arrow-left mr-2"></i> <span data-lang-key="prev_button">Trước</span>
+<i class="fas fa-arrow-left mr-2"></i> <span data-lang-key="prev_button">TrÆ°á»›c</span>
 </button>
 <button class="control-button primary-action-button font-semibold py-3 px-8 rounded-lg opacity-50 cursor-not-allowed" disabled="" id="nextButton">
-<span data-lang-key="next_button">Tiếp</span> <i class="fas fa-arrow-right ml-2"></i>
+<span data-lang-key="next_button">Tiáº¿p</span> <i class="fas fa-arrow-right ml-2"></i>
 </button>
 </div>
 </div>
@@ -200,117 +200,117 @@
 <div class="screen hidden-screen" id="resultsScreen">
 <div class="p-6 md:p-10 rounded-xl results-card">
 <img alt="IVS Logo" class="mx-auto mb-5 h-12 object-contain" decoding="async" loading="lazy" onerror="this.src='https://placehold.co/120x60/FFFFFF/0a3d4a?text=IVS'; this.alt='IVS Placeholder Logo';" src="https://placehold.co/120x60/FFFFFF/0a3d4a?text=IVS"/>
-<h2 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-3 text-center" data-lang-key="results_title">Đề xuất Dành Riêng Cho Bạn</h2>
-<p class="text-gray-600 mb-8 text-center text-lg" data-lang-key="results_subtitle">Dựa trên thông tin bạn cung cấp, IVS gợi ý các giải pháp sau:</p>
+<h2 class="text-3xl md:text-4xl font-bold text-[#0a3d4a] mb-3 text-center" data-lang-key="results_title">Äá» xuáº¥t DÃ nh RiÃªng Cho Báº¡n</h2>
+<p class="text-gray-600 mb-8 text-center text-lg" data-lang-key="results_subtitle">Dá»±a trÃªn thÃ´ng tin báº¡n cung cáº¥p, IVS gá»£i Ã½ cÃ¡c giáº£i phÃ¡p sau:</p>
 <div class="space-y-5" id="recommendationsContainer">
 </div>
 <div class="mt-10 text-center">
-<p class="text-sm text-gray-500 mb-6" data-lang-key="results_disclaimer">Đây là gợi ý ban đầu. Để được tư vấn chi tiết và xây dựng lộ trình phù hợp nhất, vui lòng liên hệ IVS.</p>
+<p class="text-sm text-gray-500 mb-6" data-lang-key="results_disclaimer">ÄÃ¢y lÃ  gá»£i Ã½ ban Ä‘áº§u. Äá»ƒ Ä‘Æ°á»£c tÆ° váº¥n chi tiáº¿t vÃ  xÃ¢y dá»±ng lá»™ trÃ¬nh phÃ¹ há»£p nháº¥t, vui lÃ²ng liÃªn há»‡ IVS.</p>
 <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
 <button class="control-button secondary-action-button w-full sm:w-auto font-semibold py-3.5 px-10 rounded-lg text-lg" id="restartButton">
-<i class="fas fa-redo mr-2"></i> <span data-lang-key="restart_button">Làm lại</span>
+<i class="fas fa-redo mr-2"></i> <span data-lang-key="restart_button">LÃ m láº¡i</span>
 </button>
 <a class="control-button primary-action-button w-full sm:w-auto font-semibold py-3.5 px-10 rounded-lg text-lg inline-flex items-center justify-center" data-lang-key="contact_button" href="https://ivsacademy.edu.vn/contact.html" target="_blank">
-<i class="fas fa-phone-alt mr-2"></i> <span data-lang-key="contact_button_text">Liên hệ Tư vấn</span>
+<i class="fas fa-phone-alt mr-2"></i> <span data-lang-key="contact_button_text">LiÃªn há»‡ TÆ° váº¥n</span>
 </a>
 </div>
 </div>
 </div>
 </div>
 <footer class="text-center mt-10 pb-6">
-<p class="text-sm text-white/80" data-lang-key="footer_text">© 2025 IVS JSC. Bảo lưu mọi quyền.</p>
+<p class="text-sm text-white/80" data-lang-key="footer_text">Â© 2025 IVS JSC. Báº£o lÆ°u má»i quyá»n.</p>
 </footer>
 </div>
 <div class="modal-overlay" id="continueSessionModal">
 <div class="modal-card p-6 md:p-8 rounded-xl w-full max-w-md mx-4 text-center">
-<h3 class="text-xl font-semibold text-[#0a3d4a] mb-4" data-lang-key="modal_continue_title">Tiếp tục Phiên làm việc?</h3>
-<p class="text-gray-700 mb-6" data-lang-key="modal_continue_text">Chúng tôi tìm thấy dữ liệu từ lần truy cập trước. Bạn có muốn tiếp tục không?</p>
+<h3 class="text-xl font-semibold text-[#0a3d4a] mb-4" data-lang-key="modal_continue_title">Tiáº¿p tá»¥c PhiÃªn lÃ m viá»‡c?</h3>
+<p class="text-gray-700 mb-6" data-lang-key="modal_continue_text">ChÃºng tÃ´i tÃ¬m tháº¥y dá»¯ liá»‡u tá»« láº§n truy cáº­p trÆ°á»›c. Báº¡n cÃ³ muá»‘n tiáº¿p tá»¥c khÃ´ng?</p>
 <div class="flex justify-center gap-4">
-<button class="control-button primary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_yes" id="confirmContinueButton">Có, Tiếp tục</button>
-<button class="control-button secondary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_no" id="declineContinueButton">Không, Bắt đầu mới</button>
+<button class="control-button primary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_yes" id="confirmContinueButton">CÃ³, Tiáº¿p tá»¥c</button>
+<button class="control-button secondary-action-button py-2.5 px-6 rounded-lg" data-lang-key="modal_continue_no" id="declineContinueButton">KhÃ´ng, Báº¯t Ä‘áº§u má»›i</button>
 </div>
 </div>
 </div>
 <script>
         const translations = {
             vi: {
-                welcome_title: "Chào mừng đến với IVS",
-                welcome_subtitle: "Khám phá giải pháp giáo dục tối ưu dành cho bạn chỉ với vài bước đơn giản.",
-                start_button: "Bắt đầu",
-                progress_text: "Tiến độ",
-                prev_button: "Trước",
-                next_button: "Tiếp",
-                results_title: "Đề xuất Dành Riêng Cho Bạn",
-                results_subtitle: "Dựa trên thông tin bạn cung cấp, IVS gợi ý các giải pháp sau:",
-                results_disclaimer: "Đây là gợi ý ban đầu. Để được tư vấn chi tiết và xây dựng lộ trình phù hợp nhất, vui lòng liên hệ IVS.",
-                restart_button: "Làm lại",
-                contact_button_text: "Liên hệ Tư vấn",
-                footer_text: "© 2025 IVS JSC. Bảo lưu mọi quyền.",
-                modal_continue_title: "Tiếp tục Phiên làm việc?",
-                modal_continue_text: "Chúng tôi tìm thấy dữ liệu từ lần truy cập trước. Bạn có muốn tiếp tục không?",
-                modal_continue_yes: "Có, Tiếp tục",
-                modal_continue_no: "Không, Bắt đầu mới",
-                q1_title: "Bạn là ai?",
-                q1_opt1: "Học sinh Phổ thông (Lớp 1-12)",
-                q1_opt1_tooltip: "Dành cho học sinh từ tiểu học đến trung học phổ thông",
-                q1_opt2: "Sinh viên Cao đẳng/Đại học",
-                q1_opt2_tooltip: "Dành cho sinh viên đang theo học tại các trường cao đẳng, đại học",
-                q1_opt3: "Người đi làm/Chuyên gia",
-                q1_opt3_tooltip: "Dành cho cá nhân đã đi làm, muốn nâng cao kỹ năng hoặc chuyển đổi nghề nghiệp",
-                q1_opt4: "Đại diện Doanh nghiệp/Tổ chức Giáo dục",
-                q1_opt4_tooltip: "Dành cho công ty, trường học, hoặc các đơn vị giáo dục tìm kiếm giải pháp đào tạo, hợp tác",
+                welcome_title: "ChÃ o má»«ng Ä‘áº¿n vá»›i IVS",
+                welcome_subtitle: "KhÃ¡m phÃ¡ giáº£i phÃ¡p giÃ¡o dá»¥c tá»‘i Æ°u dÃ nh cho báº¡n chá»‰ vá»›i vÃ i bÆ°á»›c Ä‘Æ¡n giáº£n.",
+                start_button: "Báº¯t Ä‘áº§u",
+                progress_text: "Tiáº¿n Ä‘á»™",
+                prev_button: "TrÆ°á»›c",
+                next_button: "Tiáº¿p",
+                results_title: "Äá» xuáº¥t DÃ nh RiÃªng Cho Báº¡n",
+                results_subtitle: "Dá»±a trÃªn thÃ´ng tin báº¡n cung cáº¥p, IVS gá»£i Ã½ cÃ¡c giáº£i phÃ¡p sau:",
+                results_disclaimer: "ÄÃ¢y lÃ  gá»£i Ã½ ban Ä‘áº§u. Äá»ƒ Ä‘Æ°á»£c tÆ° váº¥n chi tiáº¿t vÃ  xÃ¢y dá»±ng lá»™ trÃ¬nh phÃ¹ há»£p nháº¥t, vui lÃ²ng liÃªn há»‡ IVS.",
+                restart_button: "LÃ m láº¡i",
+                contact_button_text: "LiÃªn há»‡ TÆ° váº¥n",
+                footer_text: "Â© 2025 IVS JSC. Báº£o lÆ°u má»i quyá»n.",
+                modal_continue_title: "Tiáº¿p tá»¥c PhiÃªn lÃ m viá»‡c?",
+                modal_continue_text: "ChÃºng tÃ´i tÃ¬m tháº¥y dá»¯ liá»‡u tá»« láº§n truy cáº­p trÆ°á»›c. Báº¡n cÃ³ muá»‘n tiáº¿p tá»¥c khÃ´ng?",
+                modal_continue_yes: "CÃ³, Tiáº¿p tá»¥c",
+                modal_continue_no: "KhÃ´ng, Báº¯t Ä‘áº§u má»›i",
+                q1_title: "Báº¡n lÃ  ai?",
+                q1_opt1: "Há»c sinh Phá»• thÃ´ng (Lá»›p 1-12)",
+                q1_opt1_tooltip: "DÃ nh cho há»c sinh tá»« tiá»ƒu há»c Ä‘áº¿n trung há»c phá»• thÃ´ng",
+                q1_opt2: "Sinh viÃªn Cao Ä‘áº³ng/Äáº¡i há»c",
+                q1_opt2_tooltip: "DÃ nh cho sinh viÃªn Ä‘ang theo há»c táº¡i cÃ¡c trÆ°á»ng cao Ä‘áº³ng, Ä‘áº¡i há»c",
+                q1_opt3: "NgÆ°á»i Ä‘i lÃ m/ChuyÃªn gia",
+                q1_opt3_tooltip: "DÃ nh cho cÃ¡ nhÃ¢n Ä‘Ã£ Ä‘i lÃ m, muá»‘n nÃ¢ng cao ká»¹ nÄƒng hoáº·c chuyá»ƒn Ä‘á»•i nghá» nghiá»‡p",
+                q1_opt4: "Äáº¡i diá»‡n Doanh nghiá»‡p/Tá»• chá»©c GiÃ¡o dá»¥c",
+                q1_opt4_tooltip: "DÃ nh cho cÃ´ng ty, trÆ°á»ng há»c, hoáº·c cÃ¡c Ä‘Æ¡n vá»‹ giÃ¡o dá»¥c tÃ¬m kiáº¿m giáº£i phÃ¡p Ä‘Ã o táº¡o, há»£p tÃ¡c",
                 
-                q1_1_k12_title: "Bạn đang học lớp mấy hoặc quan tâm đến cấp học nào?",
-                q1_1_k12_opt1: "Tiểu học (Lớp 1-5)",
-                q1_1_k12_opt2: "Trung học Cơ sở (Lớp 6-9)",
-                q1_1_k12_opt3: "Trung học Phổ thông (Lớp 10-12)",
+                q1_1_k12_title: "Báº¡n Ä‘ang há»c lá»›p máº¥y hoáº·c quan tÃ¢m Ä‘áº¿n cáº¥p há»c nÃ o?",
+                q1_1_k12_opt1: "Tiá»ƒu há»c (Lá»›p 1-5)",
+                q1_1_k12_opt2: "Trung há»c CÆ¡ sá»Ÿ (Lá»›p 6-9)",
+                q1_1_k12_opt3: "Trung há»c Phá»• thÃ´ng (Lá»›p 10-12)",
 
-                q1_1_org_title: "Quy mô tổ chức của bạn như thế nào?",
-                q1_1_org_opt1: "Dưới 50 người",
-                q1_1_org_opt2: "Từ 50 - 200 người",
-                q1_1_org_opt3: "Trên 200 người",
+                q1_1_org_title: "Quy mÃ´ tá»• chá»©c cá»§a báº¡n nhÆ° tháº¿ nÃ o?",
+                q1_1_org_opt1: "DÆ°á»›i 50 ngÆ°á»i",
+                q1_1_org_opt2: "Tá»« 50 - 200 ngÆ°á»i",
+                q1_1_org_opt3: "TrÃªn 200 ngÆ°á»i",
 
-                q2_title: "Lĩnh vực nào bạn quan tâm hàng đầu?",
-                q2_opt1: "Ngoại ngữ (Anh, Nhật, Hàn, Trung)",
-                q2_opt1_tooltip: "Các khóa học và luyện thi chứng chỉ ngoại ngữ quốc tế",
-                q2_opt2: "Giáo dục STEAM & Công nghệ Số",
-                q2_opt2_tooltip: "Chương trình Khoa học, Công nghệ, Kỹ thuật, Nghệ thuật, Toán và ứng dụng công nghệ trong giáo dục",
-                q2_opt3: "Phát triển Kỹ năng Chuyên môn & Tư duy",
-                q2_opt3_tooltip: "Các khóa học kỹ năng mềm, kỹ năng lãnh đạo, tư duy phản biện, sáng tạo",
-                q2_opt4: "Tư vấn Chiến lược Giáo dục & Du học",
-                q2_opt4_tooltip: "Dịch vụ tư vấn xây dựng lộ trình học tập, du học và phát triển cho các tổ chức giáo dục",
-                q2_opt5: "Giải pháp Đào tạo Toàn diện cho Tổ chức",
-                q2_opt5_tooltip: "Các gói đào tạo theo yêu cầu, xây dựng chương trình và chuyển giao công nghệ giáo dục cho doanh nghiệp, trường học",
+                q2_title: "LÄ©nh vá»±c nÃ o báº¡n quan tÃ¢m hÃ ng Ä‘áº§u?",
+                q2_opt1: "Ngoáº¡i ngá»¯ (Anh, Nháº­t, HÃ n, Trung)",
+                q2_opt1_tooltip: "CÃ¡c khÃ³a há»c vÃ  luyá»‡n thi chá»©ng chá»‰ ngoáº¡i ngá»¯ quá»‘c táº¿",
+                q2_opt2: "GiÃ¡o dá»¥c STEAM & CÃ´ng nghá»‡ Sá»‘",
+                q2_opt2_tooltip: "ChÆ°Æ¡ng trÃ¬nh Khoa há»c, CÃ´ng nghá»‡, Ká»¹ thuáº­t, Nghá»‡ thuáº­t, ToÃ¡n vÃ  á»©ng dá»¥ng cÃ´ng nghá»‡ trong giÃ¡o dá»¥c",
+                q2_opt3: "PhÃ¡t triá»ƒn Ká»¹ nÄƒng ChuyÃªn mÃ´n & TÆ° duy",
+                q2_opt3_tooltip: "CÃ¡c khÃ³a há»c ká»¹ nÄƒng má»m, ká»¹ nÄƒng lÃ£nh Ä‘áº¡o, tÆ° duy pháº£n biá»‡n, sÃ¡ng táº¡o",
+                q2_opt4: "TÆ° váº¥n Chiáº¿n lÆ°á»£c GiÃ¡o dá»¥c & Du há»c",
+                q2_opt4_tooltip: "Dá»‹ch vá»¥ tÆ° váº¥n xÃ¢y dá»±ng lá»™ trÃ¬nh há»c táº­p, du há»c vÃ  phÃ¡t triá»ƒn cho cÃ¡c tá»• chá»©c giÃ¡o dá»¥c",
+                q2_opt5: "Giáº£i phÃ¡p ÄÃ o táº¡o ToÃ n diá»‡n cho Tá»• chá»©c",
+                q2_opt5_tooltip: "CÃ¡c gÃ³i Ä‘Ã o táº¡o theo yÃªu cáº§u, xÃ¢y dá»±ng chÆ°Æ¡ng trÃ¬nh vÃ  chuyá»ƒn giao cÃ´ng nghá»‡ giÃ¡o dá»¥c cho doanh nghiá»‡p, trÆ°á»ng há»c",
 
-                q2_1_lang_title: "Bạn muốn học ngoại ngữ nào cụ thể?",
-                q2_1_lang_opt1: "Tiếng Anh (IELTS, TOEFL, Giao tiếp)",
-                q2_1_lang_opt2: "Tiếng Nhật (JLPT, Giao tiếp)",
-                q2_1_lang_opt3: "Tiếng Hàn (TOPIK, Giao tiếp)",
-                q2_1_lang_opt4: "Tiếng Trung (HSK, Giao tiếp)",
-                q2_1_lang_opt5: "Ngoại ngữ khác/Chưa xác định",
+                q2_1_lang_title: "Báº¡n muá»‘n há»c ngoáº¡i ngá»¯ nÃ o cá»¥ thá»ƒ?",
+                q2_1_lang_opt1: "Tiáº¿ng Anh (IELTS, TOEFL, Giao tiáº¿p)",
+                q2_1_lang_opt2: "Tiáº¿ng Nháº­t (JLPT, Giao tiáº¿p)",
+                q2_1_lang_opt3: "Tiáº¿ng HÃ n (TOPIK, Giao tiáº¿p)",
+                q2_1_lang_opt4: "Tiáº¿ng Trung (HSK, Giao tiáº¿p)",
+                q2_1_lang_opt5: "Ngoáº¡i ngá»¯ khÃ¡c/ChÆ°a xÃ¡c Ä‘á»‹nh",
 
-                q3_title: "Mục tiêu chính bạn hướng đến là gì?",
-                q3_opt1: "Đạt Chứng chỉ Quốc tế/Nâng cao Học vấn",
-                q3_opt1_tooltip: "Lấy chứng chỉ IELTS, TOEFL, JLPT, TOPIK,... hoặc bằng cấp học thuật",
-                q3_opt2: "Phát triển Sự nghiệp & Năng lực Chuyên môn",
-                q3_opt2_tooltip: "Nâng cao kỹ năng làm việc, thăng tiến trong công việc hiện tại hoặc tìm kiếm cơ hội mới",
-                q3_opt3: "Chuẩn bị Du học & Tìm kiếm Học bổng",
-                q3_opt3_tooltip: "Xây dựng hồ sơ, luyện thi và tìm kiếm cơ hội học bổng du học tại các quốc gia phát triển",
-                q3_opt4: "Nâng cao Hiệu quả & Chất lượng cho Tổ chức",
-                q3_opt4_tooltip: "Cải thiện chương trình đào tạo, ứng dụng công nghệ, phát triển đội ngũ cho doanh nghiệp/trường học",
-                q3_opt5: "Phát triển Tư duy & Khai phá Tiềm năng Cá nhân",
-                q3_opt5_tooltip: "Mở rộng kiến thức, rèn luyện tư duy toàn diện và khám phá năng lực bản thân",
+                q3_title: "Má»¥c tiÃªu chÃ­nh báº¡n hÆ°á»›ng Ä‘áº¿n lÃ  gÃ¬?",
+                q3_opt1: "Äáº¡t Chá»©ng chá»‰ Quá»‘c táº¿/NÃ¢ng cao Há»c váº¥n",
+                q3_opt1_tooltip: "Láº¥y chá»©ng chá»‰ IELTS, TOEFL, JLPT, TOPIK,... hoáº·c báº±ng cáº¥p há»c thuáº­t",
+                q3_opt2: "PhÃ¡t triá»ƒn Sá»± nghiá»‡p & NÄƒng lá»±c ChuyÃªn mÃ´n",
+                q3_opt2_tooltip: "NÃ¢ng cao ká»¹ nÄƒng lÃ m viá»‡c, thÄƒng tiáº¿n trong cÃ´ng viá»‡c hiá»‡n táº¡i hoáº·c tÃ¬m kiáº¿m cÆ¡ há»™i má»›i",
+                q3_opt3: "Chuáº©n bá»‹ Du há»c & TÃ¬m kiáº¿m Há»c bá»•ng",
+                q3_opt3_tooltip: "XÃ¢y dá»±ng há»“ sÆ¡, luyá»‡n thi vÃ  tÃ¬m kiáº¿m cÆ¡ há»™i há»c bá»•ng du há»c táº¡i cÃ¡c quá»‘c gia phÃ¡t triá»ƒn",
+                q3_opt4: "NÃ¢ng cao Hiá»‡u quáº£ & Cháº¥t lÆ°á»£ng cho Tá»• chá»©c",
+                q3_opt4_tooltip: "Cáº£i thiá»‡n chÆ°Æ¡ng trÃ¬nh Ä‘Ã o táº¡o, á»©ng dá»¥ng cÃ´ng nghá»‡, phÃ¡t triá»ƒn Ä‘á»™i ngÅ© cho doanh nghiá»‡p/trÆ°á»ng há»c",
+                q3_opt5: "PhÃ¡t triá»ƒn TÆ° duy & Khai phÃ¡ Tiá»m nÄƒng CÃ¡ nhÃ¢n",
+                q3_opt5_tooltip: "Má»Ÿ rá»™ng kiáº¿n thá»©c, rÃ¨n luyá»‡n tÆ° duy toÃ n diá»‡n vÃ  khÃ¡m phÃ¡ nÄƒng lá»±c báº£n thÃ¢n",
                 rec_ivs_academy_title: "IVS Academy",
-                rec_ivs_academy_desc: "Cung cấp các khóa đào tạo ngoại ngữ chuyên sâu (Anh, Nhật, Hàn, Trung), luyện thi chứng chỉ quốc tế (IELTS, TOEFL, TOEIC), và phát triển kỹ năng mềm thiết yếu.",
+                rec_ivs_academy_desc: "Cung cáº¥p cÃ¡c khÃ³a Ä‘Ã o táº¡o ngoáº¡i ngá»¯ chuyÃªn sÃ¢u (Anh, Nháº­t, HÃ n, Trung), luyá»‡n thi chá»©ng chá»‰ quá»‘c táº¿ (IELTS, TOEFL, TOEIC), vÃ  phÃ¡t triá»ƒn ká»¹ nÄƒng má»m thiáº¿t yáº¿u.",
                 rec_ivs_education_title: "IVS Education",
-                rec_ivs_education_desc: "Tiên phong trong các chương trình giáo dục STEAM, phát triển giải pháp công nghệ giáo dục (IVSCelesTech LMS, E-learning), và chương trình mầm non KinderLink25.",
+                rec_ivs_education_desc: "TiÃªn phong trong cÃ¡c chÆ°Æ¡ng trÃ¬nh giÃ¡o dá»¥c STEAM, phÃ¡t triá»ƒn giáº£i phÃ¡p cÃ´ng nghá»‡ giÃ¡o dá»¥c (IVSCelesTech LMS, E-learning), vÃ  chÆ°Æ¡ng trÃ¬nh máº§m non KinderLink25.",
                 rec_ivs_consulting_title: "IVS Consulting",
-                rec_ivs_consulting_desc: "Đồng hành cùng cá nhân và tổ chức với dịch vụ tư vấn du học, xây dựng chiến lược giáo dục, thành lập trung tâm và cung ứng nhân sự giáo dục chất lượng cao.",
+                rec_ivs_consulting_desc: "Äá»“ng hÃ nh cÃ¹ng cÃ¡ nhÃ¢n vÃ  tá»• chá»©c vá»›i dá»‹ch vá»¥ tÆ° váº¥n du há»c, xÃ¢y dá»±ng chiáº¿n lÆ°á»£c giÃ¡o dá»¥c, thÃ nh láº­p trung tÃ¢m vÃ  cung á»©ng nhÃ¢n sá»± giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao.",
                 rec_ivs_media_title: "IVS Media",
-                rec_ivs_media_desc: "Chuyên sản xuất nội dung giáo dục số hóa (video, e-book), thiết kế website chuyên nghiệp và triển khai các chiến dịch marketing hiệu quả cho lĩnh vực giáo dục.",
+                rec_ivs_media_desc: "ChuyÃªn sáº£n xuáº¥t ná»™i dung giÃ¡o dá»¥c sá»‘ hÃ³a (video, e-book), thiáº¿t káº¿ website chuyÃªn nghiá»‡p vÃ  triá»ƒn khai cÃ¡c chiáº¿n dá»‹ch marketing hiá»‡u quáº£ cho lÄ©nh vá»±c giÃ¡o dá»¥c.",
                 rec_ivs_lifeminds_title: "IVSLifeMinds",
-                rec_ivs_lifeminds_desc: "Tập trung vào việc khai phá và phát triển tiềm năng con người thông qua các chương trình đào tạo tư duy (phản biện, sáng tạo), kỹ năng sống và định hướng nghề nghiệp.",
-                learn_more_button: "Tìm hiểu thêm"
+                rec_ivs_lifeminds_desc: "Táº­p trung vÃ o viá»‡c khai phÃ¡ vÃ  phÃ¡t triá»ƒn tiá»m nÄƒng con ngÆ°á»i thÃ´ng qua cÃ¡c chÆ°Æ¡ng trÃ¬nh Ä‘Ã o táº¡o tÆ° duy (pháº£n biá»‡n, sÃ¡ng táº¡o), ká»¹ nÄƒng sá»‘ng vÃ  Ä‘á»‹nh hÆ°á»›ng nghá» nghiá»‡p.",
+                learn_more_button: "TÃ¬m hiá»ƒu thÃªm"
             },
             en: {
                 welcome_title: "Welcome to IVS",
@@ -324,7 +324,7 @@
                 results_disclaimer: "These are initial suggestions. For detailed consultation and to build the most suitable roadmap, please contact IVS.",
                 restart_button: "Restart",
                 contact_button_text: "Contact for Consultation",
-                footer_text: "© 2025 IVS JSC. All rights reserved.",
+                footer_text: "Â© 2025 IVS JSC. All rights reserved.",
                 modal_continue_title: "Continue Session?",
                 modal_continue_text: "We found data from your previous visit. Would you like to continue?",
                 modal_continue_yes: "Yes, Continue",
@@ -760,7 +760,7 @@
                     }, index * 150); 
                 });
             } else {
-                recommendationsContainerEl.innerHTML = `<p class="text-gray-700 text-center" data-lang-key="no_recommendations_fallback">Chúng tôi đang tìm giải pháp phù hợp. Vui lòng liên hệ để được tư vấn chi tiết.</p>`;
+                recommendationsContainerEl.innerHTML = `<p class="text-gray-700 text-center" data-lang-key="no_recommendations_fallback">ChÃºng tÃ´i Ä‘ang tÃ¬m giáº£i phÃ¡p phÃ¹ há»£p. Vui lÃ²ng liÃªn há»‡ Ä‘á»ƒ Ä‘Æ°á»£c tÆ° váº¥n chi tiáº¿t.</p>`;
                  updateTexts(currentLang); 
             }
         }
@@ -836,9 +836,10 @@
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>
+
 
 
 

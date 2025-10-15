@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html class="scroll-smooth" lang="vi">
 <head><link href="//cdn.tailwindcss.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Review Ngành Ngôn ngữ Anh SIU: So sánh &amp; Đánh giá</title>
+<title>Review NgÃ nh NgÃ´n ngá»¯ Anh SIU: So sÃ¡nh &amp; ÄÃ¡nh giÃ¡</title>
 <script defer="" src="https://cdn.tailwindcss.com"></script>
 <script defer="" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -12,12 +12,12 @@
 <link href="../css/tailwind.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Chosen Palette: Warm Neutral & Sage -->
-<!-- Application Structure Plan: Ứng dụng được thiết kế theo luồng ra quyết định của một học sinh/phụ huynh. Bắt đầu bằng tổng quan và các điểm nhấn chính của SIU để tạo ấn tượng ban đầu. Tiếp theo là mục "Cân nhắc" để cung cấp cái nhìn khách quan. Phần trọng tâm là khu vực so sánh tương tác, trực quan hóa học phí (yếu tố quan trọng) bằng biểu đồ và so sánh chi tiết các trường qua hệ thống tab, giúp người dùng chủ động khám phá. Cuối cùng là phần đầu ra (tỷ lệ việc làm) và kết luận để củng cố giá trị và hỗ trợ quyết định cuối cùng. Cấu trúc này tối ưu cho việc tiêu thụ thông tin và so sánh, thay vì chỉ liệt kê lại báo cáo gốc. -->
+<!-- Application Structure Plan: á»¨ng dá»¥ng Ä‘Æ°á»£c thiáº¿t káº¿ theo luá»“ng ra quyáº¿t Ä‘á»‹nh cá»§a má»™t há»c sinh/phá»¥ huynh. Báº¯t Ä‘áº§u báº±ng tá»•ng quan vÃ  cÃ¡c Ä‘iá»ƒm nháº¥n chÃ­nh cá»§a SIU Ä‘á»ƒ táº¡o áº¥n tÆ°á»£ng ban Ä‘áº§u. Tiáº¿p theo lÃ  má»¥c "CÃ¢n nháº¯c" Ä‘á»ƒ cung cáº¥p cÃ¡i nhÃ¬n khÃ¡ch quan. Pháº§n trá»ng tÃ¢m lÃ  khu vá»±c so sÃ¡nh tÆ°Æ¡ng tÃ¡c, trá»±c quan hÃ³a há»c phÃ­ (yáº¿u tá»‘ quan trá»ng) báº±ng biá»ƒu Ä‘á»“ vÃ  so sÃ¡nh chi tiáº¿t cÃ¡c trÆ°á»ng qua há»‡ thá»‘ng tab, giÃºp ngÆ°á»i dÃ¹ng chá»§ Ä‘á»™ng khÃ¡m phÃ¡. Cuá»‘i cÃ¹ng lÃ  pháº§n Ä‘áº§u ra (tá»· lá»‡ viá»‡c lÃ m) vÃ  káº¿t luáº­n Ä‘á»ƒ cá»§ng cá»‘ giÃ¡ trá»‹ vÃ  há»— trá»£ quyáº¿t Ä‘á»‹nh cuá»‘i cÃ¹ng. Cáº¥u trÃºc nÃ y tá»‘i Æ°u cho viá»‡c tiÃªu thá»¥ thÃ´ng tin vÃ  so sÃ¡nh, thay vÃ¬ chá»‰ liá»‡t kÃª láº¡i bÃ¡o cÃ¡o gá»‘c. -->
 <!-- Visualization & Content Choices: 
-        - Report Info: Điểm mạnh SIU -> Goal: Inform -> Viz/Presentation: Thẻ thông tin (cards) với icon -> Interaction: Hover effect -> Justification: Trình bày các ưu điểm cốt lõi một cách nhanh chóng, dễ quét.
-        - Report Info: Học phí các trường -> Goal: Compare -> Viz/Presentation: Biểu đồ cột (Chart.js) thể hiện giá trị trung bình để so sánh trực quan, và tooltip hiển thị khoảng giá trị chính xác. -> Interaction: Tooltip hiển thị chi tiết -> Justification: Giải quyết vấn đề hiển thị của các khoảng giá trị khác nhau (đặc biệt là giá trị đơn), đảm bảo biểu đồ rõ ràng và dữ liệu chính xác.
-        - Report Info: So sánh chất lượng các trường -> Goal: Compare -> Viz/Presentation: Giao diện dạng tab -> Interaction: Click để chuyển đổi nội dung -> Justification: Tổ chức thông tin dày đặc một cách gọn gàng, cho phép người dùng tập trung vào từng trường, tránh bị quá tải thông tin.
-        - Report Info: Tỷ lệ việc làm -> Goal: Inform/Impact -> Viz/Presentation: Con số thống kê lớn, nổi bật -> Interaction: None -> Justification: Nhấn mạnh vào một trong những kết quả đầu ra quan trọng nhất một cách ấn tượng.
+        - Report Info: Äiá»ƒm máº¡nh SIU -> Goal: Inform -> Viz/Presentation: Tháº» thÃ´ng tin (cards) vá»›i icon -> Interaction: Hover effect -> Justification: TrÃ¬nh bÃ y cÃ¡c Æ°u Ä‘iá»ƒm cá»‘t lÃµi má»™t cÃ¡ch nhanh chÃ³ng, dá»… quÃ©t.
+        - Report Info: Há»c phÃ­ cÃ¡c trÆ°á»ng -> Goal: Compare -> Viz/Presentation: Biá»ƒu Ä‘á»“ cá»™t (Chart.js) thá»ƒ hiá»‡n giÃ¡ trá»‹ trung bÃ¬nh Ä‘á»ƒ so sÃ¡nh trá»±c quan, vÃ  tooltip hiá»ƒn thá»‹ khoáº£ng giÃ¡ trá»‹ chÃ­nh xÃ¡c. -> Interaction: Tooltip hiá»ƒn thá»‹ chi tiáº¿t -> Justification: Giáº£i quyáº¿t váº¥n Ä‘á» hiá»ƒn thá»‹ cá»§a cÃ¡c khoáº£ng giÃ¡ trá»‹ khÃ¡c nhau (Ä‘áº·c biá»‡t lÃ  giÃ¡ trá»‹ Ä‘Æ¡n), Ä‘áº£m báº£o biá»ƒu Ä‘á»“ rÃµ rÃ ng vÃ  dá»¯ liá»‡u chÃ­nh xÃ¡c.
+        - Report Info: So sÃ¡nh cháº¥t lÆ°á»£ng cÃ¡c trÆ°á»ng -> Goal: Compare -> Viz/Presentation: Giao diá»‡n dáº¡ng tab -> Interaction: Click Ä‘á»ƒ chuyá»ƒn Ä‘á»•i ná»™i dung -> Justification: Tá»• chá»©c thÃ´ng tin dÃ y Ä‘áº·c má»™t cÃ¡ch gá»n gÃ ng, cho phÃ©p ngÆ°á»i dÃ¹ng táº­p trung vÃ o tá»«ng trÆ°á»ng, trÃ¡nh bá»‹ quÃ¡ táº£i thÃ´ng tin.
+        - Report Info: Tá»· lá»‡ viá»‡c lÃ m -> Goal: Inform/Impact -> Viz/Presentation: Con sá»‘ thá»‘ng kÃª lá»›n, ná»•i báº­t -> Interaction: None -> Justification: Nháº¥n máº¡nh vÃ o má»™t trong nhá»¯ng káº¿t quáº£ Ä‘áº§u ra quan trá»ng nháº¥t má»™t cÃ¡ch áº¥n tÆ°á»£ng.
     -->
 <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 <style>
@@ -71,7 +71,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." name="description"/><meta content="Review Ngành Ngôn ngữ Anh SIU: So sánh &amp; Đánh giá" property="og:title"/><meta content="IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đào tạo tiếng Anh, giải pháp công nghệ giáo dục và tư vấn phát triển trường học tại Việt Nam." property="og:description"/><meta content="website" property="og:type"/></head>
+<meta content="IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, Ä‘Ã o táº¡o tiáº¿ng Anh, giáº£i phÃ¡p cÃ´ng nghá»‡ giÃ¡o dá»¥c vÃ  tÆ° váº¥n phÃ¡t triá»ƒn trÆ°á»ng há»c táº¡i Viá»‡t Nam." name="description"/><meta content="Review NgÃ nh NgÃ´n ngá»¯ Anh SIU: So sÃ¡nh &amp; ÄÃ¡nh giÃ¡" property="og:title"/><meta content="IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, Ä‘Ã o táº¡o tiáº¿ng Anh, giáº£i phÃ¡p cÃ´ng nghá»‡ giÃ¡o dá»¥c vÃ  tÆ° váº¥n phÃ¡t triá»ƒn trÆ°á»ng há»c táº¡i Viá»‡t Nam." property="og:description"/><meta content="website" property="og:type"/></head>
 <body class="bg-stone-50 text-stone-800">
 <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
 <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,10 +81,10 @@
 </div>
 <div class="hidden md:block">
 <div class="ml-10 flex items-baseline space-x-4">
-<a class="nav-link px-3 py-2 text-sm font-medium text-stone-600 border-b-2 border-transparent" href="../#highlights">Điểm Nổi Bật</a>
-<a class="nav-link px-3 py-2 text-sm font-medium text-stone-600 border-b-2 border-transparent" href="../#comparison">So Sánh Chi Tiết</a>
-<a class="nav-link px-3 py-2 text-sm font-medium text-stone-600 border-b-2 border-transparent" href="../#outcomes">Chất Lượng Đầu Ra</a>
-<a class="nav-link px-3 py-2 text-sm font-medium text-stone-600 border-b-2 border-transparent" href="../#verdict">Kết Luận</a>
+<a class="nav-link px-3 py-2 text-sm font-medium text-stone-600 border-b-2 border-transparent" href="../#highlights">Äiá»ƒm Ná»•i Báº­t</a>
+<a class="nav-link px-3 py-2 text-sm font-medium text-stone-600 border-b-2 border-transparent" href="../#comparison">So SÃ¡nh Chi Tiáº¿t</a>
+<a class="nav-link px-3 py-2 text-sm font-medium text-stone-600 border-b-2 border-transparent" href="../#outcomes">Cháº¥t LÆ°á»£ng Äáº§u Ra</a>
+<a class="nav-link px-3 py-2 text-sm font-medium text-stone-600 border-b-2 border-transparent" href="../#verdict">Káº¿t Luáº­n</a>
 </div>
 </div>
 </div>
@@ -92,63 +92,63 @@
 </header>
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 <section class="text-center mb-16">
-<h1 class="text-4xl md:text-5xl font-bold text-[#4A6C48] mb-4">Toàn cảnh ngành Ngôn ngữ Anh tại SIU</h1>
+<h1 class="text-4xl md:text-5xl font-bold text-[#4A6C48] mb-4">ToÃ n cáº£nh ngÃ nh NgÃ´n ngá»¯ Anh táº¡i SIU</h1>
 <p class="max-w-3xl mx-auto text-lg text-stone-600">
-                Một trang tổng hợp tương tác giúp bạn có cái nhìn sâu sắc về chương trình Tiếng Anh Giảng dạy tại ĐH Quốc tế Sài Gòn (SIU), so sánh với các trường khác và đánh giá triển vọng tương lai.
+                Má»™t trang tá»•ng há»£p tÆ°Æ¡ng tÃ¡c giÃºp báº¡n cÃ³ cÃ¡i nhÃ¬n sÃ¢u sáº¯c vá» chÆ°Æ¡ng trÃ¬nh Tiáº¿ng Anh Giáº£ng dáº¡y táº¡i ÄH Quá»‘c táº¿ SÃ i GÃ²n (SIU), so sÃ¡nh vá»›i cÃ¡c trÆ°á»ng khÃ¡c vÃ  Ä‘Ã¡nh giÃ¡ triá»ƒn vá»ng tÆ°Æ¡ng lai.
             </p>
 </section>
 <section class="mb-20 scroll-mt-20" id="highlights">
-<h2 class="text-3xl font-bold text-center mb-4">Những Điểm Sáng Giá tại SIU</h2>
-<p class="text-center text-stone-600 mb-10 max-w-2xl mx-auto">SIU tạo ra sự khác biệt không chỉ bằng chương trình học mà còn qua một hệ sinh thái hỗ trợ toàn diện, mang lại lợi thế cạnh tranh độc đáo cho sinh viên.</p>
+<h2 class="text-3xl font-bold text-center mb-4">Nhá»¯ng Äiá»ƒm SÃ¡ng GiÃ¡ táº¡i SIU</h2>
+<p class="text-center text-stone-600 mb-10 max-w-2xl mx-auto">SIU táº¡o ra sá»± khÃ¡c biá»‡t khÃ´ng chá»‰ báº±ng chÆ°Æ¡ng trÃ¬nh há»c mÃ  cÃ²n qua má»™t há»‡ sinh thÃ¡i há»— trá»£ toÃ n diá»‡n, mang láº¡i lá»£i tháº¿ cáº¡nh tranh Ä‘á»™c Ä‘Ã¡o cho sinh viÃªn.</p>
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-<div class="text-3xl mb-3 text-[#588157]">💼</div>
-<h3 class="font-bold text-lg mb-2">Hệ Sinh Thái Việc Làm Độc Quyền</h3>
-<p class="text-sm text-stone-600">Sinh viên được đảm bảo thực tập và có cơ hội làm việc ngay sau tốt nghiệp tại 16 cơ sở giáo dục của Tập đoàn Quốc tế Á Châu (GAIE).</p>
+<div class="text-3xl mb-3 text-[#588157]">ðŸ’¼</div>
+<h3 class="font-bold text-lg mb-2">Há»‡ Sinh ThÃ¡i Viá»‡c LÃ m Äá»™c Quyá»n</h3>
+<p class="text-sm text-stone-600">Sinh viÃªn Ä‘Æ°á»£c Ä‘áº£m báº£o thá»±c táº­p vÃ  cÃ³ cÆ¡ há»™i lÃ m viá»‡c ngay sau tá»‘t nghiá»‡p táº¡i 16 cÆ¡ sá»Ÿ giÃ¡o dá»¥c cá»§a Táº­p Ä‘oÃ n Quá»‘c táº¿ Ã ChÃ¢u (GAIE).</p>
 </div>
 <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-<div class="text-3xl mb-3 text-[#588157]">🌍</div>
-<h3 class="font-bold text-lg mb-2">Môi Trường Quốc Tế Thảo Điền</h3>
-<p class="text-sm text-stone-600">Học tập tại "làng quốc tế" Thảo Điền, tiếp xúc tiếng Anh tự nhiên hàng ngày. Cơ sở vật chất hiện đại theo mô hình đại học Hoa Kỳ.</p>
+<div class="text-3xl mb-3 text-[#588157]">ðŸŒ</div>
+<h3 class="font-bold text-lg mb-2">MÃ´i TrÆ°á»ng Quá»‘c Táº¿ Tháº£o Äiá»n</h3>
+<p class="text-sm text-stone-600">Há»c táº­p táº¡i "lÃ ng quá»‘c táº¿" Tháº£o Äiá»n, tiáº¿p xÃºc tiáº¿ng Anh tá»± nhiÃªn hÃ ng ngÃ y. CÆ¡ sá»Ÿ váº­t cháº¥t hiá»‡n Ä‘áº¡i theo mÃ´ hÃ¬nh Ä‘áº¡i há»c Hoa Ká»³.</p>
 </div>
 <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-<div class="text-3xl mb-3 text-[#588157]">🎓</div>
-<h3 class="font-bold text-lg mb-2">Học Bổng Hấp Dẫn</h3>
-<p class="text-sm text-stone-600">Chính sách học bổng đa dạng từ 20-100% học phí, mở rộng cơ hội tiếp cận giáo dục quốc tế cho nhiều đối tượng.</p>
+<div class="text-3xl mb-3 text-[#588157]">ðŸŽ“</div>
+<h3 class="font-bold text-lg mb-2">Há»c Bá»•ng Háº¥p Dáº«n</h3>
+<p class="text-sm text-stone-600">ChÃ­nh sÃ¡ch há»c bá»•ng Ä‘a dáº¡ng tá»« 20-100% há»c phÃ­, má»Ÿ rá»™ng cÆ¡ há»™i tiáº¿p cáº­n giÃ¡o dá»¥c quá»‘c táº¿ cho nhiá»u Ä‘á»‘i tÆ°á»£ng.</p>
 </div>
 <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-<div class="text-3xl mb-3 text-[#588157]">🚪</div>
-<h3 class="font-bold text-lg mb-2">Đầu Vào Linh Hoạt</h3>
-<p class="text-sm text-stone-600">Duy trì điểm chuẩn ổn định, nhiều phương thức xét tuyển, giảm áp lực thi cử và tạo cơ hội cho nhiều thí sinh.</p>
+<div class="text-3xl mb-3 text-[#588157]">ðŸšª</div>
+<h3 class="font-bold text-lg mb-2">Äáº§u VÃ o Linh Hoáº¡t</h3>
+<p class="text-sm text-stone-600">Duy trÃ¬ Ä‘iá»ƒm chuáº©n á»•n Ä‘á»‹nh, nhiá»u phÆ°Æ¡ng thá»©c xÃ©t tuyá»ƒn, giáº£m Ã¡p lá»±c thi cá»­ vÃ  táº¡o cÆ¡ há»™i cho nhiá»u thÃ­ sinh.</p>
 </div>
 </div>
 <div class="mt-10 bg-amber-100/60 border-l-4 border-amber-400 p-6 rounded-r-lg">
-<h4 class="font-bold text-stone-800">Điểm cần cân nhắc</h4>
-<p class="text-sm text-stone-700 mt-2">Tuy có nhiều ưu điểm, sinh viên và phụ huynh cần tìm hiểu kỹ về cách tính học phí (thường đã bao gồm học bổng) và điều kiện GPA khá thách thức để duy trì các suất học bổng giá trị cao.</p>
+<h4 class="font-bold text-stone-800">Äiá»ƒm cáº§n cÃ¢n nháº¯c</h4>
+<p class="text-sm text-stone-700 mt-2">Tuy cÃ³ nhiá»u Æ°u Ä‘iá»ƒm, sinh viÃªn vÃ  phá»¥ huynh cáº§n tÃ¬m hiá»ƒu ká»¹ vá» cÃ¡ch tÃ­nh há»c phÃ­ (thÆ°á»ng Ä‘Ã£ bao gá»“m há»c bá»•ng) vÃ  Ä‘iá»u kiá»‡n GPA khÃ¡ thÃ¡ch thá»©c Ä‘á»ƒ duy trÃ¬ cÃ¡c suáº¥t há»c bá»•ng giÃ¡ trá»‹ cao.</p>
 </div>
 </section>
 <section class="mb-20 scroll-mt-20" id="comparison">
-<h2 class="text-3xl font-bold text-center mb-10">So Sánh Chi Tiết Với Các Trường Hàng Đầu</h2>
+<h2 class="text-3xl font-bold text-center mb-10">So SÃ¡nh Chi Tiáº¿t Vá»›i CÃ¡c TrÆ°á»ng HÃ ng Äáº§u</h2>
 <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12">
-<h3 class="text-2xl font-semibold text-center mb-2">So Sánh Học Phí (Ước tính/năm)</h3>
-<p class="text-center text-stone-600 mb-8 max-w-3xl mx-auto">Biểu đồ dưới đây so sánh trực quan mức học phí giữa SIU, HSU và UEF để bạn dễ dàng hình dung. Học phí RMIT được trình bày riêng do thuộc phân khúc khác biệt.</p>
+<h3 class="text-2xl font-semibold text-center mb-2">So SÃ¡nh Há»c PhÃ­ (Æ¯á»›c tÃ­nh/nÄƒm)</h3>
+<p class="text-center text-stone-600 mb-8 max-w-3xl mx-auto">Biá»ƒu Ä‘á»“ dÆ°á»›i Ä‘Ã¢y so sÃ¡nh trá»±c quan má»©c há»c phÃ­ giá»¯a SIU, HSU vÃ  UEF Ä‘á»ƒ báº¡n dá»… dÃ ng hÃ¬nh dung. Há»c phÃ­ RMIT Ä‘Æ°á»£c trÃ¬nh bÃ y riÃªng do thuá»™c phÃ¢n khÃºc khÃ¡c biá»‡t.</p>
 <div class="chart-container">
 <canvas id="tuitionFeeChart"></canvas>
 </div>
 <div class="mt-8 border-t-2 border-dashed border-stone-300 pt-6 text-center">
-<h4 class="text-lg font-semibold text-stone-800">Một trường hợp đặc biệt: Đại học RMIT Việt Nam</h4>
-<p class="text-5xl font-bold text-red-700 my-2">~351 <span class="text-2xl font-medium text-stone-700">triệu/năm</span></p>
-<p class="text-sm text-stone-600 max-w-md mx-auto">Học phí tại RMIT thuộc phân khúc cao cấp nhất, phản ánh giá trị của bằng cấp quốc tế từ Úc và thương hiệu toàn cầu.</p>
+<h4 class="text-lg font-semibold text-stone-800">Má»™t trÆ°á»ng há»£p Ä‘áº·c biá»‡t: Äáº¡i há»c RMIT Viá»‡t Nam</h4>
+<p class="text-5xl font-bold text-red-700 my-2">~351 <span class="text-2xl font-medium text-stone-700">triá»‡u/nÄƒm</span></p>
+<p class="text-sm text-stone-600 max-w-md mx-auto">Há»c phÃ­ táº¡i RMIT thuá»™c phÃ¢n khÃºc cao cáº¥p nháº¥t, pháº£n Ã¡nh giÃ¡ trá»‹ cá»§a báº±ng cáº¥p quá»‘c táº¿ tá»« Ãšc vÃ  thÆ°Æ¡ng hiá»‡u toÃ n cáº§u.</p>
 </div>
 </div>
 <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
-<h3 class="text-2xl font-semibold text-center mb-8">Đối Đầu Chất Lượng: SIU và các đối thủ</h3>
+<h3 class="text-2xl font-semibold text-center mb-8">Äá»‘i Äáº§u Cháº¥t LÆ°á»£ng: SIU vÃ  cÃ¡c Ä‘á»‘i thá»§</h3>
 <div class="border-b border-gray-200 mb-6">
 <nav aria-label="Tabs" class="-mb-px flex justify-center space-x-4 md:space-x-8">
-<button class="tab-button whitespace-nowrap py-4 px-1 text-sm font-medium" id="tab-siu">ĐH Quốc tế Sài Gòn (SIU)</button>
-<button class="tab-button whitespace-nowrap py-4 px-1 text-sm font-medium" id="tab-hsu">ĐH Hoa Sen (HSU)</button>
-<button class="tab-button whitespace-nowrap py-4 px-1 text-sm font-medium" id="tab-rmit">ĐH RMIT Việt Nam</button>
-<button class="tab-button whitespace-nowrap py-4 px-1 text-sm font-medium" id="tab-uef">ĐH Kinh tế - Tài chính (UEF)</button>
+<button class="tab-button whitespace-nowrap py-4 px-1 text-sm font-medium" id="tab-siu">ÄH Quá»‘c táº¿ SÃ i GÃ²n (SIU)</button>
+<button class="tab-button whitespace-nowrap py-4 px-1 text-sm font-medium" id="tab-hsu">ÄH Hoa Sen (HSU)</button>
+<button class="tab-button whitespace-nowrap py-4 px-1 text-sm font-medium" id="tab-rmit">ÄH RMIT Viá»‡t Nam</button>
+<button class="tab-button whitespace-nowrap py-4 px-1 text-sm font-medium" id="tab-uef">ÄH Kinh táº¿ - TÃ i chÃ­nh (UEF)</button>
 </nav>
 </div>
 <div class="transition-opacity duration-300" id="tab-content">
@@ -156,78 +156,78 @@
 </div>
 </section>
 <section class="mb-20 scroll-mt-20" id="outcomes">
-<h2 class="text-3xl font-bold text-center mb-10">Chất Lượng Đầu Ra &amp; Triển Vọng Nghề Nghiệp</h2>
+<h2 class="text-3xl font-bold text-center mb-10">Cháº¥t LÆ°á»£ng Äáº§u Ra &amp; Triá»ƒn Vá»ng Nghá» Nghiá»‡p</h2>
 <div class="bg-white rounded-xl shadow-lg p-8 grid md:grid-cols-2 gap-8 items-center">
 <div class="text-center">
 <p class="text-8xl font-bold text-[#4A6C48]">~98%</p>
-<p class="text-xl font-semibold text-stone-700 mt-2">Sinh viên có việc làm sau tốt nghiệp</p>
-<p class="text-sm text-stone-500 mt-2">(Theo khảo sát công bố 04/2024)</p>
+<p class="text-xl font-semibold text-stone-700 mt-2">Sinh viÃªn cÃ³ viá»‡c lÃ m sau tá»‘t nghiá»‡p</p>
+<p class="text-sm text-stone-500 mt-2">(Theo kháº£o sÃ¡t cÃ´ng bá»‘ 04/2024)</p>
 </div>
 <div>
-<h3 class="font-semibold text-lg mb-4">Cơ hội nghề nghiệp đa dạng</h3>
-<p class="text-stone-600 mb-4">Với nền tảng ngôn ngữ và kỹ năng vững chắc, sinh viên tốt nghiệp SIU có thể tự tin theo đuổi nhiều con đường sự nghiệp hấp dẫn:</p>
+<h3 class="font-semibold text-lg mb-4">CÆ¡ há»™i nghá» nghiá»‡p Ä‘a dáº¡ng</h3>
+<p class="text-stone-600 mb-4">Vá»›i ná»n táº£ng ngÃ´n ngá»¯ vÃ  ká»¹ nÄƒng vá»¯ng cháº¯c, sinh viÃªn tá»‘t nghiá»‡p SIU cÃ³ thá»ƒ tá»± tin theo Ä‘uá»•i nhiá»u con Ä‘Æ°á»ng sá»± nghiá»‡p háº¥p dáº«n:</p>
 <ul class="space-y-2 text-sm">
-<li class="flex items-start"><span class="text-[#588157] mr-2">✔</span> <strong>Giảng dạy:</strong> Giáo viên, giảng viên tại các trường học, trung tâm ngoại ngữ.</li>
-<li class="flex items-start"><span class="text-[#588157] mr-2">✔</span> <strong>Biên - Phiên dịch:</strong> Chuyên viên tại các công ty, tổ chức trong và ngoài nước.</li>
-<li class="flex items-start"><span class="text-[#588157] mr-2">✔</span> <strong>Kinh doanh &amp; Truyền thông:</strong> Chuyên viên marketing, truyền thông, nhân sự, dịch vụ khách hàng.</li>
-<li class="flex items-start"><span class="text-[#588157] mr-2">✔</span> <strong>Du lịch &amp; Khách sạn:</strong> Làm việc trong các môi trường dịch vụ cao cấp, tiêu chuẩn quốc tế.</li>
+<li class="flex items-start"><span class="text-[#588157] mr-2">âœ”</span> <strong>Giáº£ng dáº¡y:</strong> GiÃ¡o viÃªn, giáº£ng viÃªn táº¡i cÃ¡c trÆ°á»ng há»c, trung tÃ¢m ngoáº¡i ngá»¯.</li>
+<li class="flex items-start"><span class="text-[#588157] mr-2">âœ”</span> <strong>BiÃªn - PhiÃªn dá»‹ch:</strong> ChuyÃªn viÃªn táº¡i cÃ¡c cÃ´ng ty, tá»• chá»©c trong vÃ  ngoÃ i nÆ°á»›c.</li>
+<li class="flex items-start"><span class="text-[#588157] mr-2">âœ”</span> <strong>Kinh doanh &amp; Truyá»n thÃ´ng:</strong> ChuyÃªn viÃªn marketing, truyá»n thÃ´ng, nhÃ¢n sá»±, dá»‹ch vá»¥ khÃ¡ch hÃ ng.</li>
+<li class="flex items-start"><span class="text-[#588157] mr-2">âœ”</span> <strong>Du lá»‹ch &amp; KhÃ¡ch sáº¡n:</strong> LÃ m viá»‡c trong cÃ¡c mÃ´i trÆ°á»ng dá»‹ch vá»¥ cao cáº¥p, tiÃªu chuáº©n quá»‘c táº¿.</li>
 </ul>
-<p class="text-sm text-stone-600 mt-4 italic">Mức thu nhập khởi điểm cho người có kinh nghiệm có thể dao động từ 18-22 triệu VNĐ/tháng.</p>
+<p class="text-sm text-stone-600 mt-4 italic">Má»©c thu nháº­p khá»Ÿi Ä‘iá»ƒm cho ngÆ°á»i cÃ³ kinh nghiá»‡m cÃ³ thá»ƒ dao Ä‘á»™ng tá»« 18-22 triá»‡u VNÄ/thÃ¡ng.</p>
 </div>
 </div>
 </section>
 <section class="bg-white rounded-xl shadow-lg p-8 md:p-10 scroll-mt-20" id="verdict">
-<h2 class="text-3xl font-bold text-center mb-8">Kết Luận: SIU có phải lựa chọn dành cho bạn?</h2>
+<h2 class="text-3xl font-bold text-center mb-8">Káº¿t Luáº­n: SIU cÃ³ pháº£i lá»±a chá»n dÃ nh cho báº¡n?</h2>
 <div class="grid md:grid-cols-2 gap-8">
 <div>
-<h3 class="font-semibold text-xl mb-3 text-green-700">SIU là lựa chọn LÝ TƯỞNG nếu bạn:</h3>
+<h3 class="font-semibold text-xl mb-3 text-green-700">SIU lÃ  lá»±a chá»n LÃ TÆ¯á»žNG náº¿u báº¡n:</h3>
 <ul class="space-y-3 text-stone-700">
 <li class="flex items-start">
-<span class="text-green-600 mr-3 mt-1">✓</span>
-<span><strong>Ưu tiên con đường sự nghiệp rõ ràng,</strong> đặc biệt trong ngành giảng dạy, với sự đảm bảo từ hệ sinh thái GAIE.</span>
+<span class="text-green-600 mr-3 mt-1">âœ“</span>
+<span><strong>Æ¯u tiÃªn con Ä‘Æ°á»ng sá»± nghiá»‡p rÃµ rÃ ng,</strong> Ä‘áº·c biá»‡t trong ngÃ nh giáº£ng dáº¡y, vá»›i sá»± Ä‘áº£m báº£o tá»« há»‡ sinh thÃ¡i GAIE.</span>
 </li>
 <li class="flex items-start">
-<span class="text-green-600 mr-3 mt-1">✓</span>
-<span><strong>Tìm kiếm một môi trường học tập và sinh hoạt</strong> năng động, hiện đại và đậm chất quốc tế tại Thảo Điền.</span>
+<span class="text-green-600 mr-3 mt-1">âœ“</span>
+<span><strong>TÃ¬m kiáº¿m má»™t mÃ´i trÆ°á»ng há»c táº­p vÃ  sinh hoáº¡t</strong> nÄƒng Ä‘á»™ng, hiá»‡n Ä‘áº¡i vÃ  Ä‘áº­m cháº¥t quá»‘c táº¿ táº¡i Tháº£o Äiá»n.</span>
 </li>
 <li class="flex items-start">
-<span class="text-green-600 mr-3 mt-1">✓</span>
-<span><strong>Mong muốn tiếp cận giáo dục chuẩn quốc tế</strong> với chi phí hợp lý thông qua các chính sách học bổng đa dạng.</span>
+<span class="text-green-600 mr-3 mt-1">âœ“</span>
+<span><strong>Mong muá»‘n tiáº¿p cáº­n giÃ¡o dá»¥c chuáº©n quá»‘c táº¿</strong> vá»›i chi phÃ­ há»£p lÃ½ thÃ´ng qua cÃ¡c chÃ­nh sÃ¡ch há»c bá»•ng Ä‘a dáº¡ng.</span>
 </li>
 </ul>
 </div>
 <div>
-<h3 class="font-semibold text-xl mb-3 text-amber-700">Bạn nên CÂN NHẮC các lựa chọn khác nếu:</h3>
+<h3 class="font-semibold text-xl mb-3 text-amber-700">Báº¡n nÃªn CÃ‚N NHáº®C cÃ¡c lá»±a chá»n khÃ¡c náº¿u:</h3>
 <ul class="space-y-3 text-stone-700">
 <li class="flex items-start">
 <span class="text-amber-600 mr-3 mt-1">!</span>
-<span><strong>Ưu tiên hàng đầu là tấm bằng quốc tế</strong> được công nhận toàn cầu và có điều kiện tài chính vững mạnh (RMIT là lựa chọn phù hợp hơn).</span>
+<span><strong>Æ¯u tiÃªn hÃ ng Ä‘áº§u lÃ  táº¥m báº±ng quá»‘c táº¿</strong> Ä‘Æ°á»£c cÃ´ng nháº­n toÃ n cáº§u vÃ  cÃ³ Ä‘iá»u kiá»‡n tÃ i chÃ­nh vá»¯ng máº¡nh (RMIT lÃ  lá»±a chá»n phÃ¹ há»£p hÆ¡n).</span>
 </li>
 <li class="flex items-start">
 <span class="text-amber-600 mr-3 mt-1">!</span>
-<span><strong>Mong muốn chương trình học có kiểm định quốc tế</strong> cụ thể cho ngành học (HSU với AUN-QA, FIBAA là một đối thủ mạnh).</span>
+<span><strong>Mong muá»‘n chÆ°Æ¡ng trÃ¬nh há»c cÃ³ kiá»ƒm Ä‘á»‹nh quá»‘c táº¿</strong> cá»¥ thá»ƒ cho ngÃ nh há»c (HSU vá»›i AUN-QA, FIBAA lÃ  má»™t Ä‘á»‘i thá»§ máº¡nh).</span>
 </li>
 <li class="flex items-start">
 <span class="text-amber-600 mr-3 mt-1">!</span>
-<span><strong>E ngại về việc phải duy trì GPA cao</strong> để giữ học bổng và cần một chính sách học phí minh bạch, ổn định hơn.</span>
+<span><strong>E ngáº¡i vá» viá»‡c pháº£i duy trÃ¬ GPA cao</strong> Ä‘á»ƒ giá»¯ há»c bá»•ng vÃ  cáº§n má»™t chÃ­nh sÃ¡ch há»c phÃ­ minh báº¡ch, á»•n Ä‘á»‹nh hÆ¡n.</span>
 </li>
 </ul>
 </div>
 </div>
-<p class="text-center mt-8 text-stone-600 italic max-w-3xl mx-auto">Tóm lại, SIU đã xây dựng thành công một mô hình "quốc tế trong tầm với", là lựa chọn thông minh cho những ai tìm kiếm giá trị tổng thể gồm môi trường, cơ sở vật chất và cơ hội nghề nghiệp rõ ràng với chi phí hợp lý.</p>
+<p class="text-center mt-8 text-stone-600 italic max-w-3xl mx-auto">TÃ³m láº¡i, SIU Ä‘Ã£ xÃ¢y dá»±ng thÃ nh cÃ´ng má»™t mÃ´ hÃ¬nh "quá»‘c táº¿ trong táº§m vá»›i", lÃ  lá»±a chá»n thÃ´ng minh cho nhá»¯ng ai tÃ¬m kiáº¿m giÃ¡ trá»‹ tá»•ng thá»ƒ gá»“m mÃ´i trÆ°á»ng, cÆ¡ sá»Ÿ váº­t cháº¥t vÃ  cÆ¡ há»™i nghá» nghiá»‡p rÃµ rÃ ng vá»›i chi phÃ­ há»£p lÃ½.</p>
 </section>
 </main>
 <footer class="bg-stone-800 text-white mt-16">
 <div class="container mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm">
-<p>© 2024 - Trang Review được tạo bởi AI. </p>
-<p class="text-stone-400">Thông tin được tổng hợp từ các báo cáo công khai và chỉ mang tính chất tham khảo.</p>
+<p>Â© 2024 - Trang Review Ä‘Æ°á»£c táº¡o bá»Ÿi AI. </p>
+<p class="text-stone-400">ThÃ´ng tin Ä‘Æ°á»£c tá»•ng há»£p tá»« cÃ¡c bÃ¡o cÃ¡o cÃ´ng khai vÃ  chá»‰ mang tÃ­nh cháº¥t tham kháº£o.</p>
 </div>
 </footer>
 <script>
         document.addEventListener('DOMContentLoaded', function() {
             
             const tuitionData = {
-                labels: ['SIU', 'ĐH Hoa Sen', 'ĐH Kinh tế TC'],
+                labels: ['SIU', 'ÄH Hoa Sen', 'ÄH Kinh táº¿ TC'],
                 // Use average for bar height for better visual comparison
                 fees: [
                     (54 + 77) / 2, // ~65.5
@@ -236,54 +236,54 @@
                 ],
                 // Store original ranges for detailed tooltips
                 ranges: [
-                    'Khoảng 54 - 77 triệu',
-                    '~ 75 triệu',
-                    'Khoảng 80 - 88 triệu'
+                    'Khoáº£ng 54 - 77 triá»‡u',
+                    '~ 75 triá»‡u',
+                    'Khoáº£ng 80 - 88 triá»‡u'
                 ]
             };
 
             const comparisonData = {
                 siu: {
-                    name: 'ĐH Quốc tế Sài Gòn (SIU)',
+                    name: 'ÄH Quá»‘c táº¿ SÃ i GÃ²n (SIU)',
                     content: `
                         <ul class="space-y-4 text-sm">
-                            <li><strong>Điểm mạnh cốt lõi:</strong> Hệ sinh thái việc làm độc quyền GAIE & Môi trường sống chuẩn quốc tế tại Thảo Điền.</li>
-                            <li><strong>Kiểm định chương trình:</strong> Kiểm định Quốc gia (Bộ GD&ĐT).</li>
-                            <li><strong>Môi trường học tập:</strong> "Làng đại học" Hoa Kỳ tại Thảo Điền, cơ sở vật chất hiện đại, đầy đủ tiện ích.</li>
-                            <li><strong>Cơ hội việc làm:</strong> Mạng lưới độc quyền GAIE và các doanh nghiệp đối tác lớn, đảm bảo thực tập và đầu ra.</li>
+                            <li><strong>Äiá»ƒm máº¡nh cá»‘t lÃµi:</strong> Há»‡ sinh thÃ¡i viá»‡c lÃ m Ä‘á»™c quyá»n GAIE & MÃ´i trÆ°á»ng sá»‘ng chuáº©n quá»‘c táº¿ táº¡i Tháº£o Äiá»n.</li>
+                            <li><strong>Kiá»ƒm Ä‘á»‹nh chÆ°Æ¡ng trÃ¬nh:</strong> Kiá»ƒm Ä‘á»‹nh Quá»‘c gia (Bá»™ GD&ÄT).</li>
+                            <li><strong>MÃ´i trÆ°á»ng há»c táº­p:</strong> "LÃ ng Ä‘áº¡i há»c" Hoa Ká»³ táº¡i Tháº£o Äiá»n, cÆ¡ sá»Ÿ váº­t cháº¥t hiá»‡n Ä‘áº¡i, Ä‘áº§y Ä‘á»§ tiá»‡n Ã­ch.</li>
+                            <li><strong>CÆ¡ há»™i viá»‡c lÃ m:</strong> Máº¡ng lÆ°á»›i Ä‘á»™c quyá»n GAIE vÃ  cÃ¡c doanh nghiá»‡p Ä‘á»‘i tÃ¡c lá»›n, Ä‘áº£m báº£o thá»±c táº­p vÃ  Ä‘áº§u ra.</li>
                         </ul>
                     `
                 },
                 hsu: {
-                    name: 'ĐH Hoa Sen (HSU)',
+                    name: 'ÄH Hoa Sen (HSU)',
                     content: `
                         <ul class="space-y-4 text-sm">
-                            <li><strong>Điểm mạnh cốt lõi:</strong> Chương trình có kiểm định quốc tế (AUN-QA, FIBAA) & Thương hiệu uy tín lâu năm.</li>
-                            <li><strong>Kiểm định chương trình:</strong> AUN-QA, FIBAA (Quốc tế).</li>
-                            <li><strong>Môi trường học tập:</strong> Năng động, các cơ sở tọa lạc tại trung tâm thành phố, thuận tiện di chuyển.</li>
-                            <li><strong>Cơ hội việc làm:</strong> Mạng lưới đối tác doanh nghiệp rộng khắp, chú trọng thực hành.</li>
+                            <li><strong>Äiá»ƒm máº¡nh cá»‘t lÃµi:</strong> ChÆ°Æ¡ng trÃ¬nh cÃ³ kiá»ƒm Ä‘á»‹nh quá»‘c táº¿ (AUN-QA, FIBAA) & ThÆ°Æ¡ng hiá»‡u uy tÃ­n lÃ¢u nÄƒm.</li>
+                            <li><strong>Kiá»ƒm Ä‘á»‹nh chÆ°Æ¡ng trÃ¬nh:</strong> AUN-QA, FIBAA (Quá»‘c táº¿).</li>
+                            <li><strong>MÃ´i trÆ°á»ng há»c táº­p:</strong> NÄƒng Ä‘á»™ng, cÃ¡c cÆ¡ sá»Ÿ tá»a láº¡c táº¡i trung tÃ¢m thÃ nh phá»‘, thuáº­n tiá»‡n di chuyá»ƒn.</li>
+                            <li><strong>CÆ¡ há»™i viá»‡c lÃ m:</strong> Máº¡ng lÆ°á»›i Ä‘á»‘i tÃ¡c doanh nghiá»‡p rá»™ng kháº¯p, chÃº trá»ng thá»±c hÃ nh.</li>
                         </ul>
                     `
                 },
                 rmit: {
-                    name: 'ĐH RMIT Việt Nam',
+                    name: 'ÄH RMIT Viá»‡t Nam',
                     content: `
                         <ul class="space-y-4 text-sm">
-                            <li><strong>Điểm mạnh cốt lõi:</strong> Bằng cấp quốc tế từ Úc có giá trị toàn cầu & Thương hiệu đại học hàng đầu thế giới.</li>
-                            <li><strong>Kiểm định chương trình:</strong> TEQSA (Úc).</li>
-                            <li><strong>Môi trường học tập:</strong> Campus chuẩn quốc tế 100% tại Quận 7, thư viện tiếng Anh lớn nhất Việt Nam.</li>
-                            <li><strong>Cơ hội việc làm:</strong> Mạng lưới đối tác toàn cầu, uy tín thương hiệu giúp sinh viên có lợi thế tuyển dụng vượt trội.</li>
+                            <li><strong>Äiá»ƒm máº¡nh cá»‘t lÃµi:</strong> Báº±ng cáº¥p quá»‘c táº¿ tá»« Ãšc cÃ³ giÃ¡ trá»‹ toÃ n cáº§u & ThÆ°Æ¡ng hiá»‡u Ä‘áº¡i há»c hÃ ng Ä‘áº§u tháº¿ giá»›i.</li>
+                            <li><strong>Kiá»ƒm Ä‘á»‹nh chÆ°Æ¡ng trÃ¬nh:</strong> TEQSA (Ãšc).</li>
+                            <li><strong>MÃ´i trÆ°á»ng há»c táº­p:</strong> Campus chuáº©n quá»‘c táº¿ 100% táº¡i Quáº­n 7, thÆ° viá»‡n tiáº¿ng Anh lá»›n nháº¥t Viá»‡t Nam.</li>
+                            <li><strong>CÆ¡ há»™i viá»‡c lÃ m:</strong> Máº¡ng lÆ°á»›i Ä‘á»‘i tÃ¡c toÃ n cáº§u, uy tÃ­n thÆ°Æ¡ng hiá»‡u giÃºp sinh viÃªn cÃ³ lá»£i tháº¿ tuyá»ƒn dá»¥ng vÆ°á»£t trá»™i.</li>
                         </ul>
                     `
                 },
                 uef: {
-                     name: 'ĐH Kinh tế - Tài chính (UEF)',
+                     name: 'ÄH Kinh táº¿ - TÃ i chÃ­nh (UEF)',
                     content: `
                         <ul class="space-y-4 text-sm">
-                            <li><strong>Điểm mạnh cốt lõi:</strong> Chương trình đào tạo song ngữ, chú trọng phát triển kỹ năng mềm và kết nối doanh nghiệp chặt chẽ.</li>
-                            <li><strong>Kiểm định chương trình:</strong> Kiểm định Quốc gia (Bộ GD&ĐT).</li>
-                            <li><strong>Môi trường học tập:</strong> Cơ sở vật chất hiện đại tại trung tâm, môi trường học tập song ngữ năng động.</li>
-                            <li><strong>Cơ hội việc làm:</strong> Hệ thống kết nối doanh nghiệp bền chặt, đảm bảo 100% sinh viên được thực tập.</li>
+                            <li><strong>Äiá»ƒm máº¡nh cá»‘t lÃµi:</strong> ChÆ°Æ¡ng trÃ¬nh Ä‘Ã o táº¡o song ngá»¯, chÃº trá»ng phÃ¡t triá»ƒn ká»¹ nÄƒng má»m vÃ  káº¿t ná»‘i doanh nghiá»‡p cháº·t cháº½.</li>
+                            <li><strong>Kiá»ƒm Ä‘á»‹nh chÆ°Æ¡ng trÃ¬nh:</strong> Kiá»ƒm Ä‘á»‹nh Quá»‘c gia (Bá»™ GD&ÄT).</li>
+                            <li><strong>MÃ´i trÆ°á»ng há»c táº­p:</strong> CÆ¡ sá»Ÿ váº­t cháº¥t hiá»‡n Ä‘áº¡i táº¡i trung tÃ¢m, mÃ´i trÆ°á»ng há»c táº­p song ngá»¯ nÄƒng Ä‘á»™ng.</li>
+                            <li><strong>CÆ¡ há»™i viá»‡c lÃ m:</strong> Há»‡ thá»‘ng káº¿t ná»‘i doanh nghiá»‡p bá»n cháº·t, Ä‘áº£m báº£o 100% sinh viÃªn Ä‘Æ°á»£c thá»±c táº­p.</li>
                         </ul>
                     `
                 }
@@ -295,7 +295,7 @@
                 data: {
                     labels: tuitionData.labels,
                     datasets: [{
-                        label: 'Học phí ước tính',
+                        label: 'Há»c phÃ­ Æ°á»›c tÃ­nh',
                         data: tuitionData.fees,
                         backgroundColor: [
                             'rgba(74, 108, 72, 0.7)',
@@ -322,7 +322,7 @@
                             max: 100,
                             title: {
                                 display: true,
-                                text: 'Triệu VNĐ'
+                                text: 'Triá»‡u VNÄ'
                             }
                         }
                     },
@@ -338,7 +338,7 @@
                                 label: function(context) {
                                     const index = context.dataIndex;
                                     const rangeLabel = tuitionData.ranges[index];
-                                    return `Học phí: ${rangeLabel}`;
+                                    return `Há»c phÃ­: ${rangeLabel}`;
                                 }
                             }
                         }
@@ -385,7 +385,7 @@
             });
         });
     </script>
-<!-- Chèn vào cuối <body> của mọi trang -->
+<!-- ChÃ¨n vÃ o cuá»‘i <body> cá»§a má»i trang -->
 <div id="fab-container-placeholder"></div>
 <!-- Component Placeholders -->
 <div id="header-placeholder"></div>
@@ -427,9 +427,10 @@
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>
+
 
 
 

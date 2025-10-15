@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="lkmamnon_page_title">IVS Academy - Liên kết Giáo dục Mầm non | IVS JSC</title>
-    <meta name="description" content="IVS Academy cung cấp giải pháp liên kết giáo dục mầm non tiên tiến, áp dụng mô hình STEAM+Intelligence Model, ươm mầm tài năng Việt." data-lang-key="lkmamnon_meta_description">
-    <meta property="og:title" content="IVS Academy - Liên kết Giáo dục Mầm non Tiên tiến | Nền Tảng Vững Chắc Cho Tương Lai" data-lang-key="lkmamnon_og_title">
-    <meta property="og:description" content="Khám phá môi trường học tập an toàn, yêu thương, đầy cảm hứng với mô hình giáo dục sớm độc đáo tại IVS Kindergarten." data-lang-key="lkmamnon_og_description">
+    <title data-lang-key="lkmamnon_page_title">IVS Academy - LiÃªn káº¿t GiÃ¡o dá»¥c Máº§m non | IVS JSC</title>
+    <meta name="description" content="IVS Academy cung cáº¥p giáº£i phÃ¡p liÃªn káº¿t giÃ¡o dá»¥c máº§m non tiÃªn tiáº¿n, Ã¡p dá»¥ng mÃ´ hÃ¬nh STEAM+Intelligence Model, Æ°Æ¡m máº§m tÃ i nÄƒng Viá»‡t." data-lang-key="lkmamnon_meta_description">
+    <meta property="og:title" content="IVS Academy - LiÃªn káº¿t GiÃ¡o dá»¥c Máº§m non TiÃªn tiáº¿n | Ná»n Táº£ng Vá»¯ng Cháº¯c Cho TÆ°Æ¡ng Lai" data-lang-key="lkmamnon_og_title">
+    <meta property="og:description" content="KhÃ¡m phÃ¡ mÃ´i trÆ°á»ng há»c táº­p an toÃ n, yÃªu thÆ°Æ¡ng, Ä‘áº§y cáº£m há»©ng vá»›i mÃ´ hÃ¬nh giÃ¡o dá»¥c sá»›m Ä‘á»™c Ä‘Ã¡o táº¡i IVS Kindergarten." data-lang-key="lkmamnon_og_description">
     <meta property="og:image" content="https://ivsjsc.github.io/images/ivs-kindergarten.jpeg">
     <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/education.html#mamnon">
     <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     
     <style>
-        /* Các biến CSS tùy chỉnh của IVS */
+        /* CÃ¡c biáº¿n CSS tÃ¹y chá»‰nh cá»§a IVS */
         :root {
             --ivs-primary: #004080;
             --ivs-secondary: #ffc107;
@@ -49,7 +49,7 @@
             color: #d1d5db; /* dark:text-gray-300 */
         }
 
-        /* Các lớp tiện ích Tailwind tùy chỉnh */
+        /* CÃ¡c lá»›p tiá»‡n Ã­ch Tailwind tÃ¹y chá»‰nh */
         .bg-primary { background-color: var(--ivs-primary); }
         .text-primary { color: var(--ivs-primary); }
         .hover\:bg-primary-dark:hover { background-color: var(--ivs-primary-dark); }
@@ -59,7 +59,7 @@
         .text-purple-accent { color: #8B5CF6; }
         .text-warning { color: #F59E0B; }
 
-        /* Điều chỉnh Header Placeholder */
+        /* Äiá»u chá»‰nh Header Placeholder */
         #header-placeholder {
             height: var(--header-height);
             transition: transform 0.3s ease;
@@ -69,31 +69,31 @@
                 height: var(--header-height-mobile);
             }
         }
-        /* Đảm bảo nội dung không bị ẩn dưới header cố định */
+        /* Äáº£m báº£o ná»™i dung khÃ´ng bá»‹ áº©n dÆ°á»›i header cá»‘ Ä‘á»‹nh */
         main {
             position: relative;
             z-index: 1;
-            padding-top: var(--header-height); /* Đẩy nội dung xuống dưới header */
+            padding-top: var(--header-height); /* Äáº©y ná»™i dung xuá»‘ng dÆ°á»›i header */
         }
         @media (max-width: 768px) {
             main {
                 padding-top: var(--header-height-mobile);
             }
         }
-        /* Ẩn header khi cuộn xuống */
+        /* áº¨n header khi cuá»™n xuá»‘ng */
         .header-hidden {
             transform: translateY(-100%);
         }
-        /* Hiển thị header khi cuộn lên */
+        /* Hiá»ƒn thá»‹ header khi cuá»™n lÃªn */
         .header-visible {
             transform: translateY(0);
         }
 
-        /* Các kiểu cho phần Hero Section */
+        /* CÃ¡c kiá»ƒu cho pháº§n Hero Section */
         .hero-section-banner {
             background-size: cover;
             background-position: center;
-            min-height: 50vh; /* Điều chỉnh chiều cao cho trang nội dung */
+            min-height: 50vh; /* Äiá»u chá»‰nh chiá»u cao cho trang ná»™i dung */
         }
         .hero-section-banner .hero-content {
             position: relative; z-index: 2;
@@ -112,17 +112,17 @@
         }
         .hero-text-shadow { text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
 
-        /* Các kiểu cho feature card mầm non */
+        /* CÃ¡c kiá»ƒu cho feature card máº§m non */
         .feature-card-mamnon { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .feature-card-mamnon:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
         .feature-card-mamnon i { transition: transform 0.3s ease-out; }
         .feature-card-mamnon:hover i { transform: rotate(10deg) scale(1.1); }
 
-        /* Các kiểu cho benefit icon */
+        /* CÃ¡c kiá»ƒu cho benefit icon */
         .benefit-icon { transition: transform 0.3s ease; }
         .benefit-card:hover .benefit-icon { transform: scale(1.15); }
 
-        /* Kiểu cho video nhúng */
+        /* Kiá»ƒu cho video nhÃºng */
         .video-container {
             position: relative;
             width: 100%;
@@ -141,7 +141,7 @@
             border: 0;
         }
 
-        /* Kiểu cho placeholder khi tải component */
+        /* Kiá»ƒu cho placeholder khi táº£i component */
         #header-placeholder:empty::before,
         #footer-placeholder:empty::before {
             content: attr(data-loading-text);
@@ -159,7 +159,7 @@
             color: #9ca3af;
         }
 
-        /* Kiểu cho Floating Action Buttons (FABs) */
+        /* Kiá»ƒu cho Floating Action Buttons (FABs) */
         .fab-hidden { display: none !important; }
         #contact-options:not(.fab-hidden),
         #share-options:not(.fab-hidden) {
@@ -167,12 +167,12 @@
         }
         #contact-options, #share-options { z-index: 1000; }
         
-        /* Kiểu cho nút ngôn ngữ đang hoạt động */
+        /* Kiá»ƒu cho nÃºt ngÃ´n ngá»¯ Ä‘ang hoáº¡t Ä‘á»™ng */
         #header-placeholder button.active-lang {
             background-color: var(--ivs-primary) !important;
             color: var(--ivs-text-white) !important;
         }
-        /* Hiệu ứng hover cho dropdown/mega menu */
+        /* Hiá»‡u á»©ng hover cho dropdown/mega menu */
         .group:hover .group-hover\:opacity-100 {
             opacity: 1 !important; visibility: visible !important;
         }
@@ -188,11 +188,11 @@
     <main>
         <section class="banner-kindergarten relative text-white py-24 md:py-32 text-center overflow-hidden" aria-labelledby="page-title-mamnon" data-aos="fade-in" data-aos-duration="1000">
              <div class="absolute inset-0 bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-600 opacity-90 z-0"></div>
-             <img src="/images/pages/daotao-nn-kn.jpg" alt="Hình ảnh nền IVS Kindergarten" data-lang-key="lkmamnon_hero_banner_alt" class="absolute inset-0 w-full h-full object-cover opacity-25 z-0 mix-blend-luminosity" loading="lazy" onerror="this.style.display='none'">
+             <img src="/images/pages/daotao-nn-kn.jpg" alt="HÃ¬nh áº£nh ná»n IVS Kindergarten" data-lang-key="lkmamnon_hero_banner_alt" class="absolute inset-0 w-full h-full object-cover opacity-25 z-0 mix-blend-luminosity" loading="lazy" onerror="this.style.display='none'">
 
             <div class="relative z-10 container mx-auto px-4">
-                <h1 id="page-title-mamnon" class="text-4xl md:text-6xl font-bold mb-4 hero-text-shadow" data-lang-key="lkmamnon_hero_title" data-aos="fade-down" data-aos-delay="200">Liên kết Giáo dục Mầm non</h1>
-                <p class="text-xl md:text-2xl opacity-95 hero-text-shadow max-w-3xl mx-auto" data-lang-key="lkmamnon_hero_subtitle" data-aos="fade-up" data-aos-delay="400">IVS Academy - Xây Dựng Nền Tảng Vững Chắc Cho Tương Lai Con Trẻ</p>
+                <h1 id="page-title-mamnon" class="text-4xl md:text-6xl font-bold mb-4 hero-text-shadow" data-lang-key="lkmamnon_hero_title" data-aos="fade-down" data-aos-delay="200">LiÃªn káº¿t GiÃ¡o dá»¥c Máº§m non</h1>
+                <p class="text-xl md:text-2xl opacity-95 hero-text-shadow max-w-3xl mx-auto" data-lang-key="lkmamnon_hero_subtitle" data-aos="fade-up" data-aos-delay="400">IVS Academy - XÃ¢y Dá»±ng Ná»n Táº£ng Vá»¯ng Cháº¯c Cho TÆ°Æ¡ng Lai Con Tráº»</p>
             </div>
         </section>
 
@@ -200,80 +200,80 @@
             <div class="container mx-auto px-4 max-w-5xl">
 
                 <div class="bg-white p-6 md:p-10 rounded-xl shadow-xl mb-10 md:mb-16 border border-gray-100" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6 text-center" data-lang-key="lkmamnon_intro_heading">IVS Kindergarten: Ươm Mầm Tài Năng Việt</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6 text-center" data-lang-key="lkmamnon_intro_heading">IVS Kindergarten: Æ¯Æ¡m Máº§m TÃ i NÄƒng Viá»‡t</h2>
                     <div class="flex flex-col lg:flex-row gap-8 items-center">
                         <div class="lg:w-3/5 order-2 lg:order-1" data-aos="fade-right" data-aos-delay="100">
                             <p class="text-gray-700 leading-relaxed mb-4 text-lg" data-lang-key="lkmamnon_intro_p1">
-                                IVS Kindergarten tự hào là trường mầm non tiên phong tại Long Thành, Đồng Nai, tiên phong áp dụng mô hình giáo dục sớm độc đáo <strong>STEAM+Intelligence Model</strong>. Chúng tôi không chỉ dạy kiến thức, mà còn khơi gợi niềm đam mê khám phá, kết hợp phương pháp STEAM (Khoa học, Công nghệ, Kỹ thuật, Nghệ thuật, Toán học) với lý thuyết Trí thông minh Đa dạng của Howard Gardner để đánh thức và nuôi dưỡng mọi tiềm năng ẩn giấu trong mỗi đứa trẻ.
+                                IVS Kindergarten tá»± hÃ o lÃ  trÆ°á»ng máº§m non tiÃªn phong táº¡i Long ThÃ nh, Äá»“ng Nai, tiÃªn phong Ã¡p dá»¥ng mÃ´ hÃ¬nh giÃ¡o dá»¥c sá»›m Ä‘á»™c Ä‘Ã¡o <strong>STEAM+Intelligence Model</strong>. ChÃºng tÃ´i khÃ´ng chá»‰ dáº¡y kiáº¿n thá»©c, mÃ  cÃ²n khÆ¡i gá»£i niá»m Ä‘am mÃª khÃ¡m phÃ¡, káº¿t há»£p phÆ°Æ¡ng phÃ¡p STEAM (Khoa há»c, CÃ´ng nghá»‡, Ká»¹ thuáº­t, Nghá»‡ thuáº­t, ToÃ¡n há»c) vá»›i lÃ½ thuyáº¿t TrÃ­ thÃ´ng minh Äa dáº¡ng cá»§a Howard Gardner Ä‘á»ƒ Ä‘Ã¡nh thá»©c vÃ  nuÃ´i dÆ°á»¡ng má»i tiá»m nÄƒng áº©n giáº¥u trong má»—i Ä‘á»©a tráº».
                             </p>
                             <p class="text-gray-700 leading-relaxed text-lg" data-lang-key="lkmamnon_intro_p2">
-                                Chúng tôi kiến tạo một môi trường học tập <strong>An toàn - Yêu thương - Tôn trọng - Sáng tạo</strong>, nơi trẻ được tự do thể hiện bản thân, vui chơi học hỏi và phát triển toàn diện về Trí tuệ - Cảm xúc - Thể chất - Kỹ năng xã hội.
+                                ChÃºng tÃ´i kiáº¿n táº¡o má»™t mÃ´i trÆ°á»ng há»c táº­p <strong>An toÃ n - YÃªu thÆ°Æ¡ng - TÃ´n trá»ng - SÃ¡ng táº¡o</strong>, nÆ¡i tráº» Ä‘Æ°á»£c tá»± do thá»ƒ hiá»‡n báº£n thÃ¢n, vui chÆ¡i há»c há»i vÃ  phÃ¡t triá»ƒn toÃ n diá»‡n vá» TrÃ­ tuá»‡ - Cáº£m xÃºc - Thá»ƒ cháº¥t - Ká»¹ nÄƒng xÃ£ há»™i.
                             </p>
                         </div>
                         <div class="lg:w-2/5 order-1 lg:order-2 mt-6 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
-                            <img src="/images/pages/ivs-kindergarten.jpg" alt="Trẻ em vui học tại IVS Kindergarten" data-lang-key="lkmamnon_intro_img_alt" class="rounded-xl shadow-lg w-full h-auto object-cover" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x350/eee/ccc?text=IVS+Kindergarten';">
+                            <img src="/images/pages/ivs-kindergarten.jpg" alt="Tráº» em vui há»c táº¡i IVS Kindergarten" data-lang-key="lkmamnon_intro_img_alt" class="rounded-xl shadow-lg w-full h-auto object-cover" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x350/eee/ccc?text=IVS+Kindergarten';">
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-gradient-to-br from-pink-50 to-purple-50 p-8 md:p-10 rounded-xl border border-pink-200 mb-10 md:mb-16" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-3xl font-bold text-center text-pink-600 mb-10" data-lang-key="lkmamnon_why_heading">Điểm Vàng Tạo Nên Sự Khác Biệt tại IVS Kindergarten</h3>
+                    <h3 class="text-3xl font-bold text-center text-pink-600 mb-10" data-lang-key="lkmamnon_why_heading">Äiá»ƒm VÃ ng Táº¡o NÃªn Sá»± KhÃ¡c Biá»‡t táº¡i IVS Kindergarten</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div class="feature-card-mamnon text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="zoom-in-up" data-aos-delay="150">
                             <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-pink-100 text-pink-600 mb-5 text-3xl shadow-inner">
                                 <i class="fas fa-cogs"></i>
                             </div>
-                            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_why_feature1_title">Mô hình STEAM+Intelligence</h4>
-                            <p class="text-sm text-gray-600" data-lang-key="lkmamnon_why_feature1_desc">Phát triển tư duy logic, sáng tạo và 8 loại hình trí thông minh.</p>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_why_feature1_title">MÃ´ hÃ¬nh STEAM+Intelligence</h4>
+                            <p class="text-sm text-gray-600" data-lang-key="lkmamnon_why_feature1_desc">PhÃ¡t triá»ƒn tÆ° duy logic, sÃ¡ng táº¡o vÃ  8 loáº¡i hÃ¬nh trÃ­ thÃ´ng minh.</p>
                         </div>
                         <div class="feature-card-mamnon text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="zoom-in-up" data-aos-delay="200">
                             <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-pink-100 text-pink-600 mb-5 text-3xl shadow-inner">
                                 <i class="fas fa-school"></i>
                             </div>
-                            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_why_feature2_title">Cơ sở vật chất Chuẩn Quốc tế</h4>
-                            <p class="text-sm text-gray-600" data-lang-key="lkmamnon_why_feature2_desc">22 phòng chức năng hiện đại, sân chơi ngoài trời & trong nhà an toàn, xanh mát.</p>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_why_feature2_title">CÆ¡ sá»Ÿ váº­t cháº¥t Chuáº©n Quá»‘c táº¿</h4>
+                            <p class="text-sm text-gray-600" data-lang-key="lkmamnon_why_feature2_desc">22 phÃ²ng chá»©c nÄƒng hiá»‡n Ä‘áº¡i, sÃ¢n chÆ¡i ngoÃ i trá»i & trong nhÃ  an toÃ n, xanh mÃ¡t.</p>
                         </div>
                         <div class="feature-card-mamnon text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="zoom-in-up" data-aos-delay="250">
                              <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-pink-100 text-pink-600 mb-5 text-3xl shadow-inner">
                                  <i class="fas fa-book-reader"></i>
                              </div>
-                             <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_why_feature3_title">Giáo trình Độc quyền IVS</h4>
-                             <p class="text-sm text-gray-600" data-lang-key="lkmamnon_why_feature3_desc">Chương trình LIFE Minds (Kỹ năng sống) & Tiếng Anh Phonics chuẩn quốc tế.</p>
+                             <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_why_feature3_title">GiÃ¡o trÃ¬nh Äá»™c quyá»n IVS</h4>
+                             <p class="text-sm text-gray-600" data-lang-key="lkmamnon_why_feature3_desc">ChÆ°Æ¡ng trÃ¬nh LIFE Minds (Ká»¹ nÄƒng sá»‘ng) & Tiáº¿ng Anh Phonics chuáº©n quá»‘c táº¿.</p>
                          </div>
                          <div class="feature-card-mamnon text-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow" data-aos="zoom-in-up" data-aos-delay="300">
                              <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-pink-100 text-pink-600 mb-5 text-3xl shadow-inner">
                                  <i class="fas fa-microchip"></i>
                              </div>
-                             <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_why_feature4_title">Công nghệ Hỗ trợ Học tập</h4>
-                             <p class="text-sm text-gray-600" data-lang-key="lkmamnon_why_feature4_desc">Ứng dụng AI, VR/AR trong hoạt động học tập, cá nhân hóa lộ trình phát triển.</p>
+                             <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_why_feature4_title">CÃ´ng nghá»‡ Há»— trá»£ Há»c táº­p</h4>
+                             <p class="text-sm text-gray-600" data-lang-key="lkmamnon_why_feature4_desc">á»¨ng dá»¥ng AI, VR/AR trong hoáº¡t Ä‘á»™ng há»c táº­p, cÃ¡ nhÃ¢n hÃ³a lá»™ trÃ¬nh phÃ¡t triá»ƒn.</p>
                          </div>
                     </div>
                 </div>
 
                  <section class="py-12 md:py-16 bg-emerald-50 rounded-xl" data-aos="fade-up">
                      <div class="container mx-auto px-4 max-w-4xl">
-                         <h2 class="text-3xl font-bold text-center text-emerald-600 mb-10" data-lang-key="lkmamnon_daily_routine_title">Một Ngày Ngập Tràn Niềm Vui Tại IVS Kindergarten</h2>
+                         <h2 class="text-3xl font-bold text-center text-emerald-600 mb-10" data-lang-key="lkmamnon_daily_routine_title">Má»™t NgÃ y Ngáº­p TrÃ n Niá»m Vui Táº¡i IVS Kindergarten</h2>
                          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                              <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
                                  <div class="benefit-icon w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center mb-4 border-4 border-emerald-200">
                                      <i class="fas fa-sun text-5xl text-yellow-400"></i>
                                  </div>
-                                 <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_routine_morning_title">Buổi Sáng Năng Lượng</h4>
-                                 <p class="text-sm text-gray-600" data-lang-key="lkmamnon_routine_morning_desc">Đón bé, thể dục sáng, hoạt động khám phá STEAM, học Tiếng Anh Phonics vui nhộn.</p>
+                                 <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_routine_morning_title">Buá»•i SÃ¡ng NÄƒng LÆ°á»£ng</h4>
+                                 <p class="text-sm text-gray-600" data-lang-key="lkmamnon_routine_morning_desc">ÄÃ³n bÃ©, thá»ƒ dá»¥c sÃ¡ng, hoáº¡t Ä‘á»™ng khÃ¡m phÃ¡ STEAM, há»c Tiáº¿ng Anh Phonics vui nhá»™n.</p>
                              </div>
                              <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
                                  <div class="benefit-icon w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center mb-4 border-4 border-emerald-200">
                                      <i class="fas fa-utensils text-5xl text-orange-500"></i>
                                  </div>
-                                 <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_routine_afternoon_title">Buổi Trưa & Chiều Thú Vị</h4>
-                                 <p class="text-sm text-gray-600" data-lang-key="lkmamnon_routine_afternoon_desc">Ăn trưa dinh dưỡng, nghỉ ngơi, học kỹ năng sống LIFE Minds, hoạt động nghệ thuật, vui chơi ngoài trời.</p>
+                                 <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_routine_afternoon_title">Buá»•i TrÆ°a & Chiá»u ThÃº Vá»‹</h4>
+                                 <p class="text-sm text-gray-600" data-lang-key="lkmamnon_routine_afternoon_desc">Ä‚n trÆ°a dinh dÆ°á»¡ng, nghá»‰ ngÆ¡i, há»c ká»¹ nÄƒng sá»‘ng LIFE Minds, hoáº¡t Ä‘á»™ng nghá»‡ thuáº­t, vui chÆ¡i ngoÃ i trá»i.</p>
                              </div>
                              <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
                                  <div class="benefit-icon w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center mb-4 border-4 border-emerald-200">
                                      <i class="fas fa-heart text-5xl text-red-500"></i>
                                  </div>
-                                 <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_routine_care_title">Chăm Sóc Tận Tâm</h4>
-                                 <p class="text-sm text-gray-600" data-lang-key="lkmamnon_routine_care_desc">Đội ngũ giáo viên yêu trẻ, giàu kinh nghiệm, đảm bảo an toàn và theo dõi sát sao sự phát triển của từng bé.</p>
+                                 <h4 class="text-lg font-semibold text-gray-800 mb-2" data-lang-key="lkmamnon_routine_care_title">ChÄƒm SÃ³c Táº­n TÃ¢m</h4>
+                                 <p class="text-sm text-gray-600" data-lang-key="lkmamnon_routine_care_desc">Äá»™i ngÅ© giÃ¡o viÃªn yÃªu tráº», giÃ u kinh nghiá»‡m, Ä‘áº£m báº£o an toÃ n vÃ  theo dÃµi sÃ¡t sao sá»± phÃ¡t triá»ƒn cá»§a tá»«ng bÃ©.</p>
                              </div>
                          </div>
                      </div>
@@ -281,19 +281,19 @@
 
                 <section class="py-12 md:py-16 bg-white rounded-xl shadow-lg mt-10" data-aos="fade-up">
                     <div class="container mx-auto px-4 max-w-5xl">
-                        <h2 class="text-3xl font-bold text-center text-primary mb-10" data-lang-key="lkmamnon_video_heading">Video Giới thiệu & Hoạt động</h2>
+                        <h2 class="text-3xl font-bold text-center text-primary mb-10" data-lang-key="lkmamnon_video_heading">Video Giá»›i thiá»‡u & Hoáº¡t Ä‘á»™ng</h2>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             <div data-aos="fade-right" data-aos-delay="100">
-                                <h3 class="text-xl font-semibold text-gray-800 mb-4" data-lang-key="lkmamnon_video1_title">Bài hát: Tập đếm (luôn đối tốt và chia sẻ)</h3>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4" data-lang-key="lkmamnon_video1_title">BÃ i hÃ¡t: Táº­p Ä‘áº¿m (luÃ´n Ä‘á»‘i tá»‘t vÃ  chia sáº»)</h3>
                                 <div class="video-container">
                                     <iframe src="https://www.youtube-nocookie.com/embed/g3YjsMhM0NE?si=1x3rAd7rUA2KF3ur&amp;start=1"
-                                            title="YouTube video player - Tập đếm" frameborder="0"
+                                            title="YouTube video player - Táº­p Ä‘áº¿m" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div data-aos="fade-left" data-aos-delay="200">
-                                <h3 class="text-xl font-semibold text-gray-800 mb-4" data-lang-key="lkmamnon_video2_title">Bài hát: Hello (IVS sáng tác)</h3>
+                                <h3 class="text-xl font-semibold text-gray-800 mb-4" data-lang-key="lkmamnon_video2_title">BÃ i hÃ¡t: Hello (IVS sÃ¡ng tÃ¡c)</h3>
                                 <div class="video-container">
                                     <iframe src="https://www.youtube-nocookie.com/embed/ti8CnIvEQxM?si=8lyv6vniba-9w-HN&amp;start=1"
                                             title="YouTube video player - Hello" frameborder="0"
@@ -307,7 +307,7 @@
    
                 <section class="py-12 md:py-16 bg-neutral-100 rounded-xl shadow-lg mt-10" data-aos="fade-up">
                     <div class="container mx-auto px-4 max-w-4xl">
-                        <h2 class="text-3xl font-bold text-center text-neutral-800 mb-10" data-lang-key="lkmamnon_curriculum_video_heading">Giới thiệu Giáo trình STEAM+ Intelligence Model</h2>
+                        <h2 class="text-3xl font-bold text-center text-neutral-800 mb-10" data-lang-key="lkmamnon_curriculum_video_heading">Giá»›i thiá»‡u GiÃ¡o trÃ¬nh STEAM+ Intelligence Model</h2>
                         <div class="video-container" data-aos="zoom-in">
                              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/_T8ObF-rz8U?si=pqX0WloT4PeJQ4wQ"
                                      title="YouTube video player - STEAM+ Intelligence Model" frameborder="0"
@@ -318,21 +318,21 @@
                 </section>
    
                 <div class="bg-white p-8 md:p-10 rounded-xl shadow-xl mt-10 md:mt-16 border border-gray-100" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-3xl font-bold text-primary mb-8 text-center" data-lang-key="lkmamnon_partnership_heading">Mở Rộng Hợp Tác - Cùng Kiến Tạo Tương Lai</h3>
+                    <h3 class="text-3xl font-bold text-primary mb-8 text-center" data-lang-key="lkmamnon_partnership_heading">Má»Ÿ Rá»™ng Há»£p TÃ¡c - CÃ¹ng Kiáº¿n Táº¡o TÆ°Æ¡ng Lai</h3>
                     <p class="text-gray-700 leading-relaxed mb-6 text-center max-w-3xl mx-auto" data-lang-key="lkmamnon_partnership_intro">
-                        IVS JSC mong muốn được hợp tác với các trường mầm non, tổ chức giáo dục và nhà đầu tư tâm huyết để cùng nhau chia sẻ, phát triển và nâng cao chất lượng giáo dục mầm non trên cả nước. Chúng tôi mang đến các giải pháp hợp tác linh hoạt và hiệu quả:
+                        IVS JSC mong muá»‘n Ä‘Æ°á»£c há»£p tÃ¡c vá»›i cÃ¡c trÆ°á»ng máº§m non, tá»• chá»©c giÃ¡o dá»¥c vÃ  nhÃ  Ä‘áº§u tÆ° tÃ¢m huyáº¿t Ä‘á»ƒ cÃ¹ng nhau chia sáº», phÃ¡t triá»ƒn vÃ  nÃ¢ng cao cháº¥t lÆ°á»£ng giÃ¡o dá»¥c máº§m non trÃªn cáº£ nÆ°á»›c. ChÃºng tÃ´i mang Ä‘áº¿n cÃ¡c giáº£i phÃ¡p há»£p tÃ¡c linh hoáº¡t vÃ  hiá»‡u quáº£:
                     </p>
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 list-none p-0 text-gray-700 text-sm mb-8">
-                        <li class="flex items-start gap-3" data-aos="fade-right" data-aos-delay="150"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point1">Chuyển giao mô hình giáo dục tiên tiến STEAM+Intelligence Model.</span></li>
-                        <li class="flex items-start gap-3" data-aos="fade-left" data-aos-delay="200"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point2">Cung cấp bản quyền và đào tạo sử dụng giáo trình IVS LIFE Minds.</span></li>
-                        <li class="flex items-start gap-3" data-aos="fade-right" data-aos-delay="250"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point3">Hỗ trợ đào tạo, bồi dưỡng và phát triển đội ngũ giáo viên mầm non chuyên nghiệp.</span></li>
-                        <li class="flex items-start gap-3" data-aos="fade-left" data-aos-delay="300"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point4">Tư vấn chiến lược xây dựng, quản lý và vận hành trường mầm non hiệu quả.</span></li>
-                        <li class="flex items-start gap-3" data-aos="fade-right" data-aos-delay="350"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point5">Hợp tác triển khai các giải pháp công nghệ giáo dục (EdTech) từ IVS Celestech.</span></li>
-                        <li class="flex items-start gap-3" data-aos="fade-left" data-aos-delay="400"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point6">Nhượng quyền thương hiệu IVS Kindergarten (Franchise).</span></li>
+                        <li class="flex items-start gap-3" data-aos="fade-right" data-aos-delay="150"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point1">Chuyá»ƒn giao mÃ´ hÃ¬nh giÃ¡o dá»¥c tiÃªn tiáº¿n STEAM+Intelligence Model.</span></li>
+                        <li class="flex items-start gap-3" data-aos="fade-left" data-aos-delay="200"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point2">Cung cáº¥p báº£n quyá»n vÃ  Ä‘Ã o táº¡o sá»­ dá»¥ng giÃ¡o trÃ¬nh IVS LIFE Minds.</span></li>
+                        <li class="flex items-start gap-3" data-aos="fade-right" data-aos-delay="250"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point3">Há»— trá»£ Ä‘Ã o táº¡o, bá»“i dÆ°á»¡ng vÃ  phÃ¡t triá»ƒn Ä‘á»™i ngÅ© giÃ¡o viÃªn máº§m non chuyÃªn nghiá»‡p.</span></li>
+                        <li class="flex items-start gap-3" data-aos="fade-left" data-aos-delay="300"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point4">TÆ° váº¥n chiáº¿n lÆ°á»£c xÃ¢y dá»±ng, quáº£n lÃ½ vÃ  váº­n hÃ nh trÆ°á»ng máº§m non hiá»‡u quáº£.</span></li>
+                        <li class="flex items-start gap-3" data-aos="fade-right" data-aos-delay="350"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point5">Há»£p tÃ¡c triá»ƒn khai cÃ¡c giáº£i phÃ¡p cÃ´ng nghá»‡ giÃ¡o dá»¥c (EdTech) tá»« IVS Celestech.</span></li>
+                        <li class="flex items-start gap-3" data-aos="fade-left" data-aos-delay="400"><i class="fas fa-check-circle text-secondary mt-1"></i><span data-lang-key="lkmamnon_partnership_point6">NhÆ°á»£ng quyá»n thÆ°Æ¡ng hiá»‡u IVS Kindergarten (Franchise).</span></li>
                     </ul>
                     <div class="text-center">
                         <a href="contact.html?interest=kindergarten_partnership" class="inline-flex items-center gap-2 border border-primary text-primary hover:bg-blue-50 font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
-                           <i class="fas fa-handshake"></i> <span data-lang-key="lkmamnon_partnership_button">Tìm hiểu Cơ hội Hợp tác</span>
+                           <i class="fas fa-handshake"></i> <span data-lang-key="lkmamnon_partnership_button">TÃ¬m hiá»ƒu CÆ¡ há»™i Há»£p tÃ¡c</span>
                         </a>
                     </div>
                 </div>
@@ -340,15 +340,15 @@
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="max-w-2xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-xl border border-gray-200">
         
-                        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-3" data-lang-key="consultation_form_title">Đăng ký Tư vấn</h1>
-                        <p class="text-center text-gray-600 mb-8 md:mb-10" data-lang-key="consultation_form_subtitle">Vui lòng điền thông tin vào form bên dưới, IVS JSC sẽ liên hệ lại với bạn sớm nhất có thể.</p>
+                        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-3" data-lang-key="consultation_form_title">ÄÄƒng kÃ½ TÆ° váº¥n</h1>
+                        <p class="text-center text-gray-600 mb-8 md:mb-10" data-lang-key="consultation_form_subtitle">Vui lÃ²ng Ä‘iá»n thÃ´ng tin vÃ o form bÃªn dÆ°á»›i, IVS JSC sáº½ liÃªn há»‡ láº¡i vá»›i báº¡n sá»›m nháº¥t cÃ³ thá»ƒ.</p>
         
                         <div class="google-form-embed-container">
-                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdxenvWDGAoWbNRlgaswG8MJJzSw-L9saG33oxTRIeT3d98EQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Đang tải…</iframe>
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdxenvWDGAoWbNRlgaswG8MJJzSw-L9saG33oxTRIeT3d98EQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Äang táº£iâ€¦</iframe>
                         </div>
         
                         <div class="mt-10 text-center text-sm text-gray-500 border-t pt-6">
-                            <p data-lang-key="consultation_alt_contact_prefix">Hoặc liên hệ trực tiếp với bộ phận tư vấn qua:</p>
+                            <p data-lang-key="consultation_alt_contact_prefix">Hoáº·c liÃªn há»‡ trá»±c tiáº¿p vá»›i bá»™ pháº­n tÆ° váº¥n qua:</p>
                             <p class="mt-2">
                                 <i class="fab fa-zalo text-blue-500"></i> Zalo: <a href="https://zalo.me/ivsjsc/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">[Chat Zalo OA]</a> |
                                 <i class="fas fa-envelope text-gray-500 ml-2"></i> Email: <a href="mailto:ivscorp.vn@gmail.com" class="text-primary hover:underline font-medium">ivscorp.vn@gmail.com</a> |
@@ -373,25 +373,25 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // Khởi tạo toàn bộ trang sau khi DOM đã tải hoàn chỉnh
+        // Khá»Ÿi táº¡o toÃ n bá»™ trang sau khi DOM Ä‘Ã£ táº£i hoÃ n chá»‰nh
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                // Khởi tạo hệ thống ngôn ngữ
+                // Khá»Ÿi táº¡o há»‡ thá»‘ng ngÃ´n ngá»¯
                 if (window.initializeLanguageSystem) {
                     await window.initializeLanguageSystem();
                 }
                 
-                // Tải và khởi tạo các component (header, footer, FABs)
+                // Táº£i vÃ  khá»Ÿi táº¡o cÃ¡c component (header, footer, FABs)
                 if (window.loadComponentsAndInitialize) {
                     await window.loadComponentsAndInitialize();
                 }
                 
-                // Chạy bất kỳ khởi tạo cụ thể nào của trang này (nếu có)
+                // Cháº¡y báº¥t ká»³ khá»Ÿi táº¡o cá»¥ thá»ƒ nÃ o cá»§a trang nÃ y (náº¿u cÃ³)
                 if (typeof window.onPageComponentsLoadedCallback === 'function') {
                     window.onPageComponentsLoadedCallback();
                 }
 
-                // Khởi tạo thư viện AOS (Animate On Scroll)
+                // Khá»Ÿi táº¡o thÆ° viá»‡n AOS (Animate On Scroll)
                 AOS.init({
                     offset: 100,
                     duration: 700,
@@ -405,8 +405,8 @@
             }
         });
 
-        // Hàm initializeTheme được giữ lại ở đây để đảm bảo tính nhất quán nếu trang này được truy cập trực tiếp
-        // Hàm này sẽ được gọi bởi loadComponentsAndInitialize hoặc trực tiếp nếu trang được tải độc lập
+        // HÃ m initializeTheme Ä‘Æ°á»£c giá»¯ láº¡i á»Ÿ Ä‘Ã¢y Ä‘á»ƒ Ä‘áº£m báº£o tÃ­nh nháº¥t quÃ¡n náº¿u trang nÃ y Ä‘Æ°á»£c truy cáº­p trá»±c tiáº¿p
+        // HÃ m nÃ y sáº½ Ä‘Æ°á»£c gá»i bá»Ÿi loadComponentsAndInitialize hoáº·c trá»±c tiáº¿p náº¿u trang Ä‘Æ°á»£c táº£i Ä‘á»™c láº­p
         window.initializeTheme = function() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -416,17 +416,18 @@
                 document.documentElement.classList.toggle('dark', prefersDark);
             }
         };
-        // Gọi hàm khởi tạo chủ đề ngay khi script được tải
-        // Điều này đảm bảo theme được áp dụng nhanh chóng, tránh FOUC (Flash of Unstyled Content)
+        // Gá»i hÃ m khá»Ÿi táº¡o chá»§ Ä‘á» ngay khi script Ä‘Æ°á»£c táº£i
+        // Äiá»u nÃ y Ä‘áº£m báº£o theme Ä‘Æ°á»£c Ã¡p dá»¥ng nhanh chÃ³ng, trÃ¡nh FOUC (Flash of Unstyled Content)
         initializeTheme();
     </script>
 
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>
+
 
 
 

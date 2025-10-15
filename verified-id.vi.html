@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>IVS - Trình Tạo Manifest ID Đã Xác Minh</title>
+  <title>IVS - TrÃ¬nh Táº¡o Manifest ID ÄÃ£ XÃ¡c Minh</title>
   <link rel="stylesheet" href="/css/tailwind.css">
   <style>
     body { font-family: Inter, system-ui, -apple-system, Arial, sans-serif; background:#0b1220; color:#e6eef8 }
@@ -16,53 +16,53 @@
 </head>
 <body>
   <main class="container mx-auto p-8 max-w-3xl">
-    <h1 class="text-2xl font-semibold mb-4">IVS - Trình Tạo Manifest ID Đã Xác Minh</h1>
+    <h1 class="text-2xl font-semibold mb-4">IVS - TrÃ¬nh Táº¡o Manifest ID ÄÃ£ XÃ¡c Minh</h1>
     <div class="card mb-6">
-      <label class="block mb-2">ID Nhân Viên (bắt buộc)</label>
-      <input id="employeeId" placeholder="ví dụ: EMP-1001" />
+      <label class="block mb-2">ID NhÃ¢n ViÃªn (báº¯t buá»™c)</label>
+      <input id="employeeId" placeholder="vÃ­ dá»¥: EMP-1001" />
       <div id="employeeError" class="text-red-400 text-sm mt-1" aria-live="polite"></div>
       <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
         <div>
-          <label class="block mb-2">Họ và Tên (tùy chọn)</label>
+          <label class="block mb-2">Há» vÃ  TÃªn (tÃ¹y chá»n)</label>
           <input id="fullName" placeholder="Nguyen Van A" />
         </div>
         <div>
-          <label class="block mb-2">Chức Vụ / Tiêu Đề (tùy chọn)</label>
-          <input id="title" placeholder="Giáo Viên / Phát Triển Viên" />
+          <label class="block mb-2">Chá»©c Vá»¥ / TiÃªu Äá» (tÃ¹y chá»n)</label>
+          <input id="title" placeholder="GiÃ¡o ViÃªn / PhÃ¡t Triá»ƒn ViÃªn" />
         </div>
       </div>
 
-      <label class="block mt-3 mb-2">Dữ liệu bổ sung (JSON, tùy chọn)</label>
+      <label class="block mt-3 mb-2">Dá»¯ liá»‡u bá»• sung (JSON, tÃ¹y chá»n)</label>
       <textarea id="extraPayload" rows="4" placeholder='{"phongBan":"Hoc Vien"}'></textarea>
       <div id="extraError" class="text-red-400 text-sm mt-1" aria-live="polite"></div>
 
       <div class="mt-4 flex items-center gap-3">
-        <button id="generateBtn" class="btn">Tạo URL Manifest</button>
-        <button id="downloadBtn" class="btn" style="background:#10b981;">Tải Xuống Manifest</button>
-        <button id="copyBtn" class="btn" style="background:#64748b;">Sao Chép URL</button>
+        <button id="generateBtn" class="btn">Táº¡o URL Manifest</button>
+        <button id="downloadBtn" class="btn" style="background:#10b981;">Táº£i Xuá»‘ng Manifest</button>
+        <button id="copyBtn" class="btn" style="background:#64748b;">Sao ChÃ©p URL</button>
       </div>
 
-      <p class="muted mt-3">Công cụ này tạo một manifest JSON nhỏ mô tả ID Đã Xác Minh cho nhân viên và tạo ra một URL data: (hoặc .json có thể tải xuống) mà bạn có thể lưu trữ hoặc truyền đến hệ thống xác minh.</p>
+      <p class="muted mt-3">CÃ´ng cá»¥ nÃ y táº¡o má»™t manifest JSON nhá» mÃ´ táº£ ID ÄÃ£ XÃ¡c Minh cho nhÃ¢n viÃªn vÃ  táº¡o ra má»™t URL data: (hoáº·c .json cÃ³ thá»ƒ táº£i xuá»‘ng) mÃ  báº¡n cÃ³ thá»ƒ lÆ°u trá»¯ hoáº·c truyá»n Ä‘áº¿n há»‡ thá»‘ng xÃ¡c minh.</p>
     </div>
 
     <div class="card">
-      <h2 class="text-lg font-medium mb-2">Xem trước Manifest</h2>
+      <h2 class="text-lg font-medium mb-2">Xem trÆ°á»›c Manifest</h2>
       <pre id="manifestPreview">{ }</pre>
-      <label class="block mt-3 mb-2">URL Manifest (data: hoặc lưu trữ)</label>
+      <label class="block mt-3 mb-2">URL Manifest (data: hoáº·c lÆ°u trá»¯)</label>
       <input id="manifestUrl" readonly />
     </div>
 
-    <div class="mt-6 muted text-sm">Lưu ý: Đây chỉ là trình tạo cục bộ. Đối với sản xuất, ký manifest và lưu trữ chúng trên điểm cuối bảo mật. Trang này không truyền dữ liệu đến bất kỳ máy chủ bên ngoài nào.</div>
+    <div class="mt-6 muted text-sm">LÆ°u Ã½: ÄÃ¢y chá»‰ lÃ  trÃ¬nh táº¡o cá»¥c bá»™. Äá»‘i vá»›i sáº£n xuáº¥t, kÃ½ manifest vÃ  lÆ°u trá»¯ chÃºng trÃªn Ä‘iá»ƒm cuá»‘i báº£o máº­t. Trang nÃ y khÃ´ng truyá»n dá»¯ liá»‡u Ä‘áº¿n báº¥t ká»³ mÃ¡y chá»§ bÃªn ngoÃ i nÃ o.</div>
 
     <div class="card mt-6">
-      <h2 class="text-lg font-medium mb-2">Hướng Dẫn Sử Dụng</h2>
+      <h2 class="text-lg font-medium mb-2">HÆ°á»›ng Dáº«n Sá»­ Dá»¥ng</h2>
       <ol class="list-decimal list-inside space-y-1 text-sm">
-        <li>Nhập ID Nhân Viên (bắt buộc) và các chi tiết tùy chọn như tên, chức vụ hoặc dữ liệu JSON bổ sung.</li>
-        <li>Nhấp "Tạo URL Manifest" để tạo xem trước manifest và URL dữ liệu.</li>
-        <li>Sử dụng nút "Sao Chép URL" để sao chép URL data: để sử dụng trong hệ thống xác minh.</li>
-        <li>Ngoài ra, nhấp "Tải Xuống Manifest" để lưu tệp JSON cục bộ.</li>
-        <li>Đối với xác minh bên ngoài, truyền URL manifest hoặc tệp đến công cụ Verified ID của bạn (ví dụ: Microsoft Authenticator hoặc trình xác minh tùy chỉnh).</li>
-        <li>Trong sản xuất, lưu trữ manifest trên điểm cuối HTTPS bảo mật và ký nó bằng khóa mật mã để đảm bảo tính xác thực.</li>
+        <li>Nháº­p ID NhÃ¢n ViÃªn (báº¯t buá»™c) vÃ  cÃ¡c chi tiáº¿t tÃ¹y chá»n nhÆ° tÃªn, chá»©c vá»¥ hoáº·c dá»¯ liá»‡u JSON bá»• sung.</li>
+        <li>Nháº¥p "Táº¡o URL Manifest" Ä‘á»ƒ táº¡o xem trÆ°á»›c manifest vÃ  URL dá»¯ liá»‡u.</li>
+        <li>Sá»­ dá»¥ng nÃºt "Sao ChÃ©p URL" Ä‘á»ƒ sao chÃ©p URL data: Ä‘á»ƒ sá»­ dá»¥ng trong há»‡ thá»‘ng xÃ¡c minh.</li>
+        <li>NgoÃ i ra, nháº¥p "Táº£i Xuá»‘ng Manifest" Ä‘á»ƒ lÆ°u tá»‡p JSON cá»¥c bá»™.</li>
+        <li>Äá»‘i vá»›i xÃ¡c minh bÃªn ngoÃ i, truyá»n URL manifest hoáº·c tá»‡p Ä‘áº¿n cÃ´ng cá»¥ Verified ID cá»§a báº¡n (vÃ­ dá»¥: Microsoft Authenticator hoáº·c trÃ¬nh xÃ¡c minh tÃ¹y chá»‰nh).</li>
+        <li>Trong sáº£n xuáº¥t, lÆ°u trá»¯ manifest trÃªn Ä‘iá»ƒm cuá»‘i HTTPS báº£o máº­t vÃ  kÃ½ nÃ³ báº±ng khÃ³a máº­t mÃ£ Ä‘á»ƒ Ä‘áº£m báº£o tÃ­nh xÃ¡c thá»±c.</li>
       </ol>
     </div>
   </main>
@@ -72,6 +72,6 @@
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>

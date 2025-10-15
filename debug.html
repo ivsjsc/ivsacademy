@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -38,7 +38,7 @@
     </style>
 </head>
 <body>
-    <h1>🔧 Debug IVS Language System</h1>
+    <h1>ðŸ”§ Debug IVS Language System</h1>
     
     <div class="controls">
         <button onclick="testLanguageFiles()">Test Language Files</button>
@@ -50,8 +50,8 @@
     <div id="logs"></div>
     
     <h2>Sample Translation Test</h2>
-    <p data-lang-key="hero_title_company">KIẾN TẠO GIẢI PHÁP</p>
-    <p data-lang-key="hero_description">Mô tả sẽ được dịch ở đây</p>
+    <p data-lang-key="hero_title_company">KIáº¾N Táº O GIáº¢I PHÃP</p>
+    <p data-lang-key="hero_description">MÃ´ táº£ sáº½ Ä‘Æ°á»£c dá»‹ch á»Ÿ Ä‘Ã¢y</p>
 
     <script>
         function log(message, type = 'log') {
@@ -70,7 +70,7 @@
         }
         
         async function testLanguageFiles() {
-            log('🔍 Testing Language Files...', 'log');
+            log('ðŸ” Testing Language Files...', 'log');
             
             const languages = ['vi', 'en', 'zh'];
             const paths = ['lang/', '/lang/', './lang/'];
@@ -86,42 +86,42 @@
                         const response = await fetch(url);
                         if (response.ok) {
                             const data = await response.json();
-                            log(`✅ SUCCESS: ${url} - Keys: ${Object.keys(data).length}`, 'success');
+                            log(`âœ… SUCCESS: ${url} - Keys: ${Object.keys(data).length}`, 'success');
                             break;
                         } else {
-                            log(`❌ HTTP ${response.status}: ${url}`, 'error');
+                            log(`âŒ HTTP ${response.status}: ${url}`, 'error');
                         }
                     } catch (error) {
-                        log(`❌ FETCH ERROR ${url}: ${error.message}`, 'error');
+                        log(`âŒ FETCH ERROR ${url}: ${error.message}`, 'error');
                     }
                 }
             }
         }
         
         async function testUtils() {
-            log('🔍 Testing Utils.js...', 'log');
+            log('ðŸ” Testing Utils.js...', 'log');
             
             try {
                 // Test if utils functions are available
                 if (typeof window.componentLog === 'function') {
-                    log('✅ componentLog function is available', 'success');
+                    log('âœ… componentLog function is available', 'success');
                     window.componentLog('Test message from componentLog', 'info');
                 } else {
-                    log('❌ componentLog function is NOT available', 'error');
+                    log('âŒ componentLog function is NOT available', 'error');
                 }
                 
                 if (typeof window.debounce === 'function') {
-                    log('✅ debounce function is available', 'success');
+                    log('âœ… debounce function is available', 'success');
                 } else {
-                    log('❌ debounce function is NOT available', 'error');
+                    log('âŒ debounce function is NOT available', 'error');
                 }
             } catch (error) {
-                log(`❌ Utils test error: ${error.message}`, 'error');
+                log(`âŒ Utils test error: ${error.message}`, 'error');
             }
         }
         
         async function testComponents() {
-            log('🔍 Testing Components...', 'log');
+            log('ðŸ” Testing Components...', 'log');
             
             const components = [
                 'components/header.html',
@@ -136,18 +136,18 @@
                     
                     if (response.ok) {
                         const content = await response.text();
-                        log(`✅ SUCCESS: ${component} - Size: ${content.length} chars`, 'success');
+                        log(`âœ… SUCCESS: ${component} - Size: ${content.length} chars`, 'success');
                     } else {
-                        log(`❌ HTTP ${response.status}: ${component}`, 'error');
+                        log(`âŒ HTTP ${response.status}: ${component}`, 'error');
                     }
                 } catch (error) {
-                    log(`❌ FETCH ERROR ${component}: ${error.message}`, 'error');
+                    log(`âŒ FETCH ERROR ${component}: ${error.message}`, 'error');
                 }
             }
         }
         
         // Load utils.js
-        log('🚀 Loading utils.js...', 'log');
+        log('ðŸš€ Loading utils.js...', 'log');
         
         // Auto-run tests on load
         setTimeout(() => {
@@ -164,8 +164,9 @@
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+<script src="/ai/js/loadComponents.js" defer></script>
 </body>
 </html>
+
 
 
