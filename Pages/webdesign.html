@@ -1,18 +1,17 @@
-﻿<!DOCTYPE html>
-
+﻿html
 <html class="scroll-smooth" lang="vi">
-<head><link href="https://fonts.googleapis.com" rel="preconnect" crossorigin><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+<head><link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<!-- Táº£i Font Awesome cho Icons -->
+ Tải Font Awesome cho Icons 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
-<!-- Title sáº½ Ä‘Æ°á»£c cáº­p nháº­t báº±ng JS -->
-<title data-lang-key="page_title">Giáº£i PhÃ¡p ToÃ n Diá»‡n: Website &amp; Há»‡ Thá»‘ng Sá»‘ | IVS Celestech</title>
-<!-- Táº£i Tailwind CSS CDN -->
+ Title sẽ đưá»£c cập nhật báº±ng JS 
+<title data-lang-key="page_title">Giải Pháp Toà n Diá»‡n: Website &amp; Há»‡ Thồng Sồ | IVS Celestech</title>
+ Tải Tailwind CSS CDN 
 <style>
-        /* TÃ¹y chá»‰nh mÃ u sáº¯c vÃ  tÆ°Æ¡ng pháº£n Ä‘á»ƒ dá»… Ä‘á»c hÆ¡n */
+        /* Tà¹y chịnh mà u sáº¯c và  tưÆ¡ng phản đá»ƒ dá»… đọc hÆ¡n */
         :root {
-            /* CÃ¡c biáº¿n mÃ u giáº£ láº­p tá»« file cáº¥u hÃ¬nh chung */
+            /* Các biáº¿n mà u giả lập từ file cạu hà¬nh chung */
             --tw-colors-ivs-dark: #0A0A0A; 
             --tw-colors-ivs-card: #18181B; /* Lightened card background for better distinction */
             --tw-colors-ivs-text-light: #F4F4F5; /* Base text color (Near white) */
@@ -21,7 +20,7 @@
             --tw-colors-ivs-accent: #38BDF8; /* Sky Blue-400 for accent */
             --tw-colors-ivs-cyan: #06B6D4; /* Cyan-500 */
         }
-        /* CSS CÆ¡ báº£n */
+        /* CSS CÆ¡ bản */
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
             background-color: var(--tw-colors-ivs-dark);
@@ -32,7 +31,7 @@
             background-color: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(10px);
         }
-        /* Gradient cho tiÃªu Ä‘á» chÃ­nh */
+        /* Gradient cho tiàªu đá» chính */
         .text-gradient {
             background: linear-gradient(90deg, var(--tw-colors-ivs-primary), var(--tw-colors-ivs-accent), var(--tw-colors-ivs-primary));
             -webkit-background-clip: text;
@@ -45,9 +44,9 @@
         }
         .card-base {
             background-color: var(--tw-colors-ivs-card);
-            border: 1px solid rgba(255, 255, 255, 0.08); /* Viá»n sÃ¡ng hÆ¡n má»™t chÃºt */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Viá»n sáng hÆ¡n một chút */
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* ThÃªm bÃ³ng nháº¹ */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Thàªm bóng nhẹ */
         }
         .card-base:hover {
             box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
@@ -60,10 +59,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(99, 102, 241, 0.15); /* MÃ u ná»n icon rÃµ hÆ¡n */
+            background: rgba(99, 102, 241, 0.15); /* Mà u nền icon rõ hÆ¡n */
         }
         .price-card-premium {
-            background: linear-gradient(135deg, #4F46E5 0%, #17A2B8 100%); /* Gradient Ä‘áº­m vÃ  tÆ°Æ¡ng pháº£n hÆ¡n */
+            background: linear-gradient(135deg, #4F46E5 0%, #17A2B8 100%); /* Gradient đậm và  tưÆ¡ng phản hÆ¡n */
             color: white;
             box-shadow: 0 10px 40px rgba(79, 70, 229, 0.6);
             transform: scale(1.03);
@@ -80,121 +79,121 @@
                 padding-bottom: 4rem;
             }
             .hero-section h1 {
-                font-size: 3rem; /* Giáº£m kÃ­ch thÆ°á»›c font trÃªn mobile */
+                font-size: 3rem; /* Giảm kích thưá»›c font tràªn mobile */
             }
         }
     </style>
 <link href="../css/tailwind.css" rel="stylesheet"/>
-<meta content="IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, Ä‘Ã o táº¡o tiáº¿ng Anh, giáº£i phÃ¡p cÃ´ng nghá»‡ giÃ¡o dá»¥c vÃ  tÆ° váº¥n phÃ¡t triá»ƒn trÆ°á»ng há»c táº¡i Viá»‡t Nam." name="description"/><meta content="Giáº£i PhÃ¡p ToÃ n Diá»‡n: Website &amp; Há»‡ Thá»‘ng Sá»‘ | IVS Celestech" property="og:title"/><meta content="IVS JSC cung cáº¥p dá»‹ch vá»¥ giÃ¡o dá»¥c cháº¥t lÆ°á»£ng cao, Ä‘Ã o táº¡o tiáº¿ng Anh, giáº£i phÃ¡p cÃ´ng nghá»‡ giÃ¡o dá»¥c vÃ  tÆ° váº¥n phÃ¡t triá»ƒn trÆ°á»ng há»c táº¡i Viá»‡t Nam." property="og:description"/><meta content="website" property="og:type"/></head>
+<meta content="IVS JSC cung cạp dỉch vụ giáo dục chạt lưá»£ng cao, đà o tão tiáº¿ng Anh, giải pháp công nghá»‡ giáo dục và  tư vạn phát triá»ƒn trưá»ng học tãi Việt Nam." name="description"/><meta content="Giải Pháp Toà n Diá»‡n: Website &amp; Há»‡ Thồng Sồ | IVS Celestech" property="og:title"/><meta content="IVS JSC cung cạp dỉch vụ giáo dục chạt lưá»£ng cao, đà o tão tiáº¿ng Anh, giải pháp công nghá»‡ giáo dục và  tư vạn phát triá»ƒn trưá»ng học tãi Việt Nam." property="og:description"/><meta content="website" property="og:type"/></link></link></link></link></head>
 <body class="antialiased">
-<!-- Language & Localization Script -->
+ Language &amp; Localization Script 
 <script>
-        // === Dá»® LIá»†U LOCALIZATION TIáº¾NG VIá»†T (Giáº£ láº­p ná»™i dung tá»« vi.json) ===
+        // === Dá»® LIá»†U LOCALIZATION TIáº¾NG VIá»†T (Giả lập ná»™i dung từ vi.json) ===
         const langData = {
             "vi": {
-                "page_title": "Giáº£i PhÃ¡p ToÃ n Diá»‡n: Website & Há»‡ Thá»‘ng Sá»‘ | IVS Celestech",
-                "nav_home": "Trang chá»§",
-                "nav_philosophy": "Triáº¿t lÃ½ Code-First",
-                "nav_solutions": "Giáº£i phÃ¡p",
-                "nav_showcase": "Há»“ sÆ¡ NÄƒng lá»±c",
-                "nav_pricing": "Báº£ng giÃ¡",
-                "nav_contact": "TÆ° váº¥n ngay",
+                "page_title": "Giải Pháp Toà n Diá»‡n: Website & Há»‡ Thồng Sồ | IVS Celestech",
+                "nav_home": "Trang chủ",
+                "nav_philosophy": "Triáº¿t là½ Code-First",
+                "nav_solutions": "Giải pháp",
+                "nav_showcase": "Hổ sÆ¡ NÄƒng lực",
+                "nav_pricing": "Bảng giá",
+                "nav_contact": "Tư vạn ngay",
                 
-                "hero_tagline": "Dá»ŠCH Vá»¤ CODE-FIRST, TÃCH Há»¢P QUáº¢N LÃ",
-                "hero_title": "Website ChuyÃªn Nghiá»‡p: XÃ¢y dá»±ng ná»n táº£ng sá»‘ phÃ¹ há»£p má»i quy mÃ´ kinh doanh.",
-                "hero_subtitle": "Tá»« Landing Page cÆ¡ báº£n Ä‘áº¿n Há»‡ thá»‘ng Quáº£n lÃ½ (CRM/ERP) phá»©c táº¡p. ChÃºng tÃ´i láº­p trÃ¬nh tÃ¹y biáº¿n, Ä‘áº£m báº£o website cá»§a báº¡n hoáº¡t Ä‘á»™ng hiá»‡u quáº£, dá»… dÃ¹ng, vÃ  dá»… dÃ ng má»Ÿ rá»™ng.",
-                "hero_cta": "YÃªu cáº§u TÆ° váº¥n & BÃ¡o giÃ¡",
-                "hero_price_callout": "Giáº£i phÃ¡p cho má»i ngÃ¢n sÃ¡ch. Báº¯t Ä‘áº§u vá»›i Website Tá»‘i Giáº£n chá»‰ tá»« 1.500.000 VNÄ.",
+                "hero_tagline": "Dá»ŠCH Vá»¤ CODE-FIRST, TàCH Há»¢P QUáº¢N Là",
+                "hero_title": "Website Chuyàªn Nghiá»‡p: Xây dựng nền tảng sồ phà¹ hợp mọi quy mô kinh doanh.",
+                "hero_subtitle": "Từ Landing Page cÆ¡ bản đáº¿n Há»‡ thồng Quản là½ (CRM/ERP) phá»©c tãp. Chúng tôi lập trà¬nh tà¹y biáº¿n, đảm bảo website của bãn hoãt đá»™ng hiá»‡u quả, dá»… dà¹ng, và  dá»… dà ng má»Ÿ rá»™ng.",
+                "hero_cta": "Yàªu cầu Tư vạn & Báo giá",
+                "hero_price_callout": "Giải pháp cho mọi ngân sách. Báº¯t đầu với Website Tồi Giản chị từ 1.500.000 VNĐ.",
 
-                "section_features_title": "Lá»£i Tháº¿ Cá»‘t LÃµi: Chá»©c nÄƒng & TÃ­ch há»£p Cao",
-                "feature_1_title": "TÃ­ch Há»£p Pháº§n Má»m Quáº£n LÃ½ (ERP/CRM)",
-                "feature_1_desc": "LiÃªn káº¿t website vá»›i cÃ¡c há»‡ thá»‘ng quáº£n lÃ½ ná»™i bá»™ nhÆ° TÃ i chÃ­nh, NhÃ¢n sá»±, KhÃ¡ch hÃ ng, Giáº£ng dáº¡y (LMS) má»™t cÃ¡ch liá»n máº¡ch vÃ  an toÃ n.",
-                "feature_2_title": "Há»‡ Thá»‘ng TÃ i Khoáº£n NgÆ°á»i DÃ¹ng ChuyÃªn SÃ¢u",
-                "feature_2_desc": "XÃ¢y dá»±ng cá»•ng thÃ´ng tin thÃ nh viÃªn, quáº£n lÃ½ tÃ i khoáº£n Ä‘a cáº¥p, há»“ sÆ¡ ngÆ°á»i dÃ¹ng, vÃ  phÃ¢n quyá»n truy cáº­p ná»™i dung riÃªng biá»‡t.",
-                "feature_3_title": "Kháº£ NÄƒng PhÃ¡t Triá»ƒn VÃ´ Háº¡n (SaaS-Ready)",
-                "feature_3_desc": "Kiáº¿n trÃºc Microservices vÃ  Code-First cho phÃ©p báº¡n biáº¿n Ã½ tÆ°á»Ÿng phá»©c táº¡p thÃ nh cÃ¡c á»©ng dá»¥ng Ä‘á»™c láº­p, sáºµn sÃ ng má»Ÿ rá»™ng quy mÃ´ toÃ n cáº§u.",
+                "section_features_title": "Lá»£i Tháº¿ Cồt Lõi: Chá»©c năng & Tích hợp Cao",
+                "feature_1_title": "Tích Há»£p Phần Má»m Quản Là½ (ERP/CRM)",
+                "feature_1_desc": "Liàªn káº¿t website với các há»‡ thồng quản là½ ná»™i bá»™ như Tà i chính, Nhân sự, Khách hà ng, Giảng dãy (LMS) một cách liá»n mãch và  an toà n.",
+                "feature_2_title": "Há»‡ Thồng Tà i Khoản Ngưá»i Dà¹ng Chuyàªn Sâu",
+                "feature_2_desc": "Xây dựng cỗng thông tin thà nh viàªn, quản là½ tà i khoản đa cạp, hổ sÆ¡ ngưá»i dà¹ng, và  phân quyền truy cập ná»™i dung riàªng biá»‡t.",
+                "feature_3_title": "Khả NÄƒng Phát Triá»ƒn Vô Hãn (SaaS-Ready)",
+                "feature_3_desc": "Kiáº¿n trúc Microservices và  Code-First cho phép bãn biáº¿n à½ tưá»Ÿng phá»©c tãp thà nh các á»©ng dụng đá»™c lập, sáºµn sà ng má»Ÿ rá»™ng quy mô toà n cầu.",
                 
-                "section_solutions_title": "Phá»• Giáº£i PhÃ¡p Website ToÃ n Diá»‡n",
-                "solution_lms_title": "EdTech Platforms & Cá»•ng ThÃ nh viÃªn",
-                "solution_lms_focus": "Ná»n táº£ng GiÃ¡o dá»¥c & ÄÃ o táº¡o ná»™i bá»™",
-                "solution_lms_desc": "Há»‡ thá»‘ng LMS, tÃ­ch há»£p thanh toÃ¡n, quáº£n lÃ½ giÃ¡o viÃªn, theo dÃµi tiáº¿n Ä‘á»™ há»c viÃªn vÃ  cáº¥p chá»©ng chá»‰ tá»± Ä‘á»™ng.",
-                "solution_b2b_title": "Website TÃ­ch há»£p Quáº£n lÃ½ Doanh nghiá»‡p",
-                "solution_b2b_focus": "TÄƒng cÆ°á»ng Uy tÃ­n, Automation Marketing",
-                "solution_b2b_desc": "Thiáº¿t káº¿ chuáº©n B2B, tÃ­ch há»£p CRM/Marketing Automation, quáº£n lÃ½ Ä‘á»‘i tÃ¡c vÃ  hiá»ƒn thá»‹ há»“ sÆ¡ nÄƒng lá»±c sá»‘ (Digital Profile).",
-                "solution_ecom_title": "ThÆ°Æ¡ng Máº¡i Äiá»‡n Tá»­ & Lead Generation",
-                "solution_ecom_focus": "PhÃ¢n phá»‘i Thiáº¿t bá»‹ CÃ´ng nghá»‡ & BÃ¡n hÃ ng Ä‘a kÃªnh",
-                "solution_ecom_desc": "XÃ¢y dá»±ng gian hÃ ng chuyÃªn nghiá»‡p, tÃ­ch há»£p quáº£n lÃ½ kho, bÃ¡o giÃ¡, cÃ¡c cá»•ng thanh toÃ¡n an toÃ n, vÃ  tá»‘i Æ°u cho chuyá»ƒn Ä‘á»•i doanh sá»‘.",
+                "section_solutions_title": "Phỗ Giải Pháp Website Toà n Diá»‡n",
+                "solution_lms_title": "EdTech Platforms & Cỗng Thà nh viàªn",
+                "solution_lms_focus": "Ná»n tảng Giáo dục & Đà o tão ná»™i bá»™",
+                "solution_lms_desc": "Há»‡ thồng LMS, tích hợp thanh toán, quản là½ giáo viàªn, theo dõi tiáº¿n đá»™ học viàªn và  cạp chứng chị tự đá»™ng.",
+                "solution_b2b_title": "Website Tích hợp Quản là½ Doanh nghiá»‡p",
+                "solution_b2b_focus": "TÄƒng cưá»ng Uy tín, Automation Marketing",
+                "solution_b2b_desc": "Thiáº¿t káº¿ chuẩn B2B, tích hợp CRM/Marketing Automation, quản là½ đồi tác và  hiá»ƒn thỉ hổ sÆ¡ năng lực sồ (Digital Profile).",
+                "solution_ecom_title": "ThưÆ¡ng Mãi Điá»‡n Tử & Lead Generation",
+                "solution_ecom_focus": "Phân phồi Thiáº¿t bỉ Công nghá»‡ & Bán hà ng đa kàªnh",
+                "solution_ecom_desc": "Xây dựng gian hà ng chuyàªn nghiá»‡p, tích hợp quản là½ kho, báo giá, các cỗng thanh toán an toà n, và  tồi ưu cho chuyá»ƒn đỗi doanh sồ.",
 
-                "section_showcase_title": "Há»“ SÆ¡ NÄƒng Lá»±c (Web Máº«u & á»¨ng Dá»¥ng Sá»‘)",
-                "section_showcase_subtitle": "CÃ¡c dá»± Ã¡n Code-First tiÃªu biá»ƒu do IVS Celestech thiáº¿t káº¿ vÃ  phÃ¡t triá»ƒn, Ä‘áº£m báº£o kháº£ nÄƒng tÃ­ch há»£p vÃ  má»Ÿ rá»™ng khÃ´ng giá»›i háº¡n.",
-                "showcase_web_title": "WEB MáºªU & Cá»”NG THÃ”NG TIN (WEBSITE TÃCH Há»¢P)",
-                "showcase_app_title": "á»¨NG Dá»¤NG Sá» VÃ€ Há»† THá»NG QUáº¢N LÃ (WEB APPS)",
-                "project_edu_title": "Há»‡ Thá»‘ng ÄÃ o Táº¡o Ná»™i Bá»™ (LMS)",
-                "project_edu_desc": "Má»™t ná»n táº£ng toÃ n diá»‡n cho phÃ©p tá»• chá»©c táº¡o khÃ³a há»c, quáº£n lÃ½ giÃ¡o viÃªn, theo dÃµi tiáº¿n Ä‘á»™ há»c viÃªn, vÃ  tÃ­ch há»£p thanh toÃ¡n tá»± Ä‘á»™ng.",
-                "project_b2b_title": "Website Há»“ SÆ¡ NÄƒng Lá»±c Chuáº©n B2B",
-                "project_b2b_desc": "Thiáº¿t káº¿ giao diá»‡n hiá»‡n Ä‘áº¡i, tá»‘i Æ°u cho SEO, tÃ­ch há»£p Digital Profile, vÃ  cá»•ng thÃ´ng tin Ä‘á»‘i tÃ¡c an toÃ n.",
-                "project_ecom_title": "Trang BÃ¡n HÃ ng CÃ´ng Nghá»‡ ChuyÃªn Biá»‡t",
-                "project_ecom_desc": "Giáº£i phÃ¡p E-commerce táº­p trung vÃ o sáº£n pháº©m cÃ´ng nghá»‡, tÃ­ch há»£p quáº£n lÃ½ kho hÃ ng phá»©c táº¡p, há»‡ thá»‘ng bÃ¡o giÃ¡ tá»± Ä‘á»™ng vÃ  Ä‘a cá»•ng thanh toÃ¡n.",
-                "button_request_consult_short": "YÃªu cáº§u tÆ° váº¥n code", 
-                "button_view_all_apps": "Xem táº¥t cáº£ á»¨ng dá»¥ng tiÃªu biá»ƒu",
+                "section_showcase_title": "Hổ SÆ¡ NÄƒng Lực (Web Mẫu & á»¨ng Dụng Sồ)",
+                "section_showcase_subtitle": "Các dự án Code-First tiàªu biá»ƒu do IVS Celestech thiáº¿t káº¿ và  phát triá»ƒn, đảm bảo khả năng tích hợp và  má»Ÿ rá»™ng không giá»›i hãn.",
+                "showcase_web_title": "WEB MáºªU & Cá»”NG THà”NG TIN (WEBSITE TàCH Há»¢P)",
+                "showcase_app_title": "á»¨NG Dá»¤NG Sá» Và€ Há»† THá»NG QUáº¢N Là (WEB APPS)",
+                "project_edu_title": "Há»‡ Thồng Đà o Tão Ná»™i Bá»™ (LMS)",
+                "project_edu_desc": "Một nền tảng toà n diá»‡n cho phép tỗ chá»©c tão khóa học, quản là½ giáo viàªn, theo dõi tiáº¿n đá»™ học viàªn, và  tích hợp thanh toán tự đá»™ng.",
+                "project_b2b_title": "Website Hổ SÆ¡ NÄƒng Lực Chuẩn B2B",
+                "project_b2b_desc": "Thiáº¿t káº¿ giao diá»‡n hiá»‡n đãi, tồi ưu cho SEO, tích hợp Digital Profile, và  cỗng thông tin đồi tác an toà n.",
+                "project_ecom_title": "Trang Bán Hà ng Công Nghá»‡ Chuyàªn Biá»‡t",
+                "project_ecom_desc": "Giải pháp E-commerce tập trung và o sản phẩm công nghá»‡, tích hợp quản là½ kho hà ng phá»©c tãp, há»‡ thồng báo giá tự đá»™ng và  đa cỗng thanh toán.",
+                "button_request_consult_short": "Yàªu cầu tư vạn code", 
+                "button_view_all_apps": "Xem tạt cả á»¨ng dụng tiàªu biá»ƒu",
 
-                "section_transparency_title": "Minh Báº¡ch Chi PhÃ­ Ná»n Táº£ng (GiÃ¡ Tham Kháº£o)",
-                "transparency_desc": "Tá»•ng chi phÃ­ website bao gá»“m nhiá»u thÃ nh pháº§n. DÆ°á»›i Ä‘Ã¢y lÃ  cÃ¡c chi phÃ­ tham kháº£o trÃªn thá»‹ trÆ°á»ng Ä‘á»ƒ QuÃ½ khÃ¡ch hÃ ng dá»… dÃ ng hÃ¬nh dung vá» Ä‘áº§u tÆ° cÆ¡ báº£n:",
-                "item_domain": "Chi phÃ­ TÃªn miá»n (.com/.vn/.net)",
-                "price_domain": "700.000 - 800.000 VNÄ / nÄƒm",
-                "item_hosting": "Chi phÃ­ ThuÃª Hosting (Trung bÃ¬nh)",
-                "price_hosting": "Khoáº£ng 1.000.000 VNÄ / nÄƒm",
-                "item_design": "Chi phÃ­ Thiáº¿t káº¿ Giao diá»‡n",
-                "price_design": "3.000.000 - 5.000.000 VNÄ",
-                "item_coding": "Chi phÃ­ Láº­p trÃ¬nh Chá»©c nÄƒng",
-                "price_coding": "3.000.000 - 10.000.000 VNÄ (TÃ¹y tÃ­nh nÄƒng)",
-                "item_maintenance": "Chi phÃ­ Báº£o trÃ¬ Website",
-                "price_maintenance": "2.000.000 - 5.000.000 VNÄ / nÄƒm",
+                "section_transparency_title": "Minh Bãch Chi Phí Ná»n Tảng (Giá Tham Khảo)",
+                "transparency_desc": "Tỗng chi phí website bao gổm nhiá»u thà nh phần. Dưá»›i đây là  các chi phí tham khảo tràªn thỉ trưá»ng đá»ƒ Quà½ khách hà ng dá»… dà ng hà¬nh dung vá» đầu tư cÆ¡ bản:",
+                "item_domain": "Chi phí Tàªn miá»n (.com/.vn/.net)",
+                "price_domain": "700.000 - 800.000 VNĐ / nÄƒm",
+                "item_hosting": "Chi phí Thuàª Hosting (Trung bà¬nh)",
+                "price_hosting": "Khoảng 1.000.000 VNĐ / nÄƒm",
+                "item_design": "Chi phí Thiáº¿t káº¿ Giao diá»‡n",
+                "price_design": "3.000.000 - 5.000.000 VNĐ",
+                "item_coding": "Chi phí Lập trà¬nh Chá»©c năng",
+                "price_coding": "3.000.000 - 10.000.000 VNĐ (Tà¹y tính năng)",
+                "item_maintenance": "Chi phí Bảo trà¬ Website",
+                "price_maintenance": "2.000.000 - 5.000.000 VNĐ / nÄƒm",
 
-                "section_pricing_title": "Báº£ng GiÃ¡ ToÃ n Diá»‡n: Tá»« Tá»‘i Giáº£n Ä‘áº¿n Há»‡ Thá»‘ng Lá»›n",
-                "pricing_subtitle": "ChÃºng tÃ´i cung cáº¥p giáº£i phÃ¡p phÃ¹ há»£p vá»›i má»i quy mÃ´ Ä‘áº§u tÆ°, cam káº¿t <b>Cháº¥t lÆ°á»£ng Code Tay</b> á»Ÿ má»i cáº¥p Ä‘á»™.",
-                "pricing_include": "Bao gá»“m:",
+                "section_pricing_title": "Bảng Giá Toà n Diá»‡n: Từ Tồi Giản đáº¿n Há»‡ Thồng Lá»›n",
+                "pricing_subtitle": "Chúng tôi cung cạp giải pháp phà¹ hợp với mọi quy mô đầu tư, cam káº¿t <b>Chạt lưá»£ng Code Tay</b> á»Ÿ mọi cạp đá»™.",
+                "pricing_include": "Bao gổm:",
                 
-                "tier_0_name": "GÃ³i SiÃªu Tá»‘i Giáº£n (Landing Page)",
-                "tier_0_price": "Tá»« 1.500.000 VNÄ",
-                "tier_0_focus": "Website giá»›i thiá»‡u cÃ¡ nhÃ¢n/sáº£n pháº©m siÃªu tá»‘c.",
-                "tier_0_f1": "HTML/CSS/JS tÄ©nh, tá»‘c Ä‘á»™ táº£i tuyá»‡t Ä‘á»‘i (Static Site).",
-                "tier_0_f2": "Giao diá»‡n 1 trang (Landing Page) Ä‘Æ¡n giáº£n, chuáº©n di Ä‘á»™ng.",
-                "tier_0_f3": "TÃªn miá»n phá»¥ (Subdomain) vÃ  Hosting 3 thÃ¡ng cÆ¡ báº£n.",
+                "tier_0_name": "Gói Siàªu Tồi Giản (Landing Page)",
+                "tier_0_price": "Từ 1.500.000 VNĐ",
+                "tier_0_focus": "Website giá»›i thiá»‡u cá nhân/sản phẩm siàªu tồc.",
+                "tier_0_f1": "HTML/CSS/JS tĩnh, tồc đá»™ tải tuyá»‡t đồi (Static Site).",
+                "tier_0_f2": "Giao diá»‡n 1 trang (Landing Page) đÆ¡n giản, chuẩn di đá»™ng.",
+                "tier_0_f3": "Tàªn miá»n phụ (Subdomain) và  Hosting 3 tháng cÆ¡ bản.",
                 
-                "tier_1_name": "GÃ³i Khá»Ÿi Äiá»ƒm (Tá»‘i Æ°u)",
-                "tier_1_price": "10 - 15 Triá»‡u VNÄ",
-                "tier_1_focus": "Website giá»›i thiá»‡u, Landing Page tá»‘c Ä‘á»™ cao.",
-                "tier_1_f1": "Hosting & TÃªn miá»n 1 nÄƒm (Quá»‘c táº¿)",
-                "tier_1_f2": "Tá»‘i Æ°u tá»‘c Ä‘á»™ (Mobile First) & SEO cÆ¡ báº£n",
-                "tier_1_f3": "Cáº¥u trÃºc 5-7 trang, giao diá»‡n cÃ³ sáºµn tá»‘i Æ°u",
+                "tier_1_name": "Gói Khá»Ÿi Điá»ƒm (Tồi ưu)",
+                "tier_1_price": "10 - 15 Triá»‡u VNĐ",
+                "tier_1_focus": "Website giá»›i thiá»‡u, Landing Page tồc đá»™ cao.",
+                "tier_1_f1": "Hosting & Tàªn miá»n 1 nÄƒm (Quồc táº¿)",
+                "tier_1_f2": "Tồi ưu tồc đá»™ (Mobile First) & SEO cÆ¡ bản",
+                "tier_1_f3": "Cạu trúc 5-7 trang, giao diá»‡n có sáºµn tồi ưu",
                 
-                "tier_2_name": "GÃ³i TiÃªu Chuáº©n (B2B/CMS)",
-                "tier_2_price": "15 - 25 Triá»‡u VNÄ",
-                "tier_2_focus": "Doanh nghiá»‡p vá»«a & nhá», B2B cÆ¡ báº£n.",
-                "tier_2_f1": "Táº¥t cáº£ tÃ­nh nÄƒng Khá»Ÿi Äiá»ƒm + Thiáº¿t káº¿ UI/UX theo thÆ°Æ¡ng hiá»‡u",
-                "tier_2_f2": "Há»‡ thá»‘ng Quáº£n lÃ½ Ná»™i dung Äa cáº¥p (CMS)",
-                "tier_2_f3": "TÃ­ch há»£p Marketing (CRM/Form nÃ¢ng cao) & Quáº£n lÃ½ nhÃ¢n sá»±",
+                "tier_2_name": "Gói Tiàªu Chuẩn (B2B/CMS)",
+                "tier_2_price": "15 - 25 Triá»‡u VNĐ",
+                "tier_2_focus": "Doanh nghiá»‡p vừa & nhỏ, B2B cÆ¡ bản.",
+                "tier_2_f1": "Tạt cả tính năng Khá»Ÿi Điá»ƒm + Thiáº¿t káº¿ UI/UX theo thưÆ¡ng hiá»‡u",
+                "tier_2_f2": "Há»‡ thồng Quản là½ Ná»™i dung Đa cạp (CMS)",
+                "tier_2_f3": "Tích hợp Marketing (CRM/Form nâng cao) & Quản là½ nhân sự",
                                   
-                "tier_4_name": "GÃ³i TÃ¹y Biáº¿n ChuyÃªn SÃ¢u (ZERO-LIMIT)",
-                "tier_4_price": "Tá»ª 25 Triá»‡u VNÄ",
-                "tier_4_focus": "Giáº£i phÃ¡p Äá»™c quyá»n: PhÃ¡t triá»ƒn Há»‡ thá»‘ng Pháº§n má»m Quáº£n lÃ½.",
-                "tier_4_f1": "<b>SIÃŠU Láº¬P TRÃŒNH CODE TAY</b>, khÃ´ng giá»›i háº¡n tÃ­nh nÄƒng (TÃ­ch há»£p ERP/CRM/LMS).",
-                "tier_4_f2": "XÃ¢y dá»±ng há»‡ thá»‘ng TÃ i khoáº£n NgÆ°á»i dÃ¹ng (Membership/SaaS).",
-                "tier_4_f3": "Tá»‘i Æ°u hÃ³a kháº£ nÄƒng má»Ÿ rá»™ng (Scalability) vÃ  Báº£o máº­t quá»‘c táº¿ 24/7.",
+                "tier_4_name": "Gói Tà¹y Biáº¿n Chuyàªn Sâu (ZERO-LIMIT)",
+                "tier_4_price": "Tá»ª 25 Triá»‡u VNĐ",
+                "tier_4_focus": "Giải pháp Đá»™c quyền: Phát triá»ƒn Há»‡ thồng Phần má»m Quản là½.",
+                "tier_4_f1": "<b>SIàŠU Láº¬P TRàŒNH CODE TAY</b>, không giá»›i hãn tính năng (Tích hợp ERP/CRM/LMS).",
+                "tier_4_f2": "Xây dựng há»‡ thồng Tà i khoản Ngưá»i dà¹ng (Membership/SaaS).",
+                "tier_4_f3": "Tồi ưu hóa khả năng má»Ÿ rá»™ng (Scalability) và  Bảo mật quồc táº¿ 24/7.",
                 
-                "cta_final_title": "Sáºµn sÃ ng hiá»‡n thá»±c hÃ³a Táº§m nhÃ¬n cá»§a báº¡n?",
-                "cta_final_subtitle": "IVS Celestech cam káº¿t biáº¿n Ã½ tÆ°á»Ÿng phá»©c táº¡p nháº¥t thÃ nh Giáº£i phÃ¡p Ká»¹ thuáº­t Sá»‘ hoáº¡t Ä‘á»™ng hiá»‡u quáº£.",
-                "cta_final_button": "YÃªu cáº§u TÆ° váº¥n Code-First",
-                "button_select": "Chá»n gÃ³i nÃ y",
-                "button_contact_exclusive": "LiÃªn há»‡ BÃ¡o giÃ¡ Äá»™c quyá»n"
+                "cta_final_title": "Sáºµn sà ng hiá»‡n thực hóa Tầm nhà¬n của bãn?",
+                "cta_final_subtitle": "IVS Celestech cam káº¿t biáº¿n à½ tưá»Ÿng phá»©c tãp nhạt thà nh Giải pháp Ká»¹ thuật Sồ hoãt đá»™ng hiá»‡u quả.",
+                "cta_final_button": "Yàªu cầu Tư vạn Code-First",
+                "button_select": "Chọn gói nà y",
+                "button_contact_exclusive": "Liàªn há»‡ Báo giá Đá»™c quyền"
             }
         };
 
         // === KHá»žI Táº O Há»† THá»NG HEADER/FOOTER (SIMULATED FETCH/LOAD) ===
-        // HÃ m nÃ y mÃ´ phá»ng láº¡i chá»©c nÄƒng cá»§a loadComponents.js Ä‘á»ƒ Ä‘áº£m báº£o header/footer Ä‘Æ°á»£c náº¡p
+        // Hà m nà y mô phỏng lãi chá»©c năng của loadComponents.js đá»ƒ đảm bảo header/footer đưá»£c nãp
         function loadCommonComponents() {
-            // Ná»™i dung Header tÄ©nh Ä‘Æ°á»£c fetch/load
+            // Ná»™i dung Header tĩnh đưá»£c fetch/load
             const headerContent = `
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                     <div class="flex items-center space-x-4">
@@ -214,17 +213,17 @@
                 </div>
             `;
             
-            // Ná»™i dung Footer tÄ©nh Ä‘Æ°á»£c fetch/load
+            // Ná»™i dung Footer tĩnh đưá»£c fetch/load
             const footerContent = `
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-ivs-text-muted text-sm">
-                    <p class="font-bold text-ivs-text-light mb-2">IVS JSC â€“ TÆ¯ DUY CHIáº¾N LÆ¯á»¢C, HÃ€NH Äá»˜NG THá»°C TIá»„N, GIÃ TRá»Š TOÃ€N Cáº¦U</p>
-                    <p>MÃ£ sá»‘ thuáº¿: 3603960189 | Trá»¥ sá»Ÿ: 1104, Tá»• 6, áº¤p Äáº¥t Má»›i, Long PhÆ°á»›c, Long ThÃ nh, Äá»“ng Nai, Viá»‡t Nam</p>
+                    <p class="font-bold text-ivs-text-light mb-2">IVS JSC – TÆ¯ DUY CHIáº¾N LÆ¯á»¢C, Hà€NH Đá»˜NG THá»°C TIá»„N, GIà TRá»Š TOà€N Cáº¦U</p>
+                    <p>Mà£ sồ thuáº¿: 3603960189 | Trụ sá»Ÿ: 1104, Tỗ 6, áº¤p Đạt Má»›i, Long Phưá»›c, Long Thà nh, Đổng Nai, Việt Nam</p>
                     <p>Email: info@ivsacademy.edu.vn | Hotline: (+84) 795 555 789</p>
-                    <p class="mt-4 text-xs">Â© 2025 IVS JSC. ÄÃ£ Ä‘Äƒng kÃ½ Báº£n quyá»n sá»‘: 6207/2024/QTG. Thiáº¿t káº¿ bá»Ÿi IVS Celestech.</p>
+                    <p class="mt-4 text-xs">Â© 2025 IVS JSC. Đà£ đÄƒng kà½ Bản quyền sồ: 6207/2024/QTG. Thiáº¿t káº¿ bá»Ÿi IVS Celestech.</p>
                 </div>
             `;
 
-            // ChÃ¨n ná»™i dung vÃ o placeholder
+            // Chà¨n ná»™i dung và o placeholder
             const headerEl = document.getElementById('header-placeholder');
             const footerEl = document.getElementById('footer-placeholder');
 
@@ -240,7 +239,7 @@
             return Promise.resolve();
         }
         
-        // === LOGIC Táº¢I Ná»˜I DUNG VÃ€ KHá»žI Táº O ===
+        // === LOGIC Táº¢I Ná»˜I DUNG Và€ KHá»žI Táº O ===
         const currentLang = 'vi';
         const globalData = langData[currentLang];
         
@@ -259,10 +258,10 @@
         window.onload = () => {
             // 1. Load Header/Footer (Simulated Fetch)
             loadCommonComponents().then(() => {
-                // 2. Apply Localization sau khi components Ä‘Ã£ load xong
+                // 2. Apply Localization sau khi components đà£ load xong
                 applyLocalization(globalData);
                 
-                // 3. Khá»Ÿi táº¡o AOS
+                // 3. Khá»Ÿi tão AOS
                 if (typeof AOS !== 'undefined') {
                     AOS.init({
                         duration: 700,
@@ -271,24 +270,24 @@
                         easing: 'ease-out-cubic'
                     });
                 }
-                console.log('Há»‡ thá»‘ng Ä‘Ã£ náº¡p (fetch) Header vÃ  Footer thÃ nh cÃ´ng.');
+                console.log('Há»‡ thồng đà£ nãp (fetch) Header và  Footer thà nh công.');
             }).catch(error => {
-                console.error('Lá»—i khi náº¡p components:', error);
+                console.error('Lội khi nãp components:', error);
             });
         };
     </script>
-<!-- END: Language & Localization Script -->
-<!-- HEADER PLACEHOLDER: Giá»¯ rá»—ng Ä‘á»ƒ JS náº¡p ná»™i dung vÃ o -->
+ END: Language &amp; Localization Script 
+ HEADER PLACEHOLDER: Giữ rộng đá»ƒ JS nãp ná»™i dung và o 
 <header id="header-placeholder"></header>
 <main class="pt-16">
-<!-- SECTION 1: HERO - Code-First, Zero-Limit -->
+ SECTION 1: HERO - Code-First, Zero-Limit 
 <section class="hero-section pt-20 pb-20 md:pt-32 md:pb-24 relative overflow-hidden" id="hero">
-<!-- Background Video -->
+ Background Video 
 <video autoplay="" class="absolute inset-0 w-full h-full object-cover z-0" loop="" muted="" playsinline="">
 <source src="/videos/videowebdesign.mp4" type="video/mp4"/>
     Your browser does not support the video tag.
 </video>
-<!-- Overlay for better text readability -->
+ Overlay for better text readability 
 <div class="absolute inset-0 bg-black bg-opacity-50 z-5"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
 <p class="text-ivs-accent text-sm sm:text-base font-semibold uppercase tracking-wider mb-3" data-lang-key="hero_tagline"></p>
@@ -297,22 +296,22 @@
 </h1>
 <p class="text-lg sm:text-xl text-ivs-text-muted max-w-3xl mx-auto mb-10" data-lang-key="hero_subtitle"></p>
 <a class="px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg inline-block bg-ivs-primary hover:bg-ivs-cyan transition-colors transform hover:scale-105" data-lang-key="hero_cta" href="mailto:info@ivsacademy.edu.vn"></a>
-<!-- NEW PRICE CALLOUT FOR ACCESSIBILITY -->
+ NEW PRICE CALLOUT FOR ACCESSIBILITY 
 <p class="mt-6 text-base font-bold text-ivs-text-light/90">
 <span class="text-ivs-accent mr-2"><i class="fas fa-money-bill-wave"></i></span>
 <span data-lang-key="hero_price_callout"></span>
 </p>
-<!-- END NEW PRICE CALLOUT -->
+ END NEW PRICE CALLOUT 
 </div>
 </section>
-<!-- SECTION 2: CORE FEATURES - Lá»£i tháº¿ TÃCH Há»¢P QUáº¢N LÃ -->
+ SECTION 2: CORE FEATURES - Lá»£i tháº¿ TàCH Há»¢P QUáº¢N Là 
 <section class="py-20 bg-ivs-card border-y border-ivs-dark" id="features">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-4xl mx-auto mb-16">
 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" data-lang-key="section_features_title"></h2>
 </div>
 <div class="grid md:grid-cols-3 gap-10">
-<!-- Feature 1: TÃ­ch há»£p ERP/CRM -->
+ Feature 1: Tích hợp ERP/CRM 
 <div class="card-base p-6 rounded-xl border-t-4 border-ivs-primary hover:border-ivs-accent flex flex-col items-center text-center">
 <div class="feature-icon-container mb-4">
 <i class="fas fa-cubes text-ivs-primary text-2xl"></i>
@@ -320,7 +319,7 @@
 <h3 class="text-xl font-semibold mb-3 text-ivs-text-light" data-lang-key="feature_1_title"></h3>
 <p class="text-ivs-text-muted text-sm" data-lang-key="feature_1_desc"></p>
 </div>
-<!-- Feature 2: Há»‡ thá»‘ng TÃ i khoáº£n -->
+ Feature 2: Há»‡ thồng Tà i khoản 
 <div class="card-base p-6 rounded-xl border-t-4 border-ivs-primary hover:border-ivs-accent flex flex-col items-center text-center">
 <div class="feature-icon-container mb-4">
 <i class="fas fa-users-cog text-ivs-primary text-2xl"></i>
@@ -328,7 +327,7 @@
 <h3 class="text-xl font-semibold mb-3 text-ivs-text-light" data-lang-key="feature_2_title"></h3>
 <p class="text-ivs-text-muted text-sm" data-lang-key="feature_2_desc"></p>
 </div>
-<!-- Feature 3: Kháº£ nÄƒng má»Ÿ rá»™ng -->
+ Feature 3: Khả năng má»Ÿ rá»™ng 
 <div class="card-base p-6 rounded-xl border-t-4 border-ivs-primary hover:border-ivs-accent flex flex-col items-center text-center">
 <div class="feature-icon-container mb-4">
 <i class="fas fa-rocket text-ivs-primary text-2xl"></i>
@@ -339,28 +338,28 @@
 </div>
 </div>
 </section>
-<!-- SECTION 3: SOLUTIONS - á»¨ng dá»¥ng ChuyÃªn SÃ¢u -->
+ SECTION 3: SOLUTIONS - á»¨ng dụng Chuyàªn Sâu 
 <section class="py-20 bg-ivs-dark" id="solutions">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-4xl mx-auto mb-16">
 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" data-lang-key="section_solutions_title"></h2>
 </div>
 <div class="grid md:grid-cols-3 gap-8">
-<!-- Solution 1: LMS/EdTech -->
+ Solution 1: LMS/EdTech 
 <div class="card-base p-6 rounded-xl border-l-4 border-ivs-accent hover:border-ivs-primary flex flex-col justify-start">
 <i class="fas fa-graduation-cap text-3xl text-ivs-accent mb-3"></i>
 <h3 class="text-xl font-semibold text-ivs-text-light mb-1" data-lang-key="solution_lms_title"></h3>
 <p class="text-ivs-primary font-semibold text-sm mb-3" data-lang-key="solution_lms_focus"></p>
 <p class="text-ivs-text-muted text-sm flex-grow" data-lang-key="solution_lms_desc"></p>
 </div>
-<!-- Solution 2: B2B/Há»“ sÆ¡ NÄƒng lá»±c -->
+ Solution 2: B2B/Hổ sÆ¡ NÄƒng lực 
 <div class="card-base p-6 rounded-xl border-l-4 border-ivs-accent hover:border-ivs-primary flex flex-col justify-start">
 <i class="fas fa-handshake-alt text-3xl text-ivs-accent mb-3"></i>
 <h3 class="text-xl font-semibold text-ivs-text-light mb-1" data-lang-key="solution_b2b_title"></h3>
 <p class="text-ivs-primary font-semibold text-sm mb-3" data-lang-key="solution_b2b_focus"></p>
 <p class="text-ivs-text-muted text-sm flex-grow" data-lang-key="solution_b2b_desc"></p>
 </div>
-<!-- Solution 3: E-commerce -->
+ Solution 3: E-commerce 
 <div class="card-base p-6 rounded-xl border-l-4 border-ivs-accent hover:border-ivs-primary flex flex-col justify-start">
 <i class="fas fa-shopping-cart text-3xl text-ivs-accent mb-3"></i>
 <h3 class="text-xl font-semibold text-ivs-text-light mb-1" data-lang-key="solution_ecom_title"></h3>
@@ -370,7 +369,7 @@
 </div>
 </div>
 </section>
-<!-- SECTION 4: PROJECT SHOWCASE - Há»“ sÆ¡ NÄƒng lá»±c -->
+ SECTION 4: PROJECT SHOWCASE - Hổ sÆ¡ NÄƒng lực 
 <section class="py-20 bg-ivs-card border-y border-ivs-dark" id="showcase">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-4xl mx-auto mb-16">
@@ -378,13 +377,13 @@
 <p class="text-lg text-ivs-text-muted" data-lang-key="section_showcase_subtitle"></p>
 </div>
 <div class="grid lg:grid-cols-2 gap-12">
-<!-- Column 1: Website & Cá»•ng ThÃ´ng Tin -->
+ Column 1: Website &amp; Cỗng Thông Tin 
 <div>
 <h3 class="text-2xl font-bold text-ivs-primary mb-6 border-b border-ivs-primary/50 pb-2" data-lang-key="showcase_web_title"></h3>
 <div class="space-y-8">
-<!-- Project 1: LMS -->
+ Project 1: LMS 
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
-<!-- Link Ä‘Ã£ Ä‘Æ°á»£c thÃªm -->
+ Link đà£ đưá»£c thàªm 
 <a class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors" href="https://ivsacademy.edu.vn/" target="_blank">
 <span data-lang-key="project_edu_title"></span> (ivsacademy.edu.vn)
                                 </a>
@@ -393,9 +392,9 @@
 <i class="fas fa-angle-right mr-1"></i>
 </a>
 </div>
-<!-- Project 2: B2B Digital Profile -->
+ Project 2: B2B Digital Profile 
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
-<!-- Link Ä‘Ã£ Ä‘Æ°á»£c thÃªm -->
+ Link đà£ đưá»£c thàªm 
 <a class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors" href="" target="_blank">
 <span data-lang-key="project_b2b_title"></span> (khadock.com)
                                 </a>
@@ -404,9 +403,9 @@
 <i class="fas fa-angle-right mr-1"></i>
 </a>
 </div>
-<!-- Project 3: E-commerce Tech -->
+ Project 3: E-commerce Tech 
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
-<!-- Link Ä‘Ã£ Ä‘Æ°á»£c thÃªm -->
+ Link đà£ đưá»£c thàªm 
 <a class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors" href="" target="_blank">
 <span data-lang-key="project_ecom_title"></span>
 </a>
@@ -415,74 +414,74 @@
 <i class="fas fa-angle-right mr-1"></i>
 </a>
 </div>
-<!-- ThÃªm 2 Website Máº«u cÃ²n láº¡i -->
+ Thàªm 2 Website Mẫu cà²n lãi 
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
 <a class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors" href="https://suoicamp.netlify.app/" target="_blank">
-                                    Website Khu Du lá»‹ch/Cáº¯m tráº¡i (suoicamp.netlify.app)
+                                    Website Khu Du lỉch/Cáº¯m trãi (suoicamp.netlify.app)
                                 </a>
-<p class="text-ivs-text-muted text-sm mb-4">Máº«u website giá»›i thiá»‡u dá»‹ch vá»¥ du lá»‹ch, cáº¯m tráº¡i, tÃ­ch há»£p form Ä‘áº·t chá»— vÃ  thÆ° viá»‡n áº£nh Ä‘á»™ng.</p>
+<p class="text-ivs-text-muted text-sm mb-4">Mẫu website giá»›i thiá»‡u dỉch vụ du lỉch, cáº¯m trãi, tích hợp form đáº·t chộ và  thư viá»‡n ảnh đá»™ng.</p>
 <a class="self-start text-sm font-medium text-ivs-primary hover:text-ivs-accent transition-colors" data-lang-key="button_request_consult_short" href="mailto:info@ivsacademy.edu.vn">
 <i class="fas fa-angle-right mr-1"></i>
 </a>
 </div>
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-primary flex flex-col">
 <a class="text-xl font-semibold mb-1 text-ivs-primary hover:text-ivs-accent transition-colors" href="https://trungtamhoinghitieccuoi-banhanh.netlify.app/" target="_blank">
-                                    Website Dá»‹ch vá»¥ Tiá»‡c CÆ°á»›i/Há»™i Nghá»‹, NhÃ  hÃ ng (banhanh.netlify.app)
+                                    Website Dỉch vụ Tiá»‡c Cưá»›i/Há»™i Nghỉ, Nhà  hà ng (banhanh.netlify.app)
                                 </a>
-<p class="text-ivs-text-muted text-sm mb-4">Website giá»›i thiá»‡u dá»‹ch vá»¥ tá»• chá»©c sá»± kiá»‡n vÃ  tiá»‡c cÆ°á»›i, tá»‘i Æ°u hiá»ƒn thá»‹ cho ná»™i dung hÃ¬nh áº£nh cháº¥t lÆ°á»£ng cao.</p>
+<p class="text-ivs-text-muted text-sm mb-4">Website giá»›i thiá»‡u dỉch vụ tỗ chá»©c sự kiá»‡n và  tiá»‡c cưá»›i, tồi ưu hiá»ƒn thỉ cho ná»™i dung hà¬nh ảnh chạt lưá»£ng cao.</p>
 <a class="self-start text-sm font-medium text-ivs-primary hover:text-ivs-accent transition-colors" data-lang-key="button_request_consult_short" href="mailto:info@ivsacademy.edu.vn">
 <i class="fas fa-angle-right mr-1"></i>
 </a>
 </div>
 </div>
 </div>
-<!-- Column 2: á»¨ng Dá»¥ng Sá»‘ & Há»‡ Thá»‘ng Quáº£n LÃ½ -->
+ Column 2: á»¨ng Dụng Sồ &amp; Há»‡ Thồng Quản Là½ 
 <div>
 <h3 class="text-2xl font-bold text-ivs-accent mb-6 border-b border-ivs-accent/50 pb-2" data-lang-key="showcase_app_title"></h3>
 <div class="space-y-8">
-<!-- App 1: á»¨ng dá»¥ng Há»c & Dáº¡y Tiáº¿ng Anh (K-12) -->
+ App 1: á»¨ng dụng Học &amp; Dãy Tiáº¿ng Anh (K-12) 
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-accent flex flex-col">
 <a class="text-xl font-semibold mb-1 text-ivs-accent hover:text-ivs-primary transition-colors" href="https://ivseng.netlify.app/" target="_blank">
-                                    á»¨ng dá»¥ng Há»c &amp; Dáº¡y Tiáº¿ng Anh (K-12) â€” GiÃ¡o viÃªn &amp; Há»c sinh (ivseng.netlify.app)
+                                    á»¨ng dụng Học &amp; Dãy Tiáº¿ng Anh (K-12) — Giáo viàªn &amp; Học sinh (ivseng.netlify.app)
                                 </a>
 <p class="text-ivs-text-muted text-sm mb-4">
-                                    á»¨ng dá»¥ng há»— trá»£ Ä‘áº§y Ä‘á»§ chu trÃ¬nh giáº£ng dáº¡y vÃ  há»c táº­p tá»« máº§m non tá»›i THPT: GiÃ¡o viÃªn táº¡o lá»™ trÃ¬nh, soáº¡n bÃ i, giao bÃ i táº­p vÃ  cháº¥m Ä‘iá»ƒm; Há»c sinh há»c theo lá»™ trÃ¬nh, lÃ m bÃ i tÆ°Æ¡ng tÃ¡c, theo dÃµi tiáº¿n Ä‘á»™ vÃ  nháº­n pháº£n há»“i. Bao gá»“m bÃ¡o cÃ¡o há»c táº­p, lá»‹ch há»c, gamification vÃ  tÃ i nguyÃªn bÃ i giáº£ng Ä‘a phÆ°Æ¡ng tiá»‡n.
+                                    á»¨ng dụng hộ trá»£ đầy đủ chu trà¬nh giảng dãy và  học tập từ mầm non tá»›i THPT: Giáo viàªn tão lá»™ trà¬nh, soãn bà i, giao bà i tập và  chạm điá»ƒm; Học sinh học theo lá»™ trà¬nh, là m bà i tưÆ¡ng tác, theo dõi tiáº¿n đá»™ và  nhận phản hổi. Bao gổm báo cáo học tập, lỉch học, gamification và  tà i nguyàªn bà i giảng đa phưÆ¡ng tiá»‡n.
                                 </p>
 <a class="self-start text-sm font-medium text-ivs-accent hover:text-ivs-primary transition-colors" href="mailto:info@ivsacademy.edu.vn">
-<i class="fas fa-angle-right mr-1"></i> YÃªu cáº§u demo / TÆ° váº¥n
+<i class="fas fa-angle-right mr-1"></i> Yàªu cầu demo / Tư vạn
                                 </a>
 </div>
-<!-- App 3: á»¨ng dá»¥ng Há»c Tiáº¿ng Trung HSK1 - HSK4 -->
+ App 3: á»¨ng dụng Học Tiáº¿ng Trung HSK1 - HSK4 
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-accent flex flex-col">
 <a class="text-xl font-semibold mb-1 text-ivs-accent hover:text-ivs-primary transition-colors" href="https://mandarinbyivs.netlify.app/" target="_blank">
-                                    á»¨ng dá»¥ng Há»c Tiáº¿ng Trung HSK1 - HSK4 (mandarinbyivs.netlify.app)
+                                    á»¨ng dụng Học Tiáº¿ng Trung HSK1 - HSK4 (mandarinbyivs.netlify.app)
                                 </a>
 <p class="text-ivs-text-muted text-sm mb-4">
-                                    MÃ´-Ä‘un há»c theo cáº¥p Ä‘á»™ HSK1 â†’ HSK4: bÃ i há»c tá»« vá»±ng &amp; ngá»¯ phÃ¡p, bÃ i táº­p tÆ°Æ¡ng tÃ¡c, luyá»‡n nghe vÃ  phÃ¡t Ã¢m, tháº» flashcard, cÃ¹ng há»‡ thá»‘ng Ä‘Ã¡nh giÃ¡ tiáº¿n Ä‘á»™ vÃ  bÃ¡o cÃ¡o há»c táº­p.
+                                    Mô-đun học theo cạp đá»™ HSK1 â†’ HSK4: bà i học từ vựng &amp; ngữ pháp, bà i tập tưÆ¡ng tác, luyá»‡n nghe và  phát âm, thẻ flashcard, cà¹ng há»‡ thồng đánh giá tiáº¿n đá»™ và  báo cáo học tập.
                                 </p>
 <a class="self-start text-sm font-medium text-ivs-accent hover:text-ivs-primary transition-colors" href="mailto:info@ivsacademy.edu.vn">
-<i class="fas fa-angle-right mr-1"></i> YÃªu cáº§u demo / TÆ° váº¥n
+<i class="fas fa-angle-right mr-1"></i> Yàªu cầu demo / Tư vạn
                                 </a>
 </div>
-<!-- á»¨ng Dá»¥ng: Quáº£n lÃ½ NhÃ  Trá» -->
+ á»¨ng Dụng: Quản là½ Nhà  Trọ 
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-accent flex flex-col">
 <a class="text-xl font-semibold mb-1 text-ivs-accent hover:text-ivs-primary transition-colors" href="https://nhatrobyivs.netlify.app/" target="_blank">
-                                    á»¨ng dá»¥ng Quáº£n lÃ½ NhÃ  Trá» (nhatrobyivs.netlify.app)
+                                    á»¨ng dụng Quản là½ Nhà  Trọ (nhatrobyivs.netlify.app)
                                 </a>
 <p class="text-ivs-text-muted text-sm mb-4">
-                                    Quáº£n lÃ½ phÃ²ng, há»£p Ä‘á»“ng thuÃª, hÃ³a Ä‘Æ¡n vÃ  lá»‹ch dá»n phÃ²ng. Bao gá»“m tÃ­nh nÄƒng quáº£n lÃ½ cÆ° trÃº, theo dÃµi thu chi, thÃ´ng bÃ¡o tá»± Ä‘á»™ng vÃ  bÃ¡o cÃ¡o thá»‘ng kÃª.
+                                    Quản là½ phà²ng, hợp đổng thuàª, hóa đÆ¡n và  lỉch dọn phà²ng. Bao gổm tính năng quản là½ cư trú, theo dõi thu chi, thông báo tự đá»™ng và  báo cáo thồng kàª.
                                 </p>
 <a class="self-start text-sm font-medium text-ivs-accent hover:text-ivs-primary transition-colors" data-lang-key="button_request_consult_short" href="mailto:info@ivsacademy.edu.vn">
 <i class="fas fa-angle-right mr-1"></i>
 </a>
 </div>
-<!-- App 4: StriveStreak - Learning Companion -->
+ App 4: StriveStreak - Learning Companion 
 <div class="card-base p-5 rounded-xl border-l-4 border-ivs-accent flex flex-col">
 <a class="text-xl font-semibold mb-1 text-ivs-accent hover:text-ivs-primary transition-colors" href="https://strivestreak.netlify.app/" target="_blank">
-                                    StriveStreak â€” Your Learning Companion (strivestreak.netlify.app)
+                                    StriveStreak — Your Learning Companion (strivestreak.netlify.app)
                                 </a>
 <p class="text-ivs-text-muted text-sm mb-4">
-                                    StriveStreak lÃ  má»™t á»©ng dá»¥ng web há»— trá»£ há»c táº­p toÃ n diá»‡n: giÃºp ngÆ°á»i dÃ¹ng xÃ¢y dá»±ng thÃ³i quen há»c táº­p, Ä‘áº·t má»¥c tiÃªu vÃ  duy trÃ¬ Ä‘á»™ng lá»±c thÃ´ng qua game hÃ³a vÃ  gá»£i Ã½ AI cÃ¡ nhÃ¢n hÃ³a.
+                                    StriveStreak là  một á»©ng dụng web hộ trá»£ học tập toà n diá»‡n: giúp ngưá»i dà¹ng xây dựng thói quen học tập, đáº·t mục tiàªu và  duy trà¬ đá»™ng lực thông qua game hóa và  gá»£i à½ AI cá nhân hóa.
                                 </p>
 <a class="self-start text-sm font-medium text-ivs-accent hover:text-ivs-primary transition-colors" data-lang-key="button_request_consult_short" href="mailto:info@ivsacademy.edu.vn">
 <i class="fas fa-angle-right mr-1"></i>
@@ -491,16 +490,16 @@
 </div>
 </div>
 </div>
-<!-- NÃºt xem táº¥t cáº£ á»©ng dá»¥ng tá»•ng há»£p -->
+ Nút xem tạt cả á»©ng dụng tỗng hợp 
 <div class="mt-12 text-center">
 <a class="px-8 py-3 text-lg font-bold text-ivs-dark rounded-xl shadow-lg inline-block bg-ivs-cyan hover:bg-ivs-accent transition-colors transform hover:scale-105" data-lang-key="button_view_all_apps" href="https://ivsacademy.edu.vn/apps/ivsapps" target="_blank">
 <i class="fas fa-th-large mr-2"></i>
-                        Xem táº¥t cáº£ á»¨ng dá»¥ng tiÃªu biá»ƒu
+                        Xem tạt cả á»¨ng dụng tiàªu biá»ƒu
                     </a>
 </div>
 </div>
 </section>
-<!-- SECTION 5: COST BREAKDOWN - Minh báº¡ch Chi phÃ­ Ná»n táº£ng -->
+ SECTION 5: COST BREAKDOWN - Minh bãch Chi phí Ná»n tảng 
 <section class="py-20 bg-ivs-dark border-b border-ivs-card" id="transparency">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-4xl mx-auto mb-16">
@@ -508,7 +507,7 @@
 <p class="text-lg text-ivs-text-muted" data-lang-key="transparency_desc"></p>
 </div>
 <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-<!-- Cost Breakdown List -->
+ Cost Breakdown List 
 <div class="bg-ivs-card p-6 rounded-xl shadow-xl border border-ivs-text-muted/10">
 <div class="space-y-4">
 <div class="flex justify-between items-center border-b border-ivs-text-muted/10 pb-2">
@@ -533,20 +532,20 @@
 </div>
 </div>
 </div>
-<!-- Emphasis Box -->
+ Emphasis Box 
 <div class="bg-ivs-primary/10 p-6 rounded-xl shadow-xl border-l-4 border-ivs-primary flex flex-col justify-center">
-<h3 class="text-xl font-bold text-ivs-primary mb-3">TuyÃªn bá»‘ vá» Code-First</h3>
+<h3 class="text-xl font-bold text-ivs-primary mb-3">Tuyàªn bồ vá» Code-First</h3>
 <p class="text-ivs-text-muted">
-                            GiÃ¡ trá»‹ cá»‘t lÃµi cá»§a IVS Celestech náº±m á»Ÿ <b>Láº­p trÃ¬nh Chá»©c nÄƒng</b> (`item_coding`). ChÃºng tÃ´i khÃ´ng tÃ­nh phÃ­ dá»±a trÃªn máº«u (template) cÃ³ sáºµn, mÃ  lÃ  dá»±a trÃªn sá»± <b>phá»©c táº¡p cá»§a logic</b> vÃ  <b>kháº£ nÄƒng tÃ­ch há»£p API</b> mÃ  há»‡ thá»‘ng cá»§a báº¡n yÃªu cáº§u.
+                            Giá trỉ cồt lõi của IVS Celestech náº±m á»Ÿ <b>Lập trà¬nh Chá»©c năng</b> (`item_coding`). Chúng tôi không tính phí dựa tràªn mẫu (template) có sáºµn, mà  là  dựa tràªn sự <b>phá»©c tãp của logic</b> và  <b>khả năng tích hợp API</b> mà  há»‡ thồng của bãn yàªu cầu.
                         </p>
 <p class="text-ivs-text-muted mt-2">
-                            Má»©c giÃ¡ trá»n gÃ³i trong Báº£ng giÃ¡ chÃ­nh Ä‘Ã£ bao gá»“m cÃ¡c chi phÃ­ ná»n táº£ng nÃ y (trá»« cÃ¡c tÃ­nh nÄƒng tÃ¹y biáº¿n quÃ¡ phá»©c táº¡p).
+                            Má»©c giá trọn gói trong Bảng giá chính đà£ bao gổm các chi phí nền tảng nà y (trừ các tính năng tà¹y biáº¿n quá phá»©c tãp).
                         </p>
 </div>
 </div>
 </div>
 </section>
-<!-- SECTION 6: PRICING - Báº£ng GiÃ¡ ToÃ n Diá»‡n -->
+ SECTION 6: PRICING - Bảng Giá Toà n Diá»‡n 
 <section class="py-20 bg-ivs-dark border-t border-ivs-dark" id="pricing">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-4xl mx-auto mb-16">
@@ -554,7 +553,7 @@
 <p class="text-lg text-ivs-text-muted" data-lang-key="pricing_subtitle"></p>
 </div>
 <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 items-stretch">
-<!-- Pricing Card 0: SiÃªu Tá»‘i Giáº£n (1.5M VND) -->
+ Pricing Card 0: Siàªu Tồi Giản (1.5M VND) 
 <div class="card-base p-6 rounded-xl flex flex-col justify-between hover:border-ivs-accent">
 <div>
 <h3 class="text-2xl font-bold text-ivs-cyan mb-2" data-lang-key="tier_0_name"></h3>
@@ -569,7 +568,7 @@
 </div>
 <a class="mt-8 block text-center py-3 bg-ivs-cyan/50 text-white font-semibold rounded-lg hover:bg-ivs-cyan transition duration-300" data-lang-key="button_select" href="mailto:info@ivsacademy.edu.vn"></a>
 </div>
-<!-- Pricing Card 1: Khá»Ÿi Äiá»ƒm -->
+ Pricing Card 1: Khá»Ÿi Điá»ƒm 
 <div class="card-base p-6 rounded-xl flex flex-col justify-between hover:border-ivs-primary">
 <div>
 <h3 class="text-2xl font-bold text-ivs-accent mb-2" data-lang-key="tier_1_name"></h3>
@@ -584,7 +583,7 @@
 </div>
 <a class="mt-8 block text-center py-3 bg-ivs-primary/50 text-white font-semibold rounded-lg hover:bg-ivs-primary transition duration-300" data-lang-key="button_select" href="mailto:info@ivsacademy.edu.vn"></a>
 </div>
-<!-- Pricing Card 2: TiÃªu Chuáº©n (ÄÃ£ thÃªm vÃ o) -->
+ Pricing Card 2: Tiàªu Chuẩn (Đà£ thàªm và o) 
 <div class="card-base p-6 rounded-xl flex flex-col justify-between border-t-4 border-ivs-accent hover:border-ivs-primary">
 <div>
 <h3 class="text-2xl font-bold text-ivs-cyan mb-2" data-lang-key="tier_2_name"></h3>
@@ -599,7 +598,7 @@
 </div>
 <a class="mt-8 block text-center py-3 bg-ivs-cyan/50 text-white font-semibold rounded-lg hover:bg-ivs-cyan transition duration-300" data-lang-key="button_select" href="mailto:info@ivsacademy.edu.vn"></a>
 </div>
-<!-- Pricing Card 4: TÃ¹y Biáº¿n ChuyÃªn SÃ¢u (Highlight) -->
+ Pricing Card 4: Tà¹y Biáº¿n Chuyàªn Sâu (Highlight) 
 <div class="price-card-premium p-6 rounded-xl flex flex-col justify-between">
 <div>
 <h3 class="text-2xl font-bold text-ivs-accent mb-2" data-lang-key="tier_4_name"></h3>
@@ -617,10 +616,10 @@
 </div>
 </div>
 </section>
-<!-- SECTION 7: CTA FINAL -->
+ SECTION 7: CTA FINAL 
 <section class="py-20 bg-ivs-primary/10 border-t border-ivs-primary/30" id="contact">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<!-- APPLY TEXT GRADIENT HERE -->
+ APPLY TEXT GRADIENT HERE 
 <h2 class="text-4xl font-extrabold mb-4 leading-tight text-gradient" data-lang-key="cta_final_title"></h2>
 <p class="text-xl text-ivs-text-muted mb-10" data-lang-key="cta_final_subtitle"></p>
 <a class="px-10 py-4 text-xl font-bold text-white rounded-xl shadow-2xl inline-block bg-ivs-primary hover:bg-ivs-cyan transition-colors transform hover:scale-105" data-lang-key="cta_final_button" href="mailto:info@ivsacademy.edu.vn"></a>
@@ -628,19 +627,19 @@
 </div>
 </section>
 </main>
-<!-- FOOTER PLACEHOLDER: Giá»¯ rá»—ng Ä‘á»ƒ JS náº¡p ná»™i dung vÃ o -->
+ FOOTER PLACEHOLDER: Giữ rộng đá»ƒ JS nãp ná»™i dung và o 
 <footer id="footer-placeholder"></footer>
-<!-- Floating Action Button Placeholder -->
+ Floating Action Button Placeholder 
 <div id="fab-container-placeholder"></div>
-<!-- START OF SCRIPT LOADING BLOCK (ÄÃ£ khÃ´i phá»¥c cÃ¡c script há»‡ thá»‘ng) -->
-<!-- ThÆ° viá»‡n bÃªn ngoÃ i (Alpine, AOS) -->
+ START OF SCRIPT LOADING BLOCK (Đà£ khôi phục các script há»‡ thồng) 
+ Thư viá»‡n bàªn ngoà i (Alpine, AOS) 
 <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!-- Custom IVS Scripts: Cáº§n Ä‘Æ°á»ng dáº«n tÆ°Æ¡ng Ä‘á»‘i chÃ­nh xÃ¡c (../js/) vÃ¬ file nÃ y náº±m trong Pages/ -->
+ Custom IVS Scripts: Cần đưá»ng dẫn tưÆ¡ng đồi chính xác (../js/) và¬ file nà y náº±m trong Pages/ 
 <script src="../js/utils.js"></script>
 <script src="../js/language.js"></script>
 <script src="../ai/js/fabController.js"></script>
-<!-- END OF SCRIPT LOADING BLOCK -->
+ END OF SCRIPT LOADING BLOCK 
 <script defer="" src="/ai/js/loadComponents.js"></script>
 </body>
 </html>

@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
-
+﻿html
 <html lang="vi">
-<head><link href="https://fonts.googleapis.com" rel="preconnect" crossorigin><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<head><link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>IVS - TrÃ¬nh Táº¡o Manifest ID ÄÃ£ XÃ¡c Minh</title>
+<title>IVS - Trà¬nh Tão Manifest ID Đà£ Xác Minh</title>
 <link href="/css/tailwind.css" rel="stylesheet"/>
 <style>
     body { font-family: Inter, system-ui, -apple-system, Arial, sans-serif; background:#0b1220; color:#e6eef8 }
@@ -14,50 +13,50 @@
     .muted { color: #9fb0c9 }
     pre { background: rgba(0,0,0,0.3); padding:0.75rem; border-radius:0.5rem; overflow:auto }
   </style>
-<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/></head>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/></link></link></link></link></head>
 <body>
 <main class="container mx-auto p-8 max-w-3xl">
-<h1 class="text-2xl font-semibold mb-4">IVS - TrÃ¬nh Táº¡o Manifest ID ÄÃ£ XÃ¡c Minh</h1>
+<h1 class="text-2xl font-semibold mb-4">IVS - Trà¬nh Tão Manifest ID Đà£ Xác Minh</h1>
 <div class="card mb-6">
-<label class="block mb-2">ID NhÃ¢n ViÃªn (báº¯t buá»™c)</label>
-<input id="employeeId" placeholder="vÃ­ dá»¥: EMP-1001"/>
+<label class="block mb-2">ID Nhân Viàªn (báº¯t buá»™c)</label>
+<input id="employeeId" placeholder="ví dụ: EMP-1001"/>
 <div aria-live="polite" class="text-red-400 text-sm mt-1" id="employeeError"></div>
 <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
 <div>
-<label class="block mb-2">Há» vÃ  TÃªn (tÃ¹y chá»n)</label>
+<label class="block mb-2">Họ và  Tàªn (tà¹y chọn)</label>
 <input id="fullName" placeholder="Nguyen Van A"/>
 </div>
 <div>
-<label class="block mb-2">Chá»©c Vá»¥ / TiÃªu Äá» (tÃ¹y chá»n)</label>
-<input id="title" placeholder="GiÃ¡o ViÃªn / PhÃ¡t Triá»ƒn ViÃªn"/>
+<label class="block mb-2">Chá»©c Vụ / Tiàªu Đá» (tà¹y chọn)</label>
+<input id="title" placeholder="Giáo Viàªn / Phát Triá»ƒn Viàªn"/>
 </div>
 </div>
-<label class="block mt-3 mb-2">Dá»¯ liá»‡u bá»• sung (JSON, tÃ¹y chá»n)</label>
+<label class="block mt-3 mb-2">Dữ liá»‡u bỗ sung (JSON, tà¹y chọn)</label>
 <textarea id="extraPayload" placeholder='{"phongBan":"Hoc Vien"}' rows="4"></textarea>
 <div aria-live="polite" class="text-red-400 text-sm mt-1" id="extraError"></div>
 <div class="mt-4 flex items-center gap-3">
-<button class="btn" id="generateBtn">Táº¡o URL Manifest</button>
-<button class="btn" id="downloadBtn" style="background:#10b981;">Táº£i Xuá»‘ng Manifest</button>
-<button class="btn" id="copyBtn" style="background:#64748b;">Sao ChÃ©p URL</button>
+<button class="btn" id="generateBtn">Tão URL Manifest</button>
+<button class="btn" id="downloadBtn" style="background:#10b981;">Tải Xuồng Manifest</button>
+<button class="btn" id="copyBtn" style="background:#64748b;">Sao Chép URL</button>
 </div>
-<p class="muted mt-3">CÃ´ng cá»¥ nÃ y táº¡o má»™t manifest JSON nhá» mÃ´ táº£ ID ÄÃ£ XÃ¡c Minh cho nhÃ¢n viÃªn vÃ  táº¡o ra má»™t URL data: (hoáº·c .json cÃ³ thá»ƒ táº£i xuá»‘ng) mÃ  báº¡n cÃ³ thá»ƒ lÆ°u trá»¯ hoáº·c truyá»n Ä‘áº¿n há»‡ thá»‘ng xÃ¡c minh.</p>
+<p class="muted mt-3">Công cụ nà y tão một manifest JSON nhỏ mô tả ID Đà£ Xác Minh cho nhân viàªn và  tão ra một URL data: (hoáº·c .json có thá»ƒ tải xuồng) mà  bãn có thá»ƒ lưu trữ hoáº·c truyá»n đáº¿n há»‡ thồng xác minh.</p>
 </div>
 <div class="card">
-<h2 class="text-lg font-medium mb-2">Xem trÆ°á»›c Manifest</h2>
+<h2 class="text-lg font-medium mb-2">Xem trưá»›c Manifest</h2>
 <pre id="manifestPreview">{ }</pre>
-<label class="block mt-3 mb-2">URL Manifest (data: hoáº·c lÆ°u trá»¯)</label>
+<label class="block mt-3 mb-2">URL Manifest (data: hoáº·c lưu trữ)</label>
 <input id="manifestUrl" readonly=""/>
 </div>
-<div class="mt-6 muted text-sm">LÆ°u Ã½: ÄÃ¢y chá»‰ lÃ  trÃ¬nh táº¡o cá»¥c bá»™. Äá»‘i vá»›i sáº£n xuáº¥t, kÃ½ manifest vÃ  lÆ°u trá»¯ chÃºng trÃªn Ä‘iá»ƒm cuá»‘i báº£o máº­t. Trang nÃ y khÃ´ng truyá»n dá»¯ liá»‡u Ä‘áº¿n báº¥t ká»³ mÃ¡y chá»§ bÃªn ngoÃ i nÃ o.</div>
+<div class="mt-6 muted text-sm">Lưu à½: Đây chị là  trà¬nh tão cục bá»™. Đồi với sản xuạt, kà½ manifest và  lưu trữ chúng tràªn điá»ƒm cuồi bảo mật. Trang nà y không truyá»n dữ liá»‡u đáº¿n bạt ká»³ máy chủ bàªn ngoà i nà o.</div>
 <div class="card mt-6">
-<h2 class="text-lg font-medium mb-2">HÆ°á»›ng Dáº«n Sá»­ Dá»¥ng</h2>
+<h2 class="text-lg font-medium mb-2">Hưá»›ng Dẫn Sử Dụng</h2>
 <ol class="list-decimal list-inside space-y-1 text-sm">
-<li>Nháº­p ID NhÃ¢n ViÃªn (báº¯t buá»™c) vÃ  cÃ¡c chi tiáº¿t tÃ¹y chá»n nhÆ° tÃªn, chá»©c vá»¥ hoáº·c dá»¯ liá»‡u JSON bá»• sung.</li>
-<li>Nháº¥p "Táº¡o URL Manifest" Ä‘á»ƒ táº¡o xem trÆ°á»›c manifest vÃ  URL dá»¯ liá»‡u.</li>
-<li>Sá»­ dá»¥ng nÃºt "Sao ChÃ©p URL" Ä‘á»ƒ sao chÃ©p URL data: Ä‘á»ƒ sá»­ dá»¥ng trong há»‡ thá»‘ng xÃ¡c minh.</li>
-<li>NgoÃ i ra, nháº¥p "Táº£i Xuá»‘ng Manifest" Ä‘á»ƒ lÆ°u tá»‡p JSON cá»¥c bá»™.</li>
-<li>Äá»‘i vá»›i xÃ¡c minh bÃªn ngoÃ i, truyá»n URL manifest hoáº·c tá»‡p Ä‘áº¿n cÃ´ng cá»¥ Verified ID cá»§a báº¡n (vÃ­ dá»¥: Microsoft Authenticator hoáº·c trÃ¬nh xÃ¡c minh tÃ¹y chá»‰nh).</li>
-<li>Trong sáº£n xuáº¥t, lÆ°u trá»¯ manifest trÃªn Ä‘iá»ƒm cuá»‘i HTTPS báº£o máº­t vÃ  kÃ½ nÃ³ báº±ng khÃ³a máº­t mÃ£ Ä‘á»ƒ Ä‘áº£m báº£o tÃ­nh xÃ¡c thá»±c.</li>
+<li>Nhập ID Nhân Viàªn (báº¯t buá»™c) và  các chi tiáº¿t tà¹y chọn như tàªn, chá»©c vụ hoáº·c dữ liá»‡u JSON bỗ sung.</li>
+<li>Nhạp "Tão URL Manifest" đá»ƒ tão xem trưá»›c manifest và  URL dữ liá»‡u.</li>
+<li>Sử dụng nút "Sao Chép URL" đá»ƒ sao chép URL data: đá»ƒ sử dụng trong há»‡ thồng xác minh.</li>
+<li>Ngoà i ra, nhạp "Tải Xuồng Manifest" đá»ƒ lưu tá»‡p JSON cục bá»™.</li>
+<li>Đồi với xác minh bàªn ngoà i, truyá»n URL manifest hoáº·c tá»‡p đáº¿n công cụ Verified ID của bãn (ví dụ: Microsoft Authenticator hoáº·c trà¬nh xác minh tà¹y chịnh).</li>
+<li>Trong sản xuạt, lưu trữ manifest tràªn điá»ƒm cuồi HTTPS bảo mật và  kà½ nó báº±ng khóa mật mà£ đá»ƒ đảm bảo tính xác thực.</li>
 </ol>
 </div>
 </main>
