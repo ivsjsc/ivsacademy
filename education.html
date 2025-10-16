@@ -1,86 +1,41 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Liên kết Giáo dục - IVS JSC</title>
     <meta content="Khám phá các chương trình giáo dục liên kết của IVS JSC từ mầm non đến THPT và trung tâm ngoại ngữ, ứng dụng EdTech và STEAM." name="description"/>
     <meta content="IVS JSC, giáo dục liên kết, mầm non, tiểu học, THCS, THPT, trung tâm ngoại ngữ, EdTech, STEAM, chương trình giáo dục" name="keywords"/>
-    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml" />
-
-    <!-- Tải Tailwind CSS CDN (Thay thế cho file css/tailwind.css) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tải Font Be Vietnam Pro (Tối ưu cho tiếng Việt) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
-
-    <!-- Cấu hình Tailwind để sử dụng font và màu sắc tùy chỉnh -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
-                    },
-                    colors: {
-                        'ivs-bg': '#F8F9FA',
-                        'ivs-card': '#FFFFFF',
-                        'ivs-text-primary': '#343A40',
-                        'ivs-text-secondary': '#6C757D',
-                        'ivs-border': '#E9ECEF',
-                        'ivs-blue': '#007BFF',
-                        'ivs-purple': '#6F42C1',
-                        'ivs-green': '#28A745',
-                        'ivs-orange': '#FD7E14',
-                        'ivs-cyan': '#17A2B8',
-                        'ivs-red': '#DC3545',
-                        'ivs-blue-darker': '#0056B3',
-                    }
-                }
-            }
-        }
-    </script>
     
-    <!-- Tải Font Awesome cho Icons -->
-    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="css/tailwind.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 </head>
-<body class="bg-ivs-bg font-sans text-ivs-text-primary antialiased">
+<body class="bg-ivs-bg text-ivs-text-primary antialiased">
 
-    <!-- Bắt đầu: Header (Thay thế #header-placeholder) -->
-    <header class="fixed top-0 left-0 w-full bg-ivs-card border-b border-ivs-border shadow-sm z-50">
-        <div class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-ivs-blue">IVS JSC</a>
-            <nav class="hidden md:flex space-x-6 text-ivs-text-primary">
-                <a href="#" class="hover:text-ivs-blue transition-colors">Trang chủ</a>
-                <a href="#" class="hover:text-ivs-blue transition-colors font-semibold">Liên kết Giáo dục</a>
-                <a href="#" class="hover:text-ivs-blue transition-colors">Về chúng tôi</a>
-                <a href="contact.html" class="hover:text-ivs-blue transition-colors">Liên hệ</a>
-            </nav>
-            <button class="md:hidden text-xl p-2 rounded-lg hover:bg-ivs-border transition-colors" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-    <!-- Kết thúc: Header -->
+    <!-- Header -->
+    <div id="header-placeholder"></div>
 
+    <!-- Main Content -->
     <main class="pt-20">
+        <!-- Hero Section -->
         <section class="bg-gradient-to-br from-ivs-blue to-ivs-purple py-20">
             <div class="container mx-auto px-6 text-center">
                 <h1 class="text-5xl font-bold text-white mb-6">Liên kết Giáo dục</h1>
                 <p class="text-xl text-white/90 max-w-3xl mx-auto">
-                    Khám phá các chương trình giáo dục liên kết của IVS JSC từ mầm non đến THPT, ứng dụng EdTech và STEAM hiện đại.
+                    Khám phá các chương trình giáo dục liên kết của IVS JSC từ mầm non đến THPT, 
+                    ứng dụng EdTech và STEAM hiện đại.
                 </p>
             </div>
         </section>
 
-        <!-- Bắt đầu: Các ChưÆ¡ng Trà¬nh Giáo Dục -->
+        <!-- Education Programs -->
         <section class="py-16">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-bold text-center mb-12">Các Chương Trình Giáo Dục</h2>
+                
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
                     <!-- Mầm non -->
                     <div class="bg-ivs-card p-8 rounded-xl border border-ivs-border hover:shadow-lg transition-all">
                         <div class="text-ivs-green text-4xl mb-4">
@@ -90,7 +45,7 @@
                         <p class="text-ivs-text-secondary mb-6">
                             Chương trình giáo dục mầm non theo tiêu chuẩn quốc tế, phát triển toàn diện cho trẻ.
                         </p>
-                        <a class="bg-ivs-green text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors inline-block" href="Pages/lkmamnon.html">
+                        <a href="Pages/lkmamnon.html" class="bg-ivs-green text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
                             Tìm hiểu thêm
                         </a>
                     </div>
@@ -104,7 +59,7 @@
                         <p class="text-ivs-text-secondary mb-6">
                             Chương trình tiểu học tích hợp, kết hợp giáo dục truyền thống và hiện đại.
                         </p>
-                        <a class="bg-ivs-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors inline-block" href="Pages/lktieuhoc.html">
+                        <a href="Pages/lktieuhoc.html" class="bg-ivs-blue text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
                             Tìm hiểu thêm
                         </a>
                     </div>
@@ -118,7 +73,7 @@
                         <p class="text-ivs-text-secondary mb-6">
                             Chương trình trung học cơ sở và phổ thông với định hướng quốc tế.
                         </p>
-                        <a class="bg-ivs-purple text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition-colors inline-block" href="Pages/lkthcsthpt.html">
+                        <a href="Pages/lkthcsthpt.html" class="bg-ivs-purple text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition-colors">
                             Tìm hiểu thêm
                         </a>
                     </div>
@@ -132,7 +87,7 @@
                         <p class="text-ivs-text-secondary mb-6">
                             Chương trình ngoại ngữ chuyên sâu với giáo viên bản ngữ quốc tế.
                         </p>
-                        <a class="bg-ivs-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors inline-block" href="Pages/lkttnn.html">
+                        <a href="Pages/lkttnn.html" class="bg-ivs-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors">
                             Tìm hiểu thêm
                         </a>
                     </div>
@@ -146,7 +101,7 @@
                         <p class="text-ivs-text-secondary mb-6">
                             Công nghệ giáo dục tiên tiến, nền tảng học tập thông minh.
                         </p>
-                        <a class="bg-ivs-cyan text-white px-6 py-2 rounded-lg hover:bg-cyan-600 transition-colors inline-block" href="Pages/edtech.html">
+                        <a href="Pages/edtech.html" class="bg-ivs-cyan text-white px-6 py-2 rounded-lg hover:bg-cyan-600 transition-colors">
                             Tìm hiểu thêm
                         </a>
                     </div>
@@ -160,22 +115,22 @@
                         <p class="text-ivs-text-secondary mb-6">
                             Chương trình STEAM tích hợp khoa học, công nghệ, và nghệ thuật.
                         </p>
-                        <a class="bg-ivs-red text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors inline-block" href="Pages/steambyivs.html">
+                        <a href="Pages/steambyivs.html" class="bg-ivs-red text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors">
                             Tìm hiểu thêm
                         </a>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Kết thúc: Các ChưÆ¡ng Trà¬nh Giáo Dục -->
 
+        <!-- CTA Section -->
         <section class="bg-ivs-card py-16 border-t border-ivs-border">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-6">Sẵn sàng khám phá các giải pháp giáo dục?</h2>
                 <p class="text-ivs-text-secondary text-lg mb-8 max-w-2xl mx-auto">
                     Liên hệ với chúng tôi để tìm hiểu thêm về các chương trình giáo dục phù hợp với nhu cầu của bạn.
                 </p>
-                <a class="bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold py-4 px-8 rounded-lg transition-all transform hover:scale-105 inline-block" href="contact.html">
+                <a href="contact.html" class="bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold py-4 px-8 rounded-lg transition-all transform hover:scale-105">
                     <i class="fas fa-phone mr-2"></i>
                     Liên hệ ngay
                 </a>
@@ -183,19 +138,33 @@
         </section>
     </main>
 
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- FAB -->
+    <div id="fab-container-placeholder"></div>
 
-    <!-- Bắt đầu: Floating Action Button (Thay thế #fab-container-placeholder) -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <a href="contact.html" class="bg-ivs-orange text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-xl hover:bg-orange-600 transition-all transform hover:scale-110" aria-label="Liên hệ nhanh">
-            <i class="fas fa-comment-alt"></i>
-        </a>
-    </div>
-    <!-- Kết thúc: Floating Action Button -->
+    <!-- Scripts -->
+    <script defer src="js/utils.js"></script>
+    <script defer src="js/language.js"></script>
+    
+    <script defer>
+        window.onPageComponentsLoadedCallback = function() {
+            console.log('Education page components loaded (callback)');
+        };
 
-    <!-- Thay thế các script bằng một script duy nhất -->
-    <script>
-        // Dọn dẹp các script không cần thiết hoặc đã lỗi thời
-        console.log('Trang Liên kết Giáo dục đã tải hoàn chỉnh.');
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+                window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
+            }
+        });
     </script>
+
+
+
+
+<script src="/js/loadComponents.js" defer></script>
 </body>
 </html>
+
+
