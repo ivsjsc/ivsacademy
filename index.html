@@ -192,7 +192,7 @@
             console.warn('Error applying tailwind.config guard:', e && e.message ? e.message : e);
         }
     </script>
- Load Font Awesome Icons 
+
 </link></link></link></link></head>
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
 <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
@@ -321,42 +321,41 @@
                         </span>
 </div>
 </div>
- Chú thích nhỏ cho mobile 
+
 <p class="text-sm text-ivs-text-secondary mt-4 block lg:hidden text-center" data-lang-key="demo_app_mobile_note">
-                    Nhấn vào ảnh để xem chi tiết 10 giao diện khác nhau của ứng dụng.
+
                 </p>
 </div>
 </div>
 </div>
 </section>
- START: LIGHTBOX ALBUM MODAL 
- Thêm class hidden của Tailwind để đảm bảo modal bị ẩn ngay từ đầu, và thêm opacity-0 để chuẩn bị cho transition 
+
 <div class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden opacity-0 lightbox-transition" id="lightbox-modal" onclick="closeLightbox()">
 <div class="relative w-11/12 max-w-5xl h-5/6 bg-ivs-neutral-800 rounded-lg shadow-2xl" onclick="event.stopPropagation()">
- Nút Đóng 
+
 <button class="absolute top-4 right-4 text-white text-3xl hover:text-ivs-red transition z-10" onclick="closeLightbox()">
 <i class="fas fa-times-circle"></i>
 </button>
- Tiêu đề &amp; Chỉ số 
+&amp;
 <div class="p-4 text-center">
 <h3 class="text-xl font-bold text-ivs-blue" data-lang-key="lightbox_title">IVS English Learners App: Album Tính năng (1/10)</h3>
 </div>
- Carousel Nội dung 
+
 <div class="relative w-full h-[calc(100%-80px)] p-4 flex items-center justify-center">
- Ảnh Lớn 
+
 <img alt="Album Ảnh Ứng dụng" class="max-w-full max-h-full object-contain rounded-lg shadow-xl" id="lightbox-image" src=""/>
- Nút Prev 
+
 <button class="absolute left-0 lg:left-4 p-3 bg-white/10 hover:bg-white/30 text-white text-2xl rounded-full transition transform hover:scale-110" onclick="changeImage(-1)">
 <i class="fas fa-chevron-left"></i>
 </button>
- Nút Next 
+
 <button class="absolute right-0 lg:right-4 p-3 bg-white/10 hover:bg-white/30 text-white text-2xl rounded-full transition transform hover:scale-110" onclick="changeImage(1)">
 <i class="fas fa-chevron-right"></i>
 </button>
 </div>
 </div>
 </div>
- END: LIGHTBOX ALBUM MODAL 
+
 <script>
     // Danh sách 10 ảnh (sử dụng cấu trúc đường dẫn mới)
     const imageFiles = [
@@ -526,35 +525,35 @@
 <p class="text-lg md:text-xl text-ivs-text-secondary leading-relaxed" data-lang-key="digital_ecosystem_subtitle">Các sản phẩm công nghệ được thiết kế để tối ưu hóa quản lý, tự động hóa quy trình và trải nghiệm học tập, giải trí trong kỷ nguyên số.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
- App Card: IVS English 
+
 <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-blue" data-aos="fade-up" data-aos-delay="100" href="https://ivseng.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-book-open-reader text-5xl text-ivs-blue"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_english_title">IVS English (EdTech)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_english_desc">Nền tảng học Tiếng Anh tích hợp cho học sinh, với sách điện tử, luyện tập AI và gamification.</p>
 <span class="mt-auto font-semibold text-ivs-blue hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
- App Card: IVS Stay Smart (Quản lý) 
+
 <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-green" data-aos="fade-up" data-aos-delay="200" href="https://ivs-staysmart.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-house-chimney-crack text-5xl text-ivs-green"></i>  Icon mới cho quản lý tài sản/nhà trọ 
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_staysmart_title">IVS Stay Smart (Quản lý Bất động sản)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_staysmart_desc">Ứng dụng quản lý nhà trọ tích hợp, giúp chủ nhà đơn giản hóa việc quản lý thông tin phòng, khách thuê và hợp đồng.</p>
 <span class="mt-auto font-semibold text-ivs-green hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
- App Card: QLGX (Quản lý cộng đồng) 
+
 <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-purple" data-aos="fade-up" data-aos-delay="300" href="https://qlgx.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-people-group text-5xl text-ivs-purple"></i>  Icon mới cho quản lý cộng đồng/giáo xứ 
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_qlgx_title">QLGX – Quản Lý Cộng đồng (Custom App)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_qlgx_desc">Hỗ trợ Nhà Thờ và Giáo Xứ quản lý thông tin hộ gia đình, giúp việc tra cứu dữ liệu giáo dân trở nên dễ dàng.</p>
 <span class="mt-auto font-semibold text-ivs-purple hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
- App Card: StriveStreak 
+
 <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-amber" data-aos="fade-up" data-aos-delay="400" href="https://strivestreak.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-fire text-5xl text-ivs-amber"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_strivestreak_title">StriveStreak (Habit/AI)</h3>
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_strivestreak_desc">Ứng dụng hỗ trợ học tập, giúp xây dựng thói quen, đặt mục tiêu và duy trì động lực qua game hóa và gợi ý AI.</p>
 <span class="mt-auto font-semibold text-ivs-amber hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
- App Card: IVS Mandarin Learners 
+
 <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col items-start gap-4 border-l-4 border-ivs-orange" data-aos="fade-up" data-aos-delay="500" href="https://mandarinbyivs.netlify.app/" rel="noopener noreferrer" target="_blank">
 <i class="fas fa-language text-5xl text-ivs-orange"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary" data-lang-key="app_mandarin_title">IVS Mandarin Learners (Language App)</h3>
@@ -571,7 +570,7 @@
 </span>
 </a>
 </div>
- BỔ SUNG: Tham khảo các trang quản lý mẫu 
+
 <div class="mt-16 pt-8 border-t border-ivs-border text-center" data-aos="fade-up" data-aos-delay="700">
 <h3 class="text-xl font-semibold text-ivs-text-primary mb-4" data-lang-key="app_management_sample_title">Tham khảo Trang Quản lý &amp; Analytics Mẫu:</h3>
 <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
@@ -584,10 +583,10 @@
                         </a>
 </div>
 </div>
- KẾT THÚC BỔ SUNG 
+
 </div>
 </section>
- SECTION 6: IVS CELESTECH WEB PROJECTS 
+
 <section class="py-16 md:py-24 bg-ivs-bg border-b border-ivs-border" id="web-projects">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
@@ -687,7 +686,7 @@
 </div>
 </div>
 </div></section>
- SECTION 7: EDUCATION SPOTLIGHT (LIÊN KẾT GIÁO DỤC) 
+
 <section class="py-16 md:py-24 bg-ivs-card border-b border-ivs-border" id="education-spotlight">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
@@ -695,56 +694,52 @@
 <p class="text-lg md:text-xl text-ivs-text-secondary leading-relaxed" data-lang-key="edu_spotlight_subtitle">Nâng cao chất lượng đào tạo, tối ưu vận hành và đảm bảo nguồn nhân lực quốc tế cho Quý đối tác.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
- Card 1: Dịch vụ Giáo viên Nước ngoài (foreign-teacher-services.html) 
 <a class="spotlight-card-edu p-6 rounded-xl flex flex-col items-start border-l-4 border-ivs-green" data-aos="fade-up" data-aos-delay="100" href="Pages/foreign-teacher-services.html">
 <i class="fas fa-globe-americas text-4xl text-ivs-green mb-4"></i>
 <h3 class="text-xl font-semibold font-display text-ivs-text-primary mb-2" data-lang-key="edu_card_gvnn_title">Dịch vụ Giáo viên Nước ngoài</h3>
 <p class="text-sm text-ivs-text-secondary flex-grow" data-lang-key="edu_card_gvnn_desc">Cung ứng GVNN chất lượng cao (bản ngữ/Filipino), hỗ trợ Work Permit và thủ tục pháp lý trọn gói.</p>
 <span class="mt-4 font-semibold text-ivs-green hover:text-white transition-colors" data-lang-key="btn_view_details">Xem chi tiết →</span>
 </a>
- Card 2: Tư vấn Thành lập Trung tâm (thanhlaptrungtam.html) 
 <a class="spotlight-card-edu p-6 rounded-xl flex flex-col items-start border-l-4 border-ivs-amber" data-aos="fade-up" data-aos-delay="200" href="Pages/thanhlaptrungtam.html">
 <i class="fas fa-handshake text-4xl text-ivs-amber mb-4"></i>
 <h3 class="text-xl font-semibold font-display text-ivs-text-primary mb-2" data-lang-key="edu_card_tltt_title">Tư vấn Thành lập Trung tâm</h3>
 <p class="text-sm text-ivs-text-secondary flex-grow" data-lang-key="edu_card_tltt_desc">Hỗ trợ trọn gói thủ tục, đề án, cơ sở vật chất và vận hành ban đầu cho trung tâm Ngoại ngữ/Kỹ năng.</p>
 <span class="mt-4 font-semibold text-ivs-amber hover:text-white transition-colors" data-lang-key="btn_view_details">Xem chi tiết →</span>
 </a>
- Card 3: Liên kết Giáo dục (Tổng hợp các cấp) 
 <a class="spotlight-card-edu p-6 rounded-xl flex flex-col items-start border-l-4 border-ivs-blue" data-aos="fade-up" data-aos-delay="300" href="Pages/lktieuhoc.html">
 <i class="fas fa-school text-4xl text-ivs-blue mb-4"></i>
 <h3 class="text-xl font-semibold font-display text-ivs-text-primary mb-2" data-lang-key="edu_card_lkth_title">Liên kết Giáo dục (Mầm non - THPT)</h3>
 <p class="text-sm text-ivs-text-secondary flex-grow" data-lang-key="edu_card_lkth_desc">Cung cấp chương trình STEAM, Tiếng Anh chuẩn quốc tế (Cambridge/IELTS) và Kỹ năng sống cho các cấp trường.</p>
 <span class="mt-4 font-semibold text-ivs-blue hover:text-white transition-colors" data-lang-key="btn_view_details">Xem chi tiết →</span>
 </a>
- Card 4: Bổ sung Chứng chỉ Sư phạm (bosungchungchi.html) 
 <a class="spotlight-card-edu p-6 rounded-xl flex flex-col items-start border-l-4 border-ivs-pink" data-aos="fade-up" data-aos-delay="400" href="Pages/bosungchungchi.html">
 <i class="fas fa-graduation-cap text-4xl text-ivs-pink mb-4"></i>
 <h3 class="text-xl font-semibold font-display text-ivs-text-primary mb-2" data-lang-key="edu_card_ccsp_title">Chứng chỉ Nghiệp vụ Sư phạm</h3>
 <p class="text-sm text-ivs-text-secondary flex-grow" data-lang-key="edu_card_ccsp_desc">Liên kết đào tạo chứng chỉ NVSP Tiếng Anh Tiểu học, Mầm non, Quản lý Giáo dục cho cá nhân và tổ chức.</p>
 <span class="mt-4 font-semibold text-ivs-pink hover:text-white transition-colors" data-lang-key="btn_view_details">Xem chi tiết →</span>
 </a>
- Card 5: Hợp tác Quốc tế (international-partnership.html) 
+
 <a class="spotlight-card-edu p-6 rounded-xl flex flex-col items-start border-l-4 border-ivs-purple" data-aos="fade-up" data-aos-delay="500" href="Pages/international-partnership.html">
 <i class="fas fa-handshake-angle text-4xl text-ivs-purple mb-4"></i>
 <h3 class="text-xl font-semibold font-display text-ivs-text-primary mb-2" data-lang-key="edu_card_htqt_title">Hợp tác &amp; Liên kết Quốc tế</h3>
 <p class="text-sm text-ivs-text-secondary flex-grow" data-lang-key="edu_card_htqt_desc">Phát triển chương trình đào tạo với các đối tác Mỹ, Châu Âu (IIVSA), trại hè quốc tế, học bổng du học.</p>
 <span class="mt-4 font-semibold text-ivs-purple hover:text-white transition-colors" data-lang-key="btn_view_details">Xem chi tiết →</span>
 </a>
- Card 6: Thiết bị Công nghệ Giáo dục (tech_devices.html) 
+
 <a class="spotlight-card-edu p-6 rounded-xl flex flex-col items-start border-l-4 border-ivs-cyan" data-aos="fade-up" data-aos-delay="600" href="Pages/tech_devices.html">
 <i class="fas fa-desktop text-4xl text-ivs-cyan mb-4"></i>
 <h3 class="text-xl font-semibold font-display text-ivs-text-primary mb-2" data-lang-key="edu_card_devices_title">Thiết bị &amp; Giải pháp Cơ sở</h3>
 <p class="text-sm text-ivs-text-secondary flex-grow" data-lang-key="edu_card_devices_desc">Cung cấp máy tính, thiết bị văn phòng, giải pháp hạ tầng CNTT và lắp đặt phòng học thông minh (Apple, Nội địa Nhật).</p>
 <span class="mt-4 font-semibold text-ivs-cyan hover:text-white transition-colors" data-lang-key="btn_view_details">Xem chi tiết →</span>
 </a>
- Card 7: Liên kết Trung tâm Ngoại ngữ (lkttnn.html) 
+
 <a class="spotlight-card-edu p-6 rounded-xl flex flex-col items-start border-l-4 border-ivs-orange" data-aos="fade-up" data-aos-delay="700" href="Pages/lkttnn.html">
 <i class="fas fa-chalkboard-user text-4xl text-ivs-orange mb-4"></i>
 <h3 class="text-xl font-semibold font-display text-ivs-text-primary mb-2" data-lang-key="edu_card_lkttnn_title">Liên kết &amp; Phát triển Trung tâm</h3>
 <p class="text-sm text-ivs-text-secondary flex-grow" data-lang-key="edu_card_lkttnn_desc">Hợp tác toàn diện: Nhượng quyền thương hiệu IVS, chuyển giao giáo trình, cung ứng GVNN và tư vấn vận hành.</p>
 <span class="mt-4 font-semibold text-ivs-orange hover:text-white transition-colors" data-lang-key="btn_view_details">Xem chi tiết →</span>
 </a>
- Card 8: EOV Spotlight (Dự án Giáo dục lớn) 
+
 <a class="spotlight-card-edu p-6 rounded-xl flex flex-col items-start border-2 border-dashed border-ivs-red/50 hover:border-ivs-red bg-ivs-neutral-800" data-aos="fade-up" data-aos-delay="800" href="#eov-spotlight-section">
 <i class="fas fa-trophy text-4xl text-ivs-red mb-4"></i>
 <h3 class="text-xl font-bold font-display text-ivs-text-primary mb-2" data-lang-key="edu_card_eov_title">Dự án Giáo dục Trọng điểm: EOV</h3>
@@ -754,7 +749,7 @@
 </div>
 </div>
 </section>
- SECTION 8: SOLUTIONS FOR PARTNERS (Tabs: GIẢI PHÁP TỔNG HỢP THEO ĐỐI TÁC) 
+
 <section class="py-20 lg:py-24 bg-ivs-bg border-b border-ivs-border" id="solutions">
 <div class="container mx-auto px-6 lg:px-8">
 <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
@@ -774,16 +769,13 @@
                         }
                     }
                 ">
- Tabs Menu 
 <div class="mb-8 border-b border-ivs-border flex justify-center custom-scrollbar overflow-x-auto pb-2">
 <button :class="{ 'text-ivs-blue border-ivs-blue': tab === 'schools', 'text-ivs-text-secondary border-transparent': tab !== 'schools' }" @click="tab = 'schools'" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_schools">Trường học</button>
 <button :class="{ 'text-ivs-blue border-ivs-blue': tab === 'centers', 'text-ivs-text-secondary border-transparent': tab !== 'centers' }" @click="tab = 'centers'" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_centers">Trung tâm</button>
 <button :class="{ 'text-ivs-blue border-ivs-blue': tab === 'corporate', 'text-ivs-text-secondary border-transparent': tab !== 'corporate' }" @click="tab = 'corporate'" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_corporate">Doanh nghiệp</button>
 <button :class="{ 'text-ivs-blue border-ivs-blue': tab === 'individual', 'text-ivs-text-secondary border-transparent': tab !== 'individual' }" @click="tab = 'individual'" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_individual">Cá nhân</button>
 </div>
- Tabs Content 
 <div class="bg-ivs-card p-8 rounded-xl border border-ivs-border shadow-xl">
- Schools Content 
 <div x-show="tab === 'schools'" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:enter-start="opacity-0 transform translate-y-4">
 <h3 class="text-3xl font-bold font-display text-ivs-blue mb-6" data-lang-key="solutions_schools_title">Giải pháp cho Trường học (K-12)</h3>
 <ul class="space-y-4 text-ivs-text-secondary list-disc list-inside text-lg">
@@ -799,7 +791,6 @@
 <a class="bg-ivs-cyan text-white px-5 py-2 rounded-lg hover:bg-cyan-600 transition-colors font-semibold" data-lang-key="solutions_tech_cta" href="Pages/tech_devices.html"><i class="fas fa-desktop mr-2"></i> Thiết bị Công nghệ</a>
 </div>
 </div>
- Centers Content 
 <div style="display: none;" x-show="tab === 'centers'" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:enter-start="opacity-0 transform translate-y-4">
 <h3 class="text-3xl font-bold font-display text-ivs-blue mb-6" data-lang-key="solutions_centers_title">Giải pháp cho Trung tâm Ngoại ngữ &amp; Kỹ năng</h3>
 <ul class="space-y-4 text-ivs-text-secondary list-disc list-inside text-lg">
@@ -815,7 +806,6 @@
 <a class="bg-ivs-cyan text-white px-5 py-2 rounded-lg hover:bg-cyan-600 transition-colors font-semibold" data-lang-key="solutions_app_cta" href="apps/ivsapps.html"><i class="fas fa-mobile-alt mr-2"></i> Nền tảng App</a>
 </div>
 </div>
- Corporate Content 
 <div style="display: none;" x-show="tab === 'corporate'" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:enter-start="opacity-0 transform translate-y-4">
 <h3 class="3xl font-bold font-display text-ivs-blue mb-6" data-lang-key="solutions_corporate_title">Giải pháp cho Doanh nghiệp (IVS Consulting)</h3>
 <ul class="space-y-4 text-ivs-text-secondary list-disc list-inside text-lg">
@@ -831,7 +821,6 @@
 <a class="bg-ivs-cyan text-white px-5 py-2 rounded-lg hover:bg-cyan-600 transition-colors font-semibold" data-lang-key="solutions_corporate_cta3" href="Pages/ivscelestech-tcnoithat.html"><i class="fas fa-couch mr-2"></i> Nội thất &amp; Văn phòng</a>
 </div>
 </div>
- Individual Content 
 <div style="display: none;" x-show="tab === 'individual'" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:enter-start="opacity-0 transform translate-y-4">
 <h3 class="text-3xl font-bold font-display text-ivs-blue mb-6" data-lang-key="solutions_individual_title">Giải pháp cho Cá nhân</h3>
 <ul class="space-y-4 text-ivs-text-secondary list-disc list-inside text-lg">
@@ -850,12 +839,10 @@
 </div>
 </div>
 </section>
- SECTION 9: CEO MESSAGE &amp; VIDEO 
 <section class="py-16 md:py-24 bg-ivs-neutral-800 text-center border-b border-ivs-border">
 <div class="container mx-auto px-6">
 <h2 class="text-3xl lg:text-5xl font-bold font-display text-secondary mb-12" data-aos="fade-up" data-lang-key="ceo_section_title">Thông điệp &amp; Hồ sơ Năng lực từ IVS JSC</h2>
 <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
- CEO Message Card 
 <div class="p-6 md:p-10 bg-ivs-card rounded-2xl border border-ivs-border shadow-2xl flex flex-col justify-between" data-aos="fade-right">
 <div class="flex-grow">
 <h3 class="text-xl md:text-2xl font-semibold text-ivs-blue mb-6" data-lang-key="ceo_message_title">Thông điệp từ CEO IVS JSC, Ông Nguyễn Minh Triết:</h3>
@@ -871,11 +858,9 @@
 <a class="inline-block mt-3 text-sm font-semibold text-ivs-blue hover:text-white transition-colors" data-lang-key="btn_view_bio" href="https://minhtrietonline.netlify.app/">Xem chi tiết tiểu sử →</a>
 </div>
 </div>
- Company Video &amp; Profile Card 
 <div class="p-6 md:p-10 bg-ivs-card rounded-2xl border border-ivs-border shadow-2xl flex flex-col" data-aos="fade-left">
 <div class="flex-grow">
 <div class="video-wrapper bg-black shadow-2xl w-full mb-6">
- 16:9 Aspect Ratio Container 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.75rem;">
 <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="https://www.youtube.com/embed/WSFdBq4vprY?si=X1lIscHb06k3eJK_" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" title="YouTube video player: IVS JSC Company Profile"></iframe>
 </div>
@@ -892,7 +877,6 @@
 </div>
 </div>
 </section>
- SECTION 10: FINAL CALL TO ACTION 
 <section class="bg-ivs-blue/5 border-t border-ivs-border">
 <div class="container mx-auto px-6 py-20 lg:py-24 text-center" data-aos="fade-up">
 <h2 class="text-3xl lg:text-5xl font-bold font-display text-white mb-4" data-lang-key="cta_final_title">Sẵn sàng để Bứt phá cùng Công nghệ?</h2>
@@ -908,11 +892,8 @@
 </div>
 </section>
 </main>
- FOOTER PLACEHOLDER 
 <footer class="bg-ivs-bg border-t border-ivs-border py-12" data-loading-text="Đang tải chân trang..." id="footer-placeholder">
- This content will be dynamically loaded by loadComponents.js 
 </footer>
- Custom Message Modal (Giữ nguyên) 
 <div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[1000] hidden" id="messageModal">
 <div class="bg-ivs-card p-8 rounded-lg shadow-xl max-w-sm w-full text-center border border-ivs-border">
 <h3 class="text-xl font-bold text-ivs-blue mb-4" id="modalTitle"></h3>
@@ -923,15 +904,11 @@
 </div>
 </div>
 <div id="fab-container-placeholder"></div>
- START OF SCRIPT LOADING BLOCK (Đã tối ưu) 
- Thư viện bên ngoài (Alpine, AOS) 
 <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
- Custom IVS Scripts: Utils và Language PHẢI LOAD TRƯỚC LoadComponents/FabController 
 <script src="js/utils.js"></script>
 <script src="js/language.js"></script>
 <script src="ai/js/fabController.js"></script>
- Khối script khởi tạo trang 
 <script>
         // Start of initialization logic (Non-component scripts)
         // Lưu ý: Các chức năng liên quan đến Menu Mobile (initMobileMenu) đã được loại bỏ 
