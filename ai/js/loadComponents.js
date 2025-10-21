@@ -177,6 +177,8 @@ async function loadCommonComponents() {
     }
 
     // Tải fab-assistant trực tiếp vào #fab-container bên trong fab-container.html (nếu có)
+    // DISABLED: Only scroll-to-top button remains, fab-assistant is disabled
+    /*
     try {
         const fabContainer = document.getElementById('fab-container');
         if (fabContainer) {
@@ -195,6 +197,7 @@ async function loadCommonComponents() {
     } catch (err) {
         window.componentLog('Failed to load fab-assistant: ' + (err && err.message ? err.message : err), 'warn');
     }
+    */
 
     // Ensure the AI assistant window markup is present somewhere in the document.
     // Some pages don't include an explicit placeholder for the assistant; create one
