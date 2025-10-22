@@ -26,94 +26,108 @@
     <link rel="preload" href="../js/utils.js" as="script">
     <link rel="preload" href="../js/loadComponents.js" as="script">
     <link rel="preload" href="../js/language.js" as="script">
-    <link rel="preload" href="../images/pages/ivs-kindergarten.jpg" as="image">    <style>
+    <link rel="preload" href="../images/pages/ivs-kindergarten.jpg" as="image">
+    
+    <style>
+        /* Các biến CSS tùy chỉnh của IVS */
+        :root {
+            --ivs-primary: #004080;
+            --ivs-secondary: #ffc107;
+            --ivs-neutral-800: #1f2937;
+            --ivs-neutral-700: #374151;
+            --ivs-neutral-600: #4B5563;
+            --ivs-text-gray-300: #D1D5DB;
+            --ivs-text-white: #ffffff;
+            --ivs-primary-dark: #003366;
+            --ivs-orange-500: #F97316;
+            --ivs-orange-600: #EA580C;
+            --ivs-orange-700: #C2410C;
+            --ivs-header-orange: #F97316;
+            --header-height: 4rem;      /* 64px */
+            --header-height-mobile: 3.5rem;  /* 56px */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* bg-gray-50 */
+            color: #374151; /* text-neutral-700 */
+        }
+        
+        html.dark body {
+            background-color: #030712; /* dark:bg-gray-900 */
+            color: #d1d5db; /* dark:text-gray-300 */
+        }
 
-        :root {
-            --ivs-primary: #004080;
-            --ivs-secondary: #ffc107;
-            --ivs-neutral-800: #1f2937;
-            --ivs-neutral-700: #374151;
-            --ivs-neutral-600: #4B5563;
-            --ivs-text-gray-300: #D1D5DB;
-            --ivs-text-white: #ffffff;
-            --ivs-primary-dark: #003366;
-            --ivs-orange-500: #F97316;
-            --ivs-orange-600: #EA580C;
-            --ivs-orange-700: #C2410C;
-            --ivs-header-orange: #F97316;
-            --header-height: 4rem;      /* 64px */
-            --header-height-mobile: 3.5rem;  /* 56px */
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb; /* bg-gray-50 */
-            color: #374151; /* text-neutral-700 */
-        }
-        html.dark body {
-            background-color: #030712; /* dark:bg-gray-900 */
-            color: #d1d5db; /* dark:text-gray-300 */
-        }
+        /* Các lớp tiện ích Tailwind tùy chỉnh */
+        .bg-primary { background-color: var(--ivs-primary); }
+        .text-primary { color: var(--ivs-primary); }
+        .hover\:bg-primary-dark:hover { background-color: var(--ivs-primary-dark); }
+        .text-secondary { color: var(--ivs-secondary); }
+        .bg-header-orange { background-color: var(--ivs-header-orange); }
+        .hover\:bg-orange-700:hover { background-color: var(--ivs-orange-700); }
+        .text-purple-accent { color: #8B5CF6; }
+        .text-warning { color: #F59E0B; }
 
-        /* Các lớp tiện ích Tailwind tùy chỉnh */
-        .bg-primary { background-color: var(--ivs-primary); }
-        .text-primary { color: var(--ivs-primary); }
-        .hover\:bg-primary-dark:hover { background-color: var(--ivs-primary-dark); }
-        .text-secondary { color: var(--ivs-secondary); }
-        .bg-header-orange { background-color: var(--ivs-header-orange); }
-        .hover\:bg-orange-700:hover { background-color: var(--ivs-orange-700); }
-        .text-purple-accent { color: #8B5CF6; }
-        .text-warning { color: #F59E0B; }
+        /* Điều chỉnh Header Placeholder */
+        #header-placeholder {
+            height: var(--header-height);
+            transition: transform 0.3s ease;
+        }
+        @media (max-width: 768px) {
+            #header-placeholder {
+                height: var(--header-height-mobile);
+            }
+        }
+        
+        /* Đảm bảo nội dung không bị ẩn dưới header cố định */
+        main {
+            position: relative;
+            z-index: 1;
+            padding-top: var(--header-height); /* Đẩy nội dung xuống dưới header */
+        }
+        @media (max-width: 768px) {
+            main {
+                padding-top: var(--header-height-mobile);
+            }
+        }
+        
+        /* Ẩn header khi cuộn xuống */
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+        /* Hiển thị header khi cuộn lên */
+        .header-visible {
+            transform: translateY(0);
+        }
 
-        /* Điều chỉnh Header Placeholder */
-        #header-placeholder {
-            height: var(--header-height);
-            transition: transform 0.3s ease;
-        }
-        @media (max-width: 768px) {
-            #header-placeholder {
-                height: var(--header-height-mobile);
-            }
-        }
-        /* Đảm bảo nội dung không bị ẩn dưới header cố định */
-        main {
-            position: relative;
-            z-index: 1;
-            padding-top: var(--header-height); /* Đẩy nội dung xuống dưới header */
-        }
-        @media (max-width: 768px) {
-            main {
-                padding-top: var(--header-height-mobile);
-            }
-        }
-        /* Ẩn header khi cuộn xuống */
-        .header-hidden {
-            transform: translateY(-100%);
-        }
-        /* Hiển thị header khi cuộn lên */
-        .header-visible {
-            transform: translateY(0);
-        }
-
-        /* Các kiểu cho phần Hero Section - tối ưu responsive và hiệu ứng */
-        .hero-section-banner {
-            /* Loại bỏ background image ::before để giảm phức tạp, dùng background-image inline */
-            /* background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%); */
-            min-height: 60vh;
-            position: relative;
-            overflow: hidden;
-            background-image: url('/images/pages/daotao-nn-kn.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.7) 0%, rgba(139, 92, 246, 0.7) 50%, rgba(59, 130, 246, 0.7) 100%);
-        }
-        
-        /* .hero-section-banner::before { ... } - REMOVED FOR SIMPLICITY/MOBILE */
-        .hero-section-banner .hero-content {
-            position: relative;
+        /* Các kiểu cho phần Hero Section - tối ưu responsive và hiệu ứng */
+        .hero-section-banner {
+            min-height: 60vh;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../images/pages/daotao-nn-kn.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.7) 0%, rgba(139, 92, 246, 0.7) 50%, rgba(59, 130, 246, 0.7) 100%);
+        }
+        
+        .hero-section-banner .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 6rem 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
             z-index: 2;
             padding: 6rem 2rem 4rem;
             display: flex;
@@ -123,115 +137,125 @@
             text-align: center;
             max-width: 1200px;
             margin: 0 auto;
-        }
-        .hero-text-shadow {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Stronger shadow */
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
+        }
+        
+        .hero-text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
 
-        /* Responsive cho hero */
-        @media (max-width: 768px) {
-            .hero-section-banner {
-                min-height: 40vh; /* Reduced height for mobile */
-            }
-            .hero-section-banner .hero-content {
-                padding: 4rem 1rem 3rem;
-            }
-            .hero-section-banner h1 {
-                font-size: 2.25rem !important; /* Smaller on mobile */
-                line-height: 1.2;
-            }
-            .hero-section-banner p {
-                font-size: 1rem !important; /* Smaller subtitle on mobile */
-                line-height: 1.4;
-            }
-        }
+        /* Responsive cho hero */
+        @media (max-width: 768px) {
+            .hero-section-banner {
+                min-height: 40vh;
+            }
+            .hero-section-banner .hero-content {
+                padding: 4rem 1rem 3rem;
+            }
+            .hero-section-banner h1 {
+                font-size: 2.25rem !important;
+                line-height: 1.2;
+            }
+            .hero-section-banner p {
+                font-size: 1rem !important;
+                line-height: 1.4;
+            }
+        }
 
-        @media (max-width: 480px) {
-            .hero-section-banner h1 {
-                font-size: 2rem !important;
-            }
-            .hero-section-banner p {
-                font-size: 0.875rem !important;
-            }
-        }
+        @media (max-width: 480px) {
+            .hero-section-banner h1 {
+                font-size: 2rem !important;
+            }
+            .hero-section-banner p {
+                font-size: 0.875rem !important;
+            }
+        }
 
-        /* Các kiểu cho feature card mầm non - tối ưu responsive */
-        .feature-card-mamnon {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        .feature-card-mamnon:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .feature-card-mamnon:active {
-            transform: translateY(-2px);
-        }
-        .feature-card-mamnon i {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .feature-card-mamnon:hover i {
-            transform: rotate(10deg) scale(1.1);
-            color: var(--ivs-primary);
-        }
+        /* Các kiểu cho feature card mầm non - tối ưu responsive */
+        .feature-card-mamnon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .feature-card-mamnon:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .feature-card-mamnon:active {
+            transform: translateY(-2px);
+        }
+        
+        .feature-card-mamnon i {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card-mamnon:hover i {
+            transform: rotate(10deg) scale(1.1);
+            color: var(--ivs-primary);
+        }
 
-        /* Responsive cho feature cards */
-        @media (max-width: 640px) {
-            .feature-card-mamnon {
-                padding: 1rem;
-            }
-            .feature-card-mamnon .inline-flex {
-                width: 16;
-                height: 16;
-            }
-        }
+        /* Responsive cho feature cards */
+        @media (max-width: 640px) {
+            .feature-card-mamnon {
+                padding: 1rem;
+            }
+            .feature-card-mamnon .inline-flex {
+                width: 16px;
+                height: 16px;
+            }
+        }
 
-        /* Các kiểu cho benefit icon - tối ưu animation */
-        .benefit-icon {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .benefit-card:hover .benefit-icon {
-            transform: scale(1.15) rotate(5deg);
-        }
-        .benefit-icon::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: inherit;
-            background: linear-gradient(135deg, var(--ivs-primary), var(--ivs-secondary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-        .benefit-card:hover .benefit-icon::before {
-            opacity: 0.1;
-        }
+        /* Các kiểu cho benefit icon - tối ưu animation */
+        .benefit-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+        
+        .benefit-icon::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, var(--ivs-primary), var(--ivs-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .benefit-card:hover .benefit-icon::before {
+            opacity: 0.1;
+        }
 
-        /* Kiểu cho video nhúng - tối ưu responsive */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: box-shadow 0.3s ease;
-        }
-        .video-container:hover {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: inherit;
-        }
+        /* Kiểu cho video nhúng - tối ưu responsive */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .video-container:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: inherit;
+        }
 
         /* Tối ưu cho mobile */
         @media (max-width: 768px) {
@@ -352,33 +376,37 @@
         .step-list {
             counter-reset: step-counter;
         }
+        
         .step-item {
             counter-increment: step-counter;
         }
+        
         .step-number {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 2.5rem; /* 40px */
+            width: 2.5rem;
             height: 2.5rem;
-            border-radius: 9999px; /* full rounded */
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 700; /* font-bold */
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            font-weight: 700;
             color: white;
             background-color: var(--ivs-primary);
         }
+        
         /* Mobile: Ensure the core principles are visually separated */
         @media (max-width: 639px) {
             .mobile-stack-3 {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
+        
         /* Mobile: Adjust padding for main sections */
         .mobile-main-padding {
             padding-left: 1rem;
             padding-right: 1rem;
         }
-    </style>
+    </style>
 </head>
 <body class="bg-gray-50 text-neutral-700 font-sans antialiased" id="page-lkmamnon">
 
