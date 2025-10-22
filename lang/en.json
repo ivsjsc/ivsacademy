@@ -491,6 +491,7 @@
   "delivery_date": "Delivery date",
   "delivery_options": "Delivery options",
   "demo_request": "Demo request",
+  "demo_app_key_features": "Key Features",
   "department": "Department",
   "departments": "Departments",
   "departure": "Departure",
@@ -4864,5 +4865,6 @@
   "story_version": "Translated: Phiên bản",
   "story_view": "Translated: Xem chi tiết",
   "terms_section5_content_en": "Translated: <li>The service is provided on an \"as is\" and \"as available\" basis.</li><li>IVS JSC does not guarantee that the service will be uninterrupted, error-free, or completely secure.</li><li>To the fullest extent permitted by law, IVS JSC shall not be liable for any indirect, incidental, or consequential damages arising from your use or inability to use the service.</li>",
-  "about_title": "About IVS JSC"
+  "about_title": "About IVS JSC",
+  "view_details": "View Details"
 }
