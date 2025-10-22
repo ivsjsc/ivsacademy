@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title data-lang-key="lkthcsthpt_page_title">IVS Academy - Liên kết Giáo dục THCS & THPT | IVS JSC</title>
     <meta name="description" content="IVS Academy cung cấp giải pháp liên kết toàn diện cho trường THCS & THPT: Tiếng Anh, Kỹ năng sống, STEAM, EdTech, Đào tạo giáo viên, Chương trình quốc tế." data-lang-key="lkthcsthpt_meta_description">
     <meta property="og:title" content="IVS Academy - Đồng Hành Cùng Giáo Dục Trung Học" data-lang-key="lkthcsthpt_og_title">
@@ -10,70 +17,46 @@
     <meta property="og:image" content="/images/banners/thcs-thpt-banner.png">
     <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/education.html#thcsthpt">
     <meta property="og:type" content="website">
-
-    <link rel="icon" href="/images/logo/logo.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    
-    <!-- External CSS/Fonts (Root-Relative Paths) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Third-Party Libraries -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8g3gGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <!-- Project Specific CSS (Root-Relative Paths) -->
-    <link rel="stylesheet" href="/css/styles.css">
-    
-    <style>
-        /* Định nghĩa biến CSS tùy chỉnh của IVS (Đã cập nhật để tương thích Dark Mode) */
+    <meta content="IVS JSC" name="author"/>
+    <link href="../images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="../css/tailwind.css" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer="" src="../js/language-init.js"></script>
+<style>
         :root {
-            --ivs-primary: #004080;
-            --ivs-secondary: #ffc107;
-            --ivs-header-orange: #F97316;
-            --header-height: 4rem;      /* 64px */
-            --header-height-mobile: 3.5rem;  /* 56px */
+            --header-height: 4rem;
         }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            color: #374151;
+            background-color: #1a1a1a;
+            color: #f4f4f5;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            overflow-x: hidden;
+            padding-top: var(--header-height);
+            visibility: visible;
+            opacity: 1;
         }
-        html.dark body {
-            background-color: #030712;
-            color: #d1d5db;
-        }
-
-        /* Các lớp tiện ích Tailwind tùy chỉnh */
-        .bg-primary { background-color: var(--ivs-primary); }
-        .text-primary { color: var(--ivs-primary); }
-        .hover\:bg-primary-dark:hover { background-color: var(--ivs-primary-dark); }
-        .text-secondary { color: var(--ivs-secondary); }
-        .bg-header-orange { background-color: var(--ivs-header-orange); }
-        .hover\:bg-orange-700:hover { background-color: var(--ivs-orange-700); }
-
-        /* Điều chỉnh Header Placeholder */
+        
         #header-placeholder {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: var(--header-height);
-            transition: transform 0.3s ease;
+            z-index: 1000;
+            background-color: #0A0A0A;
+            border-bottom: 1px solid #1f2937;
         }
-        @media (max-width: 768px) {
-            #header-placeholder {
-                height: var(--header-height-mobile);
-            }
+
+        section {
+            scroll-margin-top: calc(var(--header-height) + 1rem);
+            padding: 4rem 1rem;
         }
-        /* Đảm bảo nội dung không bị ẩn dưới header cố định */
-        main {
-            position: relative;
-            z-index: 1;
-            padding-top: var(--header-height); /* Đẩy nội dung xuống dưới header */
-        }
-        @media (max-width: 768px) {
-            main {
-                padding-top: var(--header-height-mobile);
+
+        @media (min-width: 768px) {
+            section {
+                padding: 6rem 2rem;
             }
         }
         .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
@@ -83,28 +66,13 @@
         .gallery-item:hover img { transform: scale(1.05); }
         .benefit-item i { transition: color 0.3s ease; }
         .benefit-item:hover i { color: var(--ivs-secondary); }
-    </style>
-
-    <!-- Khởi tạo Theme ngay lập tức để tránh FOUC (Flash of Unstyled Content) -->
-    <script>
-        window.initializeTheme = function() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme) {
-                document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-            } else {
-                document.documentElement.classList.toggle('dark', prefersDark);
-            }
-        };
-        window.initializeTheme();
-    </script>
+</style>
 </head>
-<body class="bg-gray-100 text-neutral-700 font-sans antialiased" id="page-lkthcsthpt">
-
-    <header id="header-placeholder" data-loading-text="Đang tải Header..."></header>
-
-    <main>
-        <section class="relative text-white py-20 md:py-28 text-center overflow-hidden hero-section-banner" style="background-image: url(/images/logo/webbannermo.jpg); background-size: cover; background-position: center; background-repeat: no-repeat;" data-aos="fade-in" data-aos-duration="1000"></section>
+<body class="bg-ivs-bg text-ivs-text-primary font-inter" id="page-lkthcsthpt">
+<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+<nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
+<main>
+        <section class="relative text-white py-20 md:py-28 text-center overflow-hidden hero-section-banner" style="background-image: url(../images/logo/webbannermo.jpg); background-size: cover; background-position: center; background-repeat: no-repeat;" data-aos="fade-in" data-aos-duration="1000">
              <div class="absolute inset-0 bg-black opacity-20 z-10"></div>
              <div class="container mx-auto px-4 relative z-20 hero-content">
              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 hero-text-shadow" data-lang-key="lkthcs_heading" data-aos="fade-down" data-aos-delay="200">Liên kết Giáo dục THCS & THPT</h1>
@@ -123,7 +91,6 @@
             </div>
         </section>
         
-        <!-- VIDEO SECTION (Giữ nguyên cấu trúc video) -->
         <section class="py-12 md:py-16 bg-gray-50 dark:bg-gray-800" aria-labelledby="communication-heading">
             <div class="container mx-auto px-4">
             <h2 id="communication-heading" class="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-10" data-lang-key="communication_title">Chương trình "Hãy Nói" - Phát triển Kỹ năng Giao tiếp</h2>
@@ -138,7 +105,6 @@
             </div>
         </section>
         
-        <!-- FEATURE CARDS SECTION (CÁC LĨNH VỰC HỢP TÁC) -->
         <section class="py-12 md:py-16 bg-gradient-to-b from-white dark:from-gray-900 to-gray-50 dark:to-gray-800" aria-labelledby="collaboration-heading">
             <div class="container mx-auto px-4">
                 <h2 id="collaboration-heading" class="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-12 md:mb-16" data-lang-key="lkthcs_collab_title" data-aos="fade-up">Các Lĩnh vực Hợp tác Nổi bật</h2>
@@ -214,7 +180,6 @@
             </div>
         </section>
 
-        <!-- WHY PARTNER SECTION -->
         <section class="py-12 md:py-16 bg-white dark:bg-gray-900">
             <div class="container mx-auto px-4 max-w-4xl" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-10" data-lang-key="lkthcs_why_partner_title">Vì sao nên Hợp tác cùng IVS Academy?</h2>
@@ -258,41 +223,40 @@
             </div>
         </section>
         
-        <!-- GALLERY SECTION -->
         <section class="py-12 md:py-16 bg-gray-100 dark:bg-gray-800" aria-labelledby="gallery-heading">
             <div class="container mx-auto px-4">
                 <h2 id="gallery-heading" class="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white mb-10 md:mb-12" data-lang-key="lkthcs_gallery_title" data-aos="fade-up">Hình ảnh Hoạt động & Kết nối THCS & THPT</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-700 transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="/images/pages/albums/2024thcslp.jpg" alt="Hoạt động tại THCS Long Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="../images/pages/albums/2024thcslp.jpg" alt="Hoạt động tại THCS Long Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 dark:text-gray-300 mt-2 p-2" data-lang-key="lkthcs_gallery_caption_1">THCS Long Phước - Long Thành</p>
                     </div>
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-700 transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="/images/pages/albums/2024thcspt.jpg" alt="Hoạt động tại THCS Phước Thái" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="../images/pages/albums/2024thcspt.jpg" alt="Hoạt động tại THCS Phước Thái" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 dark:text-gray-300 mt-2 p-2" data-lang-key="lkthcs_gallery_caption_2">THCS Phước Thái - Long Thành</p>
                     </div>
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-700 transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="/images/pages/albums/2024thcsth.jpg" alt="Hoạt động tại THCS Tân Hiệp" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="../images/pages/albums/2024thcsth.jpg" alt="Hoạt động tại THCS Tân Hiệp" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 dark:text-gray-300 mt-2 p-2" data-lang-key="lkthcs_gallery_caption_3">THCS Tân Hiệp - Long Thành</p>
                     </div>
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-700 transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="/images/pages/albums/2024thptlp.jpg" alt="Hoạt động tại THPT Long Phước 2024" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="../images/pages/albums/2024thptlp.jpg" alt="Hoạt động tại THPT Long Phước 2024" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 dark:text-gray-300 mt-2 p-2" data-lang-key="lkthcs_gallery_caption_4">THPT Long Phước - 2024</p>
                     </div>
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-700 transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="/images/pages/albums/2025thptlp.png" alt="Hoạt động tại THPT Long Phước 2025" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="../images/pages/albums/2025thptlp.png" alt="Hoạt động tại THPT Long Phước 2025" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 dark:text-gray-300 mt-2 p-2" data-lang-key="lkthcs_gallery_caption_5">THPT Long Phước - 2025</p>
                     </div>
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-700 transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="350">
-                        <img src="/images/pages/albums/20242011thcspt.jpg" alt="Hoạt động 20/11 tại THCS Phước Thái 2024" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="../images/pages/albums/20242011thcspt.jpg" alt="Hoạt động 20/11 tại THCS Phước Thái 2024" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 dark:text-gray-300 mt-2 p-2" data-lang-key="lkthcs_gallery_caption_6">THCS Phước Thái - 20/11/2024</p>
                     </div>
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-700 transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="/images/pages/albums/2025thcspt.png" alt="Hoạt động tại THCS Phước Thái 2025" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="../images/pages/albums/2025thcspt.png" alt="Hoạt động tại THCS Phước Thái 2025" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 dark:text-gray-300 mt-2 p-2" data-lang-key="lkthcs_gallery_caption_7">THCS Phước Thái - 2025</p>
                     </div>
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-700 transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="450">
-                        <img src="/images/pages/albums/2025thptlt.png" alt="Hoạt động tại THPT Long Thành 2025" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="../images/pages/albums/2025thptlt.png" alt="Hoạt động tại THPT Long Thành 2025" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 dark:text-gray-300 mt-2 p-2" data-lang-key="lkthcs_gallery_caption_8">THPT Long Thành - 2025</p>
                     </div>
                 </div>
@@ -302,11 +266,10 @@
             </div>
         </section>
 
-        <!-- CTA SECTION -->
         <section class="py-16 md:py-20 bg-gradient-to-r from-blue-50 dark:from-gray-900 to-purple-50 dark:to-gray-800">
             <div class="container mx-auto px-4 text-center max-w-3xl" data-aos="zoom-in-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-white mb-6" data-lang-key="lkthcs_cta_title">Sẵn sàng Nâng tầm Giáo dục Trung học?</h2>
-                <p class="text-gray-700 dark:text-gray-300 mb-10 text-lg leading-relaxed" data-lang-key="lkthcs_cta_desc"></p>
+                <p class="text-gray-700 dark:text-gray-300 mb-10 text-lg leading-relaxed" data-lang-key="lkthcs_cta_desc">
                     Hãy để IVS Academy trở thành đối tác chiến lược, cùng nhà trường mang đến những chương trình giáo dục chất lượng và trang bị hành trang vững chắc cho học sinh THCS & THPT trên con đường hội nhập và phát triển tương lai.
                 </p>
                 <a href="/contact.html?interest=school_partnership_secondary" class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-4 px-10 rounded-lg transition duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 text-lg">
@@ -315,47 +278,39 @@
             </div>
         </section>
 
-    </main>
-    <footer id="footer-placeholder" data-loading-text="Đang tải Footer..."></footer>
-    <div id="fab-container-placeholder"></div>
-
-    <!-- 1. CÁC CONTROLLER VÀ UTILS PHẢI ĐƯỢC TẢI TRƯỚC LOAD COMPONENTS -->
-    <!-- Giả định các file này định nghĩa các đối tượng: window.componentLog, window.debounce, window.IVSFabController, window.changeLanguage -->
-    <script src="/js/utils.js" defer></script>
-    <script src="/js/language.js" defer></script>
-    <script src="/js/fabController.js" defer></script>
-
-    <!-- 2. TẢI HÀM LOADER CHÍNH (loadComponentsAndInitialize) -->
-    <!-- File này định nghĩa IVSHeaderController, IVSFooterController và loadCommonComponents -->
-    
-
-    <!-- 3. PAGE INIT SCRIPT (ĐÃ GỘP HẾT CÁC LOGIC VÀO loadComponents.js) -->
-    <script>
-        // Khối script này chỉ còn lại logic khởi tạo Page
-        document.addEventListener('DOMContentLoaded', async () => {
-             // Logic khởi tạo AOS và Language System đã được chuyển vào loadComponents.js
-             // hoặc được gọi tự động (Language System).
-             
-             // Sau khi loadComponents.js chạy, nó sẽ tự động gọi AOS.init()
-             // và window.onPageComponentsLoadedCallback (nếu định nghĩa).
-             
-             // Bạn có thể định nghĩa callback riêng cho trang này nếu cần:
-             // window.onPageComponentsLoadedCallback = function() {
-             //     console.log('Page specific initialization started.');
-             // };
-             
-             // Đảm bảo loadComponentsAndInitialize chạy (nếu chưa chạy tự động qua DOMContentLoaded)
-             // Mặc dù đã có listener tự động trong componentLoader.js, ta giữ lại cấu trúc này
-             // để đảm bảo tính nhất quán của flow logic.
-             if (typeof window.loadComponentsAndInitialize === 'function' && !window.__IVS_components_loadingStarted) {
-                 await window.loadComponentsAndInitialize();
-             }
+</main>
+<footer class="bg-ivs-bg border-t border-ivs-border py-12" data-loading-text="Đang tải chân trang..." id="footer-placeholder">
+</footer>
+<div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[1000] hidden" id="messageModal">
+<div class="bg-ivs-card p-8 rounded-lg shadow-xl max-w-sm w-full text-center border border-ivs-border">
+<h3 class="text-xl font-bold text-ivs-blue mb-4" id="modalTitle"></h3>
+<p class="text-ivs-text-secondary mb-6" id="modalMessage"></p>
+<button class="bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold py-2 px-4 rounded-md transition-colors" data-lang-key="modal_close" id="modalCloseButton">
+                Đóng
+            </button>
+</div>
+</div>
+<div id="fab-container-placeholder"></div>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/language.js"></script>
+<script src="../ai/js/fabController.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 800,
+                        once: true,
+                        offset: 50,
+                        easing: 'ease-out-quad',
+                        disable: 'mobile'
+                    });
+                }
+            }, 300); 
         });
-    </script>
-
-<script src="/js/loadComponents.js" defer></script>
+</script>
+<script defer="" src="../ai/js/loadComponents.js"></script>
 </body>
 </html>
-
-
-
