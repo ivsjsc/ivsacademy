@@ -21,6 +21,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/css/styles.css" as="style">
+    <link rel="preload" href="/js/utils.js" as="script">
+    <link rel="preload" href="/js/loadComponents.js" as="script">
+    <link rel="preload" href="/js/language.js" as="script">
+    <link rel="preload" href="/images/pages/ivs-kindergarten.jpg" as="image">
+    
     <style>
         /* Các biến CSS tùy chỉnh của IVS */
         :root {
@@ -89,48 +96,135 @@
             transform: translateY(0);
         }
 
-        /* Các kiểu cho phần Hero Section */
+        /* Các kiểu cho phần Hero Section - tối ưu responsive và hiệu ứng */
         .hero-section-banner {
-            background-size: cover;
-            background-position: center;
-            min-height: 50vh; /* Điều chỉnh chiều cao cho trang nội dung */
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
+            min-height: 60vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/images/pages/daotao-nn-kn.jpg') center/cover no-repeat;
+            opacity: 0.1;
+            mix-blend-mode: luminosity;
+            z-index: 1;
         }
         .hero-section-banner .hero-content {
-            position: relative; z-index: 2;
-            padding: 5rem 1rem;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background-color: rgba(0, 0, 0, 0.25);
-            width: 100%;
-            height: 100%;
+            position: relative;
+            z-index: 2;
+            padding: 6rem 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        html.dark .hero-section-banner .hero-content {
-            background-color: rgba(0, 0, 0, 0.5);
+        .hero-text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
-        @media (max-width: 767px) {
-            .hero-section-banner { min-height: 40vh; }
-            .hero-section-banner .hero-content { padding: 3rem 1rem; }
+
+        /* Responsive cho hero */
+        @media (max-width: 768px) {
+            .hero-section-banner {
+                min-height: 50vh;
+            }
+            .hero-section-banner .hero-content {
+                padding: 4rem 1rem 3rem;
+            }
+            .hero-section-banner h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.2;
+            }
+            .hero-section-banner p {
+                font-size: 1.25rem !important;
+                line-height: 1.4;
+            }
         }
-        .hero-text-shadow { text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
 
-        /* Các kiểu cho feature card mầm non */
-        .feature-card-mamnon { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .feature-card-mamnon:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-        .feature-card-mamnon i { transition: transform 0.3s ease-out; }
-        .feature-card-mamnon:hover i { transform: rotate(10deg) scale(1.1); }
+        @media (max-width: 480px) {
+            .hero-section-banner h1 {
+                font-size: 2rem !important;
+            }
+            .hero-section-banner p {
+                font-size: 1.1rem !important;
+            }
+        }
 
-        /* Các kiểu cho benefit icon */
-        .benefit-icon { transition: transform 0.3s ease; }
-        .benefit-card:hover .benefit-icon { transform: scale(1.15); }
+        /* Các kiểu cho feature card mầm non - tối ưu responsive */
+        .feature-card-mamnon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .feature-card-mamnon:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .feature-card-mamnon:active {
+            transform: translateY(-2px);
+        }
+        .feature-card-mamnon i {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .feature-card-mamnon:hover i {
+            transform: rotate(10deg) scale(1.1);
+            color: var(--ivs-primary);
+        }
 
-        /* Kiểu cho video nhúng */
+        /* Responsive cho feature cards */
+        @media (max-width: 640px) {
+            .feature-card-mamnon {
+                padding: 1rem;
+            }
+            .feature-card-mamnon .inline-flex {
+                width: 16;
+                height: 16;
+            }
+        }
+
+        /* Các kiểu cho benefit icon - tối ưu animation */
+        .benefit-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+        .benefit-icon::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, var(--ivs-primary), var(--ivs-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        .benefit-card:hover .benefit-icon::before {
+            opacity: 0.1;
+        }
+
+        /* Kiểu cho video nhúng - tối ưu responsive */
         .video-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        .video-container:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
         .video-container iframe {
             position: absolute;
@@ -139,6 +233,41 @@
             width: 100%;
             height: 100%;
             border: 0;
+            border-radius: inherit;
+        }
+
+        /* Tối ưu cho mobile */
+        @media (max-width: 768px) {
+            .video-container {
+                border-radius: 0.5rem;
+            }
+            .hero-section-banner .hero-content {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Cải thiện accessibility */
+        .feature-card-mamnon:focus,
+        .benefit-icon:focus {
+            outline: 2px solid var(--ivs-primary);
+            outline-offset: 2px;
+        }
+
+        /* Loading states */
+        .loading-shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Smooth transitions cho theme switching */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         /* Kiểu cho placeholder khi tải component */
@@ -179,18 +308,62 @@
         .group:hover .group-hover\:visible {
             visibility: visible !important;
         }
+
+        /* Accessibility improvements */
+        .focus-visible:focus-visible {
+            outline: 2px solid var(--ivs-primary);
+            outline-offset: 2px;
+        }
+
+        /* Skip link for screen readers */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--ivs-primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+        }
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .feature-card-mamnon {
+                border: 2px solid var(--ivs-primary);
+            }
+            .benefit-card {
+                border: 1px solid var(--ivs-neutral-600);
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-neutral-700 font-sans antialiased" id="page-lkmamnon">
 
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link" data-lang-key="skip_to_main_content">Bỏ qua đến nội dung chính</a>
+
     <header id="header-placeholder"></header>
 
-    <main>
+    <main id="main-content">
         <section class="banner-kindergarten relative text-white py-24 md:py-32 text-center overflow-hidden" aria-labelledby="page-title-mamnon" data-aos="fade-in" data-aos-duration="1000">
-             <div class="absolute inset-0 bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-600 opacity-90 z-0"></div>
-             <img src="/images/pages/daotao-nn-kn.jpg" alt="Hình ảnh nền IVS Kindergarten" data-lang-key="lkmamnon_hero_banner_alt" class="absolute inset-0 w-full h-full object-cover opacity-25 z-0 mix-blend-luminosity" loading="lazy" onerror="this.style.display='none'">
+            <div class="hero-section-banner absolute inset-0"></div>
+            <img src="/images/pages/daotao-nn-kn.jpg" alt="Hình ảnh nền IVS Kindergarten" data-lang-key="lkmamnon_hero_banner_alt" class="absolute inset-0 w-full h-full object-cover opacity-25 z-0 mix-blend-luminosity" loading="lazy" onerror="this.style.display='none'">
 
-            <div class="relative z-10 container mx-auto px-4">
+            <div class="hero-content">
                 <h1 id="page-title-mamnon" class="text-4xl md:text-6xl font-bold mb-4 hero-text-shadow" data-lang-key="lkmamnon_hero_title" data-aos="fade-down" data-aos-delay="200">Liên kết Giáo dục Mầm non</h1>
                 <p class="text-xl md:text-2xl opacity-95 hero-text-shadow max-w-3xl mx-auto" data-lang-key="lkmamnon_hero_subtitle" data-aos="fade-up" data-aos-delay="400">IVS Academy - Xây Dựng Nền Tảng Vững Chắc Cho Tương Lai Con Trẻ</p>
             </div>
@@ -211,7 +384,8 @@
                             </p>
                         </div>
                         <div class="lg:w-2/5 order-1 lg:order-2 mt-6 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
-                            <img src="/images/pages/ivs-kindergarten.jpg" alt="Trẻ em vui học tại IVS Kindergarten" data-lang-key="lkmamnon_intro_img_alt" class="rounded-xl shadow-lg w-full h-auto object-cover" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x350/eee/ccc?text=IVS+Kindergarten';">
+                            <img src="/images/pages/ivs-kindergarten.jpg" alt="Trẻ em vui học tại IVS Kindergarten" data-lang-key="lkmamnon_intro_img_alt" class="rounded-xl shadow-lg w-full h-auto object-cover hover:shadow-xl transition-shadow duration-300" loading="lazy" decoding="async"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/400x350/e91e63/white?text=IVS+Kindergarten'; this.classList.add('loading-shimmer');">
                         </div>
                     </div>
                 </div>
@@ -344,7 +518,7 @@
                         <p class="text-center text-gray-600 mb-8 md:mb-10" data-lang-key="consultation_form_subtitle">Vui lòng điền thông tin vào form bên dưới, IVS JSC sẽ liên hệ lại với bạn sớm nhất có thể.</p>
         
                         <div class="google-form-embed-container">
-                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdxenvWDGAoWbNRlgaswG8MJJzSw-L9saG33oxTRIeT3d98EQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Đang tải…</iframe>
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdxenvWDGAoWbNRlgaswG8MJJzSw-L9saG33oxTRIeT3d98EQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Đang tải...</iframe>
                         </div>
         
                         <div class="mt-10 text-center text-sm text-gray-500 border-t pt-6">
@@ -366,9 +540,18 @@
     <footer id="footer-placeholder"></footer>
     <div id="fab-container-placeholder"></div>
 
-    <script src=".../js/script.js" defer></script>
-    <script src=".../js/language.js" defer></script>
-    <script src=".../js/fabController.js" defer></script>
+    <!-- Critical script for theme initialization -->
+    <script>
+        // Initialize theme immediately to prevent flash
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/language.js" defer></script>
+    <script src="js/fabController.js" defer></script>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
@@ -424,7 +607,14 @@
 
 
 
-<script src="/js/loadComponents.js" defer></script>
+    <!-- Scripts - load in correct order -->
+    <script src="/js/utils.js" defer></script>
+    <script src="/js/loadComponents.js" defer></script>
+    <script src="/js/language.js" defer></script>
+    <script src="/js/fab-container.js" defer></script>
+    <script src="/js/dark-mode-toggle.js" defer></script>
+    <script src="/js/animations.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 </body>
 </html>
 
