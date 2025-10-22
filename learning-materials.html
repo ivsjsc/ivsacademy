@@ -56,10 +56,11 @@
 
     <!-- AOS (Chỉ giữ lại CDN cho AOS, bỏ các file CSS local không rõ nội dung) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer="" src="js/language-init.js"></script>
 </head>
 <body class="bg-ivs-bg text-ivs-text-primary learning-hub">
     <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
+    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
     <main id="main-content">
         <!-- Banner Section -->
         <section class="relative py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
@@ -195,6 +196,38 @@
                 <!-- Kết thúc Khu vực nhúng -->
             </div>
         </section>
+                <!-- Course Categories / Ứng dụng tích hợp (Đã thay đổi) -->
+        <section class="py-16 bg-ivs-card">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">
+                        <i class="fas fa-cubes text-ivs-orange mr-2"></i> Ứng Dụng Kiểm Tra Đánh Giá Chất Lượng Học Viên (IVS Testing Placement)
+                    </h2>
+                    <p class="text-xl text-ivs-text-secondary max-w-2xl mx-auto">
+                        Trải nghiệm IVS Testing Placement (https://studio-5019414691-d0584.web.app/) được nhúng trực tiếp vào website.
+                    </p>
+                </div>
+                
+                <!-- Khu vực nhúng Ứng dụng Curriculum bằng Iframe -->
+                <div class="w-full bg-ivs-bg rounded-xl shadow-2xl overflow-hidden border-4 border-ivs-orange" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-4 bg-gray-900 text-white font-semibold flex justify-between items-center">
+                        <span>IVS Testing Placement - Kiểm tra trình độ 4 kỹ năng cực chất được thiết kế bởi IVS Celestech</span>
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    
+                    <!-- Khung Iframe chính: w-full đảm bảo Responsive -->
+                    <iframe
+                        src="https://studio-5019414691-d0584.web.app/"
+                        title="IVS Testing Placement - The Best AI"
+                        class="w-full"
+                        style="height: 1000px; min-height: 85vh; border: none; background-color: #f0f0f0; overflow: auto;"
+                        loading="lazy"
+                        allow="fullscreen"
+                    ></iframe>
+                </div>
+                <!-- Kết thúc Khu vực nhúng -->
+            </div>
+        </section>
 
         <!-- Interactive Features (Giữ nguyên) -->
         <section class="py-16 bg-ivs-bg">
@@ -274,11 +307,13 @@
     </main>
     
     <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+    <footer class="bg-ivs-bg border-t border-ivs-border py-12" data-loading-text="Đang tải chân trang..." id="footer-placeholder"></footer>
     <div id="fab-container-placeholder"></div>
 
     <!-- Scripts -->
+    <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer="" src="/ai/js/loadComponents.js"></script>
     <!-- Giữ lại các khối script logic chính của trang, bỏ các script local không cần thiết cho demo này -->
     <script>
         // Initialize AOS
