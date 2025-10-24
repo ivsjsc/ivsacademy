@@ -59,75 +59,47 @@
             <div class="absolute top-1/2 left-1/4 w-12 h-12 bg-green-500 rounded-full opacity-20 animate-bounce" style="animation-delay: 2s"></div>
         </section>
 
-        <!-- Learning Dashboard (Giữ nguyên) -->
+        <!-- Learning Resources Overview -->
         <section class="py-16 bg-ivs-bg">
             <div class="container mx-auto px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                    <!-- Progress Overview -->
-                    <div class="lg:col-span-2">
-                        <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border" data-aos="fade-up">
-                            <h2 class="text-2xl font-bold mb-6 flex items-center">
-                                <i class="fas fa-chart-line text-ivs-blue mr-3"></i>
-                                Tiến Độ Học Tập
-                            </h2>
-                            <!-- Progress Stats -->
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold text-ivs-green">24</div>
-                                    <div class="text-sm text-ivs-text-secondary">Khóa học hoàn thành</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold text-ivs-blue">156</div>
-                                    <div class="text-sm text-ivs-text-secondary">Bài học đã học</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold text-ivs-purple">89%</div>
-                                    <div class="text-sm text-ivs-text-secondary">Điểm trung bình</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold text-ivs-orange">12</div>
-                                    <div class="text-sm text-ivs-text-secondary">Giờ học/tháng</div>
-                                </div>
-                            </div>
-                            <!-- Progress Bar -->
-                            <div class="space-y-3">
-                                <div class="flex justify-between text-sm">
-                                    <span>Tiếng Anh Giao Tiếp</span>
-                                    <span>75%</span>
-                                </div>
-                                <div class="w-full bg-ivs-border rounded-full h-2">
-                                    <div class="bg-ivs-blue h-2 rounded-full" style="width: 75%"></div>
-                                </div>
-                            </div>
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">
+                        <i class="fas fa-book-open text-ivs-orange mr-2"></i>Tài Nguyên Học Tập IVS
+                    </h2>
+                    <p class="text-xl text-ivs-text-secondary max-w-2xl mx-auto">
+                        Khám phá các nền tảng và công cụ học tập tiên tiến của IVS
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <!-- Learning Platforms -->
+                    <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border text-center" data-aos="fade-up">
+                        <div class="w-16 h-16 bg-ivs-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-globe text-2xl text-white"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-2">Nền Tảng Học Tập</h3>
+                        <p class="text-ivs-text-secondary mb-4">Các ứng dụng tương tác và nền tảng học tập trực tuyến</p>
+                        <span class="text-sm text-ivs-blue font-semibold">3 Ứng dụng khả dụng</span>
                     </div>
-                    <!-- Quick Actions -->
-                    <div class="space-y-6">
-                        <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border" data-aos="fade-up" data-aos-delay="100">
-                            <h3 class="text-xl font-bold mb-4">Hành Động Nhanh</h3>
-                            <div class="space-y-3">
-                                <button class="w-full bg-ivs-blue hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors flex items-center">
-                                    <i class="fas fa-play mr-3"></i>Tiếp tục học
-                                </button>
-                                <button class="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 px-4 rounded-lg transition-colors flex items-center">
-                                    <i class="fas fa-book mr-3"></i>Bài tập mới
-                                </button>
-                                <button class="w-full bg-ivs-green hover:bg-green-600 text-white py-3 px-4 rounded-lg transition-colors flex items-center">
-                                    <i class="fas fa-trophy mr-3"></i>Thành tích
-                                </button>
-                            </div>
+
+                    <!-- Learning Tools -->
+                    <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 bg-ivs-green rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-tools text-2xl text-white"></i>
                         </div>
-                        <!-- Study Streak -->
-                        <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border" data-aos="fade-up" data-aos-delay="200">
-                            <h3 class="text-xl font-bold mb-4 flex items-center">
-                                <i class="fas fa-fire text-orange-500 mr-2"></i>
-                                Chuỗi Học Tập
-                            </h3>
-                            <div class="text-center">
-                                <div class="text-4xl font-bold text-ivs-orange mb-2">7</div>
-                                <div class="text-sm text-ivs-text-secondary">Ngày liên tiếp</div>
-                            </div>
+                        <h3 class="text-xl font-bold mb-2">Công Cụ Hỗ Trợ</h3>
+                        <p class="text-ivs-text-secondary mb-4">Các công cụ và tài nguyên bổ trợ cho việc học</p>
+                        <span class="text-sm text-ivs-green font-semibold">Đang phát triển</span>
+                    </div>
+
+                    <!-- Learning Community -->
+                    <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 bg-ivs-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-2xl text-white"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-2">Cộng Đồng Học Tập</h3>
+                        <p class="text-ivs-text-secondary mb-4">Kết nối với cộng đồng học viên và giáo viên</p>
+                        <span class="text-sm text-ivs-purple font-semibold">Sắp ra mắt</span>
                     </div>
                 </div>
             </div>
@@ -163,79 +135,156 @@
                     ></iframe>
                 </div>
                 <!-- Kết thúc Khu vực nhúng -->
+                
+                <!-- Khu vực nhúng Ứng dụng IVS Testing & Placement -->
+                <div class="w-full bg-ivs-bg rounded-xl shadow-2xl overflow-hidden border-4 border-ivs-blue mt-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-4 bg-gray-900 text-white font-semibold flex justify-between items-center">
+                        <span>IVS Testing & Placement - Đánh Giá & Xếp Lớp</span>
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    
+                    <!-- Khung Iframe chính: w-full đảm bảo Responsive -->
+                    <iframe
+                        src="https://test.ivsacademy.edu.vn"
+                        title="IVS Testing & Placement Application Embedded"
+                        class="w-full"
+                        style="height: 800px; min-height: 70vh; border: none; background-color: #f0f0f0; overflow: auto;"
+                        loading="lazy"
+                        allow="fullscreen"
+                    ></iframe>
+                </div>
+                <!-- Kết thúc Khu vực nhúng IVS Testing & Placement -->
+                
+                <!-- Khu vực nhúng Ứng dụng IVS Kinderlink -->
+                <div class="w-full bg-ivs-bg rounded-xl shadow-2xl overflow-hidden border-4 border-ivs-green mt-8" data-aos="fade-up" data-aos-delay="400">
+                    <div class="p-4 bg-gray-900 text-white font-semibold flex justify-between items-center">
+                        <span>IVS Kinderlink - Nền Tảng Học Tập Mầm Non</span>
+                        <i class="fas fa-child"></i>
+                    </div>
+                    
+                    <!-- Khung Iframe chính: w-full đảm bảo Responsive -->
+                    <iframe
+                        src="https://ivs-learning-platform.web.app/homepage"
+                        title="IVS Kinderlink Application Embedded"
+                        class="w-full"
+                        style="height: 800px; min-height: 70vh; border: none; background-color: #f0f0f0; overflow: auto;"
+                        loading="lazy"
+                        allow="fullscreen"
+                    ></iframe>
+                </div>
+                <!-- Kết thúc Khu vực nhúng IVS Kinderlink -->
             </div>
         </section>
 
-        <!-- Interactive Features (Giữ nguyên) -->
-        <section class="py-16 bg-ivs-bg">
+        <!-- Learning Resources & Links -->
+        <section class="py-16 bg-ivs-card">
             <div class="container mx-auto px-6 lg:px-8">
                 <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Tính Năng Tương Tác</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">Tài Nguyên & Liên Kết Hữu Ích</h2>
                     <p class="text-xl text-ivs-text-secondary max-w-2xl mx-auto">
-                        Học tập không chỉ là xem video, mà cần là tương tác và thực hành
+                        Khám phá các tài nguyên học tập và công cụ bổ trợ từ IVS và đối tác
                     </p>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <!-- Interactive Quiz -->
-                    <div class="bg-ivs-card rounded-xl p-8 border border-ivs-border" data-aos="fade-up">
+                    <!-- Learning Resources -->
+                    <div class="bg-ivs-bg rounded-xl p-8 border border-ivs-border" data-aos="fade-up">
                         <div class="flex items-center mb-6">
                             <div class="w-12 h-12 bg-ivs-blue rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-brain text-white"></i>
+                                <i class="fas fa-graduation-cap text-white"></i>
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold">Bài Kiểm Tra Tương Tác</h3>
-                                <p class="text-ivs-text-secondary">Kiểm tra kiến thức với câu hỏi đa dạng</p>
+                                <h3 class="text-2xl font-bold">Tài Nguyên Học Tập</h3>
+                                <p class="text-ivs-text-secondary">Các tài liệu và công cụ hỗ trợ việc học</p>
                             </div>
                         </div>
                         <div class="space-y-4">
-                            <div class="bg-ivs-bg p-4 rounded-lg">
-                                <p class="font-semibold mb-2">Câu hỏi: What is the capital of France?</p>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input class="mr-3" name="quiz1" type="radio"/>
-                                        <span>London</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input class="mr-3" name="quiz1" type="radio"/>
-                                        <span>Paris</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input class="mr-3" name="quiz1" type="radio"/>
-                                        <span>Berlin</span>
-                                    </label>
+                            <a href="Pages/tailieu.html" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-blue transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-book text-ivs-blue mr-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold">Tài Liệu Học Tập</h4>
+                                        <p class="text-sm text-ivs-text-secondary">Giáo trình, bài giảng và tài liệu tham khảo</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <button class="bg-ivs-blue hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors">
-                                Nộp Bài &amp; Xem Kết Quả
-                            </button>
+                            </a>
+                            <a href="Pages/games/ivsgames.html" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-green transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-gamepad text-ivs-green mr-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold">IVS Games</h4>
+                                        <p class="text-sm text-ivs-text-secondary">Trò chơi giáo dục tương tác</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="Pages/apps/ivsapps.html" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-purple transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-rocket text-ivs-purple mr-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold">IVS Apps</h4>
+                                        <p class="text-sm text-ivs-text-secondary">Bộ ứng dụng tiện ích và giáo dục</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <!-- Multimedia Content -->
-                    <div class="bg-ivs-card rounded-xl p-8 border border-ivs-border" data-aos="fade-up" data-aos-delay="100">
+
+                    <!-- External Resources -->
+                    <div class="bg-ivs-bg rounded-xl p-8 border border-ivs-border" data-aos="fade-up" data-aos-delay="100">
                         <div class="flex items-center mb-6">
                             <div class="w-12 h-12 bg-ivs-green rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-play-circle text-white"></i>
+                                <i class="fas fa-external-link-alt text-white"></i>
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold">Nội Dung Đa Phương Tiện</h3>
-                                <p class="text-ivs-text-secondary">Video, audio, và tài liệu tương tác</p>
+                                <h3 class="text-2xl font-bold">Tài Nguyên Bên Ngoài</h3>
+                                <p class="text-ivs-text-secondary">Các công cụ và nền tảng học tập uy tín</p>
                             </div>
                         </div>
                         <div class="space-y-4">
-                            <div class="aspect-video bg-ivs-bg rounded-lg flex items-center justify-center">
-                                <div class="text-center">
-                                    <i class="fas fa-play-circle text-4xl text-ivs-blue mb-2"></i>
-                                    <p class="text-ivs-text-secondary">Video bài giảng: Present Perfect Tense</p>
+                            <a href="https://www.duolingo.com/" target="_blank" rel="noopener noreferrer" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-orange transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-language text-ivs-orange mr-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold">Duolingo</h4>
+                                        <p class="text-sm text-ivs-text-secondary">Ứng dụng học ngôn ngữ tương tác</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button class="flex-1 bg-ivs-green hover:bg-green-600 text-white py-3 rounded-lg transition-colors">
-                                    <i class="fas fa-play mr-2"></i>Phát Video
-                                </button>
-                                <button class="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-lg transition-colors">
-                                    <i class="fas fa-download mr-2"></i>Tải Tài Liệu
-                                </button>
-                            </div>
+                            </a>
+                            <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-blue transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-university text-ivs-blue mr-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold">Khan Academy</h4>
+                                        <p class="text-sm text-ivs-text-secondary">Nền tảng học tập miễn phí toàn diện</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-purple transition-colors">
+                                <div class="flex items-center">
+                                    <i class="fas fa-graduation-cap text-ivs-purple mr-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold">Coursera</h4>
+                                        <p class="text-sm text-ivs-text-secondary">Khóa học trực tuyến từ các trường đại học</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-12" data-aos="fade-up">
+                    <div class="bg-gradient-to-r from-ivs-blue to-ivs-purple rounded-xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-4">Bắt Đầu Hành Trình Học Tập</h3>
+                        <p class="text-lg mb-6 opacity-90">
+                            Khám phá các ứng dụng và tài nguyên học tập của IVS ngay hôm nay
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#applications" class="bg-white text-ivs-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-play mr-2"></i>Khám Phá Ứng Dụng
+                            </a>
+                            <a href="contact.html" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-ivs-blue transition-colors">
+                                <i class="fas fa-envelope mr-2"></i>Liên Hệ Tư Vấn
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -252,5 +301,6 @@
             once: true
         });
     </script>
+    <script defer src="/ai/js/loadComponents.js"></script>
 </body>
 </html>

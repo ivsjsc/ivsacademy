@@ -1,538 +1,106 @@
-html
-<html class="dark scroll-smooth" lang="vi">
-<head><link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Analytics Dashboard - IVS Academy</title>
-<meta content="Dashboard phân tích và  thồng kàª hiá»‡u suạt của IVS Academy - theo dõi tưÆ¡ng tác ngưá»i dà¹ng và  hiá»‡u quả học tập IVS JSC cung cạp dỉch vụ giáo dục chạt lưá»£ng cao, " name="description"/>
-<meta content="noindex, nofollow" name="robots"/>
- Favicon 
-<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="css/tailwind.css" rel="stylesheet"/>
-<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
-<link href="css/responsive-enhancements.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<link href="css/animations.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<meta content="Analytics Dashboard - IVS Academy" property="og:title"/><meta content="Dashboard phân tích và  thồng kàª hiá»‡u suạt của IVS Academy - theo dõi tưÆ¡ng tác ngưá»i dà¹ng và  hiá»‡u quả học tập IVS JSC cung cạp dỉch vụ giáo dục chạt lưá»£ng cao, " property="og:description"/><meta content="website" property="og:type"/></head>
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="vi">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title data-lang-key="analytics_page_title">Analytics Dashboard - IVS JSC</title>
+    <meta content="Dashboard phân tích và thống kê hiệu suất của IVS Academy - theo dõi tương tác người dùng và hiệu quả học tập." name="description" data-lang-key="analytics_meta_description"/>
+    <meta content="noindex, nofollow" name="robots"/>
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="/css/tailwind.css" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <script defer src="/js/language-init.js"></script>
+<style>
+        body { background-color: #1a1a1a; color: #f4f4f5; font-family: 'Be Vietnam Pro', sans-serif; }
+        .ivs-card { background: #111111; border: 1px solid #27272A; }
+        .ivs-border { border-color: #27272A; }
+        .ivs-text-secondary { color: #a1a1aa; }
+        .ivs-blue { color: #60a5fa; }
+        .bg-ivs-blue { background-color: #4c5ef7; }
+        .ivs-green { color: #4ade80; }
+        .ivs-purple { color: #a78bfa; }
+        .ivs-orange { color: #fb923c; }
+</style>
+</head>
 <body class="bg-ivs-bg text-ivs-text-primary min-h-screen">
-<header class="bg-ivs-card border-b border-ivs-border px-6 py-4">
-<div class="flex items-center justify-between">
-<div class="flex items-center space-x-4">
-<img alt="IVS Logo" class="h-8 w-auto" decoding="async" src="images/logo.png"/>
-<div>
-<h1 class="text-xl font-bold">Analytics Dashboard</h1>
-<p class="text-sm text-ivs-text-secondary">Thồng kàª và  phân tích hiá»‡u suạt</p>
-</div>
-</div>
-<div class="flex items-center space-x-4">
-<select class="px-3 py-2 bg-ivs-bg border border-ivs-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ivs-blue" id="timeRange">
-<option value="1d">24 giờ qua</option>
-<option selected="" value="7d">7 ngà y qua</option>
-<option value="30d">30 ngà y qua</option>
-<option value="90d">90 ngà y qua</option>
-</select>
-<button class="px-4 py-2 bg-ivs-blue hover:bg-blue-600 text-white rounded-lg transition-colors" id="exportBtn">
-<i class="fas fa-download mr-2"></i>Export
-                </button>
-</div>
-</div>
+
+<header class="bg-ivs-card border-b ivs-border px-6 py-4">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <img alt="IVS Logo" class="h-8 w-auto" src="/images/logo/logo.svg"/>
+            <div>
+                <h1 class="text-xl font-bold text-white" data-lang-key="analytics_dashboard_title">Analytics Dashboard</h1>
+                <p class="text-sm ivs-text-secondary" data-lang-key="analytics_dashboard_subtitle">Thống kê và phân tích hiệu suất</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <select class="px-3 py-2 bg-ivs-bg ivs-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ivs-blue text-white" id="timeRange">
+                <option value="1d" data-lang-key="analytics_time_range_24h">24 giờ qua</option>
+                <option value="7d" selected data-lang-key="analytics_time_range_7d">7 ngày qua</option>
+                <option value="30d" data-lang-key="analytics_time_range_30d">30 ngày qua</option>
+                <option value="90d" data-lang-key="analytics_time_range_90d">90 ngày qua</option>
+            </select>
+            <button class="px-4 py-2 bg-ivs-blue hover:bg-blue-700 text-white rounded-lg transition-colors" id="exportBtn">
+                <i class="fas fa-download mr-2"></i><span data-lang-key="analytics_export_button">Export</span>
+            </button>
+        </div>
+    </div>
 </header>
-<main class="p-6 space-y-6" id="main-content">
- Key Metrics 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<div class="flex items-center justify-between">
-<div>
-<p class="text-ivs-text-secondary text-sm">Tỗng Lưá»£t Truy Cập</p>
-<p class="text-2xl font-bold text-ivs-blue" id="totalPageViews">0</p>
-<p class="text-xs text-green-500 mt-1">
-<i class="fas fa-arrow-up mr-1"></i>+12% so với tuần trưá»›c
-                        </p>
-</div>
-<i class="fas fa-eye text-3xl text-ivs-blue opacity-50"></i>
-</div>
-</div>
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<div class="flex items-center justify-between">
-<div>
-<p class="text-ivs-text-secondary text-sm">TưÆ¡ng Tác Khóa Học</p>
-<p class="text-2xl font-bold text-ivs-green" id="courseInteractions">0</p>
-<p class="text-xs text-green-500 mt-1">
-<i class="fas fa-arrow-up mr-1"></i>+8% so với tuần trưá»›c
-                        </p>
-</div>
-<i class="fas fa-book text-3xl text-ivs-green opacity-50"></i>
-</div>
-</div>
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<div class="flex items-center justify-between">
-<div>
-<p class="text-ivs-text-secondary text-sm">Tải Tà i Liá»‡u</p>
-<p class="text-2xl font-bold text-ivs-purple" id="materialDownloads">0</p>
-<p class="text-xs text-red-500 mt-1">
-<i class="fas fa-arrow-down mr-1"></i>-3% so với tuần trưá»›c
-                        </p>
-</div>
-<i class="fas fa-download text-3xl text-ivs-purple opacity-50"></i>
-</div>
-</div>
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<div class="flex items-center justify-between">
-<div>
-<p class="text-ivs-text-secondary text-sm">Hoà n Thà nh Quiz</p>
-<p class="text-2xl font-bold text-ivs-orange" id="quizCompletions">0</p>
-<p class="text-xs text-green-500 mt-1">
-<i class="fas fa-arrow-up mr-1"></i>+15% so với tuần trưá»›c
-                        </p>
-</div>
-<i class="fas fa-brain text-3xl text-ivs-orange opacity-50"></i>
-</div>
-</div>
-</div>
- Charts Row 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
- Traffic Overview 
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Tỗng Quan Lưu Lưá»£ng</h3>
-<canvas height="200" id="trafficChart" width="400"></canvas>
-</div>
- User Engagement 
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">TưÆ¡ng Tác Ngưá»i Dà¹ng</h3>
-<canvas height="200" id="engagementChart" width="400"></canvas>
-</div>
-</div>
- Learning Analytics 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
- Top Courses 
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Khóa Học Phỗ Biáº¿n Nhạt</h3>
-<div class="space-y-3" id="topCourses">
- Courses will be populated by JavaScript 
-</div>
-</div>
- Learning Progress 
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Tiáº¿n Đá»™ Học Tập</h3>
-<canvas height="200" id="progressChart" width="400"></canvas>
-</div>
-</div>
- Performance Metrics 
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Chị Sồ Hiá»‡u Suạt Website</h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="text-center">
-<div class="text-2xl font-bold text-ivs-blue" id="avgLoadTime">0ms</div>
-<p class="text-sm text-ivs-text-secondary">Thá»i Gian Tải Trung Bà¬nh</p>
-</div>
-<div class="text-center">
-<div class="text-2xl font-bold text-ivs-green" id="bounceRate">0%</div>
-<p class="text-sm text-ivs-text-secondary">Tá»· Lá»‡ Thoát Trang</p>
-</div>
-<div class="text-center">
-<div class="text-2xl font-bold text-ivs-purple" id="sessionDuration">0m</div>
-<p class="text-sm text-ivs-text-secondary">Thá»i Gian Truy Cập Trung Bà¬nh</p>
-</div>
-</div>
-</div>
- Recent Events 
-<div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
-<h3 class="text-lg font-bold mb-4">Sự Kiá»‡n Gần Đây</h3>
-<div class="space-y-3 max-h-96 overflow-y-auto" id="recentEvents">
- Events will be populated by JavaScript 
-</div>
-</div>
+
+<main class="p-6 space-y-6">
+    <!-- Key Metrics -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="ivs-card p-6 rounded-xl">
+            <p class="ivs-text-secondary text-sm" data-lang-key="analytics_total_page_views">Tổng Lượt Truy Cập</p>
+            <p class="text-2xl font-bold ivs-blue" id="totalPageViews">0</p>
+        </div>
+        <div class="ivs-card p-6 rounded-xl">
+            <p class="ivs-text-secondary text-sm" data-lang-key="analytics_course_interactions">Tương Tác Khóa Học</p>
+            <p class="text-2xl font-bold ivs-green" id="courseInteractions">0</p>
+        </div>
+        <div class="ivs-card p-6 rounded-xl">
+            <p class="ivs-text-secondary text-sm" data-lang-key="analytics_material_downloads">Tải Tài Liệu</p>
+            <p class="text-2xl font-bold ivs-purple" id="materialDownloads">0</p>
+        </div>
+        <div class="ivs-card p-6 rounded-xl">
+            <p class="ivs-text-secondary text-sm" data-lang-key="analytics_quiz_completions">Hoàn Thành Quiz</p>
+            <p class="text-2xl font-bold ivs-orange" id="quizCompletions">0</p>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="ivs-card p-6 rounded-xl">
+            <h3 class="text-lg font-bold mb-4" data-lang-key="analytics_traffic_overview">Tổng Quan Lưu Lượng</h3>
+            <canvas id="trafficChart" height="200"></canvas>
+        </div>
+        <div class="ivs-card p-6 rounded-xl">
+            <h3 class="text-lg font-bold mb-4" data-lang-key="analytics_user_engagement">Tương Tác Người Dùng</h3>
+            <canvas id="engagementChart" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Learning Analytics -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="ivs-card p-6 rounded-xl">
+            <h3 class="text-lg font-bold mb-4" data-lang-key="analytics_top_courses">Khóa Học Phổ Biến Nhất</h3>
+            <div class="space-y-3" id="topCourses"></div>
+        </div>
+        <div class="ivs-card p-6 rounded-xl">
+            <h3 class="text-lg font-bold mb-4" data-lang-key="analytics_learning_progress">Tiến Độ Học Tập</h3>
+            <canvas id="progressChart" height="200"></canvas>
+        </div>
+    </div>
+
 </main>
-<script src="js/security-enhancements.js"></script>
-<script src="js/analytics-tracking.js"></script>
-<script src="js/accessibility-enhancements.js"></script>
-<script>
-        // Analytics Dashboard functionality
-        class AnalyticsDashboard {
-            constructor() {
-                this.charts = {};
-                this.currentTimeRange = '7d';
-                this.initialize();
-            }
 
-            initialize() {
-                this.setupEventListeners();
-                this.loadAnalyticsData();
-                this.initializeCharts();
-                this.updateDashboard();
-            }
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/analytics-dashboard.js"></script>
+<script src="/js/language.js"></script>
 
-            setupEventListeners() {
-                // Time range selector
-                document.getElementById('timeRange').addEventListener('change', (e) => {
-                    this.currentTimeRange = e.target.value;
-                    this.updateDashboard();
-                });
-
-                // Export button
-                document.getElementById('exportBtn').addEventListener('click', () => {
-                    this.exportData();
-                });
-            }
-
-            loadAnalyticsData() {
-                if (window.analyticsManager) {
-                    this.analyticsData = window.analyticsManager.getAnalyticsData(this.currentTimeRange);
-                } else {
-                    // Fallback data for demo
-                    this.analyticsData = this.getDemoData();
-                }
-            }
-
-            getDemoData() {
-                return {
-                    summary: {
-                        totalEvents: 1250,
-                        pageViews: 450,
-                        courseInteractions: 89,
-                        materialDownloads: 34,
-                        quizCompletions: 67,
-                        averageSessionDuration: 245,
-                        topCourses: [
-                            { courseId: 'english-basic', interactions: 45 },
-                            { courseId: 'stem-intro', interactions: 38 },
-                            { courseId: 'business-english', interactions: 32 }
-                        ],
-                        topMaterials: [
-                            { materialId: 'grammar-guide', downloads: 28 },
-                            { materialId: 'vocabulary-list', downloads: 22 },
-                            { materialId: 'practice-test', downloads: 18 }
-                        ]
-                    },
-                    events: this.generateDemoEvents()
-                };
-            }
-
-            generateDemoEvents() {
-                const events = [];
-                const eventTypes = ['page_view', 'course_interaction', 'material_download', 'quiz_completion'];
-
-                for (let i = 0; i < 50; i++) {
-                    events.push({
-                        name: eventTypes[Math.floor(Math.random() * eventTypes.length)],
-                        parameters: {
-                            timestamp: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
-                            page_url: '/learning-materials.html',
-                            session_id: 'session_' + Math.random().toString(36).substr(2, 9)
-                        }
-                    });
-                }
-
-                return events;
-            }
-
-            updateDashboard() {
-                this.loadAnalyticsData();
-                this.updateMetrics();
-                this.updateCharts();
-                this.updateTopLists();
-                this.updateRecentEvents();
-            }
-
-            updateMetrics() {
-                const summary = this.analyticsData.summary;
-
-                document.getElementById('totalPageViews').textContent = summary.pageViews.toLocaleString();
-                document.getElementById('courseInteractions').textContent = summary.courseInteractions.toLocaleString();
-                document.getElementById('materialDownloads').textContent = summary.materialDownloads.toLocaleString();
-                document.getElementById('quizCompletions').textContent = summary.quizCompletions.toLocaleString();
-
-                // Performance metrics (demo data)
-                document.getElementById('avgLoadTime').textContent = '1.2s';
-                document.getElementById('bounceRate').textContent = '32%';
-                document.getElementById('sessionDuration').textContent = Math.round(summary.averageSessionDuration / 60) + 'm';
-            }
-
-            initializeCharts() {
-                this.initializeTrafficChart();
-                this.initializeEngagementChart();
-                this.initializeProgressChart();
-            }
-
-            initializeTrafficChart() {
-                const ctx = document.getElementById('trafficChart').getContext('2d');
-                this.charts.traffic = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: this.getLast7Days(),
-                        datasets: [{
-                            label: 'Lưá»£t Truy Cập',
-                            data: this.generateRandomData(7, 50, 150),
-                            borderColor: '#60a5fa',
-                            backgroundColor: 'rgba(96, 165, 250, 0.1)',
-                            tension: 0.4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: {
-                                    color: '#27272a'
-                                },
-                                ticks: {
-                                    color: '#a1a1aa'
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    color: '#27272a'
-                                },
-                                ticks: {
-                                    color: '#a1a1aa'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            initializeEngagementChart() {
-                const ctx = document.getElementById('engagementChart').getContext('2d');
-                this.charts.engagement = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Khóa Học', 'Tà i Liá»‡u', 'Quiz', 'Tà¬m Kiáº¿m'],
-                        datasets: [{
-                            data: [35, 25, 20, 20],
-                            backgroundColor: [
-                                '#60a5fa',
-                                '#4ade80',
-                                '#a78bfa',
-                                '#fb923c'
-                            ]
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    color: '#f4f4f5'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            initializeProgressChart() {
-                const ctx = document.getElementById('progressChart').getContext('2d');
-                this.charts.progress = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
-                        datasets: [{
-                            label: 'Hoà n Thà nh Khóa Học',
-                            data: [12, 19, 15, 25],
-                            backgroundColor: '#4ade80',
-                            borderRadius: 4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: {
-                                    color: '#27272a'
-                                },
-                                ticks: {
-                                    color: '#a1a1aa'
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    color: '#27272a'
-                                },
-                                ticks: {
-                                    color: '#a1a1aa'
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            updateCharts() {
-                // Update chart data based on current time range
-                if (this.charts.traffic) {
-                    this.charts.traffic.data.datasets[0].data = this.generateRandomData(7, 50, 150);
-                    this.charts.traffic.update();
-                }
-            }
-
-            updateTopLists() {
-                const topCoursesContainer = document.getElementById('topCourses');
-                const topCourses = this.analyticsData.summary.topCourses || [];
-
-                topCoursesContainer.innerHTML = topCourses.map((course, index) => `
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <div class="w-8 h-8 bg-ivs-blue rounded-lg flex items-center justify-center text-sm font-bold mr-3">
-                                ${index + 1}
-                            </div>
-                            <div>
-                                <p class="font-semibold">${this.formatCourseName(course.courseId)}</p>
-                                <p class="text-sm text-ivs-text-secondary">${course.interactions} tưÆ¡ng tác</p>
-                            </div>
-                        </div>
-                        <div class="w-20 bg-ivs-border rounded-full h-2">
-                            <div class="bg-ivs-blue h-2 rounded-full" style="width: ${Math.min(course.interactions * 2, 100)}%"></div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            updateRecentEvents() {
-                const eventsContainer = document.getElementById('recentEvents');
-                const recentEvents = this.analyticsData.events.slice(-10).reverse();
-
-                eventsContainer.innerHTML = recentEvents.map(event => `
-                    <div class="flex items-center space-x-4 p-3 bg-ivs-bg rounded-lg">
-                        <div class="w-8 h-8 ${this.getEventIconColor(event.name)} rounded-lg flex items-center justify-center">
-                            <i class="fas ${this.getEventIcon(event.name)} text-white text-sm"></i>
-                        </div>
-                        <div class="flex-1">
-                            <p class="font-semibold">${this.formatEventName(event.name)}</p>
-                            <p class="text-sm text-ivs-text-secondary">
-                                ${new Date(event.parameters.timestamp).toLocaleString('vi-VN')}
-                            </p>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            getLast7Days() {
-                const days = [];
-                for (let i = 6; i >= 0; i--) {
-                    const date = new Date();
-                    date.setDate(date.getDate() - i);
-                    days.push(date.toLocaleDateString('vi-VN', { weekday: 'short' }));
-                }
-                return days;
-            }
-
-            generateRandomData(count, min, max) {
-                return Array.from({ length: count }, () => Math.floor(Math.random() * (max - min + 1)) + min);
-            }
-
-            formatCourseName(courseId) {
-                const names = {
-                    'english-basic': 'Tiáº¿ng Anh CÆ¡ Bản',
-                    'stem-intro': 'Giá»›i Thiá»‡u STEM',
-                    'business-english': 'Tiáº¿ng Anh ThưÆ¡ng Mãi'
-                };
-                return names[courseId] || courseId;
-            }
-
-            formatEventName(eventName) {
-                const names = {
-                    'page_view': 'Xem trang',
-                    'course_interaction': 'TưÆ¡ng tác khóa học',
-                    'material_download': 'Tải tà i liá»‡u',
-                    'quiz_completion': 'Hoà n thà nh quiz'
-                };
-                return names[eventName] || eventName;
-            }
-
-            getEventIcon(eventName) {
-                const icons = {
-                    'page_view': 'fa-eye',
-                    'course_interaction': 'fa-book',
-                    'material_download': 'fa-download',
-                    'quiz_completion': 'fa-brain'
-                };
-                return icons[eventName] || 'fa-circle';
-            }
-
-            getEventIconColor(eventName) {
-                const colors = {
-                    'page_view': 'bg-ivs-blue',
-                    'course_interaction': 'bg-ivs-green',
-                    'material_download': 'bg-ivs-purple',
-                    'quiz_completion': 'bg-ivs-orange'
-                };
-                return colors[eventName] || 'bg-gray-500';
-            }
-
-            exportData() {
-                if (window.analyticsManager) {
-                    const data = window.analyticsManager.exportAnalyticsData('csv');
-                    const blob = new Blob([data], { type: 'text/csv' });
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `ivs-analytics-${new Date().toISOString().split('T')[0]}.csv`;
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                } else {
-                    alert('Analytics data not available for export');
-                }
-            }
-        }
-
-        // Initialize dashboard when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            window.analyticsDashboard = new AnalyticsDashboard();
-        });
-    </script>
- Component Placeholders 
-<div id="header-placeholder"></div>
-<div id="footer-placeholder"></div>
-<div id="fab-container-placeholder"></div>
-<script src="js/utils.js"></script>
-<script defer="" src="js/animations.js"></script>
-<script defer="" src="js/utils.js"></script>
-<script defer="" src="js/language.js"></script>
-<script defer="">
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof window.loadCommonComponents === 'function') {
-            window.loadCommonComponents().then(() => {
-                console.log('Page components loaded successfully');
-                
-                // Initialize AOS if available
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 700,
-                        once: true,
-                        offset: 50,
-                        easing: 'ease-out-cubic'
-                    });
-                }
-                
-                // Call page callback if exists
-                if (typeof window.onPageComponentsLoadedCallback === 'function') {
-                    window.onPageComponentsLoadedCallback();
-                }
-            }).catch(error => {
-                console.error('Failed to load components:', error);
-            });
-        }
-    });
-</script>
-<script defer="" src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
-
-
-
