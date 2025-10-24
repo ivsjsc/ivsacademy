@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth dark" lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//connect.facebook.net" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -16,22 +16,24 @@
 <link href="../css/animations.css" rel="stylesheet"/>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script defer src="../js/language-init.js"></script>
+    <style>
+        /* Shared layout adjustments (from index.html) */
+        :root { --header-height: 4rem; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
+    </style>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 <meta content="website" property="og:type"/></head>
-<body class="bg-neutral-50 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 antialiased font-serif">
-<div id="header-placeholder"></div>
-<main class="flex-grow pt-[var(--header-height)] md:pt-[var(--desktop-header-height)]">
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+<nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
 <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
 <div class="max-w-4xl mx-auto">
-<section class="mb-12" data-aos="fade-up">
-<h1 class="text-4xl md:text-5xl font-extrabold text-center mb-6 text-indigo-700 dark:text-indigo-400">
-<span data-lang-key="tech_devices_hero_title">Thiết Bị Công Nghệ &amp; Giải Pháp Cơ Sở</span>
-</h1>
-<p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8" data-lang-key="tech_devices_hero_subtitle">
-                    IVS JSC cung cấp các giải pháp công nghệ tiên tiến và thiết bị chất lượng cao, đáp ứng mọi nhu cầu của doanh nghiệp và tổ chức giáo dục.
-                </p>
-</section>
 <!-- Featured Products -->
 <section class="mb-12">
 <div class="grid lg:grid-cols-2 gap-8">
@@ -107,14 +109,6 @@
 </div>
 </div>
 </section></div>
-<section class="mb-12" data-aos="fade-up">
-<h1 class="text-4xl md:text-5xl font-extrabold text-center mb-6 text-indigo-700 dark:text-indigo-400">
-<span data-lang-key="tech_devices_hero_title">Thiết Bị Công Nghệ &amp; Giải Pháp Cơ Sở</span>
-</h1>
-<p class="text-lg text-center text-gray-700 dark:text-gray-300 mb-8" data-lang-key="tech_devices_hero_subtitle">
-                    IVS JSC cung cấp các giải pháp công nghệ tiên tiến và thiết bị chất lượng cao, đáp ứng mọi nhu cầu của doanh nghiệp và tổ chức giáo dục.
-                </p>
-</section>
 <section class="grid md:grid-cols-2 gap-8 mb-12">
 <!-- Thiết bị công nghệ -->
 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6" data-aos="fade-right">
@@ -261,7 +255,8 @@
 </div>
 </main>
 <div id="footer-placeholder"></div>
-<div id="fab-container-placeholder"></div>
+<div id="fab-placeholder"></div>
+<div id="assistant-placeholder"></div>
 <!-- Facebook SDK -->
 <div id="fb-root"></div>
 <script async="" crossorigin="anonymous" defer="" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v23.0"></script>
@@ -295,11 +290,6 @@
             }
         };
     </script>
-<!-- Chèn vào cuối <body> của mọi trang -->
-<div id="fab-container-placeholder"></div>
-
-
-
 <script src="/js/loadComponents.js" defer></script>
 </body>
 </html>

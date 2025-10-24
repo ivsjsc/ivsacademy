@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="dark scroll-smooth" lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//placehold.co" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -34,60 +34,170 @@
 <!-- Assuming this file exists in your project: /css/styles.css -->
 <link href="../css/tailwind.css" rel="stylesheet"/>
 <link href="../css/styles.css" rel="stylesheet"/>
+<script defer="" src="../js/language-init.js"></script>
 <style>
-        /* CSS for mobile menu to prevent background scrolling */
-        body.menu-open {
-            overflow: hidden;
+        /* CSS tuỳ chỉnh cho giao diện tối */
+        :root {
+            --header-height: 4rem;
         }
-        /* Custom styles for better aesthetics, adapted for dark mode */
-        .section-title {
-            position: relative;
-            padding-bottom: 0.75rem; /* pb-3 */
-            margin-bottom: 2rem; /* mb-8 */
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 60px; /* Short underline */
-            height: 3px;
-            background-color: var(--ivs-blue); /* Primary color from Tailwind config */
-            border-radius: 9999px; /* Rounded */
-        }
-        .card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        /* Spotlight effect for cards */
-        .spotlight-card {
-            position: relative;
-            background: var(--ivs-card);
-            border: 1px solid var(--ivs-border);
-            overflow: hidden;
-        }
-        .spotlight-card::before {
-            content: '';
-            position: absolute;
-            top: var(--py);
-            left: var(--px);
-            width: 100px; /* Size of the spotlight */
-            height: 100px;
-            background: radial-gradient(circle closest-side, rgba(96, 165, 250, 0.3), transparent); /* ivs-blue with opacity */
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s ease-out;
-            pointer-events: none;
-            border-radius: 50%;
-        }
-        .spotlight-card:hover::before {
+
+        body {
+            background-color: #1a1a1a;
+            color: #f4f4f5;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            overflow-x: hidden;
+            padding-top: var(--header-height);
+            visibility: visible;
             opacity: 1;
         }
+        
+        #header-placeholder {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            background-color: #0A0A0A;
+            border-bottom: 1px solid #1f2937; /* Dark border */
+        }
+
+        section {
+            scroll-margin-top: calc(var(--header-height) + 1rem);
+            padding: 4rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 6rem 2rem;
+            }
+        }
+
+        /* Hero Section Styling (Video Background) */
+        .hero-section {
+            position: relative;
+            min-height: calc(100vh - var(--header-height));
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 10%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.8);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-video.loaded {
+            opacity: 1000;
+        }
+
+        .hero-fallback-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            display: block;
+            filter: brightness(0.4);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.2) 50%, rgba(10, 10, 10, 0.9) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 90%;
+        }
+        
+        /* Interactive Card Hover Effect - Dành cho Affiliates và CTA chung */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #111111;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5);
+            border-color: #60a5fa; /* ivs-blue */
+        }
+        
+        /* Custom Style for Web Project Cards (Section 5.5) */
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #18181B; /* ivs-neutral-800 */
+            border: 1px solid #27272A; /* ivs-neutral-700 */
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 20px -5px rgba(34, 211, 238, 0.2), 0 0 15px 0 rgba(34, 211, 238, 0.5); /* Shadow Cyan */
+            transform: scale(1.02);
+            border-color: #22d3ee; /* ivs-cyan */
+        }
+
+
+        /* Custom Scrollbar for solutions tab */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #111111; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 2px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #60a5fa; }
     </style>
+<script>
+        // Guarded Tailwind config: some pages include the CDN runtime (https://cdn.tailwindcss.com)
+        // but on local/dev builds the global `tailwind` may be undefined. Only assign if present.
+        try {
+            if (typeof tailwind !== 'undefined' && tailwind && typeof tailwind.config === 'object') {
+                tailwind.config = Object.assign({}, tailwind.config || {}, {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'ivs-blue': '#4c5ef7',
+                                'ivs-green': '#34d399',
+                                'ivs-cyan': '#22d3ee',
+                                'ivs-purple': '#a78bfa',
+                                'ivs-amber': '#fbbf24',
+                                'ivs-neutral-800': '#1f2937',
+                                'ivs-border': '#374151',
+                                'ivs-text-secondary': '#d1d5db',
+                            },
+                            fontFamily: {
+                                'display': ['Inter', 'sans-serif'],
+                            }
+                        }
+                    }
+                });
+            } else {
+                // No tailwind runtime available; skip JS configuration. Styles still work via compiled CSS.
+                console.debug('tailwind runtime not present; skipping tailwind.config assignment');
+            }
+        } catch (e) {
+            console.warn('Error applying tailwind.config guard:', e && e.message ? e.message : e);
+        }
+    </script>
 <!-- CSS -->
 <link href="../css/style.css" rel="stylesheet"/>
 <link href="../css/animations.css" rel="stylesheet"/>
@@ -96,17 +206,17 @@
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 <meta content="website" property="og:type"/></head>
-<body class="bg-ivs-bg text-ivs-text-primary antialiased">
-<!-- Header Placeholder - Will be loaded by loadComponents.js -->
-<!-- Added z-index to ensure header is always on top -->
-<header class="relative z-20" data-loading-text="Đang tải menu..." id="header-placeholder"></header>
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+<nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
 <main>
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-r from-ivs-blue-darker to-ivs-blue text-ivs-text-primary py-20 px-6 md:px-12 lg:px-24 text-center rounded-b-lg shadow-lg overflow-hidden">
+<section class="hero-section">
 <!-- 3D Canvas Container -->
 <!-- z-0 for background effect, content above it has z-10 -->
 <div class="absolute inset-0 z-0 opacity-20" id="hero-canvas-container"></div>
-<div class="container mx-auto relative z-10">
+<div class="hero-overlay"></div>
+<div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight font-display" data-aos="fade-up" data-lang-key="hero_internationalcoop_title">
                     IVS Global Partnerships: <br class="md:hidden"/> Kiến tạo Tương lai Giáo dục
                 </h1>
@@ -120,8 +230,8 @@
 </section>
 <!-- Why Partner Section -->
 <!-- Ensure main content sections are above the canvas if any overflow issues occur -->
-<section class="relative z-10 py-16 px-6 md:px-12 lg:px-24 bg-ivs-bg">
-<div class="container mx-auto">
+<section class="relative z-10 py-16 lg:py-24 bg-ivs-bg">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <h2 class="text-3xl md:text-4xl font-bold text-center text-ivs-text-primary section-title mb-12" data-aos="fade-up" data-lang-key="why_partner_internationalcoop_title">Tại sao nên hợp tác với IVS?</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 <!-- Card 1: Strategic Vision -->
@@ -168,8 +278,8 @@
 </div>
 </section>
 <!-- Featured Partners Section -->
-<section class="relative z-10 py-16 px-6 md:px-12 lg:px-24 bg-ivs-card">
-<div class="container mx-auto">
+<section class="relative z-10 py-16 lg:py-24 bg-ivs-card">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <h2 class="text-3xl md:text-4xl font-bold text-center text-ivs-text-primary section-title mb-12" data-aos="fade-up" data-lang-key="featured_partners_internationalcoop_title">Đối tác tiêu biểu &amp; Dự án nổi bật</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-center">
 <!-- Partner 1: The Power to Inspire -->
@@ -226,8 +336,8 @@
 </div>
 </section>
 <!-- Potential Collaboration Areas Section -->
-<section class="relative z-10 py-16 px-6 md:px-12 lg:px-24 bg-ivs-bg">
-<div class="container mx-auto">
+<section class="relative z-10 py-16 lg:py-24 bg-ivs-bg">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <h2 class="text-3xl md:text-4xl font-bold text-center text-ivs-text-primary section-title mb-12" data-aos="fade-up" data-lang-key="potential_collab_internationalcoop_title">Lĩnh vực hợp tác tiềm năng</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 <!-- Area 1: Program Development -->
@@ -269,8 +379,8 @@
 </div>
 </section>
 <!-- Partnership Process Section -->
-<section class="relative z-10 py-16 px-6 md:px-12 lg:px-24 bg-ivs-card">
-<div class="container mx-auto">
+<section class="relative z-10 py-16 lg:py-24 bg-ivs-card">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <h2 class="text-3xl md:text-4xl font-bold text-center text-ivs-text-primary section-title mb-12" data-aos="fade-up" data-lang-key="process_internationalcoop_title">Quy trình hợp tác</h2>
 <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12">
 <!-- Step 1 -->
@@ -307,8 +417,8 @@
 </div>
 </section>
 <!-- Call to Action / Contact Section -->
-<section class="relative z-10 py-16 px-6 md:px-12 lg:px-24 bg-ivs-blue-darker text-ivs-text-primary text-center rounded-t-lg shadow-lg" id="contact">
-<div class="container mx-auto max-w-4xl">
+<section class="relative z-10 py-16 lg:py-24 bg-ivs-blue-darker text-ivs-text-primary text-center rounded-t-lg shadow-lg" id="contact">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
 <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up" data-lang-key="cta_internationalcoop_title">Bắt đầu hành trình hợp tác cùng IVS!</h2>
 <p class="text-lg md:text-xl mb-10 opacity-90" data-aos="fade-up" data-aos-delay="100" data-lang-key="cta_internationalcoop_description">
                     Chúng tôi luôn sẵn sàng thảo luận về các cơ hội hợp tác tiềm năng để cùng kiến tạo giá trị và nâng tầm giáo dục.
@@ -388,158 +498,94 @@
 </div>
 </section>
 </main>
-<!-- Floating Action Button Container Placeholder - Will be loaded by loadComponents.js -->
-<div id="fab-container-placeholder"></div>
+<div id="fab-placeholder"></div>
+<div id="assistant-placeholder"></div>
 <!-- Footer Placeholder - Will be loaded by loadComponents.js -->
 <footer data-loading-text="Đang tải chân trang..." id="footer-placeholder"></footer>
-<!-- Deferred JavaScript Libraries -->
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!-- Core Application Scripts - Order is crucial -->
-<!-- These are placeholders for your actual project files -->
-<!-- 1. Firebase Init (if type="module", load first) -->
-<script src="../js/firebase-init.js" type="module"></script>
-<!-- 2. Global Utilities (componentLog, debounce) -->
-<script defer="" src="../js/utils.js"></script>
-<!-- 3. Language System (self-initializes, needed by Header) -->
-<script defer="" src="../js/language.js"></script>
-<!-- 4. Specific Controllers (must be loaded before loadComponents.js calls their init) -->
-<script defer="" src="../js/fabController.js"></script>
-<script defer="" src="../js/chatbotController.js"></script>
-<!-- 5. Component Loader (loads HTML and then calls controller inits) -->
+<script defer="">
+    // Khối script thứ hai, chỉ giữ lại logic init component
+    // Register a page-level callback to run after common components are loaded.
+    window.onPageComponentsLoadedCallback = function() {
+        console.log('Page components loaded (callback)');
 
-<!-- 6. Main App Logic (if any, after all components are ready) -->
-<script defer="" src="../js/app.js" type="module"></script>
-<!-- Page-specific logic initialization -->
-<script>
-        // Placeholder for componentLog if utils.js isn't loaded yet
-        window.componentLog = window.componentLog || function(message, type) { console.log(`[${type.toUpperCase()}] ${message}`); };
-
-        // Callback triggered by loadComponents.js after all common components are loaded
-        window.onPageComponentsLoadedCallback = function() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-quad' });
-            }
-
-            // Ensure hero-canvas-container exists before initializing 3D
-            const heroCanvasContainer = document.getElementById('hero-canvas-container');
-            if (typeof THREE !== 'undefined' && heroCanvasContainer) {
-                initHero3D();
-            } else if (!heroCanvasContainer) {
-                window.componentLog("Container for 3D hero canvas (#hero-canvas-container) not found. Skipping 3D initialization.", "info");
-            } else {
-                window.componentLog("THREE.js not loaded. Skipping 3D initialization.", "warn");
-            }
-
-            initAnimatedCounters();
-            initSpotlightEffect();
-        };
-
-        function initHero3D() {
-            const container = document.getElementById('hero-canvas-container');
-            if (!container) return; // Should not happen if checked before call
-
-            let scene, camera, renderer, stars;
-            let mouseX = 0, mouseY = 0;
-
-            function init() {
-                scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-                camera.position.z = 1;
-                camera.rotation.x = Math.PI / 2;
-
-                renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-                renderer.setSize(container.clientWidth, container.clientHeight); // Use container size
-                container.appendChild(renderer.domElement);
-
-                const starGeo = new THREE.BufferGeometry();
-                const starVertices = [];
-                for (let i = 0; i < 8000; i++) {
-                    starVertices.push((Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000);
-                }
-                starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-
-                let starMaterial = new THREE.PointsMaterial({ color: 0xaaaaaa, size: 0.7, transparent: true });
-                stars = new THREE.Points(starGeo, starMaterial);
-                scene.add(stars);
-
-                window.addEventListener('resize', onWindowResize, false);
-                document.addEventListener('mousemove', onMouseMove, false);
-
-                animate();
-            }
-
-            function onMouseMove(e) {
-                mouseX = e.clientX - window.innerWidth / 2;
-                mouseY = e.clientY - window.innerHeight / 2;
-            }
-
-            function onWindowResize() {
-                // Update renderer size based on container
-                const container = document.getElementById('hero-canvas-container');
-                if (container) {
-                    camera.aspect = container.clientWidth / container.clientHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(container.clientWidth, container.clientHeight);
-                }
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                stars.rotation.y += 0.0001;
-                camera.position.y += (-mouseY * 0.00002 - camera.position.y) * 0.05;
-                camera.position.x += (mouseX * 0.00002 - camera.position.x) * 0.05;
-                camera.lookAt(scene.position);
-                renderer.render(scene, camera);
-            }
-
-            init();
-        }
-
-        function initAnimatedCounters() {
-            const counters = document.querySelectorAll('#impact-counters h3[data-target]');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counter = entry.target;
-                        const target = +counter.getAttribute('data-target');
-                        const duration = 2000;
-                        let start = 0;
-                        const step = (timestamp) => {
-                            if (!start) start = timestamp;
-                            const progress = timestamp - start;
-                            const current = Math.min(Math.floor(progress / duration * target), target);
-                            counter.innerText = current.toLocaleString('en-US');
-                            if (current < target) {
-                                requestAnimationFrame(step);
-                            }
-                        };
-                        requestAnimationFrame(step);
-                        observer.unobserve(counter);
-                    }
-                });
-            }, { threshold: 0.5 });
-            counters.forEach(counter => observer.observe(counter));
-        }
-
-        function initSpotlightEffect() {
-            const cards = document.querySelectorAll('.spotlight-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--px', x + 'px');
-                    card.style.setProperty('--py', y + 'px');
-                });
+        // Initialize AOS if available
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 700,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
             });
         }
-    </script>
 
+        // Additional page-specific initialization can go here
+    };
 
+    // Fallback: if components loading hasn't started (older pages), trigger it once.
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
+        }
+    });
+</script>
+ Mount React components if present (tries sync then async loader) 
+<script>
+        (function(){
+            // Attempt to mount if bundle already present, else inject the built bundle and mount after load.
+            // Guard: set window.DISABLE_IVS_WEBAPP_MOUNT = true to prevent loading/mounting the React webapp.
+            // This is a reversible, low-risk protection to avoid external or unwanted client mounts.
+            const builtBundle = '/webapp-dist/assets/index-_Tmnr9SX.js';
+            function doMountOnce(m){
+                try {
+                    if (!m) return;
+                    m.mountFab && m.mountFab('#fab-placeholder');
+                    m.mountAssistant && m.mountAssistant('#assistant-placeholder');
+                } catch(e){ console.warn('mount error', e); }
+            }
 
-<script src="/js/loadComponents.js" defer></script>
+            async function tryMount(){
+                // Respect runtime flag to disable webapp mount (useful to block unexpected injection)
+                if (window.DISABLE_IVS_WEBAPP_MOUNT) {
+                    console.info('IVS webapp mount disabled by DISABLE_IVS_WEBAPP_MOUNT flag');
+                    return;
+                }
+
+                if (window.mountIVSReactComponents) {
+                    doMountOnce(window.mountIVSReactComponents);
+                    return;
+                }
+                if (window.mountIVSReactComponentsAsync) {
+                    try {
+                        const m = await window.mountIVSReactComponentsAsync('/webapp-dist');
+                        doMountOnce(m);
+                        return;
+                    } catch(e) { /* ignore and fallthrough to dynamic loader */ }
+                }
+
+                // If we reached here, load the built bundle script (one-time)
+                if (!document.querySelector('script[data-ivs-react-bundle]')) {
+                    const s = document.createElement('script');
+                    s.src = builtBundle;
+                    s.defer = true;
+                    s.setAttribute('data-ivs-react-bundle', '1');
+                    s.onload = function(){
+                        // The built bundle exposes window.mountIVSReactComponents
+                        if (window.mountIVSReactComponents) {
+                            doMountOnce(window.mountIVSReactComponents);
+                        } else if (window.mountIVSReactComponentsAsync) {
+                            window.mountIVSReactComponentsAsync('/webapp-dist').then(doMountOnce).catch(()=>{});
+                        }
+                    };
+                    s.onerror = function(){ console.warn('Failed to load React bundle:', builtBundle); };
+                    document.head.appendChild(s);
+                }
+            }
+
+            window.addEventListener('load', tryMount);
+            setTimeout(tryMount, 1000);
+        })();
+</script>
+<script defer="" src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
 
