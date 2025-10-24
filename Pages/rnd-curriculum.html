@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="dark scroll-smooth" lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -400,6 +400,15 @@
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
         }
     </style>
+    <style>
+        /* Shared layout adjustments from index.html */
+        :root { --header-height: 4rem; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
+    </style>
 <!-- CSS -->
 <link href="../css/style.css" rel="stylesheet"/>
 <link href="../css/animations.css" rel="stylesheet"/>
@@ -408,12 +417,14 @@
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 </link></head>
-<body class="bg-ivs-bg text-ivs-text-primary font-sans antialiased">
+<body class="bg-ivs-bg text-ivs-text-primary font-inter antialiased">
 <!-- Header Placeholder (assuming it's loaded via JS) -->
 <header data-loading-text="Đang tải menu..." id="header-placeholder"></header>
-<main class="flex-grow">
+<main>
 <!-- Hero Section -->
-<section class="hero-rnd text-white text-center">
+<section class="hero-section">
+<div class="hero-overlay"></div>
+<div class="hero-content hero-rnd text-white text-center">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <h1 data-aos="fade-up" data-aos-duration="1000" data-lang-key="rnd_heading_v2">
                     Thiết kế Học liệu &amp; Giải pháp EdTech theo yêu cầu
@@ -544,15 +555,36 @@
 <!-- Footer Placeholder (assuming it's loaded via JS) -->
 <footer id="footer-placeholder"></footer>
 <!-- FAB Container Placeholder (assuming it's loaded via JS) -->
-<div id="fab-container-placeholder"></div>
+<div id="fab-placeholder"></div>
+<div id="assistant-placeholder"></div>
 <!-- JavaScript for dynamic components and AOS -->
 
-<script defer="" src="../js/language.js"></script>
-<script defer="" src="../js/fabController.js"></script>
-
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer src="../js/utils.js"></script>
+<script defer src="../js/language.js"></script>
+<script defer src="../js/fabController.js"></script>
+<script defer src="../js/app.js"></script>
 <script>
-      // Initialize AOS (Animate On Scroll) library
+    // Initialize AOS (Animate On Scroll) library
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50
+    });
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('hidden');
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+            }
+        });
+    }
+</script>
+<script defer src="/js/loadComponents.js"></script>
       AOS.init({
         offset: 120, // Offset (in px) from the top of the screen to trigger animation
         duration: 800, // Duration of animation (in ms)
@@ -589,43 +621,9 @@
           }
       }
     </script>
-<!-- Chèn vào cuối <body> của mọi trang -->
-<div id="fab-container-placeholder"></div>
-
-
-
-<script src="/js/loadComponents.js" defer></script>
+<script defer src="/js/loadComponents.js"></script>
 </body>
 </html>
-<script defer src="../js/utils.js"></script>
-<script defer src="../js/language.js"></script>
-
-<script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof window.loadCommonComponents === 'function') {
-            window.loadCommonComponents().then(() => {
-                console.log('Page components loaded successfully');
-                
-                // Initialize AOS if available
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 700,
-                        once: true,
-                        offset: 50,
-                        easing: 'ease-out-cubic'
-                    });
-                }
-                
-                // Call page callback if exists
-                if (typeof window.onPageComponentsLoadedCallback === 'function') {
-                    window.onPageComponentsLoadedCallback();
-                }
-            }).catch(error => {
-                console.error('Failed to load components:', error);
-            });
-        }
-    });
-</script>
 
 
 

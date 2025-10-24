@@ -1,5 +1,5 @@
 html
-<html class="scroll-smooth dark" lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head><link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -39,6 +39,15 @@ html
             transform: scale(1.1);
         }
     </style>
+    <style>
+        /* Shared layout adjustments from index.html */
+        :root { --header-height: 4rem; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
+    </style>
  CSS 
 <link href="css/style.css" rel="stylesheet"/>
 <link href="css/animations.css" rel="stylesheet"/>
@@ -46,13 +55,13 @@ html
  Icons 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 </head>
-<body class="bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 antialiased">
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
 <div data-loading-text="Đang tải menu..." id="header-placeholder"></div>
-<main class="flex-grow pt-[var(--header-height)] md:pt-[var(--desktop-header-height)]">
+<main>
  Hero Section 
-<section aria-labelledby="games-main-title" class="relative bg-game-bg text-white overflow-hidden">
-<div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('/images/backgrounds/game-pattern.svg');"></div>
-<div class="container mx-auto px-4 py-24 md:py-32 text-center relative z-10">
+<section class="hero-section">
+<div class="hero-overlay"></div>
+<div class="hero-content container mx-auto px-4 py-24 md:py-32 text-center relative z-10">
 <span class="inline-block p-4 bg-white/10 rounded-2xl mb-6" data-aos="fade-down">
 <i class="fas fa-gamepad fa-3x text-white"></i>
 </span>
@@ -101,20 +110,17 @@ html
 </div>
 </section>
 </main>
-<div id="fab-container-placeholder"></div>
+<div id="fab-placeholder"></div>
+<div id="assistant-placeholder"></div>
 <div data-loading-text="Đang tải chân trang..." id="footer-placeholder"></div>
- Scripts 
-<script defer="" src="/js/language.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-        window.onPageComponentsLoadedCallback = function() {
-            AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-quad' });
-            if (window.system && typeof window.system.applyTranslations === 'function') {
-                window.system.applyTranslations();
-            }
-        };
-    </script>
-<script defer="" src="/ai/js/loadComponents.js"></script>
+    <!-- Third party libraries -->
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Application scripts (deferred) -->
+    <script defer src="/js/utils.js"></script>
+    <script defer src="/js/language.js"></script>
+    <script defer src="/js/fabController.js"></script>
+    <script defer src="/js/app.js"></script>
+    <script defer src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -23,11 +23,21 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../css/tailwind.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <script defer src="../js/language-init.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
     
     <style>
+        /* Shared layout adjustments from index.html */
+        :root { --header-height: 4rem; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
+
       body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
       .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
       .service-card { 
@@ -130,15 +140,17 @@
     </style>
 </head>
 
-<body class="bg-gray-50 text-neutral-700 font-sans antialiased dark:bg-neutral-900 dark:text-neutral-100" id="page-legal-consulting">
+<body class="bg-ivs-bg text-ivs-text-primary font-inter" id="page-legal-consulting">
 
-    <header id="header-placeholder" class="fixed top-0 left-0 right-0 z-50 bg-neutral-900/95 backdrop-blur-sm border-b border-neutral-800" data-loading-text="Đang tải menu..."></header>
+    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+    <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
 
     <main class="flex-grow">
         <section class="hero-section-banner relative text-center overflow-hidden shadow-xl bg-gray-700 dark:bg-gray-800"
                  style="background-image: url('/images/pages/litigation_consulting.jpeg');"
                  data-aos="fade-in" data-aos-duration="1000" aria-labelledby="hero-title">
-            <div class="hero-content">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
                 <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 hero-text-shadow text-white"
                     data-lang-key="litigation_consulting_hero_tittle">Tư vấn pháp lý Dân sự chuyên sâu</h1>
                 <p class="text-md md:text-lg mb-8 hero-text-shadow italic text-white"
@@ -335,29 +347,21 @@
     </main>
 
     <footer id="footer-placeholder"></footer>
-    <div id="fab-container-placeholder"></div>
+    <div id="fab-placeholder"></div>
+    <div id="assistant-placeholder"></div>
 
-    <script src="/js/script.js" defer></script>
-    <script src="/js/language.js" defer></script>
-    <script src="/js/fabController.js" defer></script>
-    
+    <!-- Third party libraries -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Application scripts (deferred) -->
+    <script defer src="../js/utils.js"></script>
+    <script defer src="../js/language.js"></script>
+    <script defer src="../js/fabController.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/loadComponents.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                if (window.initializeLanguageSystem) {
-                    await window.initializeLanguageSystem();
-                }
-                
-                if (window.loadComponentsAndInitialize) {
-                    await window.loadComponentsAndInitialize();
-                }
-                
-                if (typeof window.onPageComponentsLoadedCallback === 'function') {
-                    window.onPageComponentsLoadedCallback();
-                }
-
+        window.onPageComponentsLoadedCallback = function() {
+            if (typeof AOS !== 'undefined') {
                 AOS.init({
                     offset: 100,
                     duration: 700,
@@ -366,36 +370,8 @@
                     mirror: false,
                     anchorPlacement: 'top-bottom',
                 });
-            } catch (error) {
-                console.error('Error during page initialization:', error);
-            }
-        });
-
-        window.toggleMobileSubmenu = function(button) {
-            const submenu = button.nextElementSibling;
-            if (submenu && submenu.classList.contains('mobile-submenu-content')) { 
-                submenu.classList.toggle('max-h-0');
-                submenu.classList.toggle('opacity-0');
-                const icon = button.querySelector('i');
-                if (icon) {
-                    icon.classList.toggle('fa-chevron-down');
-                    icon.classList.toggle('fa-chevron-up');
-                }
             }
         };
-
-        window.initializeTheme = function() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme) {
-                document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-            } else {
-                document.documentElement.classList.toggle('dark', prefersDark);
-            }
-        };
-        initializeTheme();
     </script>
-
-<script src="/js/loadComponents.js" defer></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth dark" lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -25,6 +25,14 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <!-- Scripts and Styles -->
 <style>
+        /* Shared layout adjustments from index.html */
+        :root { --header-height: 4rem; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
+
         /* Custom page styles */
         .hero-text-shadow { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); }
         .section-title { font-family: 'Lexend', sans-serif; }
@@ -62,13 +70,14 @@
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 </head>
-<body class="bg-gradient-to-br from-[#f8fafc] to-[#e0e7ef] dark:from-[#181f2a] dark:to-[#232b3a] text-neutral-800 dark:text-neutral-200 antialiased min-h-screen flex flex-col">
-    <div id="header-placeholder" data-component="header" data-loading-text="Đang tải menu..."></div>
-    <main class="flex-grow pt-[var(--header-height)] md:pt-[var(--desktop-header-height)]">
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+    <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
+    <main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
         <!-- Hero Section -->
-        <section aria-labelledby="page-title-legal-consulting" class="relative overflow-hidden bg-gradient-to-br from-[#ff7a18] via-[#ffb380] to-[#e05f00] dark:from-[#232b3a] dark:via-[#ff7a18] dark:to-[#181f2a] text-white shadow-lg">
-            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('/images/backgrounds/legal-pattern.svg');"></div>
-            <div class="container mx-auto px-4 py-20 md:py-32 text-center relative z-10">
+        <section class="hero-section relative overflow-hidden bg-gradient-to-br from-[#ff7a18] via-[#ffb380] to-[#e05f00] dark:from-[#232b3a] dark:via-[#ff7a18] dark:to-[#181f2a] text-white shadow-lg">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
                 <p class="text-base md:text-lg font-semibold uppercase tracking-wider text-white/80 mb-3 drop-shadow-lg" data-lang-key="legal_hero_tagline">DỊCH VỤ PHÁP LÝ CHUYÊN NGHIỆP</p>
                 <h1 class="section-title text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-xl" data-lang-key="legal_detailed_hero_title" id="page-title-legal-consulting">Tư Vấn Pháp Lý Chuyên Sâu</h1>
                 <p class="text-lg md:text-2xl max-w-2xl mx-auto opacity-95 font-medium" data-lang-key="legal_detailed_hero_subtitle">Giải pháp Toàn diện - Bảo vệ Quyền lợi - Đồng hành Phát triển</p>
@@ -230,32 +239,27 @@
                 </a>
             </div>
         </section>
-</main>
-        <div id="fab-container-placeholder"></div>
     </main>
-    <footer id="footer-placeholder" data-component="footer" data-loading-text="Đang tải chân trang..."></footer>
+    <footer id="footer-placeholder"></footer>
+    <div id="fab-placeholder"></div>
+    <div id="assistant-placeholder"></div>
 
-    <!-- Scripts (moved inside body and use site root /js/ paths) -->
-    <script defer src="/js/utils.js"></script>
-    <script defer src="/js/language.js"></script>
-    
+    <!-- Third party libraries -->
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Application scripts (deferred) -->
+    <script defer src="../js/utils.js"></script>
+    <script defer src="../js/language.js"></script>
+    <script defer src="../js/fabController.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/loadComponents.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.loadCommonComponents) {
-                window.loadCommonComponents().then(() => {
-                    // AOS animation
-                    if (typeof AOS !== 'undefined') {
-                        AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
-                    }
-                });
+        window.onPageComponentsLoadedCallback = function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
             }
-        });
+        };
     </script>
-
-
-
-
-<script src="/js/loadComponents.js" defer></script>
 </body>
 </html>
 

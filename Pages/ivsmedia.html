@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//placehold.co" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -48,6 +48,15 @@
         .portfolio-item img { transition: transform 0.3s ease; }
         .portfolio-item:hover img { transform: scale(1.05); }
     </style>
+    <style>
+        /* Shared layout adjustments from index.html */
+        :root { --header-height: 4rem; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
+    </style>
 <!-- CSS -->
 <link href="../css/style.css" rel="stylesheet"/>
 <link href="../css/animations.css" rel="stylesheet"/>
@@ -56,11 +65,12 @@
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 </link></head>
-<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-neutral-900 text-gray-800 dark:text-neutral-200 font-inter">
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
 <div data-loading-text="Đang tải menu..." id="header-placeholder"></div>
-<main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
-<section class="relative hero-bg text-white py-20 md:py-28 text-center overflow-hidden">
-<div class="absolute inset-0 bg-black opacity-50 z-0"></div>
+<main>
+<section class="hero-section">
+<div class="hero-overlay"></div>
+<div class="hero-content relative hero-bg text-white py-20 md:py-28 text-center overflow-hidden">
 <div class="container mx-auto px-4 relative z-10">
 <img alt="IVSMedia Logo" class="h-16 md:h-20 w-auto mx-auto mb-4 filter drop-shadow-lg" data-aos="fade-down" data-aos-duration="800" data-lang-key="ivsmedia_logo_alt" decoding="async" onerror="this.onerror=null; this.src='https://placehold.co/200x80/ffffff/9333ea?text=IVSMedia'; this.style.filter='';" src="../images/logo/logoIVSMmedia.png"/>
 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 hero-text-shadow" data-aos="fade-down" data-aos-delay="200" data-lang-key="ivsmedia_heading">IVSMedia</h1>
@@ -183,16 +193,22 @@
 </section>
 </main>
 <footer id="footer-placeholder"></footer>
-<div id="fab-container-placeholder"></div>
+<div id="fab-placeholder"></div>
+<div id="assistant-placeholder"></div>
 
-<script defer="" src="../js/language.js"></script>
-<script defer="" src="../js/fabController.js"></script>
-
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script defer src="../js/utils.js"></script>
+<script defer src="../js/language.js"></script>
+<script defer src="../js/fabController.js"></script>
+<script defer src="../js/app.js"></script>
 <script>
-        AOS.init({ 
-            duration: 800, 
-            once: true,
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50
+    });
+</script>
+<script src="/js/loadComponents.js" defer></script>
             offset: 50 
         });
          const scrollToTopBtn = document.getElementById('scrollToTopBtn');
@@ -221,35 +237,6 @@
 <script src="/js/loadComponents.js" defer></script>
 </body>
 </html>
-<script defer src="../js/utils.js"></script>
-<script defer src="../js/language.js"></script>
-
-<script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof window.loadCommonComponents === 'function') {
-            window.loadCommonComponents().then(() => {
-                console.log('Page components loaded successfully');
-                
-                // Initialize AOS if available
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 700,
-                        once: true,
-                        offset: 50,
-                        easing: 'ease-out-cubic'
-                    });
-                }
-                
-                // Call page callback if exists
-                if (typeof window.onPageComponentsLoadedCallback === 'function') {
-                    window.onPageComponentsLoadedCallback();
-                }
-            }).catch(error => {
-                console.error('Failed to load components:', error);
-            });
-        }
-    });
-</script>
 
 
 

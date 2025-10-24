@@ -1,6 +1,6 @@
  <!DOCTYPE html>
 
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -23,6 +23,14 @@
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="/>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
+            /* Shared layout adjustments from index.html */
+            :root { --header-height: 4rem; }
+            body { padding-top: var(--header-height); }
+            #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+            .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+            .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+            .hero-content { position:relative; z-index:3; max-width:90%; }
+
             /* General styles for text shadow */
             .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
 
@@ -133,22 +141,23 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
 </link></head>
 <!-- Điều chỉnh màu nền body cho chủ đề tối -->
-<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-ivs-neutral-800 text-gray-800 dark:text-ivs-neutral-200 font-inter">
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
 <!-- Background Video -->
 <video autoplay="" class="video-background" loop="" muted="" playsinline="">
 <source src="../pages/videos/videowebdesign.mp4" type="video/mp4"/>
             Trình duyệt của bạn không hỗ trợ thẻ video.
         </video>
-<header id="header-placeholder"></header>
+<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+<nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
 <main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
 <!-- Hero Section: Công nghệ Giáo dục (EdTech) -->
-<section class="relative text-white py-20 md:py-28 text-center overflow-hidden">
+<section class="hero-section relative text-white py-20 md:py-28 text-center overflow-hidden">
 <!-- Background Image with Opacity -->
 <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center opacity-30" onerror="this.style.backgroundImage='url(https://placehold.co/1920x600/18181B/E4E4E7?text=IVS+Celestech)'; this.classList.add('bg-slate-700');" style="background-image: url('/images/pages/webs/ivsjscbackgroundletter.jpg');"></div>
 <!-- Gradient Overlay for better text readability -->
-<div class="absolute inset-0 bg-gradient-to-t from-ivs-neutral-800 via-ivs-neutral-800/70 to-transparent z-0"></div>
+<div class="hero-overlay absolute inset-0 bg-gradient-to-t from-ivs-neutral-800 via-ivs-neutral-800/70 to-transparent z-0"></div>
 <!-- Content of Hero Section -->
-<div class="container mx-auto container-padding relative z-10">
+<div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 hero-text-shadow" data-aos="fade-down" data-lang-key="edtech_hero_title">Công nghệ Giáo dục - IVS Celestech</h1>
 <p class="text-lg md:text-xl lg:text-2xl opacity-95 max-w-3xl mx-auto hero-text-shadow" data-aos="fade-up" data-aos-delay="200" data-lang-key="edtech_hero_subtitle">
                         IVS Celestech tiên phong trong việc ứng dụng công nghệ hiện đại vào giáo dục, kiến tạo môi trường học tập thông minh và hiệu quả.
@@ -377,73 +386,30 @@
 </section>
 </main>
 <footer id="footer-placeholder"></footer>
-<div id="fab-container-placeholder"></div>
-<!-- Nút chuyển đổi chế độ tối/sáng -->
-<button aria-label="Toggle dark mode" id="darkModeToggle">
-<svg class="h-6 w-6" fill="none" id="moonIcon" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-<svg class="h-6 w-6 hidden" fill="none" id="sunIcon" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.675l-.707-.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M7.05 7.05l-.707-.707M8 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-<!-- Deferred JavaScript Libraries -->
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!-- Core Application Scripts - Order is crucial -->
-<script src="/js/firebase-init.js" type="module"></script>
-<script defer="" src="/js/utils.js"></script>
-<script defer="" src="/js/language.js"></script>
-<script defer="" src="/js/fabController.js"></script>
+<div id="fab-placeholder"></div>
+<div id="assistant-placeholder"></div>
 
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Third party libraries -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Application scripts (deferred) -->
+<script src="../js/firebase-init.js" type="module"></script>
+<script defer src="../js/utils.js"></script>
+<script defer src="../js/language.js"></script>
+<script defer src="../js/fabController.js"></script>
+<script defer src="../js/app.js"></script>
+<script defer src="../js/loadComponents.js"></script>
+
 <script>
-            // Hàm để áp dụng hoặc loại bỏ chế độ tối
-            function applyDarkMode(isDark) {
-                if (isDark) {
-                    document.documentElement.classList.add('dark');
-                    document.getElementById('moonIcon').classList.add('hidden');
-                    document.getElementById('sunIcon').classList.remove('hidden');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    document.getElementById('moonIcon').classList.remove('hidden');
-                    document.getElementById('sunIcon').classList.add('hidden');
-                }
-            }
-
-            // Kiểm tra cài đặt chế độ tối của người dùng hoặc lưu trữ cục bộ
-            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-            let isDarkMode = localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') === null && prefersDarkMode.matches);
-            applyDarkMode(isDarkMode);
-
-            // Lắng nghe sự kiện click trên nút chuyển đổi
-            document.getElementById('darkModeToggle').addEventListener('click', () => {
-                isDarkMode = !isDarkMode;
-                applyDarkMode(isDarkMode);
-                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            });
-
-            // Lắng nghe thay đổi cài đặt hệ thống
-            prefersDarkMode.addEventListener('change', (e) => {
-                if (localStorage.getItem('theme') === null) { // Chỉ thay đổi nếu người dùng chưa đặt tùy chọn thủ công
-                    isDarkMode = e.matches;
-                    applyDarkMode(isDarkMode);
-                }
-            });
-
-            window.onPageComponentsLoadedCallback = function() {
-                AOS.init({
-                    duration: 700,
-                    once: true,
-                    offset: 50,
-                    easing: 'ease-out-cubic',
-                });
-            };
-        </script>
-
-
-
-<script src="/js/loadComponents.js" defer></script>
+    window.onPageComponentsLoadedCallback = function() {
+        AOS.init({
+            duration: 700,
+            once: true,
+            offset: 50,
+            easing: 'ease-out-cubic',
+        });
+    };
+</script>
 </body>
 </html>

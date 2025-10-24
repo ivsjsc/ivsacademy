@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pháp luật Doanh nghiệp - IVS JSC</title>
     <meta name="description" content="Khám phá các dịch vụ tư vấn pháp luật doanh nghiệp của IVS JSC, hỗ trợ tuân thủ và tối ưu hóa hoạt động kinh doanh.">
     <meta name="keywords" content="IVS JSC, pháp luật doanh nghiệp, tư vấn pháp lý, PSB, hỗ trợ doanh nghiệp">
-    <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,line-clamp"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css"> </head>
-<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300">
-    <div id="header-placeholder" data-loading-text="Đang tải menu..."></div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="../css/tailwind.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script defer src="../js/language-init.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        /* Shared layout adjustments from index.html */
+        :root { --header-height: 4rem; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
+    </style>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+    <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
 
     <main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
-        <section class="bg-primary text-white py-20 text-center rounded-b-3xl shadow-lg relative overflow-hidden">
-            <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://ivsacademy.edu.vn/images/banners/psb_hero_banner.jpg');" onerror="this.style.backgroundImage='url(https://placehold.co/1920x600/004080/ffffff?text=IVS+PSB)'; this.classList.add('bg-slate-700');"></div>
-            <div class="container mx-auto container-padding relative z-10">
+        <section class="hero-section bg-primary text-white py-20 text-center rounded-b-3xl shadow-lg relative overflow-hidden">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
                 <h1 class="text-5xl font-extrabold mb-4" data-lang-key="psb_hero_title">Pháp luật Doanh nghiệp (PSB)</h1>
                 <p class="text-xl max-w-3xl mx-auto" data-lang-key="psb_hero_subtitle">
                     IVS cung cấp các giải pháp pháp lý toàn diện, giúp doanh nghiệp tuân thủ quy định, tối ưu hóa hoạt động và phát triển bền vững.
@@ -119,15 +136,18 @@
     </main>
 
     <footer id="footer-placeholder"></footer>
-    <div id="fab-container-placeholder"></div>
+    <div id="fab-placeholder"></div>
+    <div id="assistant-placeholder"></div>
 
-
-    <script src="/js/script.js" defer></script>
-    <script src="/js/language.js" defer></script>
-    <script src="/js/fabController.js" defer></script>
-    
+    <!-- Third party libraries -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+    <!-- Application scripts (deferred) -->
+    <script defer src="../js/utils.js"></script>
+    <script defer src="../js/language.js"></script>
+    <script defer src="../js/fabController.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/loadComponents.js"></script>
+
     <script>
         window.onPageComponentsLoadedCallback = function() {
             console.log("[PSB Page] Components loaded. Page specific JS can run now.");
@@ -153,8 +173,6 @@
             }
         };
     </script>
-
-<script src="/js/loadComponents.js" defer></script>
 </body>
 </html>
 
