@@ -1,53 +1,143 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="legal_consulting_page_title">IVS JSC - Tư vấn Pháp lý Chuyên sâu</title>
-    <meta name="description" data-lang-key="legal_consulting_meta_description">
-    <meta name="keywords" data-lang-key="legal_consulting_meta_keywords">
-    <meta property="og:title" data-lang-key="legal_consulting_og_title">
-    <meta property="og:description" data-lang-key="legal_consulting_og_description">
-    <meta property="og:image" content="/images/legal-consulting-og.jpg">
-    <meta property="og:url" content="/legal_consulting.html">
-    <meta property="og:type" content="website">
-    <meta name="author" content="IVS JSC">
-
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/images/logo/logo-192.png">
-    <link rel="manifest" href="/manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title data-lang-key="legal_consulting_page_title">IVS JSC - Tư vấn Pháp lý Chuyên sâu</title>
+    <meta content="Tư vấn pháp lý chuyên sâu về tranh tụng, giải quyết tranh chấp và các vấn đề pháp lý phức tạp." name="description"/>
+    <meta content="IVS JSC, tư vấn pháp lý, tranh tụng, giải quyết tranh chấp, luật sư, pháp lý doanh nghiệp" name="keywords"/>
+    <meta content="IVS JSC - Tư vấn Pháp lý Chuyên sâu" property="og:title"/>
+    <meta content="Tư vấn pháp lý chuyên sâu về tranh tụng, giải quyết tranh chấp và các vấn đề pháp lý phức tạp." property="og:description"/>
+    <meta content="/images/legal-consulting-og.jpg" property="og:image"/>
+    <meta content="https://ivsacademy.edu.vn/Pages/litigation_consulting.html" property="og:url"/>
+    <meta content="website" property="og:type"/>
+    <meta content="IVS JSC" name="author"/>
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="../css/tailwind.css" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer="" src="../js/language-init.js"></script>
+<style>
+        /* CSS tuỳ chỉnh cho giao diện tối */
+        :root {
+            --header-height: 4rem;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="../css/tailwind.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script defer src="../js/language-init.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    
-    <style>
-        /* Shared layout adjustments from index.html */
-        :root { --header-height: 4rem; }
-        body { padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
-        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
-        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
-        .hero-content { position:relative; z-index:3; max-width:90%; }
+        body {
+            background-color: #1a1a1a;
+            color: #f4f4f5;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            overflow-x: hidden;
+            padding-top: var(--header-height);
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        #header-placeholder {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            background-color: #0A0A0A;
+            border-bottom: 1px solid #1f2937;
+        }
 
-      body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-      .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
-      .service-card { 
-        transition: transform 0.3s ease, box-shadow 0.3s ease; 
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-      .service-card:hover { 
-        transform: translateY(-6px); 
+        /* Interactive Card Hover Effect */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #111111;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5);
+            border-color: #60a5fa;
+        }
+        
+        /* Custom Style for Cards */
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #18181B;
+            border: 1px solid #27272A;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 20px -5px rgba(34, 211, 238, 0.2), 0 0 15px 0 rgba(34, 211, 238, 0.5);
+            transform: scale(1.02);
+            border-color: #22d3ee;
+        }
+
+        /* Section padding and container styles */
+        .section-padding {
+            padding: 4rem 1rem;
+        }
+
+        .container-padding {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .section-padding {
+                padding: 5rem 2rem;
+            }
+            .container-padding {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding: 6rem 3rem;
+            }
+            .container-padding {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+
+        /* Card hover effects */
+        .card-hover-effect {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Animation classes */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Existing styles from original file */
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
+        .service-card { 
+          transition: transform 0.3s ease, box-shadow 0.3s ease; 
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+        .service-card:hover { 
+          transform: translateY(-6px); 
         box-shadow: 0 12px 25px rgba(0,0,0,0.1); 
       }
       .service-card-content {
@@ -138,6 +228,39 @@
       .dark .text-gray-600 { color: #9ca3af; }
       .dark .border-t { border-color: #374151; }
     </style>
+<script>
+        // Guarded Tailwind config: some pages include the CDN runtime (https://cdn.tailwindcss.com)
+        // but on local/dev builds the global `tailwind` may be undefined. Only assign if present.
+        try {
+            if (typeof tailwind !== 'undefined' && tailwind && typeof tailwind.config === 'object') {
+                tailwind.config = Object.assign({}, tailwind.config || {}, {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'ivs-blue': '#4c5ef7',
+                                'ivs-green': '#34d399',
+                                'ivs-cyan': '#22d3ee',
+                                'ivs-purple': '#a78bfa',
+                                'ivs-amber': '#fbbf24',
+                                'ivs-neutral-800': '#1f2937',
+                                'ivs-border': '#374151',
+                                'ivs-text-secondary': '#d1d5db',
+                            },
+                            fontFamily: {
+                                'display': ['Inter', 'sans-serif'],
+                            }
+                        }
+                    }
+                });
+            } else {
+                // No tailwind runtime available; skip JS configuration. Styles still work via compiled CSS.
+                console.debug('tailwind runtime not present; skipping tailwind.config assignment');
+            }
+        } catch (e) {
+            console.warn('Error applying tailwind.config guard:', e && e.message ? e.message : e);
+        }
+    </script>
+
 </head>
 
 <body class="bg-ivs-bg text-ivs-text-primary font-inter" id="page-legal-consulting">
@@ -347,31 +470,36 @@
     </main>
 
     <footer id="footer-placeholder"></footer>
-    <div id="fab-placeholder"></div>
-    <div id="assistant-placeholder"></div>
+    <div id="fab-container-placeholder"></div>
+    <div id="ai-assistant-placeholder"></div>
 
     <!-- Third party libraries -->
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Application scripts (deferred) -->
     <script defer src="../js/utils.js"></script>
     <script defer src="../js/language.js"></script>
-    <script defer src="../js/fabController.js"></script>
+    <script defer src="../js/headerController.js"></script>
+    <script defer src="../js/footerController.js"></script>
+    <script defer src="/ai/js/fabController.js"></script>
     <script defer src="../js/app.js"></script>
-    <script defer src="../js/loadComponents.js"></script>
-
+    <script defer src="/ai/js/loadComponents.js"></script>
     <script>
-        window.onPageComponentsLoadedCallback = function() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    offset: 100,
-                    duration: 700,
-                    easing: 'ease-out-quad',
-                    once: true,
-                    mirror: false,
-                    anchorPlacement: 'top-bottom',
-                });
-            }
-        };
+        // Initialize AOS after components are loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for components to load, then initialize AOS
+            setTimeout(function() {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        offset: 100,
+                        duration: 700,
+                        easing: 'ease-out-quad',
+                        once: true,
+                        mirror: false,
+                        anchorPlacement: 'top-bottom',
+                    });
+                }
+            }, 1000); // Give components time to load
+        });
     </script>
 </body>
 </html>

@@ -1,415 +1,143 @@
- <!DOCTYPE html>
-
+<!DOCTYPE html>
 <html class="scroll-smooth" lang="vi">
-<head><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//cdn.jsdelivr.net" rel="dns-prefetch"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title data-lang-key="edtech_page_title">Công nghệ Giáo dục (EdTech) - IVS Celestech</title>
-<meta content="Khám phá các giải pháp công nghệ giáo dục tiên tiến của IVS Celestech, giúp tối ưu hóa quá trình dạy và học. IVS JSC cung cấp dịch vụ giáo dục chất lượng cao, đ" data-lang-key="edtech_meta_description" name="description"/>
-<meta content="IVS JSC, IVS Celestech, công nghệ giáo dục, EdTech, giải pháp học tập số, chuyển đổi số giáo dục" data-lang-key="edtech_meta_keywords" name="keywords"/>
-<meta content="IVS Celestech - Giải pháp Công nghệ Giáo dục Đột phá" data-lang-key="edtech_og_title" property="og:title"/>
-<meta content="IVS Celestech tiên phong ứng dụng công nghệ hiện đại, kiến tạo môi trường học tập thông minh, hiệu quả và tương tác cao." data-lang-key="edtech_og_description" property="og:description"/>
-<meta content="/images/banners/edtech_hero_banner.jpg" property="og:image"/> <meta content="https://ivsacademy.edu.vn/Pages/ivscelestech.html" property="og:url"/>
-<meta content="website" property="og:type"/>
-<meta content="IVS JSC" name="author"/>
-<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-<link href="../images/logo/logo-192.jpg" rel="apple-touch-icon"/>
-<link href="../manifest.json" rel="manifest"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="../css/tailwind.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/></noscript>
-<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="/>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title data-lang-key="edtech_page_title">IVS Celestech - Công nghệ Giáo dục (EdTech)</title>
+    <meta name="description" content="Khám phá các giải pháp công nghệ giáo dục tiên tiến của IVS Celestech, giúp tối ưu hóa quá trình dạy và học." data-lang-key="edtech_meta_description">
+    <meta name="keywords" content="IVS Celestech, công nghệ giáo dục, EdTech, giải pháp học tập số, chuyển đổi số giáo dục" data-lang-key="edtech_meta_keywords">
+    <meta property="og:title" content="IVS Celestech - Giải pháp Công nghệ Giáo dục Đột phá" data-lang-key="edtech_og_title">
+    <meta property="og:description" content="IVS Celestech tiên phong ứng dụng công nghệ hiện đại, kiến tạo môi trường học tập thông minh, hiệu quả và tương tác cao." data-lang-key="edtech_og_description">
+    <meta property="og:image" content="/images/banners/edtech_hero_banner.jpg">
+    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/ivscelestech.html">
+    <meta property="og:type" content="website">
+    <meta content="IVS JSC" name="author"/>
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="/css/tailwind.css" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer src="/js/language-init.js"></script>
 <style>
-            /* Shared layout adjustments from index.html */
-            :root { --header-height: 4rem; }
-            body { padding-top: var(--header-height); }
-            #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
-            .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
-            .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
-            .hero-content { position:relative; z-index:3; max-width:90%; }
-
-            /* General styles for text shadow */
-            .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
-
-            /* Card hover effect with subtle transform and shadow */
-            .card-hover-effect {
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            .card-hover-effect:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-
-            /* Section padding for consistent spacing */
-            .section-padding { padding-top: 3rem; padding-bottom: 3rem; }
-            @media (min-width: 768px) { .section-padding { padding-top: 4rem; padding-bottom: 4rem; } }
-
-            /* Container padding for consistent content width */
-            .container-padding { padding-left: 1rem; padding-right: 1rem; }
-            @media (min-width: 640px) { .container-padding { padding-left: 1.5rem; padding-right: 1.5rem; } }
-            @media (min-width: 1024px) { .container-padding { padding-left: 2rem; padding-right: 2rem; } }
-
-            /* Video background styling */
-            .video-background {
-                position: fixed; /* Changed from absolute to fixed for full page background */
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                z-index: -1; /* Place the video behind all content */
-                filter: brightness(0.5); /* Make the video darker for better text readability */
-            }
-
-            /* Custom styling for service cards with gradient border on hover */
-            .service-card-gradient-border {
-                position: relative;
-                overflow: hidden;
-            }
-            .service-card-gradient-border::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                border-radius: 0.75rem; /* rounded-xl */
-                padding: 2px; /* Border thickness */
-                /* Điều chỉnh gradient cho chủ đề tối */
-                background: linear-gradient(45deg, var(--tw-colors-blue-500), var(--tw-colors-purple-500), var(--tw-colors-emerald-500));
-                -webkit-mask:
-                    linear-gradient(#fff 0 0) content-box,
-                    linear-gradient(#fff 0 0);
-                mask:
-                    linear-gradient(#fff 0 0) content-box,
-                    linear-gradient(#fff 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                z-index: 0; /* Ensure it's behind content */
-            }
-            .service-card-gradient-border:hover::before {
-                opacity: 1;
-            }
-            .service-card-content {
-                position: relative;
-                z-index: 1;
-                height: 100%; /* Ensure content fills card height */
-                display: flex;
-                flex-direction: column;
-            }
-            /* Gradient border cho chế độ tối */
-            .dark .service-card-gradient-border::before {
-                background: linear-gradient(45deg, var(--tw-colors-blue-400), var(--tw-colors-purple-400), var(--tw-colors-emerald-400));
-            }
-
-            /* Thêm các kiểu dáng cho nút chuyển đổi chế độ tối */
-            #darkModeToggle {
-                position: fixed;
-                bottom: 2rem;
-                right: 2rem;
-                background-color: var(--tw-colors-primary);
-                color: white;
-                border-radius: 9999px; /* rounded-full */
-                padding: 0.75rem; /* p-3 */
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-                cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.2s ease;
-                z-index: 1000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            #darkModeToggle:hover {
-                background-color: var(--tw-colors-primary-dark);
-                transform: scale(1.05);
-            }
-
-            #darkModeToggle svg {
-                width: 1.5rem; /* h-6 */
-                height: 1.5rem; /* w-6 */
-            }
-        </style>
-<!-- CSS -->
-<link href="../css/style.css" rel="stylesheet"/>
-<link href="../css/animations.css" rel="stylesheet"/>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<!-- Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-</link></head>
-<!-- Điều chỉnh màu nền body cho chủ đề tối -->
+        :root { --header-height: 4rem; }
+        body { background-color: #1a1a1a; color: #f4f4f5; font-family: 'Be Vietnam Pro', sans-serif; overflow-x: hidden; padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1f2937; }
+        section { scroll-margin-top: calc(var(--header-height) + 1rem); padding: 4rem 1rem; }
+        @media (min-width: 768px) { section { padding: 6rem 2rem; } }
+        .interactive-card { background: #111111; border: 1px solid #27272A; transition: all 0.3s ease; }
+        .interactive-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px -5px rgba(76, 94, 247, 0.2); border-color: #4c5ef7; }
+</style>
+</head>
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
-<!-- Background Video -->
-<video autoplay="" class="video-background" loop="" muted="" playsinline="">
-<source src="../pages/videos/videowebdesign.mp4" type="video/mp4"/>
-            Trình duyệt của bạn không hỗ trợ thẻ video.
-        </video>
-<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
-<nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
-<main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
-<!-- Hero Section: Công nghệ Giáo dục (EdTech) -->
-<section class="hero-section relative text-white py-20 md:py-28 text-center overflow-hidden">
-<!-- Background Image with Opacity -->
-<div aria-hidden="true" class="absolute inset-0 bg-cover bg-center opacity-30" onerror="this.style.backgroundImage='url(https://placehold.co/1920x600/18181B/E4E4E7?text=IVS+Celestech)'; this.classList.add('bg-slate-700');" style="background-image: url('/images/pages/webs/ivsjscbackgroundletter.jpg');"></div>
-<!-- Gradient Overlay for better text readability -->
-<div class="hero-overlay absolute inset-0 bg-gradient-to-t from-ivs-neutral-800 via-ivs-neutral-800/70 to-transparent z-0"></div>
-<!-- Content of Hero Section -->
-<div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 hero-text-shadow" data-aos="fade-down" data-lang-key="edtech_hero_title">Công nghệ Giáo dục - IVS Celestech</h1>
-<p class="text-lg md:text-xl lg:text-2xl opacity-95 max-w-3xl mx-auto hero-text-shadow" data-aos="fade-up" data-aos-delay="200" data-lang-key="edtech_hero_subtitle">
-                        IVS Celestech tiên phong trong việc ứng dụng công nghệ hiện đại vào giáo dục, kiến tạo môi trường học tập thông minh và hiệu quả.
-                    </p>
-</div>
-</section>
-<!-- Introduction Section: Giới Thiệu về IVS Celestech -->
-<!-- Điều chỉnh màu nền cho chủ đề tối -->
-<section class="section-padding bg-white dark:bg-ivs-neutral-700 shadow-sm">
-<div class="container mx-auto container-padding max-w-6xl">
-<!-- Điều chỉnh màu tiêu đề cho chủ đề tối -->
-<h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary mb-10 text-center" data-aos="fade-up" data-lang-key="edtech_introduction_title">Giới Thiệu về IVS Celestech</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
-<div data-aos="fade-right" data-aos-delay="100">
-<!-- Điều chỉnh màu chữ cho chủ đề tối -->
-<p class="text-lg text-gray-700 dark:text-ivs-neutral-300 mb-6 leading-relaxed" data-lang-key="edtech_introduction_content_1">
-                                IVS Celestech là đơn vị chuyên trách về công nghệ giáo dục của IVS JSC, với sứ mệnh đưa những giải pháp công nghệ tiên tiến nhất vào hệ thống giáo dục. Chúng tôi tin rằng công nghệ là chìa khóa để mở ra tiềm năng học tập không giới hạn cho mọi học viên và tối ưu hóa hiệu quả giảng dạy cho giáo viên.
-                            </p>
-<p class="text-lg text-gray-700 dark:text-ivs-neutral-300 leading-relaxed" data-lang-key="edtech_introduction_content_2">
-                                Chúng tôi không chỉ cung cấp các công cụ, mà còn xây dựng một hệ sinh thái EdTech toàn diện, từ nền tảng quản lý học tập đến các ứng dụng tương tác, giúp cá nhân hóa trải nghiệm học tập và nâng cao chất lượng giáo dục.
-                            </p>
-</div>
-<div class="relative w-full h-auto min-h-[250px] md:min-h-[400px] overflow-hidden rounded-lg shadow-xl" data-aos="fade-left" data-aos-delay="200">
-<!-- Video Background -->
-<video autoplay="" class="video-background" loop="" muted="" playsinline="">
-<source src="../pages/videos/ivs-celestech.mp4" type="video/mp4"/>
-                                Trình duyệt của bạn không hỗ trợ thẻ video.
-                            </video>
-<!-- Fallback Image for Video, điều chỉnh màu cho chủ đề tối -->
-<img alt="Hình ảnh giới thiệu IVS Celestech" class="w-full h-full object-cover absolute inset-0 z-0" decoding="async" loading="lazy" src="../images/ivsjscbackgroundletter.jpg"/>
-</div>
-</div>
-</div>
-</section>
-<!-- Services Section: Các Dịch Vụ Của IVS Celestech -->
-<!-- Điều chỉnh màu nền cho chủ đề tối -->
-<section class="section-padding bg-gray-50 dark:bg-ivs-neutral-800">
-<div class="container mx-auto container-padding max-w-6xl">
-<!-- Điều chỉnh màu tiêu đề cho chủ đề tối -->
-<h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary mb-12 text-center" data-aos="fade-up" data-lang-key="edtech_services_title">Các Dịch Vụ Của IVS Celestech</h2>
-<!-- Điều chỉnh màu chữ cho chủ đề tối -->
-<p class="text-lg text-gray-700 dark:text-ivs-neutral-300 text-center max-w-3xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="100" data-lang-key="edtech_services_intro">
-                        IVS Celestech, là bộ phận công nghệ giáo dục (EdTech) của IVS JSC, cung cấp các giải pháp công nghệ toàn diện nhằm kiến tạo môi trường học tập hiện đại và hiệu quả. Các dịch vụ chính của IVS Celestech bao gồm:
-                    </p>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-<!-- Service Card 1: Tư vấn, Thi công & Nội thất Giáo dục -->
-<!-- Điều chỉnh màu nền card cho chủ đề tối -->
-<div class="bg-white dark:bg-ivs-neutral-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect service-card-gradient-border flex flex-col" data-aos="zoom-in-up">
-<div class="service-card-content">
-<!-- Điều chỉnh màu icon nền cho chủ đề tối -->
-<div class="bg-blue-100 dark:bg-blue-800/50 text-blue-600 dark:text-blue-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-5 text-3xl flex-shrink-0">
-<i class="fas fa-hammer"></i>
-</div>
-<!-- Điều chỉnh màu tiêu đề card cho chủ đề tối -->
-<h3 class="text-xl font-semibold text-gray-800 dark:text-ivs-neutral-100 mb-3" data-lang-key="edtech_service_design_build_title">Tư vấn, Thi công &amp; Nội thất Giáo dục</h3>
-<!-- Điều chỉnh màu chữ card cho chủ đề tối -->
-<div class="text-sm text-gray-600 dark:text-ivs-neutral-300 space-y-2 flex-grow">
-<p data-lang-key="edtech_service_design_build_desc_intro">Chúng tôi kiến tạo không gian học tập đột phá, từ thiết kế kiến trúc đến thi công nội thất, đảm bảo môi trường giáo dục hiện đại, linh hoạt và truyền cảm hứng. Các giải pháp bao gồm:</p>
-<ul class="list-disc list-inside text-left mx-auto max-w-prose">
-<li data-lang-key="edtech_service_design_build_item_1">Thiết kế không gian học tập đa năng (lớp học thông minh, phòng STEAM, thư viện số, phòng lab chuyên biệt).</li>
-<li data-lang-key="edtech_service_design_build_item_2">Thi công xây dựng và cải tạo (đảm bảo tiêu chuẩn an toàn, bền vững).</li>
-<li data-lang-key="edtech_service_design_build_item_3">Cung cấp nội thất giáo dục thông minh, tiện nghi (phù hợp mọi lứa tuổi, tối ưu hóa sự tương tác và thoải mái).</li>
-</ul>
-</div>
-<!-- Điều chỉnh màu nút cho chủ đề tối -->
-<a class="mt-4 inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300" data-lang-key="edtech_service_design_build_button" href="../Pages/ivscelestech-tcnoithat.html">
-                                    Xem thêm dịch vụ thiết kế nội thất
-                                </a>
-</div>
-</div>
-<!-- Service Card 2: Trang thiết bị Thông minh -->
-<!-- Điều chỉnh màu nền card cho chủ đề tối -->
-<div class="bg-white dark:bg-ivs-neutral-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect service-card-gradient-border flex flex-col" data-aos="zoom-in-up">
-<div class="service-card-content">
-<!-- Điều chỉnh màu icon nền cho chủ đề tối -->
-<div class="bg-emerald-100 dark:bg-emerald-800/50 text-emerald-600 dark:text-emerald-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-5 text-3xl flex-shrink-0">
-<i class="fas fa-robot"></i>
-</div>
-<!-- Điều chỉnh màu tiêu đề card cho chủ đề tối -->
-<h3 class="text-xl font-semibold text-gray-800 dark:text-ivs-neutral-100 mb-3" data-lang-key="edtech_service_smart_equipment_title">Trang thiết bị Thông minh</h3>
-<!-- Điều chỉnh màu chữ card cho chủ đề tối -->
-<div class="text-sm text-gray-600 dark:text-ivs-neutral-300 space-y-2 flex-grow">
-<p data-lang-key="edtech_service_smart_equipment_desc_intro">Nâng tầm trải nghiệm học tập với các thiết bị công nghệ tiên tiến, tích hợp sâu rộng vào chương trình giảng dạy. Bao gồm:</p>
-<ul class="list-disc list-inside text-left mx-auto max-w-prose">
-<li data-lang-key="edtech_service_smart_equipment_item_1">Màn hình tương tác và thiết bị trình chiếu thông minh (biến lớp học thành không gian sáng tạo).</li>
-<li data-lang-key="edtech_service_smart_equipment_item_2">Giải pháp Thực tế ảo (VR) và Thực tế tăng cường (AR) (đưa học viên vào thế giới mô phỏng sống động, khám phá kiến thức đa chiều).</li>
-<li data-lang-key="edtech_service_smart_equipment_item_3">Ứng dụng Trí tuệ nhân tạo (AI) trong học tập (hệ thống học tập thích ứng, trợ lý ảo thông minh, phân tích hiệu suất học tập cá nhân).</li>
-</ul>
-</div>
-<!-- Điều chỉnh màu nút cho chủ đề tối -->
-<a class="mt-4 inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300" data-lang-key="edtech_service_smart_equipment_button" href="../Pages/tech_devices.html">
-                                    Xem thêm Thiết bị
-                                </a>
-</div>
-</div>
-<!-- Service Card 3: Hệ thống Quản lý Giáo dục -->
-<!-- Điều chỉnh màu nền card cho chủ đề tối -->
-<div class="bg-white dark:bg-ivs-neutral-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect service-card-gradient-border flex flex-col" data-aos="zoom-in-up">
-<div class="service-card-content">
-<!-- Điều chỉnh màu icon nền cho chủ đề tối -->
-<div class="bg-secondary-dark/50 dark:bg-secondary-dark/50 text-secondary-dark dark:text-secondary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-5 text-3xl flex-shrink-0">
-<i class="fas fa-cogs"></i>
-</div>
-<!-- Điều chỉnh màu tiêu đề card cho chủ đề tối -->
-<h3 class="text-xl font-semibold text-gray-800 dark:text-ivs-neutral-100 mb-3" data-lang-key="edtech_service_management_system_title">Hệ thống Quản lý Giáo dục</h3>
-<!-- Điều chỉnh màu chữ card cho chủ đề tối -->
-<div class="text-sm text-gray-600 dark:text-ivs-neutral-300 space-y-2 flex-grow">
-<p data-lang-key="edtech_service_management_system_desc_intro">Tối ưu hóa quy trình vận hành và nâng cao hiệu quả quản lý với các nền tảng số hóa toàn diện. Các dịch vụ nổi bật:</p>
-<ul class="list-disc list-inside text-left mx-auto max-w-prose">
-<li data-lang-key="edtech_service_management_system_item_1">Hệ thống quản lý học tập (LMS) và quản lý trường học (SMS) (tự động hóa điểm danh, quản lý điểm, lịch học, báo cáo chuyên sâu).</li>
-<li data-lang-key="edtech_service_management_system_item_2">Ứng dụng di động kết nối đa chiều (phụ huynh theo dõi tiến độ, học sinh truy cập tài liệu, giáo viên quản lý lớp học mọi lúc mọi nơi).</li>
-<li data-lang-key="edtech_service_management_system_item_3">Phân tích dữ liệu giáo dục (cung cấp cái nhìn sâu sắc về hiệu suất, xu hướng học tập để đưa ra quyết định chiến lược).</li>
-</ul>
-</div>
-<div class="mt-4 flex flex-wrap justify-center gap-2">
-<!-- Điều chỉnh màu nút cho chủ đề tối -->
-<a class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300" data-lang-key="edtech_service_management_system_apps_button" href="../Pages/apps/ivsapps.html">
-                                        Tìm hiểu Apps Quản lý
-                                    </a>
-<a class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300" data-lang-key="edtech_service_management_system_games_button" href="../Pages/games/ivsgames.html">
-                                        IVS Game Arcade
-                                    </a>
-</div>
-</div>
-</div>
-<!-- Service Card 4: Thiết kế Website Giáo dục -->
-<!-- Điều chỉnh màu nền card cho chủ đề tối -->
-<div class="bg-white dark:bg-ivs-neutral-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect service-card-gradient-border flex flex-col" data-aos="zoom-in-up">
-<div class="service-card-content">
-<!-- Điều chỉnh màu icon nền cho chủ đề tối -->
-<div class="bg-purple-100 dark:bg-purple-800/50 text-purple-600 dark:text-purple-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-5 text-3xl flex-shrink-0">
-<i class="fas fa-globe"></i>
-</div>
-<!-- Điều chỉnh màu tiêu đề card cho chủ đề tối -->
-<h3 class="text-xl font-semibold text-gray-800 dark:text-ivs-neutral-100 mb-3" data-lang-key="edtech_service_website_design_title">Thiết kế Website Giáo dục</h3>
-<!-- Điều chỉnh màu chữ card cho chủ đề tối -->
-<div class="text-sm text-gray-600 dark:text-ivs-neutral-300 space-y-2 flex-grow">
-<p data-lang-key="edtech_service_website_design_desc_intro">Chúng tôi cung cấp dịch vụ thiết kế và phát triển website chuyên biệt cho lĩnh vực giáo dục, đảm bảo tính thẩm mỹ, thân thiện với người dùng và tích hợp các tính năng cần thiết cho một môi trường học tập trực tuyến hiệu quả. Các giải pháp bao gồm:</p>
-<ul class="list-disc list-inside text-left mx-auto max-w-prose">
-<li data-lang-key="edtech_service_website_design_item_1">Thiết kế giao diện người dùng (UI) và trải nghiệm người dùng (UX) tối ưu cho các nền tảng giáo dục.</li>
-<li data-lang-key="edtech_service_website_design_item_2">Phát triển website tương thích đa nền tảng (responsive design) trên mọi thiết bị.</li>
-<li data-lang-key="edtech_service_website_design_item_3">Tích hợp các tính năng quản lý khóa học, đăng ký, thanh toán trực tuyến, và tương tác học viên.</li>
-<li data-lang-key="edtech_service_website_design_item_4">Tối ưu hóa SEO và hiệu suất website để thu hút người dùng.</li>
-</ul>
-</div>
-<!-- Điều chỉnh màu nút cho chủ đề tối -->
-<a class="mt-4 inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300" data-lang-key="edtech_service_website_design_button" href="../Pages/webdesign.html">
-                                    Tìm hiểu về Thiết kế Web
-                                </a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Why Choose Us Section: Tại Sao Chọn IVS Celestech? -->
-<!-- Điều chỉnh màu nền cho chủ đề tối -->
-<section class="section-padding bg-white dark:bg-ivs-neutral-700 shadow-sm">
-<div class="container mx-auto container-padding max-w-6xl">
-<!-- Điều chỉnh màu tiêu đề cho chủ đề tối -->
-<h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary mb-12 text-center" data-aos="fade-up" data-lang-key="edtech_why_choose_title">Tại Sao Chọn IVS Celestech?</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-<!-- Why Choose Card 1: Chất lượng hàng đầu -->
-<!-- Điều chỉnh màu nền card cho chủ đề tối -->
-<div class="bg-gray-50 dark:bg-ivs-neutral-600 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 card-hover-effect flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-<!-- Điều chỉnh màu icon nền cho chủ đề tối -->
-<div class="bg-blue-100 dark:bg-blue-800/50 text-blue-600 dark:text-blue-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl flex-shrink-0">
-<i class="fas fa-award"></i>
-</div>
-<!-- Điều chỉnh màu tiêu đề card cho chủ đề tối -->
-<h3 class="text-xl font-semibold text-gray-800 dark:text-ivs-neutral-100 mb-2" data-lang-key="edtech_why_quality">Chất lượng hàng đầu</h3>
-<!-- Điều chỉnh màu chữ card cho chủ đề tối -->
-<p class="text-sm text-gray-600 dark:text-ivs-neutral-300 flex-grow" data-lang-key="edtech_why_quality_desc">Sản phẩm và dịch vụ theo tiêu chuẩn quốc tế.</p>
-</div>
-<!-- Why Choose Card 2: Đội ngũ chuyên gia -->
-<!-- Điều chỉnh màu nền card cho chủ đề tối -->
-<div class="bg-gray-50 dark:bg-ivs-neutral-600 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 card-hover-effect flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-<!-- Điều chỉnh màu icon nền cho chủ đề tối -->
-<div class="bg-emerald-100 dark:bg-emerald-800/50 text-emerald-600 dark:text-emerald-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl flex-shrink-0">
-<i class="fas fa-users-cog"></i>
-</div>
-<!-- Điều chỉnh màu tiêu đề card cho chủ đề tối -->
-<h3 class="text-xl font-semibold text-gray-800 dark:text-ivs-neutral-100 mb-2" data-lang-key="edtech_why_experts">Đội ngũ chuyên gia</h3>
-<!-- Điều chỉnh màu chữ card cho chủ đề tối -->
-<p class="text-sm text-gray-600 dark:text-ivs-neutral-300 flex-grow" data-lang-key="edtech_why_experts_desc">Giàu kinh nghiệm, tận tâm hỗ trợ giải pháp tốt nhất.</p>
-</div>
-<!-- Why Choose Card 3: Công nghệ hiện đại -->
-<!-- Điều chỉnh màu nền card cho chủ đề tối -->
-<div class="bg-gray-50 dark:bg-ivs-neutral-600 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 card-hover-effect flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
-<!-- Điều chỉnh màu icon nền cho chủ đề tối -->
-<div class="bg-secondary-dark/50 dark:bg-secondary-dark/50 text-secondary-dark dark:text-secondary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl flex-shrink-0">
-<i class="fas fa-flask"></i>
-</div>
-<!-- Điều chỉnh màu tiêu đề card cho chủ đề tối -->
-<h3 class="text-xl font-semibold text-gray-800 dark:text-ivs-neutral-100 mb-2" data-lang-key="edtech_why_modern_tech">Công nghệ hiện đại</h3>
-<!-- Điều chỉnh màu chữ card cho chủ đề tối -->
-<p class="text-sm text-gray-600 dark:text-ivs-neutral-300 flex-grow" data-lang-key="edtech_why_modern_tech_desc">Luôn cập nhật và ứng dụng công nghệ mới nhất.</p>
-</div>
-<!-- Why Choose Card 4: Giải pháp toàn diện -->
-<!-- Điều chỉnh màu nền card cho chủ đề tối -->
-<div class="bg-gray-50 dark:bg-ivs-neutral-600 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 card-hover-effect flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
-<!-- Điều chỉnh màu icon nền cho chủ đề tối -->
-<div class="bg-purple-100 dark:bg-purple-800/50 text-purple-600 dark:text-purple-400 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl flex-shrink-0">
-<i class="fas fa-handshake-angle"></i>
-</div>
-<!-- Điều chỉnh màu tiêu đề card cho chủ đề tối -->
-<h3 class="text-xl font-semibold text-gray-800 dark:text-ivs-neutral-100 mb-2" data-lang-key="edtech_why_comprehensive">Giải pháp toàn diện</h3>
-<!-- Điều chỉnh màu chữ card cho chủ đề tối -->
-<p class="text-sm text-gray-600 dark:text-ivs-neutral-300 flex-grow" data-lang-key="edtech_why_comprehensive_desc">Đồng hành từ thiết kế, thi công đến lắp đặt, bảo trì.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Call to Action Section: Sẵn sàng chuyển đổi giáo dục với IVS Celestech? -->
-<!-- Điều chỉnh màu nền gradient cho chủ đề tối -->
-<section class="section-padding bg-gradient-to-r from-primary via-blue-600 to-indigo-600 text-white text-center">
-<div class="container mx-auto container-padding" data-aos="zoom-in-up">
-<h2 class="text-3xl md:text-4xl font-bold mb-6 hero-text-shadow" data-lang-key="edtech_cta_title">Sẵn sàng chuyển đổi giáo dục với IVS Celestech?</h2>
-<p class="text-lg md:text-xl opacity-95 max-w-3xl mx-auto mb-8 hero-text-shadow" data-lang-key="edtech_cta_subtitle">
-                        Hãy liên hệ với chúng tôi để khám phá cách công nghệ có thể nâng tầm trải nghiệm học tập và giảng dạy của bạn.
-                    </p>
-<!-- Điều chỉnh màu nút CTA cho chủ đề tối -->
-<a class="inline-block bg-secondary hover:bg-secondary-dark text-ivs-neutral-800 font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md" data-lang-key="edtech_cta_button" href="../contact.html?service=edtech">
-                        Liên Hệ Tư Vấn
-                    </a>
-</div>
-</section>
-</main>
-<footer id="footer-placeholder"></footer>
-<div id="fab-placeholder"></div>
-<div id="assistant-placeholder"></div>
 
-<!-- Third party libraries -->
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<header id="header-placeholder"></header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="bg-ivs-neutral-800 text-center py-20" id="hero">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-ivs-cyan mb-4" data-lang-key="edtech_hero_title">IVS Celestech - Công nghệ Giáo dục</h1>
+            <p class="text-lg md:text-xl text-ivs-text-secondary max-w-3xl mx-auto" data-lang-key="edtech_hero_subtitle">Tiên phong ứng dụng công nghệ hiện đại, kiến tạo môi trường học tập thông minh, hiệu quả và tương tác cao.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 md:py-24 bg-ivs-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="edtech_services_title">Dịch Vụ Của IVS Celestech</h2>
+                <p class="text-lg text-ivs-text-secondary" data-lang-key="edtech_services_intro"></p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="interactive-card p-8 rounded-xl text-center flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-hammer text-4xl text-ivs-blue mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-3 flex-grow" data-lang-key="edtech_service_design_build_title">Tư vấn & Thi công Nội thất</h3>
+                    <a class="mt-4 inline-block bg-ivs-blue/80 hover:bg-ivs-blue text-white font-semibold py-2 px-4 rounded-lg transition" href="/Pages/ivscelestech-tcnoithat.html">Xem chi tiết</a>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-robot text-4xl text-ivs-green mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-3 flex-grow" data-lang-key="edtech_service_smart_equipment_title">Trang thiết bị Thông minh</h3>
+                    <a class="mt-4 inline-block bg-ivs-green/80 hover:bg-ivs-green text-white font-semibold py-2 px-4 rounded-lg transition" href="/Pages/tech_devices.html">Xem chi tiết</a>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-cogs text-4xl text-ivs-amber mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-3 flex-grow" data-lang-key="edtech_service_management_system_title">Hệ thống Quản lý Giáo dục</h3>
+                    <a class="mt-4 inline-block bg-ivs-amber/80 hover:bg-ivs-amber text-white font-semibold py-2 px-4 rounded-lg transition" href="/Pages/apps/ivsapps.html">Xem Apps</a>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-globe text-4xl text-ivs-purple mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-3 flex-grow" data-lang-key="edtech_service_website_design_title">Thiết kế Website Giáo dục</h3>
+                    <a class="mt-4 inline-block bg-ivs-purple/80 hover:bg-ivs-purple text-white font-semibold py-2 px-4 rounded-lg transition" href="/Pages/webdesign.html">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 md:py-24 bg-ivs-neutral-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="edtech_why_choose_title">Tại Sao Chọn IVS Celestech?</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-award text-4xl text-ivs-blue mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="edtech_why_quality">Chất lượng hàng đầu</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="edtech_why_quality_desc">Sản phẩm và dịch vụ theo tiêu chuẩn quốc tế.</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-users-cog text-4xl text-ivs-green mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="edtech_why_experts">Đội ngũ chuyên gia</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="edtech_why_experts_desc">Giàu kinh nghiệm, tận tâm hỗ trợ giải pháp tốt nhất.</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-flask text-4xl text-ivs-amber mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="edtech_why_modern_tech">Công nghệ hiện đại</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="edtech_why_modern_tech_desc">Luôn cập nhật và ứng dụng công nghệ mới nhất.</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-handshake-angle text-4xl text-ivs-purple mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="edtech_why_comprehensive">Giải pháp toàn diện</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="edtech_why_comprehensive_desc">Đồng hành từ thiết kế, thi công đến lắp đặt, bảo trì.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-ivs-bg py-20">
+        <div class="container mx-auto px-4 text-center max-w-3xl" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-lang-key="edtech_cta_title">Sẵn sàng chuyển đổi giáo dục với IVS Celestech?</h2>
+            <p class="text-ivs-text-secondary text-lg mb-8" data-lang-key="edtech_cta_subtitle">Hãy liên hệ với chúng tôi để khám phá cách công nghệ có thể nâng tầm trải nghiệm học tập và giảng dạy của bạn.</p>
+            <a href="/contact.html?interest=edtech" class="inline-block bg-ivs-blue hover:bg-ivs-cyan text-white font-bold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30" data-lang-key="edtech_cta_button">Liên Hệ Tư Vấn</a>
+        </div>
+    </section>
+
+</main>
+
+<footer id="footer-placeholder"></footer>
+<div id="fab-container-placeholder"></div>
+
+<!-- Scripts -->
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<!-- Application scripts (deferred) -->
-<script src="../js/firebase-init.js" type="module"></script>
-<script defer src="../js/utils.js"></script>
-<script defer src="../js/language.js"></script>
-<script defer src="../js/fabController.js"></script>
-<script defer src="../js/app.js"></script>
-<script defer src="../js/loadComponents.js"></script>
-
+<script src="/js/utils.js"></script>
+<script src="/js/language.js"></script>
+<script src="/ai/js/fabController.js"></script>
 <script>
-    window.onPageComponentsLoadedCallback = function() {
-        AOS.init({
-            duration: 700,
-            once: true,
-            offset: 50,
-            easing: 'ease-out-cubic',
-        });
-    };
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 800, once: true, offset: 50 });
+        }
+    });
 </script>
+<script defer src="/ai/js/loadComponents.js"></script>
+
 </body>
 </html>

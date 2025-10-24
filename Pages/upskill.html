@@ -1,19 +1,170 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Nâng cao Trình độ - IVS JSC</title>
-    <meta name="description" content="Khám phá các chương trình và giải pháp nâng cao trình độ, kỹ năng chuyên môn tại IVS JSC.">
-    <meta name="keywords" content="IVS JSC, nâng cao trình độ, kỹ năng chuyên môn, đào tạo, phát triển cá nhân, phát triển tổ chức">
-    <script src="https://cdn.tailwindcss.com?plugins=typography,forms,aspect-ratio,line-clamp"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css"> </head>
-<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300">
-    <div id="header-placeholder" data-loading-text="Đang tải menu..."></div>
+    <meta content="Khám phá các chương trình và giải pháp nâng cao trình độ, kỹ năng chuyên môn tại IVS JSC." name="description"/>
+    <meta content="IVS JSC, nâng cao trình độ, kỹ năng chuyên môn, đào tạo, phát triển cá nhân, phát triển tổ chức" name="keywords"/>
+    <meta content="Nâng cao Trình độ - IVS JSC" property="og:title"/>
+    <meta content="Khám phá các chương trình và giải pháp nâng cao trình độ, kỹ năng chuyên môn tại IVS JSC." property="og:description"/>
+    <meta content="/images/logo/logo.svg" property="og:image"/>
+    <meta content="https://ivsacademy.edu.vn/Pages/upskill.html" property="og:url"/>
+    <meta content="website" property="og:type"/>
+    <meta content="IVS JSC" name="author"/>
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="../css/tailwind.css" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer="" src="../js/language-init.js"></script>
+<style>
+        /* CSS tuỳ chỉnh cho giao diện tối */
+        :root {
+            --header-height: 4rem;
+        }
 
-    <main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
+        body {
+            background-color: #1a1a1a;
+            color: #f4f4f5;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            overflow-x: hidden;
+            padding-top: var(--header-height);
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        #header-placeholder {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            background-color: #0A0A0A;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        /* Interactive Card Hover Effect */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #111111;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5);
+            border-color: #60a5fa;
+        }
+        
+        /* Custom Style for Cards */
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #18181B;
+            border: 1px solid #27272A;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 20px -5px rgba(34, 211, 238, 0.2), 0 0 15px 0 rgba(34, 211, 238, 0.5);
+            transform: scale(1.02);
+            border-color: #22d3ee;
+        }
+
+        /* Section padding and container styles */
+        .section-padding {
+            padding: 4rem 1rem;
+        }
+
+        .container-padding {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .section-padding {
+                padding: 5rem 2rem;
+            }
+            .container-padding {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding: 6rem 3rem;
+            }
+            .container-padding {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+
+        /* Card hover effects */
+        .card-hover-effect {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Animation classes */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<script>
+        // Guarded Tailwind config: some pages include the CDN runtime (https://cdn.tailwindcss.com)
+        // but on local/dev builds the global `tailwind` may be undefined. Only assign if present.
+        try {
+            if (typeof tailwind !== 'undefined' && tailwind && typeof tailwind.config === 'object') {
+                tailwind.config = Object.assign({}, tailwind.config || {}, {
+                    theme: {
+                        extend: {
+                            colors: {
+                                'ivs-blue': '#4c5ef7',
+                                'ivs-green': '#34d399',
+                                'ivs-cyan': '#22d3ee',
+                                'ivs-purple': '#a78bfa',
+                                'ivs-amber': '#fbbf24',
+                                'ivs-neutral-800': '#1f2937',
+                                'ivs-border': '#374151',
+                                'ivs-text-secondary': '#d1d5db',
+                            },
+                            fontFamily: {
+                                'display': ['Inter', 'sans-serif'],
+                            }
+                        }
+                    }
+                });
+            } else {
+                // No tailwind runtime available; skip JS configuration. Styles still work via compiled CSS.
+                console.debug('tailwind runtime not present; skipping tailwind.config assignment');
+            }
+        } catch (e) {
+            console.warn('Error applying tailwind.config guard:', e && e.message ? e.message : e);
+        }
+    </script>
+
+</head>
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+<nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
+<main>
         <section class="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20 md:py-32 overflow-hidden rounded-b-3xl shadow-xl">
             <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://ivsacademy.edu.vn/images/banners/upskill_hero_banner.jpg');" onerror="this.style.backgroundImage='url(https://placehold.co/1920x600/004080/ffffff?text=IVS+Upskill)'; this.classList.add('bg-slate-700');"></div>
             <div class="container mx-auto container-padding relative z-10">
@@ -163,43 +314,38 @@
             </div>
         </section>
     </main>
-
     <footer id="footer-placeholder"></footer>
     <div id="fab-container-placeholder"></div>
+    <div id="ai-assistant-placeholder"></div>
 
-    
-    <script src="/js/script.js" defer></script>
-    <script src="/js/language.js" defer></script>
-    <script src="/js/fabController.js" defer></script>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Third party libraries -->
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Application scripts (deferred) -->
+    <script defer src="../js/utils.js"></script>
+    <script defer src="../js/language.js"></script>
+    <script defer src="../js/headerController.js"></script>
+    <script defer src="../js/footerController.js"></script>
+    <script defer src="/ai/js/fabController.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="/ai/js/loadComponents.js"></script>
     <script>
-        window.onPageComponentsLoadedCallback = function() {
-            console.log("[Upskill Page] Components loaded. Page specific JS can run now.");
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    offset: 100,
-                    duration: 700,
-                    easing: 'ease-out-quad',
-                    once: true,
-                    mirror: false,
-                    anchorPlacement: 'top-bottom',
-                });
-            }
-            if (typeof window.initializeLanguageSystem === 'function') {
-                window.initializeLanguageSystem().then(() => {
-                    console.log("[Upskill Page] Language system initialized by callback.");
-                }).catch(error => {
-                    console.error("[Upskill Page] Error initializing language system from callback:", error);
-                });
-            }
-            if (typeof initializeFabButtons === 'function') {
-                initializeFabButtons();
-            }
-        };
+        // Initialize AOS after components are loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for components to load, then initialize AOS
+            setTimeout(function() {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        offset: 100,
+                        duration: 700,
+                        easing: 'ease-out-quad',
+                        once: true,
+                        mirror: false,
+                        anchorPlacement: 'top-bottom',
+                    });
+                }
+            }, 1000); // Give components time to load
+        });
     </script>
-
-<script src="/js/loadComponents.js" defer></script>
 </body>
 </html>
 

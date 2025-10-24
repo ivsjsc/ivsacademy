@@ -1,267 +1,135 @@
 <!DOCTYPE html>
-
 <html class="scroll-smooth" lang="vi">
-<head><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link href="//unpkg.com" rel="dns-prefetch"/><link href="//fonts.googleapis.com" rel="dns-prefetch"/><link as="style" href="../css/style.css" rel="preload"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title data-lang-key="legal_consulting_page_title">Tư Vấn Pháp Lý Chuyên Sâu | IVS JSC</title>
-<meta content="IVS JSC cung cấp dịch vụ tư vấn pháp lý chuyên sâu cho doanh nghiệp và cá nhân, bao gồm pháp luật doanh nghiệp, dân sự, và giải quyết tranh chấp." data-lang-key="legal_consulting_meta_description" name="description"/>
-<meta content="IVS JSC, tư vấn pháp lý, luật doanh nghiệp, luật dân sự, giải quyết tranh chấp, thành lập doanh nghiệp, hợp đồng, tố tụng, PSB, phòng pháp chế doanh nghiệp" data-lang-key="legal_consulting_meta_keywords" name="keywords"/>
-<meta content="Tư Vấn Pháp Lý Chuyên Sâu Toàn Diện | IVS JSC" data-lang-key="legal_consulting_og_title" property="og:title"/>
-<meta content="Đội ngũ luật sư và chuyên gia pháp lý tại IVS JSC sẵn sàng hỗ trợ bạn với các giải pháp pháp lý hiệu quả, bảo vệ quyền và lợi ích hợp pháp." data-lang-key="legal_consulting_og_description" property="og:description"/>
-<meta content="/images/banners/legal_consulting_og_banner.jpg" property="og:image"/>
-<meta content="https://ivsacademy.edu.vn/Pages/legal_consulting.html" property="og:url"/>
-<meta content="website" property="og:type"/>
-<meta content="IVS JSC" name="author"/>
-<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-<link href="../images/logo/logo-192.jpg" rel="apple-touch-icon"/>
-<link href="../manifest.json" rel="manifest"/>
-<!-- Fonts and Icons -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="../css/tailwind.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/></noscript>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<!-- Scripts and Styles -->
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title data-lang-key="legal_consulting_page_title">Tư Vấn Pháp Lý Chuyên Sâu | IVS JSC</title>
+    <meta name="description" content="IVS JSC cung cấp dịch vụ tư vấn pháp lý chuyên sâu cho doanh nghiệp và cá nhân, bao gồm pháp luật doanh nghiệp, dân sự, và giải quyết tranh chấp." data-lang-key="legal_consulting_meta_description">
+    <meta name="keywords" content="tư vấn pháp lý, luật doanh nghiệp, luật dân sự, giải quyết tranh chấp, IVS JSC" data-lang-key="legal_consulting_meta_keywords">
+    <meta property="og:title" content="Tư Vấn Pháp Lý Chuyên Sâu Toàn Diện | IVS JSC" data-lang-key="legal_consulting_og_title">
+    <meta property="og:description" content="Đội ngũ luật sư và chuyên gia pháp lý tại IVS JSC sẵn sàng hỗ trợ bạn với các giải pháp pháp lý hiệu quả, bảo vệ quyền và lợi ích hợp pháp." data-lang-key="legal_consulting_og_description">
+    <meta property="og:image" content="/images/banners/legal_consulting_og_banner.jpg">
+    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/legal_consulting.html">
+    <meta property="og:type" content="website">
+    <meta content="IVS JSC" name="author"/>
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="/css/tailwind.css" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer src="/js/language-init.js"></script>
 <style>
-        /* Shared layout adjustments from index.html */
         :root { --header-height: 4rem; }
-        body { padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
-        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
-        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
-        .hero-content { position:relative; z-index:3; max-width:90%; }
-
-        /* Custom page styles */
-        .hero-text-shadow { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); }
-        .section-title { font-family: 'Lexend', sans-serif; }
-        .service-card {
-            background-color: white;
-            border-radius: 0.75rem; /* rounded-xl */
-            border: 1px solid #e5e7eb; /* neutral-200 */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .dark .service-card {
-            background-color: var(--tw-color-neutral-800);
-            border-color: var(--tw-color-neutral-700);
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); /* shadow-xl */
-        }
-        .process-line::before {
-            content: '';
-            position: absolute;
-            top: 1.25rem;
-            bottom: 0;
-            left: 1.25rem;
-            width: 4px;
-            background-color: #e5e7eb; /* neutral-200 */
-            border-radius: 2px;
-        }
-        .dark .process-line::before { background-color: #374151; /* neutral-700 */ }
-    </style>
-<!-- CSS -->
-<link href="../css/style.css" rel="stylesheet"/>
-<link href="../css/animations.css" rel="stylesheet"/>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<!-- Icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+        body { background-color: #1a1a1a; color: #f4f4f5; font-family: 'Be Vietnam Pro', sans-serif; overflow-x: hidden; padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1f2937; }
+        section { scroll-margin-top: calc(var(--header-height) + 1rem); padding: 4rem 1rem; }
+        @media (min-width: 768px) { section { padding: 6rem 2rem; } }
+        .interactive-card { background: #111111; border: 1px solid #27272A; transition: all 0.3s ease; }
+        .interactive-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px -5px rgba(76, 94, 247, 0.2); border-color: #4c5ef7; }
+</style>
 </head>
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
-    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
-    <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section relative overflow-hidden bg-gradient-to-br from-[#ff7a18] via-[#ffb380] to-[#e05f00] dark:from-[#232b3a] dark:via-[#ff7a18] dark:to-[#181f2a] text-white shadow-lg">
-            <div class="hero-overlay"></div>
-            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-                <p class="text-base md:text-lg font-semibold uppercase tracking-wider text-white/80 mb-3 drop-shadow-lg" data-lang-key="legal_hero_tagline">DỊCH VỤ PHÁP LÝ CHUYÊN NGHIỆP</p>
-                <h1 class="section-title text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-xl" data-lang-key="legal_detailed_hero_title" id="page-title-legal-consulting">Tư Vấn Pháp Lý Chuyên Sâu</h1>
-                <p class="text-lg md:text-2xl max-w-2xl mx-auto opacity-95 font-medium" data-lang-key="legal_detailed_hero_subtitle">Giải pháp Toàn diện - Bảo vệ Quyền lợi - Đồng hành Phát triển</p>
-                <a href="#cta-legal" class="mt-8 inline-block bg-white/90 hover:bg-white text-[#ff7a18] font-bold py-3 px-8 rounded-full text-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 border-2 border-white/80">Yêu cầu tư vấn ngay <i class="fas fa-arrow-right ml-2"></i></a>
-            </div>
-        </section>
-        <!-- Intro Section -->
-        <section aria-labelledby="intro-legal-heading" class="py-16 md:py-24 bg-white dark:bg-neutral-900">
-            <div class="container mx-auto px-4">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div data-aos="fade-right">
-                        <h2 class="section-title text-3xl md:text-4xl font-bold text-[#ff7a18] dark:text-[#ffb380] mb-4" data-lang-key="legal_detailed_intro_title" id="intro-legal-heading">IVS JSC: Đối Tác Pháp Lý Tin Cậy</h2>
-                        <p class="text-lg text-neutral-700 dark:text-neutral-200 mb-6 leading-relaxed" data-lang-key="legal_detailed_intro_desc">
-                            Tại IVS JSC, chúng tôi hiểu rằng các vấn đề pháp lý phức tạp có thể ảnh hưởng trực tiếp đến sự thành công của cá nhân và doanh nghiệp. Với đội ngũ luật sư, chuyên gia pháp lý giàu kinh nghiệm, chúng tôi cung cấp dịch vụ tư vấn chuyên sâu, giúp Quý vị phòng ngừa rủi ro, giải quyết tranh chấp và đưa ra các quyết định chiến lược tuân thủ pháp luật.
-                        </p>
-                        <a class="inline-flex items-center gap-2 font-semibold text-[#ff7a18] hover:underline" href="#our-expertise">
-                            <span data-lang-key="explore_our_services">Khám phá Dịch vụ</span>
-                            <i class="fas fa-arrow-down text-sm"></i>
-                        </a>
-                    </div>
-                    <div class="hidden md:block" data-aos="fade-left">
-                        <img alt="Đội ngũ luật sư IVS đang thảo luận" class="rounded-2xl shadow-2xl w-full h-auto object-cover border-4 border-[#ffb380] dark:border-[#232b3a]" decoding="async" onerror="this.src='https://placehold.co/600x400/003366/ffffff?text=IVS+Legal+Team';" src="../images/pages/legal_consulting_intro.jpg"/>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Our Expertise Section -->
-        <section aria-labelledby="expertise-title" class="py-16 md:py-24" id="our-expertise">
-            <div class="container mx-auto px-4">
-                <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
-                    <h2 class="section-title text-3xl md:text-4xl font-bold text-[#ff7a18] dark:text-[#ffb380] mb-4" data-lang-key="our_legal_expertise" id="expertise-title">Lĩnh Vực Chuyên Môn Của Chúng Tôi</h2>
-                    <p class="text-base md:text-lg text-neutral-700 dark:text-neutral-200" data-lang-key="our_legal_expertise_desc">Chúng tôi cung cấp giải pháp pháp lý toàn diện trên hai lĩnh vực chính, đảm bảo hỗ trợ khách hàng trên mọi phương diện.</p>
-                </div>
-                <div class="grid lg:grid-cols-2 gap-12">
-                    <!-- Corporate Law -->
-                    <div data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex items-center gap-4 mb-6">
-                            <i class="fas fa-building text-3xl text-[#ff7a18] dark:text-[#ffb380]"></i>
-                            <h3 class="section-title text-2xl md:text-3xl font-bold text-[#232b3a] dark:text-white" data-lang-key="legal_consulting_title">Pháp Luật Doanh Nghiệp</h3>
-                        </div>
-                        <div class="space-y-6">
-                            <div class="service-card p-6">
-                                <h4 class="font-bold text-lg mb-2 text-[#ff7a18] dark:text-[#ffb380]" data-lang-key="legal_corporate_service_1_title">Thành lập &amp; Tái cấu trúc</h4>
-                                <p class="text-sm" data-lang-key="legal_corporate_service_1_desc">Tư vấn loại hình, ĐKKD, thay đổi nội dung, chia tách, sáp nhập, giải thể.</p>
-                            </div>
-                            <div class="service-card p-6">
-                                <h4 class="font-bold text-lg mb-2 text-[#ff7a18] dark:text-[#ffb380]" data-lang-key="legal_corporate_service_2_title">Tuân thủ &amp; Quản trị Nội bộ</h4>
-                                <p class="text-sm" data-lang-key="legal_corporate_service_2_desc">Xây dựng quy chế, tư vấn pháp luật lao động, thuế, đầu tư, sở hữu trí tuệ.</p>
-                            </div>
-                            <div class="service-card p-6">
-                                <h4 class="font-bold text-lg mb-2 text-[#ff7a18] dark:text-[#ffb380]" data-lang-key="legal_corporate_service_3_title">Hợp đồng &amp; Giao dịch</h4>
-                                <p class="text-sm" data-lang-key="legal_corporate_service_3_desc">Soạn thảo, rà soát, đàm phán hợp đồng kinh tế, thương mại, đầu tư, M&amp;A.</p>
-                            </div>
-                            <div class="service-card p-6 bg-[#ffb380]/20 dark:bg-[#232b3a]/60 border-2 border-[#ff7a18] dark:border-[#ffb380]">
-                                <h4 class="font-bold text-lg mb-2 text-[#ff7a18] dark:text-[#ffb380]" data-lang-key="legal_corporate_service_psb_title">PSB (Phòng Pháp chế Thuê ngoài)</h4>
-                                <p class="text-sm mb-4" data-lang-key="legal_corporate_service_psb_desc">Giải pháp pháp chế toàn diện, tối ưu chi phí cho doanh nghiệp vừa và nhỏ.</p>
-                                <a class="font-semibold text-sm text-[#e05f00] dark:text-[#ffb380] hover:underline" data-lang-key="button_learn_more_psb" href="../Pages/psb_introduction.html">Tìm hiểu về PSB <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Civil Law -->
-                    <div data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center gap-4 mb-6">
-                            <i class="fas fa-gavel text-3xl text-[#ff7a18] dark:text-[#ffb380]"></i>
-                            <h3 class="section-title text-2xl md:text-3xl font-bold text-[#232b3a] dark:text-white" data-lang-key="legal_detailed_civil_title">Dân sự &amp; Tố Tụng</h3>
-                        </div>
-                        <div class="space-y-6">
-                            <div class="service-card p-6">
-                                <h4 class="font-bold text-lg mb-2 text-[#ff7a18] dark:text-[#ffb380]" data-lang-key="legal_civil_service_1_title">Hợp đồng Dân sự</h4>
-                                <p class="text-sm" data-lang-key="legal_civil_service_1_desc">Tư vấn, soạn thảo, rà soát hợp đồng mua bán, vay mượn, thuê tài sản, dịch vụ.</p>
-                            </div>
-                            <div class="service-card p-6">
-                                <h4 class="font-bold text-lg mb-2 text-[#ff7a18] dark:text-[#ffb380]" data-lang-key="legal_civil_service_2_title">Đất đai &amp; Bất động sản</h4>
-                                <p class="text-sm" data-lang-key="legal_civil_service_2_desc">Tư vấn thủ tục mua bán, chuyển nhượng, thừa kế, tặng cho và giải quyết tranh chấp.</p>
-                            </div>
-                            <div class="service-card p-6">
-                                <h4 class="font-bold text-lg mb-2 text-[#ff7a18] dark:text-[#ffb380]" data-lang-key="legal_civil_service_3_title">Thừa kế &amp; Hôn nhân Gia đình</h4>
-                                <p class="text-sm" data-lang-key="legal_civil_service_3_desc">Tư vấn lập di chúc, phân chia di sản, thủ tục ly hôn, tài sản, quyền nuôi con.</p>
-                            </div>
-                            <div class="service-card p-6 bg-[#ffb380]/20 dark:bg-[#232b3a]/60 border-2 border-[#ff7a18] dark:border-[#ffb380]">
-                                <h4 class="font-bold text-lg mb-2 text-[#ff7a18] dark:text-[#ffb380]" data-lang-key="legal_civil_service_4_title">Đại diện Tố tụng</h4>
-                                <p class="text-sm mb-4" data-lang-key="legal_civil_service_4_desc_full">Bảo vệ quyền và lợi ích hợp pháp của khách hàng tại Tòa án các cấp, Trọng tài thương mại trong các vụ việc dân sự, kinh doanh.</p>
-                                <a class="font-semibold text-sm text-[#e05f00] dark:text-[#ffb380] hover:underline" data-lang-key="button_learn_more_litigation" href="../Pages/litigation_consulting.html">Xem Chi Tiết Dịch Vụ Tố Tụng <i class="fas fa-arrow-right fa-xs ml-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-<!-- Why Choose Us Section -->
-<section aria-labelledby="why-choose-us-title" class="py-16 md:py-24 bg-white dark:bg-neutral-800">
-<div class="container mx-auto px-4">
-<div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
-<h2 class="section-title text-3xl md:text-4xl font-bold text-primary dark:text-secondary mb-4" data-lang-key="why_choose_ivs_legal" id="why-choose-us-title">Tại Sao Chọn Dịch Vụ Pháp Lý Của IVS JSC?</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="text-center p-6" data-aos="fade-up" data-aos-delay="100">
-<div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-primary/10 dark:bg-secondary/20 rounded-full">
-<i class="fas fa-user-tie text-3xl text-primary dark:text-secondary"></i>
-</div>
-<h3 class="font-bold text-xl mb-2" data-lang-key="legal_why_1_title">Đội Ngũ Chuyên Gia</h3>
-<p class="text-sm" data-lang-key="legal_why_1_desc">Luật sư và chuyên viên pháp lý giàu kinh nghiệm, am hiểu sâu rộng nhiều lĩnh vực, đảm bảo đưa ra tư vấn chính xác và hiệu quả.</p>
-</div>
-<div class="text-center p-6" data-aos="fade-up" data-aos-delay="200">
-<div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-primary/10 dark:bg-secondary/20 rounded-full">
-<i class="fas fa-shield-alt text-3xl text-primary dark:text-secondary"></i>
-</div>
-<h3 class="font-bold text-xl mb-2" data-lang-key="legal_why_2_title">Giải Pháp Tối Ưu</h3>
-<p class="text-sm" data-lang-key="legal_why_2_desc">Chúng tôi không chỉ cung cấp lời khuyên pháp lý mà còn đề xuất các giải pháp chiến lược, thiết thực, đặt lợi ích của khách hàng lên hàng đầu.</p>
-</div>
-<div class="text-center p-6" data-aos="fade-up" data-aos-delay="300">
-<div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-primary/10 dark:bg-secondary/20 rounded-full">
-<i class="fas fa-lock text-3xl text-primary dark:text-secondary"></i>
-</div>
-<h3 class="font-bold text-xl mb-2" data-lang-key="legal_why_3_title">Bảo Mật &amp; Tận Tâm</h3>
-<p class="text-sm" data-lang-key="legal_why_3_desc">Cam kết bảo mật tuyệt đối mọi thông tin và đồng hành cùng khách hàng với sự tận tâm, chuyên nghiệp cao nhất.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Process Section -->
-<section aria-labelledby="process-title" class="py-16 md:py-24">
-<div class="container mx-auto px-4">
-<div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
-<h2 class="section-title text-3xl md:text-4xl font-bold text-neutral-800 dark:text-white mb-4" data-lang-key="legal_process_title" id="process-title">Quy Trình Tư Vấn Minh Bạch</h2>
-<p class="text-base md:text-lg" data-lang-key="legal_process_desc">Chúng tôi làm việc theo một quy trình 4 bước rõ ràng để đảm bảo hiệu quả và sự hài lòng của khách hàng.</p>
-</div>
-<div class="relative max-w-2xl mx-auto process-line">
-<div class="relative pl-12 pb-12" data-aos="fade-left">
-<div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full font-bold text-lg z-10">1</div>
-<h3 class="font-bold text-xl mb-2 text-neutral-800 dark:text-white" data-lang-key="legal_process_1_title">Tiếp nhận &amp; Phân tích</h3>
-<p class="text-sm" data-lang-key="legal_process_1_desc">Lắng nghe, trao đổi để hiểu rõ vấn đề, thu thập tài liệu và phân tích sơ bộ tình hình pháp lý của Quý vị.</p>
-</div>
-<div class="relative pl-12 pb-12" data-aos="fade-left" data-aos-delay="100">
-<div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full font-bold text-lg z-10">2</div>
-<h3 class="font-bold text-xl mb-2 text-neutral-800 dark:text-white" data-lang-key="legal_process_2_title">Đề xuất Giải pháp</h3>
-<p class="text-sm" data-lang-key="legal_process_2_desc">Trình bày các phương án, phân tích ưu nhược điểm và đề xuất giải pháp pháp lý tối ưu nhất cho Quý vị.</p>
-</div>
-<div class="relative pl-12 pb-12" data-aos="fade-left" data-aos-delay="200">
-<div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full font-bold text-lg z-10">3</div>
-<h3 class="font-bold text-xl mb-2 text-neutral-800 dark:text-white" data-lang-key="legal_process_3_title">Triển khai &amp; Đại diện</h3>
-<p class="text-sm" data-lang-key="legal_process_3_desc">Thực hiện các thủ tục cần thiết, soạn thảo văn bản, và đại diện Quý vị làm việc với các bên liên quan.</p>
-</div>
-<div class="relative pl-12" data-aos="fade-left" data-aos-delay="300">
-<div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full font-bold text-lg z-10">4</div>
-<h3 class="font-bold text-xl mb-2 text-neutral-800 dark:text-white" data-lang-key="legal_process_4_title">Theo dõi &amp; Hỗ trợ</h3>
-<p class="text-sm" data-lang-key="legal_process_4_desc">Cập nhật tiến độ, báo cáo kết quả và tiếp tục hỗ trợ các vấn đề pháp lý phát sinh sau dịch vụ.</p>
-</div>
-</div>
-</div>
-</section>
-        <!-- CTA Section -->
-        <section id="cta-legal" class="py-16 md:py-24 bg-gradient-to-br from-[#ff7a18] to-[#e05f00] text-white shadow-2xl" data-aos="zoom-in">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="section-title text-3xl md:text-4xl font-bold mb-4 text-white drop-shadow-lg" data-lang-key="legal_detailed_cta_title">Cần Hỗ Trợ Pháp Lý Chuyên Nghiệp?</h2>
-                <p class="max-w-2xl mx-auto mb-8 text-lg" data-lang-key="legal_detailed_cta_desc">Đừng để các vấn đề pháp lý cản trở sự phát triển của bạn. Liên hệ ngay với IVS JSC để được tư vấn và hỗ trợ kịp thời, hiệu quả!</p>
-                <a class="inline-block bg-white text-[#ff7a18] font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-xl border-2 border-white/80 hover:bg-[#ffb380] hover:text-[#e05f00]" data-lang-key="legal_detailed_cta_button" href="../contact.html?service=legal_consulting">
-                    <i class="fas fa-phone-alt mr-2"></i> Yêu Cầu Tư Vấn
-                </a>
-            </div>
-        </section>
-    </main>
-    <footer id="footer-placeholder"></footer>
-    <div id="fab-placeholder"></div>
-    <div id="assistant-placeholder"></div>
 
-    <!-- Third party libraries -->
-    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Application scripts (deferred) -->
-    <script defer src="../js/utils.js"></script>
-    <script defer src="../js/language.js"></script>
-    <script defer src="../js/fabController.js"></script>
-    <script defer src="../js/app.js"></script>
-    <script defer src="../js/loadComponents.js"></script>
+<header id="header-placeholder"></header>
 
-    <script>
-        window.onPageComponentsLoadedCallback = function() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
-            }
-        };
-    </script>
+<main>
+    <!-- Hero Section -->
+    <section class="bg-ivs-neutral-800 text-center py-20" id="hero">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <p class="text-base md:text-lg font-semibold uppercase tracking-wider text-ivs-blue mb-3" data-lang-key="legal_hero_tagline">DỊCH VỤ PHÁP LÝ CHUYÊN NGHIỆP</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4" data-lang-key="legal_detailed_hero_title">Tư Vấn Pháp Lý Chuyên Sâu</h1>
+            <p class="text-lg md:text-xl text-ivs-text-secondary max-w-2xl mx-auto" data-lang-key="legal_detailed_hero_subtitle">Giải pháp Toàn diện - Bảo vệ Quyền lợi - Đồng hành Phát triển</p>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-16 md:py-24 bg-ivs-bg">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-ivs-blue mb-4" data-lang-key="legal_detailed_intro_title">IVS JSC: Đối Tác Pháp Lý Tin Cậy</h2>
+                    <p class="text-lg text-ivs-text-secondary leading-relaxed" data-lang-key="legal_detailed_intro_desc">
+                        Tại IVS JSC, chúng tôi hiểu rằng các vấn đề pháp lý phức tạp có thể ảnh hưởng trực tiếp đến sự thành công của cá nhân và doanh nghiệp. Với đội ngũ luật sư, chuyên gia pháp lý giàu kinh nghiệm, chúng tôi cung cấp dịch vụ tư vấn chuyên sâu, giúp Quý vị phòng ngừa rủi ro, giải quyết tranh chấp và đưa ra các quyết định chiến lược tuân thủ pháp luật.
+                    </p>
+                </div>
+                <div class="hidden md:block" data-aos="fade-left">
+                    <img alt="Đội ngũ luật sư IVS" class="rounded-2xl shadow-2xl w-full h-auto object-cover" src="/images/pages/legal_consulting_intro.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="py-16 md:py-24 bg-ivs-neutral-800" id="our-expertise">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="our_legal_expertise">Lĩnh Vực Chuyên Môn</h2>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Corporate Law -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-building text-3xl text-ivs-blue"></i>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white" data-lang-key="legal_consulting_title">Pháp Luật Doanh Nghiệp</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="interactive-card p-6"><h4 class="font-bold text-lg mb-2 text-ivs-blue" data-lang-key="legal_corporate_service_1_title">Thành lập & Tái cấu trúc</h4><p class="text-sm text-ivs-text-secondary" data-lang-key="legal_corporate_service_1_desc"></p></div>
+                        <div class="interactive-card p-6"><h4 class="font-bold text-lg mb-2 text-ivs-blue" data-lang-key="legal_corporate_service_2_title">Tuân thủ & Quản trị Nội bộ</h4><p class="text-sm text-ivs-text-secondary" data-lang-key="legal_corporate_service_2_desc"></p></div>
+                        <div class="interactive-card p-6 border-2 border-ivs-blue"><h4 class="font-bold text-lg mb-2 text-ivs-blue" data-lang-key="legal_corporate_service_psb_title">PSB (Phòng Pháp chế Thuê ngoài)</h4><p class="text-sm mb-4 text-ivs-text-secondary" data-lang-key="legal_corporate_service_psb_desc"></p><a class="font-semibold text-sm text-ivs-blue hover:underline" href="/Pages/psb_introduction.html">Tìm hiểu về PSB &rarr;</a></div>
+                    </div>
+                </div>
+                <!-- Civil Law -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-gavel text-3xl text-ivs-purple"></i>
+                        <h3 class="text-2xl md:text-3xl font-bold text-white" data-lang-key="legal_detailed_civil_title">Dân sự & Tố Tụng</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="interactive-card p-6"><h4 class="font-bold text-lg mb-2 text-ivs-purple" data-lang-key="legal_civil_service_1_title">Hợp đồng Dân sự</h4><p class="text-sm text-ivs-text-secondary" data-lang-key="legal_civil_service_1_desc"></p></div>
+                        <div class="interactive-card p-6"><h4 class="font-bold text-lg mb-2 text-ivs-purple" data-lang-key="legal_civil_service_2_title">Đất đai & Bất động sản</h4><p class="text-sm text-ivs-text-secondary" data-lang-key="legal_civil_service_2_desc"></p></div>
+                        <div class="interactive-card p-6 border-2 border-ivs-purple"><h4 class="font-bold text-lg mb-2 text-ivs-purple" data-lang-key="legal_civil_service_4_title">Đại diện Tố tụng</h4><p class="text-sm mb-4 text-ivs-text-secondary" data-lang-key="legal_civil_service_4_desc_full"></p><a class="font-semibold text-sm text-ivs-purple hover:underline" href="/Pages/litigation_consulting.html">Xem Chi Tiết &rarr;</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 bg-ivs-bg">
+        <div class="container mx-auto px-4 text-center max-w-3xl" data-aos="zoom-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="legal_detailed_cta_title">Cần Hỗ Trợ Pháp Lý Chuyên Nghiệp?</h2>
+            <p class="text-lg text-ivs-text-secondary max-w-2xl mx-auto mb-8" data-lang-key="legal_detailed_cta_desc">Đừng để các vấn đề pháp lý cản trở sự phát triển của bạn. Liên hệ ngay với IVS JSC để được tư vấn và hỗ trợ kịp thời, hiệu quả!</p>
+            <a class="inline-block bg-ivs-blue hover:bg-ivs-cyan text-white font-bold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30" href="/contact.html?service=legal_consulting">
+                <i class="fas fa-phone-alt mr-2"></i> <span data-lang-key="legal_detailed_cta_button">Yêu Cầu Tư Vấn</span>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer id="footer-placeholder"></footer>
+<div id="fab-container-placeholder"></div>
+
+<!-- Scripts -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/language.js"></script>
+<script src="/ai/js/fabController.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 800, once: true, offset: 50 });
+        }
+    });
+</script>
+<script defer src="/ai/js/loadComponents.js"></script>
+
 </body>
 </html>
-
-
-
