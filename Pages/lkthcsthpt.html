@@ -315,44 +315,24 @@
             </div>
         </section>
 
-    </main>
-    <footer id="footer-placeholder" data-loading-text="Đang tải Footer..."></footer>
-    <div id="fab-container-placeholder"></div>
-
-    <!-- 1. CÁC CONTROLLER VÀ UTILS PHẢI ĐƯỢC TẢI TRƯỚC LOAD COMPONENTS -->
-    <!-- Giả định các file này định nghĩa các đối tượng: window.componentLog, window.debounce, window.IVSFabController, window.changeLanguage -->
-    <script src="/js/utils.js" defer></script>
-    <script src="/js/language.js" defer></script>
-    <script src="/js/fabController.js" defer></script>
-
-    <!-- 2. TẢI HÀM LOADER CHÍNH (loadComponentsAndInitialize) -->
-    <!-- File này định nghĩa IVSHeaderController, IVSFooterController và loadCommonComponents -->
-
-
-    <!-- 3. PAGE INIT SCRIPT (ĐÃ GỘP HẾT CÁC LOGIC VÀO loadComponents.js) -->
-    <script>
-        // Khối script này chỉ còn lại logic khởi tạo Page
-        document.addEventListener('DOMContentLoaded', async () => {
-             // Logic khởi tạo AOS và Language System đã được chuyển vào loadComponents.js
-             // hoặc được gọi tự động (Language System).
-
-             // Sau khi loadComponents.js chạy, nó sẽ tự động gọi AOS.init()
-             // và window.onPageComponentsLoadedCallback (nếu định nghĩa).
-
-             // Bạn có thể định nghĩa callback riêng cho trang này nếu cần:
-             // window.onPageComponentsLoadedCallback = function() {
-             //     console.log('Page specific initialization started.');
-             // };
-
-             // Đảm bảo loadComponentsAndInitialize chạy (nếu chưa chạy tự động qua DOMContentLoaded)
-             // Mặc dù đã có listener tự động trong componentLoader.js, ta giữ lại cấu trúc này
-             // để đảm bảo tính nhất quán của flow logic.
-             if (typeof window.loadComponentsAndInitialize === 'function' && !window.__IVS_components_loadingStarted) {
-                 await window.loadComponentsAndInitialize();
-             }
-        });
-    </script>
-
-<script src="/js/loadComponents.js" defer></script>
+</main>
+<footer class="bg-ivs-bg border-t border-ivs-border py-12" data-loading-text="Đang tải chân trang..." id="footer-placeholder">
+</footer>
+<div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[1000] hidden" id="messageModal">
+<div class="bg-ivs-card p-8 rounded-lg shadow-xl max-w-sm w-full text-center border border-ivs-border">
+<h3 class="text-xl font-bold text-ivs-blue mb-4" id="modalTitle"></h3>
+<p class="text-ivs-text-secondary mb-6" id="modalMessage"></p>
+<button class="bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold py-2 px-4 rounded-md transition-colors" data-lang-key="modal_close" id="modalCloseButton">
+                Đóng
+            </button>
+</div>
+</div>
+<div id="fab-container-placeholder"></div>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/language.js"></script>
+<script src="../ai/js/fabController.js"></script>
+<script defer="" src="../ai/js/loadComponents.js"></script>
 </body>
 </html>

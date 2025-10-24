@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Liên kết Giáo dục - IVS JSC</title>
@@ -9,13 +16,12 @@
     
     <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
     <link href="css/tailwind.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer="" src="js/language-init.js"></script>
 </head>
-<body class="bg-ivs-bg text-ivs-text-primary antialiased">
-
-    <!-- Header -->
-    <div id="header-placeholder"></div>
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
 
     <!-- Main Content -->
     <main class="pt-20">
@@ -139,31 +145,19 @@
     </main>
 
     <!-- Footer -->
-    <div id="footer-placeholder"></div>
+    <footer class="bg-ivs-bg border-t border-ivs-border py-12" data-loading-text="Đang tải chân trang..." id="footer-placeholder">
+    </footer>
     
     <!-- FAB -->
     <div id="fab-container-placeholder"></div>
 
     <!-- Scripts -->
-    <script defer src="js/utils.js"></script>
-    <script defer src="js/language.js"></script>
-    
-    <script defer>
-        window.onPageComponentsLoadedCallback = function() {
-            console.log('Education page components loaded (callback)');
-        };
-
-        document.addEventListener('DOMContentLoaded', function() {
-            if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
-                window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
-            }
-        });
-    </script>
-
-
-
-
-<script src="/js/loadComponents.js" defer></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/language.js"></script>
+    <script src="ai/js/fabController.js"></script>
+    <script defer="" src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
 

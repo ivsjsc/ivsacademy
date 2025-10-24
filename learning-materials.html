@@ -1,66 +1,36 @@
 <!DOCTYPE html>
 <html class="dark scroll-smooth" lang="vi">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài Liệu Học Tập Tương Tác - IVS Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="//storage.googleapis.com">
+    <link rel="dns-prefetch" href="//unpkg.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <meta content="Truy cập kho tài liệu học tập tương tác của IVS Academy với video bài giảng, bài tập thực hành, và theo dõi tiến độ học tập cá nhân hóa." name="description"/>
-    <meta content="tài liệu học tập, IVS Learning Hub, bài giảng tương tác, theo dõi tiến độ, khóa học online, giáo dục" name="keywords"/>
-
-    <!-- Open Graph -->
+    <meta name="keywords" content="IVS, IVS JSC, IVS Academy, IVS Vietnam, Education, Academy, Language Center, EdTech, Du hoc, Consulting, Solutions, Teacher Training, Steam, Kỹ năng sống" />
     <meta content="IVS Learning Hub - Tài Liệu Học Tập Tương Tác" property="og:title"/>
     <meta content="Nền tảng học tập tương tác với hàng nghìn tài liệu, video bài giảng và công cụ theo dõi tiến độ." property="og:description"/>
     <meta content="https://ivsacademy.edu.vn/images/banners/learning-hub-og.jpg" property="og:image"/>
     <meta content="https://ivsacademy.edu.vn/learning-materials.html" property="og:url"/>
-    <meta content="website" property="og:type"/>
-
-    <!-- Favicon -->
-    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-
-    <!-- Tailwind CSS CDN (Thay thế cho file css/tailwind.css để đảm bảo code chạy được) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Cấu hình màu sắc Tailwind tùy chỉnh để tái tạo giao diện IVS
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        // Định nghĩa các màu dựa trên bối cảnh Dark Mode
-                        'ivs-bg': '#1e293b', 
-                        'ivs-card': '#334155', 
-                        'ivs-text-primary': '#f8fafc', 
-                        'ivs-text-secondary': '#94a3b8', 
-                        'ivs-blue': '#3b82f6', 
-                        'ivs-green': '#10b981', 
-                        'ivs-purple': '#8b5cf6', 
-                        'ivs-orange': '#f97316', 
-                        'ivs-border': '#475569',
-                    },
-                    fontFamily: {
-                        'display': ['"Be Vietnam Pro"', 'sans-serif'],
-                        'sans': ['Inter', 'sans-serif'],
-                    }
-                },
-            },
-        }
-    </script>
-    
-    <!-- Fonts -->
-    <link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-
-    <!-- Icons -->
-    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
-
-    <!-- AOS (Chỉ giữ lại CDN cho AOS, bỏ các file CSS local không rõ nội dung) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <meta property="og:type" content="website">
+    <meta name="author" content="IVS JSC" />
+    <link rel="icon" href="../images/logo/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script defer src="../js/language-init.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
 </head>
-<body class="bg-ivs-bg text-ivs-text-primary learning-hub">
-    <!-- Header Placeholder -->
+<body class="bg-gray-100 text-gray-800 font-sans">
     <div id="header-placeholder"></div>
-    <main id="main-content">
+
+    <main>
         <!-- Banner Section -->
         <section class="relative py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
             <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -272,48 +242,14 @@
             </div>
         </section>
     </main>
-    
-    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
     <div id="fab-container-placeholder"></div>
-
-    <!-- Scripts -->
-    <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Giữ lại các khối script logic chính của trang, bỏ các script local không cần thiết cho demo này -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/scripts.js"></script>
     <script>
-        // Initialize AOS
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 800,
-                    once: true,
-                    offset: 100
-                });
-            }
-
-            // Learning Hub specific functionality
-            // Course category click handlers (Đã bị thay thế bằng Iframe)
-            const courseCards = document.querySelectorAll('.bg-ivs-bg.rounded-xl');
-            courseCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    // console.log('Navigate to course category');
-                });
-            });
-
-            // Quiz functionality
-            const quizOptions = document.querySelectorAll('input[type="radio"]');
-            quizOptions.forEach(option => {
-                option.addEventListener('change', function() {
-                    // Logic highlight
-                    const siblings = this.closest('.space-y-2').querySelectorAll('input[type="radio"]');
-                    siblings.forEach(sib => {
-                        sib.closest('label').classList.remove('bg-blue-100', 'dark:bg-blue-900', 'bg-opacity-50');
-                    });
-
-                    // Highlight selected option
-                    this.closest('label').classList.add('bg-blue-100', 'dark:bg-blue-900', 'bg-opacity-50');
-                });
-            });
+        AOS.init({
+            duration: 1000,
+            once: true
         });
     </script>
 </body>
