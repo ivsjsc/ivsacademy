@@ -1,15 +1,8 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="vi">
+<html lang="vi">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
-    <link href="//unpkg.com" rel="dns-prefetch"/>
-    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
-    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-lang-key="lktieuhoc_page_title">IVS Academy - Liên kết Giáo dục Tiểu học | IVS JSC</title>
     <meta name="description" content="IVS Academy đồng hành cùng trường Tiểu học tại Đồng Nai và các tỉnh lân cận với các chương trình liên kết tiếng Anh Cambridge, Kỹ năng sống, STEAM và EdTech." data-lang-key="lktieuhoc_meta_description">
     <meta property="og:title" content="IVS Academy - Nâng tầm Giáo dục Tiểu học" data-lang-key="lktieuhoc_og_title">
@@ -17,63 +10,23 @@
     <meta property="og:image" content="https://ivsjsc.github.io/images/banners/tieuhoc-banner.png">
     <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/education.html#tieuhoc">
     <meta property="og:type" content="website">
-    <meta content="IVS JSC" name="author"/>
-    <link href="../images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-    <link href="../css/tailwind.css" rel="stylesheet"/>
-    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-    <script defer="" src="../js/language-init.js"></script>
-<style>
-        /* CSS tuỳ chỉnh cho giao diện tối */
-        :root {
-            --header-height: 4rem;
-        }
-
-        body {
-            background-color: #1a1a1a;
-            color: #f4f4f5;
-            font-family: 'Be Vietnam Pro', sans-serif;
-            overflow-x: hidden;
-            padding-top: var(--header-height);
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        #header-placeholder {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--header-height);
-            z-index: 1000;
-            background-color: #0A0A0A;
-            border-bottom: 1px solid #1f2937; /* Dark border */
-        }
-
-        section {
-            scroll-margin-top: calc(var(--header-height) + 1rem);
-            padding: 4rem 1rem;
-        }
-
-        @media (min-width: 768px) {
-            section {
-                padding: 6rem 2rem;
-            }
-        }
-        .hero-text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.4); }
-        .feature-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-        .gallery-item img { transition: transform 0.3s ease-in-out; }
-        .gallery-item:hover img { transform: scale(1.05); }
-</style>
+    <link rel="icon" href="/images/logo/logo.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="../css/tailwind.css" rel="stylesheet">
 </head>
-<body class="bg-ivs-bg text-ivs-text-primary font-inter" id="page-lktieuhoc">
-<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
-<nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
-<main>
+<body class="bg-gray-100 text-neutral-700 font-sans antialiased" id="page-lktieuhoc">
+
+    <header id="header-placeholder"></header>
+
+    <main>
         <section class="relative bg-gradient-to-r from-orange-500 to-amber-600 text-white py-20 md:py-28 text-center overflow-hidden" data-aos="fade-in" data-aos-duration="1000">
              <div class="absolute inset-0 bg-black opacity-10 z-10"></div>
-             <img src="../images/banners/tieuhoc-bg.jpg" alt="Hình ảnh nền Tiểu học" class="absolute inset-0 w-full h-full object-cover opacity-20 z-0 mix-blend-multiply" loading="lazy" onerror="this.style.display='none'">
+             <img src="/images/banners/tieuhoc-bg.jpg" alt="Hình ảnh nền Tiểu học" class="absolute inset-0 w-full h-full object-cover opacity-20 z-0 mix-blend-multiply" loading="lazy" onerror="this.style.display='none'">
              <div class="container mx-auto px-4 relative z-20">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 hero-text-shadow" data-lang-key="lkth_heading" data-aos="fade-down" data-aos-delay="200"></h1>
                 <p class="text-lg md:text-xl lg:text-2xl opacity-95 max-w-3xl mx-auto hero-text-shadow" data-lang-key="lkth_subheading" data-aos="fade-up" data-aos-delay="400"></p>
@@ -170,19 +123,19 @@
                 <h2 id="gallery-heading-th" class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10 md:mb-12" data-lang-key="lkth_gallery_title" data-aos="fade-up"></h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                     <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="../images/pages/albums/2024thtp.jpg" alt="Hoạt động toàn trường Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="/images/pages/albums/2024thtp.jpg" alt="Hoạt động toàn trường Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_1"></p>
                     </div>
                      <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="../images/pages/albums/2024thtp1.jpg" alt="Hoạt động toàn trường Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="/images/pages/albums/2024thtp1.jpg" alt="Hoạt động toàn trường Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_2"></p>
                     </div>
                      <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="../images/pages/albums/2024thtp2.jpg" alt="Tặng quà tại Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="/images/pages/albums/2024thtp2.jpg" alt="Tặng quà tại Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_3"></p>
                     </div>
                      <div class="gallery-item group overflow-hidden rounded-lg shadow-lg bg-white transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="250">
-                        <img src="../images/pages/albums/2024thtpht.jpg" alt="Kỷ niệm cùng Hiệu trưởng Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
+                        <img src="/images/pages/albums/2024thtpht.jpg" alt="Kỷ niệm cùng Hiệu trưởng Tiểu học Tập Phước" class="w-full h-64 object-cover" loading="lazy" onerror="this.src='https://placehold.co/400x300/e2e8f0/94a3b8?text=Ảnh+Lỗi'; this.classList.add('object-contain');">
                         <p class="text-center text-xs text-gray-600 mt-2 p-2" data-lang-key="lkth_gallery_caption_4"></p>
                     </div>
                 </div>
@@ -202,39 +155,16 @@
                 </a>
             </div>
         </section>
-</main>
-<footer class="bg-ivs-bg border-t border-ivs-border py-12" data-loading-text="Đang tải chân trang..." id="footer-placeholder">
-</footer>
-<div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[1000] hidden" id="messageModal">
-<div class="bg-ivs-card p-8 rounded-lg shadow-xl max-w-sm w-full text-center border border-ivs-border">
-<h3 class="text-xl font-bold text-ivs-blue mb-4" id="modalTitle"></h3>
-<p class="text-ivs-text-secondary mb-6" id="modalMessage"></p>
-<button class="bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold py-2 px-4 rounded-md transition-colors" data-lang-key="modal_close" id="modalCloseButton">
-                Đóng
-            </button>
-</div>
-</div>
-<div id="fab-container-placeholder"></div>
-<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="../js/utils.js"></script>
-<script src="../js/language.js"></script>
-<script src="../ai/js/fabController.js"></script>
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 800,
-                        once: true,
-                        offset: 50,
-                        easing: 'ease-out-quad',
-                        disable: 'mobile'
-                    });
-                }
-            }, 300); 
-        });
-</script>
-<script defer="" src="../ai/js/loadComponents.js"></script>
+
+    </main>
+    <footer id="footer-placeholder"></footer>
+    <div id="fab-container-placeholder"></div>
+
+    <script src="/js/script.js" defer></script>
+    <script src="/js/language.js" defer></script>
+    <script src="/js/fabController.js" defer></script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/js/loadComponents.js" defer></script>
 </body>
 </html>
