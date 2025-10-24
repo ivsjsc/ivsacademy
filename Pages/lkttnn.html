@@ -1,128 +1,145 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-lang-key="lkttnn_page_title">IVS Academy - Liên kết & Phát triển Trung tâm Ngoại ngữ | IVS JSC</title>
-    <!-- Fonts & preconnects (kept consistent with index.html) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="../css/tailwind.css" rel="stylesheet"/>
-    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-    <script defer src="../js/language-init.js"></script>
-    <link href="../css/style.css" rel="stylesheet"/>
-    <link href="../css/animations.css" rel="stylesheet"/>
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title data-lang-key="lkttnn_page_title">IVS Academy - Liên kết & Phát triển Trung tâm Ngoại ngữ</title>
     <meta name="description" content="IVS Academy cung cấp giải pháp hợp tác toàn diện cho các Trung tâm Ngoại ngữ: Chương trình, Giáo viên, Vận hành, Marketing, EdTech và Nhượng quyền." data-lang-key="lkttnn_meta_description">
-    <meta name="keywords" content="IVS, IVS JSC, IVS Academy, IVS Vietnam, Education, Academy, Language Center, EdTech, Du hoc, Consulting, Solutions, Teacher Training, Steam, Kỹ năng sống" />
+    <meta name="keywords" content="liên kết trung tâm ngoại ngữ, hợp tác giáo dục, nhượng quyền trung tâm anh ngữ, IVS Academy" />
     <meta property="og:title" content="Hợp tác cùng IVS Academy - Phát triển Trung tâm Ngoại ngữ Bền vững" data-lang-key="lkttnn_og_title">
     <meta property="og:description" content="Khám phá các mô hình hợp tác linh hoạt, từ cung cấp giáo trình, giáo viên đến nhượng quyền thương hiệu IVS Academy." data-lang-key="lkttnn_og_description">
     <meta property="og:image" content="https://ivsjsc.github.io/images/banners/language-center-banner.png">
-    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/education.html#trungtamngoaingu">
+    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/lkttnn.html">
     <meta property="og:type" content="website">
-    <meta name="author" content="IVS JSC" />
-
-    <style>
-        /* Shared layout adjustments from index.html */
+    <meta content="IVS JSC" name="author"/>
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="/css/tailwind.css" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer src="/js/language-init.js"></script>
+<style>
         :root { --header-height: 4rem; }
-        body { padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
-        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
-        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
-        .hero-content { position:relative; z-index:3; max-width:90%; }
-    </style>
-
+        body { background-color: #1a1a1a; color: #f4f4f5; font-family: 'Be Vietnam Pro', sans-serif; overflow-x: hidden; padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1f2937; }
+        section { scroll-margin-top: calc(var(--header-height) + 1rem); padding: 4rem 1rem; }
+        @media (min-width: 768px) { section { padding: 6rem 2rem; } }
+        .interactive-card { background: #111111; border: 1px solid #27272A; transition: all 0.3s ease; }
+        .interactive-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px -5px rgba(76, 94, 247, 0.2); border-color: #4c5ef7; }
+</style>
 </head>
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
-    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
-    <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
 
-    <main>
-        <!-- Hero Section (preserve page text but use hero-section layout) -->
-        <section class="hero-section" aria-labelledby="page-title-lkttnn" data-aos="fade-in" data-aos-duration="1000">
-            <div class="absolute inset-0 z-0 opacity-20" id="hero-canvas-container"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-                <h1 id="page-title-lkttnn" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 hero-text-shadow" data-lang-key="lkttnn_hero_title" data-aos="fade-down" data-aos-delay="200">Liên Kết & Phát Triển Trung Tâm Ngoại Ngữ</h1>
-                <p class="text-lg md:text-xl lg:text-2xl opacity-95 hero-text-shadow max-w-3xl mx-auto" data-lang-key="lkttnn_hero_subtitle" data-aos="fade-up" data-aos-delay="400">Nâng Cao Chất Lượng, Mở Rộng Quy Mô Bền Vững Cùng IVS Academy</p>
+<header id="header-placeholder"></header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="bg-ivs-neutral-800 text-center py-20" id="hero">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-ivs-blue mb-4" data-lang-key="lkttnn_hero_title">Liên Kết & Phát Triển Trung Tâm Ngoại Ngữ</h1>
+            <p class="text-lg md:text-xl text-ivs-text-secondary max-w-3xl mx-auto" data-lang-key="lkttnn_hero_subtitle">Nâng Cao Chất Lượng, Mở Rộng Quy Mô Bền Vững Cùng IVS Academy</p>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-16 md:py-24 bg-ivs-bg">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-lang-key="lkttnn_intro_heading">Giải pháp Hợp tác Toàn diện</h2>
+                    <p class="text-ivs-text-secondary text-lg leading-relaxed mb-4" data-lang-key="lkttnn_intro_p1"></p>
+                    <p class="text-ivs-text-secondary text-lg leading-relaxed" data-lang-key="lkttnn_intro_p2"></p>
+                </div>
+                <div data-aos="fade-left" data-aos-delay="100">
+                    <img src="/images/ivs-academy.jpg" alt="Lớp học tại IVS Academy" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Main content sections: use container padding consistent with index.html -->
-        <section class="py-12 md:py-16 bg-white dark:bg-ivs-neutral-700">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-
-                <div class="bg-white dark:bg-ivs-neutral-700 p-6 md:p-10 rounded-xl shadow-xl mb-10 md:mb-16 border border-gray-100 dark:border-ivs-neutral-600" data-aos="fade-up">
-                    <div class="flex flex-col lg:flex-row gap-8 items-center">
-                        <div class="lg:w-2/3 order-2 lg:order-1" data-aos="fade-right" data-aos-delay="100">
-                            <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-primary mb-6" data-lang-key="lkttnn_intro_heading">Giải pháp Hợp tác Toàn diện cho Trung tâm của Bạn</h2>
-                            <p class="text-gray-700 dark:text-ivs-neutral-300 leading-relaxed mb-4 text-lg" data-lang-key="lkttnn_intro_p1">
-                                Bạn đang điều hành một trung tâm ngoại ngữ và khát khao nâng tầm chất lượng giảng dạy, tối ưu hóa vận hành, thu hút học viên hiệu quả hơn, hay thậm chí là mở rộng thành một hệ thống? IVS JSC, với nền tảng vững chắc và kinh nghiệm thực tiễn từ IVS Academy, chính là đối tác chiến lược bạn đang tìm kiếm.
-                            </p>
-                            <p class="text-gray-700 dark:text-ivs-neutral-300 leading-relaxed text-lg" data-lang-key="lkttnn_intro_p2">
-                                Chúng tôi thấu hiểu những thách thức đặc thù của ngành đào tạo ngoại ngữ và mang đến các mô hình hợp tác đa dạng, linh hoạt, được "may đo" để phù hợp nhất với nhu cầu, nguồn lực và mục tiêu phát triển riêng của từng trung tâm đối tác.
-                            </p>
-                        </div>
-                        <div class="lg:w-1/3 order-1 lg:order-2 mt-6 lg:mt-0" data-aos="fade-left" data-aos-delay="200">
-                            <img src="/images/ivs-academy.jpg" alt="Lớp học tại IVS Academy" data-lang-key="lkttnn_intro_img_alt" class="rounded-xl shadow-lg w-full h-auto object-cover" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x350/27272A/E4E4E7?text=IVS+Academy';">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-12 md:mb-16" data-aos="fade-up">
-                    <h3 class="text-3xl font-bold text-center text-primary dark:text-primary mb-10" data-lang-key="lkttnn_benefits_heading">6 Lợi ích Vàng khi Hợp tác cùng IVS Academy</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Benefit cards (unchanged content) -->
-                        ...existing code...
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-purple-700/20 dark:to-pink-700/20 p-8 md:p-10 rounded-xl border border-purple-200 dark:border-purple-700 text-center mb-10 md:mb-16 shadow-lg" data-aos="fade-up">
-                    <h3 class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-6" data-lang-key="lkttnn_franchise_heading">Nhượng quyền Thương hiệu IVS Academy - Cơ hội Vàng để Bứt phá</h3>
-                    <p class="text-gray-700 dark:text-ivs-neutral-300 mb-8 max-w-3xl mx-auto text-lg leading-relaxed" data-lang-key="lkttnn_franchise_desc">
-                        Đây là mô hình hợp tác chiến lược, cho phép bạn sở hữu và vận hành một trung tâm ngoại ngữ mang thương hiệu IVS Academy đã được khẳng định uy tín. Bạn sẽ được chuyển giao toàn bộ mô hình kinh doanh thành công, hệ thống chương trình đào tạo độc quyền, quy trình vận hành chuẩn hóa và nhận sự hỗ trợ liên tục về marketing, tuyển sinh, đào tạo và công nghệ từ chúng tôi.
-                    </p>
-                    <a href="/Pages/ivs-academy.html" class="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-ivs-neutral-800 font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-md">
-                       <i class="fas fa-crown"></i> <span data-lang-key="lkttnn_franchise_button">Tìm hiểu về IVS Acadenmy</span>
-                    </a>
-                </div>
-
-                <div class="text-center pt-8 border-t border-gray-200 dark:border-ivs-neutral-600" data-aos="fade-up">
-                    <h3 class="text-2xl md:text-3xl font-semibold text-primary dark:text-primary mb-6" data-lang-key="lkttnn_other_heading">Các Hình thức Hợp tác Linh hoạt Khác</h3>
-                    <p class="text-gray-700 dark:text-ivs-neutral-300 mb-8 max-w-3xl mx-auto text-lg leading-relaxed" data-lang-key="lkttnn_other_desc">
-                        Ngoài mô hình nhượng quyền, IVS Academy luôn sẵn sàng lắng nghe và thảo luận các hình thức hợp tác đa dạng khác như: liên kết đào tạo theo chương trình cụ thể, cung cấp giáo trình và học liệu, cung ứng giáo viên chất lượng cao, triển khai giải pháp công nghệ EdTech,... Chúng tôi tin rằng luôn có giải pháp phù hợp để cùng bạn phát triển.
-                    </p>
-                    <a href="/education.html" class="inline-flex items-center gap-2 border-2 border-primary dark:border-primary text-primary dark:text-primary hover:bg-blue-100 dark:hover:bg-ivs-neutral-600 font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 text-md">
-                        <i class="fas fa-comments"></i> <span data-lang-key="lkttnn_other_button">Thảo luận Hợp tác Ngay</span>
-                    </a>
-                </div>
-
+    <!-- Benefits Section -->
+    <section class="py-16 md:py-24 bg-ivs-neutral-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="lkttnn_benefits_heading">6 Lợi ích Vàng khi Hợp tác</h2>
             </div>
-        </section>
-    </main>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-book-open text-4xl text-ivs-blue mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Chương Trình Chuẩn</h3>
+                    <p class="text-ivs-text-secondary">Sử dụng giáo trình độc quyền, hiệu quả.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-chalkboard-teacher text-4xl text-ivs-purple mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Nguồn Giáo Viên</h3>
+                    <p class="text-ivs-text-secondary">Cung ứng GVNN chất lượng cao, có giấy phép.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-cogs text-4xl text-ivs-amber mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Hỗ Trợ Vận Hành</h3>
+                    <p class="text-ivs-text-secondary">Tư vấn quản lý, tuyển sinh và chăm sóc học viên.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-bullhorn text-4xl text-ivs-green mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Marketing & Thương Hiệu</h3>
+                    <p class="text-ivs-text-secondary">Hỗ trợ các chiến dịch marketing và xây dựng thương hiệu.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-laptop-code text-4xl text-ivs-cyan mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Nền tảng EdTech</h3>
+                    <p class="text-ivs-text-secondary">Cung cấp app, website và các công cụ quản lý hiện đại.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fas fa-crown text-4xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Nhượng Quyền</h3>
+                    <p class="text-ivs-text-secondary">Mô hình kinh doanh thành công, đã được kiểm chứng.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div id="fab-placeholder"></div>
-    <div id="assistant-placeholder"></div>
-    <footer data-loading-text="Đang tải chân trang..." id="footer-placeholder"></footer>
+    <!-- Partnership Models Section -->
+    <section class="py-16 md:py-24 bg-ivs-bg">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="bg-ivs-card p-8 md:p-12 rounded-2xl shadow-2xl text-center mb-12" data-aos="fade-up">
+                <h3 class="text-3xl font-bold text-ivs-purple mb-6" data-lang-key="lkttnn_franchise_heading">Nhượng quyền Thương hiệu IVS Academy</h3>
+                <p class="text-ivs-text-secondary text-lg leading-relaxed mb-8 max-w-3xl mx-auto" data-lang-key="lkttnn_franchise_desc"></p>
+                <a href="/Pages/ivs-academy.html" class="inline-block bg-ivs-purple hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg shadow-purple-500/30" data-lang-key="lkttnn_franchise_button">Tìm hiểu về IVS Academy</a>
+            </div>
 
-    <!-- Scripts -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script defer src="../js/utils.js"></script>
-    <script defer src="../js/language.js"></script>
-    <script defer src="../js/fabController.js"></script>
-    <script defer src="../js/chatbotController.js"></script>
-    <script defer src="../js/app.js"></script>
-    <script>
-        // Initialize AOS and page-level callbacks similar to index
-        window.onPageComponentsLoadedCallback = function() {
-            if (typeof AOS !== 'undefined') {
-                AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
-            }
-        };
-    </script>
-    <script defer src="/js/loadComponents.js"></script>
+            <div class="text-center" data-aos="fade-up">
+                <h3 class="text-3xl font-bold text-white mb-6" data-lang-key="lkttnn_other_heading">Các Hình thức Hợp tác Linh hoạt Khác</h3>
+                <p class="text-ivs-text-secondary text-lg leading-relaxed mb-8 max-w-3xl mx-auto" data-lang-key="lkttnn_other_desc"></p>
+                <a href="/contact.html?interest=language_center_partnership" class="inline-block border-2 border-ivs-blue text-ivs-blue font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:bg-ivs-blue hover:text-white" data-lang-key="lkttnn_other_button">Thảo luận Hợp tác Ngay</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer id="footer-placeholder"></footer>
+<div id="fab-container-placeholder"></div>
+
+<!-- Scripts -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/language.js"></script>
+<script src="/ai/js/fabController.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 800, once: true, offset: 50 });
+        }
+    });
+</script>
+<script defer src="/ai/js/loadComponents.js"></script>
+
 </body>
 </html>

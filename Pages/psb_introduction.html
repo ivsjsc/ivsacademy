@@ -1,180 +1,137 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pháp luật Doanh nghiệp - IVS JSC</title>
-    <meta name="description" content="Khám phá các dịch vụ tư vấn pháp luật doanh nghiệp của IVS JSC, hỗ trợ tuân thủ và tối ưu hóa hoạt động kinh doanh.">
-    <meta name="keywords" content="IVS JSC, pháp luật doanh nghiệp, tư vấn pháp lý, PSB, hỗ trợ doanh nghiệp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="../css/tailwind.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <script defer src="../js/language-init.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <style>
-        /* Shared layout adjustments from index.html */
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title data-lang-key="psb_page_title">IVS - Pháp luật Doanh nghiệp (PSB)</title>
+    <meta name="description" content="Khám phá các dịch vụ tư vấn pháp luật doanh nghiệp của IVS (PSB), hỗ trợ tuân thủ và tối ưu hóa hoạt động kinh doanh." data-lang-key="psb_meta_description">
+    <meta name="keywords" content="IVS JSC, pháp luật doanh nghiệp, tư vấn pháp lý, PSB, hỗ trợ doanh nghiệp, thành lập doanh nghiệp" />
+    <meta property="og:title" content="IVS - Pháp luật Doanh nghiệp (PSB)" data-lang-key="psb_og_title">
+    <meta property="og:description" content="IVS cung cấp các giải pháp pháp lý toàn diện, giúp doanh nghiệp tuân thủ quy định, tối ưu hóa hoạt động và phát triển bền vững." data-lang-key="psb_og_description">
+    <meta property="og:image" content="https://ivsjsc.github.io/images/pages/litigation_consulting.jpeg">
+    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/psb_introduction.html">
+    <meta property="og:type" content="website">
+    <meta content="IVS JSC" name="author"/>
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
+    <link href="/css/tailwind.css" rel="stylesheet"/>
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script defer src="/js/language-init.js"></script>
+<style>
         :root { --header-height: 4rem; }
-        body { padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
-        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
-        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
-        .hero-content { position:relative; z-index:3; max-width:90%; }
-    </style>
-    <link rel="stylesheet" href="/css/styles.css">
+        body { background-color: #1a1a1a; color: #f4f4f5; font-family: 'Be Vietnam Pro', sans-serif; overflow-x: hidden; padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1f2937; }
+        section { scroll-margin-top: calc(var(--header-height) + 1rem); padding: 4rem 1rem; }
+        @media (min-width: 768px) { section { padding: 6rem 2rem; } }
+        .interactive-card { background: #111111; border: 1px solid #27272A; transition: all 0.3s ease; }
+        .interactive-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px -5px rgba(76, 94, 247, 0.2); border-color: #4c5ef7; }
+</style>
 </head>
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
-    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
-    <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
 
-    <main class="flex-grow pt-[var(--header-height)] md:pt-[calc(var(--header-height)+1rem)]">
-        <section class="hero-section bg-primary text-white py-20 text-center rounded-b-3xl shadow-lg relative overflow-hidden">
-            <div class="hero-overlay"></div>
-            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-                <h1 class="text-5xl font-extrabold mb-4" data-lang-key="psb_hero_title">Pháp luật Doanh nghiệp (PSB)</h1>
-                <p class="text-xl max-w-3xl mx-auto" data-lang-key="psb_hero_subtitle">
-                    IVS cung cấp các giải pháp pháp lý toàn diện, giúp doanh nghiệp tuân thủ quy định, tối ưu hóa hoạt động và phát triển bền vững.
-                </p>
-            </div>
-        </section>
+<header id="header-placeholder"></header>
 
-        <section class="section-padding bg-white shadow-md my-8 mx-auto max-w-7xl rounded-xl">
-            <div class="container mx-auto container-padding">
-                <h2 class="text-4xl font-bold text-primary mb-8 text-center" data-lang-key="psb_introduction_title">Giới Thiệu về PSB</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <p class="text-lg text-gray-700 mb-6 leading-relaxed" data-lang-key="psb_introduction_content_1">
-                            PSB (Professional Solutions for Business) là một phần quan trọng trong hệ sinh thái dịch vụ của IVS, tập trung vào việc cung cấp các giải pháp pháp lý và tư vấn chuyên sâu cho các doanh nghiệp. Chúng tôi hiểu rằng môi trường kinh doanh ngày càng phức tạp, đòi hỏi sự tuân thủ chặt chẽ các quy định pháp luật.
-                        </p>
-                        <p class="text-lg text-gray-700 leading-relaxed" data-lang-key="psb_introduction_content_2">
-                            Với đội ngũ chuyên gia giàu kinh nghiệm trong lĩnh vực pháp luật doanh nghiệp, IVS cam kết mang đến những tư vấn chính xác, kịp thời và hiệu quả, giúp doanh nghiệp của bạn hoạt động trơn tru và phát triển bền vững.
-                        </p>
-                    </div>
-                    <div>
-                        <img src="/images/pages/litigation_consulting.jpeg" alt="Dịch vụ pháp luật doanh nghiệp PSB" class="rounded-lg shadow-xl w-full h-auto object-cover">
-                    </div>
+<main>
+    <!-- Hero Section -->
+    <section class="bg-ivs-neutral-800 text-center py-20" id="hero">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-ivs-blue mb-4" data-lang-key="psb_hero_title">Pháp luật Doanh nghiệp (PSB)</h1>
+            <p class="text-lg md:text-xl text-ivs-text-secondary max-w-3xl mx-auto" data-lang-key="psb_hero_subtitle">Giải pháp pháp lý toàn diện, giúp doanh nghiệp tuân thủ quy định, tối ưu hóa hoạt động và phát triển bền vững.</p>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-16 md:py-24 bg-ivs-bg">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-lang-key="psb_introduction_title">Giới Thiệu về PSB</h2>
+                    <p class="text-ivs-text-secondary text-lg leading-relaxed mb-4" data-lang-key="psb_introduction_content_1"></p>
+                    <p class="text-ivs-text-secondary text-lg leading-relaxed" data-lang-key="psb_introduction_content_2"></p>
+                </div>
+                <div data-aos="fade-left" data-aos-delay="100">
+                    <img src="/images/pages/litigation_consulting.jpeg" alt="Dịch vụ pháp luật doanh nghiệp PSB" class="rounded-xl shadow-2xl w-full h-auto object-cover">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section-padding bg-gray-50 my-8 mx-auto max-w-7xl rounded-xl">
-            <div class="container mx-auto container-padding">
-                <h2 class="text-4xl font-bold text-primary mb-8 text-center" data-lang-key="psb_services_title">Các Dịch Vụ Chính của PSB</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect">
-                        <div class="bg-blue-100 text-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="psb_service_registration">Tư vấn thành lập & Đăng ký doanh nghiệp</h3>
-                        <p class="text-gray-600" data-lang-key="psb_service_registration_desc">
-                            Hỗ trợ toàn bộ quy trình từ chuẩn bị hồ sơ đến hoàn tất thủ tục pháp lý.
-                        </p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect">
-                        <div class="bg-green-100 text-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl">
-                            <i class="fas fa-balance-scale-right"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="psb_service_compliance">Tư vấn tuân thủ pháp luật</h3>
-                        <p class="text-gray-600" data-lang-key="psb_service_compliance_desc">
-                            Đảm bảo doanh nghiệp hoạt động đúng quy định, tránh rủi ro pháp lý.
-                        </p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect">
-                        <div class="bg-yellow-100 text-yellow-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="psb_service_contracts">Soạn thảo & Đàm phán hợp đồng</h3>
-                        <p class="text-gray-600" data-lang-key="psb_service_contracts_desc">
-                            Hỗ trợ xây dựng các thỏa thuận pháp lý chặt chẽ, bảo vệ quyền lợi của bạn.
-                        </p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect">
-                        <div class="bg-purple-100 text-purple-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl">
-                            <i class="fas fa-comments-dollar"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="psb_service_tax">Tư vấn thuế & Kế toán</h3>
-                        <p class="text-gray-600" data-lang-key="psb_service_tax_desc">
-                            Đảm bảo tối ưu hóa nghĩa vụ thuế và quản lý tài chính hiệu quả.
-                        </p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect">
-                        <div class="bg-red-100 text-red-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="psb_service_ip">Sở hữu trí tuệ</h3>
-                        <p class="text-gray-600" data-lang-key="psb_service_ip_desc">
-                            Bảo vệ tài sản trí tuệ của doanh nghiệp thông qua đăng ký và tư vấn pháp lý.
-                        </p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center card-hover-effect">
-                        <div class="bg-teal-100 text-teal-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="psb_service_restructuring">Tái cấu trúc & M&A</h3>
-                        <p class="text-gray-600" data-lang-key="psb_service_restructuring_desc">
-                            Hỗ trợ các giao dịch phức tạp như sáp nhập, mua lại và tái cấu trúc doanh nghiệp.
-                        </p>
-                    </div>
+    <!-- Services Section -->
+    <section class="py-16 md:py-24 bg-ivs-neutral-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="psb_services_title">Các Dịch Vụ Chính của PSB</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-file-alt text-4xl text-ivs-blue mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="psb_service_registration">Tư vấn & Đăng ký doanh nghiệp</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="psb_service_registration_desc">Hỗ trợ toàn bộ quy trình từ chuẩn bị hồ sơ đến hoàn tất thủ tục pháp lý.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-balance-scale-right text-4xl text-ivs-green mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="psb_service_compliance">Tư vấn tuân thủ pháp luật</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="psb_service_compliance_desc">Đảm bảo doanh nghiệp hoạt động đúng quy định, tránh rủi ro pháp lý.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-handshake text-4xl text-ivs-amber mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="psb_service_contracts">Soạn thảo & Đàm phán hợp đồng</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="psb_service_contracts_desc">Xây dựng các thỏa thuận pháp lý chặt chẽ, bảo vệ quyền lợi của bạn.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-comments-dollar text-4xl text-ivs-purple mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="psb_service_tax">Tư vấn thuế & Kế toán</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="psb_service_tax_desc">Tối ưu hóa nghĩa vụ thuế và quản lý tài chính hiệu quả.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-shield-alt text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="psb_service_ip">Sở hữu trí tuệ</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="psb_service_ip_desc">Bảo vệ tài sản trí tuệ của doanh nghiệp qua đăng ký và tư vấn.</p>
+                </div>
+                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fas fa-building text-4xl text-ivs-cyan mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="psb_service_restructuring">Tái cấu trúc & M&A</h3>
+                    <p class="text-ivs-text-secondary" data-lang-key="psb_service_restructuring_desc">Hỗ trợ các giao dịch phức tạp như sáp nhập, mua lại và tái cấu trúc.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section-padding bg-primary text-white text-center rounded-xl shadow-lg my-8 mx-auto max-w-7xl">
-            <div class="container mx-auto container-padding">
-                <h2 class="text-4xl font-bold mb-6" data-lang-key="psb_cta_title">Cần tư vấn pháp luật doanh nghiệp?</h2>
-                <p class="text-lg max-w-3xl mx-auto mb-8" data-lang-key="psb_cta_subtitle">
-                    Đội ngũ chuyên gia của IVS sẵn sàng lắng nghe và cung cấp giải pháp tối ưu cho mọi vấn đề pháp lý của doanh nghiệp bạn.
-                </p>
-                <a href="/contact.html" class="inline-block bg-secondary hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105 shadow-md" data-lang-key="psb_cta_button">
-                    Liên Hệ Tư Vấn
-                </a>
-            </div>
-        </section>
-    </main>
+    <!-- CTA Section -->
+    <section class="bg-ivs-bg py-20">
+        <div class="container mx-auto px-4 text-center max-w-3xl" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-lang-key="psb_cta_title">Cần tư vấn pháp luật doanh nghiệp?</h2>
+            <p class="text-ivs-text-secondary text-lg mb-8" data-lang-key="psb_cta_subtitle">Đội ngũ chuyên gia của IVS sẵn sàng lắng nghe và cung cấp giải pháp tối ưu cho mọi vấn đề pháp lý của doanh nghiệp bạn.</p>
+            <a href="/contact.html?interest=psb_legal" class="inline-block bg-ivs-blue hover:bg-ivs-cyan text-white font-bold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30" data-lang-key="psb_cta_button">Liên Hệ Tư Vấn</a>
+        </div>
+    </section>
 
-    <footer id="footer-placeholder"></footer>
-    <div id="fab-placeholder"></div>
-    <div id="assistant-placeholder"></div>
+</main>
 
-    <!-- Third party libraries -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Application scripts (deferred) -->
-    <script defer src="../js/utils.js"></script>
-    <script defer src="../js/language.js"></script>
-    <script defer src="../js/fabController.js"></script>
-    <script defer src="../js/app.js"></script>
-    <script defer src="../js/loadComponents.js"></script>
+<footer id="footer-placeholder"></footer>
+<div id="fab-container-placeholder"></div>
 
-    <script>
-        window.onPageComponentsLoadedCallback = function() {
-            console.log("[PSB Page] Components loaded. Page specific JS can run now.");
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    offset: 100,
-                    duration: 700,
-                    easing: 'ease-out-quad',
-                    once: true,
-                    mirror: false,
-                    anchorPlacement: 'top-bottom',
-                });
-            }
-            if (typeof window.initializeLanguageSystem === 'function') {
-                window.initializeLanguageSystem().then(() => {
-                    console.log("[PSB Page] Language system initialized by callback.");
-                }).catch(error => {
-                    console.error("[PSB Page] Error initializing language system from callback:", error);
-                });
-            }
-            if (typeof initializeFabButtons === 'function') {
-                initializeFabButtons();
-            }
-        };
-    </script>
+<!-- Scripts -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/language.js"></script>
+<script src="/ai/js/fabController.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 800, once: true, offset: 50 });
+        }
+    });
+</script>
+<script defer src="/ai/js/loadComponents.js"></script>
+
 </body>
 </html>
-
-
-
