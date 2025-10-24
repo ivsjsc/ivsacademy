@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title data-lang-key="tuvan_page_title">We are ready to help and support | IVS JSC</title>
@@ -13,18 +20,13 @@
     <meta content="IVS Academy - Hệ sinh thái giáo dục toàn diện, cung cấp giải pháp ngôn ngữ, kỹ năng và công nghệ giáo dục tiên tiến." name="description"/>
     <meta content="IVS, giáo dục, học tiếng Anh, học tiếng Trung, EdTech, IVS Academy" name="keywords"/>
     <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="css/tailwind.css" rel="stylesheet"/>
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
-    <link href="css/animations.css" rel="stylesheet"/>
+    <script defer="" src="js/language-init.js"></script>
 </head>
-<body class="bg-gray-50 text-neutral-700 font-sans antialiased dark:bg-neutral-900 dark:text-neutral-100" id="page-consulting">
-<header data-loading-text="Đang tải menu..." id="header-placeholder"></header>
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
 <main class="flex-grow">
 <section aria-labelledby="page-title-tuvan" class="bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 text-white py-20 md:py-28 text-center" data-aos="fade-in" data-aos-duration="800">
 <div class="container mx-auto px-4">
@@ -213,12 +215,23 @@
 </div>
 </section>
 </main>
-<footer data-loading-text="Đang tải chân trang..." id="footer-placeholder"></footer>
+<footer class="bg-ivs-bg border-t border-ivs-border py-12" data-loading-text="Đang tải chân trang..." id="footer-placeholder">
+</footer>
+<div class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[1000] hidden" id="messageModal">
+<div class="bg-ivs-card p-8 rounded-lg shadow-xl max-w-sm w-full text-center border border-ivs-border">
+<h3 class="text-xl font-bold text-ivs-blue mb-4" id="modalTitle"></h3>
+<p class="text-ivs-text-secondary mb-6" id="modalMessage"></p>
+<button class="bg-ivs-blue hover:bg-ivs-blue-darker text-white font-semibold py-2 px-4 rounded-md transition-colors" data-lang-key="modal_close" id="modalCloseButton">
+                Đóng
+            </button>
+</div>
+</div>
 <div id="fab-container-placeholder"></div>
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script defer="" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script defer="" src="js/fabController.js"></script>
-<script defer="" src="js/language.js"></script>
-<script defer src="js/utils.js"></script>
-<script src="/js/loadComponents.js" defer></script>
+<script src="js/utils.js"></script>
+<script src="js/language.js"></script>
+<script src="ai/js/fabController.js"></script>
+<script defer="" src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
