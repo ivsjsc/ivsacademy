@@ -62,11 +62,12 @@ function translate(key, lang = langSystem.currentLanguage) {
         window.componentLog(`Missing translation key: '${key}' in language '${lang}'`, 'warn');
         // Return key if translation is undefined, but return empty string if translation is explicitly null
         return translation === null ? '' : key;
-        // Fallback: nếu không có trong ngôn ngữ hiện tại, thử ngôn ngữ mặc định.
-        if (lang !== langSystem.defaultLanguage && langSystem.translations[langSystem.defaultLanguage]?.[key]) {
-            return langSystem.translations[langSystem.defaultLanguage][key];
+        // Fallback: if translation is not found in the current language, try the default language.
+        const fallbackTranslation = langSystem.translations[langSystem.defaultLanguage]?.[key];
+        if (lang !== langSystem.defaultLanguage && fallbackTranslation !== undefined) {
+            return fallbackTranslation;
         }
-        return key; // Trả về khóa nếu không tìm thấy bản dịch nào.
+        return key; // Return the key if no translation is found.
     }
     return translation;
 }
