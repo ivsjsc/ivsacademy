@@ -24,15 +24,13 @@
     <meta name="author" content="IVS JSC" />
 
     <style>
-        /* Shared layout adjustments borrowed from index.html */
+        /* Shared layout adjustments from index.html */
         :root { --header-height: 4rem; }
-        body { background-color: #1a1a1a; color: #f4f4f5; font-family: 'Be Vietnam Pro', sans-serif; overflow-x: hidden; padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; background-color: #0A0A0A; border-bottom: 1px solid #1f2937; }
-        section { scroll-margin-top: calc(var(--header-height) + 1rem); padding: 4rem 1rem; }
-        @media (min-width: 768px) { section { padding: 6rem 2rem; } }
-        .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow: hidden; display:flex; justify-content:center; align-items:center; text-align:center; background-color:#000; }
-        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2; }
-        .hero-content { position: relative; z-index:3; max-width:90%; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
     </style>
 
 </head>
@@ -116,7 +114,7 @@
     <script defer src="../js/language.js"></script>
     <script defer src="../js/fabController.js"></script>
     <script defer src="../js/chatbotController.js"></script>
-    <script defer src="../js/app.js" type="module"></script>
+    <script defer src="../js/app.js"></script>
     <script>
         // Initialize AOS and page-level callbacks similar to index
         window.onPageComponentsLoadedCallback = function() {
@@ -124,11 +122,6 @@
                 AOS.init({ duration: 700, once: true, offset: 50, easing: 'ease-out-cubic' });
             }
         };
-        document.addEventListener('DOMContentLoaded', function() {
-            if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
-                window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
-            }
-        });
     </script>
     <script defer src="/js/loadComponents.js"></script>
 </body>
