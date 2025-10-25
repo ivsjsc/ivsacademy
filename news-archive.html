@@ -109,6 +109,16 @@
 <script defer src="/js/fabController.js"></script>
 <script defer src="/js/app.js"></script>
 <script>
+    window.rssConfig = {
+        'public-services-news-rss-container': {
+            url: 'https://chinhphu.vn/rss/thong-tin-tong-hop.rss',
+            limit: 3
+        },
+        'education-news-rss-container': {
+            url: 'https://thanhnien.vn/rss/giao-duc.rss',
+            limit: 3
+        },
+    };
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') {
             AOS.init({ duration: 800, once: true, offset: 50 });
@@ -119,11 +129,9 @@
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                // Deactivate all tabs and panels
                 tabs.forEach(t => t.classList.remove('active'));
                 panels.forEach(p => p.classList.add('hidden'));
 
-                // Activate the clicked tab and corresponding panel
                 tab.classList.add('active');
                 const panelId = tab.getAttribute('data-tab') + '-panel';
                 const panel = document.getElementById(panelId);
@@ -132,6 +140,11 @@
                 }
             });
         });
+
+        for (const containerId in window.rssConfig) {
+            const { url, limit } = window.rssConfig[containerId];
+            window.loadRssFeed(containerId, url, limit);
+        }
     });
 </script>
 <script defer src="/ai/js/loadComponents.js"></script>
