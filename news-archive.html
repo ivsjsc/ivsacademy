@@ -111,7 +111,7 @@
 <script>
     window.rssConfig = {
         'public-services-news-rss-container': {
-            url: 'https://chinhphu.vn/rss/thong-tin-tong-hop.rss',
+            url: 'https://baochinhphu.vn/rss',
             limit: 3
         },
         'education-news-rss-container': {
@@ -145,6 +145,9 @@
             const { url, limit } = window.rssConfig[containerId];
             window.loadRssFeed(containerId, url, limit);
         }
+
+        // Load IVS blog posts
+        window.loadPosts('ivs-news-container', 'ivs-blog-posts.json', 6);
     });
 </script>
 <script defer src="/ai/js/loadComponents.js"></script>
