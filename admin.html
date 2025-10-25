@@ -1,30 +1,26 @@
-html
+<!DOCTYPE html>
 <html class="dark scroll-smooth" lang="vi">
-<head><link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link href="//fonts.gstatic.com" rel="dns-prefetch"/><link as="style" href="css/style.css" rel="preload"/>
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>IVS CMS - Quản Là½ Ná»™i Dung</title>
-<meta content="Há»‡ thồng quản là½ ná»™i dung IVS Academy - Quản là½ khóa học, tà i liá»‡u và  ná»™i dung giáo dục IVS JSC cung cạp dỉch vụ giáo dục chạt lưá»£ng cao, đà o tão tiáº¿ng Anh, giả" name="description"/>
+<title>IVS CMS - Quản Lý Nội Dung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<meta content="Hệ thống quản lý nội dung IVS Academy" name="description"/>
 <meta content="noindex, nofollow" name="robots"/>
- Favicon 
-<link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
 <link href="css/tailwind.css" rel="stylesheet"/>
-<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
-<link href="css/responsive-enhancements.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<link href="css/animations.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<meta content="IVS CMS - Quản Là½ Ná»™i Dung" property="og:title"/><meta content="Há»‡ thồng quản là½ ná»™i dung IVS Academy - Quản là½ khóa học, tà i liá»‡u và  ná»™i dung giáo dục IVS JSC cung cạp dỉch vụ giáo dục chạt lưá»£ng cao, đà o tão tiáº¿ng Anh, giả" property="og:description"/><meta content="website" property="og:type"/></head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+</head>
 <body class="bg-ivs-bg text-ivs-text-primary min-h-screen">
- Admin Header 
 <header class="bg-ivs-card border-b border-ivs-border px-6 py-4">
 <div class="flex items-center justify-between">
 <div class="flex items-center space-x-4">
 <img alt="IVS Logo" class="h-8 w-auto" decoding="async" src="images/logo.png"/>
 <div>
 <h1 class="text-xl font-bold">IVS CMS</h1>
-<p class="text-sm text-ivs-text-secondary">Quản Là½ Ná»™i Dung</p>
+<p class="text-sm text-ivs-text-secondary">Quản Lý Nội Dung</p>
 </div>
 </div>
 <div class="flex items-center space-x-4">
@@ -36,13 +32,12 @@ html
 <span class="text-sm">Admin</span>
 </div>
 <button class="px-4 py-2 bg-ivs-red hover:bg-red-600 text-white rounded-lg transition-colors">
-<i class="fas fa-sign-out-alt mr-2"></i>ĐÄƒng Xuạt
+<i class="fas fa-sign-out-alt mr-2"></i>Đăng Xuất
                 </button>
 </div>
 </div>
 </header>
 <div class="flex min-h-screen">
- Sidebar 
 <aside class="w-64 bg-ivs-card border-r border-ivs-border">
 <nav class="p-4">
 <div class="space-y-2">
@@ -56,7 +51,7 @@ html
 </a>
 <a class="nav-item flex items-center px-4 py-3 rounded-lg hover:bg-ivs-border transition-colors" href="#materials">
 <i class="fas fa-file-alt mr-3"></i>
-<span>Tà i Liá»‡u</span>
+<span>Tài Liệu</span>
 </a>
 <a class="nav-item flex items-center px-4 py-3 rounded-lg hover:bg-ivs-border transition-colors" href="#media">
 <i class="fas fa-images mr-3"></i>
@@ -64,33 +59,30 @@ html
 </a>
 <a class="nav-item flex items-center px-4 py-3 rounded-lg hover:bg-ivs-border transition-colors" href="#users">
 <i class="fas fa-users mr-3"></i>
-<span>Ngưá»i Dà¹ng</span>
+<span>Người Dùng</span>
 </a>
 <a class="nav-item flex items-center px-4 py-3 rounded-lg hover:bg-ivs-border transition-colors" href="#analytics">
 <i class="fas fa-chart-bar mr-3"></i>
-<span>Thồng Kàª</span>
+<span>Thống Kê</span>
 </a>
 <a class="nav-item flex items-center px-4 py-3 rounded-lg hover:bg-ivs-border transition-colors" href="#settings">
 <i class="fas fa-cog mr-3"></i>
-<span>Cà i Đáº·t</span>
+<span>Cài Đặt</span>
 </a>
 </div>
 </nav>
 </aside>
- Main Content 
 <main class="flex-1 p-6" id="main-content">
- Dashboard 
 <div class="content-section" id="dashboard-section">
 <div class="mb-6">
 <h2 class="text-2xl font-bold mb-2">Dashboard</h2>
-<p class="text-ivs-text-secondary">Tỗng quan vá» há»‡ thồng quản là½ ná»™i dung</p>
+<p class="text-ivs-text-secondary">Tổng quan về hệ thống quản lý nội dung</p>
 </div>
- Stats Cards 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
 <div class="flex items-center justify-between">
 <div>
-<p class="text-ivs-text-secondary text-sm">Tỗng Khóa Học</p>
+<p class="text-ivs-text-secondary text-sm">Tổng Khóa Học</p>
 <p class="text-2xl font-bold text-ivs-blue">24</p>
 </div>
 <i class="fas fa-book text-3xl text-ivs-blue opacity-50"></i>
@@ -99,7 +91,7 @@ html
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
 <div class="flex items-center justify-between">
 <div>
-<p class="text-ivs-text-secondary text-sm">Tà i Liá»‡u</p>
+<p class="text-ivs-text-secondary text-sm">Tài Liệu</p>
 <p class="text-2xl font-bold text-ivs-green">156</p>
 </div>
 <i class="fas fa-file-alt text-3xl text-ivs-green opacity-50"></i>
@@ -117,24 +109,23 @@ html
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border">
 <div class="flex items-center justify-between">
 <div>
-<p class="text-ivs-text-secondary text-sm">Ngưá»i Dà¹ng</p>
+<p class="text-ivs-text-secondary text-sm">Người Dùng</p>
 <p class="text-2xl font-bold text-ivs-orange">1,234</p>
 </div>
 <i class="fas fa-users text-3xl text-ivs-orange opacity-50"></i>
 </div>
 </div>
 </div>
- Recent Activity 
 <div class="bg-ivs-card rounded-xl border border-ivs-border p-6">
-<h3 class="text-xl font-bold mb-4">Hoãt Đá»™ng Gần Đây</h3>
+<h3 class="text-xl font-bold mb-4">Hoạt Động Gần Đây</h3>
 <div class="space-y-4">
 <div class="flex items-center space-x-4">
 <div class="w-10 h-10 bg-ivs-blue rounded-lg flex items-center justify-center">
 <i class="fas fa-plus text-white"></i>
 </div>
 <div class="flex-1">
-<p class="font-semibold">Thàªm khóa học má»›i: "Tiáº¿ng Anh Giao Tiáº¿p"</p>
-<p class="text-sm text-ivs-text-secondary">2 giá» trưá»›c</p>
+<p class="font-semibold">Thêm khóa học mới: "Tiếng Anh Giao Tiếp"</p>
+<p class="text-sm text-ivs-text-secondary">2 giờ trước</p>
 </div>
 </div>
 <div class="flex items-center space-x-4">
@@ -142,8 +133,8 @@ html
 <i class="fas fa-edit text-white"></i>
 </div>
 <div class="flex-1">
-<p class="font-semibold">Cập nhật tà i liá»‡u: "Grammar Guide"</p>
-<p class="text-sm text-ivs-text-secondary">4 giá» trưá»›c</p>
+<p class="font-semibold">Cập nhật tài liệu: "Grammar Guide"</p>
+<p class="text-sm text-ivs-text-secondary">4 giờ trước</p>
 </div>
 </div>
 <div class="flex items-center space-x-4">
@@ -151,36 +142,34 @@ html
 <i class="fas fa-upload text-white"></i>
 </div>
 <div class="flex-1">
-<p class="font-semibold">Upload video bà i giảng má»›i</p>
-<p class="text-sm text-ivs-text-secondary">6 giá» trưá»›c</p>
+<p class="font-semibold">Upload video bài giảng mới</p>
+<p class="text-sm text-ivs-text-secondary">6 giờ trước</p>
 </div>
 </div>
 </div>
 </div>
 </div>
- Courses Management 
 <div class="content-section hidden" id="courses-section">
 <div class="flex items-center justify-between mb-6">
 <div>
-<h2 class="text-2xl font-bold mb-2">Quản Là½ Khóa Học</h2>
-<p class="text-ivs-text-secondary">Tão và  chịnh sửa các khóa học</p>
+<h2 class="text-2xl font-bold mb-2">Quản Lý Khóa Học</h2>
+<p class="text-ivs-text-secondary">Tạo và chỉnh sửa các khóa học</p>
 </div>
 <button class="bg-ivs-blue hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors flex items-center">
-<i class="fas fa-plus mr-2"></i>Thàªm Khóa Học
+<i class="fas fa-plus mr-2"></i>Thêm Khóa Học
                     </button>
 </div>
- Courses Table 
 <div class="bg-ivs-card rounded-xl border border-ivs-border overflow-hidden">
 <div class="p-6 border-b border-ivs-border">
 <div class="flex items-center justify-between">
 <h3 class="text-lg font-semibold">Danh Sách Khóa Học</h3>
 <div class="flex space-x-2">
-<input class="px-4 py-2 bg-ivs-bg border border-ivs-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ivs-blue" placeholder="Tà¬m kiáº¿m..." type="text"/>
+<input class="px-4 py-2 bg-ivs-bg border border-ivs-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ivs-blue" placeholder="Tìm kiếm..." type="text"/>
 <select class="px-4 py-2 bg-ivs-bg border border-ivs-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ivs-blue">
-<option>Tạt cả danh mục</option>
+<option>Tất cả danh mục</option>
 <option>Tiếng Anh</option>
 <option>STEM</option>
-<option>Đà o Tão Giáo Viàªn</option>
+<option>Đào Tạo Giáo Viên</option>
 </select>
 </div>
 </div>
@@ -191,8 +180,8 @@ html
 <tr>
 <th class="px-6 py-3 text-left text-xs font-medium text-ivs-text-secondary uppercase tracking-wider">Khóa Học</th>
 <th class="px-6 py-3 text-left text-xs font-medium text-ivs-text-secondary uppercase tracking-wider">Danh Mục</th>
-<th class="px-6 py-3 text-left text-xs font-medium text-ivs-text-secondary uppercase tracking-wider">Học Viàªn</th>
-<th class="px-6 py-3 text-left text-xs font-medium text-ivs-text-secondary uppercase tracking-wider">Trãng Thái</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-ivs-text-secondary uppercase tracking-wider">Học Viên</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-ivs-text-secondary uppercase tracking-wider">Trạng Thái</th>
 <th class="px-6 py-3 text-left text-xs font-medium text-ivs-text-secondary uppercase tracking-wider">Thao Tác</th>
 </tr>
 </thead>
@@ -205,14 +194,14 @@ html
 </div>
 <div>
 <div class="font-semibold">Tiếng Anh Giao Tiếp</div>
-<div class="text-sm text-ivs-text-secondary">24 bà i học</div>
+<div class="text-sm text-ivs-text-secondary">24 bài học</div>
 </div>
 </div>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-ivs-text-secondary">Tiếng Anh</td>
 <td class="px-6 py-4 whitespace-nowrap text-ivs-text-secondary">156</td>
 <td class="px-6 py-4 whitespace-nowrap">
-<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Đang hoãt đá»™ng</span>
+<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Đang hoạt động</span>
 </td>
 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
 <button class="text-ivs-blue hover:text-blue-600 mr-3">Sửa</button>
@@ -224,18 +213,16 @@ html
 </div>
 </div>
 </div>
- Materials Management 
 <div class="content-section hidden" id="materials-section">
 <div class="flex items-center justify-between mb-6">
 <div>
-<h2 class="text-2xl font-bold mb-2">Quản Là½ Tà i Liá»‡u</h2>
-<p class="text-ivs-text-secondary">Upload và  quản là½ tà i liá»‡u học tập</p>
+<h2 class="text-2xl font-bold mb-2">Quản Lý Tài Liệu</h2>
+<p class="text-ivs-text-secondary">Upload và quản lý tài liệu học tập</p>
 </div>
 <button class="bg-ivs-green hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors flex items-center">
-<i class="fas fa-upload mr-2"></i>Upload Tà i Liá»‡u
+<i class="fas fa-upload mr-2"></i>Upload Tài Liệu
                     </button>
 </div>
- Materials Grid 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border hover:border-ivs-blue transition-colors cursor-pointer">
 <div class="flex items-center justify-between mb-4">
@@ -248,9 +235,9 @@ html
 </div>
 </div>
 <h3 class="font-semibold mb-2">Grammar Guide Advanced</h3>
-<p class="text-sm text-ivs-text-secondary mb-4">Hưá»›ng dẫn ngữ pháp nâng cao cho học viàªn trà¬nh đá»™ B2+</p>
+<p class="text-sm text-ivs-text-secondary mb-4">Hướng dẫn ngữ pháp nâng cao cho học viên trình độ B2+</p>
 <div class="flex justify-between items-center">
-<span class="text-xs text-ivs-text-secondary">Cập nhật: 2 ngà y trưá»›c</span>
+<span class="text-xs text-ivs-text-secondary">Cập nhật: 2 ngày trước</span>
 <div class="flex space-x-2">
 <button class="text-ivs-blue hover:text-blue-600">
 <i class="fas fa-edit"></i>
@@ -261,7 +248,6 @@ html
 </div>
 </div>
 </div>
- Tà i liá»‡u giáo trà¬nh từ Pages/ 
 <div class="bg-ivs-card p-6 rounded-xl border border-ivs-border hover:border-ivs-blue transition-colors cursor-pointer">
 <div class="flex items-center justify-between mb-4">
 <div class="w-12 h-12 bg-ivs-green rounded-lg flex items-center justify-center">
@@ -272,10 +258,10 @@ html
 <div class="text-xs text-ivs-text-secondary">Web Page</div>
 </div>
 </div>
-<h3 class="font-semibold mb-2">Tà i Liá»‡u Học Tập</h3>
-<p class="text-sm text-ivs-text-secondary mb-4">Bá»™ tà i liá»‡u học tập và  giáo trà¬nh IVS Academy</p>
+<h3 class="font-semibold mb-2">Tài Liệu Học Tập</h3>
+<p class="text-sm text-ivs-text-secondary mb-4">Bộ tài liệu học tập và giáo trình IVS Academy</p>
 <div class="flex justify-between items-center">
-<span class="text-xs text-ivs-text-secondary">Đưá»ng dẫn: Pages/tailieu.html</span>
+<span class="text-xs text-ivs-text-secondary">Đường dẫn: Pages/tailieu.html</span>
 <div class="flex space-x-2">
 <a class="text-ivs-blue hover:text-blue-600" href="Pages/tailieu.html" target="_blank">
 <i class="fas fa-external-link-alt"></i>
@@ -296,10 +282,10 @@ html
 <div class="text-xs text-ivs-text-secondary">Web Page</div>
 </div>
 </div>
-<h3 class="font-semibold mb-2">Giáo Trà¬nh R&amp;D</h3>
-<p class="text-sm text-ivs-text-secondary mb-4">Giáo trà¬nh nghiàªn cá»©u và  phát triá»ƒn của IVS</p>
+<h3 class="font-semibold mb-2">Giáo Trình R&D</h3>
+<p class="text-sm text-ivs-text-secondary mb-4">Giáo trình nghiên cứu và phát triển của IVS</p>
 <div class="flex justify-between items-center">
-<span class="text-xs text-ivs-text-secondary">Đưá»ng dẫn: Pages/rnd-curriculum.html</span>
+<span class="text-xs text-ivs-text-secondary">Đường dẫn: Pages/rnd-curriculum.html</span>
 <div class="flex space-x-2">
 <a class="text-ivs-blue hover:text-blue-600" href="Pages/rnd-curriculum.html" target="_blank">
 <i class="fas fa-external-link-alt"></i>
@@ -320,10 +306,10 @@ html
 <div class="text-xs text-ivs-text-secondary">Web Page</div>
 </div>
 </div>
-<h3 class="font-semibold mb-2">Đà o Tão Giáo Viàªn</h3>
-<p class="text-sm text-ivs-text-secondary mb-4">ChưÆ¡ng trà¬nh đà o tão và  phát triá»ƒn giáo viàªn</p>
+<h3 class="font-semibold mb-2">Đào Tạo Giáo Viên</h3>
+<p class="text-sm text-ivs-text-secondary mb-4">Chương trình đào tạo và phát triển giáo viên</p>
 <div class="flex justify-between items-center">
-<span class="text-xs text-ivs-text-secondary">Đưá»ng dẫn: Pages/teachertrain.html</span>
+<span class="text-xs text-ivs-text-secondary">Đường dẫn: Pages/teachertrain.html</span>
 <div class="flex space-x-2">
 <a class="text-ivs-blue hover:text-blue-600" href="Pages/teachertrain.html" target="_blank">
 <i class="fas fa-external-link-alt"></i>
@@ -345,9 +331,9 @@ html
 </div>
 </div>
 <h3 class="font-semibold mb-2">STEM by IVS</h3>
-<p class="text-sm text-ivs-text-secondary mb-4">ChưÆ¡ng trà¬nh STEM và  khoa học công nghá»‡</p>
+<p class="text-sm text-ivs-text-secondary mb-4">Chương trình STEM và khoa học công nghệ</p>
 <div class="flex justify-between items-center">
-<span class="text-xs text-ivs-text-secondary">Đưá»ng dẫn: Pages/steambyivs.html</span>
+<span class="text-xs text-ivs-text-secondary">Đường dẫn: Pages/steambyivs.html</span>
 <div class="flex space-x-2">
 <a class="text-ivs-blue hover:text-blue-600" href="Pages/steambyivs.html" target="_blank">
 <i class="fas fa-external-link-alt"></i>
@@ -368,10 +354,10 @@ html
 <div class="text-xs text-ivs-text-secondary">Web Page</div>
 </div>
 </div>
-<h3 class="font-semibold mb-2">Đánh Giá Tiáº¿ng Anh</h3>
-<p class="text-sm text-ivs-text-secondary mb-4">Há»‡ thồng đánh giá và  phân loãi trà¬nh đá»™ tiáº¿ng Anh</p>
+<h3 class="font-semibold mb-2">Đánh Giá Tiếng Anh</h3>
+<p class="text-sm text-ivs-text-secondary mb-4">Hệ thống đánh giá và phân loại trình độ tiếng Anh</p>
 <div class="flex justify-between items-center">
-<span class="text-xs text-ivs-text-secondary">Đưá»ng dẫn: Pages/english-placement.html</span>
+<span class="text-xs text-ivs-text-secondary">Đường dẫn: Pages/english-placement.html</span>
 <div class="flex space-x-2">
 <a class="text-ivs-blue hover:text-blue-600" href="Pages/english-placement.html" target="_blank">
 <i class="fas fa-external-link-alt"></i>
@@ -386,30 +372,19 @@ html
 </div>
 </main>
 </div>
- Scripts 
 <script src="js/security-enhancements.js"></script>
 <script src="js/content-management.js"></script>
 <script src="js/accessibility-enhancements.js"></script>
 <script>
-        // CMS functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Navigation
             const navItems = document.querySelectorAll('.nav-item');
             const contentSections = document.querySelectorAll('.content-section');
-
             navItems.forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.preventDefault();
-
-                    // Remove active class from all nav items
                     navItems.forEach(nav => nav.classList.remove('active'));
-                    // Add active class to clicked item
                     this.classList.add('active');
-
-                    // Hide all sections
                     contentSections.forEach(section => section.classList.add('hidden'));
-
-                    // Show selected section
                     const targetId = this.getAttribute('href').substring(1) + '-section';
                     const targetSection = document.getElementById(targetId);
                     if (targetSection) {
@@ -417,11 +392,8 @@ html
                     }
                 });
             });
-
-            // Theme toggle
             const themeToggle = document.getElementById('theme-toggle');
             const html = document.documentElement;
-
             themeToggle.addEventListener('click', function() {
                 if (html.classList.contains('dark')) {
                     html.classList.remove('dark');
@@ -431,49 +403,12 @@ html
                     this.innerHTML = '<i class="fas fa-moon text-ivs-text-secondary"></i>';
                 }
             });
-
-            // Initialize with dashboard active
             document.querySelector('a[href="#dashboard"]').click();
         });
     </script>
- Component Placeholders 
-<div id="header-placeholder"></div>
-<div id="footer-placeholder"></div>
-<div id="fab-container-placeholder"></div>
- Scripts 
 <script src="js/utils.js"></script>
 <script defer="" src="js/animations.js"></script>
-<script defer="" src="js/utils.js"></script>
 <script defer="" src="js/language.js"></script>
-<script defer="">
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof window.loadCommonComponents === 'function') {
-            window.loadCommonComponents().then(() => {
-                console.log('Page components loaded successfully');
-                
-                // Initialize AOS if available
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 700,
-                        once: true,
-                        offset: 50,
-                        easing: 'ease-out-cubic'
-                    });
-                }
-                
-                // Call page callback if exists
-                if (typeof window.onPageComponentsLoadedCallback === 'function') {
-                    window.onPageComponentsLoadedCallback();
-                }
-            }).catch(error => {
-                console.error('Failed to load components:', error);
-            });
-        }
-    });
-</script>
-<script defer="" src="/ai/js/loadComponents.js"></script>
+<script defer="" src="ai/js/loadComponents.js"></script>
 </body>
 </html>
-
-
-
