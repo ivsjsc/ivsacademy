@@ -2,7 +2,7 @@
 export const components = {
   header: '/components/header.html',
   footer: '/components/footer.html',
-  fabButtons: '/components/fab-buttons.html'
+  fabContainer: '/components/fab-container.html'
 };
 
 export async function preloadComponents() {

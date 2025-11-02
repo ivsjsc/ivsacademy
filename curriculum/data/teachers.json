@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Kimball Thomson",
+        "location": "Đồng Nai",
+        "nationality": "Hoa Kỳ",
+        "qualification": "Thạc sỹ MBA Viện Đại học California–Berkeley",
+        "specialization": "MBA (Quản trị Kinh doanh)",
+        "accent": "Anh-Mỹ",
+        "expectation": "",
+        "image": "../images/pages/team/kimball-allen-thomson.png",
+        "profile_link": "https://ivsacademy.edu.vn/Blogs/aboutkimballallenthomson.html"
+    },
+    {
+        "name": "Rachid Bellafar",
+        "location": "Hồ Chí Minh",
+        "nationality": "Anh Quốc",
+        "qualification": "Thạc sỹ kỹ thuật - Kỹ sư Trường Đại Học LONDON METROPOLITAN",
+        "specialization": "Công nghệ máy tính",
+        "accent": "Anh-Anh",
+        "expectation": "",
+        "image": "../images/pages/team/rachid-belferar.png",
+        "profile_link": null
+    },
+    {
+        "name": "Salma Nour",
+        "location": "Đồng Nai",
+        "nationality": "Ma Rốc",
+        "qualification": "Tiến Sỹ",
+        "specialization": "Văn Hóa Xã Hội , Ngôn Ngữ Anh",
+        "accent": "Anh-Mỹ",
+        "expectation": "",
+        "image": "../images/pages/team/salma-mahzoum.png",
+        "profile_link": null
+    }
+]

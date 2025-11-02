@@ -1,0 +1,460 @@
+body {
+            background-color: var(--ivs-bg);
+            color: var(--ivs-text-primary);
+        }
+        .font-display { font-family: 'Lexend', 'Poppins', sans-serif; } 
+
+        /* Hero Section - Adjusted for dark theme */
+        .hero-section {
+            background-image: url('https://placehold.co/1920x400/1a202c/E0E0E0?text=FOREIGN+TEACHERS'); /* Placeholder background image for foreign teachers */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(13, 17, 23, 0.8), rgba(13, 17, 23, 0.6)); /* Darker overlay */
+            z-index: 0;
+        }
+        .hero-text-shadow {
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Darker shadow for text */
+            color: var(--ivs-text-primary); /* Ensure text is light on dark background */
+        }
+        .hero-section h1 {
+            color: var(--ivs-text-primary); /* Ensure hero title is light */
+        }
+        .hero-section p {
+            color: var(--ivs-text-primary); /* Changed to primary text color for brightness */
+        }
+
+        /* Custom styles for price cards - Adjusted for dark theme */
+        .price-card {
+            background-color: var(--ivs-card);
+            border: 1px solid var(--ivs-border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .price-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .price-card-header { text-align: center; padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--ivs-border); }
+        .price-card-title { font-size: 1.875rem; font-weight: 700; color: var(--ivs-text-primary); }
+        .price-card-price { font-size: 3rem; font-weight: 800; margin-top: 0.5rem; }
+        .price-card-features { flex-grow: 1; margin-bottom: 1rem; }
+        .price-card-feature-item { display: flex; align-items: center; color: var(--ivs-text-secondary); margin-bottom: 0.5rem; }
+        .price-card-feature-item i { color: var(--ivs-green); margin-right: 0.75rem; }
+        .price-card-cta { margin-top: 1.5rem; text-align: center !important; }
+
+        /* Styles for spotlight card effect from layout.html - Adjusted for dark theme */
+        .spotlight-card {
+            --px: 0px;
+            --py: 0px;
+            position: relative;
+            background-color: var(--ivs-card);
+            border: 1px solid var(--ivs-border);
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 2rem; /* p-8 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            overflow: hidden;
+        }
+        .spotlight-card:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--px) var(--py), rgba(255, 255, 255, 0.1) 0%, transparent 70%); /* Darker spotlight effect */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .spotlight-card:hover:before {
+            opacity: 1;
+        }
+        /* Specific gradient for service cards */
+        .spotlight-card .absolute.inset-0.bg-gradient-to-br {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .spotlight-card:hover .absolute.inset-0.bg-gradient-to-br {
+            opacity: 0.2; /* Increased opacity for darker theme */
+        }
+
+        /* CTA Button Styling */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+        }
+        .cta-button:hover { box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4); transform: scale(1.05); }
+
+        /* FAQ Section Styling - Adjusted for dark theme */
+        .faq-item { background-color: var(--ivs-card); border: 1px solid var(--ivs-border); border-radius: 0.5rem; margin-bottom: 1rem; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem; cursor: pointer; color: var(--ivs-text-primary); font-weight: 600; font-size: 1.125rem; }
+        .faq-answer { padding: 1.25rem; padding-top: 0; color: var(--ivs-text-secondary); display: none; }
+        .faq-answer.open {
+            display: block;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-question i.rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Contact Section - Adjusted for dark theme */
+        #contact .bg-ivs-card {
+            background-color: var(--ivs-card);
+            border-color: var(--ivs-border);
+        }
+        #contact input, #contact textarea {
+            background-color: var(--ivs-bg);
+            border-color: var(--ivs-border);
+            color: var(--ivs-text-primary);
+        }
+        #contact input:focus, #contact textarea:focus {
+            border-color: var(--ivs-blue);
+            box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3); /* Adjusted for dark theme */
+        }
+
+        /* Loading overlay - Adjusted for dark theme */
+        #loading-overlay {
+            background-color: var(--ivs-bg);
+        }
+    
+        .font-display { font-family: 'Lexend', sans-serif; }
+        /* Hero Section Styling */
+        .hero-section {
+            background-image: url('https://placehold.co/1920x600/1a202c/ffffff?text=IVS+Foreign+Teacher+Services'); /* Placeholder background image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(13, 17, 23, 0.8), rgba(13, 17, 23, 0.6)); /* Overlay for text readability */
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text-shadow {
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* General Button Styling */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.4);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3);
+        }
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(52, 211, 153, 0.4);
+        }
+
+        /* Process Section Styling */
+        .process-step {
+            position: relative;
+            padding-left: 3rem; /* Space for the number circle */
+        }
+        .process-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--ivs-blue);
+            color: white;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.125rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .process-step:hover::before {
+            transform: scale(1.1);
+        }
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 1.2rem;
+            top: 2.5rem;
+            bottom: -1rem; /* Extend line below the circle */
+            width: 2px;
+            background-color: var(--ivs-border);
+            z-index: -1;
+        }
+
+        /* Price Table Styling */
+        .price-table-container { overflow-x: auto; }
+        .price-table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        .price-table th, .price-table td { padding: 0.75rem 1rem; text-align: left; border: 1px solid #30363d; }
+        .price-table th { background-color: #58a6ff; color: #ffffff; font-weight: 600; text-transform: uppercase; font-size: 0.875rem; }
+        .price-table td { background-color: #161B22; color: #a1aab4; }
+        .price-table tbody tr:nth-child(odd) td { background-color: #0d1117; }
+        .price-table tbody tr:hover td { background-color: #30363d; }
+        .price-range { font-weight: 700; color: #34d399; }
+        .note-column { color: #a1aab4; font-size: 0.875rem; font-style: italic; }
+
+        /* Price Card Styling (from previous version, kept for consistency if needed elsewhere) */
+        .price-card {
+            background-color: #161B22;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .price-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .price-card-header { text-align: center; padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #30363d; }
+        .price-card-features { flex-grow: 1; margin-bottom: 2rem; }
+        .price-card-features li { display: flex; align-items: center; color: #a1aab4; margin-bottom: 0.5rem; }
+        .price-card-features li .fa-check-circle { color: #34d399; margin-right: 0.5rem; }
+        .price-card-features li .fa-times-circle {
+            color: #ef4444; /* red-500 */
+            margin-right: 0.5rem;
+        }
+        .price-card-cta { margin-top: auto; /* Push button to the bottom */ }
+
+        /* FAQ Section Styling */
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--ivs-border);
+            color: var(--ivs-text-primary);
+            transition: color 0.2s ease;
+        }
+        details > summary:hover {
+            color: var(--ivs-blue);
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary .details-icon {
+            transition: transform 0.2s ease-in-out;
+            margin-left: 0.75rem;
+            color: var(--ivs-text-secondary);
+        }
+        details[open] > summary .details-icon {
+            transform: rotate(90deg);
+        }
+        details .details-content {
+            padding: 1rem 0;
+            color: var(--ivs-text-secondary);
+            line-height: 1.6;
+        }
+
+        .font-display { font-family: 'Lexend', sans-serif; }
+        .hero-section {
+            background-image: url('https://placehold.co/1920x400/1a202c/ffffff?text=Available+Teachers');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(13, 17, 23, 0.8), rgba(13, 17, 23, 0.6));
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text-shadow {
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        .teacher-card {
+            background-color: #161B22;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .teacher-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .teacher-avatar {
+            width: 7rem;
+            height: 7rem;
+            border-radius: 9999px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 2px solid #58a6ff;
+        }
+        .teacher-info ul {
+            color: #a1aab4;
+            font-size: 0.875rem;
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+        .teacher-info li {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 0.25rem;
+        }
+        .teacher-info li i {
+            color: #34d399;
+            margin-right: 0.5rem;
+            width: 1.25rem;
+            flex-shrink: 0;
+        }
+        .teacher-info li span {
+            flex-grow: 1;
+        }
+        .btn-view-profile {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #58a6ff;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, background-color 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-view-profile:hover { transform: scale(1.05); background-color: #3b82f6; }
+        .pagination-button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .pagination-button:not(:disabled) {
+            background-color: #58a6ff;
+            color: #ffffff;
+        }
+        .pagination-button:disabled {
+            background-color: #30363d;
+            color: #a1aab4;
+            cursor: not-allowed;
+        }
+        .form-container {
+            background-color: var(--ivs-card);
+            border: 1px solid var(--ivs-border);
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--ivs-text-primary);
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea,
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--ivs-border);
+            border-radius: 0.5rem;
+            background-color: var(--ivs-bg);
+            color: var(--ivs-text-primary);
+            font-size: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group textarea:focus,
+        .form-group input[type="file"]:focus {
+            outline: none;
+            border-color: var(--ivs-blue);
+            box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.3);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background-color: #58a6ff;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease, background-color 0.15s ease;
+        }
+        .file-upload-label {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            background-color: #30363d;
+            color: #a1aab4;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+        .file-upload-label:hover { background-color: #a1aab4; color: #0d1117; }
+        .file-upload-input {
+            display: none;
+        }
+        .file-list {
+            margin-top: 0.5rem;
+            color: var(--ivs-text-secondary);
+            font-size: 0.875rem;
+        }
+    
