@@ -552,7 +552,7 @@
 <p class="text-base text-ivs-text-secondary flex-grow" data-lang-key="app_mandarin_desc">Ứng dụng học Tiếng Trung toàn diện dựa trên giáo trình HSK, đảm bảo lộ trình học tập bài bản.</p>
 <span class="mt-auto font-semibold text-ivs-orange hover:text-white transition-colors" data-lang-key="btn_explore">Khám phá →</span>
 </a>
-<a class="interactive-card bg-ivs-neutral-800 border-2 border-dashed border-ivs-cyan/50 hover:border-ivs-cyan p-6 md:p-8 rounded-xl flex flex-col items-center justify-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="600" href="https://ivsacademy.edu.vn/apps/ivsapps" target="_blank">
+<a class="interactive-card bg-ivs-neutral-800 border-2 border-dashed border-ivs-cyan/50 hover:border-ivs-cyan p-6 rounded-xl flex flex-col items-center justify-center text-center transition-colors duration-300" data-aos="fade-up" data-aos-delay="600" href="https://ivsacademy.edu.vn/apps/ivsapps" target="_blank">
 <i class="fas fa-shapes text-5xl text-ivs-cyan mb-4 animate-pulse"></i>
 <h3 class="text-2xl font-semibold font-display text-ivs-text-primary mb-3" data-lang-key="app_all_title">Xây dựng Apps tùy chỉnh</h3>
 <p class="text-base text-ivs-text-secondary mb-6" data-lang-key="app_all_desc">Chúng tôi phát triển ứng dụng quản lý/quy trình riêng theo mọi yêu cầu.</p>
@@ -755,7 +755,8 @@
                     // Kiểm tra hash khi tải trang
                     if (window.location.hash.includes('tab=')) {
                         const initialTab = window.location.hash.split('tab=')[1];
-                        if (['schools', 'centers', 'corporate', 'individual'].includes(initialTab)) {
+                        // Cập nhật danh sách tab khởi tạo
+                        if (['schools', 'centers', 'corporate', 'individual', 'ivslearning'].includes(initialTab)) { 
                             tab = initialTab;
                         }
                     }
@@ -765,6 +766,9 @@
 <button :class="{ 'text-ivs-blue border-ivs-blue': tab === 'centers', 'text-ivs-text-secondary border-transparent': tab !== 'centers' }" @click="tab = 'centers'" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_centers">Trung tâm</button>
 <button :class="{ 'text-ivs-blue border-ivs-blue': tab === 'corporate', 'text-ivs-text-secondary border-transparent': tab !== 'corporate' }" @click="tab = 'corporate'" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_corporate">Doanh nghiệp</button>
 <button :class="{ 'text-ivs-blue border-ivs-blue': tab === 'individual', 'text-ivs-text-secondary border-transparent': tab !== 'individual' }" @click="tab = 'individual'" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_individual">Cá nhân</button>
+<!-- START: IVSLearning Tab -->
+<button :class="{ 'text-ivs-green border-ivs-green': tab === 'ivslearning', 'text-ivs-text-secondary border-transparent': tab !== 'ivslearning' }" @click="tab = 'ivslearning'" class="px-6 py-3 font-semibold border-b-2 transition-colors whitespace-nowrap" data-lang-key="tab_ivslearning"><i class="fas fa-laptop-house mr-2"></i> IVSLearning</button>
+<!-- END: IVSLearning Tab -->
 </div>
 <div class="bg-ivs-card p-8 rounded-xl border border-ivs-border shadow-xl">
 <div x-show="tab === 'schools'" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:enter-start="opacity-0 transform translate-y-4">
@@ -826,6 +830,40 @@
 <a class="bg-ivs-cyan text-white px-5 py-2 rounded-lg hover:bg-cyan-600 transition-colors font-semibold" data-lang-key="solutions_tech_cta" href="Pages/tech_devices.html"><i class="fas fa-desktop mr-2"></i> Thiết bị Công nghệ</a>
 </div>
 </div>
+<!-- START: IVSLearning Content -->
+<div style="display: none;" x-show="tab === 'ivslearning'" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:enter-start="opacity-0 transform translate-y-4">
+<h3 class="text-3xl font-bold font-display text-ivs-green mb-6"><i class="fas fa-graduation-cap mr-2"></i> IVSLearning: Hành trình Học tập Suốt đời</h3>
+<div class="grid md:grid-cols-2 gap-8 items-center">
+    <div>
+        <p class="text-lg text-ivs-text-secondary mb-6 leading-relaxed">
+            <span class="font-bold text-white">IVSLearning.top</span> là nền tảng học tập trực tuyến toàn diện, mang đến các khóa học đa dạng từ ngoại ngữ, kỹ năng mềm đến chuyên môn nghiệp vụ. Đây là nơi IVS đúc kết kinh nghiệm và kiến thức để phục vụ cộng đồng học tập, đảm bảo chất lượng và tính ứng dụng cao.
+        </p>
+        <ul class="space-y-3 text-ivs-text-secondary list-disc list-inside text-base">
+            <li class="pl-2"><i class="fas fa-check-circle text-ivs-green mr-2"></i> <span class="font-semibold text-white">Chương trình đa dạng:</span> Tiếng Anh, Tiếng Nhật, Tin học Văn phòng, Kỹ năng Mềm, Tư duy Phản biện.</li>
+            <li class="pl-2"><i class="fas fa-check-circle text-ivs-green mr-2"></i> <span class="font-semibold text-white">Học liệu chất lượng cao:</span> Biên soạn bởi đội ngũ chuyên gia và giáo viên quốc tế IVS.</li>
+            <li class="pl-2"><i class="fas fa-check-circle text-ivs-green mr-2"></i> <span class="font-semibold text-white">Linh hoạt:</span> Học mọi lúc, mọi nơi, phù hợp với mọi đối tượng và lịch trình bận rộn.</li>
+            <li class="pl-2"><i class="fas fa-check-circle text-ivs-green mr-2"></i> <span class="font-semibold text-white">Hỗ trợ cộng đồng:</span> Kết nối với giáo viên và học viên khác để trao đổi kinh nghiệm.</li>
+        </ul>
+    </div>
+    <div class="bg-black p-4 rounded-xl shadow-2xl">
+        <video controls="" class="w-full rounded-lg" loop="" muted="" playsinline="" poster="/images/logo/logo-ivslearning.jpg">
+            <!-- Sử dụng đường dẫn tương đối đã cho -->
+            <source src="/videos/ivslearning-long.mp4" type="video/mp4"/>
+            <p class="text-white p-4">Trình duyệt của bạn không hỗ trợ thẻ video.</p>
+        </video>
+        <p class="text-center text-sm text-ivs-text-secondary mt-3">Video giới thiệu 8s: IVSLearning - Hành trình học tập suốt đời</p>
+    </div>
+</div>
+<div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+    <a class="bg-ivs-green text-white px-8 py-3 rounded-full hover:bg-green-600 transition-all transform hover:scale-105 font-bold shadow-xl shadow-green-500/30" href="https://ivslearning.top" target="_blank">
+        <i class="fas fa-play-circle mr-2"></i> Khám phá Nền tảng IVSLearning
+    </a>
+    <a class="border border-ivs-green text-ivs-green px-8 py-3 rounded-full hover:bg-ivs-green/10 transition-colors font-bold" href="contact.html">
+        <i class="fas fa-comment-dots mr-2"></i> Liên hệ Tư vấn Khóa học
+    </a>
+</div>
+</div>
+<!-- END: IVSLearning Content -->
 </div>
 </div>
 </div>
