@@ -1,0 +1,101 @@
+Hướng Dẫn Thiết Lập Truyện Mới Dễ Dàng
+Để thiết lập một truyện mới trong hệ thống đọc truyện của bạn một cách dễ dàng và hiệu quả, hãy tuân thủ công thức sau đây. Công thức này được thiết kế để tối ưu hóa quy trình từ chuẩn bị nội dung đến tích hợp vào website.
+I. Chuẩn Bị Nội Dung Truyện Gốc
+Trước khi bắt đầu, hãy đảm bảo bạn có toàn bộ nội dung truyện đã được hoàn thiện, bao gồm cả phiên bản tiếng Việt và tiếng Anh.
+1.	Phân chia chương: Chia truyện thành các chương rõ ràng. Mỗi chương nên có một tiêu đề riêng.
+2.	Định dạng văn bản:
+o	Sử dụng các thẻ HTML cơ bản để định dạng nội dung chương (ví dụ: <p> cho đoạn văn, <h4> cho tiêu đề phụ, <strong> cho chữ in đậm, <em> cho chữ in nghiêng).
+o	Quan trọng: Tránh sử dụng các ký tự đặc biệt hoặc cấu trúc HTML phức tạp không cần thiết. Giữ định dạng đơn giản và nhất quán.
+o	Đảm bảo rằng nội dung tiếng Việt và tiếng Anh được dịch sát nghĩa và tự nhiên nhất.
+II. Tạo Cấu Trúc Thư Mục Dữ Liệu
+Để quản lý nội dung truyện một cách có tổ chức, hãy tạo cấu trúc thư mục sau trong thư mục public/data/novels/:
+public/
+└── data/
+    └── novels/
+        ├── ten_truyen_moi_phan_1/  (Ví dụ: legnaxe_part1)
+        │   ├── chapter_01.json
+        │   ├── chapter_02.json
+        │   └── ...
+        └── ten_truyen_moi_phan_2/  (Nếu truyện có nhiều phần)
+            ├── chapter_01.json
+            ├── chapter_02.json
+            └── ...
+
+•	ten_truyen_moi_phan_X: Thay thế bằng tên truyện của bạn (ví dụ: the_last_guardian_part1). Đảm bảo tên thư mục là chữ thường, không dấu, không khoảng trắng, và sử dụng dấu gạch dưới (_) để phân tách các từ.
+III. Tạo Tệp JSON cho Từng Chương
+Mỗi chương của truyện sẽ được lưu trữ trong một tệp JSON riêng biệt.
+1.	Tên tệp JSON: Đặt tên tệp theo định dạng chapter_XX.json, trong đó XX là số thứ tự của chương (ví dụ: chapter_01.json, chapter_02.json). Đảm bảo có đủ số 0 ở đầu để duy trì thứ tự (ví dụ: 01 thay vì 1).
+2.	Cấu trúc JSON: Mỗi tệp JSON phải tuân thủ cấu trúc sau:
+3.	{
+4.	  "chapter_id": "chapter-XX",
+5.	  "title_en": "Chapter XX: English Chapter Title",
+6.	  "title_vi": "Chương XX: Tiêu đề chương tiếng Việt",
+7.	  "content_en": "<p>Nội dung chương tiếng Anh, bao gồm các thẻ HTML.</p><p>Các đoạn văn bản sẽ nằm trong thẻ &lt;p&gt;.</p>",
+8.	  "content_vi": "<p>Nội dung chương tiếng Việt, bao gồm các thẻ HTML.</p><p>Các đoạn văn bản sẽ nằm trong thẻ &lt;p&gt;.</p>"
+9.	}
+
+o	chapter_id: ID duy nhất cho chương, dùng để điều hướng trong URL hash (ví dụ: chapter-1, chapter-2).
+o	title_en: Tiêu đề chương bằng tiếng Anh.
+o	title_vi: Tiêu đề chương bằng tiếng Việt.
+o	content_en: Toàn bộ nội dung của chương bằng tiếng Anh, đã được định dạng HTML.
+o	content_vi: Toàn bộ nội dung của chương bằng tiếng Việt, đã được định dạng HTML.
+10.	Điền nội dung: Sao chép nội dung đã chuẩn bị (từ Bước I) vào các trường content_en và content_vi tương ứng trong mỗi tệp JSON.
+IV. Cập Nhật Các Tệp HTML Đọc Truyện
+Để hệ thống tải chương động hoạt động, bạn cần sửa đổi các tệp HTML đọc truyện hiện có (ví dụ: public/Pages/Novels/read-legnaxe_part1_en.html, public/Pages/Novels/read-legnaxe_part1_vi.html).
+1.	Xóa nội dung chương cứng: Xóa bỏ toàn bộ nội dung các chương truyện được nhúng cứng (hardcoded) trong các thẻ <div class="chapter" id="chapter-X">...</div>. Chỉ giữ lại các thẻ div với id của chương và class chapter.
+2.	<div class="chapter active" id="chapter-1"></div>
+3.	<div class="chapter" id="chapter-2"></div>
+4.	<!-- ... các chương khác ... -->
+
+5.	Thêm vùng chứa nội dung động: Thêm một vùng chứa div với id="dynamic-chapter-content" bên trong story-content-wrapper để JavaScript có thể chèn nội dung chương vào.
+6.	<div class="story-content-wrapper bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-xl transition-colors duration-300 ease-in-out">
+7.	    <!-- Banner và thanh tiến độ giữ nguyên -->
+8.	    <img src="images/pages/novels/legnaxe1horizontal.png" alt="LEGNAXE Part 1 Banner" class="mb-8 rounded-lg shadow-md w-full max-h-[300px] sm:max-h-[400px] object-cover">
+9.	    <div class="progress-bar h-1 bg-blue-600 dark:bg-blue-400 mb-6" style="width: 0%"></div>
+10.	
+11.	    <!-- Vùng chứa nội dung chương động -->
+12.	    <div id="dynamic-chapter-content"></div>
+13.	
+14.	    <!-- Các nút điều hướng giữ nguyên -->
+15.	    <div class="navigation flex flex-col sm:flex-row justify-between items-center mt-10 mb-6 space-y-4 sm:space-y-0">
+16.	        <!-- ... các nút điều hướng ... -->
+17.	    </div>
+18.	</div>
+
+19.	Cập nhật JavaScript:
+o	Tạo chapter-loader.js: Tạo một tệp JavaScript mới tại public/js/chapter-loader.js.
+o	Logic tải chương: Trong chapter-loader.js, bạn sẽ cần các hàm sau:
+	fetchChapterContent(storyPath, chapterId, lang): Hàm này sẽ gửi yêu cầu fetch đến tệp JSON của chương tương ứng (ví dụ: public/data/novels/legnaxe_part1/chapter_01.json).
+	renderChapter(chapterData, lang): Hàm này sẽ lấy dữ liệu từ JSON và chèn tiêu đề, nội dung vào #dynamic-chapter-content.
+	navigateToChapter(chapterNumber, lang): Hàm chính để điều hướng, sẽ gọi fetchChapterContent và renderChapter.
+	initializeChapterLoader(storyPath, totalChapters): Hàm khởi tạo, sẽ thiết lập các trình nghe sự kiện cho nút điều hướng và modal, đồng thời tải chương đầu tiên (hoặc chương từ URL hash).
+o	Cập nhật script trong HTML: Thay đổi script hiện có trong các tệp HTML đọc truyện để sử dụng chapter-loader.js và gọi hàm initializeChapterLoader khi trang tải xong.
+20.	<!-- Trong phần <head> hoặc trước </body> -->
+21.	<script src="/js/chapter-loader.js" defer></script>
+22.	<script>
+23.	    document.addEventListener('DOMContentLoaded', () => {
+24.	        // Xác định đường dẫn cơ sở của truyện và tổng số chương
+25.	        // Ví dụ cho LEGNAXE Part 1 (tiếng Anh)
+26.	        const storyPath = 'legnaxe_part1'; // Tên thư mục chứa JSON chương
+27.	        const totalChapters = 30; // Tổng số chương của phần này
+28.	
+29.	        // Khởi tạo bộ tải chương
+30.	        initializeChapterLoader(storyPath, totalChapters);
+31.	
+32.	        // Các logic hiện có khác (theme toggle, scroll to top, v.v.)
+33.	        // ...
+34.	    });
+35.	</script>
+
+V. Cập Nhật Modal Danh Sách Chương
+Modal danh sách chương (#chapter-modal) cũng cần được cập nhật để tương thích với hệ thống tải động.
+1.	ID chương: Đảm bảo các liên kết trong modal có data-chapter-id khớp với chapter_id trong tệp JSON.
+2.	Logic nhấp chuột: Khi người dùng nhấp vào một liên kết chương trong modal, hãy sử dụng JavaScript để gọi hàm navigateToChapter() mới thay vì chỉ thay đổi display của các div chương.
+VI. Các Bước Bổ Sung & Thực Tiễn Tốt Nhất
+•	Tối ưu hóa hình ảnh: Đảm bảo tất cả hình ảnh bìa truyện, banner, và hình ảnh minh họa trong nội dung chương được nén và sử dụng định dạng hiện đại (WebP) để giảm dung lượng tệp. Cân nhắc sử dụng srcset cho các kích thước khác nhau.
+•	Xử lý lỗi: Triển khai cơ chế xử lý lỗi trong JavaScript khi tải tệp JSON (ví dụ: hiển thị thông báo lỗi thân thiện nếu không tìm thấy chương hoặc lỗi mạng).
+•	Thanh tiến độ đọc: Đảm bảo thanh tiến độ đọc (.progress-bar) vẫn hoạt động chính xác khi nội dung được tải động.
+•	Tải trước (Preloading): Đối với các chương tiếp theo hoặc trước đó, bạn có thể cân nhắc tải trước nội dung JSON để giảm độ trễ khi người dùng chuyển chương.
+•	Quản lý phiên bản: Nếu truyện có nhiều phần hoặc nhiều tập, hãy xem xét cách quản lý các phiên bản này trong URL và JavaScript để điều hướng giữa các phần một cách rõ ràng.
+Bằng cách tuân thủ công thức này, bạn sẽ có một hệ thống đọc truyện mạnh mẽ, dễ quản lý, và mang lại trải nghiệm tốt nhất cho người dùng.
+

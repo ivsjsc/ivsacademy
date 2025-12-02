@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="story_repo_page_title">Kho Truyện Sáng Tạo IVS - Nơi Khơi Nguồn Trí Tuệ</title>
+    <meta name="description" data-lang-key="story_repo_meta_description" content="Khám phá kho tàng truyện kể từ IVS. Đắm mình vào những thế giới kỳ ảo, những câu chuyện ý nghĩa và những cuộc phiêu lưu đầy cảm hứng về Giáo dục, Công nghệ và AI.">
+    
+    <!-- Tải Tailwind CSS CDN cho styling hiện đại -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Cấu hình Tailwind cho Dark Mode và font Inter
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'ivs-primary': '#1D4ED8', // Blue-700
+                        'ivs-secondary': '#FBBF24', // Amber-400
+                        'ivs-dark': '#1F2937', // Gray-800
+                        'ivs-light': '#F9FAFB', // Gray-50
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            /* Light Mode Gradient: Tinh tế từ trắng ngà sang xám nhạt */
+            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
+            background-attachment: fixed;
+        }
+        /* Dark Mode Gradient: Chuyển từ đen than sang xám đậm */
+        .dark body {
+            background: linear-gradient(180deg, #111827 0%, #1F2937 100%);
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color, #f1f1f1); }
+        ::-webkit-scrollbar-thumb { background: var(--scroll-color, #888); border-radius: 4px; }
+        .dark {
+            --bg-color: #1F2937;
+            --scroll-color: #4B5563;
+        }
+        :not(.dark) {
+            --bg-color: #F9FAFB;
+            --scroll-color: #D1D5DB;
+        }
+        /* Style cho Card */
+        .story-card { 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            min-height: 250px; /* Đảm bảo chiều cao đồng đều */
+        }
+        .story-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); 
+        }
+        .content-area { min-height: calc(100vh - 150px); }
+        .line-clamp-3 { 
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        /* Custom arrow cho select box */
+        .bg-filter-arrow {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%234B5563'%3e%3cpath d='M7 7l3 3 3-3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+            background-size: 1.5rem;
+        }
+        .dark .bg-filter-arrow {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23D1D5DB'%3e%3cpath d='M7 7l3 3 3-3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+        }
+</style>
+    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/apps/story-repository.html" />
+</head>
+<body class="text-ivs-dark dark:text-ivs-light transition-colors duration-300">
+
+    <!-- 1. COMPONENT PLACEHOLDERS: Tải Header từ ivs/components/header.html -->
+    <div id="header-placeholder"></div>
+
+    <main class="content-area max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12 p-6 bg-ivs-primary/10 dark:bg-ivs-primary/20 rounded-2xl shadow-lg">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ivs-primary dark:text-ivs-secondary mb-3" data-lang-key="story_repo_title">Kho Truyện Sáng Tạo IVS</h1>
+            <p class="text-lg text-gray-700 dark:text-gray-300" data-lang-key="story_repo_subtitle">Nơi Khơi Nguồn Trí Tuệ và Cảm Hứng từ các dự án EdTech và AI.</p>
+        </section>
+
+
+        <!-- Search and Filter Section (Mobile-Optimized) -->
+        <section class="mb-8 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+            <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
+                <!-- Search Input -->
+                <div class="flex-grow">
+                    <input type="text" id="storySearch" data-lang-key="story_repo_search_placeholder" placeholder="Tìm kiếm theo tiêu đề, tác giả..."
+                           class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-ivs-primary focus:border-ivs-primary dark:bg-gray-700 dark:text-ivs-light"
+                           onkeyup="filterStories()">
+                </div>
+                <!-- Filter Dropdown -->
+                <div class="sm:w-1/3 md:w-1/4">
+                    <select id="storyFilter" onchange="filterStories()"
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-ivs-primary focus:border-ivs-primary dark:bg-gray-700 dark:text-ivs-light appearance-none bg-no-repeat bg-[right_0.7rem_center] bg-filter-arrow">
+                        <!-- Options sẽ được dịch bởi language.js -->
+                        <option value="all" data-lang-key="filter_all">Tất cả Chủ đề</option>
+                        <option value="novel" data-lang-key="filter_novel">Tiểu Thuyết (LEGNAXE)</option>
+                        <option value="ai-edtech" data-lang-key="filter_ai_edtech">AI & EdTech</option>
+                        <option value="k12" data-lang-key="filter_k12">Chương trình K-12</option>
+                        <option value="business" data-lang-key="filter_business">Kinh doanh & Quản trị</option>
+                        <option value="life" data-lang-key="filter_life">Kỹ năng sống</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Grid Container -->
+        <section id="storyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Nội dung truyện sẽ được load bằng JavaScript vào đây -->
+            <div id="loadingIndicator" class="col-span-full p-8 text-center text-gray-500 dark:text-gray-400">
+                <p>Đang tải danh sách truyện...</p>
+            </div>
+        </section>
+        
+        <!-- Message for no results -->
+        <div id="noResults" class="hidden col-span-full p-8 text-center text-gray-500 dark:text-gray-400">
+            <svg class="mx-auto w-12 h-12 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="text-lg font-medium" data-lang-key="no_results_title">Không tìm thấy truyện nào phù hợp.</p>
+            <p data-lang-key="no_results_subtitle">Vui lòng thử từ khóa hoặc bộ lọc khác.</p>
+        </div>
+    </main>
+
+    <!-- 2. FAB Assistant Placeholder: Tải FAB Container/Button từ ivs/components/fab-container.html -->
+    <div id="fab-container-placeholder"></div>
+
+    <!-- 3. FOOTER PLACEHOLDER: Tải Footer từ ivs/components/footer.html -->
+    <div data-loading-text="Đang tải chân trang..." id="footer-placeholder"></div>
+
+    <!-- 4. EXTERNAL SCRIPT LINKS (Tuân thủ cấu trúc IVS) -->
+    <!-- Scripts cơ bản và Utils -->
+    <script src="/js/utils.js"></script>
+    <!-- Language, Component Loader, và FAB Controller -->
+    <script src="/js/language.js"></script>
+    <script src="/js/fabController.js"></script>
+    <script src="/js/loadComponents.js"></script>
+    
+    <script>
+        // Dữ liệu đã được cập nhật với các phần truyện LEGNAXE
+        const allStoriesData = [
+            // LEGNAXE - TIỂU THUYẾT (Ưu tiên)
+            {
+                id: 'legnaxe-part1-vi',
+                title: 'LEGNAXE: Bí mật cuộc đại chiến Thiên Đàng (Phần 1 - Tiếng Việt)',
+                description: 'LEGNAXE Phần 1: Khám phá nguồn gốc xung đột giữa các thiên thần, sự tạo dựng loài người và những lựa chọn định mệnh.',
+                category: 'novel',
+                tag: 'Tiểu Thuyết',
+                link: 'novels/read-legnaxe_part1_vi.html',
+                author: 'NMT',
+                tagColor: 'bg-red-500/20 text-red-500',
+            },
+            {
+                id: 'legnaxe-part1-en',
+                title: 'LEGNAXE: The Secret of Great Heaven War (Part 1 - English)',
+                description: 'LEGNAXE Part 1: Explore the origins of the conflict between angels, the creation of humankind, and fateful choices.',
+                category: 'novel',
+                tag: 'Novel (EN)',
+                link: 'novels/read-legnaxe_part1_en.html',
+                author: 'NMT',
+                tagColor: 'bg-red-500/20 text-red-500',
+            },
+            {
+                id: 'legnaxe-part2-vi',
+                title: 'LEGNAXE: Thiên Thượng, Lòng Người (Phần 2 - Tiếng Việt)',
+                description: 'LEGNAXE Phần 2: Theo chân Healiangel và Lucifer trong trận chiến định mệnh trên Trần Gian để giành lấy sự cân bằng.',
+                category: 'novel',
+                tag: 'Tiểu Thuyết',
+                link: 'novels/read-legnaxe_part2_vi.html',
+                author: 'NMT',
+                tagColor: 'bg-red-500/20 text-red-500',
+            },
+            {
+                id: 'legnaxe-part2-en',
+                title: 'LEGNAXE: Heavenly, Human\'s Heart (Part 2 - English)',
+                description: 'LEGNAXE Part 2: Follow Healiangel and Lucifer in their fateful battle on Earth to claim the balance.',
+                category: 'novel',
+                tag: 'Novel (EN)',
+                link: 'novels/read-legnaxe_part2_en.html',
+                author: 'NMT',
+                tagColor: 'bg-red-500/20 text-red-500',
+            },
+            // CÁC BÀI VIẾT VỀ GIÁO DỤC, CÔNG NGHỆ KHÁC (Giữ lại mock data để trang không trống)
+            {
+                id: 'ai-adaptive-learning',
+                title: 'Cá nhân hóa lộ trình học tập với AI Adaptive Learning',
+                description: 'Phân tích cách IVS tích hợp AI để tối ưu hóa trải nghiệm học tập, giúp học sinh phát triển theo tốc độ riêng.',
+                category: 'ai-edtech',
+                tag: 'AI & EdTech',
+                link: '/Pages/blogs/ai-thinking-guide.html',
+                author: 'IVS Team',
+                tagColor: 'bg-ivs-primary/20 text-ivs-primary',
+            },
+            {
+                id: 'steam-k12',
+                title: 'Bí quyết Xây dựng Chương trình STEAM toàn diện',
+                description: 'Những thách thức và thành công của IVS trong việc phát triển giáo trình STEAM từ Mầm non đến THPT.',
+                category: 'k12',
+                tag: 'Chương trình K-12',
+                link: '/Pages/rnd-curriculum.html',
+                author: 'IVS Education',
+                tagColor: 'bg-ivs-secondary/20 text-ivs-secondary',
+            },
+            {
+                id: 'business-strategy',
+                title: 'Chiến lược Tối ưu Vận hành Đa ngành cho Doanh nghiệp',
+                description: 'Kinh nghiệm quản trị vận hành từ Khách sạn, Du lịch đến Trung tâm Giáo dục của CEO Nguyễn Minh Triết.',
+                category: 'business',
+                tag: 'Kinh doanh & Quản trị',
+                link: '/Pages/consulting.html',
+                author: 'NMT',
+                tagColor: 'bg-indigo-500/20 text-indigo-500',
+            },
+            // Thêm các truyện/bài viết khác tại đây
+        ];
+
+        /**
+         * Render một Story Card từ dữ liệu JSON.
+         * @param {object} story - Đối tượng chứa thông tin truyện.
+         * @returns {string} HTML string cho card.
+         */
+        function renderStoryCard(story) {
+            return `
+                <article class="story-card bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden" 
+                         data-category="${story.category}" 
+                         data-title="${story.title}"
+                         data-author="${story.author}">
+                    <div class="p-6 flex flex-col justify-between h-full">
+                        <div>
+                            <span class="inline-block ${story.tagColor} text-xs font-semibold px-3 py-1 rounded-full mb-3">${story.tag}</span>
+                            <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-ivs-light">${story.title}</h2>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">${story.description}</p>
+                        </div>
+                        <a href="${story.link}" class="mt-4 inline-flex items-center text-ivs-primary dark:text-ivs-secondary font-semibold hover:underline">
+                            Đọc Tiếp 
+                            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <p class="text-xs text-gray-400 mt-2">Tác giả: ${story.author}</p>
+                    </div>
+                </article>
+            `;
+        }
+
+
+        /**
+         * Lọc và Tìm kiếm truyện.
+         */
+        function filterStories() {
+            const searchTerm = document.getElementById('storySearch').value.toLowerCase().trim();
+            const filterValue = document.getElementById('storyFilter').value;
+            const storyGrid = document.getElementById('storyGrid');
+            const noResults = document.getElementById('noResults');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            // Ẩn indicator khi bắt đầu lọc
+            loadingIndicator.classList.add('hidden');
+            storyGrid.innerHTML = ''; // Xóa nội dung cũ
+
+            const filteredStories = allStoriesData.filter(story => {
+                const titleMatch = story.title.toLowerCase().includes(searchTerm);
+                const authorMatch = story.author.toLowerCase().includes(searchTerm);
+                const categoryMatch = filterValue === 'all' || story.category === filterValue;
+                
+                return (titleMatch || authorMatch) && categoryMatch;
+            });
+
+            if (filteredStories.length > 0) {
+                // Render các card truyện
+                filteredStories.forEach(story => {
+                    storyGrid.innerHTML += renderStoryCard(story);
+                });
+                noResults.classList.add('hidden');
+            } else {
+                noResults.classList.remove('hidden');
+            }
+        }
+        
+        // Gắn sự kiện filter cho input và select
+        document.getElementById('storySearch').addEventListener('keyup', filterStories);
+        document.getElementById('storyFilter').addEventListener('change', filterStories);
+
+
+        /**
+         * Tải và hiển thị danh sách truyện khi trang tải xong.
+         */
+        function loadStoryRepository() {
+            console.log("Đang tải danh sách truyện từ kho dữ liệu...");
+            
+            // Giả lập độ trễ tải data để hiển thị loading indicator
+            setTimeout(() => {
+                filterStories(); // Gọi filter để render tất cả truyện
+                document.getElementById('loadingIndicator').classList.add('hidden');
+            }, 300); 
+        }
+
+        // Chờ DOMContentLoaded để đảm bảo các phần tử HTML đã sẵn sàng
+        document.addEventListener('DOMContentLoaded', loadStoryRepository);
+
+        // Giả định loadComponents.js sẽ gọi language.js, và language.js sẽ dịch các data-lang-key.
+        // Sau khi tất cả component tải xong, loadStoryRepository sẽ được gọi để tải data truyện.
+    </script>
+</body>
+</html>

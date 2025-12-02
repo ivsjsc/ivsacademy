@@ -1,0 +1,473 @@
+// js/chapter-loader.js
+
+/**
+ * Hàm khởi tạo bộ tải chương.
+ * @param {string} storyPath - Tên thư mục chứa các tệp JSON (ví dụ: 'legnaxe_part1').
+ * @param {number} totalChapters - Tổng số chương (không bao gồm epilogue/after-credit).
+ * @param {boolean} hasSpecialChapter - Có hay không có chương đặc biệt (epilogue/after-credit).
+ * @param {string} lang - Ngôn ngữ hiện tại ('en' hoặc 'vi').
+ */
+function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, lang = 'vi') {
+    // Biến lưu trữ trạng thái hiện tại
+    let currentChapterIndex = 0; // Chỉ số chương hiện tại trong chapterIds
+    const chapterIds = []; // Mảng lưu trữ ID của các chương
+    const isPart1 = storyPath.includes('part1');
+
+    // Biến cho Text-to-Speech (TTS)
+    let isSpeaking = false;
+    let synth = null;
+    let currentUtterance = null;
+    let currentChapterData = null;
+    let vietnameseVoice = null; // Biến lưu giọng đọc tiếng Việt được chọn
+    const speechSupported = 'speechSynthesis' in window;
+    
+    // Lấy các phần tử DOM cần thiết
+    const dynamicContent = document.getElementById('dynamic-chapter-content');
+    const prevBtn = document.getElementById('prev-chapter-btn');
+    const nextBtn = document.getElementById('next-chapter-btn');
+    const listBtn = document.getElementById('list-chapter-btn'); // Dùng chung cho cả trên và dưới
+    const chapterModal = document.getElementById('chapter-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalList = document.getElementById('modal-chapter-list');
+    const progressBar = document.querySelector('.progress-bar');
+    const ttsButton = document.getElementById('tts-toggle-btn'); // Nút TTS mới
+    const ttsIcon = document.getElementById('tts-icon');
+    const ttsText = document.getElementById('tts-text');
+
+    // Khởi tạo Speech Synthesis API nếu được hỗ trợ
+    if (speechSupported) {
+        synth = window.speechSynthesis;
+        // Bắt đầu quá trình tìm kiếm giọng đọc tốt nhất
+        // Phải đảm bảo voices đã tải xong (sử dụng sự kiện onvoiceschanged)
+        if (synth.onvoiceschanged !== undefined) {
+            synth.onvoiceschanged = setVietnameseVoice;
+        }
+        setVietnameseVoice(); // Gọi lần đầu, phòng trường hợp voices đã tải sẵn
+    }
+
+    /**
+     * Tìm và thiết lập giọng đọc tiếng Việt tốt nhất (ưu tiên Google/Microsoft).
+     */
+    function setVietnameseVoice() {
+        if (!synth) return;
+        
+        const voices = synth.getVoices();
+        
+        // 1. Giọng ưu tiên (thường là giọng máy chủ của Google/Microsoft)
+        const preferredVoices = [
+            "Google Vietnamese", // Giọng phổ biến và hay của Google Chrome
+            "Microsoft An",      // Giọng của Microsoft Edge
+            "Microsoft Hoai"     // Giọng của Microsoft Edge
+        ];
+        
+        // 2. Tìm kiếm giọng phù hợp
+        vietnameseVoice = voices.find(voice => 
+            voice.lang === 'vi-VN' && preferredVoices.some(name => voice.name.includes(name))
+        );
+        
+        // 3. Nếu không tìm thấy giọng ưu tiên, chọn giọng vi-VN đầu tiên
+        if (!vietnameseVoice) {
+            vietnameseVoice = voices.find(voice => voice.lang === 'vi-VN');
+        }
+
+        if (vietnameseVoice) {
+            console.log("Đã chọn giọng đọc Tiếng Việt:", vietnameseVoice.name);
+        } else {
+            console.warn("Không tìm thấy giọng đọc Tiếng Việt cụ thể. Sẽ sử dụng giọng mặc định.");
+        }
+    }
+
+
+    // Thêm hàm đóng modal vào phạm vi toàn cục để các listeners khác có thể gọi
+    function closeModal() {
+        chapterModal.classList.remove('modal-active');
+        setTimeout(() => {
+            if (!chapterModal.classList.contains('modal-active')) {
+                chapterModal.style.display = 'none';
+            }
+        }, 300);
+        document.body.style.overflow = '';
+    }
+    window.closeModal = closeModal;
+
+
+    // 1. Khởi tạo danh sách ID và danh sách hiển thị (modal)
+    function initChapterList() {
+        modalList.innerHTML = ''; // Xóa nội dung cũ
+        
+        // Thêm các chương chính
+        for (let i = 1; i <= totalChapters; i++) {
+            const chapterId = `chapter-${i}`;
+            chapterIds.push(chapterId);
+            
+            const chapterTitle = lang === 'en' ? `Chapter ${i}` : `Chương ${i}`;
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${chapterId}`;
+            link.dataset.chapterId = chapterId;
+            // Classname cho link trong modal
+            link.className = 'modal-chapter-link block p-3 rounded-md text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors';
+            link.textContent = chapterTitle; // Tên chương sẽ được cập nhật sau khi tải JSON đầu tiên
+            listItem.appendChild(link);
+            modalList.appendChild(listItem);
+        }
+
+        // Thêm epilogue/after-credit nếu có
+        if (hasSpecialChapter) {
+            // Xác định tên file và tiêu đề đặc biệt
+            const specialId = isPart1 ? 'epilogue' : 'after-credit';
+            const specialTitle = isPart1 
+                               ? (lang === 'en' ? 'Epilogue: The Soul Meteor Shower' : 'Khúc Vĩ Thanh: Mưa Sao Băng Linh Hồn')
+                               : (lang === 'en' ? 'After-Credit: Echoes from the Abyss' : 'Phần Sau: Tiếng Vọng Từ Vực Thẳm');
+            
+            chapterIds.push(specialId);
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${specialId}`;
+            link.dataset.chapterId = specialId;
+            link.className = 'modal-chapter-link block p-3 rounded-md text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-semibold';
+            link.textContent = specialTitle;
+            listItem.appendChild(link);
+            modalList.appendChild(listItem);
+        }
+
+        // Tải tiêu đề cho tất cả các chương
+        loadAllChapterTitles();
+    }
+
+    // 2. Hàm tải tiêu đề cho tất cả các chương để điền vào modal
+    async function loadAllChapterTitles() {
+        const modalLinks = modalList.querySelectorAll('.modal-chapter-link');
+        
+        for (let i = 0; i < chapterIds.length; i++) {
+            const chapterId = chapterIds[i];
+            const modalLink = modalLinks[i];
+
+            // Xác định tên tệp JSON
+            let fileName = '';
+            if (chapterId === 'epilogue' || chapterId === 'after-credit') {
+                fileName = isPart1 ? 'epilogue.json' : 'after-credit.json'; // Tên file epilogue/after-credit
+            } else {
+                const num = chapterId.split('-')[1];
+                fileName = `chapter_${num.padStart(2, '0')}.json`;
+            }
+            
+            try {
+                // FIX: Đường dẫn tương đối từ HTML (novels/) đến JSON (data/novels/)
+                const path = `../data/novels/${storyPath}/${fileName}`;
+
+                const response = await fetch(path);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const title = data[`title_${lang}`] || data[`title_en`] || 'Tiêu đề chưa rõ'; // Fallback
+                    modalLink.textContent = title;
+                } else {
+                    // Nếu lỗi 404, giữ nguyên tiêu đề tạm thời và ghi lỗi vào console
+                    console.error(`Error loading title (404) for ${path}`);
+                }
+            } catch (error) {
+                // Nếu lỗi mạng hoặc JSON, ghi lỗi và cập nhật link
+                modalLink.textContent = modalLink.textContent + ` (Lỗi tải)`;
+                console.error(`Error loading title for ${chapterId}:`, error);
+            }
+        }
+    }
+
+
+    // 3. Hàm lấy nội dung chương từ JSON
+    async function fetchChapterContent(chapterId) {
+        // Hiển thị loading state
+        dynamicContent.innerHTML = `<p class="text-center text-gray-500 dark:text-gray-400 p-8">Đang tải nội dung chương...</p>`;
+
+        try {
+            // Xác định tên tệp JSON
+            let fileName = '';
+            if (chapterId === 'epilogue') {
+                fileName = 'epilogue.json';
+            } else if (chapterId === 'after-credit') {
+                 fileName = 'after-credit.json';
+            } else {
+                const num = chapterId.split('-')[1];
+                fileName = `chapter_${num.padStart(2, '0')}.json`; 
+            }
+
+            // FIX: Đường dẫn tương đối từ HTML (novels/) đến JSON (data/novels/)
+            const path = `../data/novels/${storyPath}/${fileName}`;
+
+            const response = await fetch(path);
+            if (!response.ok) {
+                throw new Error(`Could not load chapter file (${response.status}): ${path}`);
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching chapter content:', error);
+            dynamicContent.innerHTML = `<p class="text-red-500 dark:text-red-400 p-4 text-center">Lỗi: Không thể tải nội dung chương ${chapterId}. Vui lòng kiểm tra lại đường dẫn file JSON.</p>`;
+            return null;
+        }
+    }
+
+    // 4. Hàm hiển thị nội dung chương
+    function renderChapter(chapterData) {
+        if (!chapterData) {
+            dynamicContent.innerHTML = '<p class="text-red-500 dark:text-red-400">Không thể hiển thị nội dung chương.</p>';
+            return;
+        }
+
+        // Lưu trữ dữ liệu chương hiện tại cho TTS
+        currentChapterData = chapterData;
+
+        // Cố gắng lấy tiêu đề và nội dung theo ngôn ngữ hiện tại, nếu không có, fallback về tiếng Anh
+        const title = chapterData[`title_${lang}`] || chapterData.title_en || 'Chapter Title';
+        const content = chapterData[`content_${lang}`] || chapterData.content_en || '<p>Content not available in this language or corrupted.</p>';
+        const partNumber = storyPath.includes('part1') ? '1' : '2';
+
+        // Xây dựng HTML cho nội dung chương
+        const contentHtml = `
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold mb-4 text-gray-900 dark:text-white">${title}</h3>
+            <div class="prose dark:prose-invert">
+                ${content}
+            </div>
+        `;
+        dynamicContent.innerHTML = contentHtml;
+
+        // Cập nhật tiêu đề trang
+        document.title = `${title} - LEGNAXE Part ${partNumber}`;
+        
+        // Cuộn lên đầu nội dung
+        const mainElement = document.querySelector('main');
+        const headerOffset = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 80;
+        window.scrollTo({ top: mainElement.offsetTop - headerOffset, behavior: 'smooth' });
+    }
+
+    // --- TTS LOGIC ---
+    
+    // 5a. Dừng đọc
+    function stopSpeaking() {
+        if (synth && synth.speaking) {
+            synth.cancel();
+            isSpeaking = false;
+            updateSpeechButton();
+        }
+    }
+
+    // 5b. Cập nhật giao diện nút TTS
+    function updateSpeechButton() {
+        if (!ttsButton || !ttsIcon || !ttsText) return;
+
+        if (!speechSupported) {
+             ttsButton.disabled = true;
+             ttsButton.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'bg-indigo-600', 'hover:bg-indigo-700');
+             ttsButton.classList.add('bg-gray-400', 'cursor-not-allowed', 'dark:bg-gray-600');
+             ttsIcon.className = 'fas fa-volume-off mr-2';
+             ttsText.textContent = (lang === 'vi' ? 'Không hỗ trợ' : 'Not Supported');
+             return;
+        }
+
+        ttsButton.disabled = false;
+        ttsButton.classList.remove('bg-gray-400', 'cursor-not-allowed', 'dark:bg-gray-600');
+        ttsButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'dark:bg-indigo-700', 'dark:hover:bg-indigo-800');
+
+        if (isSpeaking) {
+            ttsIcon.className = 'fas fa-pause mr-2';
+            ttsText.textContent = (lang === 'vi' ? 'Tạm dừng' : 'Pause');
+        } else {
+            ttsIcon.className = 'fas fa-play mr-2';
+            ttsText.textContent = (lang === 'vi' ? 'Nghe truyện' : 'Read Story');
+        }
+    }
+    
+    // 5c. Chức năng chính: Bật/Tắt TTS
+    function toggleSpeech() {
+        if (!speechSupported || !currentChapterData) return;
+
+        if (isSpeaking) {
+            // Nếu đang nói, thì dừng
+            stopSpeaking();
+        } else {
+            // 1. Dừng bất kỳ giọng nói nào đang diễn ra (nếu có)
+            if (synth.speaking) {
+                 synth.cancel();
+            }
+
+            // 2. Lấy nội dung
+            const title = currentChapterData[`title_${lang}`] || currentChapterData.title_en || 'Chapter Title';
+            const content = currentChapterData[`content_${lang}`] || currentChapterData.content_en || '';
+            
+            // Xóa thẻ HTML khỏi nội dung để giọng đọc không bị gián đoạn
+            const plainContent = content.replace(/<[^>]*>/g, ' ').replace(/\s{2,}/g, ' ').trim();
+            
+            const textToSpeak = `${title}. ${plainContent}`;
+
+            // 3. Tạo Utterance
+            currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
+            
+            // 4. Thiết lập ngôn ngữ và giọng đọc
+            currentUtterance.lang = (lang === 'vi' ? 'vi-VN' : 'en-US');
+            currentUtterance.rate = 0.9; // Tốc độ nói
+            
+            // Gán giọng đọc tiếng Việt đã tìm thấy (nếu có)
+            if (lang === 'vi' && vietnameseVoice) {
+                currentUtterance.voice = vietnameseVoice;
+            } else if (lang === 'en') {
+                // Tùy chọn: Chọn giọng English cụ thể nếu cần, tạm thời để API tự chọn giọng EN
+            }
+
+
+            // 5. Callbacks
+            currentUtterance.onstart = () => {
+                isSpeaking = true;
+                updateSpeechButton();
+            };
+
+            currentUtterance.onend = () => {
+                isSpeaking = false;
+                updateSpeechButton();
+            };
+
+            currentUtterance.onerror = (event) => {
+                console.error('Speech Synthesis Error:', event.error);
+                isSpeaking = false;
+                updateSpeechButton();
+            };
+
+            // 6. Bắt đầu đọc
+            synth.speak(currentUtterance);
+        }
+    }
+
+
+    // 6. Hàm điều hướng chính
+    async function navigateToChapter(chapterId) {
+        // Dừng TTS trước khi tải chương mới
+        stopSpeaking();
+        
+        const chapterData = await fetchChapterContent(chapterId);
+        if (chapterData) {
+            renderChapter(chapterData);
+            
+            // Cập nhật chỉ số chương hiện tại và trạng thái nút
+            currentChapterIndex = chapterIds.indexOf(chapterId);
+            updateNavigationButtons();
+            
+            // Cập nhật URL hash
+            if (window.location.hash.substring(1) !== chapterId) {
+                window.location.hash = chapterId;
+            }
+            
+            // Cập nhật thanh tiến trình đọc
+            updateProgressBar();
+        }
+        
+        // Cập nhật lại nút TTS sau khi chương mới được tải
+        updateSpeechButton();
+    }
+
+    // 7. Hàm cập nhật trạng thái nút điều hướng
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentChapterIndex <= 0;
+        nextBtn.disabled = currentChapterIndex >= chapterIds.length - 1;
+        
+        // Thêm/bỏ class 'disabled' để styling cho phù hợp
+        prevBtn.classList.toggle('opacity-50', prevBtn.disabled);
+        nextBtn.classList.toggle('opacity-50', nextBtn.disabled);
+    }
+    
+    // 8. Hàm cập nhật thanh tiến trình đọc
+    function updateProgressBar() {
+        if (progressBar && dynamicContent.firstElementChild) {
+            const chapterContent = dynamicContent.querySelector('.prose');
+            if (!chapterContent) return;
+
+            const contentHeight = chapterContent.offsetHeight;
+            const windowHeight = window.innerHeight;
+            
+            // Lấy vị trí cuộn so với phần tử cha (dynamicContent)
+            const scrollTop = window.pageYOffset;
+            const contentTop = dynamicContent.offsetTop - (document.getElementById('navbar')?.offsetHeight || 80);
+
+            // Tính toán mức độ cuộn (0% khi bắt đầu, 100% khi kết thúc)
+            // Lấy 80% chiều cao cửa sổ để tạo điểm dừng (không cần cuộn hết màn hình)
+            const scrollDepth = scrollTop - contentTop + (windowHeight * 0.8);
+            
+            const progress = Math.min(100, Math.max(0, (scrollDepth / contentHeight) * 100));
+
+            // Chỉ cần tính toán dựa trên số chương đã hoàn thành
+            const chapterCompletion = (currentChapterIndex / chapterIds.length) * 100;
+
+            // Kết hợp tiến độ đọc chương (chapterCompletion) và tiến độ cuộn (progress)
+            // Đây là phần phức tạp, chúng ta sẽ chỉ dùng tiến độ chương đơn giản để tránh phức tạp hóa
+            const overallProgress = ((currentChapterIndex + 1) / chapterIds.length) * 100;
+            progressBar.style.width = `${overallProgress}%`;
+        }
+    }
+
+    // 9. Gắn sự kiện cho các nút điều hướng và modal
+    
+    // Gắn sự kiện cho nút Trước/Sau
+    prevBtn.addEventListener('click', () => {
+        if (currentChapterIndex > 0) {
+            navigateToChapter(chapterIds[currentChapterIndex - 1]);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentChapterIndex < chapterIds.length - 1) {
+            navigateToChapter(chapterIds[currentChapterIndex + 1]);
+        }
+    });
+
+    // Gắn sự kiện mở modal
+    listBtn.addEventListener('click', () => {
+        chapterModal.style.display = 'flex';
+        setTimeout(() => {
+            chapterModal.classList.add('modal-active');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Gắn sự kiện đóng modal
+    closeModalBtn.addEventListener('click', () => closeModal());
+    chapterModal.addEventListener('click', (event) => {
+        if (event.target === chapterModal) {
+            closeModal();
+        }
+    });
+    
+    // Gắn sự kiện cho nút TTS
+    if (ttsButton) {
+        ttsButton.addEventListener('click', toggleSpeech);
+    }
+    
+    // Gắn sự kiện cho các liên kết trong modal (sử dụng delegation)
+    modalList.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A' && event.target.classList.contains('modal-chapter-link')) {
+            event.preventDefault();
+            const chapterId = event.target.dataset.chapterId;
+            navigateToChapter(chapterId);
+            closeModal();
+        }
+    });
+    
+    // Khởi tạo và tải chương ban đầu
+    initChapterList();
+    
+    // Xử lý hash ban đầu hoặc tải chương 1
+    const initialHash = window.location.hash.substring(1);
+    if (initialHash && chapterIds.includes(initialHash)) {
+        navigateToChapter(initialHash);
+    } else if (chapterIds.length > 0) {
+        navigateToChapter(chapterIds[0]);
+    } else {
+        // Cập nhật trạng thái nút TTS ngay cả khi không có chương nào được tải
+        updateSpeechButton();
+    }
+    
+    // Cập nhật lại thanh tiến trình khi scroll
+    window.addEventListener('scroll', updateProgressBar);
+    window.addEventListener('resize', updateProgressBar);
+}
+
+// Đảm bảo hàm này có sẵn trong phạm vi toàn cục để HTML có thể gọi
+window.initializeChapterLoader = initializeChapterLoader;
