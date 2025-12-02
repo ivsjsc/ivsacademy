@@ -1,0 +1,7 @@
+{
+  "name": "Aivy - AI Assistant",
+  "description": "A smart, aesthetic AI chat assistant widget that connects to a backend API.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
