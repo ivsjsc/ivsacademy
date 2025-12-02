@@ -27,8 +27,8 @@
     // Widget container ID
     containerId: 'aivy-widget-root',
     
-    // Script source (React app built version)
-    scriptSrc: '/Pages/apps/aivy/assets/index.js'
+    // Script source (Widget build)
+    scriptSrc: '/Pages/apps/aivy/dist/aivy-widget.iife.js'
   };
 
   /**
@@ -67,7 +67,7 @@
   function loadAivyScript() {
     const script = document.createElement('script');
     script.src = CONFIG.scriptSrc;
-    script.type = 'module';
+    // IIFE build doesn't need type="module"
     script.async = true;
     
     script.onload = function() {

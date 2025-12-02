@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:widget": "BUILD_WIDGET=true vite build",
     "preview": "vite preview"
   },
   "dependencies": {
