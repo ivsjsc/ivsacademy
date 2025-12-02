@@ -6,4 +6,4 @@
 node_modules/
 dist/
 .venv/
-server/.env
+server/.env\n# Python artifacts\n__pycache__/\n*.pyc
