@@ -62,25 +62,65 @@
   }
 
   /**
-   * Load Aivy React Application Script
+   * Load Aivy script with robust fallbacks.
+   * Tries multiple candidate paths in order until one succeeds.
    */
   function loadAivyScript() {
-    const script = document.createElement('script');
-    script.src = CONFIG.scriptSrc;
-    // IIFE build doesn't need type="module"
-    script.async = true;
-    
-    script.onload = function() {
-      console.log('[Aivy] Widget script loaded successfully');
-    };
-    
-    script.onerror = function(error) {
-      console.error('[Aivy] Failed to load widget script:', error);
-      // Fallback: show error message
-      showFallbackWidget();
-    };
-    
-    document.head.appendChild(script);
+    // Candidate script locations to try (in order)
+    const candidates = (CONFIG.fallbackPaths && CONFIG.fallbackPaths.length) ? [CONFIG.scriptSrc].concat(CONFIG.fallbackPaths) : [
+      CONFIG.scriptSrc,
+      // older asset names/locations (keep as conservative fallbacks)
+      '/Pages/apps/aivy/dist/assets/index-QGF8cjvm.js',
+      '/Pages/apps/aivy/dist/assets/index.js',
+      '/Pages/apps/aivy/dist/index.js',
+      '/Pages/apps/aivy/assets/index.js'
+    ];
+
+    let tried = 0;
+
+    function tryLoad(index) {
+      if (index >= candidates.length) {
+        console.error('[Aivy] All candidate script paths failed:', candidates);
+        showFallbackWidget();
+        return;
+      }
+
+      const src = candidates[index];
+      tried++;
+      console.log(`[Aivy] Attempting to load widget script (#${tried}): ${src}`);
+
+      // If the script is already present, resolve immediately
+      if (document.querySelector(`script[data-ivs-src="${src}"]`)) {
+        console.log('[Aivy] Script already loaded:', src);
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.setAttribute('data-ivs-src', src);
+
+      let resolved = false;
+
+      script.onload = function () {
+        resolved = true;
+        console.log('[Aivy] Widget script loaded successfully from', src);
+      };
+
+      script.onerror = function (err) {
+        console.warn('[Aivy] Failed to load widget script from', src, '- trying next candidate');
+        // Remove broken script tag properly
+        try { script.remove(); } catch (e) {}
+
+        // Try next candidate after a short delay
+        setTimeout(() => tryLoad(index + 1), 300);
+      };
+
+      document.head.appendChild(script);
+    }
+
+    // Start trying the first candidate
+    tryLoad(0);
   }
 
   /**
