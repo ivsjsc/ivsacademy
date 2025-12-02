@@ -6,4 +6,10 @@
 node_modules/
 dist/
 .venv/
-server/.env\n# Python artifacts\n__pycache__/\n*.pyc
+# Ignore local server environment file containing secrets
+server/.env
+# Ignore any .env files anywhere
+*.env
+# Python artifacts
+__pycache__/
+*.pyc
