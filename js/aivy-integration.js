@@ -153,6 +153,26 @@
     initializeAivy();
   }
 
+  /**
+   * Listen for language changes and update widget
+   */
+  window.addEventListener('languageChanged', function(e) {
+    const newLang = e.detail?.language;
+    if (newLang && window.AIVY_CONFIG) {
+      // Update greeting message based on new language
+      const greetings = {
+        'vi': 'Xin chào! Tôi là Aivy, trợ lý AI của IVS Academy. Tôi có thể giúp bạn với các câu hỏi về khóa học, nội dung học tập, và dịch vụ của chúng tôi. Làm thế nào tôi có thể giúp bạn hôm nay?',
+        'en': 'Hello! I\'m Aivy, the AI assistant for IVS Academy. I can help you with questions about our courses, learning materials, and services. How can I assist you today?',
+        'zh': '你好！我是IVS Academy的人工智能助手Aivy。我可以回答您关于我们课程、学习材料和服务的问题。今天我能帮您什么？'
+      };
+      
+      window.AIVY_CONFIG.greeting = greetings[newLang] || greetings['en'];
+      window.AIVY_CONFIG.currentLanguage = newLang;
+      
+      console.log('[Aivy] Language changed to:', newLang);
+    }
+  });
+
   // Expose API to window for manual control if needed
   window.AivyWidget = {
     config: CONFIG,

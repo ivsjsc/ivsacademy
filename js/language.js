@@ -47,9 +47,46 @@
   // Expose globally for tests and application code
   window.translate = translate;
 
-  // Legacy accessor to change the current language (tests may set currentLanguage directly)
+  // Change the current language and update UI/storage
+  // Returns a Promise that resolves after language change is complete
   window.changeLanguage = function (newLang) {
-    if (!newLang) return;
-    window.langSystem.currentLanguage = newLang;
+    return Promise.resolve().then(function() {
+      if (!newLang) throw new Error('Language code required');
+      
+      // Validate language code
+      const validLangs = ['vi', 'en', 'zh'];
+      if (!validLangs.includes(newLang)) {
+        throw new Error('Invalid language code: ' + newLang);
+      }
+      
+      // Update current language
+      window.langSystem.currentLanguage = newLang;
+      
+      // Persist user preference
+      if (window.localStorage) {
+        localStorage.setItem('userPreferredLanguage', newLang);
+      }
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = newLang;
+      
+      // Update all elements with data-lang-key attribute
+      document.querySelectorAll('[data-lang-key]').forEach(function(elem) {
+        const key = elem.getAttribute('data-lang-key');
+        const translated = translate(key, newLang);
+        if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
+          elem.placeholder = translated;
+        } else {
+          elem.textContent = translated;
+        }
+      });
+      
+      // Dispatch custom event so other components can react to language change
+      if (window.CustomEvent) {
+        window.dispatchEvent(new CustomEvent('languageChanged', {
+          detail: { language: newLang }
+        }));
+      }
+    });
   };
 })();
