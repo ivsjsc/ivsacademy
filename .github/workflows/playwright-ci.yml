@@ -1,0 +1,43 @@
+name: Playwright regression tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  js-regression-tests:
+    name: Playwright JS regression tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install Python requirements
+        run: python -m pip install -r requirements.txt
+
+      - name: Install Playwright browsers
+        run: python -m playwright install chromium
+
+      - name: Start static server (background)
+        run: nohup python -m http.server 8000 &>/dev/null &
+
+      - name: Wait for server to become ready
+        run: |
+          for i in $(seq 1 10); do
+            curl -sSf http://localhost:8000/tests/test.html >/dev/null && exit 0 || sleep 1
+          done
+          echo "Server did not start" && exit 1
+
+      - name: Run pytest (Playwright based JS checks)
+        run: pytest -q
