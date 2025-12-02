@@ -11,7 +11,8 @@ def run_tests():
 
         try:
             page.goto("http://localhost:8000/tests/test.html")
-            page.wait_for_selector(".jasmine-results", timeout=10000)  # Wait for results to be visible
+            # Wait for any of the common Jasmine reporter elements to appear
+            page.wait_for_selector(".jasmine-results, .jasmine_html-reporter, #HTMLReporter, .jasmine-specs", timeout=20000)
 
             # Check for failures
             failing_count = page.locator(".jasmine-failed").count()

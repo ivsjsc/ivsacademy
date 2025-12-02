@@ -60,14 +60,20 @@ function translate(key, lang = langSystem.currentLanguage) {
     
     if (translation === undefined) {
         window.componentLog(`Missing translation key: '${key}' in language '${lang}'`, 'warn');
-        // Return key if translation is undefined, but return empty string if translation is explicitly null
-        return translation === null ? '' : key;
-        // Fallback: if translation is not found in the current language, try the default language.
-        const fallbackTranslation = langSystem.translations[langSystem.defaultLanguage]?.[key];
-        if (lang !== langSystem.defaultLanguage && fallbackTranslation !== undefined) {
-            return fallbackTranslation;
+        // If translation is explicitly null -> treat as intentionally empty string
+        if (translation === null) return '';
+
+        // Try fallback to default language when current language doesn't contain the key
+        if (lang !== langSystem.defaultLanguage) {
+            const fallbackTranslation = langSystem.translations[langSystem.defaultLanguage]?.[key];
+            if (fallbackTranslation !== undefined) {
+                window.componentLog(`Using fallback translation for key: '${key}' from default language '${langSystem.defaultLanguage}'`, 'debug');
+                return fallbackTranslation;
+            }
         }
-        return key; // Return the key if no translation is found.
+
+        // No translation found anywhere -> return the key as a sensible default
+        return key;
     }
     return translation;
 }
