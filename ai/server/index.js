@@ -65,6 +65,242 @@ app.post('/api/grok', async (req, res) => {
   }
 });
 
+/**
+ * AI Router Endpoint for Aivy Chatbot
+ * POST /api/ai-router
+ * 
+ * Handles chat messages from the Aivy widget and routes them to the appropriate AI backend.
+ * Supports multiple AI providers (Grok, Google Gemini, OpenAI, etc.)
+ * 
+ * Request body:
+ * {
+ *   "message": "Your question here",
+ *   "model": "gemini" | "grok" | "openai" | "xai",
+ *   "language": "en" | "vi",
+ *   "timestamp": "2025-12-02T10:00:00Z"
+ * }
+ * 
+ * Response:
+ * {
+ *   "success": true,
+ *   "data": {
+ *     "response": "AI response text",
+ *     "model": "gemini",
+ *     "language": "en"
+ *   }
+ * }
+ */
+app.post('/api/ai-router', async (req, res) => {
+  try {
+    const { message, model = 'gemini', language = 'en' } = req.body;
+
+    // Validate request
+    if (!message || typeof message !== 'string' || message.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'message_required',
+        detail: 'Message field is required and must be a non-empty string'
+      });
+    }
+
+    const trimmedMessage = message.trim();
+
+    // Route to appropriate AI service
+    let response;
+    try {
+      switch (model) {
+        case 'gemini':
+        case 'google':
+          response = await callGoogleGemini(trimmedMessage, language);
+          break;
+        case 'grok':
+        case 'xai':
+          response = await callGrokAPI(trimmedMessage, language);
+          break;
+        case 'openai':
+          response = await callOpenAI(trimmedMessage, language);
+          break;
+        default:
+          // Default to Gemini
+          response = await callGoogleGemini(trimmedMessage, language);
+      }
+    } catch (serviceError) {
+      console.warn(`AI service error (${model}):`, serviceError.message);
+      // Fallback: try alternative service
+      try {
+        console.log('Attempting fallback to Gemini...');
+        response = await callGoogleGemini(trimmedMessage, language);
+      } catch (fallbackError) {
+        console.error('Fallback also failed:', fallbackError);
+        throw new Error('All AI services unavailable');
+      }
+    }
+
+    return res.json({
+      success: true,
+      data: {
+        response: response,
+        model: model,
+        language: language
+      }
+    });
+
+  } catch (error) {
+    console.error('[AI Router] Error:', error);
+    return res.status(502).json({
+      success: false,
+      error: 'service_unavailable',
+      detail: error.message || 'AI service is currently unavailable'
+    });
+  }
+});
+
+/**
+ * Call Google Gemini API
+ */
+async function callGoogleGemini(message, language = 'en') {
+  const apiKey = process.env.GOOGLE_API_KEY;
+  if (!apiKey) {
+    throw new Error('GOOGLE_API_KEY not configured');
+  }
+
+  const endpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${apiKey}`;
+  
+  const systemPrompt = language === 'vi' 
+    ? 'Bạn là Aivy, trợ lý AI của IVS Academy. Hãy trả lời các câu hỏi bằng Tiếng Việt một cách thân thiện, chuyên nghiệp và hữu ích. Tập trung vào các chủ đề liên quan đến giáo dục, khóa học, kỹ năng và dịch vụ của IVS Academy.'
+    : 'You are Aivy, an AI assistant for IVS Academy. Please answer questions in a friendly, professional, and helpful manner. Focus on topics related to education, courses, skills, and IVS Academy services.';
+
+  const payload = {
+    contents: [
+      {
+        parts: [
+          { text: systemPrompt },
+          { text: message }
+        ]
+      }
+    ],
+    generationConfig: {
+      temperature: 0.7,
+      topK: 40,
+      topP: 0.95,
+      maxOutputTokens: 500
+    }
+  };
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    throw new Error(`Google Gemini API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  
+  if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+    const text = data.candidates[0].content.parts[0]?.text;
+    if (text) return text;
+  }
+
+  throw new Error('Invalid response from Gemini API');
+}
+
+/**
+ * Call Grok API (XAI)
+ */
+async function callGrokAPI(message, language = 'en') {
+  const apiKey = process.env.XAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('XAI_API_KEY not configured');
+  }
+
+  const endpoint = 'https://api.x.ai/v1/chat/completions';
+  
+  const systemPrompt = language === 'vi' 
+    ? 'Bạn là Aivy, trợ lý AI của IVS Academy. Hãy trả lời các câu hỏi bằng Tiếng Việt một cách thân thiện, chuyên nghiệp và hữu ích. Tập trung vào các chủ đề liên quan đến giáo dục, khóa học, kỹ năng và dịch vụ của IVS Academy.'
+    : 'You are Aivy, an AI assistant for IVS Academy. Please answer questions in a friendly, professional, and helpful manner. Focus on topics related to education, courses, skills, and IVS Academy services.';
+
+  const payload = {
+    model: 'grok-2-latest',
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: message }
+    ],
+    temperature: 0.7,
+    max_tokens: 500
+  };
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    throw new Error(`Grok API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  
+  if (data.choices && data.choices[0] && data.choices[0].message) {
+    return data.choices[0].message.content;
+  }
+
+  throw new Error('Invalid response from Grok API');
+}
+
+/**
+ * Call OpenAI API
+ */
+async function callOpenAI(message, language = 'en') {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY not configured');
+  }
+
+  const endpoint = 'https://api.openai.com/v1/chat/completions';
+  
+  const systemPrompt = language === 'vi' 
+    ? 'Bạn là Aivy, trợ lý AI của IVS Academy. Hãy trả lời các câu hỏi bằng Tiếng Việt một cách thân thiện, chuyên nghiệp và hữu ích. Tập trung vào các chủ đề liên quan đến giáo dục, khóa học, kỹ năng và dịch vụ của IVS Academy.'
+    : 'You are Aivy, an AI assistant for IVS Academy. Please answer questions in a friendly, professional, and helpful manner. Focus on topics related to education, courses, skills, and IVS Academy services.';
+
+  const payload = {
+    model: 'gpt-4o-mini',
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: message }
+    ],
+    temperature: 0.7,
+    max_tokens: 500
+  };
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    throw new Error(`OpenAI API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  
+  if (data.choices && data.choices[0] && data.choices[0].message) {
+    return data.choices[0].message.content;
+  }
+
+  throw new Error('Invalid response from OpenAI API');
+}
+
 const STORAGE_FILE = path.join(__dirname, '..', 'data', 'verified-id-callbacks.jsonl');
 
 // health
