@@ -159,6 +159,9 @@
                     const panel = document.getElementById('ivs-mobile-menu-panel');
                     const container = document.getElementById('ivs-mobile-menu-container');
                     if (!panel || !container) return;
+                    // Expose the mobile panel to screen readers and mark toggle as expanded
+                    panel.setAttribute('aria-hidden', 'false');
+                    const openBtn = document.getElementById('mobile-menu-open-btn'); if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
                     panel.classList.remove('hidden');
                     // small delay so transitions apply
                     setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); }, 10);
@@ -170,6 +173,9 @@
                     const panel = document.getElementById('ivs-mobile-menu-panel');
                     const container = document.getElementById('ivs-mobile-menu-container');
                     if (!panel || !container) return;
+                    // Hide the panel from assistive tech and mark open button not-expanded
+                    panel.setAttribute('aria-hidden', 'true');
+                    const openBtn = document.getElementById('mobile-menu-open-btn'); if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
                     panel.classList.add('opacity-0');
                     container.classList.add('-translate-x-full');
                     setTimeout(function(){ panel.classList.add('hidden'); }, 300);
@@ -239,6 +245,9 @@
                 function showLangConfirm() {
                     const msg = document.getElementById('lang-confirm-message');
                     if (!msg) return;
+                    // Announce to assistive tech that the language has changed
+                    msg.setAttribute('role', 'status');
+                    msg.setAttribute('aria-live', 'polite');
                     msg.classList.remove('opacity-0','scale-90');
                     msg.classList.remove('pointer-events-none');
                     setTimeout(function(){
@@ -279,6 +288,7 @@
                     const flag = document.getElementById('lang-main-flag');
                     const label = document.getElementById('lang-main-label');
                     if (flag) flag.src = '/images/flags/' + (lang === 'vi' ? 'vn' : lang) + '.png';
+                    if (flag && !flag.getAttribute('alt')) flag.setAttribute('alt', 'Selected language flag');
                     if (label) label.textContent = (lang === 'vi' ? 'VI' : (lang === 'zh' ? '中文' : 'EN'));
                 }
 
@@ -361,6 +371,7 @@
                 function updateMobileLangUI(lang) {
                     const flag = document.getElementById('lang-main-mobile-flag');
                     if (flag) flag.src = '/images/flags/' + (lang === 'vi' ? 'vn' : lang) + '.png';
+                    if (flag && !flag.getAttribute('alt')) flag.setAttribute('alt', 'Selected language flag');
                 }
 
                 // Extend bindLangButtons to also update mobile UI and close mobile dropdown after selection
