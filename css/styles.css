@@ -72,6 +72,32 @@
 }
 
 /* ==========================================================================
+   ACCESSIBILITY HELPERS
+   ========================================================================== */
+/* Skip link is visually hidden until focused (keyboard users benefit) */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 10000;
+}
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: var(--ivs-neutral-50);
+    color: var(--ivs-text-dark);
+    border-radius: 0.375rem;
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+}
+
+/* ==========================================================================
    2. BASE & TYPOGRAPHY
    ========================================================================== */
 /**
