@@ -11,10 +11,29 @@
     <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot.js"></script>
 
     <!-- Source file to be tested -->
-    <script src="../js/language.js"></script>
+    <script src="/js/language.js"></script>
+
+    <!-- Pre-load translations -->
+    <script>
+        (async function() {
+            try {
+                const langs = ['vi', 'en', 'zh'];
+                window.langSystem = window.langSystem || { translations: {} };
+                for (const lang of langs) {
+                    const response = await fetch(`/lang/${lang}.json`);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${lang}.json`);
+                    }
+                    window.langSystem.translations[lang] = await response.json();
+                }
+            } catch (error) {
+                console.error('Failed to preload translations:', error);
+            }
+        })();
+    </script>
 
     <!-- Test file -->
-    <script src="test_language.js"></script>
-    <script src="translation_test.js"></script>
+    <script src="/tests/test_language.js"></script>
+    <script src="/tests/translation_test.js"></script>
 </body>
 </html>
