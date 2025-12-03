@@ -1228,7 +1228,8 @@
 <script>
         (function(){
             // Attempt to mount if bundle already present, else inject the built bundle and mount after load.
-            const builtBundle = '/webapp-dist/assets/index-_Tmnr9SX.js';
+            // Prefer dynamic discovery via mountIVSReactComponentsAsync; keep a safe fallback path
+            const builtBundle = '/webapp-dist/assets/index.js';
             function doMountOnce(m){
                 try {
                     if (!m) return;

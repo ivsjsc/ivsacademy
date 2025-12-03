@@ -37,11 +37,27 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+      - name: Show Node & npm versions
+        run: |
+          echo "Node version:"; node --version
+          echo "npm version:"; npm --version
       - name: Build webapp (create webapp-dist)
         working-directory: ./webapp
         run: |
           npm ci
           npm run build
+      - name: Verify webapp-dist exists
+        # Run from repository root (defaults to working-directory), the Vite build is configured
+        # to write the output to ../webapp-dist so the repo root should now contain `webapp-dist`.
+        run: |
+          echo "Checking for webapp-dist in repo root..."
+          if [ ! -d "webapp-dist" ]; then
+            echo "ERROR: webapp-dist directory not found after build; listing top-level files for diagnosis:"
+            ls -la || true
+            exit 1
+          fi
+          echo "webapp-dist exists — listing contents (truncated):"
+          ls -laR webapp-dist | sed -n '1,200p' || true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

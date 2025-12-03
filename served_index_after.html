@@ -1233,7 +1233,8 @@
             // Attempt to mount if bundle already present, else inject the built bundle and mount after load.
             // Guard: set window.DISABLE_IVS_WEBAPP_MOUNT = true to prevent loading/mounting the React webapp.
             // This is a reversible, low-risk protection to avoid external or unwanted client mounts.
-            const builtBundle = '/webapp-dist/assets/index-_Tmnr9SX.js';
+            // Prefer dynamic discovery via mountIVSReactComponentsAsync; keep a safe fallback path
+            const builtBundle = '/webapp-dist/assets/index.js';
             function doMountOnce(m){
                 try {
                     if (!m) return;
