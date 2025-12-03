@@ -1,5 +1,6 @@
+
 // Language initialization script
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('translationsLoaded', function() {
     try {
         // Get saved language preference
         const savedLang = localStorage.getItem('userPreferredLanguage');

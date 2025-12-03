@@ -14,6 +14,27 @@
   window.langSystem.currentLanguage = window.langSystem.currentLanguage || window.langSystem.defaultLanguage;
   window.langSystem.translations = window.langSystem.translations || {};
 
+  // Function to load translations
+  async function loadTranslations() {
+    try {
+      const langs = ['vi', 'en', 'zh'];
+      for (const lang of langs) {
+        const response = await fetch(`/lang/${lang}.json`);
+        if (!response.ok) {
+          throw new Error(`Failed to load ${lang}.json`);
+        }
+        window.langSystem.translations[lang] = await response.json();
+      }
+      // Dispatch a custom event when translations are loaded
+      window.dispatchEvent(new CustomEvent('translationsLoaded'));
+    } catch (error) {
+      console.error('Failed to load translations:', error);
+    }
+  }
+
+  // Load translations when the script is executed
+  loadTranslations();
+
   // translate(key, lang?) — returns translated string, fallback to defaultLanguage if missing,
   // explicit null => empty string, completely missing => return key
   function translate(key, lang) {
