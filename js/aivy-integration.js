@@ -67,14 +67,11 @@
    */
   function loadAivyScript() {
     // Candidate script locations to try (in order)
-    const candidates = (CONFIG.fallbackPaths && CONFIG.fallbackPaths.length) ? [CONFIG.scriptSrc].concat(CONFIG.fallbackPaths) : [
-      CONFIG.scriptSrc,
-      // older asset names/locations (keep as conservative fallbacks)
-      '/Pages/apps/aivy/dist/assets/index-QGF8cjvm.js',
-      '/Pages/apps/aivy/dist/assets/index.js',
-      '/Pages/apps/aivy/dist/index.js',
-      '/Pages/apps/aivy/assets/index.js'
-    ];
+    // Only use the main IIFE widget path - removed invalid/outdated fallback paths
+    // that cause 404 errors on production
+    const candidates = (CONFIG.fallbackPaths && CONFIG.fallbackPaths.length) 
+      ? [CONFIG.scriptSrc].concat(CONFIG.fallbackPaths) 
+      : [CONFIG.scriptSrc];
 
     let tried = 0;
 
