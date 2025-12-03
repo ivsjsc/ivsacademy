@@ -7,6 +7,7 @@ import ServiceCatalog from './components/ServiceCatalog';
 import OrderWizard from './components/OrderWizard';
 import AivyChatbot from './components/AivyChatbot';
 import NotificationPanel from './components/NotificationPanel';
+import DesktopSidebar from './components/DesktopSidebar'; // Import the new sidebar
 import { ServiceItem, Language, AppContextType, NotificationItem, Theme } from './types';
 import { getTrans } from './utils/translations';
 
@@ -22,12 +23,12 @@ export const useAppContext = () => {
 
 const MobileNavLink = ({ to, icon, label }: { to: string, icon: React.ReactNode, label: string }) => {
   return (
-    <NavLink 
-      to={to} 
-      className={({ isActive }) => 
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
         `flex flex-col items-center justify-center p-2 rounded-lg transition-all duration-200 w-full ${
-          isActive 
-            ? 'text-secondary font-semibold' 
+          isActive
+            ? 'text-secondary font-semibold'
             : 'text-gray-400 dark:text-gray-500 font-medium'
         }`
       }
@@ -59,57 +60,61 @@ const AppContent = () => {
   };
 
   return (
-    // Zalo Mini App Wrapper
-    <div className="bg-gray-100 dark:bg-black min-h-screen flex justify-center items-start pt-0 md:pt-10 md:pb-10 font-sans transition-colors duration-300">
-      <div className="w-full max-w-[480px] h-[100vh] md:h-[90vh] bg-background dark:bg-dark-bg text-textMain dark:text-dark-text flex flex-col shadow-2xl relative md:rounded-3xl overflow-hidden border-0 md:border border-gray-200 dark:border-dark-border">
-        
-        {/* Zalo Header Bar */}
-        <header className="h-14 bg-surface dark:bg-dark-surface border-b border-borderSub dark:border-dark-border flex items-center justify-between px-4 shadow-sm z-20 flex-shrink-0 relative transition-colors duration-300">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <Rocket className="text-white w-4 h-4" />
-            </div>
-            <span className="font-bold text-primary dark:text-dark-text text-sm">IVS Celestech</span>
+    <div className="bg-gray-100 dark:bg-black min-h-screen flex font-sans transition-colors duration-300">
+      {/* Desktop Sidebar */}
+      <DesktopSidebar trans={trans} />
+
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col h-screen">
+
+        {/* Mobile/Desktop Header */}
+        <header className="h-16 bg-surface dark:bg-dark-surface border-b border-borderSub dark:border-dark-border flex items-center justify-between px-6 shadow-sm z-20 flex-shrink-0 relative transition-colors duration-300">
+          {/* Mobile breadcrumb/title, could be dynamic */}
+          <div className="md:hidden">
+             <h1 className="font-bold text-lg text-primary dark:text-dark-text">Dashboard</h1>
           </div>
-          
-          <div className="flex items-center gap-2">
+
+          {/* Desktop: Search Bar or empty space */}
+          <div className="hidden md:flex flex-1 max-w-lg">
+             {/* Can add a search bar here later */}
+          </div>
+
+          <div className="flex items-center gap-3">
              {/* Theme Toggle */}
              <button
                onClick={toggleTheme}
-               className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-dark-bg text-textSub dark:text-dark-textSub transition-colors"
+               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-textSub dark:text-dark-textSub transition-colors"
              >
-               {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
              </button>
 
              {/* Language Switcher */}
-             <button 
+             <button
                onClick={toggleLanguage}
-               className="flex items-center gap-1 px-2 py-1 bg-gray-100 dark:bg-dark-bg rounded-md text-xs font-bold text-primary dark:text-dark-text hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+               className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-semibold text-primary dark:text-dark-text hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
              >
-               <Globe className="w-3 h-3" />
+               <Globe size={16} />
                {language.toUpperCase()}
              </button>
 
              {/* Notification Trigger */}
-             <button 
+             <button
                onClick={() => setShowNotifications(!showNotifications)}
                className={`relative p-2 rounded-full transition-colors ${
-                 showNotifications 
-                  ? 'bg-blue-50 dark:bg-blue-900/30 text-secondary' 
-                  : 'text-textSub dark:text-dark-textSub hover:bg-gray-100 dark:hover:bg-dark-bg'
+                 showNotifications
+                  ? 'bg-blue-100 dark:bg-blue-900/30 text-secondary'
+                  : 'text-textSub dark:text-dark-textSub hover:bg-gray-100 dark:hover:bg-gray-800'
                }`}
              >
-               <Bell className="w-5 h-5" />
+               <Bell size={20} />
                {unreadCount > 0 && (
-                 <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white dark:border-dark-surface animate-pulse"></span>
+                 <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-surface dark:border-dark-surface"></span>
                )}
              </button>
 
              {/* User Avatar */}
-             <button className="p-1 rounded-full border border-borderSub dark:border-dark-border">
-               <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
-                 <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User" />
-               </div>
+             <button className="w-9 h-9 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden border-2 border-borderSub dark:border-dark-border">
+                <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User" />
              </button>
           </div>
 
@@ -120,14 +125,14 @@ const AppContent = () => {
         </header>
 
         {/* Scrollable Content */}
-        <main className="flex-1 overflow-y-auto p-4 scroll-smooth bg-background dark:bg-dark-bg transition-colors duration-300" onClick={() => setShowNotifications(false)}>
+        <main className="flex-1 overflow-y-auto p-6 md:p-8 scroll-smooth bg-background dark:bg-dark-bg transition-colors duration-300" onClick={() => setShowNotifications(false)}>
            <Routes>
              <Route path="/dashboard" element={<Dashboard />} />
              <Route path="/services" element={<ServiceCatalog onSelectService={handleServiceSelect} />} />
              <Route path="/create" element={
                selectedService ? (
-                 <OrderWizard 
-                   service={selectedService} 
+                 <OrderWizard
+                   service={selectedService}
                    onBack={() => navigate('/services')}
                    onComplete={handleWizardComplete}
                  />
@@ -138,7 +143,7 @@ const AppContent = () => {
                     </div>
                     <h2 className="text-lg font-bold text-primary dark:text-dark-text mb-2">{trans.create_request}</h2>
                     <p className="text-textSub dark:text-dark-textSub text-sm mb-6 px-4">{trans.service_desc}</p>
-                    <button 
+                    <button
                       onClick={() => navigate('/services')}
                       className="px-6 py-2.5 bg-secondary text-white rounded-xl hover:bg-blue-800 transition-colors shadow-soft font-medium text-sm"
                     >
@@ -151,8 +156,8 @@ const AppContent = () => {
            </Routes>
         </main>
 
-        {/* Zalo Bottom Navigation */}
-        <nav className="flex-shrink-0 bg-surface dark:bg-dark-surface border-t border-borderSub dark:border-dark-border px-2 py-1 flex justify-between items-center z-50 pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] transition-colors duration-300">
+        {/* Mobile Bottom Navigation */}
+        <nav className="md:hidden flex-shrink-0 bg-surface dark:bg-dark-surface border-t border-borderSub dark:border-dark-border px-2 py-1 flex justify-around items-center z-50 pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] transition-colors duration-300">
           <MobileNavLink to="/dashboard" icon={<LayoutDashboard size={22} />} label={trans.dashboard} />
           <MobileNavLink to="/services" icon={<Briefcase size={22} />} label={trans.services} />
           <MobileNavLink to="/create" icon={<PlusCircle size={22} />} label={trans.create} />
@@ -170,7 +175,7 @@ const App = () => {
   const [language, setLanguage] = useState<Language>('vi'); // Default VI
   const [theme, setTheme] = useState<Theme>('light');
   const trans = getTrans(language);
-  
+
   // Notification Logic
   const [notifications, setNotifications] = useState<NotificationItem[]>([]);
 
@@ -256,13 +261,13 @@ const App = () => {
   };
 
   return (
-    <AppContext.Provider value={{ 
-      language, 
+    <AppContext.Provider value={{
+      language,
       setLanguage,
       theme,
-      toggleTheme, 
-      trans, 
-      notifications, 
+      toggleTheme,
+      trans,
+      notifications,
       unreadCount,
       markAsRead,
       markAllAsRead,
