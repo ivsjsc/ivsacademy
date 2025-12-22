@@ -2,6 +2,9 @@
 export type Language = 'vi' | 'en';
 export type Theme = 'light' | 'dark';
 
+// Translation map type used for UI text keys
+export type Translation = { [key: string]: string };
+
 export enum ServiceCategory {
   TECH = 'TECH',
   EDTECH = 'EDTECH',
