@@ -32,6 +32,10 @@ jobs:
       - name: Start static server (background)
         run: nohup python3 -m http.server 8000 &>/dev/null &
 
+      - name: Verify server is running before tests
+        run: |
+          ps aux | grep "http.server" || { echo "Server failed to start. Exiting."; exit 1; }
+
       - name: Wait for server to become ready
         run: |
           for i in $(seq 1 10); do
