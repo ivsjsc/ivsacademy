@@ -231,3 +231,12 @@ Security notes:
 - Rotate any leaked XAI keys immediately (delete and reissue on provider portal).
 - Do not post secrets in chat or public repos.
 - Consider using a secret store (Key Vault) and rate limiting / authentication on this endpoint in production.
+
+{ 
+# Deploy notes (GCP)
+- Billing must be enabled for the GCP project (owner action).
+- To allow CI redeploy, create a service account and add these secrets to GitHub:
+  - GCP_SA_KEY (service account JSON)
+  - GCP_PROJECT
+- See ROOT/DEPLOY_GCP.md for commands and required roles.
+}

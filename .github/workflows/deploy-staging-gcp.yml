@@ -1,0 +1,73 @@
+name: Deploy → staging (GCP)
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_id:
+        description: 'GCP Project ID'
+        required: true
+      cloud_run_service:
+        description: 'Cloud Run service name'
+        required: true
+      region:
+        description: 'GCP region'
+        required: false
+        default: 'us-east4'
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up gcloud auth
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Install gcloud components
+        run: |
+          sudo apt-get update -y
+          curl -sSL https://sdk.cloud.google.com | bash > /dev/null
+          source "$HOME/google-cloud-sdk/path.bash.inc"
+          gcloud --version
+
+      - name: Configure project
+        run: |
+          source "$HOME/google-cloud-sdk/path.bash.inc"
+          gcloud config set project ${{ github.event.inputs.project_id || env.GCP_PROJECT || secrets.GCP_PROJECT }}
+        env:
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+
+      - name: Enable required GCP APIs (safe to run)
+        run: |
+          source "$HOME/google-cloud-sdk/path.bash.inc"
+          PROJECT_ID="${{ github.event.inputs.project_id || env.GCP_PROJECT || secrets.GCP_PROJECT }}"
+          PROJECT_ID="${PROJECT_ID:?}"
+          ./server/scripts/gcp/enable_apis.sh
+        env:
+          PROJECT_ID: ${{ github.event.inputs.project_id || secrets.GCP_PROJECT }}
+
+      - name: Run server tests
+        run: npm ci --prefix server && npm test --prefix server
+
+      - name: Build frontend (ivs-celestech)
+        run: npm ci --prefix Pages/ivs-celestech && npm run build --prefix Pages/ivs-celestech
+
+      - name: Redeploy Cloud Run service
+        run: |
+          source "$HOME/google-cloud-sdk/path.bash.inc"
+          PROJECT_ID="${{ github.event.inputs.project_id || secrets.GCP_PROJECT }}"
+          CLOUD_RUN_SERVICE="${{ github.event.inputs.cloud_run_service }}"
+          REGION="${{ github.event.inputs.region || 'us-east4' }}"
+          PROJECT_ID="${PROJECT_ID:?}"
+          CLOUD_RUN_SERVICE="${CLOUD_RUN_SERVICE:?}"
+          PROJECT_ID="$PROJECT_ID" CLOUD_RUN_SERVICE="$CLOUD_RUN_SERVICE" REGION="$REGION" ./server/scripts/gcp/redeploy_cloudrun.sh
