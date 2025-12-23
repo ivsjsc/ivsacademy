@@ -78,4 +78,4 @@ Security notes:
 
 ---
 
-Tài liệu hướng dẫn đầy đủ: bật billing, tạo SA, upload key, chạy workflow (các lệnh copy/paste).
+Tài liệu hướng dẫn đầy đủ: bật billing, tạo SA, tạo key, upload secrets, chạy workflow (các lệnh copy/paste).
