@@ -116,9 +116,14 @@
 <a class="dropdown-item" data-lang-key="nav_library_apps" href="/Pages/apps/ivsapps.html">IVS Apps</a>
 </div>
 </div>
-<a class="desktop-nav-link" data-lang-key="nav_news" href="/news-archive.html">Tin tức</a>
 <a class="desktop-nav-link bg-ivs-accent hover:bg-ivs-accent-dark text-white font-bold" data-lang-key="nav_contact" href="/contact.html">Liên Hệ</a>
 </nav>
+            <div class="hidden md:flex items-center ml-4">
+                <button data-google-sign-in type="button" class="google-signin-btn" aria-label="Sign in with Google">
+                    <i class="fab fa-google text-lg" aria-hidden="true"></i>
+                    <span data-lang-key="nav_google_sign_in">Login by Google</span>
+                </button>
+            </div>
 <div class="relative ml-3 hidden md:block" id="desktop-lang-container">
 <button aria-controls="lang-dropdown" aria-expanded="false" aria-haspopup="true" class="flex items-center p-2 rounded-md hover:bg-ivs-bg-light focus:outline-none" id="lang-main-btn">
 <span aria-hidden="true" class="flag-circle flag-circle-sm"><img alt="Lang" id="lang-main-flag" onerror="this.onerror=null; this.src='https://placehold.co/36x36/1f2937/ffffff?text=EN';" src="/images/flags/en.png"/></span>
@@ -545,8 +550,13 @@
 </div>
 </div>
 <div class="mobile-menu-group card-menu-group">
-<a class="mobile-nav-link" data-lang-key="nav_news" href="/news-archive.html"><i class="fas fa-newspaper fa-sm mr-2 text-ivs-accent"></i>Tin tức</a>
 <a class="mobile-nav-link" data-lang-key="nav_contact" href="/contact.html"><i class="fas fa-envelope fa-sm mr-2 text-ivs-accent"></i>Liên Hệ</a>
+</div>
+<div class="mobile-menu-group card-menu-group">
+    <button data-google-sign-in type="button" class="mobile-google-signin-btn w-full flex items-center justify-center gap-2" aria-label="Sign in with Google">
+        <i class="fab fa-google text-xl"></i>
+        <span data-lang-key="nav_google_sign_in">Login by Google</span>
+    </button>
 </div>
 <div class="mobile-menu-group card-menu-group mobile-menu-lang-group">
 <div class="flex justify-center gap-3 mt-2">
@@ -1298,6 +1308,46 @@
     }
     #mobile-menu-open-btn svg {
         width: 28px; height: 28px;
+    }
+
+    .google-signin-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.45rem 1rem;
+        border-radius: 999px;
+        border: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(135deg, var(--ivs-accent), var(--ivs-accent-dark));
+        box-shadow: 0 10px 30px rgba(255, 122, 24, 0.3);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .google-signin-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 32px rgba(255, 122, 24, 0.4);
+    }
+
+    .google-signin-btn:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+    }
+
+    .mobile-google-signin-btn {
+        border-radius: 0.9rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: linear-gradient(135deg, var(--ivs-accent), var(--ivs-accent-dark));
+        color: #fff;
+        font-weight: 600;
+        text-transform: none;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3);
+    }
+
+    .mobile-google-signin-btn:hover {
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
     }
 </style>
 

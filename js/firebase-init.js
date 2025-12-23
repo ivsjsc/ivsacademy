@@ -18,12 +18,12 @@ if (typeof window.componentLog !== 'function') {
 // Firebase configuration skeleton. apiKey intentionally left empty for environments
 // where it will be injected at runtime. Do NOT initialize Auth if apiKey is missing.
 const firebaseConfig = {
-    apiKey: "", // may be provided at runtime by hosting environment
-    authDomain: "gemini-chat-m48mq.firebaseapp.com",
-    projectId: "gemini-chat-m48mq",
-    storageBucket: "gemini-chat-m48mq.appspot.com",
-    messagingSenderId: "503895668514",
-    appId: "1:503895668514:web:16ccacd60f9a420becd77b"
+    apiKey: "AIzaSyAOxCF0PhA6s3DtvETux-kXGTXRTlpL4vs",
+    authDomain: "ivs-159a7.firebaseapp.com",
+    projectId: "ivs-159a7",
+    storageBucket: "ivs-159a7.firebasestorage.app",
+    messagingSenderId: "452959273724",
+    appId: "1:452959273724:web:f65150db22833c18040d79"
 };
 
 // Expose a safe initializer on window. Consumers should call initializeFirebase() and
