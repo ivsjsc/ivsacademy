@@ -22,6 +22,10 @@ jobs:
         run: |
           cd server
           npm ci
+      - name: Secret scan
+        run: |
+          cd server
+          npm run check-secrets
       - name: Run tests
         run: |
           cd server
