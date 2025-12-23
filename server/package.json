@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
+    "pretest": "npm ci --prefix ../ai/server",
     "test": "jest --runInBand",
     "check-secrets": "node scripts/check_secrets.js"
   },
