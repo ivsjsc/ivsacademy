@@ -37,7 +37,7 @@ gcloud auth login
 gcloud config set project YOUR_PROJECT_ID
 ```
 
-2) Tạo service account và key (script giúp tạo sẵn `server/scripts/gcp/create_service_account.sh`):
+2) Tạo service account và key (script):
 ```bash
 PROJECT_ID=your-project SA_NAME=ci-deploy-sa ./server/scripts/gcp/create_service_account.sh
 # file key: ci-deploy-sa-key.json
@@ -45,12 +45,13 @@ PROJECT_ID=your-project SA_NAME=ci-deploy-sa ./server/scripts/gcp/create_service
 
 3) Upload key vào GitHub Secrets (Unix/macOS):
 ```bash
-# Authenticate gh CLI first: gh auth login
+gh auth login
 gh secret set GCP_SA_KEY --body "$(cat ci-deploy-sa-key.json)"
 gh secret set GCP_PROJECT --body "your-project"
 ```
 PowerShell:
 ```powershell
+gh auth login
 gh secret set GCP_SA_KEY --body (Get-Content .\ci-deploy-sa-key.json -Raw)
 gh secret set GCP_PROJECT --body "your-project"
 ```
@@ -65,12 +66,16 @@ rm -f ci-deploy-sa-key.json
 gh secret list | grep GCP_SA_KEY
 ```
 
-6) Nếu cần thu hồi hoặc xoá key:
+6) Thu hồi key nếu cần:
 ```bash
 gcloud iam service-accounts keys list --iam-account=ci-deploy-sa@YOUR_PROJECT_ID.iam.gserviceaccount.com
 gcloud iam service-accounts keys delete KEY_ID --iam-account=ci-deploy-sa@YOUR_PROJECT_ID.iam.gserviceaccount.com
 ```
 
 Security notes:
-- Không commit file key.
-- Xóa file local ngay sau upload và rotate key định kỳ.
+- Do NOT commit service account keys.
+- Delete local key file after upload and rotate periodically.
+
+---
+
+Tài liệu hướng dẫn đầy đủ: bật billing, tạo SA, upload key, chạy workflow (các lệnh copy/paste).

@@ -234,6 +234,6 @@ Security notes:
 
 { 
 ## GCP Deploy scripts
-- Scripts: `server/scripts/gcp/create_service_account.sh`, `enable_apis.sh`, `redeploy_cloudrun.sh`.
+- Scripts: `server/scripts/gcp/create_service_account.sh`, `enable_apis.sh`, `redeploy_cloudrun.sh`, `server/scripts/github/upload_gcp_sa_secret.sh`.
 - See `DEPLOY_GCP.md` for step-by-step: create SA, upload `GCP_SA_KEY` to GitHub Secrets, enable billing, then run the workflow `Deploy → staging (GCP)`.
 }

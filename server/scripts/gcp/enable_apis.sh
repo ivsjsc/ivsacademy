@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Enable required GCP APIs for builds and deploys.
-# Usage: PROJECT_ID=my-project ./enable_apis.sh
 set -euo pipefail
 PROJECT_ID="${PROJECT_ID:-}"
 if [ -z "$PROJECT_ID" ]; then
