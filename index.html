@@ -1390,6 +1390,51 @@
 <!-- Aivy AI Chatbot Integration -->
 <script defer src="/js/aivy-integration.js"></script>
 
+<script src="/js/firebase-init.js"></script>
+<script>
+(async function() {
+  // Initialize Firebase for the main site
+  const firebase = await window.initializeFirebase();
+  if (!firebase.auth) {
+    console.warn('Firebase Auth not initialized, Google sign-in will not work');
+    return;
+  }
+
+  // Bind Google sign-in buttons
+  function bindGoogleSignInButtons() {
+    const handler = async (event) => {
+      event.preventDefault();
+      try {
+        const { signInWithPopup, GoogleAuthProvider } = await import('https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js');
+        const provider = new GoogleAuthProvider();
+        await signInWithPopup(firebase.auth, provider);
+        // Handle success - perhaps redirect or show message
+        alert('Signed in successfully!');
+      } catch (error) {
+        console.error('Sign-in failed:', error);
+        alert('Sign-in failed: ' + error.message);
+      }
+    };
+
+    document.querySelectorAll('[data-google-sign-in]').forEach((btn) => {
+      if (btn.dataset.googleSignInBound) return;
+      btn.addEventListener('click', handler);
+      btn.dataset.googleSignInBound = '1';
+    });
+  }
+
+  // Bind after components are loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    bindGoogleSignInButtons();
+  });
+
+  // Also bind when components are loaded dynamically
+  const observer = new MutationObserver(() => {
+    bindGoogleSignInButtons();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
 <script defer="" src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
