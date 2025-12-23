@@ -21,16 +21,16 @@ jobs:
           python-version: '3.11'
 
       - name: Upgrade pip
-        run: python -m pip install --upgrade pip
+        run: python3 -m pip install --upgrade pip
 
       - name: Install Python requirements
-        run: python -m pip install -r requirements.txt
+        run: python3 -m pip install -r requirements.txt
 
       - name: Install Playwright browsers
-        run: python -m playwright install chromium
+        run: python3 -m playwright install chromium
 
       - name: Start static server (background)
-        run: nohup python -m http.server 8000 &>/dev/null &
+        run: nohup python3 -m http.server 8000 &>/dev/null &
 
       - name: Wait for server to become ready
         run: |

@@ -6,7 +6,7 @@ import requests
 import time
 from bs4 import BeautifulSoup
 
-def test_page(url, page_name):
+def check_page(url, page_name):
     """Test if a page loads and has required components"""
     try:
         response = requests.get(url, timeout=10)
@@ -42,7 +42,7 @@ def test_page(url, page_name):
         return False
 
 def main():
-    base_url = "http://localhost:8080"
+    base_url = "http://localhost:8000"
     pages = [
         ("Pages/bang-gia-tham-khao-gvnn-ivs.html", "Bang Gia Page"),
         ("Pages/foreign-teacher-services.html", "Foreign Teacher Services Page"),
@@ -56,7 +56,7 @@ def main():
     results = []
     for page_path, page_name in pages:
         url = f"{base_url}/{page_path}"
-        result = test_page(url, page_name)
+        result = check_page(url, page_name)
         results.append((page_name, result))
 
     print("\n=== SUMMARY ===")
