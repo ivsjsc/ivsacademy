@@ -810,11 +810,161 @@ app.use('/admin/static', express.static(require('path').join(__dirname, 'static'
 
 // Admin login endpoints (server-side login using ADMIN_PASSWORD)
 app.get('/admin/login', (req, res) => res.sendFile(require('path').join(__dirname, 'static', 'admin-login.html')));
-app.post('/admin/login', express.urlencoded({ extended: false }), (req, res) => {
+// Brute-force protection helpers
+const adminLoginAttempts = new Map(); // ip -> { attempts: [ts], lockedUntil: ts }
+function getLoginMax() { return parseInt(process.env.ADMIN_LOGIN_MAX_ATTEMPTS || '5', 10); }
+function getLoginWindowMin() { return parseInt(process.env.ADMIN_LOGIN_WINDOW_MIN || '15', 10); }
+function getLoginLockMin() { return parseInt(process.env.ADMIN_LOCK_MINUTES || '30', 10); }
+function getAdminAlertWebhook() { return process.env.ADMIN_ALERT_WEBHOOK || ''; }
+
+function nowTs() { return Date.now(); }
+function minutesToMs(m) { return m * 60 * 1000; }
+
+// Storage abstraction: in-memory Map or Redis (if REDIS_URL provided)
+let redisClient = null;
+let useRedis = false;
+if (process.env.REDIS_URL) {
+  try {
+    if (process.env.USE_REDIS_IN_MEMORY === '1') {
+      // in-process mock Redis for tests and single-node setups
+      class MockRedisClient {
+        constructor() { this.map = new Map(); }
+        async get(k) { return this.map.has(k) ? this.map.get(k) : null; }
+        async set(k, v, ...args) { this.map.set(k, v); }
+        async del(...ks) { for (const k of ks) this.map.delete(k); }
+        scanStream() {
+          const self = this;
+          async function* gen() {
+            const keys = Array.from(self.map.keys());
+            for (let i = 0; i < keys.length; i += 100) yield keys.slice(i, i + 100);
+          }
+          return gen();
+        }
+      }
+      redisClient = new MockRedisClient();
+      useRedis = true;
+      console.info('Using in-memory mock Redis for admin login storage');
+    } else {
+      const IORedis = require('ioredis');
+      redisClient = new IORedis(process.env.REDIS_URL);
+      useRedis = true;
+      console.info('Using Redis for admin login storage');
+    }
+  } catch (e) {
+    console.warn('Failed to initialize Redis client, falling back to in-memory store', e.message);
+    redisClient = null;
+    useRedis = false;
+  }
+}
+
+async function storageGet(ip) {
+  const key = `admin_login:${ip}`;
+  if (useRedis && redisClient) {
+    const v = await redisClient.get(key);
+    return v ? JSON.parse(v) : null;
+  }
+  return adminLoginAttempts.get(ip) || null;
+}
+
+async function storageSet(ip, obj) {
+  const key = `admin_login:${ip}`;
+  if (useRedis && redisClient) {
+    const ttl = Math.ceil((getLoginWindowMin() + getLoginLockMin()) * 60); // seconds
+    await redisClient.set(key, JSON.stringify(obj), 'EX', ttl);
+    return;
+  }
+  adminLoginAttempts.set(ip, obj);
+}
+
+async function storageClearAll() {
+  if (useRedis && redisClient) {
+    // best effort: if Redis is available, scan and delete admin_login:* keys
+    try {
+      const stream = redisClient.scanStream({ match: 'admin_login:*', count: 100 });
+      const keys = [];
+      for await (const ks of stream) {
+        for (const k of ks) keys.push(k);
+      }
+      if (keys.length) await redisClient.del(...keys);
+    } catch (e) {
+      console.warn('storageClearAll warning', e.message);
+    }
+    return;
+  }
+  adminLoginAttempts.clear();
+}
+
+async function recordFailedAttempt(ip) {
+  const entry = (await storageGet(ip)) || { attempts: [], lockedUntil: 0 };
+  const cutoff = nowTs() - minutesToMs(getLoginWindowMin());
+  entry.attempts = entry.attempts.filter(t => t >= cutoff);
+  entry.attempts.push(nowTs());
+  if (entry.attempts.length >= getLoginMax()) {
+    entry.lockedUntil = nowTs() + minutesToMs(getLoginLockMin());
+    // fire alert webhook asynchronously
+    alertAdminLockout(ip, entry.attempts.length);
+  }
+  await storageSet(ip, entry);
+}
+
+async function isLocked(ip) {
+  const entry = await storageGet(ip);
+  if (!entry) return false;
+  if (entry.lockedUntil && entry.lockedUntil > nowTs()) return true;
+  if (entry.lockedUntil && entry.lockedUntil <= nowTs()) {
+    // unlock expired lock
+    await storageSet(ip, { attempts: [], lockedUntil: 0 });
+    return false;
+  }
+  return false;
+}
+
+async function alertAdminLockout(ip, attempts) {
+  try {
+    const payload = {
+      event: 'admin_lockout',
+      ip,
+      attempts,
+      windowMinutes: getLoginWindowMin(),
+      lockMinutes: getLoginLockMin(),
+      timestamp: new Date().toISOString()
+    };
+    console.error('Admin lockout:', payload);
+    const hook = getAdminAlertWebhook();
+    if (hook) {
+      // fire and forget
+      try {
+        await (global.fetch || ((...a)=> import('node-fetch').then(m=>m.default(...a))) )(
+          hook,
+          { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }
+        );
+      } catch (e) {
+        console.error('Failed to call ADMIN_ALERT_WEBHOOK', e.message);
+      }
+    }
+  } catch (e) {
+    console.error('alertAdminLockout error', e);
+  }
+}
+
+app.post('/admin/login', express.urlencoded({ extended: false }), async (req, res) => {
   const password = (req.body && req.body.password) ? String(req.body.password) : '';
+  const ip = req.ip || req.connection && req.connection.remoteAddress || 'unknown';
+
+  if (await isLocked(ip)) {
+    console.warn('Blocked admin login attempt from locked IP', ip);
+    return res.status(429).send('Too many attempts. Try later.');
+  }
+
   if (!password || password !== (process.env.ADMIN_PASSWORD || '')) {
+    // record failed attempt
+    await recordFailedAttempt(ip);
+    // Mimic same timing for failed responses
     return res.status(401).send('Invalid credentials');
   }
+
+  // success: reset attempts for ip
+  await storageSet(ip, { attempts: [], lockedUntil: 0 });
   req.session.isAdmin = true;
   return res.redirect('/admin');
 });
@@ -834,6 +984,14 @@ app.post('/admin/logout', (req, res) => {
   if (req.session) { req.session.isAdmin = false; }
   res.json({ ok: true });
 });
+
+// Test helper: clear admin login attempts (only in test env)
+if (process.env.NODE_ENV === 'test') {
+  app.post('/test/clear-admin-login-attempts', async (req, res) => {
+    await storageClearAll();
+    return res.status(200).json({ ok: true });
+  });
+}
 
 // POST to update auth config (protected by ADMIN_API_KEY). Body is JSON with allowedEmails, allowedDomains, allowedGitHubOrgs.
 app.post('/admin/auth-config', (req, res) => {
