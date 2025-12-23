@@ -1,0 +1,169 @@
+/* IVS Celestech Custom Styles */
+
+:root {
+  --celestech-blue: #0066cc;
+  --celestech-dark: #1a1a2e;
+  --celestech-light: #f0f4f8;
+}
+
+/* Smooth animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.status-badge.pending {
+  background-color: #fef08a;
+  color: #713f12;
+  border: 1px solid #fcd34d;
+}
+
+.status-badge.approved {
+  background-color: #bfdbfe;
+  color: #1e40af;
+  border: 1px solid #93c5fd;
+}
+
+.status-badge.completed {
+  background-color: #bbf7d0;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.status-badge.rejected {
+  background-color: #fecaca;
+  color: #7f1d1d;
+  border: 1px solid #fca5a5;
+}
+
+.status-badge.processing {
+  background-color: #c7d2fe;
+  color: #312e81;
+  border: 1px solid #a5b4fc;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Button styles */
+button {
+  transition: all 0.2s ease;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+/* Request card hover effects */
+.request-card {
+  transition: all 0.2s ease;
+  border-left: 4px solid var(--celestech-blue);
+}
+
+.request-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Admin panel */
+.approval-item {
+  border: 2px solid #fbbf24;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  transition: all 0.2s ease;
+}
+
+.dark .approval-item {
+  background: linear-gradient(135deg, #7c2d12 0%, #92400e 100%);
+  border-color: #d97706;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .status-badge.pending {
+    background-color: #854d0e;
+    color: #fef08a;
+    border-color: #b45309;
+  }
+  
+  .status-badge.approved {
+    background-color: #1e3a8a;
+    color: #bfdbfe;
+    border-color: #1e40af;
+  }
+  
+  .status-badge.completed {
+    background-color: #064e3b;
+    color: #bbf7d0;
+    border-color: #10b981;
+  }
+  
+  .status-badge.rejected {
+    background-color: #7f1d1d;
+    color: #fecaca;
+    border-color: #dc2626;
+  }
+  
+  .status-badge.processing {
+    background-color: #3730a3;
+    color: #c7d2fe;
+    border-color: #4f46e5;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flex-wrap {
+    gap: 0.5rem;
+  }
+  
+  button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}

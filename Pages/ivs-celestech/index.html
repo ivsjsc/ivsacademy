@@ -1,90 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IVS Celestech</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: '#0F172A', // Deep Navy (Slate 900) - Trust/Security
-              secondary: '#1E40AF', // Corporate Blue - Tech/Professional
-              accent: '#F59E0B', // Gold/Amber - Action/Highlights
-              surface: '#FFFFFF', // Clean White
-              background: '#F3F4F6', // Light Gray (Slate 100)
-              textMain: '#1F2937', // Gray 800
-              textSub: '#6B7280', // Gray 500
-              borderSub: '#E5E7EB', // Gray 200
-              
-              // Dark Mode Specifics
-              dark: {
-                bg: '#0F172A',      // Slate 900
-                surface: '#1E293B', // Slate 800
-                border: '#334155',  // Slate 700
-                text: '#F1F5F9',    // Slate 100
-                textSub: '#94A3B8'  // Slate 400
-              }
-            },
-            fontFamily: {
-              sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-            },
-            boxShadow: {
-              'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-              'card': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
-            }
-          },
-        },
-      }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        background-color: #F3F4F6;
-        color: #1F2937;
-        font-family: 'Inter', sans-serif;
-        -webkit-font-smoothing: antialiased;
-      }
-      /* Custom Scrollbar - Clean Gray */
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #F3F4F6;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #CBD5E1;
-        border-radius: 3px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #94A3B8;
-      }
-      /* Dark mode scrollbar */
-      .dark ::-webkit-scrollbar-track {
-        background: #0F172A;
-      }
-      .dark ::-webkit-scrollbar-thumb {
-        background: #334155;
-      }
-      .dark ::-webkit-scrollbar-thumb:hover {
-        background: #475569;
-      }
-
-      /* Hide scrollbar for clean UI in some containers */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-    </style>
-  <script type="module" crossorigin src="./assets/index-BMUGxAa1.js"></script>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVS Celestech - One-Touch to Digital Future</title>
+  <meta name="description" content="Premium service ordering platform for Tech Solutions, EdTech Content, and Data Systems.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3H09sRCE4blwPhb+9J6NA9ZaJO0kwzlHoBNUvEBDs/teKgBeSwpOqDstEa41wi3G5UczwwIU80nQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+  
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/Pages/ivs-celestech/css/celestech.css">
+  <style>
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-  <body>
-    <div id="root"></div>
+<body class="font-poppins bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <div id="header-placeholder"></div>
+
+  <main class="container mx-auto px-4 py-8 min-h-screen">
+    <!-- Not Authenticated View -->
+    <div id="not-auth-view">
+      <div class="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-8 text-center mt-20">
+        <div class="mb-6">
+          <i class="fas fa-rocket text-6xl text-blue-600"></i>
+        </div>
+        <h1 class="text-3xl font-bold mb-2">IVS Celestech</h1>
+        <p class="text-xl text-blue-600 font-semibold mb-6">One-Touch to Digital Future</p>
+        <p class="text-gray-600 dark:text-gray-300 mb-8">
+          Premium service ordering platform for Tech Solutions, EdTech Content, and Data Systems.
+        </p>
+        <button id="google-sign-in-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-3 transition">
+          <i class="fab fa-google text-lg"></i>
+          <span>Sign in with Google</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Authenticated View -->
+    <div id="auth-view" class="hidden">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div>
+          <h1 class="text-3xl font-bold"><i class="fas fa-rocket text-blue-600 mr-2"></i>Dashboard</h1>
+          <p class="text-gray-600 dark:text-gray-400">Welcome to IVS Celestech</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="text-right">
+            <p class="text-sm text-gray-600 dark:text-gray-400">Signed in as</p>
+            <p id="user-email" class="font-semibold"></p>
+          </div>
+          <button id="sign-out-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition">
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="flex gap-2 mb-6 border-b dark:border-gray-700 flex-wrap">
+        <button id="tab-create-request" class="px-6 py-3 font-semibold border-b-2 border-blue-600 text-blue-600 transition hover:bg-blue-50 dark:hover:bg-gray-700 rounded-t-lg">
+          <i class="fas fa-plus-circle mr-2"></i> Create Request
+        </button>
+        <button id="tab-my-requests" class="px-6 py-3 font-semibold border-b-2 border-transparent text-gray-600 dark:text-gray-400 hover:text-blue-600 transition hover:bg-blue-50 dark:hover:bg-gray-700 rounded-t-lg">
+          <i class="fas fa-list mr-2"></i> My Requests
+        </button>
+        <button id="tab-admin" style="display: none;" class="px-6 py-3 font-semibold border-b-2 border-transparent text-gray-600 dark:text-gray-400 hover:text-blue-600 transition hover:bg-blue-50 dark:hover:bg-gray-700 rounded-t-lg">
+          <i class="fas fa-shield-alt mr-2"></i> Admin Panel
+        </button>
+      </div>
+
+      <!-- Tab: Create Request -->
+      <div id="content-create-request">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 max-w-3xl">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-file-alt text-blue-600"></i>
+            Create New Request
+          </h2>
+          
+          <form id="create-request-form" class="space-y-6">
+            <div>
+              <label class="block text-gray-700 dark:text-gray-300 font-bold mb-2">
+                <i class="fas fa-heading mr-2 text-blue-500"></i>Title <span class="text-red-600">*</span>
+              </label>
+              <input type="text" id="req-title" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                placeholder="e.g., Document Translation Request" required>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 dark:text-gray-300 font-bold mb-2">
+                <i class="fas fa-align-left mr-2 text-blue-500"></i>Description <span class="text-red-600">*</span>
+              </label>
+              <textarea id="req-description" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 h-28 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                placeholder="Detailed description of your request" required></textarea>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 dark:text-gray-300 font-bold mb-2">
+                <i class="fas fa-tasks mr-2 text-blue-500"></i>Task Type <span class="text-red-600">*</span>
+              </label>
+              <select id="req-type" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                <option value="">-- Select Task Type --</option>
+                <option value="translate">📝 Translation</option>
+                <option value="summarize">📋 Summarization</option>
+                <option value="generateContent">✨ Content Generation</option>
+                <option value="analyze">📊 Data Analysis</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 dark:text-gray-300 font-bold mb-2">
+                <i class="fas fa-file-code mr-2 text-blue-500"></i>Content
+              </label>
+              <textarea id="req-content" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 h-40 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                placeholder="The content to be processed (text, code, document content, etc.)"></textarea>
+            </div>
+
+            <div id="field-target-lang" class="hidden">
+              <label class="block text-gray-700 dark:text-gray-300 font-bold mb-2">
+                <i class="fas fa-globe mr-2 text-blue-500"></i>Target Language
+              </label>
+              <select id="req-target-language" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="vi">🇻🇳 Tiếng Việt (Vietnamese)</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="zh">🇨🇳 中文 (Chinese)</option>
+              </select>
+            </div>
+
+            <div class="flex gap-4 pt-4">
+              <button type="submit" id="btn-submit-request" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg flex items-center gap-2 transition shadow-md">
+                <i class="fas fa-paper-plane"></i> Submit Request
+              </button>
+              <button type="reset" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-8 rounded-lg transition shadow-md">
+                <i class="fas fa-redo mr-2"></i>Reset
+              </button>
+            </div>
+          </form>
+
+          <div id="form-status" class="hidden mt-6"></div>
+        </div>
+      </div>
+
+      <!-- Tab: My Requests -->
+      <div id="content-my-requests" class="hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-list text-blue-600"></i>
+            My Requests
+          </h2>
+          <div id="requests-list" class="space-y-4">
+            <p class="text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Admin Panel -->
+      <div id="content-admin" class="hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-shield-alt text-red-600"></i>
+            Admin Panel - Pending Approvals
+          </h2>
+          <div id="pending-requests" class="space-y-4">
+            <p class="text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts in order -->
+  <script src="/js/utils.js"></script>
+  <script src="/js/language.js"></script>
+  <script src="/js/loadComponents.js"></script>
+  
+  <!-- Celestech Scripts -->
+  <script src="/Pages/ivs-celestech/js/auth.service.js"></script>
+  <script src="/Pages/ivs-celestech/js/firestore.service.js"></script>
+  <script src="/Pages/ivs-celestech/js/api.service.js"></script>
+  <script src="/Pages/ivs-celestech/js/request.service.js"></script>
+  <script src="/Pages/ivs-celestech/js/ui.controller.js"></script>
+  <script src="/Pages/ivs-celestech/js/approval.controller.js"></script>
+  <script src="/Pages/ivs-celestech/js/app.js"></script>
 </body>
 </html>

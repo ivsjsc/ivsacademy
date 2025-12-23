@@ -1,0 +1,23 @@
+{
+  "firebase": {
+    "apiKey": "AIzaSyAOxCF0PhA6s3DtvETux-kXGTXRTlpL4vs",
+    "authDomain": "ivs-159a7.firebaseapp.com",
+    "projectId": "ivs-159a7",
+    "storageBucket": "ivs-159a7.firebasestorage.app",
+    "messagingSenderId": "452959273724",
+    "appId": "1:452959273724:web:f65150db22833c18040d79",
+    "measurementId": "G-GPMVKMGDCC"
+  },
+  "google": {
+    "clientId": "452959273724-00u4s1ajt06hbna9l5494hln1eigqier.apps.googleusercontent.com"
+  },
+  "api": {
+    "baseUrl": "http://localhost:3000",
+    "timeoutMs": 30000
+  },
+  "app": {
+    "adminEmails": ["admin@ivsacademy.edu.vn"],
+    "appName": "IVS Celestech",
+    "supportEmail": "support@ivsacademy.edu.vn"
+  }
+}

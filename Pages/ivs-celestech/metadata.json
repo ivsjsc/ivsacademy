@@ -1,5 +1,43 @@
 {
   "name": "IVS Celestech",
   "description": "One-Touch to Digital Future. A premium service ordering platform for Tech Solutions, EdTech Content, and Data Systems.",
+  "version": "1.0.0",
+  "author": "IVS Academy",
+  "status": "production",
+  "features": [
+    "Google OAuth Login",
+    "Service Request Management",
+    "Admin Approval Workflow",
+    "Real-time Firestore Sync",
+    "GenAI Integration",
+    "Multi-language Support (VI, EN, ZH)",
+    "Dark Mode",
+    "Responsive Design"
+  ],
+  "technologies": [
+    "Firebase Auth",
+    "Firestore",
+    "Cloud Functions",
+    "Google GenAI API",
+    "Tailwind CSS",
+    "Express.js"
+  ],
+  "endpoints": {
+    "frontend": "/Pages/ivs-celestech/",
+    "api": {
+      "baseUrl": "http://localhost:3000",
+      "createRequest": "POST /api/celestech/requests",
+      "approveRequest": "POST /api/celestech/requests/:id/approve",
+      "rejectRequest": "POST /api/celestech/requests/:id/reject",
+      "processGenAI": "POST /api/celestech/genai/process"
+    }
+  },
+  "firebaseCollections": {
+    "requests": "celestech_requests",
+    "approvals": "celestech_approvals"
+  },
+  "adminEmails": [
+    "admin@ivsacademy.edu.vn"
+  ],
   "requestFramePermissions": []
 }

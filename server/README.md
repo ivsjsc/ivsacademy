@@ -2,54 +2,100 @@
 
 This small server provides helper endpoints used by the static site during development.
 
-New endpoints added:
+## Celestech API Endpoints (NEW)
 
-- `POST /api/verified-id/request` - Forward a Verified ID verification request to the provided callback URL.
+Platform untuk membuat dan mengelola permintaan layanan dengan alur persetujuan dan pemrosesan GenAI.
 
-Environment variables (optional):
+### POST /api/celestech/requests
+Create a new service request.
 
-- `VERIFY_REQUEST_SECRET` - If set, callers must include `X-VERIFY-SECRET` header with this value when calling `/api/verified-id/request` to prevent open relays.
-- `VERIFY_CALLBACK_WHITELIST` - Comma-separated list of allowed callback hostnames. If set, callback URLs not matching this list will be rejected.
-- `VERIFY_API_KEY` - Server-side API key to inject into outgoing callback headers. Use this instead of sending secrets from the browser.
-- `VERIFY_API_KEY_HEADER` - Header name to use for `VERIFY_API_KEY` (defaults to `api-key`).
-- `VERIFY_TIMEOUT_MS` - Timeout in milliseconds for outbound callback requests (default 10000).
+**Authentication**: Requires Firebase ID Token in `Authorization: Bearer <token>` header.
 
-Example curl (replace placeholders):
-
-```bash
-curl -X POST 'http://localhost:3000/api/verified-id/request' \
-  -H 'Content-Type: application/json' \
-  -H 'X-VERIFY-SECRET: your-secret-if-configured' \
-  -d '{
-    "callback": {
-      "headers": { "api-key": "{REPLACE-WITH-API-KEY}" },
-      "state": "{REPLACE-WITH-STATE}",
-      "url": "https://httpbin.org/post"
-    },
-    "registration": { "clientName": "{REPLACE-WITH-CLIENT-NAME}" },
-    "requestedCredentials": [ { "acceptedIssuers": ["did:web:www.linkedin.com"], "purpose": "{REPLACE-WITH-PURPOSE}", "type": "VerifiedEmployee" } ]
-  }'
+**Request body**:
+```json
+{
+  "title": "Document Translation Request",
+  "description": "Translate technical documentation from English to Vietnamese",
+  "type": "translate",
+  "content": "The text to be translated...",
+  "targetLanguage": "vi",
+  "metadata": {}
+}
 ```
 
-Example browser usage (use `js/verifyClient.js`):
+**Response**:
+```json
+{
+  "success": true,
+  "message": "Request created successfully",
+  "requestId": "aBcDeFgHiJkL"
+}
+```
 
-```js
-import { requestVerifiedId, samplePayload } from '/js/verifyClient.js';
+### POST /api/celestech/requests/:id/approve
+Approve a pending request (admin only).
 
-(async () => {
-  try {
-    const resp = await requestVerifiedId(samplePayload);
-    console.log('verification response', resp);
-  } catch (err) {
-    console.error('verification error', err);
+**Request body**:
+```json
+{
+  "notes": "Optional admin notes"
+}
+```
+
+**Response**:
+```json
+{
+  "success": true,
+  "message": "Request approved"
+}
+```
+
+### POST /api/celestech/requests/:id/reject
+Reject a pending request (admin only).
+
+**Request body**:
+```json
+{
+  "reason": "Reason for rejection"
+}
+```
+
+**Response**:
+```json
+{
+  "success": true,
+  "message": "Request rejected"
+}
+```
+
+### POST /api/celestech/genai/process
+Process a GenAI task.
+
+**Request body**:
+```json
+{
+  "type": "translate",
+  "text": "Text to process",
+  "requestId": "aBcDeFgHiJkL",
+  "targetLanguage": "vi"
+}
+```
+
+**Response**:
+```json
+{
+  "success": true,
+  "data": {
+    "type": "translate",
+    "status": "processing",
+    "message": "GenAI processing initiated"
   }
-})();
+}
 ```
 
-Notes:
-- The server will inject `VERIFY_API_KEY` into the outgoing headers if configured. This prevents the browser from needing to hold secrets.
-- The endpoint enforces HTTPS callback URLs and supports an optional whitelist for added safety.
-# IVS Verified ID Callback Endpoint (demo)
+---
+
+## Verified ID Endpoints
 
 This is a small Node.js/Express app that exposes a callback endpoint compatible with Microsoft Entra Verified ID custom issue flow.
 
@@ -232,8 +278,70 @@ Security notes:
 - Do not post secrets in chat or public repos.
 - Consider using a secret store (Key Vault) and rate limiting / authentication on this endpoint in production.
 
-{ 
-## GCP Deploy scripts
-- Scripts: `server/scripts/gcp/create_service_account.sh`, `enable_apis.sh`, `redeploy_cloudrun.sh`, `server/scripts/github/upload_gcp_sa_secret.sh`.
-- See `DEPLOY_GCP.md` for step-by-step: create SA, upload `GCP_SA_KEY` to GitHub Secrets, enable billing, then run the workflow `Deploy → staging (GCP)`.
-}
+## Setup & Deployment
+
+### Local Development
+
+```bash
+cd server
+cp .env.example .env
+# Edit .env and add your credentials:
+# - Firebase Admin SDK credentials (for Firestore)
+# - XAI_API_KEY (for AI proxy)
+# - AAD_* variables (for Graph lookup)
+
+npm install
+npm run dev
+```
+
+Server will run on `http://localhost:3000`.
+
+### Testing Celestech Endpoints
+
+```bash
+# Create a request
+curl -X POST http://localhost:3000/api/celestech/requests \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_FIREBASE_ID_TOKEN' \
+  -d '{
+    "title": "Test Request",
+    "description": "Test description",
+    "type": "translate",
+    "content": "Hello world",
+    "targetLanguage": "vi"
+  }'
+
+# Approve a request (replace REQUEST_ID)
+curl -X POST http://localhost:3000/api/celestech/requests/REQUEST_ID/approve \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer ADMIN_TOKEN' \
+  -d '{"notes": "Approved for processing"}'
+
+# Process with GenAI
+curl -X POST http://localhost:3000/api/celestech/genai/process \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer YOUR_TOKEN' \
+  -d '{
+    "type": "translate",
+    "text": "Hello world",
+    "requestId": "REQUEST_ID",
+    "targetLanguage": "vi"
+  }'
+```
+
+### Production Deployment
+
+See `DEPLOY_GCP.md` for Cloud Run deployment instructions.
+
+Set environment variables in your hosting platform:
+- `FIREBASE_ADMIN_SDK_KEY` - Firebase Admin SDK JSON key
+- `XAI_API_KEY` - X.ai API key
+- `AAD_TENANT_ID`, `AAD_CLIENT_ID`, `AAD_CLIENT_SECRET` - Azure AD credentials
+
+---
+
+**Security notes**:
+- Never commit `.env` file with real secrets
+- Rotate API keys regularly
+- Use Firebase ID Token validation for all endpoints
+- Implement rate limiting in production
