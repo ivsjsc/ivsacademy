@@ -8,6 +8,25 @@
 let appConfig = null;
 
 /**
+ * Attach Google sign-in handlers to all elements marked with [data-google-sign-in].
+ */
+function bindGoogleSignInButtons() {
+  const handler = async (event) => {
+    event.preventDefault();
+    const result = await authService.signInWithGoogle();
+    if (!result.success) {
+      uiController.showStatus(`Sign-in failed: ${result.error}`, 'error');
+    }
+  };
+
+  document.querySelectorAll('[data-google-sign-in]').forEach((btn) => {
+    if (btn.dataset.googleSignInBound) return;
+    btn.addEventListener('click', handler);
+    btn.dataset.googleSignInBound = '1';
+  });
+}
+
+/**
  * Initialize application
  */
 async function initApp() {
@@ -46,6 +65,18 @@ async function initApp() {
  * Setup all event listeners
  */
 function setupEventListeners() {
+  bindGoogleSignInButtons();
+
+  (function preserveComponentsCallback() {
+    const previousCallback = window.onPageComponentsLoadedCallback;
+    window.onPageComponentsLoadedCallback = function() {
+      if (typeof previousCallback === 'function') {
+        previousCallback();
+      }
+      bindGoogleSignInButtons();
+    };
+  })();
+
   // Auth state change event
   window.addEventListener('authStateChanged', (e) => {
     const { isSignedIn, user } = e.detail;
@@ -65,15 +96,6 @@ function setupEventListeners() {
     }
   });
 
-  // Google Sign-In button
-  document.getElementById('google-sign-in-btn')?.addEventListener('click', async () => {
-    const result = await authService.signInWithGoogle();
-    if (!result.success) {
-      uiController.showStatus(`Sign-in failed: ${result.error}`, 'error');
-    }
-  });
-
-  // Sign Out button
   document.getElementById('sign-out-btn')?.addEventListener('click', async () => {
     if (confirm('Sign out?')) {
       await authService.signOut();
