@@ -12,5 +12,6 @@ gcloud services enable \
   run.googleapis.com \
   containerregistry.googleapis.com \
   firebasehosting.googleapis.com \
-  --project "$PROJECT_ID"
+  --project "$PROJECT_ID" \
+  || true
 echo "APIs enabled for project $PROJECT_ID"
