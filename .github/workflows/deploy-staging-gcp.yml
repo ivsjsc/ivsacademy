@@ -28,12 +28,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up gcloud auth
+      - name: Authenticate to GCP
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      - name: Install gcloud components
+      - name: Install gcloud SDK
         run: |
           sudo apt-get update -y
           curl -sSL https://sdk.cloud.google.com | bash > /dev/null
@@ -43,14 +43,12 @@ jobs:
       - name: Configure project
         run: |
           source "$HOME/google-cloud-sdk/path.bash.inc"
-          gcloud config set project ${{ github.event.inputs.project_id || env.GCP_PROJECT || secrets.GCP_PROJECT }}
-        env:
-          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          gcloud config set project "${{ github.event.inputs.project_id || secrets.GCP_PROJECT }}"
 
-      - name: Enable required GCP APIs (safe to run)
+      - name: Enable required GCP APIs
         run: |
           source "$HOME/google-cloud-sdk/path.bash.inc"
-          PROJECT_ID="${{ github.event.inputs.project_id || env.GCP_PROJECT || secrets.GCP_PROJECT }}"
+          PROJECT_ID="${{ github.event.inputs.project_id || secrets.GCP_PROJECT }}"
           PROJECT_ID="${PROJECT_ID:?}"
           ./server/scripts/gcp/enable_apis.sh
         env:

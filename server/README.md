@@ -233,10 +233,7 @@ Security notes:
 - Consider using a secret store (Key Vault) and rate limiting / authentication on this endpoint in production.
 
 { 
-# Deploy notes (GCP)
-- Billing must be enabled for the GCP project (owner action).
-- To allow CI redeploy, create a service account and add these secrets to GitHub:
-  - GCP_SA_KEY (service account JSON)
-  - GCP_PROJECT
-- See ROOT/DEPLOY_GCP.md for commands and required roles.
+## GCP Deploy scripts
+- Scripts: `server/scripts/gcp/create_service_account.sh`, `enable_apis.sh`, `redeploy_cloudrun.sh`.
+- See `DEPLOY_GCP.md` for step-by-step: create SA, upload `GCP_SA_KEY` to GitHub Secrets, enable billing, then run the workflow `Deploy → staging (GCP)`.
 }

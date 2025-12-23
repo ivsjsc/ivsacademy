@@ -7,6 +7,7 @@ if [ -z "$PROJECT_ID" ]; then
   echo "ERROR: set PROJECT_ID env var"
   exit 2
 fi
+echo "Enabling GCP APIs for project $PROJECT_ID..."
 gcloud services enable \
   artifactregistry.googleapis.com \
   cloudbuild.googleapis.com \
