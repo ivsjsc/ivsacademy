@@ -1,25 +1,39 @@
-name: Deploy → staging (GCP)
+- name: Configure project
+  run: |
+    source "$HOME/google-cloud-sdk/path.bash.inc"
+    # Determine project ID from inputs or secrets
+    PROJECT_ID="${{ github.event.inputs. project_id }}"
+    if [ -z "$PROJECT_ID" ]; then
+      PROJECT_ID="${{ secrets.GCP_PROJECT }}"
+    fi
+    
+    # Validate PROJECT_ID is not empty
+    if [ -z "$PROJECT_ID" ]; then
+      echo "ERROR: GCP Project ID is not set.  Please provide project_id input or set GCP_PROJECT secret."
+      exit 1
+    fi
+    
+    echo "Setting GCP project to: $PROJECT_ID"
+    gcloud config set project "$PROJECT_ID"
 
-on:
-  workflow_dispatch:
-    inputs:
-      project_id:
-        description: 'GCP Project ID'
-        required: true
-      cloud_run_service:
-        description: 'Cloud Run service name'
-        required: true
-      region:
-        description: 'GCP region'
-        required: false
-        default: 'us-east4'
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: read
-  id-token: write
+- name: Enable required GCP APIs
+  run: |
+    source "$HOME/google-cloud-sdk/path.bash.inc"
+    # Use the same logic to get PROJECT_ID
+    PROJECT_ID="${{ github.event.inputs. project_id }}"
+    if [ -z "$PROJECT_ID" ]; then
+      PROJECT_ID="${{ secrets.GCP_PROJECT }}"
+    fi
+    
+    if [ -z "$PROJECT_ID" ]; then
+      echo "ERROR:  GCP Project ID is not set."
+      exit 1
+    fi
+    
+    export PROJECT_ID
+    ./server/scripts/gcp/enable_apis.sh
+  env:
+    PROJECT_ID:  ${{ github.event.inputs. project_id || secrets.GCP_PROJECT }}
 
 # Note: This workflow requires the GCP service account key stored in the
 # secret `GCP_SA_KEY`. Secrets are not available to workflows triggered
