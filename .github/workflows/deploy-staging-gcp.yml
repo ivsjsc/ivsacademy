@@ -29,19 +29,16 @@ permissions:
 
 jobs:
   deploy:
-    if: ${{ github.repository == 'ivsjsc/ivs.github.io' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+    if: ${{ github.repository == 'ivsjsc/ivs.github.io' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && (secrets.GCP_SA_KEY != '') }}
     runs-on: ubuntu-latest
     environment: staging
     steps:
       - uses: actions/checkout@v4
 
-      - name: Ensure GCP credentials secret exists
-        shell: bash
-        run: |
-          if [ -z "${{ secrets.GCP_SA_KEY }}" ]; then
-            echo "Secret GCP_SA_KEY is not set. This workflow requires GCP credentials to deploy. Failing early."
-            exit 1
-          fi
+      # The job will be skipped when `GCP_SA_KEY` is not defined (e.g., runs
+      # triggered from forks or Dependabot). This prevents noisy failures when
+      # deploy credentials are unavailable.
+
 
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v1
