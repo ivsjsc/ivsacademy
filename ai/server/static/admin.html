@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Auth Config Admin</title>
+  <style>body{font-family:Inter,Arial;padding:20px}label{display:block;margin-top:12px}textarea{width:100%;height:160px}</style>
+</head>
+<body>
+  <h1>Auth Config Admin</h1>
+  <p>Enter <code>ADMIN API KEY</code> to load and save the auth config (keeps secrets off-UI).</p>
+  <label>Admin Key: <input id="key" type="password" /></label>
+  <button id="load">Load Config</button>
+  <button id="save">Save Config</button>
+
+  <h3>Config JSON</h3>
+  <textarea id="cfg">{}
+</textarea>
+  <pre id="status"></pre>
+
+  <script>
+    const keyInput = document.getElementById('key');
+    const cfgEl = document.getElementById('cfg');
+    const status = document.getElementById('status');
+
+    async function load() {
+      status.textContent = 'Loading...';
+      const k = keyInput.value.trim();
+      try {
+        const q = k ? `?admin_api_key=${encodeURIComponent(k)}` : '';
+        const r = await fetch('/admin/auth-config' + q, { credentials: 'include' });
+        if (!r.ok) throw new Error('Status '+r.status);
+        const j = await r.json();
+        cfgEl.value = JSON.stringify(j.config || {}, null, 2);
+        status.textContent = 'Loaded';
+      } catch (e) { status.textContent = 'Error: '+e.message; }
+    }
+    async function save() {
+      status.textContent = 'Saving...';
+      const k = keyInput.value.trim();
+      try {
+        const body = JSON.parse(cfgEl.value);
+        const r = await fetch('/admin/auth-config', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-admin-api-key': k }, body: JSON.stringify(body), credentials: 'include' });
+        if (!r.ok) throw new Error('Status '+r.status);
+        const j = await r.json();
+        status.textContent = 'Saved';
+      } catch (e) { status.textContent = 'Error: '+e.message; }
+    }
+
+    document.getElementById('load').onclick = load;
+    document.getElementById('save').onclick = save;
+  </script>
+</body>
+</html>
