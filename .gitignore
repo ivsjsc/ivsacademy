@@ -10,6 +10,10 @@ dist/
 server/.env
 # Ignore any .env files anywhere
 *.env
+# Environment variables - NEVER commit these!
+.env
+.env.local
+.env.*.local
 # Python artifacts
 __pycache__/
 *.pyc
