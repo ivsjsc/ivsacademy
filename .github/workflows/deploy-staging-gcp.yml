@@ -21,12 +21,27 @@ permissions:
   contents: read
   id-token: write
 
+# Note: This workflow requires the GCP service account key stored in the
+# secret `GCP_SA_KEY`. Secrets are not available to workflows triggered
+# from forks (including Dependabot); to avoid failing early the job is
+# restricted to run only within the main repository. Consider switching
+# to Workload Identity Federation (OIDC) to avoid long-lived JSON keys.
+
 jobs:
   deploy:
+    if: ${{ github.repository == 'ivsjsc/ivs.github.io' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
     runs-on: ubuntu-latest
     environment: staging
     steps:
       - uses: actions/checkout@v4
+
+      - name: Ensure GCP credentials secret exists
+        shell: bash
+        run: |
+          if [ -z "${{ secrets.GCP_SA_KEY }}" ]; then
+            echo "Secret GCP_SA_KEY is not set. This workflow requires GCP credentials to deploy. Failing early."
+            exit 1
+          fi
 
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v1
