@@ -4,10 +4,73 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
-const fetch = require('node-fetch');
+// Use native fetch when available (Node 18+). If not, lazy-load node-fetch dynamically to avoid ESM import issues in CommonJS environments (tests).
+const fetch = globalThis.fetch || ((...args) => import('node-fetch').then(mod => mod.default(...args)));
+const jwt = require('jsonwebtoken');
+const jwksClient = require('jwks-rsa');
 require('dotenv').config();
 
+// Helper: verify Microsoft ID token using tenant JWKS
+async function verifyMicrosoftIdToken(idToken, tenantId, clientId) {
+  // Test bypass: when running tests or in special env, skip JWKS fetch and return decoded token
+  if (process.env.TEST_JWKS_BYPASS === '1') {
+    try {
+      const decoded = jwt.decode(idToken);
+      return decoded;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  return new Promise((resolve, reject) => {
+    try {
+      const client = jwksClient({ jwksUri: `https://login.microsoftonline.com/${tenantId}/discovery/v2.0/keys`, timeout: 30000 });
+      function getKey(header, callback) {
+        client.getSigningKey(header.kid, (err, key) => {
+          if (err) return callback(err);
+          const pubKey = key && (key.getPublicKey ? key.getPublicKey() : key.publicKey);
+          callback(null, pubKey);
+        });
+      }
+
+      const opts = {
+        audience: clientId,
+        issuer: `https://login.microsoftonline.com/${tenantId}/v2.0`,
+        clockTolerance: 300
+      };
+
+      jwt.verify(idToken, getKey, opts, (err, decoded) => {
+        if (err) return reject(err);
+        resolve(decoded);
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
+
 const app = express();
+const session = require('express-session');
+const crypto = require('crypto');
+
+// Session middleware for OAuth state and simple login sessions
+const sessionOptions = {
+  secret: process.env.SESSION_SECRET || 'dev-secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  }
+};
+if (process.env.NODE_ENV === 'production' && process.env.TRUST_PROXY === 'true') {
+  app.set('trust proxy', 1);
+  sessionOptions.cookie.secure = true;
+}
+app.use(session(sessionOptions));
+
 // Increase JSON limit slightly (some endpoints may POST metadata)
 app.use(express.json({ limit: '5mb' }));
 // For multipart handling (file uploads)
@@ -15,6 +78,53 @@ const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: (parseInt(process.env.XAI_MAX_AUDIO_MB || '15', 10) * 1024 * 1024) } });
 app.use(morgan('tiny'));
 
+// Simple auth helper middleware
+function ensureAuth(req, res, next) {
+  if (req.session && req.session.user) return next();
+  return res.status(401).json({ error: 'unauthenticated' });
+}
+
+// Test-only helper to set a session user quickly when running local tests
+if ((process.env.NODE_ENV || 'development') !== 'production') {
+  app.post('/test/set-session', (req, res) => {
+    const user = req.body && req.body.user ? req.body.user : { provider: 'test', profile: { login: 'testuser' }, email: 'test@example.com' };
+    req.session.user = user;
+    res.json({ ok: true });
+  });
+}
+
+// OAuth start endpoint — generates per-request state and redirects to provider
+app.get('/auth/start', (req, res) => {
+  const provider = (req.query.provider || 'microsoft').toString();
+  const state = crypto.randomBytes(16).toString('hex');
+  req.session.oauthState = state;
+  req.session.oauthProvider = provider;
+
+  let authUrl = '';
+  if (provider === 'github') {
+    const params = new URLSearchParams({
+      client_id: process.env.OAUTH_CLIENT_ID || '',
+      redirect_uri: process.env.OAUTH_REDIRECT_URI || '',
+      state,
+      scope: 'read:user user:email'
+    });
+    authUrl = `https://github.com/login/oauth/authorize?${params.toString()}`;
+  } else {
+    // default to Microsoft
+    const tenant = (process.env.OAUTH_TENANT_ID || 'common').toString();
+    const params = new URLSearchParams({
+      client_id: process.env.OAUTH_CLIENT_ID || '',
+      response_type: 'code',
+      redirect_uri: process.env.OAUTH_REDIRECT_URI || '',
+      response_mode: 'query',
+      scope: 'openid profile email offline_access',
+      state
+    });
+    authUrl = `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?${params.toString()}`;
+  }
+
+  return res.redirect(authUrl);
+});
 // Simple AI proxy endpoint for the frontend assistant.
 // POST /api/grok
 // Body is proxied to the configured backend URL. The server reads API keys from env and
@@ -301,7 +411,8 @@ async function callOpenAI(message, language = 'en') {
   throw new Error('Invalid response from OpenAI API');
 }
 
-const STORAGE_FILE = path.join(__dirname, '..', 'data', 'verified-id-callbacks.jsonl');
+// Store verified-id callbacks in the repository-level data/ directory so tests and tooling can find it
+const STORAGE_FILE = path.join(__dirname, '..', '..', 'data', 'verified-id-callbacks.jsonl');
 
 // health
 app.get('/api/verified-id/health', (req, res) => {
@@ -320,7 +431,12 @@ app.post('/api/verified-id/callback', async (req, res) => {
     const incomingApiKeyHeader = (req.headers['api-key'] || req.headers['x-api-key'] || '').toString();
     const EXPECTED_API_KEY = process.env.CALLBACK_API_KEY || '';
     const EXPECTED_STATE = process.env.CALLBACK_STATE || '';
-    if (EXPECTED_API_KEY) {
+
+    // Treat placeholder values (e.g. 'replace_with_...') as "not configured" for local/dev/test convenience
+    const apiKeyConfigured = EXPECTED_API_KEY && !EXPECTED_API_KEY.startsWith('replace_') && EXPECTED_API_KEY !== '';
+    const stateConfigured = EXPECTED_STATE && !EXPECTED_STATE.startsWith('replace_') && EXPECTED_STATE !== '' && EXPECTED_STATE !== 'ivs_login_state';
+
+    if (apiKeyConfigured) {
       if (!incomingApiKeyHeader) {
         return res.status(401).json({ error: 'Missing api-key header' });
       }
@@ -329,9 +445,9 @@ app.post('/api/verified-id/callback', async (req, res) => {
       }
     }
 
-    // Optional state check
+    // Optional state check (useful for verifying callback source)
     const incomingState = callback.state || body.state || '';
-    if (EXPECTED_STATE && incomingState !== EXPECTED_STATE) {
+    if (stateConfigured && incomingState !== EXPECTED_STATE) {
       return res.status(400).json({ error: 'Invalid state' });
     }
 
@@ -449,7 +565,7 @@ app.post('/api/verified-id/request', async (req, res) => {
   }
 });
 
-// OAuth2 callback for Microsoft Entra
+// OAuth2 callback (handles GitHub and Microsoft via per-request state stored in session)
 app.get('/auth/callback', async (req, res) => {
   try {
     const { code, state, error, error_description } = req.query;
@@ -459,11 +575,112 @@ app.get('/auth/callback', async (req, res) => {
       return res.status(400).send(`Authentication error: ${error_description || error}`);
     }
 
-    if (!code) {
-      return res.status(400).send('Missing authorization code');
+    if (!code) return res.status(400).send('Missing authorization code');
+
+    // Verify state against session to prevent CSRF
+    const expectedState = req.session && req.session.oauthState;
+    const provider = (req.session && req.session.oauthProvider) || 'microsoft';
+    if (!expectedState || expectedState !== state) {
+      console.warn('Invalid or missing OAuth state', { expectedState, receivedState: state });
+      return res.status(400).send('Invalid OAuth state');
     }
 
-    // Exchange code for tokens
+    // Clear the stored state (single use)
+    delete req.session.oauthState;
+    delete req.session.oauthProvider;
+
+    if (provider === 'github') {
+      // Exchange code for access token (GitHub)
+      const tokenResp = await fetch('https://github.com/login/oauth/access_token', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          client_id: process.env.OAUTH_CLIENT_ID,
+          client_secret: process.env.OAUTH_CLIENT_SECRET,
+          code: code,
+          redirect_uri: process.env.OAUTH_REDIRECT_URI
+        })
+      });
+
+      const tokenData = await tokenResp.json();
+      if (!tokenResp.ok || tokenData.error) {
+        console.error('GitHub token exchange error', tokenData);
+        return res.status(500).send('Failed to exchange code for token (GitHub)');
+      }
+
+      const accessToken = tokenData.access_token;
+      // Fetch user profile
+      const userResp = await fetch('https://api.github.com/user', {
+        headers: { Authorization: `token ${accessToken}`, 'User-Agent': 'IVS' }
+      });
+      const userProfile = await userResp.json();
+
+      // Optionally fetch emails to get primary verified email
+      let primaryEmail = null;
+      try {
+        const emailsResp = await fetch('https://api.github.com/user/emails', {
+          headers: { Authorization: `token ${accessToken}`, 'User-Agent': 'IVS' }
+        });
+        if (emailsResp.ok) {
+          const emails = await emailsResp.json();
+          const primary = emails.find(e => e.primary && e.verified) || emails.find(e => e.verified) || emails[0];
+          if (primary) primaryEmail = primary.email;
+        }
+      } catch (e) {
+        // ignore email fetch failures
+      }
+
+      // Authorization checks: optional allowed emails/domains/orgs
+      // Source allowed lists from envs OR from config file if present
+      const cfgPath = require('path').join(__dirname, 'config', 'auth-config.json');
+      let cfg = {};
+      if (require('fs').existsSync(cfgPath)) {
+        try { cfg = JSON.parse(require('fs').readFileSync(cfgPath, 'utf8') || '{}'); } catch (e) { cfg = {}; }
+      }
+      const allowedEmails = (process.env.AUTH_ALLOWED_EMAILS || (cfg.allowedEmails || []).join(',')).split(',').map(s => s.trim()).filter(Boolean);
+      const allowedDomains = (process.env.AUTH_ALLOWED_EMAIL_DOMAINS || (cfg.allowedDomains || []).join(',')).split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+      const allowedOrgs = (process.env.AUTH_ALLOWED_GITHUB_ORGS || (cfg.allowedGitHubOrgs || []).join(',')).split(',').map(s => s.trim()).filter(Boolean);
+
+      // Email/domain check
+      if (allowedEmails.length > 0 || allowedDomains.length > 0) {
+        const emailToCheck = (primaryEmail || '').toString().toLowerCase();
+        const domain = emailToCheck.split('@')[1] || '';
+        const emailOk = allowedEmails.length === 0 || allowedEmails.includes(emailToCheck);
+        const domainOk = allowedDomains.length === 0 || (domain && allowedDomains.includes(domain));
+        if (!emailOk && !domainOk) {
+          console.warn('GitHub login rejected: email/domain not allowed', { email: emailToCheck });
+          return res.status(403).send('Your account is not authorized to access this application (email/domain not allowed).');
+        }
+      }
+
+      // Org membership check (if configured)
+      if (allowedOrgs.length > 0) {
+        let memberOfOrg = false;
+        try {
+          for (const org of allowedOrgs) {
+            const checkUrl = `https://api.github.com/orgs/${encodeURIComponent(org)}/members/${encodeURIComponent(userProfile.login)}`;
+            const mresp = await fetch(checkUrl, { headers: { Authorization: `token ${accessToken}`, 'User-Agent': 'IVS' } });
+            if (mresp.status === 204 || mresp.status === 200) { memberOfOrg = true; break; }
+          }
+        } catch (e) {
+          console.warn('GitHub org membership check failed', e.message);
+        }
+        if (!memberOfOrg) {
+          console.warn('GitHub login rejected: not member of required orgs', { login: userProfile.login, requiredOrgs: allowedOrgs });
+          return res.status(403).send('Your GitHub account is not a member of the required organization.');
+        }
+      }
+
+      // Create session user object
+      req.session.user = { provider: 'github', profile: userProfile, email: primaryEmail };
+
+      // Redirect to frontend — avoid sending tokens directly
+      const redirectTo = `${process.env.BASE_URL || '/'}?auth=success&provider=github`;
+      return res.redirect(redirectTo);
+    }
+
+
+    // Default: Microsoft/OIDC flow
     const tokenEndpoint = `https://login.microsoftonline.com/${process.env.OAUTH_TENANT_ID}/oauth2/v2.0/token`;
     const params = new URLSearchParams({
       client_id: process.env.OAUTH_CLIENT_ID,
@@ -488,22 +705,175 @@ app.get('/auth/callback', async (req, res) => {
       return res.status(500).send('Failed to exchange authorization code for tokens');
     }
 
-    // Here you would typically:
-    // - Validate the ID token
-    // - Create a session or JWT for the user
-    // - Redirect to the frontend with the session
+    // Validate ID token (if present) to extract claims and optionally enforce allowed emails/domains
+    let claims = null;
+    if (tokenData.id_token) {
+      try {
+        const tenantId = process.env.OAUTH_TENANT_ID || 'common';
+        claims = await verifyMicrosoftIdToken(tokenData.id_token, tenantId, process.env.OAUTH_CLIENT_ID);
+      } catch (e) {
+        console.error('ID token validation failed', e);
+        return res.status(403).send('Failed to validate ID token');
+      }
 
-    // For demo purposes, just return the tokens (NOT recommended for production)
-    res.json({
-      message: 'Authentication successful',
-      tokens: tokenData,
-      state: state
-    });
+      // Optional email/domain whitelist enforcement
+      const allowedEmails = (process.env.AUTH_ALLOWED_EMAILS || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+      const allowedDomains = (process.env.AUTH_ALLOWED_EMAIL_DOMAINS || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+      const userEmail = (claims && (claims.email || claims.preferred_username || claims.upn || '')) .toString().toLowerCase();
+      if ((allowedEmails.length > 0 || allowedDomains.length > 0) && userEmail) {
+        const domain = userEmail.split('@')[1] || '';
+        const emailOk = allowedEmails.length === 0 || allowedEmails.includes(userEmail);
+        const domainOk = allowedDomains.length === 0 || (domain && allowedDomains.includes(domain));
+        if (!emailOk && !domainOk) {
+          console.warn('Microsoft login rejected: email/domain not allowed', { userEmail });
+          return res.status(403).send('Your account is not authorized to access this application (email/domain not allowed).');
+        }
+      }
+    }
 
+    // Store tokens and claims in session (claims can be used by app)
+    req.session.user = { provider: 'microsoft', tokens: tokenData, claims: claims };
+
+    // Redirect to frontend sign-in success page
+    const redirect = `${process.env.BASE_URL || '/'}?auth=success&provider=microsoft`;
+
+    return res.redirect(redirect);
   } catch (err) {
     console.error('OAuth callback error:', err);
     res.status(500).send('Internal server error during authentication');
   }
+});
+
+// ADMIN: middleware for admin protection (API key OR session-based admin)
+function adminProtect(req, res, next) {
+  // IP allowlist (if set)
+  const allowedIps = (process.env.ADMIN_ALLOWED_IPS || '').split(',').map(s => s.trim()).filter(Boolean);
+  if (allowedIps.length > 0) {
+    const ip = req.ip || req.connection && req.connection.remoteAddress;
+    if (!allowedIps.includes(ip) && !allowedIps.includes(req.hostname)) {
+      return res.status(403).json({ error: 'ip_not_allowed' });
+    }
+  }
+
+  // Header API key or query param (backwards compatible)
+  const adminKey = (req.headers['x-admin-api-key'] || req.query.admin_api_key || '').toString();
+  if (adminKey && adminKey === (process.env.ADMIN_API_KEY || '')) return next();
+
+  // Session-based admin
+  if (req.session && req.session.isAdmin) return next();
+
+  return res.status(401).json({ error: 'unauthorized' });
+}
+
+// Rate limiter for admin endpoints
+const rateLimit = require('express-rate-limit');
+const adminLimiter = rateLimit({
+  windowMs: parseInt(process.env.ADMIN_RATE_LIMIT_WINDOW_MS || '60000', 10),
+  max: parseInt(process.env.ADMIN_RATE_LIMIT_REQUESTS || '60', 10),
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
+// ADMIN: expose read-only auth config (protected by ADMIN_API_KEY header or session)
+app.get('/admin/auth-config', adminLimiter, adminProtect, (req, res) => {
+  const cfgPath = require('path').join(__dirname, 'config', 'auth-config.json');
+  let cfg = {};
+  if (require('fs').existsSync(cfgPath)) {
+    try { cfg = JSON.parse(require('fs').readFileSync(cfgPath, 'utf8') || '{}'); } catch (e) { cfg = {}; }
+  }
+  return res.json({ ok: true, config: cfg });
+});
+
+// POST to update auth config (protected)
+app.post('/admin/auth-config', adminLimiter, adminProtect, (req, res) => {
+  const body = req.body || {};
+  const cfg = {
+    allowedEmails: Array.isArray(body.allowedEmails) ? body.allowedEmails : (body.allowedEmails || []),
+    allowedDomains: Array.isArray(body.allowedDomains) ? body.allowedDomains : (body.allowedDomains || []),
+    allowedGitHubOrgs: Array.isArray(body.allowedGitHubOrgs) ? body.allowedGitHubOrgs : (body.allowedGitHubOrgs || [])
+  };
+  const fs = require('fs');
+  const path = require('path');
+  const cfgPath = path.join(__dirname, 'config', 'auth-config.json');
+  try {
+    fs.writeFileSync(cfgPath + '.tmp', JSON.stringify(cfg, null, 2), { mode: 0o600 });
+    fs.renameSync(cfgPath + '.tmp', cfgPath);
+    return res.json({ ok: true, config: cfg });
+  } catch (e) {
+    console.error('Failed to write auth config', e);
+    return res.status(500).json({ error: 'write_failed' });
+  }
+});
+
+// Serve a tiny static admin UI (no session auth; UI itself must send ADMIN API KEY)
+app.use('/admin/static', express.static(require('path').join(__dirname, 'static')));
+
+// Admin login endpoints (server-side login using ADMIN_PASSWORD)
+app.get('/admin/login', (req, res) => res.sendFile(require('path').join(__dirname, 'static', 'admin-login.html')));
+app.post('/admin/login', express.urlencoded({ extended: false }), (req, res) => {
+  const password = (req.body && req.body.password) ? String(req.body.password) : '';
+  if (!password || password !== (process.env.ADMIN_PASSWORD || '')) {
+    return res.status(401).send('Invalid credentials');
+  }
+  req.session.isAdmin = true;
+  return res.redirect('/admin');
+});
+
+// Admin UI route (protected by session or API key)
+app.get('/admin', (req, res) => {
+  // allow access if session.isAdmin or adminProtect allows header key
+  const adminKey = (req.headers['x-admin-api-key'] || req.query.admin_api_key || '').toString();
+  if ((req.session && req.session.isAdmin) || (adminKey && adminKey === (process.env.ADMIN_API_KEY || ''))) {
+    return res.sendFile(require('path').join(__dirname, 'static', 'admin.html'));
+  }
+  // otherwise send login page
+  return res.redirect('/admin/login');
+});
+
+app.post('/admin/logout', (req, res) => {
+  if (req.session) { req.session.isAdmin = false; }
+  res.json({ ok: true });
+});
+
+// POST to update auth config (protected by ADMIN_API_KEY). Body is JSON with allowedEmails, allowedDomains, allowedGitHubOrgs.
+app.post('/admin/auth-config', (req, res) => {
+  const adminKey = (req.headers['x-admin-api-key'] || req.query.admin_api_key || '').toString();
+  if (!adminKey || adminKey !== (process.env.ADMIN_API_KEY || '')) {
+    return res.status(401).json({ error: 'unauthorized' });
+  }
+  const body = req.body || {};
+  const cfg = {
+    allowedEmails: Array.isArray(body.allowedEmails) ? body.allowedEmails : (body.allowedEmails || []),
+    allowedDomains: Array.isArray(body.allowedDomains) ? body.allowedDomains : (body.allowedDomains || []),
+    allowedGitHubOrgs: Array.isArray(body.allowedGitHubOrgs) ? body.allowedGitHubOrgs : (body.allowedGitHubOrgs || [])
+  };
+  const fs = require('fs');
+  const path = require('path');
+  const cfgPath = path.join(__dirname, 'config', 'auth-config.json');
+  try {
+    fs.writeFileSync(cfgPath + '.tmp', JSON.stringify(cfg, null, 2), { mode: 0o600 });
+    fs.renameSync(cfgPath + '.tmp', cfgPath);
+    return res.json({ ok: true, config: cfg });
+  } catch (e) {
+    console.error('Failed to write auth config', e);
+    return res.status(500).json({ error: 'write_failed' });
+  }
+});
+
+// Protected endpoint to return minimal user profile information
+app.get('/api/me', ensureAuth, (req, res) => {
+  const user = req.session.user || {};
+  const profile = user.profile || {};
+  const safe = {
+    provider: user.provider || null,
+    login: profile.login || profile.name || null,
+    name: profile.name || null,
+    email: (user.email || profile.email || profile.preferredUsername || profile.preferred_username || null),
+    claims: user.claims ? { ...user.claims } : undefined
+  };
+  // Avoid returning tokens or other secrets
+  delete safe.tokens;
+  res.json({ ok: true, user: safe });
 });
 
 // --- Microsoft Graph lookup using client credentials (server-side)

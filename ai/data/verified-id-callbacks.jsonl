@@ -1,0 +1,1 @@
+{"receivedAt":"2025-12-23T00:04:35.388Z","path":"/api/verified-id/callback","headers":{"host":"127.0.0.1:62445","accept-encoding":"gzip, deflate","content-type":"application/json","content-length":"54","connection":"close"},"body":{"callback":{"state":"abc","headers":{"api-key":"k"}}},"ip":"::ffff:127.0.0.1"}

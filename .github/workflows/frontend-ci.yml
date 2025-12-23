@@ -1,0 +1,28 @@
+name: Frontend CI
+
+on:
+  push:
+    paths:
+      - 'Pages/ivs-celestech/**'
+  pull_request:
+    paths:
+      - 'Pages/ivs-celestech/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install & build
+        run: |
+          cd Pages/ivs-celestech
+          npm ci
+          npm run build
+      - name: Run tests
+        run: |
+          cd Pages/ivs-celestech
+          npx tsc --noEmit

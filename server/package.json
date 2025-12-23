@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "check-secrets": "node scripts/check_secrets.js"
   },
   "author": "IVS",
   "license": "MIT",
@@ -14,7 +15,11 @@
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
     "express-rate-limit": "^8.1.0",
+    "express-session": "^1.17.3",
     "form-data": "^4.0.4",
+    "jsonwebtoken": "^9.0.3",
+    "jwks-rsa": "^2.1.5",
+    "minimist": "^1.2.8",
     "morgan": "^1.10.0",
     "multer": "^2.0.2",
     "node-fetch": "^3.3.2"
@@ -22,7 +27,8 @@
   "devDependencies": {
     "jest": "^29.6.1",
     "nodemon": "^2.0.22",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "ioredis": "^5.3.2"
   },
   "directories": {
     "test": "test"

@@ -1,0 +1,11 @@
+{
+  "allowedEmails": [
+    "ivscorp.vn@gmail.com"
+  ],
+  "allowedDomains": [
+    "ivscorp.vn"
+  ],
+  "allowedGitHubOrgs": [
+    "ivsjsc"
+  ]
+}
