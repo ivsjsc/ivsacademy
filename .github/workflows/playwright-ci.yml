@@ -35,7 +35,7 @@ jobs:
       - name: Wait for server to become ready
         run: |
           for i in $(seq 1 10); do
-            curl -sSf http://localhost:8000/tests/test.html >/dev/null && exit 0 || sleep 1
+            curl http://localhost:8000/tests/test.html > /dev/null && exit 0 || echo "Waiting for server..." && sleep 1
           done
           echo "Server did not start" && exit 1
 
