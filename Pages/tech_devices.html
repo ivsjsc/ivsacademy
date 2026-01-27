@@ -17,34 +17,52 @@
         :root { 
             --ivs-blue: #4c5ef7;
             --ivs-cyan: #06b6d4;
+            --ivs-dark: #050505;
+            --ivs-card: #0f0f10;
             --header-height: 4rem; 
         }
         body { 
-            background-color: #050505; 
-            color: #f4f4f5; 
+            background-color: var(--ivs-dark); 
+            color: #e4e4e7; 
             font-family: 'Be Vietnam Pro', sans-serif; 
             overflow-x: hidden; 
             padding-top: var(--header-height); 
         }
         #header-placeholder { 
             position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); 
-            z-index: 1000; background-color: rgba(5, 5, 5, 0.8); 
-            backdrop-filter: blur(15px); border-bottom: 1px solid #1f2937; 
+            z-index: 1000; background-color: rgba(5, 5, 5, 0.85); 
+            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); 
         }
         
+        /* Card Design Refined */
         .interactive-card { 
-            background: rgba(23, 23, 23, 0.6); 
+            background: var(--ivs-card); 
             border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 1.5rem;
             position: relative;
             z-index: 1;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .interactive-card:hover { 
-            transform: translateY(-10px) scale(1.02); 
-            box-shadow: 0 30px 60px -15px rgba(76, 94, 247, 0.2); 
-            border-color: rgba(76, 94, 247, 0.4); 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px -10px rgba(76, 94, 247, 0.15); 
+            border-color: rgba(76, 94, 247, 0.3); 
+        }
+        .interactive-card .img-container {
+            overflow: hidden;
+            position: relative;
+            height: 14rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .interactive-card img {
+            transition: transform 0.6s ease;
+        }
+        .interactive-card:hover img {
+            transform: scale(1.05);
         }
         
         .gradient-text { 
@@ -53,335 +71,587 @@
             -webkit-text-fill-color: transparent; 
         }
 
-        .badge-student {
-            background: linear-gradient(90deg, rgba(76, 94, 247, 0.15), rgba(6, 182, 212, 0.15));
-            border: 1px solid rgba(76, 94, 247, 0.3);
-            color: #a5b4fc;
+        .badge-premium {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: #a1a1aa;
+        }
+        .spec-item {
+            background: rgba(255,255,255,0.03);
+            padding: 0.4rem 0.6rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
         .glow-sphere {
             position: absolute;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(76, 94, 247, 0.1) 0%, transparent 70%);
-            filter: blur(80px);
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(76, 94, 247, 0.06) 0%, transparent 70%);
+            filter: blur(120px);
             z-index: 0;
             pointer-events: none;
         }
 
-        .btn-ivs {
-            background: linear-gradient(135deg, #4c5ef7 0%, #3b82f6 100%);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-ivs:hover {
-            box-shadow: 0 0 30px rgba(76, 94, 247, 0.5);
-            transform: translateY(-2px);
-        }
-        
         .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #4c5ef7; }
+        /* Category Filter Pills */
+        .category-pill {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            color: #71717a;
+        }
+        .category-pill:hover, .category-pill.active {
+            background-color: white;
+            color: black;
+            border-color: white;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        /* Price Tag */
+        .price-tag {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #4c5ef7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
     </style>
 </head>
 <body class="selection:bg-blue-500/30">
 
-<!-- Header Placeholder -->
+<!-- Header Placeholder (Fetch từ hệ thống) -->
 <header id="header-placeholder"></header>
 
 <main>
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center pt-16 pb-24 overflow-hidden" id="hero">
-        <div class="glow-sphere top-[-10%] left-[-5%]"></div>
-        <div class="glow-sphere bottom-[-10%] right-[-5%] opacity-50"></div>
+    <section class="relative min-h-[85vh] flex items-center pt-16 pb-24 overflow-hidden" id="hero">
+        <div class="glow-sphere top-[-20%] left-[-10%]"></div>
+        <div class="glow-sphere bottom-[-20%] right-[-10%]"></div>
         
-        <!-- Background Image Overlay -->
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070" alt="" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]"></div>
-        </div>
-
         <div class="container mx-auto px-4 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div data-aos="fade-right">
-                    <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full badge-student text-xs font-bold mb-8 uppercase tracking-widest shadow-lg">
-                        <i class="fas fa-university"></i> Đồng hành cùng Sinh viên ĐHQG
-                    </span>
-                    <h1 class="text-5xl md:text-7xl font-black text-white leading-[1.1] mb-8">
-                        Laptop <span class="gradient-text tracking-tighter italic font-serif">Nội Địa Nhật</span><br>
-                        <span class="text-4xl md:text-5xl font-light text-zinc-400">Zin 100% - Giá Tuyệt Đối</span>
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7" data-aos="fade-right">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm mb-6">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        <span class="text-blue-400 text-xs font-bold uppercase tracking-wider">Dành riêng cho Sinh viên ĐHQG</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+                        Laptop Nhật Bản <br>
+                        <span class="gradient-text italic font-serif">Chuẩn Zin - Giá Gốc</span>
                     </h1>
-                    <p class="text-lg md:text-xl text-zinc-400 mb-12 leading-relaxed max-w-xl">
-                        Khám phá nguồn cung Laptop chuẩn thị trường Nhật Bản (JDM). Cấu hình mạnh, bền bỉ đến 10 năm, trợ giá đặc biệt giúp sinh viên tối ưu chi phí học tập.
+                    <p class="text-lg text-zinc-400 mb-10 leading-relaxed max-w-xl font-light">
+                        IVS Celestech mang đến giải pháp công nghệ bền bỉ từ Tokyo. Tuyển chọn khắt khe, cam kết nguyên bản, đồng hành cùng bạn suốt 4 năm đại học.
                     </p>
-                    <div class="flex flex-wrap gap-6">
-                        <a href="#products" class="btn-ivs text-white font-bold py-5 px-12 rounded-2xl shadow-2xl text-center min-w-[200px]">
-                            Săn Máy Ngay
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#products" class="bg-white text-black hover:bg-zinc-200 font-bold py-4 px-8 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                            Xem Báo Giá
                         </a>
-                        <div class="flex items-center gap-5 px-6 py-4 glass-panel rounded-2xl border-white/10 group cursor-pointer hover:bg-white/5 transition">
-                            <i class="fab fa-whatsapp text-3xl text-blue-500 group-hover:scale-110 transition"></i>
-                            <div>
-                                <p class="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Hotline Tư vấn</p>
-                                <p class="font-bold text-white tracking-widest text-lg">0xxx.xxx.xxx</p>
-                            </div>
-                        </div>
+                        <a href="https://zalo.me/your-id" class="flex items-center gap-3 px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white rounded-xl border border-zinc-800 transition">
+                            <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                            <span class="font-medium">Tư vấn Zalo</span>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="relative" data-aos="zoom-in-left">
-                    <div class="relative rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-900/50 p-3 group shadow-[0_0_100px_rgba(76,94,247,0.1)]">
-                        <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=1887" alt="" class="rounded-[2.5rem] w-full h-auto transform group-hover:scale-105 transition duration-1000 ease-out">
-                        <div class="absolute bottom-8 left-8 right-8 p-8 glass-panel bg-black/60 backdrop-blur-xl rounded-[2rem] border border-white/10 shadow-2xl">
-                            <div class="flex items-center gap-4 mb-2">
-                                <div class="w-10 h-1 bg-blue-500"></div>
-                                <p class="font-black text-white uppercase tracking-widest text-xs">Chứng nhận IVS Celestech</p>
-                            </div>
-                            <p class="text-xl font-bold text-white leading-tight">Mỗi máy đều là duy nhất, tuyển chọn thủ công từ Tokyo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Core Values Section -->
-    <section class="py-24 bg-[#080808] border-y border-white/5" id="quality">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tighter italic">TẠI SAO LÀ "ZIN NHẬT"?</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
-            <div class="grid md:grid-cols-4 gap-10">
-                <div class="interactive-card p-10 rounded-[2.5rem]" data-aos="fade-up">
-                    <div class="w-16 h-16 bg-blue-500/10 text-blue-500 rounded-3xl flex items-center justify-center mb-8 border border-blue-500/20 shadow-inner">
-                        <i class="fas fa-microchip text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Linh kiện gốc</h3>
-                    <p class="text-sm text-zinc-500 leading-relaxed italic">Toàn bộ mainboard, RAM, ổ cứng SSD đều nguyên bản từ nhà sản xuất Nhật Bản.</p>
-                </div>
-                <div class="interactive-card p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-cyan-500/10 text-cyan-500 rounded-3xl flex items-center justify-center mb-8 border border-cyan-500/20">
-                        <i class="fas fa-keyboard text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Phím Nhật đặc trưng</h3>
-                    <p class="text-sm text-zinc-500 leading-relaxed italic">Layout bàn phím Nhật bền bỉ, gõ êm vượt trội so với các bản quốc tế thông thường.</p>
-                </div>
-                <div class="interactive-card p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-purple-500/10 text-purple-500 rounded-3xl flex items-center justify-center mb-8 border border-purple-500/20">
-                        <i class="fas fa-tag text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Giá gốc kho</h3>
-                    <p class="text-sm text-zinc-500 leading-relaxed italic">Nhập khẩu trực tiếp, không qua trung gian, đảm bảo mức giá rẻ nhất cho sinh viên.</p>
-                </div>
-                <div class="interactive-card p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-3xl flex items-center justify-center mb-8 border border-emerald-500/20">
-                        <i class="fas fa-laptop-medical text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Hậu mãi IVS</h3>
-                    <p class="text-sm text-zinc-500 leading-relaxed italic">Bảo hành linh hoạt, thay thế phụ kiện Nhật chính hãng lấy ngay.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Detailed Products Grid -->
-    <section class="py-32 bg-[#050505]" id="products">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-10">
-                <div class="max-w-2xl" data-aos="fade-right">
-                    <h2 class="text-5xl font-black text-white mb-6 italic tracking-tighter uppercase">Bộ sưu tập Laptop Sinh viên</h2>
-                    <p class="text-zinc-500 border-l-4 border-blue-600 pl-6 text-lg">Những mẫu máy được ưa chuộng nhất tại Làng Đại học TP.HCM.</p>
-                </div>
-                <div class="flex gap-4 overflow-x-auto pb-4" data-aos="fade-left">
-                    <button class="bg-blue-600 text-white px-8 py-3 rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg shadow-blue-600/20">Tất cả</button>
-                    <button class="bg-zinc-900/50 text-zinc-500 px-8 py-3 rounded-2xl text-xs font-black uppercase tracking-widest border border-white/5 hover:text-white transition">Văn phòng</button>
-                    <button class="bg-zinc-900/50 text-zinc-500 px-8 py-3 rounded-2xl text-xs font-black uppercase tracking-widest border border-white/5 hover:text-white transition">Kỹ thuật</button>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- ThinkPad Item -->
-                <div class="interactive-card rounded-[3rem] p-5 group" data-aos="fade-up">
-                    <div class="relative h-72 bg-zinc-900 rounded-[2.5rem] overflow-hidden mb-8">
-                        <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=1887" alt="" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="lg:col-span-5 relative" data-aos="fade-left">
+                    <div class="relative rounded-3xl overflow-hidden border border-white/5 bg-zinc-900/50 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=2070" alt="Showroom Laptop Nhật" class="w-full h-auto object-cover opacity-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                        <span class="absolute top-6 left-6 bg-white text-black text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-tighter">Bền bỉ nhất</span>
-                    </div>
-                    <div class="px-5 pb-5">
-                        <h3 class="text-2xl font-bold text-white mb-3">Lenovo ThinkPad X280/X390</h3>
-                        <p class="text-sm text-zinc-500 mb-8 italic leading-relaxed">Bàn phím "gây nghiện", nhẹ tênh, pin trâu - người bạn thân của mọi sinh viên Kinh tế.</p>
-                        <div class="grid grid-cols-2 gap-4 mb-10">
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-cpu mr-2 text-blue-500"></i> i5-8250U</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-memory mr-2 text-blue-500"></i> 8GB/16GB</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-hdd mr-2 text-blue-500"></i> 256GB SSD</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-weight mr-2 text-blue-500"></i> 1.1kg</div>
-                        </div>
-                        <div class="flex items-center justify-between pt-6 border-t border-white/5">
-                            <div>
-                                <p class="text-xs text-zinc-600 line-through">7.800.000đ</p>
-                                <p class="text-3xl font-black text-blue-500 tracking-tighter">4.xxx.xxxđ</p>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="flex -space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-zinc-800 border border-black flex items-center justify-center text-xs">💻</div>
+                                    <div class="w-8 h-8 rounded-full bg-zinc-800 border border-black flex items-center justify-center text-xs">🛡️</div>
+                                    <div class="w-8 h-8 rounded-full bg-zinc-800 border border-black flex items-center justify-center text-xs">🇯🇵</div>
+                                </div>
+                                <span class="text-sm text-zinc-300 font-medium">Được tin dùng bởi 5000+ sinh viên</span>
                             </div>
-                            <button class="w-14 h-14 bg-white hover:bg-blue-500 text-black hover:text-white rounded-[1.25rem] flex items-center justify-center transition-all duration-500">
-                                <i class="fas fa-plus"></i>
-                            </button>
                         </div>
                     </div>
-                </div>
-
-                <!-- Dell Item -->
-                <div class="interactive-card rounded-[3rem] p-5 group shadow-[0_0_50px_rgba(6,182,212,0.05)]" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative h-72 bg-zinc-900 rounded-[2.5rem] overflow-hidden mb-8">
-                        <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=2032" alt="[Image of Laptop Dell Latitude]" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                        <span class="absolute top-6 left-6 bg-cyan-500 text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-tighter">Bán chạy nhất</span>
-                    </div>
-                    <div class="px-5 pb-5">
-                        <h3 class="text-2xl font-bold text-white mb-3">Dell Latitude 7390/7490</h3>
-                        <p class="text-sm text-zinc-500 mb-8 italic leading-relaxed">Vẻ ngoài thanh lịch, khung carbon siêu bền, màn hình IPS sống động cho ngành thiết kế.</p>
-                        <div class="grid grid-cols-2 gap-4 mb-10">
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-cpu mr-2 text-cyan-500"></i> i5-8350U</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-memory mr-2 text-cyan-500"></i> 16GB RAM</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-desktop mr-2 text-cyan-500"></i> FHD IPS</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-battery-half mr-2 text-cyan-500"></i> 60Wh</div>
-                        </div>
-                        <div class="flex items-center justify-between pt-6 border-t border-white/5">
-                            <div>
-                                <p class="text-xs text-zinc-600 line-through">8.500.000đ</p>
-                                <p class="text-3xl font-black text-cyan-500 tracking-tighter">5.xxx.xxxđ</p>
-                            </div>
-                            <button class="w-14 h-14 bg-white hover:bg-cyan-500 text-black hover:text-white rounded-[1.25rem] flex items-center justify-center transition-all duration-500">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Panasonic Item -->
-                <div class="interactive-card rounded-[3rem] p-5 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative h-72 bg-zinc-900 rounded-[2.5rem] overflow-hidden mb-8 text-center">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070" alt="" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-60">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-crown text-5xl text-yellow-500 drop-shadow-lg"></i>
-                        </div>
-                        <span class="absolute top-6 left-6 bg-yellow-500 text-black text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-tighter">Độc quyền Nhật</span>
-                    </div>
-                    <div class="px-5 pb-5">
-                        <h3 class="text-2xl font-bold text-white mb-3">Panasonic Let's Note SZ/SV</h3>
-                        <p class="text-sm text-zinc-500 mb-8 italic leading-relaxed">Trọng lượng chỉ bằng một chai nước. Thách thức mọi va đập, sự lựa chọn của Gen Z năng động.</p>
-                        <div class="grid grid-cols-2 gap-4 mb-10">
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-feather mr-2 text-yellow-500"></i> 0.8kg</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-hammer mr-2 text-yellow-500"></i> Chống nén 100kg</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-globe-asia mr-2 text-yellow-500"></i> Made in Japan</div>
-                            <div class="text-xs text-zinc-400 font-bold bg-white/5 p-3 rounded-xl border border-white/5"><i class="fas fa-bolt mr-2 text-yellow-500"></i> Sạc siêu tốc</div>
-                        </div>
-                        <div class="flex items-center justify-between pt-6 border-t border-white/5">
-                            <div>
-                                <p class="text-xs text-zinc-600 line-through">7.200.000đ</p>
-                                <p class="text-3xl font-black text-yellow-500 tracking-tighter">3.xxx.xxxđ</p>
-                            </div>
-                            <button class="w-14 h-14 bg-white hover:bg-yellow-500 text-black rounded-[1.25rem] flex items-center justify-center transition-all duration-500">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <!-- Decor elements -->
+                    <div class="absolute -top-6 -right-6 w-24 h-24 bg-blue-600/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-600/20 rounded-full blur-2xl"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Table -->
-    <section class="py-24 bg-[#080808]">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-black text-white italic uppercase tracking-tighter mb-4">SO SÁNH THỰC TẾ</h2>
-                <p class="text-zinc-500 italic text-pretty">Giúp bạn hiểu rõ giá trị của một chiếc Laptop Nhật Zin so với hàng thông dụng.</p>
+    <!-- Product Grid -->
+    <section class="py-20 bg-[#050505]" id="products">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Danh Mục Sản Phẩm</h2>
+                    <p class="text-zinc-500 text-sm">Cập nhật mới nhất tháng 10/2024</p>
+                </div>
+                <div class="flex flex-wrap gap-2" data-aos="fade-left">
+                    <button class="category-pill active px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Tất cả</button>
+                    <button class="category-pill px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Mỏng nhẹ</button>
+                    <button class="category-pill px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Đồ họa</button>
+                    <button class="category-pill px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Business</button>
+                </div>
             </div>
-            <div class="overflow-x-auto glass-panel rounded-[2.5rem] p-8 border-white/5">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="border-b border-white/10">
-                            <th class="py-6 px-4 text-zinc-500 uppercase text-xs tracking-widest">Đặc điểm</th>
-                            <th class="py-6 px-4 text-blue-500 font-black italic uppercase">Zin Nhật (IVS)</th>
-                            <th class="py-6 px-4 text-zinc-600 uppercase">Hàng xách tay thường</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-sm">
-                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                            <td class="py-6 px-4 font-bold">Bo mạch (Main)</td>
-                            <td class="py-6 px-4 text-white font-bold"><i class="fas fa-check-circle mr-2 text-blue-500"></i> Nguyên bản 100%</td>
-                            <td class="py-6 px-4 text-zinc-500 italic">Dễ bị sửa chip, câu dây</td>
-                        </tr>
-                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                            <td class="py-6 px-4 font-bold">Màn hình</td>
-                            <td class="py-6 px-4 text-white font-bold"><i class="fas fa-check-circle mr-2 text-blue-500"></i> Chuẩn JDM sáng, chuẩn màu</td>
-                            <td class="py-6 px-4 text-zinc-500 italic">Có thể bị thay màn linh kiện</td>
-                        </tr>
-                        <tr class="border-b border-white/5 hover:bg-white/5 transition">
-                            <td class="py-6 px-4 font-bold">Độ bền bàn phím</td>
-                            <td class="py-6 px-4 text-white font-bold"><i class="fas fa-check-circle mr-2 text-blue-500"></i> Gõ cực êm, phông chữ Nhật đặc biệt</td>
-                            <td class="py-6 px-4 text-zinc-500 italic">Phím lỏng lẻo, nhanh mờ</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 1. ThinkPad T480/T490 (New) -->
+                <div class="interactive-card group" data-aos="fade-up">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1527434057859-7f4f6b283d5a?auto=format&fit=crop&w=800&q=80" alt="ThinkPad T480" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Best Seller</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-blue-500 uppercase tracking-wider">Siêu Bền Bỉ</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Lenovo ThinkPad T480s</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-blue-500"></i> i5-8350U</div>
+                            <div class="spec-item"><i class="fas fa-memory text-blue-500"></i> 16GB RAM</div>
+                            <div class="spec-item"><i class="fas fa-hdd text-blue-500"></i> 256GB SSD</div>
+                            <div class="spec-item"><i class="fas fa-battery-full text-blue-500"></i> Pin Kép</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">9.500.000đ</p>
+                                <p class="text-xl price-tag">6.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Dell XPS 13 9360/9370 (New) -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="50">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80" alt="Dell XPS 13" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Premium</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-purple-500 uppercase tracking-wider">Sang Trọng</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Dell XPS 13 (9370)</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-desktop text-purple-500"></i> 13.3" 4K</div>
+                            <div class="spec-item"><i class="fas fa-feather text-purple-500"></i> Vỏ Nhôm</div>
+                            <div class="spec-item"><i class="fas fa-fingerprint text-purple-500"></i> FaceID</div>
+                            <div class="spec-item"><i class="fas fa-bolt text-purple-500"></i> Type-C</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">13.500.000đ</p>
+                                <p class="text-xl price-tag">9.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-purple-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. ThinkPad P1 Gen 2 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1588872657578-7efd3f1514ad?auto=format&fit=crop&w=800&q=80" alt="ThinkPad P1" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Workstation</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider">Đồ Họa Nặng</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">ThinkPad P1 Gen 2</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-orange-500"></i> i7-9850H</div>
+                            <div class="spec-item"><i class="fas fa-layer-group text-orange-500"></i> T2000 4G</div>
+                            <div class="spec-item"><i class="fas fa-memory text-orange-500"></i> 32GB RAM</div>
+                            <div class="spec-item"><i class="fas fa-tv text-orange-500"></i> 15.6" 4K</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">18.500.000đ</p>
+                                <p class="text-xl price-tag">14.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-orange-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. HP EliteBook 830 G8 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="150">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80" alt="HP EliteBook" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Business</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-cyan-500 uppercase tracking-wider">Vỏ Nhôm</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">HP EliteBook 830 G8</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-cyan-500"></i> i5-1135G7</div>
+                            <div class="spec-item"><i class="fas fa-memory text-cyan-500"></i> 16GB RAM</div>
+                            <div class="spec-item"><i class="fas fa-volume-up text-cyan-500"></i> B&O Audio</div>
+                            <div class="spec-item"><i class="fas fa-eye text-cyan-500"></i> Chống nhìn trộm</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">12.000.000đ</p>
+                                <p class="text-xl price-tag">8.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-cyan-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Dynabook G83 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?auto=format&fit=crop&w=800&q=80" alt="Dynabook" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Siêu Nhẹ</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-wider">800 Gram</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Dynabook G83 (Sharp)</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-yellow-500"></i> i5-10210U</div>
+                            <div class="spec-item"><i class="fas fa-feather text-yellow-500"></i> Siêu Nhẹ</div>
+                            <div class="spec-item"><i class="fas fa-battery-half text-yellow-500"></i> Pin 6H</div>
+                            <div class="spec-item"><i class="fas fa-desktop text-yellow-500"></i> IGZO Screen</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">8.500.000đ</p>
+                                <p class="text-xl price-tag">4.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-yellow-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Dell Precision 5530 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="250">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=800&q=80" alt="Precision 5530" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Workstation</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-wider">Viền Mỏng</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Dell Precision 5530</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-emerald-500"></i> i7-8850H</div>
+                            <div class="spec-item"><i class="fas fa-layer-group text-emerald-500"></i> Quadro P1000</div>
+                            <div class="spec-item"><i class="fas fa-desktop text-emerald-500"></i> 100% sRGB</div>
+                            <div class="spec-item"><i class="fas fa-star text-emerald-500"></i> Vỏ Carbon</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">13.500.000đ</p>
+                                <p class="text-xl price-tag">9.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-emerald-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Microsoft Surface Laptop 3 (New) -->
+                <div class="interactive-card group" data-aos="fade-up">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca4?auto=format&fit=crop&w=800&q=80" alt="Surface Laptop" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Fashion</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-pink-500 uppercase tracking-wider">Màn Hình 2K</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Surface Laptop 3</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-tv text-pink-500"></i> 13.5" 2K Touch</div>
+                            <div class="spec-item"><i class="fas fa-microchip text-pink-500"></i> i5-1035G7</div>
+                            <div class="spec-item"><i class="fas fa-palette text-pink-500"></i> Vỏ Nhôm</div>
+                            <div class="spec-item"><i class="fas fa-weight-hanging text-pink-500"></i> 1.2kg</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">11.000.000đ</p>
+                                <p class="text-xl price-tag">7.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. HP ZBook Firefly 14 G7 (New) -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="50">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80" alt="HP ZBook" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Mobile WS</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-wider">Đồ Họa Nhẹ</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">HP ZBook Firefly 14 G7</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-indigo-500"></i> i7-10610U</div>
+                            <div class="spec-item"><i class="fas fa-layer-group text-indigo-500"></i> Quadro P520</div>
+                            <div class="spec-item"><i class="fas fa-memory text-indigo-500"></i> 16GB RAM</div>
+                            <div class="spec-item"><i class="fas fa-briefcase text-indigo-500"></i> Chuyên Nghiệp</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">12.500.000đ</p>
+                                <p class="text-xl price-tag">8.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-indigo-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Fujitsu Lifebook U939 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?auto=format&fit=crop&w=800&q=80" alt="Fujitsu" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Made in Japan</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-red-500 uppercase tracking-wider">799 Gram</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Fujitsu Lifebook U939</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-feather text-red-500"></i> Siêu Nhẹ</div>
+                            <div class="spec-item"><i class="fas fa-fingerprint text-red-500"></i> Bảo Mật Tĩnh Mạch</div>
+                            <div class="spec-item"><i class="fas fa-globe-asia text-red-500"></i> Nội Địa Nhật</div>
+                            <div class="spec-item"><i class="fas fa-battery-full text-red-500"></i> Pin Trâu</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">8.900.000đ</p>
+                                <p class="text-xl price-tag">5.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Panasonic Let's Note SV8 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="150">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1588872657578-7efd3f1514ad?auto=format&fit=crop&w=800&q=80" alt="Panasonic" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">JDM Legend</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-teal-500 uppercase tracking-wider">Chịu Lực 100KG</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Panasonic SV8</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-hammer text-teal-500"></i> Siêu Bền</div>
+                            <div class="spec-item"><i class="fas fa-bolt text-teal-500"></i> Đủ Cổng Kết Nối</div>
+                            <div class="spec-item"><i class="fas fa-sync text-teal-500"></i> Pin Tháo Rời</div>
+                            <div class="spec-item"><i class="fas fa-compact-disc text-teal-500"></i> Nhẹ 0.9kg</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">9.500.000đ</p>
+                                <p class="text-xl price-tag">6.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-teal-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Epson Endeavor ST190E -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="img-container bg-zinc-800 flex items-center justify-center">
+                        <i class="fas fa-server text-6xl text-zinc-600"></i>
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Mini PC</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Máy Bàn Tí Hon</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Epson Endeavor ST190E</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-gray-400"></i> i5-8500T</div>
+                            <div class="spec-item"><i class="fas fa-expand text-gray-400"></i> Nhỏ Gọn</div>
+                            <div class="spec-item"><i class="fas fa-memory text-gray-400"></i> 8GB/16GB</div>
+                            <div class="spec-item"><i class="fas fa-plug text-gray-400"></i> Tiết Kiệm Điện</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">5.000.000đ</p>
+                                <p class="text-xl price-tag">2.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. iPad Gen 6/7 (New - Special) -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="250">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80" alt="iPad" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Tablet</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-wider">Học Tập Online</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">iPad Gen 6 (2018)</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-tablet-alt text-blue-400"></i> 9.7 inch</div>
+                            <div class="spec-item"><i class="fas fa-pencil-alt text-blue-400"></i> Hỗ trợ Pen</div>
+                            <div class="spec-item"><i class="fas fa-battery-full text-blue-400"></i> Pin 10H</div>
+                            <div class="spec-item"><i class="fab fa-apple text-blue-400"></i> iOS Mượt Mà</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">5.500.000đ</p>
+                                <p class="text-xl price-tag">3.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-blue-500 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="https://zalo.me/your-id" class="inline-flex items-center gap-3 px-8 py-3 bg-zinc-900 border border-zinc-700 rounded-full hover:bg-blue-600 hover:border-blue-500 transition-all group">
+                    <span class="font-bold">Xem toàn bộ kho máy</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section (New Addition) -->
-    <section class="py-24 bg-[#050505]">
+    <!-- Trust Badges -->
+    <section class="py-16 bg-[#080808] border-y border-white/5">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center text-center" data-aos="fade-up">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 mb-4 text-xl">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-1">Zin Nguyên Bản</h4>
+                    <p class="text-xs text-zinc-500">Cam kết chưa qua sửa chữa</p>
+                </div>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 mb-4 text-xl">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-1">Ship Hỏa Tốc</h4>
+                    <p class="text-xs text-zinc-500">Giao ngay tại Làng Đại Học</p>
+                </div>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 mb-4 text-xl">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-1">Bảo Hành Vàng</h4>
+                    <p class="text-xs text-zinc-500">1 đổi 1 trong 30 ngày</p>
+                </div>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500 mb-4 text-xl">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-1">Quà Tặng 1.5tr</h4>
+                    <p class="text-xs text-zinc-500">Balo + Chuột + Túi CS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & Support -->
+    <section class="py-20 bg-[#050505]">
         <div class="container mx-auto px-4 max-w-4xl">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl font-black text-white italic uppercase mb-4">HỎI ĐÁP CÙNG IVS</h2>
-                <p class="text-zinc-500">Mọi thắc mắc của bạn về sản phẩm Nhật được giải đáp tại đây.</p>
-            </div>
+            <h2 class="text-3xl font-bold text-white text-center mb-12">Câu Hỏi Thường Gặp</h2>
             <div class="space-y-4">
-                <div class="glass-panel p-6 rounded-3xl border-white/5 hover:border-blue-500/30 transition cursor-pointer" data-aos="fade-up">
-                    <h4 class="font-bold text-white text-lg mb-2">Bàn phím Nhật có khó gõ không?</h4>
-                    <p class="text-sm text-zinc-500 leading-relaxed italic">Hoàn toàn không. Bàn phím Nhật chỉ khác biệt ở vị trí một số ký tự đặc biệt, các phím chữ cái vẫn giữ nguyên chuẩn QWERTY quốc tế. IVS tặng kèm sticker phím nếu bạn muốn dán thêm.</p>
+                <div class="glass-panel p-6 rounded-2xl cursor-pointer hover:bg-white/5 transition" x-data="{open: false}" @click="open = !open">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-white">Tôi là sinh viên năm nhất chưa rành công nghệ, IVS có hỗ trợ chọn máy không?</h4>
+                        <i class="fas fa-chevron-down text-zinc-500 transition-transform" :class="{'rotate-180': open}"></i>
+                    </div>
+                    <div x-show="open" class="mt-4 text-zinc-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Chắc chắn rồi! Đội ngũ tư vấn của IVS sẽ dựa vào ngành học của bạn (Kinh tế, Kỹ thuật, Đồ họa...) và ngân sách để đề xuất 2-3 dòng máy phù hợp nhất. Chúng tôi ưu tiên sự bền bỉ để bạn yên tâm dùng suốt 4 năm học.
+                    </div>
                 </div>
-                <div class="glass-panel p-6 rounded-3xl border-white/5 hover:border-blue-500/30 transition cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="font-bold text-white text-lg mb-2">Chế độ bảo hành cho máy cũ như thế nào?</h4>
-                    <p class="text-sm text-zinc-500 leading-relaxed italic">IVS Celestech bảo hành phần cứng 1 đổi 1 trong 30 ngày đầu tiên nếu có lỗi. Sau đó, hỗ trợ bảo hành linh hoạt từ 6-12 tháng tùy gói dịch vụ bạn chọn.</p>
-                </div>
-                <div class="glass-panel p-6 rounded-3xl border-white/5 hover:border-blue-500/30 transition cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="font-bold text-white text-lg mb-2">Tôi có được cài sẵn phần mềm học tập không?</h4>
-                    <p class="text-sm text-zinc-500 leading-relaxed italic">Có! IVS hỗ trợ cài đặt miễn phí Windows bản quyền, Office 365 và các phần mềm chuyên ngành (AutoCAD, Photoshop, VS Code...) khi bạn nhận máy.</p>
+                <div class="glass-panel p-6 rounded-2xl cursor-pointer hover:bg-white/5 transition" x-data="{open: false}" @click="open = !open">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-white">Mua máy cũ sợ pin chai, IVS có bảo hành pin không?</h4>
+                        <i class="fas fa-chevron-down text-zinc-500 transition-transform" :class="{'rotate-180': open}"></i>
+                    </div>
+                    <div x-show="open" class="mt-4 text-zinc-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Tất cả máy bán ra đều được IVS test pin kỹ lưỡng (Health > 80%). Nếu pin lỗi hoặc tụt quá nhanh trong tháng đầu, chúng tôi sẽ hỗ trợ đổi pin zin khác miễn phí cho bạn.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Final CTA -->
-    <section class="py-32 relative overflow-hidden">
-        <div class="absolute inset-0 bg-blue-600 z-0">
-             <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070" alt="" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
-        </div>
-        <div class="container mx-auto px-4 text-center relative z-10" data-aos="zoom-in">
-            <h2 class="text-5xl md:text-7xl font-black text-white mb-10 italic uppercase tracking-tighter">ƯU ĐÃI KHÔNG CHỜ ĐỢI</h2>
-            <p class="text-blue-100 text-xl mb-16 max-w-2xl mx-auto leading-relaxed">
-                Chỉ 50 suất hỗ trợ giá đặc biệt mỗi tháng cho sinh viên ĐHQG. Liên hệ để giữ máy và nhận bộ quà tặng 0đ ngay hôm nay.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-8 justify-center">
-                <a href="https://zalo.me/your-id" class="bg-white text-blue-600 font-black py-6 px-16 rounded-[2rem] text-xl shadow-[0_20px_60px_rgba(255,255,255,0.2)] hover:scale-105 transition-all">
-                    ĐẶT LỊCH TEST MÁY
-                </a>
-                <a href="#" class="bg-black/30 text-white font-bold py-6 px-16 rounded-[2rem] text-xl backdrop-blur-xl border border-white/20 hover:bg-black/50 transition">
-                    XEM BÁO GIÁ ZALO
-                </a>
-            </div>
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-blue-600/10 z-0"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Sẵn sàng chọn người bạn đồng hành?</h2>
+            <p class="text-zinc-400 mb-10 max-w-2xl mx-auto">Đừng để chiếc laptop chậm chạp cản trở việc học của bạn. Nâng cấp ngay hôm nay với chi phí tiết kiệm nhất.</p>
+            <a href="https://zalo.me/your-id" class="inline-block bg-white text-black font-bold py-4 px-12 rounded-full shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:scale-105 transition-transform">
+                Nhắn tin Zalo ngay
+            </a>
         </div>
     </section>
 </main>
 
-<!-- Footer Placeholder -->
+<!-- Footer Placeholder (Fetch từ hệ thống) -->
 <footer id="footer-placeholder"></footer>
 <div id="fab-container-placeholder"></div>
 
@@ -395,12 +665,20 @@
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') {
             AOS.init({ 
-                duration: 1000, 
+                duration: 800, 
                 once: true, 
-                offset: 100,
+                offset: 50,
                 easing: 'ease-out-cubic'
             });
         }
+
+        const pills = document.querySelectorAll('.category-pill');
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pills.forEach(p => p.classList.remove('active', 'bg-white', 'text-black'));
+                pill.classList.add('active', 'bg-white', 'text-black');
+            });
+        });
     });
 </script>
 <script src="/ai/js/loadComponents.js"></script>
