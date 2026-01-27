@@ -4,172 +4,684 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
-    <link href="//unpkg.com" rel="dns-prefetch"/>
-    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
-    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title data-lang-key="tech_devices_page_title">IVS Celestech - Thiết Bị Công Nghệ & Giải Pháp Văn Phòng</title>
-    <meta name="description" content="IVS Celestech cung cấp thiết bị công nghệ, máy tính, thiết bị văn phòng và các giải pháp cơ sở hạ tầng CNTT toàn diện cho doanh nghiệp." data-lang-key="tech_devices_meta_description">
-    <meta name="keywords" content="thiết bị công nghệ, thiết bị văn phòng, IVS Celestech, giải pháp CNTT, Apple, máy tính, hạ tầng mạng" />
-    <meta property="og:title" content="IVS Celestech - Thiết Bị Công Nghệ & Giải Pháp Văn Phòng" data-lang-key="tech_devices_og_title">
-    <meta property="og:description" content="Giải pháp công nghệ toàn diện, thiết bị văn phòng chất lượng cao và dịch vụ chuyên nghiệp từ IVS Celestech." data-lang-key="tech_devices_og_description">
-    <meta property="og:image" content="https://ivsjsc.github.io/images/banners/tech-devices-banner.jpg">
-    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/tech_devices.html">
-    <meta property="og:type" content="website">
-    <meta content="IVS JSC" name="author"/>
+    <title>Laptop Nội Địa Nhật | IVS Celestech - Đặc Quyền Sinh Viên ĐHQG</title>
+    
     <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-    <link href="/css/tailwind.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-    <script defer src="/js/language-init.js"></script>
-<style>
-        :root { --header-height: 4rem; }
-        body { background-color: #1a1a1a; color: #f4f4f5; font-family: 'Be Vietnam Pro', sans-serif; overflow-x: hidden; padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1f2937; }
-        section { scroll-margin-top: calc(var(--header-height) + 1rem); padding: 4rem 1rem; }
-        @media (min-width: 768px) { section { padding: 6rem 2rem; } }
-        .interactive-card { background: #111111; border: 1px solid #27272A; transition: all 0.3s ease; }
-        .interactive-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px -5px rgba(76, 94, 247, 0.2); border-color: #4c5ef7; }
-        .process-step-card { background-color: #1f2937; border-left: 4px solid #4c5ef7; }
-</style>
-</head>
-<body class="bg-ivs-bg text-ivs-text-primary font-inter">
 
+    <style>
+        :root { 
+            --ivs-blue: #4c5ef7;
+            --ivs-cyan: #06b6d4;
+            --ivs-dark: #050505;
+            --ivs-card: #0f0f10;
+            --header-height: 4rem; 
+        }
+        body { 
+            background-color: var(--ivs-dark); 
+            color: #e4e4e7; 
+            font-family: 'Be Vietnam Pro', sans-serif; 
+            overflow-x: hidden; 
+            padding-top: var(--header-height); 
+        }
+        #header-placeholder { 
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); 
+            z-index: 1000; background-color: rgba(5, 5, 5, 0.85); 
+            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); 
+        }
+        
+        /* Card Design Refined */
+        .interactive-card { 
+            background: var(--ivs-card); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 1.5rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .interactive-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px -10px rgba(76, 94, 247, 0.15); 
+            border-color: rgba(76, 94, 247, 0.3); 
+        }
+        .interactive-card .img-container {
+            overflow: hidden;
+            position: relative;
+            height: 14rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .interactive-card img {
+            transition: transform 0.6s ease;
+        }
+        .interactive-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gradient-text { 
+            background: linear-gradient(135deg, #fff 30%, #4c5ef7 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        .badge-premium {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: #a1a1aa;
+        }
+        .spec-item {
+            background: rgba(255,255,255,0.03);
+            padding: 0.4rem 0.6rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .glow-sphere {
+            position: absolute;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(76, 94, 247, 0.06) 0%, transparent 70%);
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Category Filter Pills */
+        .category-pill {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            color: #71717a;
+        }
+        .category-pill:hover, .category-pill.active {
+            background-color: white;
+            color: black;
+            border-color: white;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        /* Price Tag */
+        .price-tag {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #4c5ef7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-500/30">
+
+<!-- Header Placeholder (Fetch từ hệ thống) -->
 <header id="header-placeholder"></header>
 
 <main>
     <!-- Hero Section -->
-    <section class="bg-ivs-neutral-800 text-center py-20" id="hero">
-        <div class="container mx-auto px-4" data-aos="fade-up">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4" data-lang-key="tech_devices_page_title">Thiết Bị Công Nghệ & Giải Pháp Cơ Sở</h1>
-            <p class="text-lg md:text-xl text-ivs-text-secondary max-w-3xl mx-auto" data-lang-key="tech_devices_meta_description">IVS Celestech cung cấp thiết bị công nghệ, máy tính, thiết bị văn phòng và các giải pháp cơ sở hạ tầng CNTT toàn diện cho doanh nghiệp.</p>
+    <section class="relative min-h-[85vh] flex items-center pt-16 pb-24 overflow-hidden" id="hero">
+        <div class="glow-sphere top-[-20%] left-[-10%]"></div>
+        <div class="glow-sphere bottom-[-20%] right-[-10%]"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7" data-aos="fade-right">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm mb-6">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        <span class="text-blue-400 text-xs font-bold uppercase tracking-wider">Dành riêng cho Sinh viên ĐHQG</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+                        Laptop Nhật Bản <br>
+                        <span class="gradient-text italic font-serif">Chuẩn Zin - Giá Gốc</span>
+                    </h1>
+                    <p class="text-lg text-zinc-400 mb-10 leading-relaxed max-w-xl font-light">
+                        IVS Celestech mang đến giải pháp công nghệ bền bỉ từ Tokyo. Tuyển chọn khắt khe, cam kết nguyên bản, đồng hành cùng bạn suốt 4 năm đại học.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#products" class="bg-white text-black hover:bg-zinc-200 font-bold py-4 px-8 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                            Xem Báo Giá
+                        </a>
+                        <a href="https://zalo.me/your-id" class="flex items-center gap-3 px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white rounded-xl border border-zinc-800 transition">
+                            <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                            <span class="font-medium">Tư vấn Zalo</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-5 relative" data-aos="fade-left">
+                    <div class="relative rounded-3xl overflow-hidden border border-white/5 bg-zinc-900/50 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=2070" alt="Showroom Laptop Nhật" class="w-full h-auto object-cover opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="flex -space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-zinc-800 border border-black flex items-center justify-center text-xs">💻</div>
+                                    <div class="w-8 h-8 rounded-full bg-zinc-800 border border-black flex items-center justify-center text-xs">🛡️</div>
+                                    <div class="w-8 h-8 rounded-full bg-zinc-800 border border-black flex items-center justify-center text-xs">🇯🇵</div>
+                                </div>
+                                <span class="text-sm text-zinc-300 font-medium">Được tin dùng bởi 5000+ sinh viên</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decor elements -->
+                    <div class="absolute -top-6 -right-6 w-24 h-24 bg-blue-600/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-600/20 rounded-full blur-2xl"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="py-16 md:py-24 bg-ivs-bg">
+    <!-- Product Grid -->
+    <section class="py-20 bg-[#050505]" id="products">
         <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-8">
-                <!-- Apple Products -->
-                <div class="interactive-card p-8 rounded-xl" data-aos="fade-right">
-                    <h2 class="text-3xl font-bold text-ivs-blue mb-4" data-lang-key="tech_devices_apple_title">Sản phẩm Apple</h2>
-                    <p class="text-ivs-text-secondary mb-6">Cung cấp các dòng sản phẩm chính hãng từ Apple, đảm bảo chất lượng và hiệu năng đỉnh cao cho công việc và học tập.</p>
-                    <div class="grid grid-cols-2 gap-4 text-lg">
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3"><i class="fas fa-desktop text-ivs-cyan"></i><span data-lang-key="tech_devices_apple_item_1">iMac & Mac Pro</span></div>
-                            <div class="flex items-center gap-3"><i class="fas fa-laptop text-ivs-cyan"></i><span data-lang-key="tech_devices_apple_item_2">MacBook Pro & Air</span></div>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Danh Mục Sản Phẩm</h2>
+                    <p class="text-zinc-500 text-sm">Cập nhật mới nhất tháng 10/2024</p>
+                </div>
+                <div class="flex flex-wrap gap-2" data-aos="fade-left">
+                    <button class="category-pill active px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Tất cả</button>
+                    <button class="category-pill px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Mỏng nhẹ</button>
+                    <button class="category-pill px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Đồ họa</button>
+                    <button class="category-pill px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Business</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- 1. ThinkPad T480/T490 (New) -->
+                <div class="interactive-card group" data-aos="fade-up">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1527434057859-7f4f6b283d5a?auto=format&fit=crop&w=800&q=80" alt="ThinkPad T480" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Best Seller</span>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3"><i class="fas fa-tablet-alt text-ivs-cyan"></i><span data-lang-key="tech_devices_apple_item_3">iPad & Phụ kiện</span></div>
-                            <div class="flex items-center gap-3"><i class="fas fa-microchip text-ivs-cyan"></i><span>Chip M-Series</span></div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-blue-500 uppercase tracking-wider">Siêu Bền Bỉ</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Lenovo ThinkPad T480s</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-blue-500"></i> i5-8350U</div>
+                            <div class="spec-item"><i class="fas fa-memory text-blue-500"></i> 16GB RAM</div>
+                            <div class="spec-item"><i class="fas fa-hdd text-blue-500"></i> 256GB SSD</div>
+                            <div class="spec-item"><i class="fas fa-battery-full text-blue-500"></i> Pin Kép</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">9.500.000đ</p>
+                                <p class="text-xl price-tag">6.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Office & IT -->
-                <div class="interactive-card p-8 rounded-xl" data-aos="fade-left">
-                    <h2 class="text-3xl font-bold text-ivs-purple mb-4" data-lang-key="tech_devices_office_title">Thiết Bị Văn Phòng & CNTT</h2>
-                    <p class="text-ivs-text-secondary mb-6">Giải pháp toàn diện cho không gian làm việc hiện đại, từ nội thất đến hạ tầng mạng.</p>
-                    <div class="grid grid-cols-2 gap-4 text-lg">
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3"><i class="fas fa-chair text-ivs-purple"></i><span data-lang-key="tech_devices_office_item_1">Bàn ghế văn phòng</span></div>
-                            <div class="flex items-center gap-3"><i class="fas fa-print text-ivs-purple"></i><span>Máy in & Máy chiếu</span></div>
+                <!-- 2. Dell XPS 13 9360/9370 (New) -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="50">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80" alt="Dell XPS 13" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Premium</span>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3"><i class="fas fa-network-wired text-ivs-purple"></i><span data-lang-key="tech_devices_it_item_1">Hệ thống mạng</span></div>
-                            <div class="flex items-center gap-3"><i class="fas fa-server text-ivs-purple"></i><span>Lưu trữ & Bảo mật</span></div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-purple-500 uppercase tracking-wider">Sang Trọng</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Dell XPS 13 (9370)</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-desktop text-purple-500"></i> 13.3" 4K</div>
+                            <div class="spec-item"><i class="fas fa-feather text-purple-500"></i> Vỏ Nhôm</div>
+                            <div class="spec-item"><i class="fas fa-fingerprint text-purple-500"></i> FaceID</div>
+                            <div class="spec-item"><i class="fas fa-bolt text-purple-500"></i> Type-C</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">13.500.000đ</p>
+                                <p class="text-xl price-tag">9.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-purple-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
+
+                <!-- 3. ThinkPad P1 Gen 2 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1588872657578-7efd3f1514ad?auto=format&fit=crop&w=800&q=80" alt="ThinkPad P1" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Workstation</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider">Đồ Họa Nặng</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">ThinkPad P1 Gen 2</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-orange-500"></i> i7-9850H</div>
+                            <div class="spec-item"><i class="fas fa-layer-group text-orange-500"></i> T2000 4G</div>
+                            <div class="spec-item"><i class="fas fa-memory text-orange-500"></i> 32GB RAM</div>
+                            <div class="spec-item"><i class="fas fa-tv text-orange-500"></i> 15.6" 4K</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">18.500.000đ</p>
+                                <p class="text-xl price-tag">14.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-orange-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. HP EliteBook 830 G8 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="150">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80" alt="HP EliteBook" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Business</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-cyan-500 uppercase tracking-wider">Vỏ Nhôm</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">HP EliteBook 830 G8</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-cyan-500"></i> i5-1135G7</div>
+                            <div class="spec-item"><i class="fas fa-memory text-cyan-500"></i> 16GB RAM</div>
+                            <div class="spec-item"><i class="fas fa-volume-up text-cyan-500"></i> B&O Audio</div>
+                            <div class="spec-item"><i class="fas fa-eye text-cyan-500"></i> Chống nhìn trộm</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">12.000.000đ</p>
+                                <p class="text-xl price-tag">8.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-cyan-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Dynabook G83 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?auto=format&fit=crop&w=800&q=80" alt="Dynabook" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Siêu Nhẹ</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-yellow-500 uppercase tracking-wider">800 Gram</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Dynabook G83 (Sharp)</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-yellow-500"></i> i5-10210U</div>
+                            <div class="spec-item"><i class="fas fa-feather text-yellow-500"></i> Siêu Nhẹ</div>
+                            <div class="spec-item"><i class="fas fa-battery-half text-yellow-500"></i> Pin 6H</div>
+                            <div class="spec-item"><i class="fas fa-desktop text-yellow-500"></i> IGZO Screen</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">8.500.000đ</p>
+                                <p class="text-xl price-tag">4.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-yellow-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Dell Precision 5530 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="250">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=800&q=80" alt="Precision 5530" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Workstation</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-wider">Viền Mỏng</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Dell Precision 5530</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-emerald-500"></i> i7-8850H</div>
+                            <div class="spec-item"><i class="fas fa-layer-group text-emerald-500"></i> Quadro P1000</div>
+                            <div class="spec-item"><i class="fas fa-desktop text-emerald-500"></i> 100% sRGB</div>
+                            <div class="spec-item"><i class="fas fa-star text-emerald-500"></i> Vỏ Carbon</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">13.500.000đ</p>
+                                <p class="text-xl price-tag">9.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-emerald-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Microsoft Surface Laptop 3 (New) -->
+                <div class="interactive-card group" data-aos="fade-up">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca4?auto=format&fit=crop&w=800&q=80" alt="Surface Laptop" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Fashion</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-pink-500 uppercase tracking-wider">Màn Hình 2K</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Surface Laptop 3</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-tv text-pink-500"></i> 13.5" 2K Touch</div>
+                            <div class="spec-item"><i class="fas fa-microchip text-pink-500"></i> i5-1035G7</div>
+                            <div class="spec-item"><i class="fas fa-palette text-pink-500"></i> Vỏ Nhôm</div>
+                            <div class="spec-item"><i class="fas fa-weight-hanging text-pink-500"></i> 1.2kg</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">11.000.000đ</p>
+                                <p class="text-xl price-tag">7.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-pink-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. HP ZBook Firefly 14 G7 (New) -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="50">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80" alt="HP ZBook" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Mobile WS</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-wider">Đồ Họa Nhẹ</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">HP ZBook Firefly 14 G7</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-indigo-500"></i> i7-10610U</div>
+                            <div class="spec-item"><i class="fas fa-layer-group text-indigo-500"></i> Quadro P520</div>
+                            <div class="spec-item"><i class="fas fa-memory text-indigo-500"></i> 16GB RAM</div>
+                            <div class="spec-item"><i class="fas fa-briefcase text-indigo-500"></i> Chuyên Nghiệp</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">12.500.000đ</p>
+                                <p class="text-xl price-tag">8.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-indigo-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Fujitsu Lifebook U939 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?auto=format&fit=crop&w=800&q=80" alt="Fujitsu" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Made in Japan</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-red-500 uppercase tracking-wider">799 Gram</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Fujitsu Lifebook U939</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-feather text-red-500"></i> Siêu Nhẹ</div>
+                            <div class="spec-item"><i class="fas fa-fingerprint text-red-500"></i> Bảo Mật Tĩnh Mạch</div>
+                            <div class="spec-item"><i class="fas fa-globe-asia text-red-500"></i> Nội Địa Nhật</div>
+                            <div class="spec-item"><i class="fas fa-battery-full text-red-500"></i> Pin Trâu</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">8.900.000đ</p>
+                                <p class="text-xl price-tag">5.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Panasonic Let's Note SV8 -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="150">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1588872657578-7efd3f1514ad?auto=format&fit=crop&w=800&q=80" alt="Panasonic" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">JDM Legend</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-teal-500 uppercase tracking-wider">Chịu Lực 100KG</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Panasonic SV8</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-hammer text-teal-500"></i> Siêu Bền</div>
+                            <div class="spec-item"><i class="fas fa-bolt text-teal-500"></i> Đủ Cổng Kết Nối</div>
+                            <div class="spec-item"><i class="fas fa-sync text-teal-500"></i> Pin Tháo Rời</div>
+                            <div class="spec-item"><i class="fas fa-compact-disc text-teal-500"></i> Nhẹ 0.9kg</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">9.500.000đ</p>
+                                <p class="text-xl price-tag">6.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-teal-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Epson Endeavor ST190E -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="img-container bg-zinc-800 flex items-center justify-center">
+                        <i class="fas fa-server text-6xl text-zinc-600"></i>
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Mini PC</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Máy Bàn Tí Hon</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">Epson Endeavor ST190E</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-microchip text-gray-400"></i> i5-8500T</div>
+                            <div class="spec-item"><i class="fas fa-expand text-gray-400"></i> Nhỏ Gọn</div>
+                            <div class="spec-item"><i class="fas fa-memory text-gray-400"></i> 8GB/16GB</div>
+                            <div class="spec-item"><i class="fas fa-plug text-gray-400"></i> Tiết Kiệm Điện</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">5.000.000đ</p>
+                                <p class="text-xl price-tag">2.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-zinc-600 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. iPad Gen 6/7 (New - Special) -->
+                <div class="interactive-card group" data-aos="fade-up" data-aos-delay="250">
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80" alt="iPad" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="badge-premium bg-black/50">Tablet</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <div class="mb-1">
+                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-wider">Học Tập Online</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-4">iPad Gen 6 (2018)</h3>
+                        <div class="spec-grid mb-6">
+                            <div class="spec-item"><i class="fas fa-tablet-alt text-blue-400"></i> 9.7 inch</div>
+                            <div class="spec-item"><i class="fas fa-pencil-alt text-blue-400"></i> Hỗ trợ Pen</div>
+                            <div class="spec-item"><i class="fas fa-battery-full text-blue-400"></i> Pin 10H</div>
+                            <div class="spec-item"><i class="fab fa-apple text-blue-400"></i> iOS Mượt Mà</div>
+                        </div>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] text-zinc-500 line-through">5.500.000đ</p>
+                                <p class="text-xl price-tag">3.xxx.xxxđ</p>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-blue-500 hover:text-white transition"><i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="https://zalo.me/your-id" class="inline-flex items-center gap-3 px-8 py-3 bg-zinc-900 border border-zinc-700 rounded-full hover:bg-blue-600 hover:border-blue-500 transition-all group">
+                    <span class="font-bold">Xem toàn bộ kho máy</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="py-16 md:py-24 bg-ivs-neutral-800" id="process">
+    <!-- Trust Badges -->
+    <section class="py-16 bg-[#080808] border-y border-white/5">
         <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="tech_devices_process_title">Quy Trình Triển Khai Chuyên Nghiệp</h2>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 text-center">
-                <div data-aos="fade-up"><i class="fas fa-comments text-4xl text-ivs-blue mb-3"></i><h3 class="text-xl font-semibold text-white" data-lang-key="tech_devices_process_step_1_title">Tư vấn</h3></div>
-                <div data-aos="fade-up" data-aos-delay="100"><i class="fas fa-drafting-compass text-4xl text-ivs-purple mb-3"></i><h3 class="text-xl font-semibold text-white" data-lang-key="tech_devices_process_step_2_title">Thiết kế</h3></div>
-                <div data-aos="fade-up" data-aos-delay="200"><i class="fas fa-cogs text-4xl text-ivs-amber mb-3"></i><h3 class="text-xl font-semibold text-white" data-lang-key="tech_devices_process_step_3_title">Triển khai</h3></div>
-                <div data-aos="fade-up" data-aos-delay="300"><i class="fas fa-vial text-4xl text-ivs-green mb-3"></i><h3 class="text-xl font-semibold text-white" data-lang-key="tech_devices_process_step_4_title">Kiểm thử</h3></div>
-                <div data-aos="fade-up" data-aos-delay="400"><i class="fas fa-check-double text-4xl text-ivs-cyan mb-3"></i><h3 class="text-xl font-semibold text-white" data-lang-key="tech_devices_process_step_5_title">Hỗ trợ</h3></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="py-16 md:py-24 bg-ivs-bg">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="tech_devices_benefits_title">Lợi Ích Khi Hợp Tác</h2>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="interactive-card p-6 flex items-start gap-4" data-aos="fade-right">
-                    <i class="fas fa-check-circle text-3xl text-ivs-green mt-1"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-white mb-1" data-lang-key="tech_devices_benefit_1_title">Tối ưu hóa chi phí</h3>
-                        <p class="text-ivs-text-secondary" data-lang-key="tech_devices_benefit_1_description">Giải pháp hiệu quả, giúp tiết kiệm ngân sách dài hạn.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center text-center" data-aos="fade-up">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 mb-4 text-xl">
+                        <i class="fas fa-check-circle"></i>
                     </div>
+                    <h4 class="font-bold text-white text-sm mb-1">Zin Nguyên Bản</h4>
+                    <p class="text-xs text-zinc-500">Cam kết chưa qua sửa chữa</p>
                 </div>
-                <div class="interactive-card p-6 flex items-start gap-4" data-aos="fade-left">
-                    <i class="fas fa-chart-line text-3xl text-ivs-blue mt-1"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-white mb-1" data-lang-key="tech_devices_benefit_2_title">Nâng cao hiệu suất</h3>
-                        <p class="text-ivs-text-secondary" data-lang-key="tech_devices_benefit_2_description">Hệ thống ổn định, tăng cường năng suất làm việc.</p>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-500 mb-4 text-xl">
+                        <i class="fas fa-shipping-fast"></i>
                     </div>
+                    <h4 class="font-bold text-white text-sm mb-1">Ship Hỏa Tốc</h4>
+                    <p class="text-xs text-zinc-500">Giao ngay tại Làng Đại Học</p>
                 </div>
-                <div class="interactive-card p-6 flex items-start gap-4" data-aos="fade-right">
-                    <i class="fas fa-lock text-3xl text-ivs-purple mt-1"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-white mb-1" data-lang-key="tech_devices_benefit_3_title">Bảo mật dữ liệu</h3>
-                        <p class="text-ivs-text-secondary" data-lang-key="tech_devices_benefit_3_description">Giải pháp bảo mật toàn diện, an toàn thông tin.</p>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 mb-4 text-xl">
+                        <i class="fas fa-tools"></i>
                     </div>
+                    <h4 class="font-bold text-white text-sm mb-1">Bảo Hành Vàng</h4>
+                    <p class="text-xs text-zinc-500">1 đổi 1 trong 30 ngày</p>
                 </div>
-                <div class="interactive-card p-6 flex items-start gap-4" data-aos="fade-left">
-                    <i class="fas fa-users-cog text-3xl text-ivs-amber mt-1"></i>
-                    <div>
-                        <h3 class="text-xl font-semibold text-white mb-1" data-lang-key="tech_devices_benefit_4_title">Đội ngũ chuyên nghiệp</h3>
-                        <p class="text-ivs-text-secondary" data-lang-key="tech_devices_benefit_4_description">Đội ngũ kỹ sư giàu kinh nghiệm, đảm bảo dự án đúng tiến độ và chất lượng.</p>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500 mb-4 text-xl">
+                        <i class="fas fa-gift"></i>
                     </div>
+                    <h4 class="font-bold text-white text-sm mb-1">Quà Tặng 1.5tr</h4>
+                    <p class="text-xs text-zinc-500">Balo + Chuột + Túi CS</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="bg-ivs-neutral-800 py-20">
-        <div class="container mx-auto px-4 text-center max-w-3xl" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" data-lang-key="tech_devices_cta_title">Nâng Cấp Không Gian Làm Việc Của Bạn</h2>
-            <p class="text-ivs-text-secondary text-lg mb-8" data-lang-key="tech_devices_cta_description">Liên hệ với chúng tôi ngay hôm nay để được tư vấn giải pháp phù hợp nhất cho doanh nghiệp của bạn.</p>
-            <a href="/contact.html?interest=tech_devices" class="inline-block bg-ivs-blue hover:bg-ivs-cyan text-white font-bold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30" data-lang-key="tech_devices_cta_button_contact">Liên Hệ Ngay</a>
+    <!-- FAQ & Support -->
+    <section class="py-20 bg-[#050505]">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">Câu Hỏi Thường Gặp</h2>
+            <div class="space-y-4">
+                <div class="glass-panel p-6 rounded-2xl cursor-pointer hover:bg-white/5 transition" x-data="{open: false}" @click="open = !open">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-white">Tôi là sinh viên năm nhất chưa rành công nghệ, IVS có hỗ trợ chọn máy không?</h4>
+                        <i class="fas fa-chevron-down text-zinc-500 transition-transform" :class="{'rotate-180': open}"></i>
+                    </div>
+                    <div x-show="open" class="mt-4 text-zinc-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Chắc chắn rồi! Đội ngũ tư vấn của IVS sẽ dựa vào ngành học của bạn (Kinh tế, Kỹ thuật, Đồ họa...) và ngân sách để đề xuất 2-3 dòng máy phù hợp nhất. Chúng tôi ưu tiên sự bền bỉ để bạn yên tâm dùng suốt 4 năm học.
+                    </div>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl cursor-pointer hover:bg-white/5 transition" x-data="{open: false}" @click="open = !open">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-white">Mua máy cũ sợ pin chai, IVS có bảo hành pin không?</h4>
+                        <i class="fas fa-chevron-down text-zinc-500 transition-transform" :class="{'rotate-180': open}"></i>
+                    </div>
+                    <div x-show="open" class="mt-4 text-zinc-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Tất cả máy bán ra đều được IVS test pin kỹ lưỡng (Health > 80%). Nếu pin lỗi hoặc tụt quá nhanh trong tháng đầu, chúng tôi sẽ hỗ trợ đổi pin zin khác miễn phí cho bạn.
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Final CTA -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-blue-600/10 z-0"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Sẵn sàng chọn người bạn đồng hành?</h2>
+            <p class="text-zinc-400 mb-10 max-w-2xl mx-auto">Đừng để chiếc laptop chậm chạp cản trở việc học của bạn. Nâng cấp ngay hôm nay với chi phí tiết kiệm nhất.</p>
+            <a href="https://zalo.me/your-id" class="inline-block bg-white text-black font-bold py-4 px-12 rounded-full shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:scale-105 transition-transform">
+                Nhắn tin Zalo ngay
+            </a>
+        </div>
+    </section>
 </main>
 
+<!-- Footer Placeholder (Fetch từ hệ thống) -->
 <footer id="footer-placeholder"></footer>
 <div id="fab-container-placeholder"></div>
 
 <!-- Scripts -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="/js/utils.js"></script>
 <script src="/js/language.js"></script>
 <script src="/ai/js/fabController.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') {
-            AOS.init({ duration: 800, once: true, offset: 50 });
+            AOS.init({ 
+                duration: 800, 
+                once: true, 
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
         }
+
+        const pills = document.querySelectorAll('.category-pill');
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pills.forEach(p => p.classList.remove('active', 'bg-white', 'text-black'));
+                pill.classList.add('active', 'bg-white', 'text-black');
+            });
+        });
     });
 </script>
-<script defer src="/ai/js/loadComponents.js"></script>
+<script src="/ai/js/loadComponents.js"></script>
 
 </body>
 </html>
