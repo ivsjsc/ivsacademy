@@ -149,6 +149,20 @@
             border-color: #22d3ee; /* ivs-cyan */
         }
 
+        .ecosystem-card {
+            background: rgba(15, 23, 42, 0.75);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 20px 40px rgba(2, 6, 23, 0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .ecosystem-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(244, 114, 182, 0.7);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+        }
+
 
         /* Custom Scrollbar for solutions tab */
         .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -250,7 +264,107 @@
 </a>
 </div>
 </div></section>
- 
+
+<section class="space-y-8 mt-8">
+    <div class="text-center">
+        <p class="text-xs uppercase tracking-[0.5em] text-slate-400 mb-2">Digital Ecosystem</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">Hệ Sinh Thái Kỹ Thuật Số IVS</h2>
+        <p class="text-slate-400 max-w-3xl mx-auto mt-3 text-sm md:text-base">Các sản phẩm công nghệ được thiết kế để tối ưu hoá quản lý, tự động hóa quy trình và trải nghiệm học tập, giải trí trong kỷ nguyên số.</p>
+    </div>
+    <div class="grid gap-5 lg:grid-cols-3 md:grid-cols-2">
+        <article class="ecosystem-card border border-blue-500/40">
+            <div class="flex items-center justify-between">
+                <span class="text-4xl text-blue-400"><i class="fas fa-book"></i></span>
+                <span class="text-xs uppercase tracking-[0.3em] text-slate-300">EdTech</span>
+            </div>
+            <div class="mt-3">
+                <h3 class="text-lg font-semibold text-white">IVS English (EdTech)</h3>
+                <p class="text-slate-400 text-sm mt-2">Nền tảng học Tiếng Anh tích hợp AI và gamification dành cho học sinh mọi lứa tuổi.</p>
+            </div>
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-blue-300 hover:text-white" href="https://ilearners.web.app/" target="_blank">Khám phá →</a>
+        </article>
+        <article class="ecosystem-card border border-green-500/40">
+            <div class="flex items-center justify-between">
+                <span class="text-4xl text-green-400"><i class="fas fa-house"></i></span>
+                <span class="text-xs uppercase tracking-[0.3em] text-slate-300">Lifestyle</span>
+            </div>
+            <div class="mt-3">
+                <h3 class="text-lg font-semibold text-white">IVS Stay Smart</h3>
+                <p class="text-slate-400 text-sm mt-2">Quản lý nhà trọ, hợp đồng và khách thuê trong một hệ thống tích hợp.</p>
+            </div>
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-green-300 hover:text-white" href="https://homestayeasy.web.app/" target="_blank">Khám phá →</a>
+        </article>
+        <article class="ecosystem-card border border-purple-500/40">
+            <div class="flex items-center justify-between">
+                <span class="text-4xl text-purple-400"><i class="fas fa-users"></i></span>
+                <span class="text-xs uppercase tracking-[0.3em] text-slate-300">Custom</span>
+            </div>
+            <div class="mt-3">
+                <h3 class="text-lg font-semibold text-white">QLGX - Quản lý cộng đồng</h3>
+                <p class="text-slate-400 text-sm mt-2">Hỗ trợ quản lý gia đình, giáo xứ với dữ liệu tra cứu nhanh dễ dàng.</p>
+            </div>
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-purple-300 hover:text-white" href="/Pages/ivs-celestech.html">Khám phá →</a>
+        </article>
+        <article class="ecosystem-card border border-orange-500/40">
+            <div class="flex items-center justify-between">
+                <span class="text-4xl text-orange-400"><i class="fas fa-fire"></i></span>
+                <span class="text-xs uppercase tracking-[0.3em] text-slate-300">Habit/AI</span>
+            </div>
+            <div class="mt-3">
+                <h3 class="text-lg font-semibold text-white">StriveStreak</h3>
+                <p class="text-slate-400 text-sm mt-2">Xây dựng thói quen học tập, duy trì động lực qua AI và trải nghiệm game hóa.</p>
+            </div>
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-orange-300 hover:text-white" href="/Pages/apps/ivsapps.html">Khám phá →</a>
+        </article>
+        <article class="ecosystem-card border border-amber-500/40">
+            <div class="flex items-center justify-between">
+                <span class="text-4xl text-amber-400"><i class="fas fa-language"></i></span>
+                <span class="text-xs uppercase tracking-[0.3em] text-slate-300">Language</span>
+            </div>
+            <div class="mt-3">
+                <h3 class="text-lg font-semibold text-white">IVS Mandarin Learners</h3>
+                <p class="text-slate-400 text-sm mt-2">Lộ trình HSK toàn diện với kỹ thuật học tập dựa trên AI và bài bản.</p>
+            </div>
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-amber-300 hover:text-white" href="https://tami.web.app/" target="_blank">Khám phá →</a>
+        </article>
+        <article class="ecosystem-card border border-sky-500/40">
+            <div class="flex items-center justify-between">
+                <span class="text-4xl text-sky-400"><i class="fas fa-graduation-cap"></i></span>
+                <span class="text-xs uppercase tracking-[0.3em] text-slate-300">Learning</span>
+            </div>
+            <div class="mt-3">
+                <h3 class="text-lg font-semibold text-white">ELearners</h3>
+                <p class="text-slate-400 text-sm mt-2">App học trực tuyến đa dạng kỹ năng mềm và ngoại ngữ cho học viên mọi trình độ.</p>
+            </div>
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-sky-300 hover:text-white" href="https://ilearners.web.app/" target="_blank">Khám phá →</a>
+        </article>
+    </div>
+    <div class="grid gap-5 lg:grid-cols-2">
+        <article class="ecosystem-card border border-red-500/40 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between">
+                    <span class="text-4xl text-red-400"><i class="fab fa-youtube"></i></span>
+                    <span class="text-xs uppercase tracking-[0.3em] text-slate-300">Support</span>
+                </div>
+                <h3 class="text-xl font-semibold text-white mt-3">Hướng dẫn sử dụng</h3>
+                <p class="text-slate-400 text-sm mt-2">Xem loạt video chỉ dẫn khai thác ELearners và hệ sinh thái tận gốc.</p>
+            </div>
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-red-300 hover:text-white" href="/learning-materials.html">Xem video →</a>
+        </article>
+        <article class="ecosystem-card border border-cyan-500/40 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between">
+                    <span class="text-4xl text-cyan-400"><i class="fas fa-cubes-stacked"></i></span>
+                    <span class="text-xs uppercase tracking-[0.3em] text-slate-300">Custom Apps</span>
+                </div>
+                <h3 class="text-xl font-semibold text-white mt-3">Xây dựng Apps tùy chỉnh</h3>
+                <p class="text-slate-400 text-sm mt-2">Đội ngũ IVS Celestech phát triển hệ thống riêng theo yêu cầu tổ chức.</p>
+            </div>
+            <a class="mt-4 inline-flex items-center text-sm font-semibold text-cyan-300 hover:text-white" href="/Pages/ivscelestech.html">Trao đổi ngay →</a>
+        </article>
+    </div>
+</section>
+
 <section class="py-16 lg:py-24 bg-ivs-bg border-b border-ivs-border" id="impact-counters">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">

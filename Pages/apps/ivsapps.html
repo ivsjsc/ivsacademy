@@ -1,389 +1,306 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html class="scroll-smooth" lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IVS Ecosystem - Micro-services & SSO Ready</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IVS Apps — Hệ sinh thái ứng dụng IVS</title>
+    <meta name="description" content="Tổng hợp các micro-service và ứng dụng tiếng Việt trong hệ sinh thái IVS — từ học tập, công việc đến sức khỏe, dịch vụ đời sống." />
+    <link rel="icon" type="image/svg+xml" href="/images/logo/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="//storage.googleapis.com" rel="dns-prefetch" />
+    <link href="//unpkg.com" rel="dns-prefetch" />
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch" />
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch" />
+    <link href="/css/tailwind.css" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script defer src="/js/language.js"></script>
+    <script defer src="/js/language-init.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
+        :root {
+            --header-height: 4rem;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            margin: 0;
+            padding-top: var(--header-height);
+            font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
+            background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.25), transparent 35%),
+                        radial-gradient(circle at top right, rgba(249, 115, 22, 0.18), transparent 45%),
+                        #030712;
+            color: #e2e8f0;
         }
 
-        .app-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        #header-placeholder {
+            position: fixed;
+            inset: 0 auto auto 0;
+            height: var(--header-height);
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(5, 7, 18, 0.9);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+            backdrop-filter: blur(18px);
         }
 
-        .app-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        main {
+            min-height: calc(100vh - var(--header-height));
         }
 
-        .sso-badge {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        section {
+            scroll-margin-top: calc(var(--header-height) + 1rem);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.28), rgba(248, 113, 113, 0.15));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(2, 2, 10, 0.6);
+            border-radius: 2rem;
+        }
+
+        .section-card {
+            background: rgba(5, 7, 18, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.8rem;
+            box-shadow: 0 15px 35px rgba(2, 6, 23, 0.45);
+            backdrop-filter: blur(18px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(250, 204, 21, 0.8);
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .pill {
+            font-family: 'Space Grotesk', sans-serif;
+            border-radius: 999px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen pb-12">
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+    <header id="header-placeholder"></header>
 
-    <!-- Header Section -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <main class="max-w-6xl mx-auto px-4 pb-16 space-y-12">
+        <section class="hero border border-white/10 p-10 space-y-6">
+            <p class="tag text-slate-400">Gateway • UI</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">Giao diện trung tâm cho toàn bộ ứng dụng IVS</h1>
+            <p class="text-lg text-slate-300 max-w-3xl leading-relaxed">Tổng hợp micro-services, trợ lý AI và nền tảng SSO vào một giao diện đồng bộ, màu sắc cân đối và typography rõ ràng để người dùng nhanh chóng tìm ra ứng dụng phù hợp.</p>
+            <div class="flex flex-wrap gap-3">
+                <span class="pill px-4 py-2 border border-white/20 text-[11px] tracking-[0.4em] text-white bg-white/10">Apps</span>
+                <span class="pill px-4 py-2 border border-white/20 text-[11px] tracking-[0.4em] text-white/70">Learning</span>
+                <span class="pill px-4 py-2 border border-white/20 text-[11px] tracking-[0.4em] text-white/70">Lifestyle</span>
+                <span class="pill px-4 py-2 border border-white/20 text-[11px] tracking-[0.4em] text-white/70">Health</span>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div>
-                    <h1 class="text-3xl font-bold text-slate-900 tracking-tight">IVS Ecosystem</h1>
-                    <div class="flex items-center mt-1">
-                        <span class="text-sm font-semibold text-blue-600 tracking-widest uppercase">MICRO-SERVICES</span>
-                        <span class="mx-2 text-slate-300">•</span>
-                        <span class="text-sm font-semibold text-emerald-600 tracking-widest uppercase">SSO READY</span>
-                    </div>
+                    <p class="tag text-slate-400">Category</p>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white">AI &amp; Trợ lý thông minh</h2>
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="relative">
-                        <input type="text" placeholder="Tìm kiếm ứng dụng..." class="pl-10 pr-4 py-2 border border-slate-200 rounded-full bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 w-64 text-sm">
-                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    </div>
-                </div>
+                <p class="text-sm text-slate-400 max-w-xl">Các trợ lý được tích hợp SSO, phân tích dữ liệu và đưa ra quyết định nhanh chóng theo từng lĩnh vực chuyên sâu.</p>
             </div>
-        </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-        
-        <!-- Category: AI & Công nghệ -->
-        <section class="mb-12">
-            <div class="flex items-center gap-3 mb-6 border-l-4 border-blue-500 pl-4">
-                <div class="p-2 bg-blue-100 text-blue-600 rounded-lg">
-                    <i class="fa-solid fa-robot text-xl"></i>
-                </div>
-                <h2 class="text-xl font-bold text-slate-800 uppercase tracking-tight">AI & Trợ lý Thông minh</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                
-                <!-- Aivy Architect -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-compass-drafting text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Aivy Architect</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Trợ lý AI chuyên nghiệp tích hợp kiến thức Kỹ sư & Kiến trúc sư. Hỗ trợ phân tích kết cấu, tối ưu không gian và phác họa ý tưởng 3D.</p>
+            <div class="grid gap-6 lg:grid-cols-3 md:grid-cols-2">
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🏛️</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Specialized</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://aivy-architect.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Aivy Architect</h3>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">Trợ lý kiến trúc và kỹ sư: phân tích kết cấu, tối ưu không gian và phác thảo ý tưởng 3D.</p>
                     </div>
-                </div>
-
-                <!-- Auto-fill with AI -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-file-invoice text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Auto-fill with AI</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">Upload your existing CV (PDF, DOCX) to get started.</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Tự động điền thông tin và tối ưu hóa CV từ file PDF/DOCX hiện có bằng trí tuệ nhân tạo để bắt đầu nhanh chóng.</p>
+                    <a href="https://aivy-architect.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🧾</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Creative</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://cv-w-aivy.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Auto-fill with AI</h3>
+                        <p class="text-slate-400 text-sm mt-2">Upload CV (PDF/DOCX) và nhận bản CV tối ưu tự động.</p>
+                        <p class="text-slate-500 text-xs mt-2">Điền nội dung bằng AI, tích hợp SSO cho doanh nghiệp.</p>
                     </div>
-                </div>
-
-                <!-- Cocoa AI -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-brain text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Cocoa AI</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">Cocoa AI tâm lý học,</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Ứng dụng hỗ trợ tâm lý học sử dụng AI để thấu hiểu, phân tích và tư vấn cảm xúc cho người dùng.</p>
+                    <a href="https://cv-w-aivy.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🧠</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Support</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://cocoa-ai.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Cocoa AI</h3>
+                        <p class="text-slate-400 text-sm mt-2">Trợ lý tâm lý học dùng AI để thấu hiểu, phân tích và tư vấn cảm xúc.</p>
                     </div>
-                </div>
+                    <a href="https://cocoa-ai.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
             </div>
         </section>
 
-        <!-- Category: Education -->
-        <section class="mb-12">
-            <div class="flex items-center gap-3 mb-6 border-l-4 border-emerald-500 pl-4">
-                <div class="p-2 bg-emerald-100 text-emerald-600 rounded-lg">
-                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+        <section class="space-y-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <p class="tag text-slate-400">Category</p>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white">Giáo dục &amp; Đào tạo</h2>
                 </div>
-                <h2 class="text-xl font-bold text-slate-800 uppercase tracking-tight">Giáo dục & Đào tạo</h2>
+                <p class="text-sm text-slate-400 max-w-xl">Nền tảng học tập, đánh giá và kết nối người học trong hệ sinh thái IVS Learning.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                
-                <!-- Elearners -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-book-open text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Elearners K-12+</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">App học tiếng Anh Elearners K-12+</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Nền tảng học tiếng Anh toàn diện cho học sinh từ mầm non đến trung học và người đi làm.</p>
+            <div class="grid gap-6 lg:grid-cols-3 md:grid-cols-2">
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🎓</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Learning</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://ilearners.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Elearners K-12+</h3>
+                        <p class="text-slate-400 text-sm mt-2">App học tiếng Anh toàn diện từ mầm non đến người đi làm.</p>
                     </div>
-                </div>
-
-                <!-- TAMI -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-language text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">TAMI</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-2">Chào mừng bạn đến với TAMI!</p>
-                        <p class="text-slate-600 text-sm italic mb-2">"Thấu ngôn ngữ - Hiểu văn hóa - Vững tương lai"</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Ứng dụng học tập kết hợp văn hóa và ngôn ngữ chuyên sâu cho mọi trình độ.</p>
+                    <a href="https://ilearners.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🌍</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Learning</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://tami.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">TAMI</h3>
+                        <p class="text-slate-400 text-sm mt-2 italic">"Thấu ngôn ngữ - Hiểu văn hóa - Vững tương lai"</p>
+                        <p class="text-slate-500 text-xs mt-1">Ứng dụng học tập văn hóa và ngôn ngữ chuyên sâu.</p>
                     </div>
-                </div>
-
-                <!-- Testing Placement -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-vial-circle-check text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">IVS Testing Placement</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Đánh giá trình độ tiếng Anh chuyên nghiệp • Kết nối với ELearners.</p>
+                    <a href="https://tami.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🧪</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Assessment</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://testingplacement.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">IVS Testing Placement</h3>
+                        <p class="text-slate-500 text-xs mt-1">Đánh giá trình độ chuyên nghiệp, kết nối ELearners.</p>
+                        <p class="text-slate-400 text-sm mt-2">Nền tảng kiểm tra và đánh giá tích hợp AI Aivy.</p>
                     </div>
-                </div>
-
-                <!-- AIVY Testing Placement -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-spell-check text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">AIVY English Testing</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Nền tảng kiểm tra và đánh giá trình độ tiếng Anh đầu vào tích hợp trí tuệ nhân tạo Aivy.</p>
+                    <a href="https://testingplacement.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
+                <article class="section-card border-l-4 border-l-yellow-500 p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🧸</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Management</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://aivy-testing.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">IVS KinderLink</h3>
+                        <p class="text-slate-400 text-sm mt-2">Kết nối nhà trường – phụ huynh mầm non theo thời gian thực.</p>
                     </div>
-                </div>
-
-                <!-- KinderLink -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col border-l-4 border-l-yellow-400">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-child-reaching text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">IVS KinderLink</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Hệ thống quản lý mầm non, kết nối tương tác giữa nhà trường và phụ huynh thời gian thực.</p>
-                    </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://ivskinderlink.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
-                    </div>
-                </div>
+                    <a href="https://ivskinderlink.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
             </div>
         </section>
 
-        <!-- Category: Lifestyle & Services -->
-        <section class="mb-12">
-            <div class="flex items-center gap-3 mb-6 border-l-4 border-purple-500 pl-4">
-                <div class="p-2 bg-purple-100 text-purple-600 rounded-lg">
-                    <i class="fa-solid fa-house-laptop text-xl"></i>
+        <section class="space-y-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <p class="tag text-slate-400">Category</p>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white">Dịch vụ &amp; Tiện ích</h2>
                 </div>
-                <h2 class="text-xl font-bold text-slate-800 uppercase tracking-tight">Dịch vụ & Tiện ích</h2>
+                <p class="text-sm text-slate-400 max-w-xl">Các nền tảng đời sống số phục vụ nhà trọ, quản lý chi tiêu và mobility.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                
-                <!-- StaySmart -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-building-user text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">StaySmart</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">Nhà trọ IVS</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Nền tảng quản lý và tìm kiếm phòng trọ thông minh, tối ưu trải nghiệm cho người thuê và chủ nhà.</p>
+            <div class="grid gap-6 lg:grid-cols-3 md:grid-cols-2">
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🏘️</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Lifestyle</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://homestayeasy.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">StaySmart</h3>
+                        <p class="text-slate-400 text-sm mt-2">Nhà trọ IVS — quản lý và tìm kiếm nhà trọ thông minh.</p>
                     </div>
-                </div>
-
-                <!-- Ledger2gether -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-cyan-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-wallet text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Ledger2gether</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">Sổ chung</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Ứng dụng quản lý chi tiêu nhóm minh bạch, phù hợp cho gia đình hoặc hội nhóm chung phòng.</p>
+                    <a href="https://homestayeasy.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">👛</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Lifestyle</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://ledger2gether.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Ledger2gether</h3>
+                        <p class="text-slate-500 text-xs mt-1">Sổ chi tiêu nhóm.</p>
+                        <p class="text-slate-400 text-sm mt-2">Minh bạch chi tiêu cho gia đình hoặc chung cư.</p>
                     </div>
-                </div>
-
-                <!-- Vethoi -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-rose-500 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-car text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Vethoi</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">App demo book xe.</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Ứng dụng demo đặt xe trực tuyến, tối ưu hóa quá trình di chuyển và quản lý chuyến đi.</p>
+                    <a href="https://ledger2gether.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🚗</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Mobility</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://vethoi.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Vethoi</h3>
+                        <p class="text-slate-500 text-xs mt-1">App demo đặt xe.</p>
+                        <p class="text-slate-400 text-sm mt-2">Trải nghiệm đặt chuyến đi thông minh.</p>
                     </div>
-                </div>
-
-                <!-- Luv Yoga -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-teal-500 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-spa text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">Luv Yoga</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">App cho trung tâm Yoga</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Hệ thống quản lý trung tâm Yoga, đặt lịch tập và theo dõi tiến trình của từng học viên.</p>
-                    </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://luv-yoga.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
-                    </div>
-                </div>
+                    <a href="https://vethoi.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
             </div>
         </section>
 
-        <!-- Category: Health & Specialized -->
-        <section class="mb-12">
-            <div class="flex items-center gap-3 mb-6 border-l-4 border-rose-500 pl-4">
-                <div class="p-2 bg-rose-100 text-rose-600 rounded-lg">
-                    <i class="fa-solid fa-heart-pulse text-xl"></i>
+        <section class="space-y-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <p class="tag text-slate-400">Category</p>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white">Sức khỏe &amp; Chuyên dụng</h2>
                 </div>
-                <h2 class="text-xl font-bold text-slate-800 uppercase tracking-tight">Sức khỏe & Chuyên dụng</h2>
+                <p class="text-sm text-slate-400 max-w-xl">Ứng dụng chăm sóc sức khỏe và đào tạo chuyên ngành y tế.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                
-                <!-- Moonflow -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-violet-400 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-moon text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">MoonFlow</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">Theo dõi chu kỳ kinh nguyệt</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Trình theo dõi chu kỳ kinh nguyệt và sức khỏe phụ nữ thông minh, bảo mật và tinh tế.</p>
+            <div class="grid gap-6 lg:grid-cols-2 md:grid-cols-2">
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🌙</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Health</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://moonflow.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">MoonFlow</h3>
+                        <p class="text-slate-500 text-xs mt-1">Theo dõi chu kỳ kinh nguyệt.</p>
+                        <p class="text-slate-400 text-sm mt-2">Ứng dụng bảo mật hỗ trợ nhật ký phụ nữ thông minh.</p>
                     </div>
-                </div>
-
-                <!-- NurseFlow -->
-                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 bg-red-400 rounded-xl flex items-center justify-center text-white shadow-lg">
-                                <i class="fa-solid fa-user-nurse text-xl"></i>
-                            </div>
-                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">NurseFlow</h3>
-                        <p class="text-[12px] font-medium text-slate-500 mb-2">App cho sinh viên điều dưỡng</p>
-                        <p class="text-slate-600 text-sm leading-relaxed">Công cụ hỗ trợ chuyên dụng quản lý công việc và học tập cho sinh viên ngành điều dưỡng.</p>
+                    <a href="https://moonflow.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
+                <article class="section-card p-6 flex flex-col gap-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-4xl">🩺</span>
+                        <span class="px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/80 rounded-full bg-white/5">Specialized</span>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
-                        <a href="https://nursefl0w.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
-                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">NurseFlow</h3>
+                        <p class="text-slate-500 text-xs mt-1">App cho sinh viên điều dưỡng.</p>
+                        <p class="text-slate-400 text-sm mt-2">Quản lý công việc và học tập chuyên ngành điều dưỡng.</p>
                     </div>
-                </div>
+                    <a href="https://nursefl0w.web.app/" target="_blank" class="text-[12px] uppercase tracking-[0.4em] text-orange-400 hover:text-orange-300">Mở app →</a>
+                </article>
             </div>
         </section>
-
     </main>
 
-    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 border-t border-slate-200 text-center">
-        <p class="text-slate-500 text-sm">© 2024 IVS Ecosystem. All apps are SSO ready and part of the Micro-services architecture.</p>
-    </footer>
+    <footer id="footer-placeholder"></footer>
+    <div id="fab-container-placeholder"></div>
 
+    <script src="/js/utils.js"></script>
+    <script defer src="/ai/js/fabController.js"></script>
+    <script defer src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
