@@ -1,326 +1,389 @@
-html
-<html class="scroll-smooth" lang="vi">
-<head><link crossorigin="" href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title data-lang-key="page_title_ivsapps">Website &amp; á»¨ng Dụng | IVS Celestech</title>
- Tải Tailwind CSS CDN 
-<style>
-        /* Light theme overrides for this page (keeps data-lang-key hooks) */
-        :root {
-            --tw-colors-ivs-dark: #F8FAFC; /* page background (light) */
-            --tw-colors-ivs-card: #FFFFFF; /* card background */
-            --tw-colors-ivs-text-light: #0F172A; /* primary text (dark) */
-            --tw-colors-ivs-text-muted: #6B7280; /* muted text */
-            --tw-colors-ivs-primary: #6366F1; /* Indigo-500 (kept) */
-            --tw-colors-ivs-secondary: #F59E0B; /* Amber accent for CTAs */
-            --tw-colors-ivs-accent: #38BDF8;
-            --tw-colors-ivs-border: #E5E7EB;
-            /* FAB / component compatibility variables */
-            --ivs-accent: var(--tw-colors-ivs-accent);
-            --fab-panel-bg: var(--tw-colors-ivs-card);
-            --fab-text-color: #ffffff;
-        }
-
-        body {
-            font-family: 'Be Vietnam Pro', sans-serif;
-            background-color: var(--tw-colors-ivs-dark);
-            color: var(--tw-colors-ivs-text-light);
-            line-height: 1.6;
-        }
-        .header-bg {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(6px);
-        }
-        .text-gradient {
-            background: linear-gradient(90deg, #6366F1, #22D3EE, #6366F1);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section-separator {
-            width: 50px;
-            height: 4px;
-            border-radius: 2px;
-            margin: 0 auto 2rem;
-        }
-        .card-base {
-            background-color: var(--tw-colors-ivs-card);
-            border: 1px solid var(--tw-colors-ivs-border);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        .card-base:hover {
-            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
-            transform: translateY(-4px);
-        }
-        .project-icon-container {
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Custom styles for the two sections */
-        .website-card:hover {
-            border-top-color: var(--tw-colors-ivs-primary);
-        }
-        .app-card:hover {
-            border-top-color: var(--tw-colors-ivs-secondary);
-        }
-        .project-link {
-            transition: color 0.2s ease;
-            font-weight: 600;
-        }
-        .project-link:hover {
-            text-decoration: underline;
-        }
-        /* Ensure FAB submenu and items are visible in light mode (page does not use .dark) */
-        .fab-submenu-panel { color: #0f172a; background: var(--fab-panel-bg); }
-        .fab-submenu-item { color: #0f172a; }
-        /* Ensure FAB icon color contrasts on light background */
-        .fab-item i { color: var(--fab-text-color); }
-    </style>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVS Ecosystem - Micro-services & SSO Ready</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Shared layout adjustments from index.html */
-        :root { --header-height: 4rem; }
-        body { padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
-        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
-        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
-        .hero-content { position:relative; z-index:3; max-width:90%; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .app-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .sso-badge {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
     </style>
-<link href="/css/tailwind.css" rel="stylesheet"/>
-<meta content="Khám phá bá»™ sưu tập á»©ng dụng giáo dục IVS với công nghá»‡ AI, game học tập và  các công cụ hộ trá»£ giảng dãy hiá»‡n đãi." name="description"/>
-<meta content="Website &amp; á»¨ng Dụng | IVS Celestech" property="og:title"/>
-<meta content="Khám phá bá»™ sưu tập á»©ng dụng giáo dục IVS với công nghá»‡ AI, game học tập và  các công cụ hộ trá»£ giảng dãy hiá»‡n đãi." property="og:description"/>
-<meta content="https://ivsacademy.edu.vn/Pages/apps/ivsapps.html" property="og:url"/>
-<meta content="website" property="og:type"/>
-<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/></head>
-    <body class="bg-ivs-bg text-ivs-text-primary font-inter">
-    <div id="header-placeholder"></div>
-    <main>
-    <section class="hero-section">
-<div class="hero-overlay"></div>
-<div class="hero-content max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
-<span class="text-gradient block" data-lang-key="hero_title_ivsapps">Website &amp; á»¨ng Dụng Giáo Dục của IVS</span>
-</h1>
-<p class="text-lg text-ivs-text-muted max-w-3xl mx-auto mb-10" data-lang-key="hero_subtitle_ivsapps">Tập hợp các dự án web và  á»©ng dụng của IVS — từ trải nghiá»‡m e-learning, há»‡ thồng quản trỉ đáº¿n game giáo dục tích hợp AI.</p>
-<div class="flex items-center justify-center space-x-3 mt-6">
-<a class="inline-flex items-center px-6 py-3 rounded-full bg-ivs-primary text-white font-semibold shadow hover:opacity-95 transition" data-lang-key="hero_cta_contact" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡ với chúng tôi</a>
-<a class="inline-flex items-center px-6 py-3 rounded-full border border-ivs-primary text-ivs-primary font-semibold hover:bg-ivs-primary/10 transition" data-lang-key="hero_cta_explore" href="#websites">Khám phá dự án</a>
-</div>
-<div class="h-1 bg-ivs-secondary section-separator w-12 opacity-50"></div>
-</div>
-</section>
-<section class="py-20 bg-ivs-dark" id="websites">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-4xl mx-auto mb-12">
-<h2 class="text-3xl sm:text-4xl font-bold text-ivs-primary mb-2" data-lang-key="section_web_title_ivsapps">Websites &amp; Cỗng thông tin</h2>
-<p class="text-lg text-ivs-text-muted" data-lang-key="section_web_subtitle_ivsapps">Những trang web và  cỗng thông tin do IVS thiáº¿t káº¿, tồi ưu trải nghiá»‡m ngưá»i dà¹ng và  dá»… dà ng má»Ÿ rá»™ng.</p>
-</div>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+</head>
+<body class="min-h-screen pb-12">
 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-primary/10">
-<i class="fas fa-graduation-cap text-ivs-primary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_ivsacademy_title"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_ivsacademy_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-primary block text-sm mb-2" href="https://ivsacademy.edu.vn/" rel="noopener noreferrer" target="_blank">ivsacademy.edu.vn</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡</a>
-</div>
-</div>
+    <!-- Header Section -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-slate-900 tracking-tight">IVS Ecosystem</h1>
+                    <div class="flex items-center mt-1">
+                        <span class="text-sm font-semibold text-blue-600 tracking-widest uppercase">MICRO-SERVICES</span>
+                        <span class="mx-2 text-slate-300">•</span>
+                        <span class="text-sm font-semibold text-emerald-600 tracking-widest uppercase">SSO READY</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <input type="text" placeholder="Tìm kiếm ứng dụng..." class="pl-10 pr-4 py-2 border border-slate-200 rounded-full bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 w-64 text-sm">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-primary/10">
-<i class="fas fa-handshake text-ivs-primary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_khadock_title"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_khadock_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-primary block text-sm mb-2" href="https://khadock.com/" rel="noopener noreferrer" target="_blank">khadock.com</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡</a>
-</div>
-</div>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        
+        <!-- Category: AI & Công nghệ -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6 border-l-4 border-blue-500 pl-4">
+                <div class="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                    <i class="fa-solid fa-robot text-xl"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 uppercase tracking-tight">AI & Trợ lý Thông minh</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- Aivy Architect -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-compass-drafting text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Aivy Architect</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Trợ lý AI chuyên nghiệp tích hợp kiến thức Kỹ sư & Kiến trúc sư. Hỗ trợ phân tích kết cấu, tối ưu không gian và phác họa ý tưởng 3D.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://aivy-architect.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-primary/10">
-<i class="fas fa-home text-ivs-primary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_khahome_title_ivsapps"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_khahome_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-primary block text-sm mb-2" href="https://khahome.com/" rel="noopener noreferrer" target="_blank">khahome.com</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡</a>
-</div>
-</div>
+                <!-- Auto-fill with AI -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-file-invoice text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Auto-fill with AI</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">Upload your existing CV (PDF, DOCX) to get started.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Tự động điền thông tin và tối ưu hóa CV từ file PDF/DOCX hiện có bằng trí tuệ nhân tạo để bắt đầu nhanh chóng.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://cv-w-aivy.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-primary/10">
-<i class="fas fa-campground text-ivs-primary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_suoicamp_title_ivsapps"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_suoicamp_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-primary block text-sm mb-2" href="https://suoicamp.netlify.app/" rel="noopener noreferrer" target="_blank">suoicamp.netlify.app</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡</a>
-</div>
-</div>
+                <!-- Cocoa AI -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-brain text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Cocoa AI</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">Cocoa AI tâm lý học,</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Ứng dụng hỗ trợ tâm lý học sử dụng AI để thấu hiểu, phân tích và tư vấn cảm xúc cho người dùng.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://cocoa-ai.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-primary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-primary/10">
-<i class="fas fa-glass-cheers text-ivs-primary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="project_banhanh_title_ivsapps"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="project_banhanh_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-primary block text-sm mb-2" href="https://trungtamhoinghitieccuoi-banhanh.netlify.app/" rel="noopener noreferrer" target="_blank">banhanh.netlify.app</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-primary/20 text-ivs-primary hover:bg-ivs-primary hover:text-white transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
-</div>
-</div>
+        <!-- Category: Education -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6 border-l-4 border-emerald-500 pl-4">
+                <div class="p-2 bg-emerald-100 text-emerald-600 rounded-lg">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 uppercase tracking-tight">Giáo dục & Đào tạo</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- Elearners -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-book-open text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Elearners K-12+</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">App học tiếng Anh Elearners K-12+</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Nền tảng học tiếng Anh toàn diện cho học sinh từ mầm non đến trung học và người đi làm.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://ilearners.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
 
-<div class="md:col-span-2 lg:col-span-3 card-base p-8 rounded-xl bg-ivs-card/50 border-dashed border-ivs-text-muted/30 text-center flex flex-col items-center justify-center">
-<h4 class="text-2xl font-bold text-ivs-primary mb-3">Bãn muồn Website của mà¬nh á»Ÿ đây?</h4>
-<p class="text-ivs-text-muted mb-6">Chúng tôi có thá»ƒ biáº¿n mọi à½ tưá»Ÿng giao diá»‡n thà nh hiá»‡n thực với Code-First.</p>
-<a class="px-8 py-3 text-lg font-bold text-white rounded-xl shadow-lg inline-block bg-ivs-primary hover:bg-ivs-secondary transition-colors" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡ ngay</a>
-</div>
-</div>
-</div>
-</section>
- 
-<section class="py-20 bg-ivs-card border-t border-ivs-dark" id="apps">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-4xl mx-auto mb-12">
-<h2 class="text-3xl sm:text-4xl font-bold text-ivs-secondary mb-2" data-lang-key="section_app_title_ivsapps">á»¨ng dụng &amp; Há»‡ thồng quản là½</h2>
-<p class="text-lg text-ivs-text-muted" data-lang-key="section_app_subtitle_ivsapps">Các giải pháp phần má»m hộ trá»£ đà o tão, quản là½ học viàªn và  quy trà¬nh vận hà nh cho doanh nghiá»‡p giáo dục.</p>
-</div>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-IVS English 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-secondary/10">
-<i class="fas fa-globe-americas text-ivs-secondary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_ivseng_title_ivsapps"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_ivseng_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://ivseng.netlify.app/" rel="noopener noreferrer" target="_blank">ivseng.netlify.app</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡</a>
-</div>
-</div>
-IVS Mandarin 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-secondary/10">
-<i class="fas fa-language text-ivs-secondary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_mandarin_title_ivsapps"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_mandarin_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://mandarinbyivs.netlify.app/" rel="noopener noreferrer" target="_blank">mandarinbyivs.netlify.app</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡</a>
-</div>
-</div>
-QLGX 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-secondary/10">
-<i class="fas fa-church text-ivs-secondary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_qlgx_title_ivsapps"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_qlgx_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://qlgx.netlify.app/" rel="noopener noreferrer" target="_blank">qlgx.netlify.app</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡</a>
-</div>
-</div>
-IVS Stay Smart 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-secondary/10">
-<i class="fas fa-home text-ivs-secondary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_staysmart_title_ivsapps"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_staysmart_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://ivs-staysmart.netlify.app/" rel="noopener noreferrer" target="_blank">ivs-staysmart.netlify.app</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡</a>
-</div>
-</div>
-StriveStreak 
-<div class="card-base p-6 rounded-xl border-t-4 border-ivs-dark hover:border-ivs-secondary flex flex-col justify-between">
-<div class="flex items-start">
-<div class="project-icon-container bg-ivs-secondary/10">
-<i class="fas fa-trophy text-ivs-secondary text-xl"></i>
-</div>
-<div class="ml-4 flex-grow">
-<h3 class="text-xl font-bold text-ivs-text-light mb-2" data-lang-key="app_strivestreak_title_ivsapps"></h3>
-<p class="text-sm text-ivs-text-muted mb-4" data-lang-key="app_strivestreak_desc_ivsapps"></p>
-</div>
-</div>
-<div>
-<a class="project-link text-ivs-secondary block text-sm mb-2" href="https://strivestreak.netlify.app/" rel="noopener noreferrer" target="_blank">strivestreak.netlify.app</a>
-<a class="w-full inline-block text-center py-2 text-sm font-semibold rounded-lg bg-ivs-secondary/20 text-ivs-secondary hover:bg-ivs-secondary hover:text-ivs-dark transition" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn"></a>
-</div>
-</div>
- 
-<div class="md:col-span-3 card-base p-8 rounded-xl bg-ivs-card/50 border-dashed border-ivs-text-muted/30 text-center flex flex-col items-center justify-center">
-<h4 class="text-2xl font-bold text-ivs-secondary mb-3">Bãn có à½ tưá»Ÿng cho á»¨ng dụng Quản là½ đá»™c quyền?</h4>
-<p class="text-ivs-text-muted mb-6">Chúng tôi chuyàªn biáº¿n các quy trà¬nh nghiá»‡p vụ phá»©c tãp thà nh giải pháp phần má»m tà¹y biáº¿n.</p>
-<a class="px-8 py-3 text-lg font-bold text-ivs-dark rounded-xl shadow-lg inline-block bg-ivs-secondary hover:bg-ivs-primary hover:text-white transition-colors" data-lang-key="button_contact_email" href="mailto:info@ivsacademy.edu.vn">Liàªn há»‡ ngay</a>
-</div>
-</div>
-</div>
-</section>
-</main>
-<div id="fab-container-placeholder"></div>
-<div id="assistant-placeholder"></div>
-<div id="footer-placeholder"></div>
-    <!-- Third party libraries -->
-    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Application scripts (deferred) -->
-    <script defer src="/js/utils.js"></script>
-    <script defer src="/js/language.js"></script>
-    <script defer src="/js/fabController.js"></script>
-    <script defer src="/js/app.js"></script>
-    <script defer src="/ai/js/loadComponents.js"></script>
+                <!-- TAMI -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-language text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">TAMI</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-2">Chào mừng bạn đến với TAMI!</p>
+                        <p class="text-slate-600 text-sm italic mb-2">"Thấu ngôn ngữ - Hiểu văn hóa - Vững tương lai"</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Ứng dụng học tập kết hợp văn hóa và ngôn ngữ chuyên sâu cho mọi trình độ.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://tami.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Testing Placement -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-vial-circle-check text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">IVS Testing Placement</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Đánh giá trình độ tiếng Anh chuyên nghiệp • Kết nối với ELearners.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://testingplacement.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- AIVY Testing Placement -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-spell-check text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">AIVY English Testing</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Nền tảng kiểm tra và đánh giá trình độ tiếng Anh đầu vào tích hợp trí tuệ nhân tạo Aivy.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://aivy-testing.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KinderLink -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col border-l-4 border-l-yellow-400">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-child-reaching text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">IVS KinderLink</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Hệ thống quản lý mầm non, kết nối tương tác giữa nhà trường và phụ huynh thời gian thực.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://ivskinderlink.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category: Lifestyle & Services -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6 border-l-4 border-purple-500 pl-4">
+                <div class="p-2 bg-purple-100 text-purple-600 rounded-lg">
+                    <i class="fa-solid fa-house-laptop text-xl"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 uppercase tracking-tight">Dịch vụ & Tiện ích</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- StaySmart -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-building-user text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">StaySmart</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">Nhà trọ IVS</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Nền tảng quản lý và tìm kiếm phòng trọ thông minh, tối ưu trải nghiệm cho người thuê và chủ nhà.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://homestayeasy.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ledger2gether -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-cyan-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-wallet text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Ledger2gether</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">Sổ chung</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Ứng dụng quản lý chi tiêu nhóm minh bạch, phù hợp cho gia đình hoặc hội nhóm chung phòng.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://ledger2gether.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vethoi -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-rose-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-car text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Vethoi</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">App demo book xe.</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Ứng dụng demo đặt xe trực tuyến, tối ưu hóa quá trình di chuyển và quản lý chuyến đi.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://vethoi.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Luv Yoga -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-teal-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-spa text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Luv Yoga</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">App cho trung tâm Yoga</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Hệ thống quản lý trung tâm Yoga, đặt lịch tập và theo dõi tiến trình của từng học viên.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://luv-yoga.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category: Health & Specialized -->
+        <section class="mb-12">
+            <div class="flex items-center gap-3 mb-6 border-l-4 border-rose-500 pl-4">
+                <div class="p-2 bg-rose-100 text-rose-600 rounded-lg">
+                    <i class="fa-solid fa-heart-pulse text-xl"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 uppercase tracking-tight">Sức khỏe & Chuyên dụng</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- Moonflow -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-violet-400 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-moon text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">MoonFlow</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">Theo dõi chu kỳ kinh nguyệt</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Trình theo dõi chu kỳ kinh nguyệt và sức khỏe phụ nữ thông minh, bảo mật và tinh tế.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://moonflow.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- NurseFlow -->
+                <div class="app-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-red-400 rounded-xl flex items-center justify-center text-white shadow-lg">
+                                <i class="fa-solid fa-user-nurse text-xl"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase tracking-wider border border-blue-100">SSO Ready</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">NurseFlow</h3>
+                        <p class="text-[12px] font-medium text-slate-500 mb-2">App cho sinh viên điều dưỡng</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">Công cụ hỗ trợ chuyên dụng quản lý công việc và học tập cho sinh viên ngành điều dưỡng.</p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100">
+                        <a href="https://nursefl0w.web.app/" target="_blank" class="text-blue-600 font-semibold text-sm flex items-center gap-2 hover:underline">
+                            Truy cập ứng dụng <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 border-t border-slate-200 text-center">
+        <p class="text-slate-500 text-sm">© 2024 IVS Ecosystem. All apps are SSO ready and part of the Micro-services architecture.</p>
+    </footer>
+
 </body>
 </html>
