@@ -5,6 +5,8 @@ with sync_playwright() as p:
     page = browser.new_page()
     # capture console output while page runs tests
     page.on('console', lambda msg: print('BROWSER-CONSOLE:', msg.text))
+    # log any failed network requests
+    page.on('requestfailed', lambda req: print('REQUEST FAILED:', req.url, req.failure))
     page.goto('http://localhost:8000/tests/test.html', wait_until='load')
     # allow JS to run
     # give Jasmine boot a little longer to run and render the reporter UI
