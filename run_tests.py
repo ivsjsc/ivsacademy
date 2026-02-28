@@ -11,8 +11,16 @@ def run_tests():
 
         try:
             page.goto("http://localhost:8000/tests/test.html")
-            # Wait for any of the common Jasmine reporter elements to appear
-            page.wait_for_selector(".jasmine-results, .jasmine_html-reporter, #HTMLReporter, .jasmine-specs", timeout=20000)
+            # Give the page a moment to load its scripts and reporters
+            try:
+                page.wait_for_selector(".jasmine-results, .jasmine_html-reporter, #HTMLReporter, .jasmine-specs", timeout=60000)
+            except Exception as wait_err:
+                print("Reporter element never appeared, dumping page content and console logs for debugging.")
+                html = page.content()
+                print("===== PAGE CONTENT START =====")
+                print(html)
+                print("===== PAGE CONTENT END =====")
+                raise wait_err
 
             # Check for failures
             failing_count = page.locator(".jasmine-failed").count()
