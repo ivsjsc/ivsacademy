@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Language System Test</title>
-    <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+    <link rel="stylesheet" href="/tests/jasmine.css" />
 </head>
 <body>
-    <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
-    <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
-    <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot.js"></script>
+    <script src="/tests/jasmine.js"></script>
+    <script src="/tests/jasmine-html.js"></script>
+    <!-- Boot order: load boot0 then boot1 to initialize jasmine globals -->
+    <script src="/tests/boot0.js"></script>
+    <script src="/tests/boot1.js"></script>
 
     <!-- Source file to be tested -->
     <script src="/js/language.js"></script>
