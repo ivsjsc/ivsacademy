@@ -396,56 +396,6 @@
                     });
                 });
 
-                // --- Swipe gestures for mobile menu open/close ---
-                (function(){
-                    let touchStartX = 0;
-                    let touchStartY = 0;
-                    let touchCurrentX = 0;
-                    let isSwiping = false;
-                    const threshold = 60; // px
-                    const restraint = 80; // max Y delta
-
-                    function onTouchStart(e) {
-                        if (!e.touches || e.touches.length !== 1) return;
-                        touchStartX = e.touches[0].clientX;
-                        touchStartY = e.touches[0].clientY;
-                        isSwiping = true;
-                    }
-
-                    function onTouchMove(e) {
-                        if (!isSwiping || !e.touches || e.touches.length !== 1) return;
-                        touchCurrentX = e.touches[0].clientX;
-                    }
-
-                    function onTouchEnd(e) {
-                        if (!isSwiping) return;
-                        const dx = touchCurrentX - touchStartX;
-                        const dy = (e.changedTouches && e.changedTouches[0]) ? Math.abs(e.changedTouches[0].clientY - touchStartY) : 0;
-                        isSwiping = false;
-                        // ignore mostly vertical swipes
-                        if (dy > restraint) return;
-
-                        const panel = document.getElementById('ivs-mobile-menu-panel');
-                        const container = document.getElementById('ivs-mobile-menu-container');
-                        if (!panel || !container) return;
-
-                        if (dx > threshold) {
-                            // swipe right -> open menu
-                            panel.classList.remove('hidden');
-                            setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); }, 10);
-                        } else if (dx < -threshold) {
-                            // swipe left -> close menu
-                            panel.classList.add('opacity-0');
-                            container.classList.add('-translate-x-full');
-                            setTimeout(function(){ panel.classList.add('hidden'); }, 300);
-                        }
-                    }
-
-                    addOnce(document, 'touchstart', onTouchStart);
-                    addOnce(document, 'touchmove', onTouchMove);
-                    addOnce(document, 'touchend', onTouchEnd);
-                })();
-
             })();
             </script>
 <div class="relative ml-4 hidden md:block" id="desktop-lang-container">
