@@ -34,6 +34,101 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
     const ttsIcon = document.getElementById('tts-icon');
     const ttsText = document.getElementById('tts-text');
 
+    function escapeHtml(text) {
+        return String(text ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function stripHtml(text) {
+        return String(text ?? '').replace(/<[^>]*>/g, ' ');
+    }
+
+    function getChapterBaseData(chapterData) {
+        const rawTitle = chapterData?.[`title_${lang}`]
+            || chapterData?.title
+            || chapterData?.title_vi
+            || chapterData?.title_en
+            || '';
+        const rawContent = chapterData?.[`content_${lang}`]
+            || chapterData?.content
+            || chapterData?.content_vi
+            || chapterData?.content_en
+            || '';
+
+        return {
+            rawTitle: String(rawTitle).trim(),
+            rawContent: String(rawContent).trim(),
+        };
+    }
+
+    function parseChapterData(chapterData, fallbackChapterId = '') {
+        const { rawTitle, rawContent } = getChapterBaseData(chapterData);
+        const fallbackLabel = fallbackChapterId && fallbackChapterId.startsWith('chapter-')
+            ? `${lang === 'vi' ? 'Chương' : 'Chapter'} ${fallbackChapterId.split('-')[1]}`
+            : (lang === 'vi' ? 'Chương truyện' : 'Story chapter');
+
+        const containsHtml = /<[^>]+>/.test(rawContent);
+        if (containsHtml) {
+            const safeTitle = rawTitle || fallbackLabel;
+            return {
+                label: fallbackLabel,
+                title: safeTitle,
+                listTitle: `${fallbackLabel} - ${safeTitle}`,
+                bodyText: stripHtml(rawContent).replace(/\s+/g, ' ').trim(),
+                bodyHtml: rawContent,
+            };
+        }
+
+        const lines = rawContent
+            .replace(/\r\n/g, '\n')
+            .split('\n')
+            .map(line => line.trim())
+            .filter(Boolean);
+
+        let label = fallbackLabel;
+        let title = rawTitle || '';
+        let note = '';
+        let bodyLines = [...lines];
+
+        if (lines.length > 0 && /^(chương|chapter)\s+\d+/i.test(lines[0])) {
+            label = lines[0];
+            bodyLines = lines.slice(1);
+        }
+
+        if (!title && bodyLines.length > 0) {
+            title = bodyLines[0];
+            bodyLines = bodyLines.slice(1);
+        }
+
+        if (bodyLines[0] && /^\[[^\]]+\]$/.test(bodyLines[0])) {
+            note = bodyLines[0];
+            bodyLines = bodyLines.slice(1);
+        }
+
+        if (title && bodyLines[0] && bodyLines[0].toLowerCase() === title.toLowerCase()) {
+            bodyLines = bodyLines.slice(1);
+        }
+
+        const finalTitle = title || fallbackLabel;
+        const bodyText = bodyLines.join('\n\n').trim();
+        const bodyHtml = bodyLines.length
+            ? bodyLines.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')
+            : `<p class="text-gray-500 dark:text-gray-400">${lang === 'vi' ? 'Chưa có nội dung chương.' : 'No chapter content available.'}</p>`;
+
+        return {
+            label,
+            title: finalTitle,
+            note,
+            listTitle: `${label} - ${finalTitle}`,
+            bodyText,
+            bodyHtml,
+        };
+    }
+
     // Khởi tạo Speech Synthesis API nếu được hỗ trợ
     if (speechSupported) {
         synth = window.speechSynthesis;
@@ -154,9 +249,8 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
                 const response = await fetch(path);
                 if (response.ok) {
                     const data = await response.json();
-                    // Ưu tiên title_vi/title_en, fallback về title
-                    let title = data[`title_${lang}`] || data[`title_en`] || data[`title_vi`] || data['title'] || (lang === 'vi' ? 'Chưa có tiêu đề' : 'No title');
-                    modalLink.textContent = title;
+                    const parsed = parseChapterData(data, chapterId);
+                    modalLink.textContent = parsed.listTitle;
                 } else {
                     console.error(`Error loading title (404) for ${path}`);
                 }
@@ -202,7 +296,7 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
     }
 
     // 4. Hàm hiển thị nội dung chương
-    function renderChapter(chapterData) {
+    function renderChapter(chapterData, chapterId = '') {
         if (!chapterData) {
             dynamicContent.innerHTML = '<p class="text-red-500 dark:text-red-400">Không thể hiển thị nội dung chương.</p>';
             return;
@@ -210,23 +304,22 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
 
         // Lưu trữ dữ liệu chương hiện tại cho TTS
         currentChapterData = chapterData;
-
-        // Ưu tiên title_vi/title_en, fallback về title
-        const title = chapterData[`title_${lang}`] || chapterData.title_en || chapterData.title_vi || chapterData.title || (lang === 'vi' ? 'Chưa có tiêu đề' : 'No title');
-        // Ưu tiên content_vi/content_en, fallback về content
-        let content = chapterData[`content_${lang}`] || chapterData.content_en || chapterData.content_vi || chapterData.content;
-        if (!content) {
-            content = `<p class="text-red-500">${lang === 'vi' ? 'Không có nội dung chương.' : 'No chapter content.'}</p>`;
-        }
+        const parsed = parseChapterData(chapterData, chapterId || chapterIds[currentChapterIndex]);
         const partNumber = storyPath.includes('part1') ? '1' : '2';
         const contentHtml = `
-            <h3 class="text-2xl sm:text-3xl font-serif font-bold mb-4 text-gray-900 dark:text-white">${title}</h3>
-            <div class="prose dark:prose-invert">
-                ${content}
-            </div>
+            <article class="chapter-article">
+                <header class="chapter-header mb-8 border-b border-slate-200 pb-6 dark:border-slate-700">
+                    <p class="chapter-label text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] text-sky-700 dark:text-sky-300">${escapeHtml(parsed.label)}</p>
+                    <h2 class="chapter-title mt-3 text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-white">${escapeHtml(parsed.title)}</h2>
+                    ${parsed.note ? `<p class="chapter-note mt-3 text-sm italic text-slate-500 dark:text-slate-400">${escapeHtml(parsed.note)}</p>` : ''}
+                </header>
+                <div class="prose chapter-body dark:prose-invert">
+                    ${parsed.bodyHtml}
+                </div>
+            </article>
         `;
         dynamicContent.innerHTML = contentHtml;
-        document.title = `${title} - LEGNAXE Part ${partNumber}`;
+        document.title = `${parsed.title} - LEGNAXE Part ${partNumber}`;
         const mainElement = document.querySelector('main');
         const headerOffset = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 80;
         window.scrollTo({ top: mainElement.offsetTop - headerOffset, behavior: 'smooth' });
@@ -283,13 +376,9 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
             }
 
             // 2. Lấy nội dung
-            const title = currentChapterData[`title_${lang}`] || currentChapterData.title_en || 'Chapter Title';
-            const content = currentChapterData[`content_${lang}`] || currentChapterData.content_en || '';
-            
-            // Xóa thẻ HTML khỏi nội dung để giọng đọc không bị gián đoạn
-            const plainContent = content.replace(/<[^>]*>/g, ' ').replace(/\s{2,}/g, ' ').trim();
-            
-            const textToSpeak = `${title}. ${plainContent}`;
+            const parsed = parseChapterData(currentChapterData, chapterIds[currentChapterIndex]);
+            const plainContent = parsed.bodyText.replace(/\s{2,}/g, ' ').trim();
+            const textToSpeak = `${parsed.label}. ${parsed.title}. ${plainContent}`;
 
             // 3. Tạo Utterance
             currentUtterance = new SpeechSynthesisUtterance(textToSpeak);
@@ -336,10 +425,10 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
         
         const chapterData = await fetchChapterContent(chapterId);
         if (chapterData) {
-            renderChapter(chapterData);
+            currentChapterIndex = chapterIds.indexOf(chapterId);
+            renderChapter(chapterData, chapterId);
             
             // Cập nhật chỉ số chương hiện tại và trạng thái nút
-            currentChapterIndex = chapterIds.indexOf(chapterId);
             updateNavigationButtons();
             
             // Cập nhật URL hash

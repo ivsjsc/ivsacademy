@@ -43,15 +43,17 @@
     <style>
         html { scroll-behavior: smooth; }
         
-        /* Gradient Background for the entire page (Mobile First) */
+        /* Reading atmosphere */
         body {
-            /* Light Mode Gradient: Tinh tế từ trắng ngà sang xám nhạt */
-            background: linear-gradient(180deg, #F9FAFB 0%, #E5E7EB 100%);
+            background:
+                radial-gradient(circle at top, rgba(125, 211, 252, 0.18), transparent 32%),
+                linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
             background-attachment: fixed;
         }
-        /* Dark Mode Gradient: Chuyển từ đen than sang xám đậm */
         .dark body {
-            background: linear-gradient(180deg, #111827 0%, #1F2937 100%);
+            background:
+                radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 30%),
+                linear-gradient(180deg, #020617 0%, #0f172a 100%);
         }
 
         /* Scrollbar Styling (Dark Mode) */
@@ -60,12 +62,49 @@
         .dark ::-webkit-scrollbar-thumb { background-color: #4b5563; border-radius: 20px; border: 2px solid #111827; }
         .dark ::-webkit-scrollbar-thumb:hover { background-color: #6b7280; }
         
-        /* Typography for reading experience */
-        .prose h3 { font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; margin-top: 2rem; color: #111827; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.75rem; }
-        .dark .prose h3 { color: #ffffff; border-bottom-color: #374151; }
-        .prose p { margin-bottom: 1.5rem; line-height: 1.8; text-align: justify; }
-        .prose { max-width: none; font-family: 'Merriweather', serif; font-size: 1.1rem; }
-        .dark .prose { color: #ffffff; }
+        .story-content-wrapper {
+            max-width: 54rem;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.10);
+            backdrop-filter: blur(16px);
+        }
+        .dark .story-content-wrapper {
+            background: rgba(15, 23, 42, 0.78);
+            border-color: rgba(148, 163, 184, 0.14);
+            box-shadow: 0 25px 60px rgba(2, 6, 23, 0.45);
+        }
+        .reader-toolbar {
+            max-width: 54rem;
+            margin: 0 auto 1.25rem;
+            position: sticky;
+            top: 5rem;
+            z-index: 20;
+            backdrop-filter: blur(14px);
+        }
+        .chapter-body {
+            max-width: none;
+            font-family: 'Merriweather', serif;
+            font-size: 1.08rem;
+            color: #0f172a;
+        }
+        .dark .chapter-body { color: #f8fafc; }
+        .chapter-body p {
+            margin-bottom: 1.35rem;
+            line-height: 2;
+            text-align: justify;
+            text-wrap: pretty;
+        }
+        .chapter-title { text-wrap: balance; }
+        .progress-shell {
+            max-width: 54rem;
+            margin: 0 auto 1.5rem;
+            padding: 0.25rem;
+            border-radius: 9999px;
+            background: rgba(255,255,255,0.55);
+        }
+        .dark .progress-shell { background: rgba(15,23,42,0.7); }
 
         /* Modal Transitions */
         #chapter-modal { transition: opacity 0.3s ease-in-out; }
@@ -84,10 +123,12 @@
         <img src="../images/legnaxe1horizontal.jpg" alt="LEGNAXE Part 1 Banner" class="mb-8 rounded-xl shadow-2xl w-full max-h-[300px] sm:max-h-[400px] object-cover border border-gray-200 dark:border-gray-700" 
              onerror="this.onerror=null; this.src='https://placehold.co/1200x400/374151/ffffff?text=LEGNAXE+Phần+1+Banner';">
 
-        <div class="progress-bar h-1 bg-blue-600 dark:bg-blue-400 mb-6 rounded-full" style="width: 0%"></div>
+        <div class="progress-shell">
+            <div class="progress-bar h-1.5 bg-blue-600 dark:bg-blue-400 rounded-full" style="width: 0%"></div>
+        </div>
 
         <!-- Cập nhật Font Size Controls để tích hợp TTS Button (Mobile-First) -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-6 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-inner">
+        <div class="reader-toolbar flex flex-col sm:flex-row items-center justify-between gap-3 p-3 bg-white/80 dark:bg-slate-900/75 rounded-2xl shadow-lg border border-slate-200/70 dark:border-slate-700/60">
             <!-- 1. Font Size Controls Group -->
             <div class="flex space-x-4">
                 <button id="decrease-font-btn" class="text-sm bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-1.5 px-3 rounded-full focus:outline-none focus:ring-2 focus:ring-primary" data-lang-key="font_size_decrease">A-</button>
@@ -102,7 +143,7 @@
             </button>
         </div>
 
-        <div class="story-content-wrapper bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-2xl transition-colors duration-300 ease-in-out">
+        <div class="story-content-wrapper p-6 sm:p-10 rounded-[1.75rem] transition-colors duration-300 ease-in-out">
             <!-- Dynamic Chapter Content Area -->
             <div id="dynamic-chapter-content">
                 <p class="text-center text-gray-500 dark:text-gray-400">Đang tải chương truyện...</p>

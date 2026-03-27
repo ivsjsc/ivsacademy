@@ -1,6 +1,11 @@
 import os
 import json
 import docx
+import re
+import sys
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 # Đường dẫn file docx và thư mục chương
 DOCX_PATH = 'LEGNAXE.docx'
@@ -13,19 +18,36 @@ FILES_TO_DELETE = [
 
 def update_folder_with_docx(docx_path, folder_path):
     doc = docx.Document(docx_path)
-    full_text = [para.text for para in doc.paragraphs]
-    content = '\n'.join(full_text)
-    chapters = content.split('Chương ')
-    intro = chapters[0]  # Phần mở đầu (nếu có)
+    lines = [para.text.strip() for para in doc.paragraphs]
+    chapter_heading_pattern = re.compile(r'^Chương\s+(\d+)\s*$')
+    chapters = []
+    current_chapter_number = None
+    current_lines = []
+
+    for line in lines:
+        heading_match = chapter_heading_pattern.match(line)
+        if heading_match:
+            if current_chapter_number is not None:
+                chapters.append((current_chapter_number, current_lines))
+            current_chapter_number = int(heading_match.group(1))
+            current_lines = [line]
+            continue
+
+        if current_chapter_number is not None:
+            current_lines.append(line)
+
+    if current_chapter_number is not None:
+        chapters.append((current_chapter_number, current_lines))
+
     # Đảm bảo thư mục tồn tại
     os.makedirs(folder_path, exist_ok=True)
-    for i in range(1, len(chapters)):
-        chapter_content = 'Chương ' + chapters[i]
-        filename = f"chapter_{i:02d}.json"
+    for chapter_number, chapter_lines in chapters:
+        chapter_content = '\n'.join(line for line in chapter_lines if line != '').strip()
+        filename = f"chapter_{chapter_number:02d}.json"
         filepath = os.path.join(folder_path, filename)
         data = {
-            "chapter_number": i,
-            "content": chapter_content.strip()
+            "chapter_number": chapter_number,
+            "content": chapter_content
         }
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
