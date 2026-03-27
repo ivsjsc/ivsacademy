@@ -19,6 +19,7 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
     let currentUtterance = null;
     let currentChapterData = null;
     let vietnameseVoice = null; // Biến lưu giọng đọc tiếng Việt được chọn
+    let englishVoice = null;
     const speechSupported = 'speechSynthesis' in window;
     
     // Lấy các phần tử DOM cần thiết
@@ -172,17 +173,27 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
 
     function parseChapterData(chapterData, fallbackChapterId = '') {
         const { rawTitle, rawContent } = getChapterBaseData(chapterData);
+        const normalizedChapterId = chapterData?.chapter_id
+            || (fallbackChapterId ? fallbackChapterId.replace('chapter-', 'chapter_') : '');
         const fallbackLabel = fallbackChapterId && fallbackChapterId.startsWith('chapter-')
             ? `${lang === 'vi' ? 'Chương' : 'Chapter'} ${fallbackChapterId.split('-')[1]}`
             : (lang === 'vi' ? 'Chương truyện' : 'Story chapter');
+        const initialNormalizedTitle = splitDisplayTitle(rawTitle || fallbackLabel, fallbackLabel);
 
         const containsHtml = /<[^>]+>/.test(rawContent);
         if (containsHtml) {
-            const safeTitle = rawTitle || fallbackLabel;
+            const introSource = stripHtml(rawContent)
+                .split(/\n+/)
+                .map(line => line.trim())
+                .filter(Boolean);
+            const chapterNumber = getChapterNumberFromId(fallbackChapterId);
             return {
+                chapterId: normalizedChapterId,
                 label: fallbackLabel,
-                title: safeTitle,
-                listTitle: `${fallbackLabel} - ${safeTitle}`,
+                title: initialNormalizedTitle.displayTitle,
+                fullTitle: initialNormalizedTitle.fullTitle,
+                intro: buildChapterIntro(chapterNumber, introSource),
+                listTitle: initialNormalizedTitle.listTitle,
                 bodyText: stripHtml(rawContent).replace(/\s+/g, ' ').trim(),
                 bodyHtml: rawContent,
             };
@@ -226,6 +237,7 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
             : `<p class="text-gray-500 dark:text-gray-400">${lang === 'vi' ? 'Chưa có nội dung chương.' : 'No chapter content available.'}</p>`;
 
         return {
+            chapterId: normalizedChapterId,
             label,
             title: normalizedTitle.displayTitle,
             fullTitle: normalizedTitle.fullTitle,
@@ -242,40 +254,60 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
         // Bắt đầu quá trình tìm kiếm giọng đọc tốt nhất
         // Phải đảm bảo voices đã tải xong (sử dụng sự kiện onvoiceschanged)
         if (synth.onvoiceschanged !== undefined) {
-            synth.onvoiceschanged = setVietnameseVoice;
+            synth.onvoiceschanged = setPreferredVoices;
         }
-        setVietnameseVoice(); // Gọi lần đầu, phòng trường hợp voices đã tải sẵn
+        setPreferredVoices();
     }
 
     /**
-     * Tìm và thiết lập giọng đọc tiếng Việt tốt nhất (ưu tiên Google/Microsoft).
+     * Tìm và thiết lập giọng đọc tốt nhất cho tiếng Việt và tiếng Anh.
      */
-    function setVietnameseVoice() {
+    function setPreferredVoices() {
         if (!synth) return;
         
         const voices = synth.getVoices();
-        
-        // 1. Giọng ưu tiên (thường là giọng máy chủ của Google/Microsoft)
-        const preferredVoices = [
-            "Google Vietnamese", // Giọng phổ biến và hay của Google Chrome
-            "Microsoft An",      // Giọng của Microsoft Edge
-            "Microsoft Hoai"     // Giọng của Microsoft Edge
+
+        const preferredVietnameseVoices = [
+            'Microsoft An Online (Natural)',
+            'Microsoft HoaiMy Online (Natural)',
+            'Microsoft NamMinh Online (Natural)',
+            'Google Vietnamese',
+            'Microsoft An',
+            'Microsoft Hoai',
         ];
-        
-        // 2. Tìm kiếm giọng phù hợp
-        vietnameseVoice = voices.find(voice => 
-            voice.lang === 'vi-VN' && preferredVoices.some(name => voice.name.includes(name))
+
+        vietnameseVoice = voices.find((voice) =>
+            voice.lang === 'vi-VN' && preferredVietnameseVoices.some((name) => voice.name.includes(name))
         );
-        
-        // 3. Nếu không tìm thấy giọng ưu tiên, chọn giọng vi-VN đầu tiên
         if (!vietnameseVoice) {
-            vietnameseVoice = voices.find(voice => voice.lang === 'vi-VN');
+            vietnameseVoice = voices.find((voice) => voice.lang === 'vi-VN');
+        }
+
+        const preferredEnglishVoices = [
+            'Microsoft Aria Online (Natural)',
+            'Microsoft Guy Online (Natural)',
+            'Microsoft Jenny Online (Natural)',
+            'Google US English',
+            'Microsoft Aria',
+            'Microsoft Guy',
+            'Microsoft Jenny',
+        ];
+
+        englishVoice = voices.find((voice) =>
+            voice.lang.startsWith('en-') && preferredEnglishVoices.some((name) => voice.name.includes(name))
+        );
+        if (!englishVoice) {
+            englishVoice = voices.find((voice) => voice.lang.startsWith('en-'));
         }
 
         if (vietnameseVoice) {
-            console.log("Đã chọn giọng đọc Tiếng Việt:", vietnameseVoice.name);
+            console.log('Đã chọn giọng đọc Tiếng Việt:', vietnameseVoice.name);
         } else {
-            console.warn("Không tìm thấy giọng đọc Tiếng Việt cụ thể. Sẽ sử dụng giọng mặc định.");
+            console.warn('Không tìm thấy giọng đọc Tiếng Việt cụ thể. Sẽ sử dụng giọng mặc định.');
+        }
+
+        if (englishVoice) {
+            console.log('Selected English voice:', englishVoice.name);
         }
     }
 
@@ -429,7 +461,8 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
             </article>
         `;
         dynamicContent.innerHTML = contentHtml;
-        document.title = `${parsed.fullTitle} - LEGNAXE Part ${partNumber}`;
+        const titlePrefix = parsed.chapterId || chapterId || '';
+        document.title = `${titlePrefix ? `${titlePrefix} · ` : ''}${parsed.fullTitle} - LEGNAXE Part ${partNumber}`;
         const mainElement = document.querySelector('main');
         const headerOffset = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 80;
         window.scrollTo({ top: mainElement.offsetTop - headerOffset, behavior: 'smooth' });
@@ -504,8 +537,8 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
             // Gán giọng đọc tiếng Việt đã tìm thấy (nếu có)
             if (lang === 'vi' && vietnameseVoice) {
                 currentUtterance.voice = vietnameseVoice;
-            } else if (lang === 'en') {
-                // Tùy chọn: Chọn giọng English cụ thể nếu cần, tạm thời để API tự chọn giọng EN
+            } else if (lang === 'en' && englishVoice) {
+                currentUtterance.voice = englishVoice;
             }
 
 
@@ -647,12 +680,19 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
     
     // Gắn sự kiện cho các liên kết trong modal (sử dụng delegation)
     modalList.addEventListener('click', (event) => {
-        if (event.target.tagName === 'A' && event.target.classList.contains('modal-chapter-link')) {
-            event.preventDefault();
-            const chapterId = event.target.dataset.chapterId;
-            navigateToChapter(chapterId);
-            closeModal();
+        const link = event.target.closest('a.modal-chapter-link');
+        if (!link || !modalList.contains(link)) {
+            return;
         }
+
+        event.preventDefault();
+        const chapterId = link.dataset.chapterId;
+        if (!chapterId) {
+            return;
+        }
+
+        navigateToChapter(chapterId);
+        closeModal();
     });
     
     // Khởi tạo và tải chương ban đầu

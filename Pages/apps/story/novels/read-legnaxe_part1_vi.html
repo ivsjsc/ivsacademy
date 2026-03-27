@@ -108,7 +108,7 @@
         .mobile-reader-nav {
             position: fixed;
             left: 1rem;
-            right: 5.5rem;
+            right: 6.75rem;
             bottom: 1rem;
             z-index: 45;
             display: grid;
@@ -120,6 +120,16 @@
             background: rgba(15, 23, 42, 0.86);
             box-shadow: 0 18px 40px rgba(2, 6, 23, 0.35);
             backdrop-filter: blur(18px);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(18px) scale(0.96);
+            transform-origin: bottom right;
+            transition: opacity 0.28s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .mobile-reader-nav.is-open {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
         }
         .mobile-reader-nav button {
             width: 100%;
@@ -140,6 +150,19 @@
         .mobile-reader-nav button:disabled {
             opacity: 0.55;
             cursor: not-allowed;
+        }
+        .mobile-nav-toggle {
+            position: fixed;
+            right: 1rem;
+            bottom: 5.5rem;
+            z-index: 69;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            color: #fff;
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 16px 32px rgba(2, 6, 23, 0.36);
+            backdrop-filter: blur(14px);
         }
 
         /* Modal Transitions */
@@ -163,16 +186,7 @@
             <div class="progress-bar h-1.5 bg-blue-600 dark:bg-blue-400 rounded-full" style="width: 0%"></div>
         </div>
 
-        <!-- Cập nhật Font Size Controls để tích hợp TTS Button (Mobile-First) -->
-        <div class="reader-toolbar flex flex-col sm:flex-row items-center justify-between gap-3 p-3 bg-white/80 dark:bg-slate-900/75 rounded-2xl shadow-lg border border-slate-200/70 dark:border-slate-700/60">
-            <!-- 1. Font Size Controls Group -->
-            <div class="flex space-x-4">
-                <button id="decrease-font-btn" class="text-sm bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-1.5 px-3 rounded-full focus:outline-none focus:ring-2 focus:ring-primary" data-lang-key="font_size_decrease">A-</button>
-                <button id="reset-font-btn" class="text-base bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-1.5 px-3 rounded-full focus:outline-none focus:ring-2 focus:ring-primary" data-lang-key="font_size_reset">Đặt lại</button>
-                <button id="increase-font-btn" class="text-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 py-1.5 px-3 rounded-full focus:outline-none focus:ring-2 focus:ring-primary" data-lang-key="font_size_increase">A+</button>
-            </div>
-            
-            <!-- 2. TTS Button (Play/Pause) -->
+        <div class="reader-toolbar flex items-center justify-center p-3 bg-white/80 dark:bg-slate-900/75 rounded-2xl shadow-lg border border-slate-200/70 dark:border-slate-700/60">
             <button id="tts-toggle-btn" class="w-full sm:w-auto px-4 py-2 rounded-xl font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out flex items-center justify-center dark:bg-indigo-700 dark:hover:bg-indigo-800" title="Đọc văn bản">
                 <i id="tts-icon" class="fas fa-play mr-2"></i>
                 <span id="tts-text">Nghe truyện</span>
@@ -210,7 +224,7 @@
         </div>
     </div>
    
-    <div class="mobile-reader-nav sm:hidden">
+    <div id="mobile-reader-nav" class="mobile-reader-nav sm:hidden">
         <button id="mobile-list-chapter-btn" type="button" class="flex flex-col items-center justify-center text-center">
             <i class="fas fa-list-ul text-sm"></i>
             <span class="mobile-nav-label">Chapter List</span>
@@ -225,7 +239,11 @@
         </button>
     </div>
 
-    <button id="scroll-to-top-btn" title="Lên đầu trang" class="hidden fixed bottom-5 right-4 sm:right-5 sm:bottom-5 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 z-50 transition-opacity duration-300 ease-in-out">
+    <button id="mobile-nav-toggle" type="button" class="mobile-nav-toggle sm:hidden flex items-center justify-center" aria-expanded="false" aria-controls="mobile-reader-nav" title="Mở điều hướng chương">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <button id="scroll-to-top-btn" title="Lên đầu trang" class="hidden fixed bottom-5 right-4 sm:right-5 sm:bottom-5 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 z-[70] transition-opacity duration-300 ease-in-out">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -250,7 +268,7 @@
                 initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, lang);
             }
             
-            // --- UI LOGIC (Theme and Font Size) ---
+            // --- UI LOGIC ---
             const themeToggle = document.getElementById('theme-toggle');
             const htmlElement = document.documentElement;
             const themeIcon = themeToggle?.querySelector('i');
@@ -274,38 +292,38 @@
                 applyTheme(currentIsDarkMode);
             });
             
-            const decreaseFontBtn = document.getElementById('decrease-font-btn');
-            const resetFontBtn = document.getElementById('reset-font-btn');
-            const increaseFontBtn = document.getElementById('increase-font-btn');
-            const storyContentWrapper = document.querySelector('.story-content-wrapper');
-
-            const fontSizeLevels = [0.9, 1.0, 1.1, 1.2]; 
-            let currentFontLevel = 1; 
-
-            function updateFontSize(level) {
-                storyContentWrapper.style.fontSize = `${fontSizeLevels[level]}rem`;
-                currentFontLevel = level;
-                decreaseFontBtn.disabled = currentFontLevel === 0;
-                increaseFontBtn.disabled = currentFontLevel === fontSizeLevels.length - 1;
-                localStorage.setItem('novelFontSizeLevel', currentFontLevel);
-            }
-
-            const savedLevel = localStorage.getItem('novelFontSizeLevel');
-            if (savedLevel !== null) {
-                currentFontLevel = parseInt(savedLevel);
-            }
-            updateFontSize(currentFontLevel);
-
-            decreaseFontBtn?.addEventListener('click', () => {
-                if (currentFontLevel > 0) updateFontSize(currentFontLevel - 1);
-            });
-            resetFontBtn?.addEventListener('click', () => updateFontSize(1));
-            increaseFontBtn?.addEventListener('click', () => {
-                if (currentFontLevel < fontSizeLevels.length - 1) updateFontSize(currentFontLevel + 1);
-            });
-            
             // Scroll to top logic
             const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+            const mobileReaderNav = document.getElementById('mobile-reader-nav');
+            const mobileListChapterBtn = document.getElementById('mobile-list-chapter-btn');
+            const mobilePrevChapterBtn = document.getElementById('mobile-prev-chapter-btn');
+            const mobileNextChapterBtn = document.getElementById('mobile-next-chapter-btn');
+
+            function setMobileNavOpen(isOpen) {
+                if (!mobileNavToggle || !mobileReaderNav) return;
+                mobileReaderNav.classList.toggle('is-open', isOpen);
+                mobileNavToggle.setAttribute('aria-expanded', String(isOpen));
+                mobileNavToggle.innerHTML = `<i class="fas ${isOpen ? 'fa-times' : 'fa-bars'}"></i>`;
+            }
+
+            mobileNavToggle?.addEventListener('click', () => {
+                setMobileNavOpen(!mobileReaderNav.classList.contains('is-open'));
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!mobileNavToggle || !mobileReaderNav) return;
+                if (!mobileReaderNav.classList.contains('is-open')) return;
+                if (mobileReaderNav.contains(event.target) || mobileNavToggle.contains(event.target)) return;
+                setMobileNavOpen(false);
+            });
+
+            [mobileListChapterBtn, mobilePrevChapterBtn, mobileNextChapterBtn].filter(Boolean).forEach((button) => {
+                button.addEventListener('click', () => {
+                    setMobileNavOpen(false);
+                });
+            });
+
             scrollToTopBtn?.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
