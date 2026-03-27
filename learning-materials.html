@@ -79,7 +79,7 @@
                         </div>
                         <h3 class="text-xl font-bold mb-2">Nền Tảng Học Tập</h3>
                         <p class="text-ivs-text-secondary mb-4">Các ứng dụng tương tác và nền tảng học tập trực tuyến</p>
-                        <span class="text-sm text-ivs-blue font-semibold">3 Ứng dụng khả dụng</span>
+                        <span class="text-sm text-ivs-blue font-semibold">4 Ứng dụng khả dụng</span>
                     </div>
 
                     <!-- Learning Tools -->
@@ -105,88 +105,153 @@
             </div>
         </section>
 
-        <!-- Course Categories / Ứng dụng tích hợp (Đã thay đổi) -->
-        <section class="py-16 bg-ivs-card">
+        <!-- IVS Digital Ecosystem -->
+        <section class="py-16 bg-ivs-card" id="digital-ecosystem">
             <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">
-                        <i class="fas fa-cubes text-ivs-orange mr-2"></i> <span class="text-white">Khám Phá Chương Trình Học Tập (ENGLISH Learners App)</span>
-                    </h2>
-                    <p class="text-xl text-ivs-text-secondary max-w-2xl mx-auto">
-                        Trải nghiệm ENGLISH Learners (<a href="https://ivseng.web.app" target="_blank" rel="noopener noreferrer">https://ivseng.web.app</a>) được nhúng trực tiếp vào website.
-                    </p>
-                </div>
-                
-                <!-- Khu vực nhúng Ứng dụng Curriculum bằng Iframe -->
-                <div class="w-full bg-ivs-bg rounded-xl shadow-2xl overflow-hidden border-4 border-ivs-orange" data-aos="fade-up" data-aos-delay="200">
-                    <div class="p-4 bg-gray-900 text-white font-semibold flex justify-between items-center">
-                        <span>IVS Curriculum App - Tương Tác Trực Tiếp</span>
-                        <i class="fas fa-globe"></i>
+                <div class="bg-ivs-bg rounded-3xl border border-ivs-border p-8 md:p-10 shadow-2xl" data-aos="fade-up">
+                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+                        <div>
+                            <p class="text-sm uppercase tracking-[0.25em] text-ivs-orange font-bold mb-3">Proprietary Technology Stack</p>
+                            <h2 class="text-3xl md:text-4xl font-bold font-display text-white flex items-center gap-3">
+                                <img src="images/logo/logo.png" alt="IVS Logo" class="w-10 h-10 md:w-12 md:h-12 object-contain hidden sm:block" onerror="this.src='https://placehold.co/80x80/9D4ED8/FFFFFF?text=IVS'" />
+                                <span>IVS Digital Ecosystem</span>
+                            </h2>
+                        </div>
+                        <p class="text-lg text-ivs-text-secondary max-w-3xl">
+                            Designed specifically for language centers, our ecosystem covers every aspect of operations, assessment, and learning.
+                        </p>
                     </div>
-                    
-                    <!-- Khung Iframe chính: w-full đảm bảo Responsive -->
-                    <iframe
-                        src="https://ivseng.web.app"
-                        title="IVS Curriculum Application Embedded"
-                        class="w-full"
-                        style="height: 1000px; min-height: 85vh; border: none; background-color: #f0f0f0; overflow: auto;"
-                        loading="lazy"
-                        allow="fullscreen"
-                    ></iframe>
+
+                    <div class="space-y-10">
+                        <div class="rounded-[2rem] bg-gradient-to-br from-white to-slate-50 text-slate-900 p-8 md:p-10 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="50">
+                            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                                <div>
+                                    <span class="text-[10px] font-black text-orange-500 uppercase tracking-[0.25em]">Platform #1</span>
+                                    <h3 class="text-3xl font-black text-slate-900 uppercase flex items-center gap-3 mt-2 mb-5">
+                                        <img src="images/logo/logo-ivs.png" alt="IVS Logo" class="w-8 h-8 object-contain" onerror="this.src='https://placehold.co/40x40/ffffff/9D4ED8?text=IVS'" />
+                                        <span>CenterCare</span>
+                                    </h3>
+                                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">A comprehensive management platform that synchronizes students, class schedules, tuition fees, and real-time operational reporting.</p>
+                                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-orange-500"></i><span>Tuition Management</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-orange-500"></i><span>Digital Attendance</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-orange-500"></i><span>Parent App Sync</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-orange-500"></i><span>Smart Scheduling</span></div>
+                                    </div>
+                                    <a href="https://ivscentercare.web.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-ivs-orange text-white px-8 py-3 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-orange-600 transition-all shadow-lg">
+                                        <span>Explore Details</span>
+                                        <i class="fas fa-arrow-up-right-from-square"></i>
+                                    </a>
+                                </div>
+                                <div class="hidden lg:flex items-center justify-center">
+                                    <div class="w-full aspect-video rounded-[2rem] bg-white border-4 border-slate-100 shadow-2xl p-8 flex items-center justify-center">
+                                        <img src="images/logo/logo-centercare.png" alt="CenterCare Large" class="max-w-full max-h-full object-contain" onerror="this.src='images/logo/logo.png'" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-[2rem] bg-gradient-to-br from-white to-slate-50 text-slate-900 p-8 md:p-10 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                                <div class="order-2 lg:order-1 hidden lg:flex items-center justify-center">
+                                    <div class="w-full aspect-video rounded-[2rem] bg-white border-4 border-slate-100 shadow-2xl p-8 flex items-center justify-center">
+                                        <img src="images/logo/logo-examia.png" alt="Examia Large" class="max-w-full max-h-full object-contain" onerror="this.src='images/logo/logo.png'" />
+                                    </div>
+                                </div>
+                                <div class="order-1 lg:order-2">
+                                    <span class="text-[10px] font-black text-pink-500 uppercase tracking-[0.25em]">Platform #2</span>
+                                    <h3 class="text-3xl font-black text-slate-900 uppercase flex items-center gap-3 mt-2 mb-5">
+                                        <img src="images/logo/logo-ivs.png" alt="Examia Logo" class="w-8 h-8 object-contain" onerror="this.src='https://placehold.co/40x40/ffffff/EF5675?text=IVS'" />
+                                        <span>IVS Examia</span>
+                                    </h3>
+                                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">A professional assessment system for language centers, providing end-to-end solutions for mid-term, final exams, and international mock tests.</p>
+                                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-pink-500"></i><span>Auto-Grading Engine</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-pink-500"></i><span>Competency Analytics</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-pink-500"></i><span>Question Bank</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-pink-500"></i><span>Anti-Cheat Mode</span></div>
+                                    </div>
+                                    <a href="https://ivsexamia.web.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-ivs-orange text-white px-8 py-3 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-pink-500 transition-all shadow-lg">
+                                        <span>Explore Details</span>
+                                        <i class="fas fa-arrow-up-right-from-square"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-[2rem] bg-gradient-to-br from-white to-slate-50 text-slate-900 p-8 md:p-10 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="150">
+                            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                                <div>
+                                    <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.25em]">Platform #3</span>
+                                    <h3 class="text-3xl font-black text-slate-900 uppercase flex items-center gap-3 mt-2 mb-5">
+                                        <img src="images/logo/logo.png" alt="ELearners Logo" class="w-8 h-8 object-contain" onerror="this.src='https://placehold.co/40x40/ffffff/3b82f6?text=IVS'" />
+                                        <span>ELearners</span>
+                                    </h3>
+                                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">An interactive self-learning application for K-12 students with personalized learning paths, bridging the gap between center and home.</p>
+                                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-blue-500"></i><span>Gamified Lessons</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-blue-500"></i><span>AI Voice Feedback</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-blue-500"></i><span>Daily Goal Tracker</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-blue-500"></i><span>Reward System</span></div>
+                                    </div>
+                                    <a href="https://ivslearning.io.vn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-ivs-orange text-white px-8 py-3 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-blue-500 transition-all shadow-lg">
+                                        <span>Explore Details</span>
+                                        <i class="fas fa-arrow-up-right-from-square"></i>
+                                    </a>
+                                </div>
+                                <div class="hidden lg:flex items-center justify-center">
+                                    <div class="w-full aspect-video rounded-[2rem] bg-white border-4 border-slate-100 shadow-2xl p-8 flex items-center justify-center">
+                                        <img src="images/logo/logo-elearners.png" alt="ELearners Large" class="max-w-full max-h-full object-contain" onerror="this.src='images/logo/logo.png'" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-[2rem] bg-gradient-to-br from-white to-slate-50 text-slate-900 p-8 md:p-10 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                                <div class="order-2 lg:order-1 hidden lg:flex items-center justify-center">
+                                    <div class="w-full aspect-video rounded-[2rem] bg-white border-4 border-slate-100 shadow-2xl p-8 flex items-center justify-center">
+                                        <img src="images/logo/logo-testing.png" alt="Testing Large" class="max-w-full max-h-full object-contain" onerror="this.src='images/logo/logo.png'" />
+                                    </div>
+                                </div>
+                                <div class="order-1 lg:order-2">
+                                    <span class="text-[10px] font-black text-emerald-500 uppercase tracking-[0.25em]">Platform #4</span>
+                                    <h3 class="text-3xl font-black text-slate-900 uppercase flex items-center gap-3 mt-2 mb-5">
+                                        <img src="images/logo/logo-ivs.png" alt="Testing Placement Logo" class="w-8 h-8 object-contain" onerror="this.src='https://placehold.co/40x40/ffffff/10b981?text=IVS'" />
+                                        <span>Testing Placement</span>
+                                    </h3>
+                                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">Accurate entrance level testing tool, optimizing class classification.</p>
+                                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-emerald-500"></i><span>Automated Testing</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-emerald-500"></i><span>Level Classification</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-emerald-500"></i><span>Instant Results</span></div>
+                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-emerald-500"></i><span>Report Generation</span></div>
+                                    </div>
+                                    <a href="https://testplacement.web.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-ivs-orange text-white px-8 py-3 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-emerald-500 transition-all shadow-lg">
+                                        <span>Explore Details</span>
+                                        <i class="fas fa-arrow-up-right-from-square"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-[2rem] bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border border-white/10 p-8 text-white shadow-2xl" data-aos="fade-up" data-aos-delay="250">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+                                <div>
+                                    <h3 class="font-bold text-2xl mb-3 flex items-center gap-3">
+                                        <i class="fas fa-handshake text-ivs-orange"></i>
+                                        <span>Software-as-a-Partner Model</span>
+                                    </h3>
+                                    <p class="text-slate-300 max-w-2xl">Our technology lowers the barrier for schools to partner with IVS by solving their internal management pain points.</p>
+                                </div>
+                                <ul class="space-y-3 text-sm bg-white/10 p-5 rounded-2xl border border-white/10 w-full lg:w-auto">
+                                    <li class="flex items-center gap-3"><i class="fas fa-cloud text-blue-400"></i><span>Centralized Cloud Database</span></li>
+                                    <li class="flex items-center gap-3"><i class="fas fa-rotate text-emerald-400"></i><span>Real-time Satellite Sync</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Kết thúc Khu vực nhúng -->
-                
-                <!-- Khu vực nhúng Ứng dụng IVS Testing & Placement -->
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">
-                        <i class="fas fa-cubes text-ivs-orange mr-2"></i> <span class="text-white">Ứng Dụng Kiểm tra test lớp đầu vào (IVS Testing & Placement App)</span>
-                    </h2>
-                    <p class="text-xl text-ivs-text-secondary max-w-2xl mx-auto">
-                        Trải nghiệm ứng dụng Testing & Placement dành cho Trung tâm Ngoại ngữ (<a href="https://testplacement.web.app/" target="_blank" rel="noopener noreferrer">https://test.ivsacademy.edu.vn</a>) được nhúng trực tiếp vào website.
-                    </p>
-                </div>
-                <div class="w-full bg-ivs-bg rounded-xl shadow-2xl overflow-hidden border-4 border-ivs-blue mt-8" data-aos="fade-up" data-aos-delay="300">
-                    <div class="p-4 bg-gray-900 text-white font-semibold flex justify-between items-center">
-                        <span>IVS Testing & Placement - Đánh Giá & Xếp Lớp</span>
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>                    
-                    <!-- Khung Iframe chính: w-full đảm bảo Responsive -->
-                    <iframe
-                        src="https://testplacement.web.app/"
-                        title="IVS Testing & Placement Application Embedded"
-                        class="w-full"
-                        style="height: 800px; min-height: 70vh; border: none; background-color: #f0f0f0; overflow: auto;"
-                        loading="lazy"
-                        allow="fullscreen"
-                    ></iframe>
-                </div>
-                <!-- Kết thúc Khu vực nhúng IVS Testing & Placement -->
-                
-                <!-- Khu vực nhúng Ứng dụng IVS Kinderlink -->
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">
-                        <i class="fas fa-cubes text-ivs-orange mr-2"></i> <span class="text-white">Ứng Dụng Quản lý trường mầm non (IVS Kinderlink App)</span>
-                    </h2>
-                    <p class="text-xl text-ivs-text-secondary max-w-2xl mx-auto">
-                        Trải nghiệm ứng dụng Kinderlink dành cho Trường mầm non (<a href="https://ivs-7221b.web.app/" target="_blank" rel="noopener noreferrer">https://kinderlink.ivsacademy.edu.vn</a>) được nhúng trực tiếp vào website.
-                    </p>
-                </div>
-                <div class="w-full bg-ivs-bg rounded-xl shadow-2xl overflow-hidden border-4 border-ivs-green mt-8" data-aos="fade-up" data-aos-delay="400">
-                    <div class="p-4 bg-gray-900 text-white font-semibold flex justify-between items-center">
-                        <span>IVS Kinderlink - Nền Tảng Học Tập Mầm Non</span>
-                        <i class="fas fa-child"></i>
-                    </div>                    
-                    <!-- Khung Iframe chính: w-full đảm bảo Responsive -->
-                    <iframe
-                        src="https://ivs-7221b.web.app/"
-                        title="IVS Kinderlink Application Embedded"
-                        class="w-full"
-                        style="height: 800px; min-height: 70vh; border: none; background-color: #f0f0f0; overflow: auto;"
-                        loading="lazy"
-                        allow="fullscreen"
-                    ></iframe>
-                </div>
-                <!-- Kết thúc Khu vực nhúng IVS Kinderlink -->
             </div>
         </section>
 
