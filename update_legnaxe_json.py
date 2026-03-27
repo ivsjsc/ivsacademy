@@ -3,18 +3,38 @@ import json
 import docx
 import re
 import sys
+from pathlib import Path
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding='utf-8')
 
-# Đường dẫn file docx và thư mục chương
-DOCX_PATH = 'LEGNAXE.docx'
-FOLDER_PATH = 'Pages/apps/story/data/novels/legnaxe_part1'
+PROJECT_ROOT = Path(__file__).resolve().parent
+PREFERRED_DOCX_PATH = Path(r'D:\IVS\2. THƯ VIỆN\Truyện\LEGNAXE\PART 1\LEGNAXE.docx')
+FALLBACK_DOCX_PATH = PROJECT_ROOT / 'LEGNAXE.docx'
+FOLDER_PATH = PROJECT_ROOT / 'Pages/apps/story/data/novels/legnaxe_part1'
 
 # Danh sách file chương cũ cần xóa (từ 17 đến 28 và epilogue)
 FILES_TO_DELETE = [
     f'chapter_{i:02d}.json' for i in range(17, 29)
 ] + ['epilogue.json']
+
+
+def resolve_docx_path():
+    env_path = os.environ.get('LEGNAXE_DOCX_PATH')
+    candidates = []
+    if env_path:
+        candidates.append(Path(env_path))
+    candidates.extend([PREFERRED_DOCX_PATH, FALLBACK_DOCX_PATH])
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    checked_paths = '\n'.join(f'- {path}' for path in candidates)
+    raise FileNotFoundError(
+        'Không tìm thấy file LEGNAXE.docx. Đã kiểm tra các đường dẫn:\n'
+        f'{checked_paths}'
+    )
 
 def update_folder_with_docx(docx_path, folder_path):
     doc = docx.Document(docx_path)
@@ -63,6 +83,8 @@ def delete_old_chapter_files(folder_path, files_to_delete):
             print(f"Không tìm thấy: {fname}")
 
 if __name__ == "__main__":
-    update_folder_with_docx(DOCX_PATH, FOLDER_PATH)
+    docx_path = resolve_docx_path()
+    print(f"Đang dùng nguồn DOCX: {docx_path}")
+    update_folder_with_docx(docx_path, FOLDER_PATH)
     delete_old_chapter_files(FOLDER_PATH, FILES_TO_DELETE)
     print("Hoàn tất cập nhật và dọn dẹp chương truyện.")
