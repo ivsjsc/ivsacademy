@@ -105,6 +105,42 @@
             background: rgba(255,255,255,0.55);
         }
         .dark .progress-shell { background: rgba(15,23,42,0.7); }
+        .mobile-reader-nav {
+            position: fixed;
+            left: 1rem;
+            right: 5.5rem;
+            bottom: 1rem;
+            z-index: 45;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.5rem;
+            padding: 0.6rem;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            background: rgba(15, 23, 42, 0.86);
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.35);
+            backdrop-filter: blur(18px);
+        }
+        .mobile-reader-nav button {
+            width: 100%;
+            min-height: 4rem;
+            border-radius: 0.95rem;
+            padding: 0.6rem 0.45rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.96), rgba(79, 70, 229, 0.96));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+        }
+        .mobile-reader-nav .mobile-nav-label {
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 0.68rem;
+            line-height: 1rem;
+        }
+        .mobile-reader-nav button:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
 
         /* Modal Transitions */
         #chapter-modal { transition: opacity 0.3s ease-in-out; }
@@ -116,7 +152,7 @@
 <body class="text-gray-800 dark:text-gray-200 transition-colors duration-300 ease-in-out font-sans antialiased" id="page-readnovel">
     <header id="header-placeholder"></header>
 
-    <main class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-12">
+    <main class="max-w-4xl mx-auto px-4 pt-8 pb-36 sm:pb-8 sm:px-6 lg:px-12">
         <h1 class="text-4xl sm:text-5xl font-extrabold text-center text-gray-800 dark:text-gray-100 mb-8" data-lang-key="readnovel_part1_title">LEGNAXE: Part 1 - The Secret of Great Heaven War</h1>
         
         <!-- Updated Image with better path handling -->
@@ -149,7 +185,7 @@
                 <p class="text-center text-gray-500 dark:text-gray-400">Loading chapter content...</p>
             </div>
 
-            <div class="navigation flex flex-col sm:flex-row justify-between items-center mt-10 mb-6 space-y-3 sm:space-y-0 sm:space-x-3">
+            <div class="navigation hidden sm:flex flex-col sm:flex-row justify-between items-center mt-10 mb-6 space-y-3 sm:space-y-0 sm:space-x-3">
                 <button id="list-chapter-btn" class="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-[1.02] flex items-center justify-center" data-lang-key="list_chapters_button">
                     <i class="fas fa-list-ul mr-2"></i>Chapter List
                 </button>
@@ -174,7 +210,22 @@
         </div>
     </div>
    
-    <button id="scroll-to-top-btn" title="Go to top" class="hidden fixed bottom-5 right-5 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 z-50 transition-opacity duration-300 ease-in-out">
+    <div class="mobile-reader-nav sm:hidden">
+        <button id="mobile-list-chapter-btn" type="button" class="flex flex-col items-center justify-center text-center">
+            <i class="fas fa-list-ul text-sm"></i>
+            <span class="mobile-nav-label">Chapter List</span>
+        </button>
+        <button id="mobile-prev-chapter-btn" type="button" class="flex flex-col items-center justify-center text-center" disabled>
+            <i class="fas fa-arrow-left text-sm"></i>
+            <span class="mobile-nav-label">Previous</span>
+        </button>
+        <button id="mobile-next-chapter-btn" type="button" class="flex flex-col items-center justify-center text-center">
+            <i class="fas fa-arrow-right text-sm"></i>
+            <span class="mobile-nav-label">Next Chapter</span>
+        </button>
+    </div>
+
+    <button id="scroll-to-top-btn" title="Go to top" class="hidden fixed bottom-5 right-4 sm:right-5 sm:bottom-5 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 z-50 transition-opacity duration-300 ease-in-out">
         <i class="fas fa-arrow-up"></i>
     </button>
 

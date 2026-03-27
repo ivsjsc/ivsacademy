@@ -23,16 +23,34 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
     
     // Lấy các phần tử DOM cần thiết
     const dynamicContent = document.getElementById('dynamic-chapter-content');
-    const prevBtn = document.getElementById('prev-chapter-btn');
-    const nextBtn = document.getElementById('next-chapter-btn');
-    const listBtn = document.getElementById('list-chapter-btn'); // Dùng chung cho cả trên và dưới
+    const prevButtons = [
+        document.getElementById('prev-chapter-btn'),
+        document.getElementById('mobile-prev-chapter-btn'),
+    ].filter(Boolean);
+    const nextButtons = [
+        document.getElementById('next-chapter-btn'),
+        document.getElementById('mobile-next-chapter-btn'),
+    ].filter(Boolean);
+    const listButtons = [
+        document.getElementById('list-chapter-btn'),
+        document.getElementById('mobile-list-chapter-btn'),
+    ].filter(Boolean);
     const chapterModal = document.getElementById('chapter-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
     const modalList = document.getElementById('modal-chapter-list');
     const progressBar = document.querySelector('.progress-bar');
-    const ttsButton = document.getElementById('tts-toggle-btn'); // Nút TTS mới
-    const ttsIcon = document.getElementById('tts-icon');
-    const ttsText = document.getElementById('tts-text');
+    const ttsControls = [
+        {
+            button: document.getElementById('tts-toggle-btn'),
+            icon: document.getElementById('tts-icon'),
+            text: document.getElementById('tts-text'),
+        },
+        {
+            button: document.getElementById('mobile-tts-toggle-btn'),
+            icon: document.getElementById('mobile-tts-icon'),
+            text: document.getElementById('mobile-tts-text'),
+        },
+    ].filter((control) => control.button && control.icon && control.text);
 
     function escapeHtml(text) {
         return String(text ?? '')
@@ -45,6 +63,93 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
 
     function stripHtml(text) {
         return String(text ?? '').replace(/<[^>]*>/g, ' ');
+    }
+
+    function truncateText(text, maxLength = 150) {
+        const normalized = String(text ?? '').replace(/\s+/g, ' ').trim();
+        if (normalized.length <= maxLength) {
+            return normalized;
+        }
+
+        return `${normalized.slice(0, maxLength).trimEnd()}...`;
+    }
+
+    function getChapterNumberFromId(chapterId = '') {
+        if (!chapterId.startsWith('chapter-')) {
+            return 0;
+        }
+
+        return Number.parseInt(chapterId.split('-')[1], 10) || 0;
+    }
+
+    function getLeadPrefix(chapterNumber) {
+        const viPrefixes = [
+            'Mở ra với',
+            'Tiếp nối bằng',
+            'Tập trung vào',
+            'Đẩy câu chuyện tới',
+            'Khắc họa rõ',
+            'Làm nổi bật',
+        ];
+        const enPrefixes = [
+            'Opens with',
+            'Continues with',
+            'Focuses on',
+            'Pushes the story toward',
+            'Highlights',
+            'Brings forward',
+        ];
+        const prefixes = lang === 'vi' ? viPrefixes : enPrefixes;
+        const index = chapterNumber > 0 ? (chapterNumber - 1) % prefixes.length : 0;
+        return prefixes[index];
+    }
+
+    function buildChapterIntro(chapterNumber, bodyLines) {
+        const summarySource = bodyLines.find(line => {
+            const normalized = line.trim();
+            return normalized
+                && !/^\[[^\]]+\]$/.test(normalized)
+                && !/^(I|II|III|IV|V|VI|VII|VIII|IX|X)\.\s+/i.test(normalized)
+                && !/^(chương|chapter)\s+\d+/i.test(normalized);
+        }) || '';
+
+        if (!summarySource) {
+            return '';
+        }
+
+        return `${getLeadPrefix(chapterNumber)} ${truncateText(summarySource)}`;
+    }
+
+    function escapeRegExp(value) {
+        return String(value ?? '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function splitDisplayTitle(title, label) {
+        const safeTitle = String(title ?? '').trim();
+        const safeLabel = String(label ?? '').trim();
+        if (!safeTitle || !safeLabel) {
+            return {
+                fullTitle: safeTitle || safeLabel,
+                displayTitle: safeTitle || safeLabel,
+                listTitle: safeTitle || safeLabel,
+            };
+        }
+
+        const prefixPattern = new RegExp(`^${escapeRegExp(safeLabel)}\\s*[:\\-–]\\s*`, 'i');
+        if (prefixPattern.test(safeTitle)) {
+            const displayTitle = safeTitle.replace(prefixPattern, '').trim();
+            return {
+                fullTitle: safeTitle,
+                displayTitle,
+                listTitle: `${safeLabel} - ${displayTitle}`,
+            };
+        }
+
+        return {
+            fullTitle: `${safeLabel}: ${safeTitle}`,
+            displayTitle: safeTitle,
+            listTitle: `${safeLabel} - ${safeTitle}`,
+        };
     }
 
     function getChapterBaseData(chapterData) {
@@ -91,8 +196,8 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
 
         let label = fallbackLabel;
         let title = rawTitle || '';
-        let note = '';
         let bodyLines = [...lines];
+        const chapterNumber = getChapterNumberFromId(fallbackChapterId);
 
         if (lines.length > 0 && /^(chương|chapter)\s+\d+/i.test(lines[0])) {
             label = lines[0];
@@ -105,7 +210,6 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
         }
 
         if (bodyLines[0] && /^\[[^\]]+\]$/.test(bodyLines[0])) {
-            note = bodyLines[0];
             bodyLines = bodyLines.slice(1);
         }
 
@@ -114,6 +218,8 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
         }
 
         const finalTitle = title || fallbackLabel;
+        const normalizedTitle = splitDisplayTitle(finalTitle, label);
+        const intro = buildChapterIntro(chapterNumber, bodyLines);
         const bodyText = bodyLines.join('\n\n').trim();
         const bodyHtml = bodyLines.length
             ? bodyLines.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')
@@ -121,9 +227,10 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
 
         return {
             label,
-            title: finalTitle,
-            note,
-            listTitle: `${label} - ${finalTitle}`,
+            title: normalizedTitle.displayTitle,
+            fullTitle: normalizedTitle.fullTitle,
+            intro,
+            listTitle: normalizedTitle.listTitle,
             bodyText,
             bodyHtml,
         };
@@ -250,7 +357,10 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
                 if (response.ok) {
                     const data = await response.json();
                     const parsed = parseChapterData(data, chapterId);
-                    modalLink.textContent = parsed.listTitle;
+                    modalLink.innerHTML = `
+                        <span class="block text-sm font-semibold text-slate-900 dark:text-slate-100">${escapeHtml(parsed.listTitle)}</span>
+                        ${parsed.intro ? `<span class="mt-1 block text-xs leading-5 text-slate-500 dark:text-slate-400">${escapeHtml(parsed.intro)}</span>` : ''}
+                    `;
                 } else {
                     console.error(`Error loading title (404) for ${path}`);
                 }
@@ -311,7 +421,7 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
                 <header class="chapter-header mb-8 border-b border-slate-200 pb-6 dark:border-slate-700">
                     <p class="chapter-label text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] text-sky-700 dark:text-sky-300">${escapeHtml(parsed.label)}</p>
                     <h2 class="chapter-title mt-3 text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-white">${escapeHtml(parsed.title)}</h2>
-                    ${parsed.note ? `<p class="chapter-note mt-3 text-sm italic text-slate-500 dark:text-slate-400">${escapeHtml(parsed.note)}</p>` : ''}
+                    ${parsed.intro ? `<p class="chapter-intro mt-4 max-w-3xl text-sm sm:text-base leading-7 text-slate-600 dark:text-slate-300">${escapeHtml(parsed.intro)}</p>` : ''}
                 </header>
                 <div class="prose chapter-body dark:prose-invert">
                     ${parsed.bodyHtml}
@@ -319,7 +429,7 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
             </article>
         `;
         dynamicContent.innerHTML = contentHtml;
-        document.title = `${parsed.title} - LEGNAXE Part ${partNumber}`;
+        document.title = `${parsed.fullTitle} - LEGNAXE Part ${partNumber}`;
         const mainElement = document.querySelector('main');
         const headerOffset = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 80;
         window.scrollTo({ top: mainElement.offsetTop - headerOffset, behavior: 'smooth' });
@@ -338,28 +448,32 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
 
     // 5b. Cập nhật giao diện nút TTS
     function updateSpeechButton() {
-        if (!ttsButton || !ttsIcon || !ttsText) return;
+        if (!ttsControls.length) return;
 
         if (!speechSupported) {
-             ttsButton.disabled = true;
-             ttsButton.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'bg-indigo-600', 'hover:bg-indigo-700');
-             ttsButton.classList.add('bg-gray-400', 'cursor-not-allowed', 'dark:bg-gray-600');
-             ttsIcon.className = 'fas fa-volume-off mr-2';
-             ttsText.textContent = (lang === 'vi' ? 'Không hỗ trợ' : 'Not Supported');
+             ttsControls.forEach(({ button, icon, text }) => {
+                 button.disabled = true;
+                 button.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'bg-indigo-600', 'hover:bg-indigo-700');
+                 button.classList.add('bg-gray-400', 'cursor-not-allowed', 'dark:bg-gray-600');
+                 icon.className = 'fas fa-volume-off';
+                 text.textContent = (lang === 'vi' ? 'Không hỗ trợ' : 'Not Supported');
+             });
              return;
         }
 
-        ttsButton.disabled = false;
-        ttsButton.classList.remove('bg-gray-400', 'cursor-not-allowed', 'dark:bg-gray-600');
-        ttsButton.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'dark:bg-indigo-700', 'dark:hover:bg-indigo-800');
+        ttsControls.forEach(({ button, icon, text }) => {
+            button.disabled = false;
+            button.classList.remove('bg-gray-400', 'cursor-not-allowed', 'dark:bg-gray-600');
+            button.classList.add('bg-indigo-600', 'hover:bg-indigo-700', 'dark:bg-indigo-700', 'dark:hover:bg-indigo-800');
 
-        if (isSpeaking) {
-            ttsIcon.className = 'fas fa-pause mr-2';
-            ttsText.textContent = (lang === 'vi' ? 'Tạm dừng' : 'Pause');
-        } else {
-            ttsIcon.className = 'fas fa-play mr-2';
-            ttsText.textContent = (lang === 'vi' ? 'Nghe truyện' : 'Read Story');
-        }
+            if (isSpeaking) {
+                icon.className = 'fas fa-pause';
+                text.textContent = (lang === 'vi' ? 'Tạm dừng' : 'Pause');
+            } else {
+                icon.className = 'fas fa-play';
+                text.textContent = (lang === 'vi' ? 'Nghe truyện' : 'Read Story');
+            }
+        });
     }
     
     // 5c. Chức năng chính: Bật/Tắt TTS
@@ -446,12 +560,17 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
 
     // 7. Hàm cập nhật trạng thái nút điều hướng
     function updateNavigationButtons() {
-        prevBtn.disabled = currentChapterIndex <= 0;
-        nextBtn.disabled = currentChapterIndex >= chapterIds.length - 1;
-        
-        // Thêm/bỏ class 'disabled' để styling cho phù hợp
-        prevBtn.classList.toggle('opacity-50', prevBtn.disabled);
-        nextBtn.classList.toggle('opacity-50', nextBtn.disabled);
+        const prevDisabled = currentChapterIndex <= 0;
+        const nextDisabled = currentChapterIndex >= chapterIds.length - 1;
+
+        prevButtons.forEach((button) => {
+            button.disabled = prevDisabled;
+            button.classList.toggle('opacity-50', prevDisabled);
+        });
+        nextButtons.forEach((button) => {
+            button.disabled = nextDisabled;
+            button.classList.toggle('opacity-50', nextDisabled);
+        });
     }
     
     // 8. Hàm cập nhật thanh tiến trình đọc
@@ -486,25 +605,31 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
     // 9. Gắn sự kiện cho các nút điều hướng và modal
     
     // Gắn sự kiện cho nút Trước/Sau
-    prevBtn.addEventListener('click', () => {
-        if (currentChapterIndex > 0) {
-            navigateToChapter(chapterIds[currentChapterIndex - 1]);
-        }
+    prevButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (currentChapterIndex > 0) {
+                navigateToChapter(chapterIds[currentChapterIndex - 1]);
+            }
+        });
     });
 
-    nextBtn.addEventListener('click', () => {
-        if (currentChapterIndex < chapterIds.length - 1) {
-            navigateToChapter(chapterIds[currentChapterIndex + 1]);
-        }
+    nextButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (currentChapterIndex < chapterIds.length - 1) {
+                navigateToChapter(chapterIds[currentChapterIndex + 1]);
+            }
+        });
     });
 
     // Gắn sự kiện mở modal
-    listBtn.addEventListener('click', () => {
-        chapterModal.style.display = 'flex';
-        setTimeout(() => {
-            chapterModal.classList.add('modal-active');
-        }, 10);
-        document.body.style.overflow = 'hidden';
+    listButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            chapterModal.style.display = 'flex';
+            setTimeout(() => {
+                chapterModal.classList.add('modal-active');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        });
     });
 
     // Gắn sự kiện đóng modal
@@ -516,9 +641,9 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
     });
     
     // Gắn sự kiện cho nút TTS
-    if (ttsButton) {
-        ttsButton.addEventListener('click', toggleSpeech);
-    }
+    ttsControls.forEach(({ button }) => {
+        button.addEventListener('click', toggleSpeech);
+    });
     
     // Gắn sự kiện cho các liên kết trong modal (sử dụng delegation)
     modalList.addEventListener('click', (event) => {
