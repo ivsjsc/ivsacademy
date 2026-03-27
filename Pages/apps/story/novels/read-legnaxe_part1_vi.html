@@ -112,7 +112,7 @@
             bottom: 1rem;
             z-index: 90;
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 0.5rem;
             padding: 0.6rem;
             border-radius: 1.25rem;
@@ -131,7 +131,8 @@
             pointer-events: auto;
             transform: translateY(0) scale(1);
         }
-        .mobile-reader-nav button {
+        .mobile-reader-nav button,
+        .mobile-reader-nav a {
             width: 100%;
             min-height: 4rem;
             border-radius: 0.95rem;
@@ -140,6 +141,7 @@
             color: #fff;
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.96), rgba(79, 70, 229, 0.96));
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+            text-decoration: none;
         }
         .mobile-reader-nav .mobile-nav-label {
             display: block;
@@ -200,6 +202,9 @@
             </div>
 
             <div class="navigation hidden sm:flex flex-col sm:flex-row justify-between items-center mt-10 mb-6 space-y-3 sm:space-y-0 sm:space-x-3">
+                <a href="/Pages/apps/story/index.html" class="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-white bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-[1.02] flex items-center justify-center">
+                    <i class="fas fa-house mr-2"></i>Trang Chủ Truyện
+                </a>
                 <button id="list-chapter-btn" class="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 ease-in-out transform hover:scale-[1.02] flex items-center justify-center" data-lang-key="list_chapters_button">
                     <i class="fas fa-list-ul mr-2"></i>Danh Sách Chương
                 </button>
@@ -225,6 +230,10 @@
     </div>
    
     <div id="mobile-reader-nav" class="mobile-reader-nav sm:hidden">
+        <a href="/Pages/apps/story/index.html" id="mobile-story-home-link" class="flex flex-col items-center justify-center text-center">
+            <i class="fas fa-house text-sm"></i>
+            <span class="mobile-nav-label">Trang chủ</span>
+        </a>
         <button id="mobile-list-chapter-btn" type="button" class="flex flex-col items-center justify-center text-center">
             <i class="fas fa-list-ul text-sm"></i>
             <span class="mobile-nav-label">Chapter List</span>
@@ -296,6 +305,7 @@
             const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
             const mobileNavToggle = document.getElementById('mobile-nav-toggle');
             const mobileReaderNav = document.getElementById('mobile-reader-nav');
+            const mobileStoryHomeLink = document.getElementById('mobile-story-home-link');
             const mobileListChapterBtn = document.getElementById('mobile-list-chapter-btn');
             const mobilePrevChapterBtn = document.getElementById('mobile-prev-chapter-btn');
             const mobileNextChapterBtn = document.getElementById('mobile-next-chapter-btn');
@@ -318,7 +328,7 @@
                 setMobileNavOpen(false);
             });
 
-            [mobileListChapterBtn, mobilePrevChapterBtn, mobileNextChapterBtn].filter(Boolean).forEach((button) => {
+            [mobileStoryHomeLink, mobileListChapterBtn, mobilePrevChapterBtn, mobileNextChapterBtn].filter(Boolean).forEach((button) => {
                 button.addEventListener('click', () => {
                     setMobileNavOpen(false);
                 });
