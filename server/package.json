@@ -22,7 +22,7 @@
     "jwks-rsa": "^2.1.5",
     "minimist": "^1.2.8",
     "morgan": "^1.10.0",
-    "multer": "^2.0.2",
+    "multer": "^2.1.0",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
