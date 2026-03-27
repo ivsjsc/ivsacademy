@@ -142,15 +142,15 @@
     <!-- Scripts -->
     <script src="/js/utils.js"></script>
     <script src="/js/language.js"></script>
-    <script src="/js/loadComponents.js"></script>
+    <script src="/ai/js/loadComponents.js"></script>
     <!-- Relative path to chapter-loader -->
     <script src="../js/chapter-loader.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const storyPath = 'legnaxe_part1'; // JSON directory name
-            const totalChapters = 28; 
-            const hasSpecialChapter = true; 
+            const totalChapters = 16; // Only 16 chapters after merge
+            const hasSpecialChapter = false; // No epilogue
             const lang = 'en'; // English Language
 
             // Initialize chapter loader

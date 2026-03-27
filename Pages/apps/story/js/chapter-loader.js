@@ -142,32 +142,25 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
         for (let i = 0; i < chapterIds.length; i++) {
             const chapterId = chapterIds[i];
             const modalLink = modalLinks[i];
-
-            // Xác định tên tệp JSON
             let fileName = '';
             if (chapterId === 'epilogue' || chapterId === 'after-credit') {
-                fileName = isPart1 ? 'epilogue.json' : 'after-credit.json'; // Tên file epilogue/after-credit
+                fileName = isPart1 ? 'epilogue.json' : 'after-credit.json';
             } else {
                 const num = chapterId.split('-')[1];
                 fileName = `chapter_${num.padStart(2, '0')}.json`;
             }
-            
             try {
-                // FIX: Đường dẫn tương đối từ HTML (novels/) đến JSON (data/novels/)
                 const path = `../data/novels/${storyPath}/${fileName}`;
-
                 const response = await fetch(path);
-                
                 if (response.ok) {
                     const data = await response.json();
-                    const title = data[`title_${lang}`] || data[`title_en`] || 'Tiêu đề chưa rõ'; // Fallback
+                    // Ưu tiên title_vi/title_en, fallback về title
+                    let title = data[`title_${lang}`] || data[`title_en`] || data[`title_vi`] || data['title'] || (lang === 'vi' ? 'Chưa có tiêu đề' : 'No title');
                     modalLink.textContent = title;
                 } else {
-                    // Nếu lỗi 404, giữ nguyên tiêu đề tạm thời và ghi lỗi vào console
                     console.error(`Error loading title (404) for ${path}`);
                 }
             } catch (error) {
-                // Nếu lỗi mạng hoặc JSON, ghi lỗi và cập nhật link
                 modalLink.textContent = modalLink.textContent + ` (Lỗi tải)`;
                 console.error(`Error loading title for ${chapterId}:`, error);
             }
@@ -218,12 +211,14 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
         // Lưu trữ dữ liệu chương hiện tại cho TTS
         currentChapterData = chapterData;
 
-        // Cố gắng lấy tiêu đề và nội dung theo ngôn ngữ hiện tại, nếu không có, fallback về tiếng Anh
-        const title = chapterData[`title_${lang}`] || chapterData.title_en || 'Chapter Title';
-        const content = chapterData[`content_${lang}`] || chapterData.content_en || '<p>Content not available in this language or corrupted.</p>';
+        // Ưu tiên title_vi/title_en, fallback về title
+        const title = chapterData[`title_${lang}`] || chapterData.title_en || chapterData.title_vi || chapterData.title || (lang === 'vi' ? 'Chưa có tiêu đề' : 'No title');
+        // Ưu tiên content_vi/content_en, fallback về content
+        let content = chapterData[`content_${lang}`] || chapterData.content_en || chapterData.content_vi || chapterData.content;
+        if (!content) {
+            content = `<p class="text-red-500">${lang === 'vi' ? 'Không có nội dung chương.' : 'No chapter content.'}</p>`;
+        }
         const partNumber = storyPath.includes('part1') ? '1' : '2';
-
-        // Xây dựng HTML cho nội dung chương
         const contentHtml = `
             <h3 class="text-2xl sm:text-3xl font-serif font-bold mb-4 text-gray-900 dark:text-white">${title}</h3>
             <div class="prose dark:prose-invert">
@@ -231,11 +226,7 @@ function initializeChapterLoader(storyPath, totalChapters, hasSpecialChapter, la
             </div>
         `;
         dynamicContent.innerHTML = contentHtml;
-
-        // Cập nhật tiêu đề trang
         document.title = `${title} - LEGNAXE Part ${partNumber}`;
-        
-        // Cuộn lên đầu nội dung
         const mainElement = document.querySelector('main');
         const headerOffset = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 80;
         window.scrollTo({ top: mainElement.offsetTop - headerOffset, behavior: 'smooth' });
