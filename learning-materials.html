@@ -1,389 +1,595 @@
 <!DOCTYPE html>
-<html class="dark scroll-smooth" lang="vi">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tài Liệu Học Tập Tương Tác - IVS Learning Hub</title>
+    <title>IVS Ecosystem Pitch Deck</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="dns-prefetch" href="//storage.googleapis.com">
-    <link rel="dns-prefetch" href="//unpkg.com">
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <meta content="Truy cập kho tài liệu học tập tương tác của IVS Academy với video bài giảng, bài tập thực hành, và theo dõi tiến độ học tập cá nhân hóa." name="description"/>
-    <meta name="keywords" content="IVS, IVS JSC, IVS Academy, IVS Vietnam, Education, Academy, Language Center, EdTech, Du hoc, Consulting, Solutions, Teacher Training, Steam, Kỹ năng sống" />
-    <meta content="IVS Learning Hub - Tài Liệu Học Tập Tương Tác" property="og:title"/>
-    <meta content="Nền tảng học tập tương tác với hàng nghìn tài liệu, video bài giảng và công cụ theo dõi tiến độ." property="og:description"/>
-    <meta content="https://ivsacademy.edu.vn/images/banners/learning-hub-og.jpg" property="og:image"/>
-    <meta content="https://ivsacademy.edu.vn/learning-materials.html" property="og:url"/>
-    <meta property="og:type" content="website">
-    <meta name="author" content="IVS JSC" />
-    <link rel="icon" href="../images/logo/logo.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../css/tailwind.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <script defer src="../js/language-init.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. THE SETUP & GLOBAL STYLES (Theme: Modern Dark Investor Pitch) */
+        * {
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        body {
+            background-color: #020617; /* Very dark slate for outside slide area */
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px 0;
+            place-items: center;
+        }
+
+        .slide-container {
+            align-items: center;
+            background-color: #0f172a; /* Slate 900 for slide bg */
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Urbanist', sans-serif;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px;
+            position: relative;
+            width: 1280px;
+        }
+
+        /* 1.1 BACKGROUND STYLING */
+        .slide-container::before {
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 0;
+        }
+
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 2. CONSISTENT TYPOGRAPHY */
+        .slide-container h1,
+        .slide-container h2,
+        .slide-container h3 {
+            color: #f8fafc;
+            font-weight: 700;
+            font-family: 'Urbanist', sans-serif;
+            margin: 0;
+        }
+
+        .slide-container p,
+        .slide-container li,
+        .slide-container .subtitle {
+            color: #cbd5e1;
+            font-family: 'Urbanist', sans-serif;
+        }
+
+        /* Consistent Font Sizes */
+        .slide-container h1 {
+            font-size: 70px;
+        }
+
+        .slide-container .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .slide-container h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Unified body text size */
+        .slide-container p,
+        .slide-container li,
+        .slide-container .subtitle {
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+        .slide-container .subtitle {
+            font-weight: 500;
+            margin: 20px auto;
+        }
+
+        .slide-container .content-area {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Accent Colors */
+        .text-cyan { color: #22d3ee; }
+        .text-emerald { color: #34d399; }
+        .text-red { color: #ef4444; }
+        
+        .accent-box {
+            background: rgba(34, 211, 238, 0.1);
+            border-left: 4px solid #22d3ee;
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        .accent-box p {
+            color: #22d3ee;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* 3. LAYOUT DEFINITIONS */
+        .full-bg-image {
+            background-position: center;
+            background-size: cover;
+        }
+
+        .full-bg-image .content-overlay {
+            text-align: center;
+            width: 100%;
+        }
+
+        .full-bg-image h2,
+        .full-bg-image p {
+            color: #f8fafc;
+        }
+
+        .two-column {
+            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .two-column.tiled {
+            align-items: stretch;
+        }
+
+        .two-column.tiled > div {
+            background-color: #1e293b;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .two-column ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .image-wrapper {
+            border-radius: 16px;
+            height: 420px;
+            max-width: 100%;
+            overflow: hidden;
+            width: 100%;
+            border: 1px solid #334155;
+            background-color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-wrapper.logo-wrapper {
+            background-color: #ffffff; /* White bg for clear logos */
+            padding: 50px;
+            border: 2px solid #e2e8f0;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+        }
+
+        /* Strict enforcement of object-fit: contain for Image_Right layout */
+        .two-column .image-wrapper img {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .two-column .image-wrapper.logo-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .bullet-list {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .bullet-list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-left: 45px;
+            position: relative;
+        }
+
+        .bullet-list i.bullet-icon {
+            color: #22d3ee;
+            font-size: 26px;
+            left: 0;
+            margin-top: 2px;
+            position: absolute;
+            text-align: center;
+            top: 0;
+        }
+
+        .bullet-list li strong {
+            color: #f8fafc;
+            font-weight: 700;
+        }
+
+        /* Bleed_Image_Right layout strictly enforced */
+        .slide-container.bleed-image-layout {
+            align-items: start;
+            display: grid;
+            gap: 50px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0;
+        }
+
+        .slide-container.bleed-image-layout > .content-container {
+            padding: 60px 0 60px 60px;
+        }
+
+        .slide-container.bleed-image-layout > .image-container {
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slide-container.bleed-image-layout img.bleed-image-side {
+            border-radius: 0;
+            display: block;
+            height: 720px; /* Force height */
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+        }
+
+        .slide-container.bleed-image-layout .bleed-text-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Q&A Layout */
+        .qa-layout {
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            align-self: center;
+        }
+        
+        /* Demo Button */
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #22d3ee, #3b82f6);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(34, 211, 238, 0.5);
+            background: linear-gradient(135deg, #3b82f6, #22d3ee);
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
-    <div id="header-placeholder"></div>
+<body>
 
-    <main>
-        <!-- Banner Section -->
-        <section class="relative py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 overflow-hidden">
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-            <div class="relative container mx-auto px-6 lg:px-8 text-center">
-                <div class="max-w-4xl mx-auto" data-aos="fade-up">
-                    <h1 class="text-4xl md:text-6xl font-bold font-display text-white mb-6">
-                        IVS <span class="text-ivs-orange">Learning Hub</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-                        Nền tảng học tập tương tác với hàng nghìn tài liệu, video bài giảng,<br/>
-                        và công cụ theo dõi tiến độ cá nhân hóa
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button class="bg-ivs-orange hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg">
-                            <i class="fas fa-play-circle mr-2"></i>Bắt Đầu Học Tập
-                        </button>
-                        <button class="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all">
-                            <i class="fas fa-search mr-2"></i>Khám Phá Khóa Học
-                        </button>
+<!-- Slide 1: Cover / Full Background Image -->
+<div class="slide-container full-bg-image" id="slide1" style="background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('http://googleusercontent.com/image_collection/image_retrieval/4987764181032682329');">
+    <div class="content-overlay">
+        <h1 style="font-size: 85px; margin-bottom: 25px; background: linear-gradient(90deg, #22d3ee, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">HỆ SINH THÁI SỐ IVS</h1>
+        <h2 style="font-size: 42px; margin-bottom: 45px; font-weight: 600; line-height: 1.3;">Nền tảng công nghệ giúp Trung tâm Ngoại ngữ<br>Tăng trưởng gấp 2 lần – Vận hành nhẹ hơn 70%</h2>
+        <div style="display: inline-block; background: rgba(34, 211, 238, 0.15); border: 1px solid #22d3ee; padding: 15px 35px; border-radius: 50px; box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);">
+            <p style="margin: 0; font-size: 26px; color: #22d3ee; font-weight: 700;">👉 Không chỉ là phần mềm – Đây là hạ tầng tăng trưởng cho giáo dục</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: Problem / Styled Bullet Points -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">Trung tâm ngoại ngữ đang gặp gì?</h2>
+    <div class="content-area">
+        <div class="bullet-list" style="max-width: 1000px;">
+            <ul>
+                <li><i class="fa-solid fa-circle-xmark bullet-icon" style="color: #ef4444;"></i> <strong>Quản lý rời rạc:</strong> Dùng Excel, Zalo, xử lý thủ công gây mất thời gian và dễ sai sót số liệu.</li>
+                <li><i class="fa-solid fa-circle-xmark bullet-icon" style="color: #ef4444;"></i> <strong>Khó kiểm soát chất lượng:</strong> Thiếu công cụ đo lường và quản trị chất lượng giảng dạy đồng bộ.</li>
+                <li><i class="fa-solid fa-circle-xmark bullet-icon" style="color: #ef4444;"></i> <strong>Không đo được hiệu quả:</strong> Khó theo dõi tiến độ thực tế và năng lực thực sự của từng học viên.</li>
+                <li><i class="fa-solid fa-circle-xmark bullet-icon" style="color: #ef4444;"></i> <strong>Tốn nhân sự vận hành:</strong> Chi phí đội lên cao do phải dùng sức người cho các tác vụ lặp đi lặp lại.</li>
+                <li><i class="fa-solid fa-circle-xmark bullet-icon" style="color: #ef4444;"></i> <strong>Khó mở rộng hệ thống:</strong> Rào cản khổng lồ khi trung tâm muốn scale up mở thêm chi nhánh mới.</li>
+            </ul>
+        </div>
+        <div class="accent-box" style="width: 100%; max-width: 1000px; text-align: center; border-left: none; border-top: 4px solid #ef4444; background: rgba(239, 68, 68, 0.1);">
+            <p style="color: #ef4444; font-size: 28px;">👉 Càng lớn → Càng rối → Càng khó Scale</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: Solution / Bleed Image Right -->
+<div class="slide-container bleed-image-layout" id="slide3">
+    <div class="content-container">
+        <h2 class="slide-title">Giải Pháp Đột Phá</h2>
+        <div class="content-area">
+            <div class="bleed-text-side">
+                <h3 style="color: #22d3ee; font-size: 42px; margin-bottom: 20px;">IVS Ecosystem</h3>
+                <p style="font-size: 28px; font-weight: 700; color: #f8fafc;">1 hệ thống duy nhất giải quyết tất cả.</p>
+                <p style="margin-bottom: 30px; color: #cbd5e1;">Từ Tuyển sinh → Học tập → Khảo thí → Đánh giá → Tăng trưởng.</p>
+                
+                <ul style="list-style: none; padding: 0; margin: 0; color: #f8fafc;">
+                    <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fa-solid fa-circle-check text-emerald" style="font-size: 24px;"></i> Không cần chắp vá nhiều phần mềm.</li>
+                    <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fa-solid fa-circle-check text-emerald" style="font-size: 24px;"></i> Không cần vận hành thủ công.</li>
+                </ul>
+                
+                <div class="accent-box" style="background: rgba(52, 211, 153, 0.1); border-color: #34d399;">
+                    <p style="color: #34d399;">Mọi thứ chạy mượt mà trên 1 hệ sinh thái đồng bộ.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/16465060010792437560" alt="Hệ sinh thái số liên kết">
+    </div>
+</div>
+
+<!-- Slide 4: CenterCare / Image Right Text Left -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">CenterCare - "Bộ Não Vận Hành"</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-size: 26px; color: #f8fafc; font-weight: 700; margin-bottom: 25px;">Điều hành toàn bộ trung tâm trong 1 dashboard duy nhất.</p>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Quản lý học phí tự động:</strong> Kiểm soát doanh thu, giảm hoàn toàn tỷ lệ thất thoát.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Điểm danh realtime:</strong> Kiểm soát chặt chẽ trạng thái lớp học từng giây.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Đồng bộ phụ huynh:</strong> Phụ huynh theo dõi trực tiếp lộ trình con em.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Xếp lịch tối ưu:</strong> Chấm dứt tình trạng quá tải, trùng lịch phòng ốc.</li>
+                    </ul>
+                </div>
+                <div class="accent-box" style="margin-bottom: 20px;">
+                    <p>🎯 Kết quả: Giảm 70% khối lượng công việc vận hành. Tăng độ chuyên nghiệp ngay lập tức.</p>
+                </div>
+                
+                <a href="https://ivscentercare.web.app/" target="_blank" class="demo-btn">
+                    <i class="fa-solid fa-desktop"></i> Truy cập Demo CenterCare
+                </a>
+            </div>
+            <div>
+                <div class="image-wrapper logo-wrapper">
+                    <img src="https://minhtriet.online/images/logo/logo-centercare.png" alt="Logo CenterCare">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: ELearners / Image Right Text Left -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">ELearners - Cỗ Máy Giữ Chân</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-size: 26px; color: #ef4444; font-weight: 700; margin-bottom: 25px;">Vấn đề lớn nhất: Học viên nhanh chán và bỏ học giữa chừng.</p>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Game hóa bài học:</strong> Biến việc làm bài tập thành một hành trình thú vị.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>AI sửa phát âm:</strong> Công nghệ nhận diện, rèn kỹ năng Speaking chuẩn xác tại nhà.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Theo dõi mục tiêu:</strong> Nhắc nhở và bám sát tiến độ học tập mỗi ngày.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Hệ thống thưởng:</strong> Kích thích động lực học tập liên tục qua vinh danh.</li>
+                    </ul>
+                </div>
+                <div class="accent-box" style="background: rgba(52, 211, 153, 0.1); border-color: #34d399; margin-bottom: 20px;">
+                    <p style="color: #34d399;">🎯 Kết quả: Học viên học nhiều hơn, gắn bó lâu hơn → Doanh thu tái ký ổn định.</p>
+                </div>
+
+                <a href="https://ivslearning.io.vn/#/" target="_blank" class="demo-btn">
+                    <i class="fa-solid fa-gamepad"></i> Truy cập Demo ELearners
+                </a>
+            </div>
+            <div>
+                <div class="image-wrapper logo-wrapper">
+                    <img src="https://minhtriet.online/images/logo/logo-elearners.png" alt="Logo ELearners">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Testing / Image Right Text Left -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Testing Placement - Tối Ưu Đầu Vào</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-size: 26px; color: #ef4444; font-weight: 700; margin-bottom: 25px;">Tuyển sai năng lực = Mất uy tín & Giảm chất lượng trung tâm.</p>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Test đầu vào tự động:</strong> Trải nghiệm nhanh gọn, không cần giáo viên chấm tay thủ công.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Phân lớp chính xác:</strong> Dựa trên dữ liệu phân tích AI đa chiều, sâu sắc.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Báo cáo năng lực:</strong> Cung cấp ngay lộ trình để đội ngũ tư vấn chốt sale lập tức.</li>
+                    </ul>
+                </div>
+                <div class="accent-box" style="background: rgba(52, 211, 153, 0.1); border-color: #34d399; margin-bottom: 20px;">
+                    <p style="color: #34d399;">🎯 Kết quả: Xếp đúng lớp ngay từ đầu → Tăng hiệu quả đào tạo & tỷ lệ chuyển đổi chốt đơn.</p>
+                </div>
+
+                <a href="https://testplacement.web.app/" target="_blank" class="demo-btn">
+                    <i class="fa-solid fa-list-check"></i> Truy cập Demo Testing
+                </a>
+            </div>
+            <div>
+                <div class="image-wrapper logo-wrapper">
+                    <img src="https://minhtriet.online/images/logo/logo-testing.png" alt="Logo Testing Placement">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Examia / Image Right Text Left -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">IVS Examia - Chuẩn Hóa Chất Lượng (Building)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-size: 26px; color: #ef4444; font-weight: 700; margin-bottom: 25px;">Không đo lường được → Không cải thiện được.</p>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Chấm điểm AI:</strong> Trả kết quả bài thi tự động, nhanh chóng và chính xác tuyệt đối.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Phân tích năng lực:</strong> Cung cấp biểu đồ đánh giá chi tiết cho từng cá nhân học viên.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Ngân hàng đề thi:</strong> Xây dựng kho dữ liệu câu hỏi chuẩn hóa dễ dàng.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Chống gian lận:</strong> Tích hợp công nghệ AI giám sát thi cử độc quyền.</li>
+                    </ul>
+                </div>
+                <div class="accent-box" style="background: rgba(52, 211, 153, 0.1); border-color: #34d399; margin-bottom: 20px;">
+                    <p style="color: #34d399;">🎯 Kết quả: Trung tâm có "chuẩn đánh giá riêng" → Nâng tầm thương hiệu đào tạo mạnh mẽ.</p>
+                </div>
+
+                <a href="https://ivsexamia.web.app/" target="_blank" class="demo-btn">
+                    <i class="fa-solid fa-file-signature"></i> Truy cập Demo Examia
+                </a>
+            </div>
+            <div>
+                <div class="image-wrapper logo-wrapper">
+                    <img src="https://minhtriet.online/images/logo/logo-examia.png" alt="Logo IVS Examia">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7.5: Code Brochure / Image Right Text Left -->
+<div class="slide-container" id="slide7-5">
+    <h2 class="slide-title">Code Brochure - Marketing Tự Động</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-size: 26px; color: #f8fafc; font-weight: 700; margin-bottom: 25px;">Tạo brochure tương tác trong vài phút – Không cần thiết kế.</p>
+                <div class="bullet-list">
+                    <ul>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Tạo brochure nhanh:</strong> Kéo thả, tùy chỉnh nội dung theo nhu cầu marketing.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Đa dạng mẫu:</strong> Kho template chuyên nghiệp cho trung tâm ngoại ngữ.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Xuất file đa định dạng:</strong> PDF, HTML, hoặc chia sẻ trực tiếp online.</li>
+                        <li><i class="fa-solid fa-caret-right bullet-icon" style="color: #22d3ee;"></i> <strong>Tích hợp hệ sinh thái:</strong> Đồng bộ dữ liệu từ CenterCare & ELearners.</li>
+                    </ul>
+                </div>
+                <div class="accent-box" style="background: rgba(52, 211, 153, 0.1); border-color: #34d399; margin-bottom: 20px;">
+                    <p style="color: #34d399;">🎯 Kết quả: Tăng hiệu quả marketing, giảm chi phí thiết kế, đồng bộ thương hiệu.</p>
+                </div>
+
+                <a href="#" target="_blank" class="demo-btn">
+                    <i class="fa-solid fa-bullhorn"></i> Truy cập Demo Code Brochure
+                </a>
+            </div>
+            <div>
+                <div class="image-wrapper logo-wrapper">
+                    <img src="https://minhtriet.online/images/logo/logo-codebrochure.png" alt="Logo Code Brochure" onerror="this.src='https://placehold.co/400x300/1e293b/22d3ee?text=Code+Brochure'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Business Model / Two Column Tiled Text -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Software as a Growth Partner</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div style="background-color: #1e293b; border-color: #334155;">
+                <h3 style="color: #22d3ee; margin-bottom: 25px; font-size: 32px;"><i class="fa-solid fa-rocket" style="margin-right: 15px;"></i>Lợi Thế Cạnh Tranh</h3>
+                <ul style="text-align: left; list-style: none; padding: 0; color: #cbd5e1; font-size: 22px;">
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-check text-emerald" style="margin-right: 10px;"></i> Tích hợp liền mạch toàn bộ hệ sinh thái.</li>
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-check text-emerald" style="margin-right: 10px;"></i> Dữ liệu (Data) tập trung 100% về một nguồn.</li>
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-check text-emerald" style="margin-right: 10px;"></i> Scale mở rộng nhanh chóng theo chuỗi trung tâm.</li>
+                </ul>
+            </div>
+            <div style="background-color: #1e293b; border-color: #334155;">
+                <h3 style="color: #34d399; margin-bottom: 25px; font-size: 32px;"><i class="fa-solid fa-chart-pie" style="margin-right: 15px;"></i>Thị Trường Tiềm Năng</h3>
+                <ul style="text-align: left; list-style: none; padding: 0; color: #cbd5e1; font-size: 22px;">
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-check text-cyan" style="margin-right: 10px;"></i> Hơn 10.000+ trung tâm ngoại ngữ tại Việt Nam.</li>
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-check text-cyan" style="margin-right: 10px;"></i> Ngành EdTech đang trong đà tăng trưởng bùng nổ.</li>
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-check text-cyan" style="margin-right: 10px;"></i> Nhu cầu chuyển đổi số trở thành bắt buộc.</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top: 45px; text-align: center; width: 100%; background: #1e293b; padding: 25px; border-radius: 12px; border: 1px solid #334155;">
+            <p style="font-size: 26px; font-weight: 500; margin: 0;">IVS Ecosystem đang định vị vững chắc ở vai trò:<br><span style="color: #f8fafc; font-size: 36px; font-weight: 700; background: linear-gradient(90deg, #22d3ee, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">"Infrastructure Layer for Education"</span></p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: CTA / Modified Q&A Layout -->
+<div class="slide-container" id="slide9">
+    <div class="qa-layout" style="max-width: 900px;">
+        <h2 style="font-size: 72px; margin-bottom: 25px; background: linear-gradient(90deg, #22d3ee, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Sẵn sàng tăng trưởng gấp 2?</h2>
+        <p style="font-size: 32px; margin-bottom: 50px; color: #f8fafc; font-weight: 500;">Chỉ cần 1 quyết định – thay đổi toàn bộ hệ thống.</p>
+        
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 20px; padding: 50px; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+            <p style="font-size: 28px; color: #34d399; font-weight: 700; margin-bottom: 35px; text-transform: uppercase; letter-spacing: 1px;">👉 Liên hệ và Kích hoạt Hệ Sinh Thái</p>
+            
+            <div style="display: flex; justify-content: center; align-items: center; gap: 60px;">
+                <div style="text-align: left;">
+                    <div style="color: #f8fafc; font-size: 26px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; font-weight: 600;">
+                        <i class="fa-solid fa-phone-volume" style="color: #22d3ee; font-size: 28px;"></i> IVS Ecosystem
+                    </div>
+                    <div style="color: #f8fafc; font-size: 26px; display: flex; align-items: center; gap: 15px; font-weight: 600;">
+                        <i class="fa-solid fa-envelope" style="color: #22d3ee; font-size: 28px;"></i> info@ivsacademy.edu.vn
+                    </div>
+                </div>
+                <div style="height: 100px; width: 2px; background: #334155;"></div> <!-- Divider -->
+                <div>
+                    <!-- QR Zalo OA -->
+                    <div style="width: 140px; height: 140px; background: #fff; padding: 10px; border-radius: 12px;">
+                        <img src="https://page-photo-qr.zdn.vn/1764711913/7ad8d79ec4db2d8574ca.jpg" alt="QR Code Zalo OA" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                 </div>
             </div>
-            <!-- Floating Elements -->
-            <div class="absolute top-20 left-10 w-20 h-20 bg-blue-500 rounded-full opacity-20 animate-bounce"></div>
-            <div class="absolute bottom-20 right-10 w-16 h-16 bg-purple-500 rounded-full opacity-20 animate-bounce" style="animation-delay: 1s"></div>
-            <div class="absolute top-1/2 left-1/4 w-12 h-12 bg-green-500 rounded-full opacity-20 animate-bounce" style="animation-delay: 2s"></div>
-        </section>
+            
+            <p style="margin-top: 30px; margin-bottom: 0; color: #94a3b8; font-size: 18px; font-style: italic;">* Vui lòng click vào nút Demo ở các slide trước để xem sản phẩm trực tiếp.</p>
+        </div>
+    </div>
+</div>
 
-        <!-- Learning Resources Overview -->
-        <section class="py-16 bg-ivs-bg">
-            <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">
-                        <i class="fas fa-book-open text-ivs-orange mr-2"></i><span class="text-white">Tài Nguyên Học Tập IVS</span>
-                    </h2>
-                    <p class="text-xl text-ivs-text-secondary max-w-2xl mx-auto">
-                        Khám phá các nền tảng và công cụ học tập tiên tiến của IVS
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <!-- Learning Platforms -->
-                    <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border text-center" data-aos="fade-up">
-                        <div class="w-16 h-16 bg-ivs-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-globe text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Nền Tảng Học Tập</h3>
-                        <p class="text-ivs-text-secondary mb-4">Các ứng dụng tương tác và nền tảng học tập trực tuyến</p>
-                        <span class="text-sm text-ivs-blue font-semibold">4 Ứng dụng khả dụng</span>
-                    </div>
-
-                    <!-- Learning Tools -->
-                    <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border text-center" data-aos="fade-up" data-aos-delay="100">
-                        <div class="w-16 h-16 bg-ivs-green rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-tools text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Công Cụ Hỗ Trợ</h3>
-                        <p class="text-ivs-text-secondary mb-4">Các công cụ và tài nguyên bổ trợ cho việc học</p>
-                        <span class="text-sm text-ivs-green font-semibold">Đang phát triển</span>
-                    </div>
-
-                    <!-- Learning Community -->
-                    <div class="bg-ivs-card rounded-xl p-6 border border-ivs-border text-center" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-16 h-16 bg-ivs-purple rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-users text-2xl text-white"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Cộng Đồng Học Tập</h3>
-                        <p class="text-ivs-text-secondary mb-4">Kết nối với cộng đồng học viên và giáo viên</p>
-                        <span class="text-sm text-ivs-purple font-semibold">Sắp ra mắt</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- IVS Digital Ecosystem -->
-        <section class="py-16 bg-ivs-card" id="digital-ecosystem">
-            <div class="container mx-auto px-6 lg:px-8">
-                <div class="bg-ivs-bg rounded-3xl border border-ivs-border p-8 md:p-10 shadow-2xl" data-aos="fade-up">
-                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
-                        <div>
-                            <p class="text-sm uppercase tracking-[0.25em] text-ivs-orange font-bold mb-3">Proprietary Technology Stack</p>
-                            <h2 class="text-3xl md:text-4xl font-bold font-display text-white flex items-center gap-3">
-                                <img src="images/logo/logo.png" alt="IVS Logo" class="w-10 h-10 md:w-12 md:h-12 object-contain hidden sm:block" onerror="this.src='https://placehold.co/80x80/9D4ED8/FFFFFF?text=IVS'" />
-                                <span>IVS Digital Ecosystem</span>
-                            </h2>
-                        </div>
-                        <p class="text-lg text-ivs-text-secondary max-w-3xl">
-                            Designed specifically for language centers, our ecosystem covers every aspect of operations, assessment, and learning.
-                        </p>
-                    </div>
-
-                    <div class="space-y-10">
-                        <div class="rounded-[2rem] bg-gradient-to-br from-white to-slate-50 text-slate-900 p-8 md:p-10 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="50">
-                            <div class="grid lg:grid-cols-2 gap-10 items-center">
-                                <div>
-                                    <span class="text-[10px] font-black text-orange-500 uppercase tracking-[0.25em]">Platform #1</span>
-                                    <h3 class="text-3xl font-black text-slate-900 uppercase flex items-center gap-3 mt-2 mb-5">
-                                        <img src="images/logo/logo-ivs.png" alt="IVS Logo" class="w-8 h-8 object-contain" onerror="this.src='https://placehold.co/40x40/ffffff/9D4ED8?text=IVS'" />
-                                        <span>CenterCare</span>
-                                    </h3>
-                                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">A comprehensive management platform that synchronizes students, class schedules, tuition fees, and real-time operational reporting.</p>
-                                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-orange-500"></i><span>Tuition Management</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-orange-500"></i><span>Digital Attendance</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-orange-500"></i><span>Parent App Sync</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-orange-500"></i><span>Smart Scheduling</span></div>
-                                    </div>
-                                    <a href="https://ivscentercare.web.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-ivs-orange text-white px-8 py-3 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-orange-600 transition-all shadow-lg">
-                                        <span>Explore Details</span>
-                                        <i class="fas fa-arrow-up-right-from-square"></i>
-                                    </a>
-                                </div>
-                                <div class="hidden lg:flex items-center justify-center">
-                                    <div class="w-full aspect-video rounded-[2rem] bg-white border-4 border-slate-100 shadow-2xl p-8 flex items-center justify-center">
-                                        <img src="images/logo/logo-centercare.png" alt="CenterCare Large" class="max-w-full max-h-full object-contain" onerror="this.src='images/logo/logo.png'" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="rounded-[2rem] bg-gradient-to-br from-white to-slate-50 text-slate-900 p-8 md:p-10 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="100">
-                            <div class="grid lg:grid-cols-2 gap-10 items-center">
-                                <div class="order-2 lg:order-1 hidden lg:flex items-center justify-center">
-                                    <div class="w-full aspect-video rounded-[2rem] bg-white border-4 border-slate-100 shadow-2xl p-8 flex items-center justify-center">
-                                        <img src="images/logo/logo-examia.png" alt="Examia Large" class="max-w-full max-h-full object-contain" onerror="this.src='images/logo/logo.png'" />
-                                    </div>
-                                </div>
-                                <div class="order-1 lg:order-2">
-                                    <span class="text-[10px] font-black text-pink-500 uppercase tracking-[0.25em]">Platform #2</span>
-                                    <h3 class="text-3xl font-black text-slate-900 uppercase flex items-center gap-3 mt-2 mb-5">
-                                        <img src="images/logo/logo-ivs.png" alt="Examia Logo" class="w-8 h-8 object-contain" onerror="this.src='https://placehold.co/40x40/ffffff/EF5675?text=IVS'" />
-                                        <span>IVS Examia</span>
-                                    </h3>
-                                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">A professional assessment system for language centers, providing end-to-end solutions for mid-term, final exams, and international mock tests.</p>
-                                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-pink-500"></i><span>Auto-Grading Engine</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-pink-500"></i><span>Competency Analytics</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-pink-500"></i><span>Question Bank</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-pink-500"></i><span>Anti-Cheat Mode</span></div>
-                                    </div>
-                                    <a href="https://ivsexamia.web.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-ivs-orange text-white px-8 py-3 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-pink-500 transition-all shadow-lg">
-                                        <span>Explore Details</span>
-                                        <i class="fas fa-arrow-up-right-from-square"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="rounded-[2rem] bg-gradient-to-br from-white to-slate-50 text-slate-900 p-8 md:p-10 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="150">
-                            <div class="grid lg:grid-cols-2 gap-10 items-center">
-                                <div>
-                                    <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.25em]">Platform #3</span>
-                                    <h3 class="text-3xl font-black text-slate-900 uppercase flex items-center gap-3 mt-2 mb-5">
-                                        <img src="images/logo/logo.png" alt="ELearners Logo" class="w-8 h-8 object-contain" onerror="this.src='https://placehold.co/40x40/ffffff/3b82f6?text=IVS'" />
-                                        <span>ELearners</span>
-                                    </h3>
-                                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">An interactive self-learning application for K-12 students with personalized learning paths, bridging the gap between center and home.</p>
-                                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-blue-500"></i><span>Gamified Lessons</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-blue-500"></i><span>AI Voice Feedback</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-blue-500"></i><span>Daily Goal Tracker</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-blue-500"></i><span>Reward System</span></div>
-                                    </div>
-                                    <a href="https://ivslearning.io.vn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-ivs-orange text-white px-8 py-3 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-blue-500 transition-all shadow-lg">
-                                        <span>Explore Details</span>
-                                        <i class="fas fa-arrow-up-right-from-square"></i>
-                                    </a>
-                                </div>
-                                <div class="hidden lg:flex items-center justify-center">
-                                    <div class="w-full aspect-video rounded-[2rem] bg-white border-4 border-slate-100 shadow-2xl p-8 flex items-center justify-center">
-                                        <img src="images/logo/logo-elearners.png" alt="ELearners Large" class="max-w-full max-h-full object-contain" onerror="this.src='images/logo/logo.png'" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="rounded-[2rem] bg-gradient-to-br from-white to-slate-50 text-slate-900 p-8 md:p-10 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                            <div class="grid lg:grid-cols-2 gap-10 items-center">
-                                <div class="order-2 lg:order-1 hidden lg:flex items-center justify-center">
-                                    <div class="w-full aspect-video rounded-[2rem] bg-white border-4 border-slate-100 shadow-2xl p-8 flex items-center justify-center">
-                                        <img src="images/logo/logo-testing.png" alt="Testing Large" class="max-w-full max-h-full object-contain" onerror="this.src='images/logo/logo.png'" />
-                                    </div>
-                                </div>
-                                <div class="order-1 lg:order-2">
-                                    <span class="text-[10px] font-black text-emerald-500 uppercase tracking-[0.25em]">Platform #4</span>
-                                    <h3 class="text-3xl font-black text-slate-900 uppercase flex items-center gap-3 mt-2 mb-5">
-                                        <img src="images/logo/logo-ivs.png" alt="Testing Placement Logo" class="w-8 h-8 object-contain" onerror="this.src='https://placehold.co/40x40/ffffff/10b981?text=IVS'" />
-                                        <span>Testing Placement</span>
-                                    </h3>
-                                    <p class="text-slate-600 mb-8 leading-relaxed font-medium">Accurate entrance level testing tool, optimizing class classification.</p>
-                                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-emerald-500"></i><span>Automated Testing</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-emerald-500"></i><span>Level Classification</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-emerald-500"></i><span>Instant Results</span></div>
-                                        <div class="flex items-center gap-2 text-sm font-semibold text-slate-600"><i class="fas fa-circle-check text-emerald-500"></i><span>Report Generation</span></div>
-                                    </div>
-                                    <a href="https://testplacement.web.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-ivs-orange text-white px-8 py-3 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-emerald-500 transition-all shadow-lg">
-                                        <span>Explore Details</span>
-                                        <i class="fas fa-arrow-up-right-from-square"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="rounded-[2rem] bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border border-white/10 p-8 text-white shadow-2xl" data-aos="fade-up" data-aos-delay="250">
-                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-                                <div>
-                                    <h3 class="font-bold text-2xl mb-3 flex items-center gap-3">
-                                        <i class="fas fa-handshake text-ivs-orange"></i>
-                                        <span>Software-as-a-Partner Model</span>
-                                    </h3>
-                                    <p class="text-slate-300 max-w-2xl">Our technology lowers the barrier for schools to partner with IVS by solving their internal management pain points.</p>
-                                </div>
-                                <ul class="space-y-3 text-sm bg-white/10 p-5 rounded-2xl border border-white/10 w-full lg:w-auto">
-                                    <li class="flex items-center gap-3"><i class="fas fa-cloud text-blue-400"></i><span>Centralized Cloud Database</span></li>
-                                    <li class="flex items-center gap-3"><i class="fas fa-rotate text-emerald-400"></i><span>Real-time Satellite Sync</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Learning Resources & Links -->
-        <section class="py-16 bg-ivs-card">
-            <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">
-                        <i class="fas fa-link text-ivs-orange mr-2"></i> <span class="text-white">Tài Nguyên & Liên Kết Hữu Ích</span>
-                    </h2>
-                    <p class="text-xl text-ivs-text-secondary max-w-2xl mx-auto">
-                        Khám phá các tài nguyên học tập và công cụ bổ trợ từ IVS và đối tác
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <!-- Learning Resources -->
-                    <div class="bg-ivs-bg rounded-xl p-8 border border-ivs-border" data-aos="fade-up">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-ivs-blue rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-graduation-cap text-white"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold">Tài Nguyên Học Tập</h3>
-                                <p class="text-ivs-text-secondary">Các tài liệu và công cụ hỗ trợ việc học</p>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <a href="Pages/tailieu.html" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-blue transition-colors">
-                                <div class="flex items-center">
-                                    <i class="fas fa-book text-ivs-blue mr-3"></i>
-                                    <div>
-                                        <h4 class="font-semibold">Tài Liệu Học Tập</h4>
-                                        <p class="text-sm text-ivs-text-secondary">Giáo trình, bài giảng và tài liệu tham khảo</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="Pages/games/ivsgames.html" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-green transition-colors">
-                                <div class="flex items-center">
-                                    <i class="fas fa-gamepad text-ivs-green mr-3"></i>
-                                    <div>
-                                        <h4 class="font-semibold">IVS Games</h4>
-                                        <p class="text-sm text-ivs-text-secondary">Trò chơi giáo dục tương tác</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="Pages/apps/ivsapps.html" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-purple transition-colors">
-                                <div class="flex items-center">
-                                    <i class="fas fa-rocket text-ivs-purple mr-3"></i>
-                                    <div>
-                                        <h4 class="font-semibold">IVS Apps</h4>
-                                        <p class="text-sm text-ivs-text-secondary">Bộ ứng dụng tiện ích và giáo dục</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- External Resources -->
-                    <div class="bg-ivs-bg rounded-xl p-8 border border-ivs-border" data-aos="fade-up" data-aos-delay="100">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-ivs-green rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-external-link-alt text-white"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-bold">Tài Nguyên Bên Ngoài</h3>
-                                <p class="text-ivs-text-secondary">Các công cụ và nền tảng học tập uy tín</p>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <a href="https://www.duolingo.com/" target="_blank" rel="noopener noreferrer" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-orange transition-colors">
-                                <div class="flex items-center">
-                                    <i class="fas fa-language text-ivs-orange mr-3"></i>
-                                    <div>
-                                        <h4 class="font-semibold">Duolingo</h4>
-                                        <p class="text-sm text-ivs-text-secondary">Ứng dụng học ngôn ngữ tương tác</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-blue transition-colors">
-                                <div class="flex items-center">
-                                    <i class="fas fa-university text-ivs-blue mr-3"></i>
-                                    <div>
-                                        <h4 class="font-semibold">Khan Academy</h4>
-                                        <p class="text-sm text-ivs-text-secondary">Nền tảng học tập miễn phí toàn diện</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer" class="block bg-ivs-card p-4 rounded-lg border border-ivs-border hover:border-ivs-purple transition-colors">
-                                <div class="flex items-center">
-                                    <i class="fas fa-graduation-cap text-ivs-purple mr-3"></i>
-                                    <div>
-                                        <h4 class="font-semibold">Coursera</h4>
-                                        <p class="text-sm text-ivs-text-secondary">Khóa học trực tuyến từ các trường đại học</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Call to Action -->
-                <div class="text-center mt-12" data-aos="fade-up">
-                    <div class="bg-gradient-to-r from-ivs-blue to-ivs-purple rounded-xl p-8 text-white">
-                        <h3 class="text-2xl font-bold mb-4">Bắt Đầu Hành Trình Học Tập</h3>
-                        <p class="text-lg mb-6 opacity-90">
-                            Khám phá các ứng dụng và tài nguyên học tập của IVS ngay hôm nay
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="#applications" class="bg-white text-ivs-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                                <i class="fas fa-play mr-2"></i>Khám Phá Ứng Dụng
-                            </a>
-                            <a href="contact.html" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-ivs-blue transition-colors">
-                                <i class="fas fa-envelope mr-2"></i>Liên Hệ Tư Vấn
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <div id="footer-placeholder"></div>
-    <div id="fab-container-placeholder"></div>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../js/scripts.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-    </script>
-    <script defer src="/js/aivy-integration.js"></script>
-<script defer src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
-
