@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVS Resort & Dining - Nhà hàng Khách sạn Đồng Nai</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; color:#1f2937; line-height:1.7; }
+    h1,h2,h3 { font-family:'Playfair Display',serif; }
+    .container { max-width:1240px; margin:0 auto; padding:0 20px; }
+    header { background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.06); position:sticky; top:0; z-index:100; }
+    nav { display:flex; justify-content:space-between; align-items:center; padding:18px 0; }
+    .logo { font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:#8B5A2B; }
+    .nav-links { display:flex; gap:32px; list-style:none; }
+    .nav-links a { text-decoration:none; color:#374151; font-weight:500; }
+    .btn { padding:12px 28px; background:#8B5A2B; color:#fff; border:none; border-radius:10px; font-weight:600; text-decoration:none; display:inline-block; cursor:pointer; }
+    .btn-outline { background:transparent; border:2px solid #8B5A2B; color:#8B5A2B; }
+    .hero { padding:0; position:relative; height:85vh; min-height:600px; display:flex; align-items:center; background:linear-gradient(rgba(44,24,16,0.5), rgba(44,24,16,0.5)), #D4C4B0; color:#fff; }
+    .hero-content { position:relative; z-index:2; max-width:700px; }
+    .hero h1 { font-size:58px; line-height:1.15; margin-bottom:24px; }
+    .hero p { font-size:20px; margin-bottom:36px; opacity:0.95; }
+    .hero-btns { display:flex; gap:16px; }
+    section { padding:90px 0; }
+    .section-title { text-align:center; font-size:42px; margin-bottom:16px; color:#2C1810; }
+    .section-sub { text-align:center; color:#6B5E52; margin-bottom:60px; font-size:18px; max-width:700px; margin-left:auto; margin-right:auto; }
+    .about-grid { display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center; }
+    .about-img { height:480px; background:#E8DFD1; border-radius:20px; }
+    .about h2 { font-size:40px; margin-bottom:24px; color:#2C1810; }
+    .about p { color:#5C4A3A; margin-bottom:20px; font-size:17px; }
+    .about ul { list-style:none; margin-top:24px; }
+    .about li { padding:12px 0; padding-left:32px; position:relative; color:#374151; }
+    .about li:before { content:'✓'; position:absolute; left:0; color:#8B5A2B; font-weight:700; font-size:20px; }
+    .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:32px; }
+    .card { background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.08); }
+    .card-img { height:240px; background:#D4C4B0; }
+    .card-body { padding:28px; }
+    .card h3 { font-size:24px; margin-bottom:12px; color:#2C1810; }
+    .card p { color:#6B5E52; margin-bottom:16px; }
+    .price { font-size:26px; font-weight:700; color:#8B5A2B; }
+    .menu-section { background:#F9F7F4; }
+    .menu-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:40px; }
+    .menu-cat h3 { font-size:28px; color:#8B5A2B; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #D4C4B0; }
+    .menu-item { display:flex; justify-content:space-between; align-items:start; padding:16px 0; border-bottom:1px dashed #D4C4B0; }
+    .menu-item:last-child { border:none; }
+    .menu-name { font-weight:600; color:#2C1810; margin-bottom:4px; }
+    .menu-desc { font-size:14px; color:#6B5E52; }
+    .menu-price { font-weight:700; color:#8B5A2B; white-space:nowrap; margin-left:20px; }
+    .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .gallery-item { height:280px; background:#E8DFD1; border-radius:12px; }
+    .testimonial { background:#F5F1EA; padding:32px; border-radius:16px; }
+    .testimonial p { font-style:italic; color:#374151; margin-bottom:20px; font-size:17px; }
+    .testimonial-author { font-weight:700; color:#2C1810; }
+    .testimonial-role { font-size:14px; color:#6B5E52; }
+    .booking { background:#2C1810; color:#fff; }
+    .booking .section-title { color:#fff; }
+    .booking .section-sub { color:#D4C4B0; }
+    .booking-form { background:#fff; padding:40px; border-radius:20px; max-width:700px; margin:0 auto; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
+    .form-group label { display:block; margin-bottom:8px; font-weight:600; color:#374151; }
+    .form-group input, .form-group select { width:100%; padding:14px; border:1px solid #D1D5DB; border-radius:10px; font-size:16px; }
+    footer { background:#1F1611; color:#D4C4B0; padding:60px 0 20px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px; }
+    .footer h3 { color:#fff; margin-bottom:16px; font-size:18px; }
+    .footer a { color:#D4C4B0; text-decoration:none; display:block; padding:6px 0; }
+    .footer a:hover { color:#fff; }
+    .credit { text-align:center; padding-top:24px; border-top:1px solid #3A2A1F; font-size:14px; color:#A89583; }
+    .credit a { color:#D4C4B0; text-decoration:none; font-weight:600; display:inline; }
+    @media (max-width:900px) {
+      .hero h1 { font-size:38px; }
+      .nav-links { display:none; }
+      .about-grid, .menu-grid, .footer-grid { grid-template-columns:1fr; }
+      .form-row { grid-template-columns:1fr; }
+      .gallery { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">IVS Resort & Dining</div>
+        <ul class="nav-links">
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#rooms">Phòng nghỉ</a></li>
+          <li><a href="#restaurant">Nhà hàng</a></li>
+          <li><a href="#gallery">Hình ảnh</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+        <a href="#booking" class="btn">Đặt chỗ ngay</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Trải nghiệm nghỉ dưỡng giữa rừng cao su Đồng Nai</h1>
+        <p>Khách sạn boutique 25 phòng & nhà hàng fine-dining view hồ Trị An. Cách Sài Gòn 45 phút, nguyên liệu tươi từ vườn địa phương, dịch vụ ấm áp như ở nhà.</p>
+        <div class="hero-btns">
+          <a href="#booking" class="btn">Đặt phòng</a>
+          <a href="#restaurant" class="btn btn-outline">Xem thực đơn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img"></div>
+        <div class="about">
+          <h2>Về IVS Resort & Dining</h2>
+          <p>Nằm tại ấp 3, xã Lộc An, Long Thành, IVS Resort & Dining được xây dựng trên khu đất 3000m² giữa rừng cao su 20 năm tuổi, nhìn thẳng ra hồ Trị An.</p>
+          <p>Chúng tôi tin rằng nghỉ dưỡng đích thực không nằm ở độ xa hoa, mà ở cảm giác được trở về. Vì thế mỗi phòng đều mở trọn về thiên nhiên, mỗi món ăn đều kể câu chuyện của đất Đồng Nai.</p>
+          <ul>
+            <li>25 phòng thiết kế gỗ - đá - mây tre, ban công riêng</li>
+            <li>Nhà hàng 80 chỗ, sức chứa tiệc 200 khách ngoài trời</li>
+            <li>Hồ bơi vô cực, spa tre, khu vui chơi trẻ em</li>
+            <li>Đội ngũ 90% người địa phương, đào tạo chuẩn 4 sao</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rooms" style="background:#F9F7F4;">
+    <div class="container">
+      <h2 class="section-title">Hạng phòng nghỉ</h2>
+      <p class="section-sub">Tất cả phòng đều có ban công, máy lạnh 2 chiều, minibar, wifi tốc độ cao</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-img"></div>
+          <div class="card-body">
+            <h3>Deluxe Lake View</h3>
+            <p>35m², giường king hoặc 2 đơn, bồn tắm nằm view hồ, ban công 8m²</p>
+            <div class="price">1.850.000đ / đêm</div>
+            <a href="#booking" class="btn" style="margin-top:16px; width:100%; text-align:center;">Đặt ngay</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img"></div>
+          <div class="card-body">
+            <h3>Garden Bungalow</h3>
+            <p>45m², 2 giường đôi, sân vườn riêng 20m², phù hợp gia đình có trẻ nhỏ</p>
+            <div class="price">2.200.000đ / đêm</div>
+            <a href="#booking" class="btn" style="margin-top:16px; width:100%; text-align:center;">Đặt ngay</a>
+          </div>
+        <div class="card">
+          <div class="card-img"></div>
+          <div class="card-body">
+            <h3>Suite Panorama</h3>
+            <p>65m², phòng khách + phòng ngủ tách biệt, bồn jacuzzi, view 180° hồ</p>
+            <div class="price">3.500.000đ / đêm</div>
+            <a href="#booking" class="btn" style="margin-top:16px; width:100%; text-align:center;">Đặt ngay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="restaurant" class="menu-section">
+    <div class="container">
+      <h2 class="section-title">Nhà hàng IVS Dining</h2>
+      <p class="section-sub">Ẩm thực fusion Việt - Âu. 80% nguyên liệu từ Đồng Nai: cá lăng sông La Ngà, rau rừng Mã Đà, nấm tràm Long Khánh, bò Tây Ninh</p>
+      <div class="menu-grid">
+        <div class="menu-cat">
+          <h3>Món chính</h3>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">Cá lăng nướng muối ớt Mã Đà</div>
+              <div class="menu-desc">Cá lăng sông La Ngà, ướp muối ớt xanh, nướng than hoa</div>
+            </div>
+            <div class="menu-price">385.000đ</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">Bò Wagyu sốt tiêu rừng Cát Tiên</div>
+              <div class="menu-desc">Thăn nội bò Wagyu A5, tiêu xanh tươi, khoai nghiền truffle</div>
+            </div>
+            <div class="menu-price">520.000đ</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">Mì Ý sốt kem nấm tràm</div>
+              <div class="menu-desc">Nấm tràm Long Khánh, kem tươi, phô mai Parmesan</div>
+            </div>
+            <div class="menu-price">245.000đ</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">Cơm chiên cua gạch Cà Mau</div>
+              <div class="menu-desc">Gạo ST25, cua gạch, trứng muối, ăn kèm canh chua cá</div>
+            </div>
+            <div class="menu-price">295.000đ</div>
+          </div>
+        </div>
+        <div class="menu-cat">
+          <h3>Đồ uống & Tráng miệng</h3>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">Cocktail Mãng cầu Long Khánh</div>
+              <div class="menu-desc">Rượu rum trắng, mãng cầu tươi, lá bạc hà</div>
+            </div>
+            <div class="menu-price">165.000đ</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">Rượu vang Đà Lạt Premium</div>
+              <div class="menu-desc">Vang đỏ Cabernet Sauvignon 2022</div>
+            </div>
+            <div class="menu-price">180.000đ/ly</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">Panna Cotta chanh dây</div>
+              <div class="menu-desc">Kem sữa Ý, sốt chanh dây tươi, bánh quế</div>
+            </div>
+            <div class="menu-price">95.000đ</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">Cafe phin trứng Buôn Ma Thuột</div>
+              <div class="menu-desc">Cafe robusta rang mộc, lòng đỏ trứng gà ta</div>
+            </div>
+            <div class="menu-price">65.000đ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Tiện ích & Trải nghiệm</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-body">
+            <h3>Hồ bơi vô cực</h3>
+            <p>Nhìn thẳng ra hồ Trị An, mở 6h-22h. Bar nổi phục vụ cocktail, trái cây tươi, kem Ý.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3>IVS Spa</h3>
+            <p>Liệu trình tre, đá nóng, gội đầu dưỡng sinh. Phòng xông hơi gỗ thông, yoga sáng trên deck.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3>Hội nghị & Tiệc cưới</h3>
+            <p>Sảnh 300 khách máy lạnh, bãi cỏ ven hồ 500 khách. Menu thiết kế riêng cho công ty KCN.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" style="background:#F9F7F4;">
+    <div class="container">
+      <h2 class="section-title">Không gian IVS</h2>
+      <div class="gallery">
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Khách hàng nói gì</h2>
+      <div class="grid-3">
+        <div class="testimonial">
+          <p>"Mình ở đây 2 đêm với gia đình. Sáng dậy mở cửa là thấy hồ, tối ăn cá lăng nướng ngon xỉu. Nhân viên dễ thương như người nhà."</p>
+          <div class="testimonial-author">Chị Lan Anh</div>
+          <div class="testimonial-role">Khách từ TP.HCM</div>
+        </div>
+        <div class="testimonial">
+          <p>"Công ty mình tổ chức year-end party ở bãi cỏ ven hồ. Team IVS setup đẹp, đồ ăn hợp khẩu vị anh em công nhân. Sẽ quay lại."</p>
+          <div class="testimonial-author">Anh Minh - HR</div>
+          <div class="testimonial-role">KCN Long Thành</div>
+        </div>
+        <div class="testimonial">
+          <p>"Phòng sạch, view đẹp, giá hợp lý so với chất lượng. Điểm trừ: xa trung tâm nên phải có xe riêng. Điểm cộng: quá yên tĩnh để ngủ."</p>
+          <div class="testimonial-author">Bạn Quốc Duy</div>
+          <div class="testimonial-role">Travel Blogger</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking" class="booking">
+    <div class="container">
+      <h2 class="section-title">Đặt phòng / Đặt bàn</h2>
+      <p class="section-sub">Điền thông tin, chúng tôi xác nhận qua Zalo trong 5 phút</p>
+      <div class="booking-form">
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label style="color:#374151;">Họ tên</label>
+              <input type="text" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="form-group">
+              <label style="color:#374151;">Số điện thoại</label>
+              <input type="tel" placeholder="0909 xxx xxx" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label style="color:#374151;">Loại đặt chỗ</label>
+              <select>
+                <option>Đặt phòng nghỉ</option>
+                <option>Đặt bàn nhà hàng</option>
+                <option>Tiệc công ty / Hội nghị</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label style="color:#374151;">Ngày sử dụng</label>
+              <input type="date" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label style="color:#374151;">Số khách</label>
+              <input type="text" placeholder="2 người lớn, 1 trẻ em">
+            </div>
+            <div class="form-group">
+              <label style="color:#374151;">Yêu cầu đặc biệt</label>
+              <input type="text" placeholder="Sinh nhật, dị ứng, view hồ...">
+            </div>
+          </div>
+          <button type="submit" class="btn" style="margin-top:10px;">Gửi yêu cầu đặt chỗ</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="color:#fff; margin-bottom:16px;">IVS Resort & Dining</div>
+          <p style="margin-bottom:16px;">Nghỉ dưỡng giữa rừng cao su, ẩm thực từ đất Đồng Nai.</p>
+          <p>Ấp 3, Xã Lộc An, H. Long Thành, Đồng Nai</p>
+          <p>Hotline: 0251 888 6868 | Zalo: 0909 888 686</p>
+          <p>Email: hello@ivsresort.vn</p>
+        </div>
+        <div>
+          <h3>Dịch vụ</h3>
+          <a href="#rooms">Phòng nghỉ</a>
+          <a href="#restaurant">Nhà hàng</a>
+          <a href="#">Spa & Yoga</a>
+          <a href="#">Hội nghị - Tiệc cưới</a>
+        </div>
+        <div>
+          <h3>Hỗ trợ</h3>
+          <a href="#">Chính sách hủy phòng</a>
+          <a href="#">Hướng dẫn đường đi</a>
+          <a href="#">Ưu đãi KCN</a>
+          <a href="#">Tuyển dụng</a>
+        </div>
+        <div>
+          <h3>Giờ hoạt động</h3>
+          <p>Nhà hàng: 7:00 - 22:00</p>
+          <p>Check-in: 14:00 | Out: 12:00</p>
+          <p>Spa: 9:00 - 21:00</p>
+          <p>Hồ bơi: 6:00 - 22:00</p>
+        </div>
+      <div class="credit">
+        Thiết kế và phát triển bởi 
+        <a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" rel="noopener">
+          IVS Celestech, IVS JSC
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

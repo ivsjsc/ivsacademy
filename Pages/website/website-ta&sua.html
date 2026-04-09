@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<!-- Playables SDK -->
+<script>// Playables SDK v1.0.0
+// Game lifecycle bridge: rAF-based game-ready detection + event communication
+(function() {
+  'use strict';
+
+  var HANDLER_NAME = 'playablesGameEventHandler';
+  var ANDROID_BRIDGE_NAME = '_MetaPlayablesBridge';
+  var RAF_FRAME_THRESHOLD = 3;
+
+  var gameReadySent = false;
+  var firstInteractionSent = false;
+  var errorSent = false;
+  var frameCount = 0;
+  var originalRAF = window.requestAnimationFrame;
+
+  // --- Transport Layer ---
+
+  function hasIOSBridge() {
+    return !!(window.webkit &&
+              window.webkit.messageHandlers &&
+              window.webkit.messageHandlers[HANDLER_NAME]);
+  }
+
+  function hasAndroidBridge() {
+    return !!(window[ANDROID_BRIDGE_NAME] &&
+              typeof window[ANDROID_BRIDGE_NAME].postEvent === 'function');
+  }
+
+  function isInIframe() {
+    return !!(window.parent && window.parent !== window);
+  }
+
+  function sendEvent(eventName, payload) {
+    var message = {
+      type: eventName,
+      payload: payload || {},
+      timestamp: Date.now()
+    };
+
+    if (hasIOSBridge()) {
+      try {
+        window.webkit.messageHandlers[HANDLER_NAME].postMessage(message);
+      } catch (e) { /* ignore */ }
+      return;
+    }
+
+    if (hasAndroidBridge()) {
+    try {
+      var p = payload || {};
+      p.__secureToken = window.__fbAndroidBridgeAuthToken || '';
+      window[ANDROID_BRIDGE_NAME].postEvent(
+        eventName,
+        JSON.stringify(p)
+      );
+    } catch (e) { /* ignore */ }
+    return;
+  }
+
+    if (isInIframe()) {
+      try {
+        window.parent.postMessage(message, '*');
+      } catch (e) { /* ignore */ }
+      return;
+    }
+  }
+
+  // --- rAF Game-Ready Detection ---
+
+  function onFrame() {
+    if (gameReadySent) return;
+
+    frameCount++;
+    if (frameCount >= RAF_FRAME_THRESHOLD) {
+      gameReadySent = true;
+      sendEvent('game_ready', {
+        frame_count: frameCount,
+        detected_at: Date.now()
+      });
+      return;
+    }
+
+    originalRAF.call(window, onFrame);
+  }
+
+  if (originalRAF) {
+    window.requestAnimationFrame = function(callback) {
+      if (!gameReadySent) {
+        return originalRAF.call(window, function(timestamp) {
+          frameCount++;
+          if (frameCount >= RAF_FRAME_THRESHOLD && !gameReadySent) {
+            gameReadySent = true;
+            sendEvent('game_ready', {
+              frame_count: frameCount,
+              detected_at: Date.now()
+            });
+          }
+          callback(timestamp);
+        });
+      }
+      return originalRAF.call(window, callback);
+    };
+  }
+
+  // --- First User Interaction Detection ---
+
+  function setupFirstInteractionDetection() {
+    var events = ['touchstart', 'mousedown', 'keydown'];
+
+    function onFirstInteraction() {
+      if (firstInteractionSent) return;
+      firstInteractionSent = true;
+      sendEvent('user_interaction_start', null);
+
+      for (var i = 0; i < events.length; i++) {
+        document.removeEventListener(events[i], onFirstInteraction, true);
+      }
+    }
+
+    for (var i = 0; i < events.length; i++) {
+      document.addEventListener(events[i], onFirstInteraction, true);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFirstInteractionDetection);
+  } else {
+    setupFirstInteractionDetection();
+  }
+
+  // --- Auto Error Capture ---
+
+  window.addEventListener('error', function(event) {
+    if (errorSent) return;
+    errorSent = true;
+    sendEvent('error', {
+      message: event.message || 'Unknown error',
+      source: event.filename || '',
+      lineno: event.lineno || 0,
+      colno: event.colno || 0,
+      auto_captured: true
+    });
+  });
+
+  window.addEventListener('unhandledrejection', function(event) {
+    if (errorSent) return;
+    errorSent = true;
+    var reason = event.reason;
+    sendEvent('error', {
+      message: (reason instanceof Error) ? reason.message : String(reason),
+      type: 'unhandled_promise_rejection',
+      auto_captured: true
+    });
+  });
+
+  // --- Public API ---
+
+  window.playablesSDK = {
+    complete: function(score) {
+      sendEvent('game_ended', {
+        score: score,
+        completed: true
+      });
+    },
+
+    error: function(message) {
+      if (errorSent) return;
+      errorSent = true;
+      sendEvent('error', {
+        message: message || 'Unknown error',
+        auto_captured: false
+      });
+    },
+
+    sendEvent: function(eventName, payload) {
+      if (!eventName || typeof eventName !== 'string') return;
+      sendEvent(eventName, payload);
+    }
+  };
+
+  // Kick off rAF detection in case no game code calls rAF immediately
+  if (originalRAF) {
+    originalRAF.call(window, onFrame);
+  }
+})();</script>
+<script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bé Yêu Mart - Sữa chuẩn, Tã xịn, Mẹ an tâm</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{font-family:'Inter',system-ui,-apple-system,sans-serif}
+  .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+  ::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:#ffd6e0;border-radius:8px}
+</style>
+</head>
+<body class="bg-[#FFFCF8] text-[#1D3557] antialiased">
+<!-- Top bar -->
+<div class="bg-[#1D3557] text-white text-[12px] py-2 px-4 text-center">
+  Miễn phí giao hàng từ 499k tại TP.HCM & Đồng Nai • Giao nhanh 2H
+</div>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-[#FFFCF8]/85 backdrop-blur-xl border-b border-[#FF8FAB]/10">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center gap-3 py-3">
+      <button id="menuBtn" class="lg:hidden w-10 h-10 grid place-items-center rounded-xl hover:bg-pink-50">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h14M4 12h14M4 18h14"/></svg>
+      </button>
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#FF8FAB] to-[#FFD166] shadow-[0_8px_20px_-8px_#FF8FAB] grid place-items-center text-white">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3c2.5 0 4.5 2 4.5 4.5S15.5 12 12 14 7.5 10 7.5 7.5 9.5 3 12 3Z" fill="white" opacity=".9"/><path d="M6 18c0-3.3 2.7-6 6-6s6 2.7 6 6v1H6v-1Z" fill="white"/></svg>
+        </div>
+        <div>
+          <div class="text-[22px] font-extrabold leading-none tracking-tight">Bé Yêu <span class="text-[#FF8FAB]">Mart</span></div>
+          <div class="text-[10.5px] text-gray-500 -mt-0.5 hidden sm:block">Sữa chuẩn - Tã xịn - Mẹ an tâm</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-2.5 ml-4 pl-4 border-l border-pink-100">
+        <div class="w-9 h-9 rounded-xl bg-[#A8E6CF]/30 grid place-items-center text-[#1D3557]">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l4 2 5-3 5 2v8l-5-2-5 3-4-2V5Z"/></svg>
+        </div>
+        <div class="text-sm leading-tight">
+          <div class="text-[11px] text-gray-500">Hotline tư vấn</div>
+          <div class="font-bold">1900 636 888</div>
+        </div>
+      </div>
+      <div class="hidden md:block flex-1 mx-5">
+        <div class="relative">
+          <input id="searchInput" type="text" placeholder="Tìm sữa, tã, thương hiệu..." class="w-full h-[44px] pl-4 pr-12 rounded-2xl bg-white border border-[#FFE1E8] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FF8FAB]/30 text-[14px]">
+          <button class="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl bg-[#FF8FAB] text-white grid place-items-center hover:brightness-105">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="m13 13 3 3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 ml-auto">
+        <button class="hidden sm:flex items-center gap-1.5 text-[14px] px-3.5 py-2.5 rounded-xl hover:bg-[#FFF0F4] transition">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="6" r="3.5"/><path d="M3 16c0-3 2.7-5 6-5s6 2 6 5"/></svg>
+          Đăng nhập
+        </button>
+        <button id="cartBtn" class="relative w-11 h-11 grid place-items-center rounded-2xl bg-[#1D3557] text-white shadow-lg shadow-[#1D3557]/15 hover:translate-y-[-1px] transition">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h12l-1 9H7L6 6Z"/><path d="M9 6V5a3 3 0 0 1 6 0v1"/></svg>
+          <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 grid place-items-center bg-[#FF8FAB] text-white text-[11px] font-bold rounded-full shadow">0</span>
+        </button>
+      </div>
+    </div>
+    <div class="md:hidden pb-3">
+      <div class="relative">
+        <input id="searchInputMb" type="text" placeholder="Tìm sữa, tã, thương hiệu..." class="w-full h-[42px] pl-4 pr-12 rounded-2xl bg-white border border-[#FFE1E8] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FF8FAB]/30 text-[14px]">
+        <button class="absolute right-1.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-[#FF8FAB] text-white grid place-items-center">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><path d="m11 11 2.5 2.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4">
+  <!-- HERO -->
+  <section class="mt-5">
+    <div class="relative overflow-hidden rounded-[32px] shadow-[0_20px_60px_-25px_rgba(255,143,171,0.4)]">
+      <div id="heroTrack" class="flex transition-transform duration-700 ease-out">
+        <!-- Slide 1 -->
+        <div class="hero-slide min-w-full">
+          <div class="relative bg-gradient-to-br from-[#FFF8FA] via-[#FFFCF8] to-[#E8FBF3] px-6 md:px-14 py-10 md:py-14">
+            <div class="grid md:grid-cols-[1.1fr_0.9fr] items-center gap-8">
+              <div>
+                <span class="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur border border-white px-3 py-1 rounded-full text-xs font-semibold shadow-sm">🇯🇵 Chính hãng Nhật Bản</span>
+                <h1 class="mt-4 text-[30px] md:text-[48px] font-extrabold leading-[1.1] tracking-tight">Sữa Nhật chính hãng<br><span class="text-[#FF8FAB]">Giảm 15%</span></h1>
+                <p class="mt-3 text-[15px] text-gray-600 max-w-lg">Meiji, Morinaga, Glico đủ số cho bé 0-3 tuổi. Tư vấn dinh dưỡng miễn phí, giao nhanh 2H.</p>
+                <div class="mt-6 flex gap-3">
+                  <button onclick="document.getElementById('productGrid').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 rounded-2xl bg-[#FF8FAB] text-white font-semibold shadow-lg shadow-[#FF8FAB]/25 hover:brightness-105 active:scale-[0.98]">Mua ngay</button>
+                  <button class="px-5 py-3 rounded-2xl bg-white border border-pink-100 font-semibold hover:bg-pink-50">Nhận tư vấn</button>
+                </div>
+                <div class="mt-5 flex items-center gap-4 text-xs text-gray-500">
+                  <div class="flex -space-x-2"><img class="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100"/><img class="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=100"/><img class="w-7 h-7 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1519345182560-3f2917c47231?w=100"/></div>
+                  <span>12.480+ mẹ tin dùng tháng này</span>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute -inset-6 bg-[#FF8FAB]/10 blur-3xl rounded-full"></div>
+                <div class="relative aspect-[4/3] rounded-[28px] bg-white/60 backdrop-blur-xl border border-white shadow-xl grid place-items-center">
+                  <div class="text-[110px] leading-none">🍼</div>
+                  <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+                    <div class="bg-white/90 rounded-2xl px-3 py-2 shadow text-xs"><b class="text-[#1D3557]">Meiji 0-1</b><br><span class="text-gray-500">Nhập khẩu</span></div>
+                    <div class="bg-[#A8E6CF] rounded-2xl px-3 py-2 shadow text-xs font-bold">Freeship 2H</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="hero-slide min-w-full">
+          <div class="relative bg-gradient-to-br from-[#FFF9E6] via-[#FFFCF8] to-[#FFE5EC] px-6 md:px-14 py-10 md:py-14">
+            <div class="grid md:grid-cols-[1.1fr_0.9fr] items-center gap-8">
+              <div>
+                <span class="inline-flex items-center gap-1.5 bg-white/80 backdrop-blur border border-white px-3 py-1 rounded-full text-xs font-semibold shadow-sm">🎁 Mua 3 tặng 1</span>
+                <h1 class="mt-4 text-[30px] md:text-[48px] font-extrabold leading-[1.1]">Tã Moony, Merries<br><span class="text-[#FFD166]">Mềm như mây</span></h1>
+                <p class="mt-3 text-[15px] text-gray-600 max-w-lg">Thấm hút 12h, chống hăm, bề mặt organic. Đủ size NB đến XXL cho bé 0-3 tuổi.</p>
+                <div class="mt-6 flex gap-3">
+                  <button onclick="filterByCategory('Tã')" class="px-6 py-3 rounded-2xl bg-[#1D3557] text-white font-semibold shadow-lg shadow-[#1D3557]/20 hover:opacity-95 active:scale-[0.98]">Săn deal ngay</button>
+                  <button class="px-5 py-3 rounded-2xl bg-white border border-amber-100 font-semibold hover:bg-amber-50">Xem size</button>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute -inset-6 bg-[#FFD166]/20 blur-3xl rounded-full"></div>
+                <div class="relative aspect-[4/3] rounded-[28px] bg-white/60 backdrop-blur-xl border border-white shadow-xl grid place-items-center">
+                  <div class="text-[110px] leading-none">👶</div>
+                  <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+                    <div class="bg-white/90 rounded-2xl px-3 py-2 shadow text-xs"><b>Moony Natural</b><br><span class="text-gray-500">Nhật Bản</span></div>
+                    <div class="bg-[#FFD166] rounded-2xl px-3 py-2 shadow text-xs font-bold">-25%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        <button class="hero-dot w-2.5 h-2.5 rounded-full bg-[#1D3557]"></button>
+        <button class="hero-dot w-2.5 h-2.5 rounded-full bg-[#1D3557]/30"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="mt-10">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-[20px] md:text-[24px] font-extrabold">Mua nhanh theo nhu cầu</h2>
+      <a href="#" class="text-sm font-semibold text-[#FF8FAB] hover:underline">Xem tất cả</a>
+    </div>
+    <div class="grid grid-cols-3 sm:grid-cols-6 gap-3">
+      <button data-cat="Sữa bột" class="cat-btn group bg-white rounded-[24px] p-4 border border-[#FFE8EE] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br from-[#FFE5EC] to-[#FFF0F5] grid place-items-center text-2xl group-hover:scale-110 transition">🍼</div>
+        <div class="mt-2.5 text-[14px] font-semibold">Sữa bột</div>
+      </button>
+      <button data-cat="Sữa tươi" class="cat-btn group bg-white rounded-[24px] p-4 border border-[#FFE8EE] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br from-[#E8FBF3] to-[#FFF] grid place-items-center text-2xl">🥛</div>
+        <div class="mt-2.5 text-[14px] font-semibold">Sữa tươi</div>
+      </button>
+      <button data-cat="Sữa bầu" class="cat-btn group bg-white rounded-[24px] p-4 border border-[#FFE8EE] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br from-[#FFF4D6] to-[#FFF] grid place-items-center text-2xl">🤰</div>
+        <div class="mt-2.5 text-[14px] font-semibold">Sữa bầu</div>
+      </button>
+      <button data-cat="Tã dán" class="cat-btn group bg-white rounded-[24px] p-4 border border-[#FFE8EE] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br from-[#E6F7FF] to-[#FFF] grid place-items-center text-2xl">👶</div>
+        <div class="mt-2.5 text-[14px] font-semibold">Tã dán</div>
+      </button>
+      <button data-cat="Tã quần" class="cat-btn group bg-white rounded-[24px] p-4 border border-[#FFE8EE] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br from-[#F0E9FF] to-[#FFF] grid place-items-center text-2xl">🩲</div>
+        <div class="mt-2.5 text-[14px] font-semibold">Tã quần</div>
+      </button>
+      <button data-cat="Khăn ướt" class="cat-btn group bg-white rounded-[24px] p-4 border border-[#FFE8EE] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+        <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-br from-[#D6F5F0] to-[#FFF] grid place-items-center text-2xl">💧</div>
+        <div class="mt-2.5 text-[14px] font-semibold">Khăn ướt</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- FLASH SALE -->
+  <section class="mt-12">
+    <div class="bg-white rounded-[32px] p-5 md:p-7 shadow-[0_15px_50px_-20px_rgba(29,53,87,0.15)] border border-pink-50">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-[#FF8FAB] text-white grid place-items-center shadow-lg shadow-[#FF8FAB]/30 animate-pulse">⚡</div>
+          <div>
+            <h3 class="text-[22px] font-extrabold leading-none">FLASH SALE</h3>
+            <p class="text-[12px] text-gray-500">Giá sốc mỗi ngày cho mẹ bỉm</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-gray-600 hidden sm:block">Kết thúc sau</span>
+          <div id="countdown" class="flex gap-1.5">
+            <div class="w-11 h-11 grid place-items-center bg-[#1D3557] text-white rounded-xl font-bold text-[15px]">00</div>
+            <div class="w-11 h-11 grid place-items-center bg-[#1D3557] text-white rounded-xl font-bold text-[15px]">00</div>
+            <div class="w-11 h-11 grid place-items-center bg-[#1D3557] text-white rounded-xl font-bold text-[15px]">00</div>
+          </div>
+        </div>
+      </div>
+      <div id="flashGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mt-5"></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS WITH FILTER -->
+  <section class="mt-14 grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 items-start">
+    <!-- Sidebar desktop -->
+    <aside class="hidden lg:block sticky top-[96px]">
+      <div class="bg-white rounded-[28px] border border-pink-50 shadow-sm p-5">
+        <div class="flex items-center justify-between">
+          <h4 class="font-extrabold text-[17px]">Bộ lọc</h4>
+          <button id="clearFilters" class="text-xs font-semibold text-[#FF8FAB] hover:underline">Xóa lọc</button>
+        </div>
+        <!-- Age -->
+        <div class="mt-4">
+          <p class="text-[13px] font-bold mb-2 text-gray-700">Độ tuổi</p>
+          <div id="filterAge" class="space-y-1.5 text-[14px]">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="age" value="" checked class="accent-[#FF8FAB]"> Tất cả</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="age" value="0-6m" class="accent-[#FF8FAB]"> 0-6 tháng</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="age" value="6-12m" class="accent-[#FF8FAB]"> 6-12 tháng</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="age" value="1-3 tuổi" class="accent-[#FF8FAB]"> 1-3 tuổi</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="age" value="Mẹ bầu" class="accent-[#FF8FAB]"> Mẹ bầu</label>
+          </div>
+        </div>
+        <!-- Brand -->
+        <div class="mt-5">
+          <p class="text-[13px] font-bold mb-2 text-gray-700">Thương hiệu</p>
+          <div id="filterBrand" class="space-y-1.5 text-[14px] max-h-36 overflow-auto pr-1">
+            <label class="flex items-center gap-2"><input type="checkbox" value="Meiji" class="accent-[#FF8FAB]"> Meiji</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="NAN" class="accent-[#FF8FAB]"> NAN</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Enfamil" class="accent-[#FF8FAB]"> Enfamil</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Abbott" class="accent-[#FF8FAB]"> Abbott</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Morinaga" class="accent-[#FF8FAB]"> Morinaga</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Moony" class="accent-[#FF8FAB]"> Moony</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Huggies" class="accent-[#FF8FAB]"> Huggies</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Merries" class="accent-[#FF8FAB]"> Merries</label>
+          </div>
+        </div>
+        <!-- Origin -->
+        <div class="mt-5">
+          <p class="text-[13px] font-bold mb-2 text-gray-700">Xuất xứ</p>
+          <div id="filterOrigin" class="space-y-1.5 text-[14px]">
+            <label class="flex items-center gap-2"><input type="checkbox" value="Nhật Bản" class="accent-[#FF8FAB]"> Nhật Bản</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Mỹ" class="accent-[#FF8FAB]"> Mỹ</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Thụy Sĩ" class="accent-[#FF8FAB]"> Thụy Sĩ</label>
+            <label class="flex items-center gap-2"><input type="checkbox" value="Việt Nam" class="accent-[#FF8FAB]"> Việt Nam</label>
+          </div>
+        </div>
+        <!-- Price -->
+        <div class="mt-5">
+          <p class="text-[13px] font-bold mb-2 text-gray-700">Giá</p>
+          <div id="filterPrice" class="space-y-1.5 text-[14px]">
+            <label class="flex items-center gap-2"><input type="radio" name="price" value="" checked class="accent-[#FF8FAB]"> Tất cả</label>
+            <label class="flex items-center gap-2"><input type="radio" name="price" value="under300" class="accent-[#FF8FAB]"> Dưới 300k</label>
+            <label class="flex items-center gap-2"><input type="radio" name="price" value="300-500" class="accent-[#FF8FAB]"> 300k - 500k</label>
+            <label class="flex items-center gap-2"><input type="radio" name="price" value="over500" class="accent-[#FF8FAB]"> Trên 500k</label>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div>
+      <!-- mobile chips -->
+      <div class="lg:hidden -mx-4 px-4">
+        <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+          <button data-age="" class="chip whitespace-nowrap px-4 h-9 rounded-full bg-[#1D3557] text-white text-[13px] font-semibold">Tất cả</button>
+          <button data-age="0-6m" class="chip whitespace-nowrap px-4 h-9 rounded-full bg-white border text-[13px] font-medium">0-6m</button>
+          <button data-age="6-12m" class="chip whitespace-nowrap px-4 h-9 rounded-full bg-white border text-[13px] font-medium">6-12m</button>
+          <button data-age="1-3 tuổi" class="chip whitespace-nowrap px-4 h-9 rounded-full bg-white border text-[13px] font-medium">1-3 tuổi</button>
+          <button data-age="Mẹ bầu" class="chip whitespace-nowrap px-4 h-9 rounded-full bg-white border text-[13px] font-medium">Sữa bầu</button>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between mt-4">
+        <h2 class="text-[20px] font-extrabold">Sữa & Tã bán chạy</h2>
+        <select id="sortSelect" class="h-9 px-3 rounded-xl border border-pink-100 bg-white text-[13px]">
+          <option value="pop">Phổ biến</option>
+          <option value="price-asc">Giá thấp → cao</option>
+          <option value="price-desc">Giá cao → thấp</option>
+          <option value="rating">Đánh giá cao</option>
+        </select>
+      </div>
+
+      <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3.5 md:gap-4 mt-4"></div>
+      
+      <div id="emptyState" class="hidden text-center py-16">
+        <div class="text-5xl">😢</div>
+        <p class="mt-3 font-semibold">Không tìm thấy sản phẩm phù hợp</p>
+        <p class="text-sm text-gray-500">Mẹ thử đổi bộ lọc nhé</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="mt-16">
+    <div class="bg-white rounded-[32px] p-6 md:p-10 shadow-[0_20px_60px_-25px_rgba(29,53,87,0.12)] border border-pink-50">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="flex items-start gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-[#A8E6CF]/30 grid place-items-center text-2xl">💯</div>
+          <div><div class="font-bold">100% chính hãng</div><p class="text-xs text-gray-500 mt-0.5">Hoá đơn đầy đủ, check QR</p></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-[#FFE5EC]/70 grid place-items-center text-2xl">🚚</div>
+          <div><div class="font-bold">Giao 2H TP.HCM, Đồng Nai</div><p class="text-xs text-gray-500 mt-0.5">Nội thành hỏa tốc</p></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-[#FFF4D6] grid place-items-center text-2xl">↩️</div>
+          <div><div class="font-bold">Đổi trả 7 ngày</div><p class="text-xs text-gray-500 mt-0.5">Nếu lỗi NSX</p></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-[#E6F0FF] grid place-items-center text-2xl">👩‍⚕️</div>
+          <div><div class="font-bold">Tư vấn dinh dưỡng miễn phí</div><p class="text-xs text-gray-500 mt-0.5">Dược sĩ nhi khoa</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="mt-16">
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="text-[22px] font-extrabold">Blog Mẹ & Bé</h2>
+      <a class="text-sm font-semibold text-[#FF8FAB]" href="#">Xem thêm →</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <article class="bg-white rounded-[28px] overflow-hidden border border-pink-50 shadow-sm hover:shadow-md transition group">
+        <div class="aspect-[16/9] bg-gradient-to-br from-[#FFE5EC] to-[#E8FBF3] grid place-items-center text-5xl">📘</div>
+        <div class="p-5">
+          <h3 class="font-bold text-[17px] group-hover:text-[#FF8FAB]">Cách chọn sữa theo độ tuổi</h3>
+          <p class="text-sm text-gray-600 mt-1.5 line-clamp-2">0-6m cần đạm whey dễ tiêu, 6-12m bổ sung sắt, 1-3 tuổi tăng DHA & canxi. Mẹ lưu ngay bảng chọn sữa chuẩn.</p>
+          <div class="mt-3 text-xs text-gray-500">5 phút đọc • 2.1k lượt xem</div>
+        </div>
+      </article>
+      <article class="bg-white rounded-[28px] overflow-hidden border border-pink-50 shadow-sm hover:shadow-md transition group">
+        <div class="aspect-[16/9] bg-gradient-to-br from-[#FFF4D6] to-[#FFE5EC] grid place-items-center text-5xl">🧷</div>
+        <div class="p-5">
+          <h3 class="font-bold text-[17px] group-hover:text-[#FF8FAB]">Phân biệt tã dán và tã quần</h3>
+          <p class="text-sm text-gray-600 mt-1.5 line-clamp-2">Tã dán cho bé sơ sinh dễ thay, tã quần cho bé vận động nhiều. Cách chọn size chuẩn theo cân nặng.</p>
+          <div class="mt-3 text-xs text-gray-500">4 phút đọc • 1.8k lượt xem</div>
+        </div>
+      </article>
+      <article class="bg-white rounded-[28px] overflow-hidden border border-pink-50 shadow-sm hover:shadow-md transition group">
+        <div class="aspect-[16/9] bg-gradient-to-br from-[#E6F7FF] to-[#E8FBF3] grid place-items-center text-5xl">💉</div>
+        <div class="p-5">
+          <h3 class="font-bold text-[17px] group-hover:text-[#FF8FAB]">Lịch tiêm chủng 0-2 tuổi</h3>
+          <p class="text-sm text-gray-600 mt-1.5 line-clamp-2">Tổng hợp các mũi tiêm quan trọng, lưu ý trước và sau tiêm để bé khỏe mạnh, mẹ an tâm.</p>
+          <div class="mt-3 text-xs text-gray-500">6 phút đọc • 3.4k lượt xem</div>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="mt-20 bg-[#1D3557] text-white/90">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-2xl bg-white/10 grid place-items-center">🍼</div>
+          <div class="text-[20px] font-extrabold">Bé Yêu Mart</div>
+        </div>
+        <p class="mt-3 text-sm text-white/70 leading-relaxed">Sữa chuẩn - Tã xịn - Mẹ an tâm. Chuyên sữa công thức và tã bỉm chính hãng cho bé 0-3 tuổi.</p>
+        <p class="mt-4 text-[13px] text-white/60">Địa chỉ: Ấp 3, Xã Lộc An, Huyện Long Thành, Đồng Nai<br>Hotline: 1900 636 888 (8h-21h)</p>
+      </div>
+      <div>
+        <h5 class="font-bold mb-3">Chính sách</h5>
+        <ul class="space-y-2 text-sm text-white/75">
+          <li><a class="hover:text-white" href="#">Chính sách giao hàng</a></li>
+          <li><a class="hover:text-white" href="#">Đổi trả & hoàn tiền</a></li>
+          <li><a class="hover:text-white" href="#">Bảo mật thông tin</a></li>
+          <li><a class="hover:text-white" href="#">Điều khoản sử dụng</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-bold mb-3">Hỗ trợ mẹ bỉm</h5>
+        <ul class="space-y-2 text-sm text-white/75">
+          <li><a class="hover:text-white" href="#">Hướng dẫn mua hàng</a></li>
+          <li><a class="hover:text-white" href="#">Kiểm tra đơn hàng</a></li>
+          <li><a class="hover:text-white" href="#">Tư vấn dinh dưỡng</a></li>
+          <li><a class="hover:text-white" href="#">Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-bold mb-3">Nhận ưu đãi cho mẹ</h5>
+        <p class="text-sm text-white/70">Giảm 50k đơn đầu, voucher sinh nhật bé.</p>
+        <form onsubmit="event.preventDefault();showToast('Đã đăng ký nhận tin!')" class="mt-3 flex gap-2">
+          <input required type="email" placeholder="Email của mẹ" class="flex-1 h-11 px-3.5 rounded-xl bg-white/10 border border-white/15 text-white placeholder:text-white/50 outline-none focus:bg-white/15 text-sm">
+          <button class="h-11 px-4 rounded-xl bg-[#FF8FAB] font-semibold text-white hover:brightness-105">Đăng ký</button>
+        </form>
+        <div class="flex gap-3 mt-4">
+          <a class="w-9 h-9 grid place-items-center rounded-xl bg-white/10 hover:bg-white/20" href="#">f</a>
+          <a class="w-9 h-9 grid place-items-center rounded-xl bg-white/10 hover:bg-white/20" href="#">Z</a>
+          <a class="w-9 h-9 grid place-items-center rounded-xl bg-white/10 hover:bg-white/20" href="#">▶</a>
+          <a class="w-9 h-9 grid place-items-center rounded-xl bg-white/10 hover:bg-white/20" href="#">t</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/10 text-xs text-white/50 flex flex-wrap gap-3 justify-between">
+      <span>© 2025 Bé Yêu Mart. All rights reserved.</span>
+      <span>Giấy ĐKKD: 0123456789 do Sở KHĐT Đồng Nai cấp</span>
+    </div>
+      Thiết kế và phát triển bởi 
+    <a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" rel="noopener" style="color:#2563eb; text-decoration:none;">
+      IVS Celestech, IVS JSC
+    </a>
+  </div>
+
+  </div>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="fixed inset-0 z-[70] hidden">
+  <div class="absolute inset-0 bg-[#1D3557]/60 backdrop-blur-sm" onclick="closeProduct()"></div>
+  <div class="relative z-10 max-w-4xl mx-auto mt-10 md:mt-16 bg-[#FFFCF8] rounded-[32px] shadow-2xl max-h-[90vh] overflow-hidden flex flex-col">
+    <button onclick="closeProduct()" class="absolute right-4 top-4 w-9 h-9 grid place-items-center rounded-xl bg-black/5 hover:bg-black/10 z-20">✕</button>
+    <div class="grid md:grid-cols-2 gap-0 overflow-auto">
+      <div class="bg-white p-6 md:p-8 flex flex-col items-center">
+        <div id="pmImage" class="w-full aspect-square rounded-[24px] bg-gradient-to-br from-[#FFF0F4] to-[#E8FBF3] grid place-items-center text-[120px]">🍼</div>
+        <div class="mt-4 grid grid-cols-4 gap-2 w-full" id="pmThumbs"></div>
+      </div>
+      <div class="p-6 md:p-8">
+        <div class="text-xs text-gray-500" id="pmBrand">Meiji • Nhật Bản</div>
+        <h3 id="pmName" class="text-[22px] font-extrabold mt-1 leading-snug">Sữa Meiji Infant Formula 0-1 tuổi</h3>
+        <div class="flex items-center gap-2 mt-2">
+          <div class="flex text-[#FFD166]">★★★★★</div>
+          <span class="text-xs text-gray-500" id="pmReviews">(312 đánh giá)</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full bg-[#A8E6CF]/30" id="pmAge">0-6m</span>
+        </div>
+        <div class="mt-4 flex items-baseline gap-3">
+          <div id="pmPrice" class="text-[26px] font-extrabold text-[#FF8FAB]">485.000đ</div>
+          <div id="pmOriginal" class="text-sm line-through text-gray-400">569.000đ</div>
+          <div id="pmSave" class="text-xs font-bold px-2 py-1 rounded-full bg-[#FF8FAB]/15 text-[#FF8FAB]">-15%</div>
+        </div>
+        <div class="mt-5">
+          <p class="text-[13px] font-bold mb-2">Chọn phân loại</p>
+          <div id="pmVariants" class="flex flex-wrap gap-2"></div>
+        </div>
+        <div class="mt-5">
+          <p class="text-[13px] font-bold mb-2">Số lượng</p>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center border border-pink-200 rounded-xl overflow-hidden bg-white">
+              <button onclick="pmQty(Math.max(1,pmQ-1))" class="w-10 h-10 hover:bg-pink-50">−</button>
+              <div id="pmQty" class="w-12 text-center font-bold">1</div>
+              <button onclick="pmQty(pmQ+1)" class="w-10 h-10 hover:bg-pink-50">+</button>
+            </div>
+            <span class="text-xs text-gray-500">Còn hàng</span>
+          </div>
+        </div>
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          <button onclick="pmAdd(false)" class="h-12 rounded-2xl border-2 border-[#1D3557] font-bold hover:bg-[#1D3557]/5">Thêm vào giỏ</button>
+          <button onclick="pmAdd(true)" class="h-12 rounded-2xl bg-[#FF8FAB] text-white font-bold shadow-lg shadow-[#FF8FAB]/25 hover:brightness-105">Mua ngay</button>
+        </div>
+        <div class="mt-6 p-4 rounded-2xl bg-[#F7F9FC] text-[13px] leading-relaxed" id="pmInfo">
+          <b>Thông tin dinh dưỡng:</b> Đạm whey thủy phân, DHA, ARA, Nucleotides, HMO hỗ trợ tiêu hóa và miễn dịch. Pha 1 muỗng gạt với 20ml nước ấm 70°C.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div id="cartOverlay" class="fixed inset-0 z-[60] bg-black/40 opacity-0 pointer-events-none transition"></div>
+<aside id="cartDrawer" class="fixed top-0 right-0 z-[61] h-full w-full max-w-[420px] bg-[#FFFCF8] shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+  <div class="h-[68px] flex items-center justify-between px-5 border-b border-pink-100">
+    <div class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-xl bg-[#1D3557] text-white grid place-items-center">🛒</div>
+      <div>
+        <div class="font-extrabold leading-none">Giỏ hàng</div>
+        <div class="text-[11px] text-gray-500"><span id="cartCountText">0</span> sản phẩm</div>
+      </div>
+    </div>
+    <button onclick="toggleCart(false)" class="w-9 h-9 grid place-items-center rounded-xl hover:bg-black/5">✕</button>
+  </div>
+  <div id="cartItems" class="flex-1 overflow-auto px-5 py-3"></div>
+  <div class="border-t border-pink-100 p-5 bg-white/70 backdrop-blur">
+    <div class="space-y-1.5 text-[14px]">
+      <div class="flex justify-between"><span class="text-gray-600">Tạm tính</span><b id="sumSubtotal">0đ</b></div>
+      <div class="flex justify-between"><span class="text-gray-600">Phí ship</span><b id="sumShip">0đ</b></div>
+      <div id="freeShipBox" class="mt-2">
+        <div class="h-2 bg-pink-100 rounded-full overflow-hidden"><div id="shipBar" class="h-full bg-[#A8E6CF] w-0 transition-all"></div></div>
+        <div class="text-[12px] mt-1.5 text-gray-600" id="shipText">Mua thêm 499.000đ để miễn phí ship</div>
+      </div>
+    </div>
+    <div class="flex justify-between items-center mt-3 pt-3 border-t">
+      <span class="font-bold">Tổng cộng</span>
+      <span id="sumTotal" class="text-[22px] font-extrabold text-[#FF8FAB]">0đ</span>
+    </div>
+    <div class="mt-3 grid grid-cols-3 gap-2 text-[12px]">
+      <label class="flex items-center gap-1.5 p-2 rounded-xl border bg-white cursor-pointer"><input type="radio" name="pay" checked> COD</label>
+      <label class="flex items-center gap-1.5 p-2 rounded-xl border bg-white cursor-pointer"><input type="radio" name="pay"> Chuyển khoản</label>
+      <label class="flex items-center gap-1.5 p-2 rounded-xl border bg-white cursor-pointer"><input type="radio" name="pay"> Momo</label>
+    </div>
+    <button onclick="openCheckout()" class="mt-3 w-full h-12 rounded-2xl bg-[#1D3557] text-white font-bold shadow-lg hover:opacity-95 active:scale-[0.99]">Thanh toán</button>
+    <p class="text-[11px] text-center text-gray-500 mt-2">Đổi trả 7 ngày • 100% chính hãng</p>
+  </div>
+</aside>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="fixed inset-0 z-[80] hidden">
+  <div class="absolute inset-0 bg-[#1D3557]/60 backdrop-blur-sm" onclick="closeCheckout()"></div>
+  <div class="relative z-10 max-w-lg mx-auto mt-16 bg-white rounded-[28px] shadow-2xl p-6 md:p-8">
+    <button onclick="closeCheckout()" class="absolute right-4 top-4 w-8 h-8 grid place-items-center rounded-lg hover:bg-black/5">✕</button>
+    <h3 class="text-[22px] font-extrabold">Thông tin nhận hàng</h3>
+    <p class="text-sm text-gray-500">Mẹ điền đúng để shop giao nhanh 2H nhé</p>
+    <form id="checkoutForm" class="mt-5 space-y-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <input required placeholder="Họ tên mẹ" class="h-11 px-3.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-[#FF8FAB]/30">
+        <input required placeholder="Số điện thoại" class="h-11 px-3.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-[#FF8FAB]/30">
+      </div>
+      <input required placeholder="Địa chỉ (số nhà, phường, quận)" class="w-full h-11 px-3.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-[#FF8FAB]/30">
+      <textarea placeholder="Ghi chú (giờ nhận, tầng...)" class="w-full h-[72px] p-3 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-[#FF8FAB]/30"></textarea>
+      <div class="p-3 rounded-xl bg-[#FFFBF0] border border-amber-100 text-[13px]">Đơn hàng sẽ được nhân viên gọi xác nhận trong 15 phút. Miễn phí ship đơn từ 499k.</div>
+      <button class="w-full h-12 rounded-2xl bg-[#FF8FAB] text-white font-bold shadow-lg shadow-[#FF8FAB]/25">Đặt hàng ngay</button>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 pointer-events-none z-[90] bg-[#1D3557] text-white px-5 py-3 rounded-full shadow-xl font-semibold text-[14px] transition-all duration-300 whitespace-nowrap">Đã thêm vào giỏ</div>
+
+<script>
+const VND = n => n.toLocaleString('vi-VN') + 'đ';
+const products = [
+  {id:1, brand:'Meiji', name:'Sữa Meiji Infant Formula 0-1 tuổi', cat:'Sữa bột', age:'0-6m', origin:'Nhật Bản', price:485000, original:569000, rating:4.9, reviews:312, img:'🍼', flash:true, type:'sua', variants:['800g','400g'], info:'Đạm whey, DHA, ARA, Nucleotides. Hỗ trợ tiêu hóa, tăng đề kháng.'},
+  {id:2, brand:'NAN', name:'Nan Optipro 2 HMO 6-12 tháng', cat:'Sữa bột', age:'6-12m', origin:'Thụy Sĩ', price:455000, original:520000, rating:4.8, reviews:198, img:'🍼', flash:true, type:'sua', variants:['800g','400g'], info:'Công thức HMO, Optipro dễ tiêu, tăng miễn dịch đường ruột.'},
+  {id:3, brand:'Enfamil', name:'Enfamil A+ NeuroPro 2', cat:'Sữa bột', age:'6-12m', origin:'Mỹ', price:585000, original:650000, rating:4.9, reviews:421, img:'🥛', flash:true, type:'sua', variants:['830g','400g'], info:'MFGM Pro, DHA cao hỗ trợ phát triển trí não.'},
+  {id:4, brand:'Abbott', name:'Abbott Grow 3+ hương vani', cat:'Sữa bột', age:'1-3 tuổi', origin:'Mỹ', price:345000, original:399000, rating:4.7, reviews:156, img:'🥛', flash:true, type:'sua', variants:['900g','400g'], info:'Giàu canxi, vitamin D, HMO cho bé 1-3 tuổi.'},
+  {id:5, brand:'Huggies', name:'Tã dán Huggies Platinum Nature Made M64', cat:'Tã dán', age:'6-12m', origin:'Việt Nam', price:285000, original:335000, rating:4.8, reviews:892, img:'👶', flash:true, type:'ta', variants:['M64','L56'], info:'Bề mặt Organic cotton, thấm hút 12h, chống tràn 3D.'},
+  {id:6, brand:'Moony', name:'Tã quần Moony Natural L44', cat:'Tã quần', age:'1-3 tuổi', origin:'Nhật Bản', price:385000, original:450000, rating:4.9, reviews:634, img:'🩲', flash:true, type:'ta', variants:['L44','XL38'], info:'Sợi bông organic, mềm mại, thoáng khí, không hăm.'},
+  {id:7, brand:'Morinaga', name:'Morinaga Hagukumi số 1', cat:'Sữa bột', age:'0-6m', origin:'Nhật Bản', price:525000, original:525000, rating:4.8, reviews:210, img:'🍼', flash:false, type:'sua', variants:['820g'], info:'Lactoferrin, cân bằng gần sữa mẹ.'},
+  {id:8, brand:'Similac', name:'Similac 5G 1-2 tuổi', cat:'Sữa bột', age:'1-3 tuổi', origin:'Mỹ', price:499000, original:560000, rating:4.7, reviews:178, img:'🥛', flash:false, type:'sua', variants:['900g'], info:'5 HMO, Eye-Q Plus cho não bộ và thị giác.'},
+  {id:9, brand:'Friso', name:'Friso Gold 3 (1-3 tuổi)', cat:'Sữa bột', age:'1-3 tuổi', origin:'Hà Lan', price:465000, original:510000, rating:4.6, reviews:143, img:'🥛', flash:false, type:'sua', variants:['850g'], info:'Công nghệ LockNutri giữ dưỡng chất tự nhiên.'},
+  {id:10, brand:'Merries', name:'Tã dán Merries S82', cat:'Tã dán', age:'0-6m', origin:'Nhật Bản', price:365000, original:420000, rating:4.9, reviews:512, img:'👶', flash:false, type:'ta', variants:['S82','M64'], info:'Thấm hút siêu tốc, bề mặt xốp mịn.'},
+  {id:11, brand:'Bobby', name:'Tã quần Bobby Extra Soft M76', cat:'Tã quần', age:'6-12m', origin:'Việt Nam', price:265000, original:299000, rating:4.7, reviews:445, img:'🩲', flash:false, type:'ta', variants:['M76','L68'], info:'Lõi nén thần kỳ, khô thoáng 12h.'},
+  {id:12, brand:'Pampers', name:'Pampers Premium Care NB80', cat:'Tã dán', age:'0-6m', origin:'Nhật Bản', price:315000, original:315000, rating:4.8, reviews:389, img:'👶', flash:false, type:'ta', variants:['NB80','S72'], info:'Mềm mại như lụa, cho da bé sơ sinh.'},
+  {id:13, brand:'Aptamil', name:'Aptamil Profutura 1', cat:'Sữa bột', age:'0-6m', origin:'New Zealand', price:785000, original:850000, rating:4.9, reviews:267, img:'🍼', flash:false, type:'sua', variants:['800g'], info:'Synbiotic, DHA từ dầu cá.'},
+  {id:14, brand:'Enfamil', name:'Enfamil Enspire cho bé nhạy cảm', cat:'Sữa bột', age:'0-6m', origin:'Mỹ', price:695000, original:750000, rating:4.8, reviews:98, img:'🥛', flash:false, type:'sua', variants:['581g'], info:'Đạm thủy phân một phần, dễ tiêu hóa.'},
+  {id:15, brand:'Meiji', name:'Sữa bầu Meiji Mama', cat:'Sữa bầu', age:'Mẹ bầu', origin:'Nhật Bản', price:225000, original:250000, rating:4.7, reviews:320, img:'🤰', flash:false, type:'sua', variants:['350g'], info:'Axit folic, sắt, DHA cho mẹ bầu.'},
+  {id:16, brand:'Huggies', name:'Khăn ướt Huggies Pure 80 tờ', cat:'Khăn ướt', age:'0-6m', origin:'Việt Nam', price:59000, original:75000, rating:4.8, reviews:1204, img:'💧', flash:false, type:'khac', variants:['80 tờ','3 gói'], info:'99% nước tinh khiết, không mùi.'},
+];
+
+let cart = JSON.parse(localStorage.getItem('bym_cart')||'[]');
+let filters = {age:'', brands:[], origins:[], price:'', query:'', cat:''};
+let pmCurrent=null, pmVariant='', pmQ=1;
+
+// Render
+function productCard(p, isFlash=false){
+  const disc = p.original>p.price ? Math.round((1-p.price/p.original)*100) : 0;
+  return `<div class="product-card group bg-white rounded-[28px] p-3 md:p-4 border border-[#FFEAF0] shadow-[0_8px_30px_-14px_rgba(29,53,87,0.12)] hover:shadow-[0_20px_40px_-16px_rgba(255,143,171,0.35)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer flex flex-col" data-id="${p.id}">
+    <div class="relative aspect-square rounded-2xl bg-gradient-to-br from-[#FFF5F7] to-[#F0FFFA] grid place-items-center text-[56px] overflow-hidden">
+      ${p.img}
+      ${disc>0?`<span class="absolute top-2.5 left-2.5 bg-[#FF8FAB] text-white text-[11px] font-extrabold px-2 py-1 rounded-full shadow">-${disc}%</span>`:''}
+      ${isFlash?`<span class="absolute top-2.5 right-2.5 bg-[#1D3557] text-white text-[10px] font-bold px-2 py-1 rounded-full">FLASH</span>`:''}
+    </div>
+    <div class="mt-3 flex-1 flex flex-col">
+      <p class="text-[11.5px] text-gray-500">${p.brand} • ${p.origin}</p>
+      <h3 class="font-semibold text-[14.5px] leading-snug mt-0.5 line-clamp-2 min-h-[42px]">${p.name}</h3>
+      <div class="mt-1.5 flex items-center gap-1.5">
+        <span class="text-[11px] bg-[#A8E6CF]/25 text-[#0c4a3e] px-2 py-0.5 rounded-full font-medium">${p.age}</span>
+        <div class="flex items-center gap-0.5 text-[11px] text-amber-500">★ ${p.rating}</div>
+      </div>
+      <div class="mt-2 flex items-baseline gap-2">
+        <span class="text-[18px] font-extrabold text-[#FF3D6E]">${VND(p.price)}</span>
+        ${p.original>p.price?`<span class="text-[12px] text-gray-400 line-through">${VND(p.original)}</span>`:''}
+      </div>
+      <button data-add="${p.id}" class="add-btn mt-3 w-full h-10 rounded-xl bg-[#1D3557] text-white text-[13.5px] font-bold hover:opacity-95 active:scale-[0.98]">Thêm vào giỏ</button>
+    </div>
+  </div>`;
+}
+
+function renderFlash(){
+  const flash = products.filter(p=>p.flash);
+  document.getElementById('flashGrid').innerHTML = flash.map(p=>productCard(p,true)).join('');
+}
+function renderProducts(){
+  let list = [...products];
+  const q = filters.query.toLowerCase();
+  if(q) list = list.filter(p=> p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q));
+  if(filters.age) list = list.filter(p=> p.age===filters.age);
+  if(filters.brands.length) list = list.filter(p=> filters.brands.includes(p.brand));
+  if(filters.origins.length) list = list.filter(p=> filters.origins.includes(p.origin));
+  if(filters.price==='under300') list = list.filter(p=> p.price<300000);
+  if(filters.price==='300-500') list = list.filter(p=> p.price>=300000 && p.price<=500000);
+  if(filters.price==='over500') list = list.filter(p=> p.price>500000);
+  if(filters.cat) list = list.filter(p=> p.cat===filters.cat || p.name.includes(filters.cat));
+  const sort = document.getElementById('sortSelect').value;
+  if(sort==='price-asc') list.sort((a,b)=>a.price-b.price);
+  if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+  if(sort==='rating') list.sort((a,b)=>b.rating-a.rating);
+  
+  document.getElementById('productGrid').innerHTML = list.map(p=>productCard(p)).join('');
+  document.getElementById('emptyState').classList.toggle('hidden', list.length>0);
+}
+renderFlash(); renderProducts();
+
+// Events delegation
+document.addEventListener('click', e=>{
+  const addBtn = e.target.closest('[data-add]');
+  if(addBtn){ e.stopPropagation(); addToCart(+addBtn.dataset.add); return; }
+  const card = e.target.closest('.product-card');
+  if(card){ openProduct(+card.dataset.id); }
+});
+document.querySelectorAll('.cat-btn').forEach(b=> b.onclick=()=>{ filters.cat=b.dataset.cat; renderProducts(); window.scrollTo({top:document.getElementById('productGrid').offsetTop-100, behavior:'smooth'}); });
+function filterByCategory(c){ filters.cat=c; renderProducts(); }
+
+// Search
+['searchInput','searchInputMb'].forEach(id=>{
+  const el=document.getElementById(id); if(!el) return;
+  el.addEventListener('input', e=>{ filters.query=e.target.value; renderProducts(); document.getElementById(id==='searchInput'?'searchInputMb':'searchInput').value=e.target.value; });
+});
+
+// Filters sidebar
+document.querySelectorAll('#filterAge input').forEach(r=> r.onchange=()=>{ filters.age=r.value; renderProducts(); syncChips(); });
+document.querySelectorAll('#filterBrand input').forEach(c=> c.onchange=()=>{ filters.brands=[...document.querySelectorAll('#filterBrand input:checked')].map(i=>i.value); renderProducts(); });
+document.querySelectorAll('#filterOrigin input').forEach(c=> c.onchange=()=>{ filters.origins=[...document.querySelectorAll('#filterOrigin input:checked')].map(i=>i.value); renderProducts(); });
+document.querySelectorAll('#filterPrice input').forEach(r=> r.onchange=()=>{ filters.price=r.value; renderProducts(); });
+document.getElementById('clearFilters').onclick=()=>{
+  filters={age:'',brands:[],origins:[],price:'',query:'',cat:''};
+  document.querySelectorAll('aside input').forEach(i=> i.checked = i.value===''||i.name==='age'&&i.value===''||i.name==='price'&&i.value==='');
+  document.getElementById('searchInput').value=''; document.getElementById('searchInputMb').value='';
+  renderProducts(); syncChips();
+};
+document.getElementById('sortSelect').onchange=renderProducts;
+
+// chips mobile
+function syncChips(){
+  document.querySelectorAll('.chip').forEach(ch=>{
+    const active = ch.dataset.age===filters.age;
+    ch.className = 'chip whitespace-nowrap px-4 h-9 rounded-full text-[13px] font-medium border transition ' + (active?'bg-[#1D3557] text-white border-[#1D3557]':'bg-white hover:bg-pink-50');
+  });
+}
+document.querySelectorAll('.chip').forEach(ch=> ch.onclick=()=>{ filters.age=ch.dataset.age; document.querySelector(`#filterAge input[value="${ch.dataset.age}"]`).checked=true; renderProducts(); syncChips(); });
+syncChips();
+
+// Product modal
+function openProduct(id){
+  const p = products.find(x=>x.id===id); if(!p) return;
+  pmCurrent=p; pmVariant=p.variants[0]; pmQ=1;
+  document.getElementById('pmBrand').textContent = `${p.brand} • ${p.origin}`;
+  document.getElementById('pmName').textContent = p.name;
+  document.getElementById('pmAge').textContent = p.age;
+  document.getElementById('pmReviews').textContent = `(${p.reviews} đánh giá)`;
+  document.getElementById('pmPrice').textContent = VND(p.price);
+  document.getElementById('pmOriginal').textContent = p.original>p.price?VND(p.original):'';
+  document.getElementById('pmSave').textContent = p.original>p.price?`-${Math.round((1-p.price/p.original)*100)}%`:'';
+  document.getElementById('pmImage').textContent = p.img;
+  document.getElementById('pmQty').textContent = '1';
+  document.getElementById('pmInfo').innerHTML = `<b>${p.type==='ta'?'Hướng dẫn chọn size:':'Thông tin dinh dưỡng:'}</b> ${p.info}`;
+  const vWrap = document.getElementById('pmVariants'); vWrap.innerHTML='';
+  p.variants.forEach(v=>{
+    const b=document.createElement('button');
+    b.textContent=v; b.className='px-3.5 h-9 rounded-xl border text-[13px] font-semibold';
+    b.onclick=()=>{ pmVariant=v; [...vWrap.children].forEach(c=>c.classList.remove('bg-[#1D3557]','text-white','border-[#1D3557]')); b.classList.add('bg-[#1D3557]','text-white','border-[#1D3557]'); };
+    vWrap.appendChild(b);
+  });
+  vWrap.firstChild?.click();
+  document.getElementById('productModal').classList.remove('hidden');
+}
+function closeProduct(){ document.getElementById('productModal').classList.add('hidden'); }
+function pmQty(v){ pmQ=v; document.getElementById('pmQty').textContent=v; }
+function pmAdd(buyNow){ addToCart(pmCurrent.id, pmVariant, pmQ); closeProduct(); if(buyNow) toggleCart(true); }
+
+// Cart
+function saveCart(){ localStorage.setItem('bym_cart', JSON.stringify(cart)); }
+function addToCart(id, variant=null, qty=1){
+  const p=products.find(x=>x.id===id); if(!p) return;
+  const v = variant || p.variants[0];
+  const found = cart.find(i=>i.id===id && i.variant===v);
+  if(found) found.qty+=qty; else cart.push({id, variant:v, qty, price:p.price, name:p.name, img:p.img});
+  saveCart(); updateCartUI(); showToast('Đã thêm vào giỏ');
+}
+function updateCartUI(){
+  const count = cart.reduce((a,b)=>a+b.qty,0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartCountText').textContent = count;
+  document.getElementById('cartCount').style.display = count? 'grid':'none';
+  const wrap = document.getElementById('cartItems');
+  if(!cart.length){ wrap.innerHTML = `<div class="h-full grid place-items-center text-center p-8"><div><div class="text-6xl">🛍️</div><p class="mt-3 font-bold">Giỏ hàng trống</p><p class="text-sm text-gray-500">Mẹ thêm sữa, tã cho bé nhé</p></div></div>`; }
+  else {
+    wrap.innerHTML = cart.map((it,i)=>{
+      const p=products.find(x=>x.id===it.id);
+      return `<div class="flex gap-3 py-3 border-b border-pink-50">
+        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#FFF5F7] to-[#F0FFFA] grid place-items-center text-3xl shrink-0">${it.img}</div>
+        <div class="flex-1 min-w-0">
+          <div class="text-[13.5px] font-semibold leading-snug line-clamp-2">${it.name}</div>
+          <div class="text-[12px] text-gray-500 mt-0.5">${it.variant} • ${p.brand}</div>
+          <div class="flex items-center justify-between mt-2">
+            <div class="flex items-center h-8 rounded-lg border bg-white overflow-hidden">
+              <button onclick="chgQty(${i},-1)" class="w-8 h-8 hover:bg-pink-50">−</button>
+              <div class="w-8 text-center text-[13px] font-bold">${it.qty}</div>
+              <button onclick="chgQty(${i},1)" class="w-8 h-8 hover:bg-pink-50">+</button>
+            </div>
+            <div class="font-bold text-[#FF3D6E]">${VND(it.price*it.qty)}</div>
+          </div>
+        </div>
+        <button onclick="rmItem(${i})" class="w-8 h-8 grid place-items-center text-gray-400 hover:text-red-500">✕</button>
+      </div>`;
+    }).join('');
+  }
+  const sub = cart.reduce((a,b)=>a+b.price*b.qty,0);
+  const ship = sub>=499000||sub===0?0:30000;
+  const total = sub+ship;
+  document.getElementById('sumSubtotal').textContent = VND(sub);
+  document.getElementById('sumShip').textContent = ship?VND(ship):'Miễn phí';
+  document.getElementById('sumTotal').textContent = VND(total);
+  const need = Math.max(0, 499000-sub);
+  document.getElementById('shipBar').style.width = Math.min(100, sub/499000*100)+'%';
+  document.getElementById('shipText').textContent = need>0 ? `Mua thêm ${VND(need)} để miễn phí ship` : '🎉 Đơn hàng đủ điều kiện freeship!';
+}
+function chgQty(i,d){ cart[i].qty+=d; if(cart[i].qty<=0) cart.splice(i,1); saveCart(); updateCartUI(); }
+function rmItem(i){ cart.splice(i,1); saveCart(); updateCartUI(); }
+updateCartUI();
+
+function toggleCart(open){
+  const dr = document.getElementById('cartDrawer'), ov = document.getElementById('cartOverlay');
+  if(open){ dr.classList.remove('translate-x-full'); ov.classList.remove('opacity-0','pointer-events-none'); }
+  else{ dr.classList.add('translate-x-full'); ov.classList.add('opacity-0','pointer-events-none'); }
+}
+document.getElementById('cartBtn').onclick=()=>toggleCart(true);
+document.getElementById('cartOverlay').onclick=()=>toggleCart(false);
+
+// Checkout
+function openCheckout(){ if(!cart.length){ showToast('Giỏ hàng trống'); return; } toggleCart(false); document.getElementById('checkoutModal').classList.remove('hidden'); }
+function closeCheckout(){ document.getElementById('checkoutModal').classList.add('hidden'); }
+document.getElementById('checkoutForm').onsubmit = e=>{
+  e.preventDefault(); closeCheckout(); cart=[]; saveCart(); updateCartUI(); showToast('Đặt hàng thành công! Shop sẽ gọi xác nhận');
+};
+
+// Toast
+function showToast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg;
+  t.classList.remove('opacity-0','translate-y-4','pointer-events-none'); t.classList.add('opacity-100');
+  setTimeout(()=>{ t.classList.add('opacity-0','translate-y-4'); }, 2100);
+}
+
+// Hero carousel
+let slide=0; const track=document.getElementById('heroTrack'); const dots=document.querySelectorAll('.hero-dot');
+function goSlide(n){ slide=n; track.style.transform=`translateX(-${n*100}%)`; dots.forEach((d,i)=>d.classList.toggle('bg-[#1D3557]/30',i!==n), d.classList.toggle('bg-[#1D3557]',i===n)); }
+dots.forEach((d,i)=>d.onclick=()=>goSlide(i)); setInterval(()=>goSlide(slide===0?1:0), 5500); goSlide(0);
+
+// Countdown
+const end = new Date(Date.now() + (3*3600+42*60+18)*1000);
+function tick(){
+  const diff = Math.max(0, end - new Date());
+  const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+  const m = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+  const s = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+  const boxes = document.querySelectorAll('#countdown div');
+  if(boxes[0]) boxes[0].textContent=h; if(boxes[1]) boxes[1].textContent=m; if(boxes[2]) boxes[2].textContent=s;
+}
+setInterval(tick,1000); tick();
+
+// Demo add initial
+if(!cart.length){ addToCart(1); cart[0].qty=0; cart=[]; saveCart(); updateCartUI(); }
+</script>
+</body>
+</html>

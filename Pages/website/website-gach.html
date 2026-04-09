@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<!-- Playables SDK -->
+<script>// Playables SDK v1.0.0
+// Game lifecycle bridge: rAF-based game-ready detection + event communication
+(function() {
+  'use strict';
+
+  var HANDLER_NAME = 'playablesGameEventHandler';
+  var ANDROID_BRIDGE_NAME = '_MetaPlayablesBridge';
+  var RAF_FRAME_THRESHOLD = 3;
+
+  var gameReadySent = false;
+  var firstInteractionSent = false;
+  var errorSent = false;
+  var frameCount = 0;
+  var originalRAF = window.requestAnimationFrame;
+
+  // --- Transport Layer ---
+
+  function hasIOSBridge() {
+    return !!(window.webkit &&
+              window.webkit.messageHandlers &&
+              window.webkit.messageHandlers[HANDLER_NAME]);
+  }
+
+  function hasAndroidBridge() {
+    return !!(window[ANDROID_BRIDGE_NAME] &&
+              typeof window[ANDROID_BRIDGE_NAME].postEvent === 'function');
+  }
+
+  function isInIframe() {
+    return !!(window.parent && window.parent !== window);
+  }
+
+  function sendEvent(eventName, payload) {
+    var message = {
+      type: eventName,
+      payload: payload || {},
+      timestamp: Date.now()
+    };
+
+    if (hasIOSBridge()) {
+      try {
+        window.webkit.messageHandlers[HANDLER_NAME].postMessage(message);
+      } catch (e) { /* ignore */ }
+      return;
+    }
+
+    if (hasAndroidBridge()) {
+    try {
+      var p = payload || {};
+      p.__secureToken = window.__fbAndroidBridgeAuthToken || '';
+      window[ANDROID_BRIDGE_NAME].postEvent(
+        eventName,
+        JSON.stringify(p)
+      );
+    } catch (e) { /* ignore */ }
+    return;
+  }
+
+    if (isInIframe()) {
+      try {
+        window.parent.postMessage(message, '*');
+      } catch (e) { /* ignore */ }
+      return;
+    }
+  }
+
+  // --- rAF Game-Ready Detection ---
+
+  function onFrame() {
+    if (gameReadySent) return;
+
+    frameCount++;
+    if (frameCount >= RAF_FRAME_THRESHOLD) {
+      gameReadySent = true;
+      sendEvent('game_ready', {
+        frame_count: frameCount,
+        detected_at: Date.now()
+      });
+      return;
+    }
+
+    originalRAF.call(window, onFrame);
+  }
+
+  if (originalRAF) {
+    window.requestAnimationFrame = function(callback) {
+      if (!gameReadySent) {
+        return originalRAF.call(window, function(timestamp) {
+          frameCount++;
+          if (frameCount >= RAF_FRAME_THRESHOLD && !gameReadySent) {
+            gameReadySent = true;
+            sendEvent('game_ready', {
+              frame_count: frameCount,
+              detected_at: Date.now()
+            });
+          }
+          callback(timestamp);
+        });
+      }
+      return originalRAF.call(window, callback);
+    };
+  }
+
+  // --- First User Interaction Detection ---
+
+  function setupFirstInteractionDetection() {
+    var events = ['touchstart', 'mousedown', 'keydown'];
+
+    function onFirstInteraction() {
+      if (firstInteractionSent) return;
+      firstInteractionSent = true;
+      sendEvent('user_interaction_start', null);
+
+      for (var i = 0; i < events.length; i++) {
+        document.removeEventListener(events[i], onFirstInteraction, true);
+      }
+    }
+
+    for (var i = 0; i < events.length; i++) {
+      document.addEventListener(events[i], onFirstInteraction, true);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFirstInteractionDetection);
+  } else {
+    setupFirstInteractionDetection();
+  }
+
+  // --- Auto Error Capture ---
+
+  window.addEventListener('error', function(event) {
+    if (errorSent) return;
+    errorSent = true;
+    sendEvent('error', {
+      message: event.message || 'Unknown error',
+      source: event.filename || '',
+      lineno: event.lineno || 0,
+      colno: event.colno || 0,
+      auto_captured: true
+    });
+  });
+
+  window.addEventListener('unhandledrejection', function(event) {
+    if (errorSent) return;
+    errorSent = true;
+    var reason = event.reason;
+    sendEvent('error', {
+      message: (reason instanceof Error) ? reason.message : String(reason),
+      type: 'unhandled_promise_rejection',
+      auto_captured: true
+    });
+  });
+
+  // --- Public API ---
+
+  window.playablesSDK = {
+    complete: function(score) {
+      sendEvent('game_ended', {
+        score: score,
+        completed: true
+      });
+    },
+
+    error: function(message) {
+      if (errorSent) return;
+      errorSent = true;
+      sendEvent('error', {
+        message: message || 'Unknown error',
+        auto_captured: false
+      });
+    },
+
+    sendEvent: function(eventName, payload) {
+      if (!eventName || typeof eventName !== 'string') return;
+      sendEvent(eventName, payload);
+    }
+  };
+
+  // Kick off rAF detection in case no game code calls rAF immediately
+  if (originalRAF) {
+    originalRAF.call(window, onFrame);
+  }
+})();</script>
+<script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gạch Việt Pro - Gạch lót nền, ốp tường cao cấp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tealbrand: '#0ea5a4',
+            brick: '#e07a5f',
+          },
+          fontFamily: {
+            sans: ['Be Vietnam Pro', 'Inter', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            'soft': '0 10px 30px -10px rgba(0,0,0,0.1)',
+            'lift': '0 20px 40px -15px rgba(14,165,164,0.25)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Be Vietnam Pro', sans-serif; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  </style>
+</head>
+<body class="bg-[#f7f8fa] text-zinc-800 antialiased">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-white/85 backdrop-blur-xl border-b border-zinc-100">
+    <div class="max-w-[1400px] mx-auto px-4 lg:px-6 h-[68px] flex items-center gap-3 lg:gap-6">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5 shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-tealbrand to-[#0d9488] grid place-items-center shadow-lift">
+          <i data-lucide="layout-grid" class="w-5 h-5 text-white"></i>
+        </div>
+        <div>
+          <div class="font-extrabold text-[18px] leading-none tracking-tight">GẠCH VIỆT <span class="text-tealbrand">PRO</span></div>
+          <div class="text-[10px] text-zinc-500 -mt-0.5">Gạch đẹp - Nhà sang</div>
+        </div>
+      </a>
+      <!-- Search -->
+      <div class="hidden md:flex flex-1 max-w-[640px] relative">
+        <input id="searchInput" type="text" placeholder="Tìm gạch 60x60, vân đá, vân gỗ..." class="w-full h-11 pl-11 pr-4 rounded-full bg-zinc-100/80 border border-transparent focus:bg-white focus:border-tealbrand/40 focus:ring-4 focus:ring-tealbrand/10 outline-none transition text-[14px]" />
+        <i data-lucide="search" class="w-[18px] h-[18px] absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"></i>
+      </div>
+      <!-- Right -->
+      <div class="flex items-center gap-2 ml-auto">
+        <a href="tel:0909888777" class="hidden lg:flex items-center gap-2 h-10 px-3 rounded-full bg-zinc-900 text-white hover:bg-black transition">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          <span class="text-[14px] font-semibold">0909 888 777</span>
+        </a>
+        <button id="cartBtn" class="relative h-10 w-10 grid place-items-center rounded-full bg-zinc-100 hover:bg-zinc-200 transition">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span id="cartCount" class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 grid place-items-center rounded-full bg-brick text-white text-[11px] font-bold">0</span>
+        </button>
+      </div>
+    </div>
+    <!-- Nav -->
+    <div class="border-t border-zinc-100 bg-white/70">
+      <div class="max-w-[1400px] mx-auto px-4 lg:px-6">
+        <nav class="flex items-center gap-5 lg:gap-7 h-11 overflow-x-auto scrollbar-hide text-[14px] font-medium">
+          <a data-cat="all" class="nav-link whitespace-nowrap py-2 border-b-2 border-tealbrand text-zinc-900">Trang chủ</a>
+          <a data-cat="lót nền" class="nav-link whitespace-nowrap py-2 border-b-2 border-transparent hover:border-zinc-300 cursor-pointer">Gạch lót nền</a>
+          <a data-cat="ốp tường" class="nav-link whitespace-nowrap py-2 border-b-2 border-transparent hover:border-zinc-300 cursor-pointer">Gạch ốp tường</a>
+          <a data-cat="trang trí" class="nav-link whitespace-nowrap py-2 border-b-2 border-transparent hover:border-zinc-300 cursor-pointer">Gạch trang trí</a>
+          <a data-cat="sân vườn" class="nav-link whitespace-nowrap py-2 border-b-2 border-transparent hover:border-zinc-300 cursor-pointer">Gạch sân vườn</a>
+          <a data-cat="mosaic" class="nav-link whitespace-nowrap py-2 border-b-2 border-transparent hover:border-zinc-300 cursor-pointer">Gạch Mosaic</a>
+          <a data-cat="sale" class="nav-link whitespace-nowrap py-2 border-b-2 border-transparent hover:border-zinc-300 cursor-pointer text-brick">Khuyến mãi</a>
+          <a href="#lienhe" class="whitespace-nowrap py-2">Liên hệ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative pt-[112px]">
+    <div class="max-w-[1400px] mx-auto px-4 lg:px-6">
+      <div class="relative overflow-hidden rounded-[28px]">
+        <img src="https://images.unsplash.com/photo-1600210492493-094691530006?q=80&w=2000&auto=format" class="w-full h-[62vh] min-h-[460px] object-cover" alt="hero"/>
+        <div class="absolute inset-0 bg-gradient-to-r from-zinc-950/70 via-zinc-900/40 to-transparent"></div>
+        <div class="absolute inset-0 flex items-center">
+          <div class="px-6 lg:px-14 max-w-[680px]">
+            <div class="inline-flex items-center gap-2 text-[12px] font-semibold text-white/90 bg-white/10 backdrop-blur px-3 py-1.5 rounded-full border border-white/20 mb-4">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Hơn 2.000 mẫu gạch cao cấp
+            </div>
+            <h1 class="text-[40px] lg:text-[64px] font-extrabold leading-[1.05] text-white tracking-tight">Gạch đẹp<br/>- Nhà sang</h1>
+            <p class="mt-4 text-white/80 text-[15px] lg:text-[17px] max-w-[520px]">Gạch lót nền 80x80 vân đá Ý, porcelain xương đá, chống thấm tuyệt đối. Giao nhanh Đồng Nai trong 24h.</p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#sanpham" class="h-12 px-6 grid place-items-center rounded-full bg-tealbrand text-white font-semibold hover:bg-[#0c8f8e] shadow-lift transition">Xem bộ sưu tập</a>
+              <button id="openQuote" class="h-12 px-6 grid place-items-center rounded-full bg-white/95 text-zinc-900 font-semibold hover:bg-white transition">Nhận báo giá</button>
+            </div>
+            <div class="mt-8 flex items-center gap-6 text-white/80 text-[13px]">
+              <div class="flex items-center gap-1.5"><i data-lucide="truck" class="w-4 h-4"></i> Giao 24h Đồng Nai</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4"></i> Bảo hành men 5 năm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main id="sanpham" class="max-w-[1400px] mx-auto px-4 lg:px-6 py-10 lg:py-14">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <!-- Filter -->
+      <aside class="lg:col-span-1">
+        <div class="lg:sticky lg:top-[128px]">
+          <div class="flex items-center justify-between lg:hidden mb-3">
+            <h3 class="font-bold text-lg">Bộ lọc</h3>
+            <button id="toggleFilter" class="h-9 px-3 rounded-lg border text-sm">Lọc</button>
+          </div>
+          <div id="filterPanel" class="bg-white rounded-2xl border border-zinc-100 p-5 shadow-soft space-y-6 hidden lg:block">
+            <!-- Size -->
+            <div>
+              <div class="font-semibold mb-3 flex items-center justify-between">Kích thước <i data-lucide="ruler" class="w-4 h-4 text-zinc-400"></i></div>
+              <div class="grid grid-cols-3 gap-2">
+                <label class="filter-chip"><input type="checkbox" value="30x30" data-type="size" class="sr-only"><span>30x30</span></label>
+                <label class="filter-chip"><input type="checkbox" value="40x40" data-type="size" class="sr-only"><span>40x40</span></label>
+                <label class="filter-chip"><input type="checkbox" value="60x60" data-type="size" class="sr-only"><span>60x60</span></label>
+                <label class="filter-chip"><input type="checkbox" value="80x80" data-type="size" class="sr-only"><span>80x80</span></label>
+                <label class="filter-chip"><input type="checkbox" value="60x120" data-type="size" class="sr-only"><span>60x120</span></label>
+                <label class="filter-chip"><input type="checkbox" value="15x90" data-type="size" class="sr-only"><span>15x90</span></label>
+              </div>
+            </div>
+            <!-- Material -->
+            <div>
+              <div class="font-semibold mb-3">Chất liệu</div>
+              <div class="space-y-2 text-[14px]">
+                <label class="flex items-center gap-2"><input type="checkbox" value="Porcelain" data-type="material" class="accent-tealbrand"> Porcelain</label>
+                <label class="flex items-center gap-2"><input type="checkbox" value="Granite" data-type="material" class="accent-tealbrand"> Granite</label>
+                <label class="flex items-center gap-2"><input type="checkbox" value="Ceramic" data-type="material" class="accent-tealbrand"> Ceramic</label>
+              </div>
+            </div>
+            <!-- Surface -->
+            <div>
+              <div class="font-semibold mb-3">Bề mặt</div>
+              <div class="space-y-2 text-[14px]">
+                <label class="flex items-center gap-2"><input type="checkbox" value="Bóng kiếng" data-type="surface" class="accent-tealbrand"> Bóng kiếng</label>
+                <label class="flex items-center gap-2"><input type="checkbox" value="Mờ" data-type="surface" class="accent-tealbrand"> Mờ</label>
+                <label class="flex items-center gap-2"><input type="checkbox" value="Nhám chống trượt" data-type="surface" class="accent-tealbrand"> Nhám chống trượt</label>
+              </div>
+            </div>
+            <!-- Application -->
+            <div>
+              <div class="font-semibold mb-3">Ứng dụng</div>
+              <div class="flex flex-wrap gap-2">
+                <label class="filter-pill"><input type="checkbox" value="Phòng khách" data-type="app" class="sr-only"><span>Phòng khách</span></label>
+                <label class="filter-pill"><input type="checkbox" value="Phòng tắm" data-type="app" class="sr-only"><span>Phòng tắm</span></label>
+                <label class="filter-pill"><input type="checkbox" value="Bếp" data-type="app" class="sr-only"><span>Bếp</span></label>
+                <label class="filter-pill"><input type="checkbox" value="Ngoài trời" data-type="app" class="sr-only"><span>Ngoài trời</span></label>
+              </div>
+            </div>
+            <!-- Price -->
+            <div>
+              <div class="font-semibold mb-3">Khoảng giá /m²</div>
+              <div class="flex items-center gap-2">
+                <input id="priceMin" type="number" placeholder="150.000" class="w-full h-10 px-3 rounded-lg border border-zinc-200 text-sm">
+                <span class="text-zinc-400">-</span>
+                <input id="priceMax" type="number" placeholder="550.000" class="w-full h-10 px-3 rounded-lg border border-zinc-200 text-sm">
+              </div>
+              <button id="applyPrice" class="mt-2 w-full h-9 rounded-lg bg-zinc-900 text-white text-sm font-medium hover:bg-black">Áp dụng</button>
+            </div>
+            <!-- Tools -->
+            <div class="pt-4 border-t">
+              <button id="openVisualizer" class="w-full h-11 rounded-xl bg-tealbrand/10 text-tealbrand font-semibold hover:bg-tealbrand/15 flex items-center justify-center gap-2">
+                <i data-lucide="eye" class="w-4 h-4"></i> Xem gạch trong phòng mẫu
+              </button>
+              <button id="calcM2Btn" class="mt-2 w-full h-11 rounded-xl border border-zinc-200 font-medium hover:bg-zinc-50 flex items-center justify-center gap-2">
+                <i data-lucide="calculator" class="w-4 h-4"></i> Tính m² tự động
+              </button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Products -->
+      <section class="lg:col-span-3">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-[22px] lg:text-[26px] font-extrabold tracking-tight">Gạch bán chạy</h2>
+          <div class="flex items-center gap-2 text-sm">
+            <span class="text-zinc-500 hidden sm:block">Sắp xếp:</span>
+            <select id="sortSelect" class="h-9 rounded-lg border border-zinc-200 bg-white px-2.5 outline-none">
+              <option value="popular">Phổ biến</option>
+              <option value="price-asc">Giá thấp → cao</option>
+              <option value="price-desc">Giá cao → thấp</option>
+            </select>
+          </div>
+        </div>
+        <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5"></div>
+
+        <!-- Spaces -->
+        <div class="mt-16">
+          <h3 class="text-[22px] font-extrabold mb-5">Không gian ứng dụng</h3>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <a class="group relative overflow-hidden rounded-2xl aspect-[4/5]" href="#">
+              <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=800&auto=format" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 text-white font-semibold">Phòng khách</div>
+            </a>
+            <a class="group relative overflow-hidden rounded-2xl aspect-[4/5]" href="#">
+              <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=800&auto=format" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 text-white font-semibold">Phòng tắm</div>
+            </a>
+            <a class="group relative overflow-hidden rounded-2xl aspect-[4/5]" href="#">
+              <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=800&auto=format" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 text-white font-semibold">Bếp</div>
+            </a>
+            <a class="group relative overflow-hidden rounded-2xl aspect-[4/5]" href="#">
+              <img src="https://images.unsplash.com/photo-1598902108864-10e5b71e3a7e?q=80&w=800&auto=format" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 text-white font-semibold">Sân vườn</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Trust -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-white rounded-2xl border border-zinc-100 p-6 flex items-start gap-4 shadow-soft">
+            <div class="w-11 h-11 grid place-items-center rounded-xl bg-tealbrand/10 text-tealbrand"><i data-lucide="truck"></i></div>
+            <div><div class="font-bold">Giao Đồng Nai 24h</div><div class="text-sm text-zinc-600 mt-0.5">Miễn phí vận chuyển đơn >5 triệu</div></div>
+          </div>
+          <div class="bg-white rounded-2xl border border-zinc-100 p-6 flex items-start gap-4 shadow-soft">
+            <div class="w-11 h-11 grid place-items-center rounded-xl bg-brick/10 text-brick"><i data-lucide="shield"></i></div>
+            <div><div class="font-bold">Bảo hành men 5 năm</div><div class="text-sm text-zinc-600 mt-0.5">Đổi mới nếu bong tróc, phai màu</div></div>
+          </div>
+          <div class="bg-white rounded-2xl border border-zinc-100 p-6 flex items-start gap-4 shadow-soft">
+            <div class="w-11 h-11 grid place-items-center rounded-xl bg-zinc-900/5 text-zinc-800"><i data-lucide="layers"></i></div>
+            <div><div class="font-bold">Hơn 2.000 mẫu</div><div class="text-sm text-zinc-600 mt-0.5">Vân đá, vân gỗ, terrazzo, mosaic</div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="lienhe" class="mt-16 border-t border-zinc-200 bg-white">
+    <div class="max-w-[1400px] mx-auto px-4 lg:px-6 py-12 grid grid-cols-1 lg:grid-cols-4 gap-10">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-zinc-900 grid place-items-center"><i data-lucide="layout-grid" class="w-5 h-5 text-white"></i></div>
+          <div class="font-extrabold text-lg">GẠCH VIỆT PRO</div>
+        </div>
+        <p class="mt-3 text-sm text-zinc-600">Showroom: Lộc An, Long Thành, Đồng Nai</p>
+        <p class="text-sm text-zinc-600">Hotline: 0909 888 777 - 8:00-20:00</p>
+        <div class="mt-4 flex gap-2">
+          <a class="h-9 w-9 grid place-items-center rounded-lg border hover:bg-zinc-50" href="#"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+          <a class="h-9 w-9 grid place-items-center rounded-lg border hover:bg-zinc-50" href="#"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+          <a class="h-9 w-9 grid place-items-center rounded-lg border hover:bg-zinc-50" href="#"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="font-semibold mb-3">Chính sách</div>
+        <ul class="space-y-2 text-sm text-zinc-600">
+          <li><a href="#" class="hover:text-zinc-900">Đổi trả 30 ngày</a></li>
+          <li><a href="#" class="hover:text-zinc-900">Vận chuyển & lắp đặt</a></li>
+          <li><a href="#" class="hover:text-zinc-900">Bảo hành men</a></li>
+          <li><a href="#" class="hover:text-zinc-900">Thanh toán</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold mb-3">Mẹo chọn gạch</div>
+        <ul class="space-y-2 text-sm text-zinc-600">
+          <li><a href="#" class="hover:text-zinc-900">Chọn gạch phòng khách sáng rộng</a></li>
+          <li><a href="#" class="hover:text-zinc-900">Gạch chống trượt cho nhà tắm</a></li>
+          <li><a href="#" class="hover:text-zinc-900">Phối gạch vân gỗ ấm cúng</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold mb-3">Bản đồ</div>
+        <div class="overflow-hidden rounded-xl border">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0!2d107.0!3d10.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTMOgYyBBbiwgTG9uZyBUaMOgbmgsIMSQ4buTbmcgTmFp!5e0!3m2!1svi!2s!4v1700000000000" width="100%" height="180" style="border:0;" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="border-t py-4 text-center text-xs text-zinc-500">© 2025 Gạch Việt Pro. All rights reserved</div>
+      <div style="text-align:center; padding:16px 0; border-top:1px solid #e5e7eb; margin-top:32px; font-size:14px; color:#6b7280;">
+      Thiết kế và phát triển bởi 
+      <a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" rel="noopener" style="color:#2563eb; text-decoration:none;">
+        IVS Celestech, IVS JSC
+      </a>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
+    <div id="cartOverlay" class="absolute inset-0 bg-black/40"></div>
+    <div class="absolute right-0 top-0 h-full w-full max-w-[420px] bg-white shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+      <div class="h-[68px] flex items-center justify-between px-5 border-b">
+        <div class="font-bold text-lg">Giỏ hàng</div>
+        <button id="closeCart" class="h-9 w-9 grid place-items-center rounded-lg hover:bg-zinc-100"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div id="cartItems" class="flex-1 overflow-auto p-5 space-y-4"></div>
+      <div class="border-t p-5 bg-zinc-50">
+        <div class="flex justify-between text-sm"><span>Tổng m²</span><span id="cartTotalM2" class="font-semibold">0 m²</span></div>
+        <div class="flex justify-between text-lg mt-1"><span class="font-semibold">Tạm tính</span><span id="cartTotalPrice" class="font-extrabold text-tealbrand">0đ</span></div>
+        <button class="mt-3 w-full h-12 rounded-xl bg-zinc-900 text-white font-semibold hover:bg-black">Đặt hàng ngay</button>
+        <p class="text-[12px] text-zinc-500 mt-2 text-center">Giao nhanh Đồng Nai, hỗ trợ bốc xếp tận nơi</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div id="quickView" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-close="quickView"></div>
+    <div class="relative max-w-6xl mx-auto mt-10 bg-white rounded-[24px] overflow-hidden max-h-[90vh] flex flex-col lg:flex-row">
+      <button class="absolute top-3 right-3 z-10 h-9 w-9 grid place-items-center rounded-full bg-zinc-900/80 text-white" data-close="quickView"><i data-lucide="x" class="w-5 h-5"></i></button>
+      <div class="lg:w-[55%] bg-zinc-50 p-5 lg:p-8">
+        <div class="aspect-square rounded-2xl overflow-hidden bg-white border">
+          <img id="qvImg" src="" class="w-full h-full object-cover" alt="">
+        </div>
+        <div class="grid grid-cols-4 gap-3 mt-3">
+          <img id="qvSpace" src="" class="aspect-square rounded-xl object-cover border cursor-pointer" alt="">
+          <div class="aspect-square rounded-xl border bg-[url('https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?q=80&w=400')] bg-cover"></div>
+          <div class="aspect-square rounded-xl border bg-[url('https://images.unsplash.com/photo-1595526114035-0c45c3ef25b9?q=80&w=400')] bg-cover"></div>
+          <div class="aspect-square rounded-xl border bg-[url('https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=400')] bg-cover"></div>
+        </div>
+      </div>
+      <div class="lg:w-[45%] p-6 lg:p-8 overflow-auto">
+        <div id="qvBadge" class="inline-flex items-center gap-1.5 text-[12px] font-semibold px-2.5 py-1 rounded-full bg-tealbrand/10 text-tealbrand mb-2">Porcelain</div>
+        <h3 id="qvName" class="text-[24px] font-extrabold leading-snug">Tên sản phẩm</h3>
+        <div class="mt-1 text-sm text-zinc-500" id="qvMeta">60x60 • R10 • Xuất xứ</div>
+        <div class="mt-4 flex items-baseline gap-2">
+          <div id="qvPrice" class="text-[28px] font-extrabold text-tealbrand">285.000đ</div>
+          <div class="text-zinc-500">/m²</div>
+        </div>
+        <!-- Specs -->
+        <div class="mt-6">
+          <div class="font-semibold mb-2">Thông số kỹ thuật</div>
+          <div class="grid grid-cols-2 gap-2 text-sm">
+            <div class="bg-zinc-50 rounded-lg p-3 border"><div class="text-zinc-500">Kích thước</div><div id="specSize" class="font-semibold">60x60 cm</div></div>
+            <div class="bg-zinc-50 rounded-lg p-3 border"><div class="text-zinc-500">Xương gạch</div><div id="specBody" class="font-semibold">Porcelain</div></div>
+            <div class="bg-zinc-50 rounded-lg p-3 border"><div class="text-zinc-500">Bề mặt</div><div id="specSurface" class="font-semibold">Mờ</div></div>
+            <div class="bg-zinc-50 rounded-lg p-3 border"><div class="text-zinc-500">Hút nước</div><div class="font-semibold"><0.5%</div></div>
+          </div>
+        </div>
+        <!-- Calculator -->
+        <div class="mt-6 p-4 rounded-2xl border bg-zinc-50">
+          <div class="font-semibold mb-3 flex items-center gap-2"><i data-lucide="calculator" class="w-4 h-4"></i> Tính số lượng</div>
+          <div class="grid grid-cols-3 gap-2">
+            <div><label class="text-xs text-zinc-500">Dài (m)</label><input id="calcDai" type="number" step="0.1" class="w-full h-10 px-3 rounded-lg border bg-white" placeholder="5"></div>
+            <div><label class="text-xs text-zinc-500">Rộng (m)</label><input id="calcRong" type="number" step="0.1" class="w-full h-10 px-3 rounded-lg border bg-white" placeholder="4"></div>
+            <div><label class="text-xs text-zinc-500">Hao hụt %</label><input id="calcWaste" type="number" value="5" class="w-full h-10 px-3 rounded-lg border bg-white"></div>
+          </div>
+          <div class="mt3 grid grid-cols-3 gap-2 mt-2 text-sm">
+            <div class="bg-white rounded-lg border p-2.5"><div class="text-zinc-500">Diện tích</div><div id="calcM2" class="font-bold">0 m²</div></div>
+            <div class="bg-white rounded-lg border p-2.5"><div class="text-zinc-500">Số hộp</div><div id="calcBox" class="font-bold">0</div></div>
+            <div class="bg-white rounded-lg border p-2.5"><div class="text-zinc-500">Tạm tính</div><div id="calcTotal" class="font-bold text-tealbrand">0đ</div></div>
+          </div>
+        </div>
+        <div class="mt-5 flex gap-2">
+          <button id="qvAddCart" class="flex-1 h-12 rounded-xl bg-zinc-900 text-white font-semibold hover:bg-black flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Thêm vào giỏ</button>
+          <button class="h-12 px-4 rounded-xl border font-medium hover:bg-zinc-50">Yêu cầu mẫu miễn phí</button>
+        </div>
+        <p class="text-[12px] text-zinc-500 mt-3">* 1 hộp ~1.44m² (60x60, 4 viên). Số liệu mang tính tham khảo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compare Bar -->
+  <div id="compareBar" class="fixed bottom-[76px] lg:bottom-5 left-1/2 -translate-x-1/2 z-30 hidden">
+    <div class="bg-zinc-900 text-white rounded-2xl shadow-2xl px-4 py-3 flex items-center gap-3 w-[calc(100vw-24px)] max-w-[720px]">
+      <div class="font-semibold text-sm whitespace-nowrap">So sánh (<span id="compareCount">0</span>/3)</div>
+      <div id="compareThumbs" class="flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide"></div>
+      <button id="doCompare" class="h-9 px-4 rounded-lg bg-tealbrand font-semibold text-sm hover:bg-[#0c8f8e]">So sánh</button>
+      <button id="clearCompare" class="h-9 w-9 grid place-items-center rounded-lg bg-white/10 hover:bg-white/20"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+  </div>
+
+  <!-- Visualizer Modal -->
+  <div id="visualizer" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/70" data-close="visualizer"></div>
+    <div class="relative max-w-5xl mx-auto mt-8 bg-white rounded-[24px] overflow-hidden">
+      <div class="h-14 flex items-center justify-between px-5 border-b">
+        <div class="font-bold">Xem gạch trong phòng mẫu</div>
+        <button class="h-8 w-8 grid place-items-center rounded-lg hover:bg-zinc-100" data-close="visualizer"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="grid lg:grid-cols-[1fr_320px]">
+        <div class="relative bg-zinc-100">
+          <img id="vizRoom" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1400&auto=format" class="w-full h-[420px] lg:h-[520px] object-cover" alt="">
+          <div id="vizFloor" class="absolute left-[8%] right-[8%] bottom-[8%] h-[38%] rounded-[20px] overflow-hidden shadow-[inset_0_0_0_1px_rgba(0,0,0,0.1)]" style="background-image:url('https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?q=80&w=800'); background-size:180px; transform: perspective(800px) rotateX(35deg);"></div>
+        </div>
+        <div class="p-5 border-t lg:border-t-0 lg:border-l max-h-[520px] overflow-auto">
+          <div class="text-sm font-semibold mb-2">Chọn phòng</div>
+          <div class="grid grid-cols-3 gap-2 mb-4">
+            <button data-room="living" class="room-btn h-20 rounded-xl overflow-hidden border-2 border-tealbrand"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=400" class="w-full h-full object-cover"></button>
+            <button data-room="bath" class="room-btn h-20 rounded-xl overflow-hidden border-2 border-transparent"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=400" class="w-full h-full object-cover"></button>
+            <button data-room="kitchen" class="room-btn h-20 rounded-xl overflow-hidden border-2 border-transparent"><img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=400" class="w-full h-full object-cover"></button>
+          </div>
+          <div class="text-sm font-semibold mb-2">Chọn mẫu gạch</div>
+          <div id="vizTiles" class="grid grid-cols-3 gap-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zalo Chat -->
+  <a href="https://zalo.me/0909888777" target="_blank" class="fixed bottom-[88px] right-4 lg:bottom-6 lg:right-6 z-30 h-12 w-12 lg:h-14 lg:w-14 rounded-full bg-[#0068ff] text-white grid place-items-center shadow-xl hover:scale-105 transition">
+    <span class="font-extrabold text-[15px]">Zalo</span>
+  </a>
+
+  <!-- Mobile Bottom Bar -->
+  <div class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur border-t">
+    <div class="grid grid-cols-4 h-[68px]">
+      <button class="grid place-items-center gap-1 text-[11px]" onclick="document.getElementById('searchInput').focus(); window.scrollTo({top:0,behavior:'smooth'})"><i data-lucide="search" class="w-5 h-5"></i>Tìm kiếm</button>
+      <button id="mbFilter" class="grid place-items-center gap-1 text-[11px]"><i data-lucide="sliders-horizontal" class="w-5 h-5"></i>Danh mục</button>
+      <button class="grid place-items-center gap-1 text-[11px]" onclick="document.getElementById('cartBtn').click()"><i data-lucide="shopping-bag" class="w-5 h-5"></i>Giỏ hàng</button>
+      <button class="grid place-items-center gap-1 text-[11px]"><i data-lucide="user" class="w-5 h-5"></i>Tài khoản</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed top-[120px] left-1/2 -translate-x-1/2 z-[60] hidden">
+    <div class="bg-zinc-900 text-white px-4 py-2.5 rounded-full shadow-lg text-sm font-medium flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-tealbrand"></i><span id="toastMsg">Đã thêm vào giỏ</span></div>
+  </div>
+
+  <style>
+    .filter-chip span, .filter-pill span { @apply block px-3 py-1.5 rounded-lg border border-zinc-200 text-[13px] hover:bg-zinc-50 cursor-pointer select-none; }
+    .filter-chip input:checked + span, .filter-pill input:checked + span { @apply bg-tealbrand/10 border-tealbrand text-tealbrand font-semibold; }
+  </style>
+
+  <script>
+    const fmt = n => n.toLocaleString('vi-VN') + 'đ';
+    const products = [
+      {id:'GV-6021', name:'Porcelain Vân Đá Ý 60x60 GV-6021', price:285000, img:'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200', size:'60x60', material:'Porcelain', surface:'Bóng kiếng', app:'Phòng khách', origin:'Italy', slip:'R9', cat:'lót nền'},
+      {id:'GV-8088', name:'Granite Vân Đá Xám 80x80 GV-8088', price:420000, img:'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200', size:'80x80', material:'Granite', surface:'Mờ', app:'Phòng khách', origin:'Việt Nam', slip:'R10', cat:'lót nền'},
+      {id:'GV-1590', name:'Gạch Vân Gỗ Sồi 15x90 GV-1590', price:310000, img:'https://images.unsplash.com/photo-1595526114035-0c45c3ef25b9?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=1200', size:'15x90', material:'Porcelain', surface:'Nhám chống trượt', app:'Phòng khách', origin:'Việt Nam', slip:'R10', cat:'lót nền'},
+      {id:'GV-3060', name:'Ceramic Vân Mây 30x60 GV-3060', price:195000, img:'https://images.unsplash.com/photo-1509644851169-2acc1f13d034?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=1200', size:'30x60', material:'Ceramic', surface:'Bóng kiếng', app:'Phòng tắm', origin:'Việt Nam', slip:'R9', cat:'ốp tường', sale:true},
+      {id:'GV-TER1', name:'Porcelain Terrazzo 60x60 GV-TER1', price:365000, img:'https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200', size:'60x60', material:'Porcelain', surface:'Mờ', app:'Phòng khách', origin:'Tây Ban Nha', slip:'R10', cat:'trang trí'},
+      {id:'GV-M01', name:'Gạch Mosaic Lục Giác Xanh GV-M01', price:185000, img:'https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1200', size:'Mosaic', material:'Ceramic', surface:'Bóng kiếng', app:'Bếp', origin:'Việt Nam', slip:'R9', cat:'mosaic'},
+      {id:'GV-SV40', name:'Granite Sân Vườn Đá Nhám 40x40 GV-SV40', price:220000, img:'https://images.unsplash.com/photo-1552593541-977d5fc1d9e2?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1598902108864-10e5b71e3a7e?q=80&w=1200', size:'40x40', material:'Granite', surface:'Nhám chống trượt', app:'Ngoài trời', origin:'Việt Nam', slip:'R12', cat:'sân vườn'},
+      {id:'GV-6012', name:'Porcelain Vân Đá Đen 60x120 GV-6012', price:520000, img:'https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1200', size:'60x120', material:'Porcelain', surface:'Mờ', app:'Phòng khách', origin:'Ấn Độ', slip:'R10', cat:'lót nền', sale:true},
+      {id:'GV-W306', name:'Gạch Ốp Tường Vân Gỗ 30x60 GV-W306', price:245000, img:'https://images.unsplash.com/photo-1595515106963-1ce29566ff1a?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1200', size:'30x60', material:'Ceramic', surface:'Mờ', app:'Bếp', origin:'Việt Nam', slip:'R9', cat:'ốp tường'},
+      {id:'GV-M02', name:'Mosaic Vảy Cá Hồng Cam GV-M02', price:265000, img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&sat=-20', space:'https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=1200', size:'Mosaic', material:'Ceramic', surface:'Bóng kiếng', app:'Phòng tắm', origin:'Trung Quốc', slip:'R9', cat:'mosaic'},
+      {id:'GV-CEM', name:'Granite Vân Xi Măng 60x60 GV-CEM', price:295000, img:'https://images.unsplash.com/photo-1484154218962-a197022b585c?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=1200', size:'60x60', material:'Porcelain', surface:'Mờ', app:'Phòng khách', origin:'Việt Nam', slip:'R10', cat:'lót nền'},
+      {id:'GV-SV30', name:'Gạch Sân Vườn Terrazzo 30x30 GV-SV30', price:175000, img:'https://images.unsplash.com/photo-1600585154526-a69676085483?q=80&w=800&auto=format', space:'https://images.unsplash.com/photo-1598902108864-10e5b71e3a7e?q=80&w=1200', size:'30x30', material:'Ceramic', surface:'Nhám chống trượt', app:'Ngoài trời', origin:'Việt Nam', slip:'R11', cat:'sân vườn', sale:true},
+    ];
+
+    const grid = document.getElementById('productGrid');
+    let cart = [];
+    let compare = [];
+    let currentFilters = {sizes:[], materials:[], surfaces:[], apps:[], priceMin:0, priceMax:Infinity, cat:'all', q:''};
+
+    function renderProducts(){
+      let list = [...products];
+      const f = currentFilters;
+      if(f.cat!=='all'){
+        if(f.cat==='sale') list = list.filter(p=>p.sale);
+        else list = list.filter(p=>p.cat===f.cat);
+      }
+      if(f.q) list = list.filter(p=>p.name.toLowerCase().includes(f.q.toLowerCase()));
+      if(f.sizes.length) list = list.filter(p=>f.sizes.includes(p.size));
+      if(f.materials.length) list = list.filter(p=>f.materials.includes(p.material));
+      if(f.surfaces.length) list = list.filter(p=>f.surfaces.includes(p.surface));
+      if(f.apps.length) list = list.filter(p=>f.apps.includes(p.app));
+      list = list.filter(p=>p.price>=f.priceMin && p.price<=f.priceMax);
+      const sort = document.getElementById('sortSelect').value;
+      if(sort==='price-asc') list.sort((a,b)=>a.price-b.price);
+      if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+
+      grid.innerHTML = list.map(p=>`
+        <article class="group bg-white rounded-[20px] border border-zinc-100 overflow-hidden shadow-soft hover:shadow-lift hover:-translate-y-0.5 transition">
+          <div class="relative aspect-square overflow-hidden bg-zinc-50">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute top-2.5 left-2.5 flex gap-1.5">
+              <span class="px-2 py-1 rounded-full text-[11px] font-bold bg-zinc-900/85 text-white backdrop-blur">${p.slip}</span>
+              ${p.sale?`<span class="px-2 py-1 rounded-full text-[11px] font-bold bg-brick text-white">SALE</span>`:''}
+            </div>
+            <button onclick="toggleCompare('${p.id}')" class="absolute top-2.5 right-2.5 h-8 w-8 grid place-items-center rounded-full bg-white/90 backdrop-blur hover:bg-white shadow">
+              <i data-lucide="git-compare" class="w-4 h-4 ${compare.includes(p.id)?'text-tealbrand':''}"></i>
+            </button>
+            <div class="absolute inset-x-2.5 bottom-2.5 flex gap-1.5 opacity-0 group-hover:opacity-100 transition">
+              <button onclick="openQuick('${p.id}')" class="flex-1 h-9 rounded-xl bg-white/95 backdrop-blur font-medium text-sm hover:bg-white">Xem nhanh</button>
+              <button onclick="addToCart('${p.id}',1.44)" class="h-9 w-9 grid place-items-center rounded-xl bg-zinc-900 text-white hover:bg-black"><i data-lucide="plus" class="w-4 h-4"></i></button>
+            </div>
+          </div>
+          <div class="p-3.5">
+            <h3 class="font-semibold leading-snug line-clamp-2 min-h-[40px]">${p.name}</h3>
+            <div class="mt-1.5 flex items-center gap-2 text-[12px] text-zinc-500">
+              <span>${p.size}</span><span>•</span><span>${p.origin}</span>
+            </div>
+            <div class="mt-2 flex items-end justify-between">
+              <div>
+                <div class="text-[18px] font-extrabold text-tealbrand">${fmt(p.price)}</div>
+                <div class="text-[11px] text-zinc-500 -mt-1">/m²</div>
+              </div>
+              <button onclick="addToCart('${p.id}',1.44)" class="h-8 px-3 rounded-lg bg-zinc-900 text-white text-[13px] font-medium hover:bg-black">Thêm vào giỏ</button>
+            </div>
+          </div>
+        </article>
+      `).join('') || `<div class="col-span-full text-center py-20 text-zinc-500">Không tìm thấy sản phẩm phù hợp</div>`;
+      lucide.createIcons();
+    }
+
+    // Quick view
+    let qvProduct = null;
+    function openQuick(id){
+      qvProduct = products.find(p=>p.id===id);
+      document.getElementById('qvImg').src = qvProduct.img;
+      document.getElementById('qvSpace').src = qvProduct.space;
+      document.getElementById('qvName').textContent = qvProduct.name;
+      document.getElementById('qvMeta').textContent = `${qvProduct.size} • ${qvProduct.slip} • ${qvProduct.origin}`;
+      document.getElementById('qvPrice').textContent = fmt(qvProduct.price);
+      document.getElementById('qvBadge').textContent = qvProduct.material;
+      document.getElementById('specSize').textContent = qvProduct.size;
+      document.getElementById('specBody').textContent = qvProduct.material;
+      document.getElementById('specSurface').textContent = qvProduct.surface;
+      document.getElementById('quickView').classList.remove('hidden');
+      calcUpdate();
+      lucide.createIcons();
+    }
+    function closeModal(id){ document.getElementById(id).classList.add('hidden'); }
+    document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',e=>closeModal(e.currentTarget.dataset.close)));
+
+    // Calculator
+    function calcUpdate(){
+      if(!qvProduct) return;
+      const d = parseFloat(document.getElementById('calcDai').value)||0;
+      const r = parseFloat(document.getElementById('calcRong').value)||0;
+      const w = parseFloat(document.getElementById('calcWaste').value)||0;
+      const m2 = d*r*(1+w/100);
+      const boxM2 = qvProduct.size==='80x80'?1.92: qvProduct.size==='60x120'?1.44: qvProduct.size==='60x60'?1.44: qvProduct.size==='30x60'?1.44: qvProduct.size==='40x40'?0.96: qvProduct.size==='30x30'?0.99:1;
+      const boxes = m2>0?Math.ceil(m2/boxM2):0;
+      document.getElementById('calcM2').textContent = (Math.round(m2*100)/100)+' m²';
+      document.getElementById('calcBox').textContent = boxes;
+      document.getElementById('calcTotal').textContent = fmt(Math.round(m2*qvProduct.price));
+    }
+    ['calcDai','calcRong','calcWaste'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcUpdate));
+    document.getElementById('qvAddCart').addEventListener('click',()=>{
+      const m2 = parseFloat(document.getElementById('calcM2').textContent)||1.44;
+      addToCart(qvProduct.id, m2);
+      closeModal('quickView');
+    });
+
+    // Cart
+    function addToCart(id, m2){
+      const p = products.find(x=>x.id===id);
+      const exist = cart.find(i=>i.id===id);
+      if(exist) exist.m2 += m2;
+      else cart.push({id, name:p.name, price:p.price, img:p.img, m2});
+      updateCart();
+      showToast('Đã thêm vào giỏ');
+    }
+    function updateCart(){
+      document.getElementById('cartCount').textContent = cart.length;
+      const wrap = document.getElementById('cartItems');
+      if(cart.length===0){ wrap.innerHTML = `<div class="h-full grid place-items-center text-zinc-500 text-sm">Chưa có sản phẩm</div>`; }
+      else {
+        wrap.innerHTML = cart.map((it,idx)=>`
+          <div class="flex gap-3 p-3 rounded-xl border">
+            <img src="${it.img}" class="w-20 h-20 rounded-lg object-cover">
+            <div class="flex-1">
+              <div class="font-medium text-[14px] leading-snug line-clamp-2">${it.name}</div>
+              <div class="text-[12px] text-zinc-500 mt-0.5">${fmt(it.price)}/m²</div>
+              <div class="mt-2 flex items-center gap-2">
+                <button onclick="chgQty(${idx},-0.5)" class="h-7 w-7 grid place-items-center rounded border hover:bg-zinc-50">-</button>
+                <div class="text-sm font-semibold w-16 text-center">${(Math.round(it.m2*100)/100)} m²</div>
+                <button onclick="chgQty(${idx},0.5)" class="h-7 w-7 grid place-items-center rounded border hover:bg-zinc-50">+</button>
+                <button onclick="rmItem(${idx})" class="ml-auto text-zinc-400 hover:text-red-500"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+        lucide.createIcons();
+      }
+      const totalM2 = cart.reduce((s,i)=>s+i.m2,0);
+      const total = cart.reduce((s,i)=>s+i.m2*i.price,0);
+      document.getElementById('cartTotalM2').textContent = (Math.round(totalM2*100)/100)+' m²';
+      document.getElementById('cartTotalPrice').textContent = fmt(Math.round(total));
+    }
+    function chgQty(i,d){ cart[i].m2 = Math.max(0.5, cart[i].m2+d); updateCart(); }
+    function rmItem(i){ cart.splice(i,1); updateCart(); }
+
+    document.getElementById('cartBtn').onclick = ()=>openCart(true);
+    document.getElementById('closeCart').onclick = ()=>openCart(false);
+    document.getElementById('cartOverlay').onclick = ()=>openCart(false);
+    function openCart(open){
+      const d = document.getElementById('cartDrawer');
+      const panel = d.querySelector('div.absolute.right-0');
+      if(open){ d.classList.remove('hidden'); setTimeout(()=>panel.classList.remove('translate-x-full'),10); }
+      else { panel.classList.add('translate-x-full'); setTimeout(()=>d.classList.add('hidden'),300); }
+    }
+
+    // Compare
+    function toggleCompare(id){
+      if(compare.includes(id)) compare = compare.filter(x=>x!==id);
+      else { if(compare.length>=3){ showToast('Tối đa 3 mẫu'); return; } compare.push(id); }
+      renderCompare();
+      renderProducts();
+    }
+    function renderCompare(){
+      const bar = document.getElementById('compareBar');
+      document.getElementById('compareCount').textContent = compare.length;
+      const thumbs = document.getElementById('compareThumbs');
+      thumbs.innerHTML = compare.map(id=>{
+        const p = products.find(x=>x.id===id);
+        return `<div class="relative"><img src="${p.img}" class="w-12 h-12 rounded-lg object-cover border border-white/20"><button onclick="toggleCompare('${id}')" class="absolute -top-1.5 -right-1.5 w-5 h-5 grid place-items-center rounded-full bg-white text-zinc-900 text-[10px]">×</button></div>`;
+      }).join('');
+      bar.classList.toggle('hidden', compare.length===0);
+    }
+    document.getElementById('clearCompare').onclick = ()=>{ compare=[]; renderCompare(); renderProducts(); };
+    document.getElementById('doCompare').onclick = ()=>{ showToast('Đã mở bảng so sánh (demo)'); };
+
+    // Filters
+    document.querySelectorAll('input[data-type]').forEach(inp=>{
+      inp.addEventListener('change', ()=>{
+        const type = inp.dataset.type;
+        const val = inp.value;
+        const arr = type==='size'?currentFilters.sizes: type==='material'?currentFilters.materials: type==='surface'?currentFilters.surfaces: currentFilters.apps;
+        if(inp.checked) arr.push(val); else arr.splice(arr.indexOf(val),1);
+        renderProducts();
+      });
+    });
+    document.getElementById('applyPrice').onclick = ()=>{
+      currentFilters.priceMin = parseInt(document.getElementById('priceMin').value.replace(/\D/g,''))||0;
+      currentFilters.priceMax = parseInt(document.getElementById('priceMax').value.replace(/\D/g,''))||Infinity;
+      renderProducts();
+    };
+    document.getElementById('searchInput').addEventListener('input', e=>{ currentFilters.q = e.target.value; renderProducts(); });
+    document.querySelectorAll('.nav-link').forEach(a=>a.addEventListener('click',()=>{
+      document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('border-tealbrand','text-zinc-900'));
+      a.classList.add('border-tealbrand','text-zinc-900');
+      currentFilters.cat = a.dataset.cat;
+      renderProducts();
+      window.scrollTo({top:document.getElementById('sanpham').offsetTop-110, behavior:'smooth'});
+    }));
+    document.getElementById('sortSelect').onchange = renderProducts;
+    document.getElementById('toggleFilter').onclick = ()=>document.getElementById('filterPanel').classList.toggle('hidden');
+    document.getElementById('mbFilter').onclick = ()=>{ document.getElementById('filterPanel').classList.toggle('hidden'); window.scrollTo({top:500, behavior:'smooth'}); };
+
+    // Visualizer
+    const vizTiles = document.getElementById('vizTiles');
+    vizTiles.innerHTML = products.slice(0,9).map(p=>`<button class="aspect-square rounded-xl overflow-hidden border-2 border-transparent hover:border-tealbrand" data-tile="${p.img}"><img src="${p.img}" class="w-full h-full object-cover"></button>`).join('');
+    vizTiles.querySelectorAll('button').forEach(b=>b.onclick=()=>{ document.getElementById('vizFloor').style.backgroundImage = `url('${b.dataset.tile}')`; vizTiles.querySelectorAll('button').forEach(x=>x.classList.remove('!border-tealbrand')); b.classList.add('!border-tealbrand'); });
+    document.querySelectorAll('.room-btn').forEach(b=>b.onclick=()=>{
+      document.querySelectorAll('.room-btn').forEach(x=>x.classList.remove('border-tealbrand'));
+      b.classList.add('border-tealbrand');
+      const map = {living:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1400', bath:'https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=1400', kitchen:'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1400'};
+      document.getElementById('vizRoom').src = map[b.dataset.room];
+    });
+    document.getElementById('openVisualizer').onclick = ()=>document.getElementById('visualizer').classList.remove('hidden');
+    document.getElementById('openQuote').onclick = ()=>{ showToast('Đã gửi yêu cầu báo giá! Tư vấn viên sẽ gọi lại.'); };
+
+    // Calc M2 quick
+    document.getElementById('calcM2Btn').onclick = ()=>{ openQuick('GV-6021'); document.getElementById('calcDai').value=5; document.getElementById('calcRong').value=4; calcUpdate(); };
+
+    function showToast(msg){
+      document.getElementById('toastMsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.remove('hidden'); setTimeout(()=>t.classList.add('hidden'),1800);
+      lucide.createIcons();
+    }
+
+    // Init
+    renderProducts(); updateCart(); renderCompare(); lucide.createIcons();
+    // Style helpers for filter chips
+    document.querySelectorAll('.filter-chip,.filter-pill').forEach(l=>{ l.className += ' cursor-pointer'; });
+  </script>
+</body>
+</html>

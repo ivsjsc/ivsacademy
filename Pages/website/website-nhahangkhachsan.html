@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+<!-- Playables SDK -->
+<script>// Playables SDK v1.0.0
+// Game lifecycle bridge: rAF-based game-ready detection + event communication
+(function() {
+  'use strict';
+
+  var HANDLER_NAME = 'playablesGameEventHandler';
+  var ANDROID_BRIDGE_NAME = '_MetaPlayablesBridge';
+  var RAF_FRAME_THRESHOLD = 3;
+
+  var gameReadySent = false;
+  var firstInteractionSent = false;
+  var errorSent = false;
+  var frameCount = 0;
+  var originalRAF = window.requestAnimationFrame;
+
+  // --- Transport Layer ---
+
+  function hasIOSBridge() {
+    return !!(window.webkit &&
+              window.webkit.messageHandlers &&
+              window.webkit.messageHandlers[HANDLER_NAME]);
+  }
+
+  function hasAndroidBridge() {
+    return !!(window[ANDROID_BRIDGE_NAME] &&
+              typeof window[ANDROID_BRIDGE_NAME].postEvent === 'function');
+  }
+
+  function isInIframe() {
+    return !!(window.parent && window.parent !== window);
+  }
+
+  function sendEvent(eventName, payload) {
+    var message = {
+      type: eventName,
+      payload: payload || {},
+      timestamp: Date.now()
+    };
+
+    if (hasIOSBridge()) {
+      try {
+        window.webkit.messageHandlers[HANDLER_NAME].postMessage(message);
+      } catch (e) { /* ignore */ }
+      return;
+    }
+
+    if (hasAndroidBridge()) {
+    try {
+      var p = payload || {};
+      p.__secureToken = window.__fbAndroidBridgeAuthToken || '';
+      window[ANDROID_BRIDGE_NAME].postEvent(
+        eventName,
+        JSON.stringify(p)
+      );
+    } catch (e) { /* ignore */ }
+    return;
+  }
+
+    if (isInIframe()) {
+      try {
+        window.parent.postMessage(message, '*');
+      } catch (e) { /* ignore */ }
+      return;
+    }
+  }
+
+  // --- rAF Game-Ready Detection ---
+
+  function onFrame() {
+    if (gameReadySent) return;
+
+    frameCount++;
+    if (frameCount >= RAF_FRAME_THRESHOLD) {
+      gameReadySent = true;
+      sendEvent('game_ready', {
+        frame_count: frameCount,
+        detected_at: Date.now()
+      });
+      return;
+    }
+
+    originalRAF.call(window, onFrame);
+  }
+
+  if (originalRAF) {
+    window.requestAnimationFrame = function(callback) {
+      if (!gameReadySent) {
+        return originalRAF.call(window, function(timestamp) {
+          frameCount++;
+          if (frameCount >= RAF_FRAME_THRESHOLD && !gameReadySent) {
+            gameReadySent = true;
+            sendEvent('game_ready', {
+              frame_count: frameCount,
+              detected_at: Date.now()
+            });
+          }
+          callback(timestamp);
+        });
+      }
+      return originalRAF.call(window, callback);
+    };
+  }
+
+  // --- First User Interaction Detection ---
+
+  function setupFirstInteractionDetection() {
+    var events = ['touchstart', 'mousedown', 'keydown'];
+
+    function onFirstInteraction() {
+      if (firstInteractionSent) return;
+      firstInteractionSent = true;
+      sendEvent('user_interaction_start', null);
+
+      for (var i = 0; i < events.length; i++) {
+        document.removeEventListener(events[i], onFirstInteraction, true);
+      }
+    }
+
+    for (var i = 0; i < events.length; i++) {
+      document.addEventListener(events[i], onFirstInteraction, true);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFirstInteractionDetection);
+  } else {
+    setupFirstInteractionDetection();
+  }
+
+  // --- Auto Error Capture ---
+
+  window.addEventListener('error', function(event) {
+    if (errorSent) return;
+    errorSent = true;
+    sendEvent('error', {
+      message: event.message || 'Unknown error',
+      source: event.filename || '',
+      lineno: event.lineno || 0,
+      colno: event.colno || 0,
+      auto_captured: true
+    });
+  });
+
+  window.addEventListener('unhandledrejection', function(event) {
+    if (errorSent) return;
+    errorSent = true;
+    var reason = event.reason;
+    sendEvent('error', {
+      message: (reason instanceof Error) ? reason.message : String(reason),
+      type: 'unhandled_promise_rejection',
+      auto_captured: true
+    });
+  });
+
+  // --- Public API ---
+
+  window.playablesSDK = {
+    complete: function(score) {
+      sendEvent('game_ended', {
+        score: score,
+        completed: true
+      });
+    },
+
+    error: function(message) {
+      if (errorSent) return;
+      errorSent = true;
+      sendEvent('error', {
+        message: message || 'Unknown error',
+        auto_captured: false
+      });
+    },
+
+    sendEvent: function(eventName, payload) {
+      if (!eventName || typeof eventName !== 'string') return;
+      sendEvent(eventName, payload);
+    }
+  };
+
+  // Kick off rAF detection in case no game code calls rAF immediately
+  if (originalRAF) {
+    originalRAF.call(window, onFrame);
+  }
+})();</script>
+<script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celestech Dining & Stay - Nhà hàng & Khách sạn Boutique tại Đồng Nai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; }
+    </style>
+</head>
+<body class="bg-[#fffdf9] text-stone-800 antialiased">
+    <!-- Toast -->
+    <div id="toast" class="fixed top-5 right-5 z-[100] hidden">
+        <div class="flex items-center gap-3 bg-stone-900 text-white px-5 py-3 rounded-2xl shadow-2xl">
+            <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div>
+                <p class="font-medium text-sm" id="toast-title">Thành công!</p>
+                <p class="text-xs text-stone-300" id="toast-msg">Chúng tôi đã nhận được thông tin.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-stone-100/80">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-[72px]">
+                <a href="#trangchu" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 shadow-lg shadow-blue-600/20 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.5 5 5.8-4 3.9.9 5.5L12 16l-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3z"/></svg>
+                    </div>
+                    <div>
+                        <p class="font-bold text-[17px] leading-none tracking-tight text-stone-900">CELESTECH</p>
+                        <p class="text-[10px] tracking-[0.25em] text-stone-500 font-medium mt-1">DINING & STAY</p>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#trangchu" class="text-sm font-medium hover:text-blue-600 transition">Trang chủ</a>
+                    <a href="#gioithieu" class="text-sm font-medium hover:text-blue-600 transition">Giới thiệu</a>
+                    <a href="#nhahang" class="text-sm font-medium hover:text-blue-600 transition">Nhà hàng</a>
+                    <a href="#khachsan" class="text-sm font-medium hover:text-blue-600 transition">Khách sạn</a>
+                    <a href="#dat-cho" class="text-sm font-medium hover:text-blue-600 transition">Đặt chỗ</a>
+                    <a href="#lienhe" class="text-sm font-medium hover:text-blue-600 transition">Liên hệ</a>
+                </div>
+                <div class="hidden lg:flex items-center gap-3">
+                    <button onclick="openBooking('restaurant')" class="px-4 py-2.5 text-sm font-semibold rounded-xl border border-amber-600/20 text-amber-700 hover:bg-amber-50 transition">Đặt bàn</button>
+                    <button onclick="openBooking('hotel')" class="px-4 py-2.5 text-sm font-semibold rounded-xl bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition">Đặt phòng</button>
+                </div>
+                <button id="menu-btn" class="lg:hidden p-2.5 rounded-xl hover:bg-stone-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="lg:hidden hidden border-t border-stone-100 bg-white">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#gioithieu" class="block py-2">Giới thiệu</a>
+                <a href="#nhahang" class="block py-2">Nhà hàng</a>
+                <a href="#khachsan" class="block py-2">Khách sạn</a>
+                <a href="#dat-cho" class="block py-2">Đặt chỗ</a>
+                <a href="#lienhe" class="block py-2">Liên hệ</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="trangchu" class="relative">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2070&auto=format&fit=crop" alt="Celestech Dining" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-stone-950/70 via-stone-900/50 to-[#fffdf9]"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 md:pt-36 md:pb-44 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-xs mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Boutique Hotel & Fine Dining tại Lộc An, Long Thành
+            </div>
+            <h1 class="text-[40px] md:text-6xl lg:text-7xl font-bold tracking-tight text-white max-w-4xl mx-auto leading-[1.1]">
+                Trải nghiệm Ẩm thực & Nghỉ dưỡng <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">Đẳng cấp</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-stone-200 max-w-2xl mx-auto leading-relaxed">
+                Nơi tinh hoa ẩm thực 5 sao hòa quyện cùng không gian nghỉ dưỡng boutique ấm cúng. Mỗi khoảnh khắc tại Celestech đều được chăm chút tỉ mỉ.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openBooking('restaurant')" class="group w-full sm:w-auto px-8 py-4 rounded-2xl bg-amber-600 text-white font-semibold shadow-xl shadow-amber-900/30 hover:bg-amber-700 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Đặt bàn ngay
+                </button>
+                <button onclick="openBooking('hotel')" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold hover:bg-white/20 transition">
+                    Đặt phòng
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking -->
+    <section id="dat-cho" class="relative z-20 -mt-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-white rounded-[32px] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.15)] border border-stone-100 p-2">
+                <div class="flex items-center gap-2 p-1.5 bg-stone-50 rounded-[24px]">
+                    <button id="tab-restaurant" onclick="switchTab('restaurant')" class="flex-1 px-6 py-3.5 rounded-[18px] font-semibold text-sm transition flex items-center justify-center gap-2 bg-white shadow-md text-stone-900">
+                        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Đặt bàn Nhà hàng
+                    </button>
+                    <button id="tab-hotel" onclick="switchTab('hotel')" class="flex-1 px-6 py-3.5 rounded-[18px] font-semibold text-sm transition flex items-center justify-center gap-2 text-stone-500 hover:text-stone-800">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        Đặt phòng Khách sạn
+                    </button>
+                </div>
+
+                <!-- Restaurant Form -->
+                <div id="form-restaurant" class="p-6 md:p-8">
+                    <form class="grid md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Họ tên</label>
+                            <input required type="text" placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Số điện thoại</label>
+                            <input required type="tel" placeholder="09xx xxx" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Ngày</label>
+                            <input required type="date" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Giờ</label>
+                            <input required type="time" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Số khách</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none transition bg-white">
+                                <option>2 khách</option><option>3 khách</option><option>4 khách</option><option>5 khách</option><option>6 khách</option><option>7-10 khách</option><option>Trên 10 khách</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Yêu cầu đặc biệt</label>
+                            <input type="text" placeholder="Bàn gần cửa sổ, ăn chay..." class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-600 outline-none transition">
+                        </div>
+                        <div class="md:col-span-2 flex justify-end pt-2">
+                            <button type="submit" class="px-8 py-3.5 rounded-xl bg-amber-600 text-white font-semibold hover:bg-amber-700 shadow-lg shadow-amber-600/20 transition">Xác nhận đặt bàn</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Hotel Form -->
+                <div id="form-hotel" class="p-6 md:p-8 hidden">
+                    <form class="grid md:grid-cols-3 gap-5">
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Họ tên</label>
+                            <input required type="text" placeholder="Nguyễn Văn A" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">SĐT</label>
+                            <input required type="tel" placeholder="09xx xxx xxx" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Email</label>
+                            <input required type="email" placeholder="email@domain.com" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Ngày nhận phòng</label>
+                            <input required type="date" id="checkin" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Ngày trả phòng</label>
+                            <input required type="date" id="checkout" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Số khách</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 outline-none transition bg-white">
+                                <option>1 khách</option><option selected>2 khách</option><option>3 khách</option><option>4 khách</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-3">
+                            <label class="text-sm font-medium text-stone-700 mb-1.5 block">Loại phòng</label>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <label class="relative cursor-pointer"><input type="radio" name="room" class="peer sr-only" checked><div class="p-4 rounded-xl border border-stone-200 peer-checked:border-blue-600 peer-checked:ring-2 peer-checked:ring-blue-500/20 transition"><p class="font-semibold">Deluxe</p><p class="text-xs text-stone-500">1.890.000đ/đêm</p></div></label>
+                                <label class="relative cursor-pointer"><input type="radio" name="room" class="peer sr-only"><div class="p-4 rounded-xl border border-stone-200 peer-checked:border-blue-600 peer-checked:ring-2 peer-checked:ring-blue-500/20 transition"><p class="font-semibold">Suite</p><p class="text-xs text-stone-500">2.990.000đ/đêm</p></div></label>
+                                <label class="relative cursor-pointer"><input type="radio" name="room" class="peer sr-only"><div class="p-4 rounded-xl border border-stone-200 peer-checked:border-blue-600 peer-checked:ring-2 peer-checked:ring-blue-500/20 transition"><p class="font-semibold">Family</p><p class="text-xs text-stone-500">2.490.000đ/đêm</p></div></label>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 flex justify-end pt-2">
+                            <button type="submit" class="px-8 py-3.5 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition">Xác nhận đặt phòng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Giới thiệu -->
+    <section id="gioithieu" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="reveal">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2070&auto=format&fit=crop" alt="Không gian Celestech" class="rounded-[28px] w-full h-[520px] object-cover">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-5 rounded-2xl shadow-xl border border-stone-100">
+                        <p class="text-3xl font-bold text-stone-900">5★</p>
+                        <p class="text-xs text-stone-500">Tiêu chuẩn quốc tế</p>
+                    </div>
+                </div>
+            <div class="reveal">
+                <span class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold mb-4">VỀ CELESTECH</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-stone-900">Nhà hàng 5 sao kết hợp Khách sạn Boutique tại Đồng Nai</h2>
+                <p class="mt-5 text-stone-600 leading-relaxed">Tọa lạc tại trung tâm Lộc An, Long Thành, Celestech Dining & Stay là điểm đến độc đáo nơi ẩm thực tinh tế gặp gỡ nghệ thuật nghỉ dưỡng. Chúng tôi tự hào mang đến thực đơn fusion Á-Âu được chế biến từ nguyên liệu địa phương tươi ngon, phục vụ trong không gian ấm cúng, sang trọng.</p>
+                <p class="mt-4 text-stone-600 leading-relaxed">Khách sạn boutique 18 phòng của chúng tôi được thiết kế theo phong cách tối giản hiện đại, mỗi phòng đều có ban công riêng nhìn ra vườn nhiệt đới, mang lại cảm giác riêng tư và thư thái tuyệt đối cho kỳ nghỉ cuối tuần hay công tác.</p>
+                <div class="mt-8 grid grid-cols-3 gap-6">
+                    <div><p class="text-2xl font-bold text-amber-600">50+</p><p class="text-sm text-stone-500">Món signature</p></div>
+                    <div><p class="text-2xl font-bold text-blue-600">18</p><p class="text-sm text-stone-500">Phòng boutique</p></div>
+                    <div><p class="text-2xl font-bold text-stone-900">24/7</p><p class="text-sm text-stone-500">Phục vụ tận tâm</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nhà hàng -->
+    <section id="nhahang" class="bg-white border-y border-stone-100 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto reveal">
+                <span class="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold mb-4">NHÀ HÀNG</span>
+                <h2 class="text-3xl md:text-4xl font-bold">Món ăn nổi bật</h2>
+                <p class="mt-3 text-stone-600">Tuyển chọn từ bếp trưởng với hơn 15 năm kinh nghiệm ẩm thực cao cấp.</p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-3 gap-8">
+                <div class="group reveal bg-[#fffdf9] rounded-[24px] overflow-hidden border border-stone-100 hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Bò Wagyu">
+                        <span class="absolute top-4 left-4 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur text-xs font-semibold text-amber-700">Best Seller</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Bò Wagyu Nướng Đá Núi Lửa</h3>
+                        <p class="mt-1 text-sm text-stone-500">Wagyu A5, muối hồng Himalaya, sốt tiêu xanh Phú Quốc</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <p class="text-xl font-bold text-stone-900">1.250.000đ</p>
+                            <button onclick="openBooking('restaurant')" class="text-sm font-medium text-amber-700 hover:text-amber-800">Đặt bàn →</button>
+                        </div>
+                    </div>
+                <div class="group reveal bg-[#fffdf9] rounded-[24px] overflow-hidden border border-stone-100 hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560717845-9766-4d56-b56d-4e63b6a0f708?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Tôm hùm">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Tôm Hùm Nha Trang Sốt Bơ Tỏi</h3>
+                        <p class="mt-1 text-sm text-stone-500">Tôm hùm tươi sống, bơ Pháp, bánh mì sourdough</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <p class="text-xl font-bold text-stone-900">980.000đ</p>
+                            <button onclick="openBooking('restaurant')" class="text-sm font-medium text-amber-700 hover:text-amber-800">Đặt bàn →</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="group reveal bg-[#fffdf9] rounded-[24px] overflow-hidden border border-stone-100 hover:shadow-xl hover:-translate-y-1 transition-all">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Cá hồi">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Cá Hồi Áp Chảo Sốt Chanh Dây</h3>
+                        <p class="mt-1 text-sm text-stone-500">Cá hồi Na Uy, măng tây Đà Lạt, khoai tây nghiền</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <p class="text-xl font-bold text-stone-900">550.000đ</p>
+                            <button onclick="openBooking('restaurant')" class="text-sm font-medium text-amber-700 hover:text-amber-800">Đặt bàn →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Khách sạn -->
+    <section id="khachsan" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto reveal">
+                <span class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold mb-4">KHÁCH SẠN</span>
+                <h2 class="text-3xl md:text-4xl font-bold">Phòng nghỉ Boutique</h2>
+                <p class="mt-3 text-stone-600">Thiết kế tối giản, tiện nghi cao cấp, ban công vườn riêng.</p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-3 gap-8">
+                <div class="reveal bg-white rounded-[24px] overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Deluxe">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Deluxe City View</h3>
+                        <p class="text-sm text-stone-500 mt-1">32m² • Giường King • Ban công</p>
+                        <div class="mt-3 flex flex-wrap gap-2 text-xs text-stone-600">
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Ăn sáng</span>
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Bồn tắm</span>
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Netflix</span>
+                        </div>
+                        <div class="mt-5 flex items-center justify-between">
+                            <p><span class="text-xl font-bold">1.890.000đ</span><span class="text-sm text-stone-500">/đêm</span></p>
+                            <button onclick="openBooking('hotel')" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-700">Đặt ngay</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal bg-white rounded-[24px] overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Suite">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Premium Suite</h3>
+                        <p class="text-sm text-stone-500 mt-1">48m² • Phòng khách riêng • Vườn</p>
+                        <div class="mt-3 flex flex-wrap gap-2 text-xs text-stone-600">
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Ăn sáng</span>
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Minibar</span>
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Xông hơi</span>
+                        </div>
+                        <div class="mt-5 flex items-center justify-between">
+                            <p><span class="text-xl font-bold">2.990.000đ</span><span class="text-sm text-stone-500">/đêm</span></p>
+                            <button onclick="openBooking('hotel')" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-700">Đặt ngay</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal bg-white rounded-[24px] overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=2070&auto=format&fit=crop" class="w-full h-56 object-cover" alt="Family">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Family Garden</h3>
+                        <p class="text-sm text-stone-500 mt-1">55m² • 2 giường • Sân vườn</p>
+                        <div class="mt-3 flex flex-wrap gap-2 text-xs text-stone-600">
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Ăn sáng</span>
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Bếp nhỏ</span>
+                            <span class="px-2 py-1 bg-stone-100 rounded-lg">Trẻ em free</span>
+                        </div>
+                        <div class="mt-5 flex items-center justify-between">
+                            <p><span class="text-xl font-bold">2.490.000đ</span><span class="text-sm text-stone-500">/đêm</span></p>
+                            <button onclick="openBooking('hotel')" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-700">Đặt ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-stone-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto reveal">
+                <h2 class="text-3xl md:text-4xl font-bold">Đánh giá khách hàng</h2>
+                <p class="mt-3 text-stone-400">Hơn 1.200 lượt lưu trú và dùng bữa hài lòng trong năm qua.</p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-3 gap-6">
+                <div class="reveal bg-white/5 backdrop-blur border border-white/10 rounded-[24px] p-6">
+                    <div class="flex text-amber-400">★★★★★</div>
+                    <p class="mt-4 text-stone-200">"Không gian ấm cúng, đồ ăn xuất sắc. Bò Wagyu mềm tan, phục vụ rất chuyên nghiệp. Sẽ quay lại!"</p>
+                    <div class="mt-5 flex items-center gap-3"><img src="https://i.pravatar.cc/40?img=11" class="w-10 h-10 rounded-full"><div><p class="font-medium text-sm">Chị Minh Anh</p><p class="text-xs text-stone-400">TP.HCM</p></div></div>
+                </div>
+                <div class="reveal bg-white/5 backdrop-blur border border-white/10 rounded-[24px] p-6">
+                    <div class="flex text-amber-400">★★★★★</div>
+                    <p class="mt-4 text-stone-200">"Phòng Deluxe sạch đẹp, ban công nhìn ra vườn rất chill. Ăn sáng phong phú, nhân viên thân thiện."</p>
+                    <div class="mt-5 flex items-center gap-3"><img src="https://i.pravatar.cc/40?img=32" class="w-10 h-10 rounded-full"><div><p class="font-medium text-sm">Anh Quốc Bảo</p><p class="text-xs text-stone-400">Đồng Nai</p></div></div>
+                </div>
+                <div class="reveal bg-white/5 backdrop-blur border border-white/10 rounded-[24px] p-6">
+                    <div class="flex text-amber-400">★★★★★</div>
+                    <p class="mt-4 text-stone-200">"Tổ chức sinh nhật cho bé ở đây, nhà hàng chuẩn bị rất chu đáo. Phòng Family rộng rãi, tiện nghi."</p>
+                    <div class="mt-5 flex items-center gap-3"><img src="https://i.pravatar.cc/40?img=5" class="w-10 h-10 rounded-full"><div><p class="font-medium text-sm">Gia đình Thu Hằng</p><p class="text-xs text-stone-400">Bà Rịa - Vũng Tàu</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liên hệ -->
+    <section id="lienhe" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="reveal">
+                    <span class="inline-block px-3 py-1 rounded-full bg-stone-900 text-white text-xs font-semibold mb-4">LIÊN HỆ</span>
+                    <h2 class="text-3xl md:text-4xl font-bold">Ghé thăm chúng tôi</h2>
+                    <div class="mt-8 space-y-6">
+                        <div class="flex gap-4"><div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg></div><div><p class="font-medium">Địa chỉ</p><p class="text-stone-600">Khu dân cư Lộc An, xã Lộc An, huyện Long Thành, tỉnh Đồng Nai</p></div></div>
+                        <div class="flex gap-4"><div class="w-11 h-11 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div><div><p class="font-medium">Hotline</p><p class="text-stone-600">0251 3 888 999 • 0909 888 777 (Zalo)</p></div></div>
+                        <div class="flex gap-4"><div class="w-11 h-11 rounded-xl bg-stone-100 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><p class="font-medium">Email</p><p class="text-stone-600">hello@celestech.vn • booking@celestech.vn</p></div></div>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <div class="rounded-[24px] overflow-hidden border border-stone-200 shadow-lg h-[400px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15670.959!2d106.999!3d10.8!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317519%3A0x0!2zTOG7mWMgQW4sIExvbmcgVGjDoG5oLCDEkOG7k25nIE5haQ!5e0!3m2!1svi!2s!4v1710000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 text-stone-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center font-bold">C</div>
+                        <p class="font-semibold text-white">CELESTECH</p>
+                    </div>
+                    <p class="text-sm text-stone-400 leading-relaxed">Nhà hàng 5 sao & Khách sạn boutique tại Lộc An, Đồng Nai. Mang đến trải nghiệm ẩm thực và nghỉ dưỡng tinh tế.</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-4">Liên kết</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#gioithieu" class="hover:text-white transition">Giới thiệu</a></li>
+                        <li><a href="#nhahang" class="hover:text-white transition">Thực đơn</a></li>
+                        <li><a href="#khachsan" class="hover:text-white transition">Phòng nghỉ</a></li>
+                        <li><a href="#dat-cho" class="hover:text-white transition">Đặt chỗ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-4">Giờ mở cửa</p>
+                    <ul class="space-y-2.5 text-sm text-stone-400">
+                        <li>Nhà hàng: 10:00 - 22:00</li>
+                        <li>Ăn sáng: 06:30 - 09:30</li>
+                        <li>Khách sạn: 24/7</li>
+                        <li>Check-in: 14:00 • Check-out: 12:00</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-semibold text-white mb-4">Liên hệ</p>
+                    <ul class="space-y-2.5 text-sm text-stone-400">
+                        <li>Lộc An, Long Thành, Đồng Nai</li>
+                        <li>0251 3 888 999</li>
+                        <li>hello@celestech.vn</li>
+                    </ul>
+                </div>
+            <div style="text-align:center; padding:16px 0; border-top:1px solid #e5e7eb; margin-top:32px; font-size:14px; color:#6b7280;">
+Thiết kế và phát triển bởi 
+<a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" rel="noopener" style="color:#2563eb; text-decoration:none;">
+  IVS Celestech, IVS JSC
+</a>
+
+</div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        function switchTab(tab) {
+            const rTab = document.getElementById('tab-restaurant');
+            const hTab = document.getElementById('tab-hotel');
+            const rForm = document.getElementById('form-restaurant');
+            const hForm = document.getElementById('form-hotel');
+            if(tab === 'restaurant') {
+                rTab.classList.add('bg-white','shadow-md','text-stone-900');
+                rTab.classList.remove('text-stone-500');
+                hTab.classList.remove('bg-white','shadow-md','text-stone-900');
+                hTab.classList.add('text-stone-500');
+                rForm.classList.remove('hidden'); hForm.classList.add('hidden');
+            } else {
+                hTab.classList.add('bg-white','shadow-md','text-stone-900');
+                hTab.classList.remove('text-stone-500');
+                rTab.classList.remove('bg-white','shadow-md','text-stone-900');
+                rTab.classList.add('text-stone-500');
+                hForm.classList.remove('hidden'); rForm.classList.add('hidden');
+            }
+        }
+        function openBooking(tab) {
+            document.getElementById('dat-cho').scrollIntoView({behavior:'smooth'});
+            setTimeout(() => switchTab(tab), 300);
+        }
+        function showToast(title, msg) {
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-msg').textContent = msg;
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3500);
+        }
+        document.querySelector('#form-restaurant form').addEventListener('submit', e => {
+            e.preventDefault(); showToast('Đặt bàn thành công!', 'Chúng tôi sẽ gọi xác nhận trong 5 phút.'); e.target.reset();
+        });
+        document.querySelector('#form-hotel form').addEventListener('submit', e => {
+            e.preventDefault(); showToast('Đặt phòng thành công!', 'Thông tin xác nhận đã gửi qua email.'); e.target.reset();
+        });
+        // Set dates
+        const today = new Date().toISOString().split('T')[0];
+        const tomorrow = new Date(Date.now()+86400000).toISOString().split('T')[0];
+        document.getElementById('checkin').min = today;
+        document.getElementById('checkin').value = today;
+        document.getElementById('checkout').min = tomorrow;
+        document.getElementById('checkout').value = tomorrow;
+        document.querySelectorAll('input[type="date"]').forEach(i => { if(!i.value) i.min = today; });
+
+        // Reveal on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, {threshold: 0.1});
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

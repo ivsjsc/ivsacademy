@@ -1,167 +1,1004 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="vi">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
-    <link href="//unpkg.com" rel="dns-prefetch"/>
-    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
-    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title data-lang-key="webdesign_page_title">IVS Celestech - Giải Pháp Website & Hệ Thống Số Toàn Diện</title>
-    <meta name="description" content="IVS Celestech cung cấp dịch vụ thiết kế website và phát triển hệ thống số theo yêu cầu, từ landing page đến ERP/CRM, với triết lý Code-First." data-lang-key="webdesign_meta_description">
+    <title>IVS Celestech - Giải Pháp Website & Hệ Thống Số Toàn Diện</title>
+    <meta name="description" content="IVS Celestech cung cấp dịch vụ thiết kế website và phát triển hệ thống số theo yêu cầu, từ landing page đến ERP/CRM, với triết lý Code-First.">
     <meta name="keywords" content="thiết kế website, IVS Celestech, code-first, hệ thống CRM, ERP, LMS, phát triển web, web app" />
-    <meta property="og:title" content="IVS Celestech - Giải Pháp Website & Hệ Thống Số Toàn Diện" data-lang-key="webdesign_og_title">
-    <meta property="og:description" content="Chúng tôi lập trình tùy biến, đảm bảo website của bạn hoạt động hiệu quả, dễ dùng, và dễ dàng mở rộng." data-lang-key="webdesign_og_description">
-    <meta property="og:image" content="https://ivsjsc.github.io/images/banners/webdesign-banner.jpg">
-    <meta property="og:url" content="https://ivsacademy.edu.vn/Pages/webdesign.html">
-    <meta property="og:type" content="website">
-    <meta content="IVS JSC" name="author"/>
-    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml"/>
-    <link href="/css/tailwind.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/css/tailwind.css" rel="stylesheet"/>
     <script defer src="/js/language-init.js"></script>
-<style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    },
+                    colors: {
+                        'bg-dark': '#0a0a0a',
+                        'bg-card': '#111111',
+                        'bg-elevated': '#1a1a1a',
+                        'border-subtle': '#27272a',
+                        'border-hover': '#3f3f46',
+                        'blue-primary': '#4c5ef7',
+                        'cyan-accent': '#22d3ee',
+                        'violet-accent': '#8b5cf6',
+                        'amber-accent': '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
         :root { --header-height: 4rem; }
-        body { background-color: #1a1a1a; color: #f4f4f5; font-family: 'Be Vietnam Pro', sans-serif; overflow-x: hidden; padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1000; background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #1f2937; }
-        section { scroll-margin-top: calc(var(--header-height) + 1rem); padding: 4rem 1rem; }
-        @media (min-width: 768px) { section { padding: 6rem 2rem; } }
-        .text-gradient { background: linear-gradient(90deg, #4c5ef7, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .interactive-card { background: #111111; border: 1px solid #27272A; transition: all 0.3s ease; }
-        .interactive-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px -5px rgba(76, 94, 247, 0.2); border-color: #4c5ef7; }
-        .pricing-card-premium { border: 2px solid #22d3ee; transform: scale(1.05); box-shadow: 0 0 40px rgba(34, 211, 238, 0.3); }
-</style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            background: #0a0a0a;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            color: #f4f4f5;
+            background: radial-gradient(circle at top left, rgba(76, 94, 247, 0.18), transparent 35%),
+                        radial-gradient(circle at top right, rgba(34, 211, 238, 0.10), transparent 30%),
+                        linear-gradient(180deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
+            overflow-x: hidden;
+        }
+        section { scroll-margin-top: calc(var(--header-height) + 1rem); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #4c5ef7, #22d3ee); border-radius: 999px; }
+        ::selection { background: rgba(76, 94, 247, 0.3); color: #fff; }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #4c5ef7 0%, #22d3ee 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title-line {
+            width: 5rem;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #4c5ef7, #22d3ee, #8b5cf6);
+        }
+
+        .interactive-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(17,17,17,0.98) 100%);
+            border: 1px solid #27272a;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.4s ease,
+                        border-color 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(76, 94, 247, 0.5);
+            box-shadow: 0 20px 50px -15px rgba(76, 94, 247, 0.35),
+                        0 0 30px rgba(34, 211, 238, 0.08);
+        }
+
+        .pricing-card-premium {
+            background: linear-gradient(180deg, rgba(139, 92, 246, 0.15) 0%, rgba(17,17,17,0.95) 35%, #111111 100%);
+            border: 1.5px solid rgba(139, 92, 246, 0.7);
+            box-shadow: 0 0 60px -20px rgba(139, 92, 246, 0.3),
+                        inset 0 1px 0 rgba(255,255,255,0.05);
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        box-shadow 0.4s ease,
+                        border-color 0.3s ease;
+        }
+        .pricing-card-premium:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px -15px rgba(139, 92, 246, 0.45),
+                        0 0 40px rgba(139, 92, 246, 0.15);
+        }
+
+        .portfolio-card {
+            background: linear-gradient(145deg, #111111, #1a1a1a);
+            border: 1px solid #27272a;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4c5ef7, #22d3ee, #8b5cf6);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+        .portfolio-card:hover::before { opacity: 1; }
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -10px rgba(76, 94, 247, 0.3);
+            border-color: rgba(76, 94, 247, 0.6);
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .portfolio-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(76, 94, 247, 0.2), transparent 55%),
+                        radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.1), transparent 40%);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(34, 211, 238, 0.15);
+            color: #22d3ee;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            z-index: 5;
+            backdrop-filter: blur(8px);
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            background: rgba(31, 41, 55, 0.6);
+            color: #9ca3af;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid rgba(55, 65, 81, 0.8);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+            backdrop-filter: blur(4px);
+        }
+        .filter-tab:hover, .filter-tab.active {
+            background: linear-gradient(135deg, rgba(76, 94, 247, 0.2), rgba(34, 211, 238, 0.15));
+            color: #fff;
+            border-color: rgba(76, 94, 247, 0.6);
+            box-shadow: 0 0 20px rgba(76, 94, 247, 0.1);
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            padding: 1.5rem 2rem;
+            background: rgba(30, 41, 59, 0.35);
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(55, 65, 81, 0.6);
+            flex-wrap: wrap;
+            backdrop-filter: blur(8px);
+        }
+        .stat-item { text-align: center; min-width: 120px; }
+        .stat-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #4c5ef7, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label { font-size: 0.8rem; color: #9ca3af; margin-top: 2px; }
+
+        .partner-logo-box {
+            width: 100px;
+            height: 70px;
+            background: rgba(31, 41, 55, 0.4);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(55, 65, 81, 0.6);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .partner-logo-box:hover {
+            border-color: rgba(76, 94, 247, 0.6);
+            background: linear-gradient(135deg, rgba(76, 94, 247, 0.08), rgba(34, 211, 238, 0.08));
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(76, 94, 247, 0.1);
+        }
+        .partner-logo-box i {
+            font-size: 1.8rem;
+            color: #6b7280;
+            transition: color 0.3s;
+        }
+        .partner-logo-box:hover i { color: #4c5ef7; }
+
+        .view-demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(76, 94, 247, 0.12);
+            color: #4c5ef7;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 0.82rem;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(76, 94, 247, 0.25);
+            cursor: pointer;
+        }
+        .view-demo-btn:hover {
+            background: rgba(76, 94, 247, 0.22);
+            transform: translateX(4px);
+            box-shadow: 0 0 15px rgba(76, 94, 247, 0.15);
+        }
+
+        .hero-mesh {
+            background:
+                radial-gradient(circle at 20% 50%, rgba(76, 94, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 45%);
+        }
+        .hero-panel {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.58), rgba(17, 17, 17, 0.82));
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            box-shadow: 0 28px 80px -32px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(16px);
+        }
+        .hero-title {
+            text-wrap: balance;
+            text-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        }
+        .hero-copy {
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+        }
+        .cta-chip {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(10px);
+        }
+
+        .glass-panel {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(17, 17, 17, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .metric-card {
+            background: rgba(17, 17, 17, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #a1a1aa;
+            transition: color 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .nav-link:hover { color: #fff; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4c5ef7, #22d3ee);
+            border-radius: 999px;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+
+        .pulse-dot {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float 8s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .case-study-img {
+            border-radius: 1.5rem;
+            border: 1px solid #27272a;
+            overflow: hidden;
+            position: relative;
+        }
+        .case-study-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(76, 94, 247, 0.05), rgba(34, 211, 238, 0.03));
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar { gap: 1rem; padding: 1rem; }
+            .stat-item { min-width: 80px; }
+            .stat-number { font-size: 1.2rem; }
+        }
+    </style>
 </head>
-<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+<body class="antialiased pt-[var(--header-height)]">
 
 <header id="header-placeholder"></header>
 
-<main>
-    <!-- Hero Section -->
-    <section class="relative min-h-[80vh] flex items-center text-center overflow-hidden" id="hero">
-        <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline src="/videos/videowebdesign.mp4"></video>
-        <div class="absolute inset-0 bg-black/60 z-10"></div>
-        <div class="container mx-auto px-4 relative z-20" data-aos="fade-up">
-            <p class="text-ivs-cyan font-semibold uppercase tracking-wider mb-3" data-lang-key="hero_tagline">DỊCH VỤ CODE-FIRST, TÍCH HỢP QUẢN LÝ</p>
-            <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 leading-tight text-white" data-lang-key="hero_title">Website Chuyên Nghiệp & Hệ Thống Số</h1>
-            <p class="text-lg sm:text-xl text-ivs-text-secondary max-w-3xl mx-auto mb-10" data-lang-key="hero_subtitle">Từ Landing Page đến Hệ thống Quản lý (CRM/ERP) phức tạp, chúng tôi lập trình tùy biến, đảm bảo nền tảng số của bạn hoạt động hiệu quả, dễ dùng và dễ dàng mở rộng.</p>
-            <a href="/contact.html?interest=web_design" class="inline-block bg-ivs-blue hover:bg-ivs-cyan text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30" data-lang-key="hero_cta">Yêu cầu Tư vấn & Báo giá</a>
-        </div>
-    </section>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center overflow-hidden hero-mesh" id="hero">
+            <div class="absolute inset-0 grid-pattern opacity-60"></div>
+            <div class="floating-orb w-96 h-96 bg-blue-primary/20 top-20 -left-20" style="animation-delay: 0s;"></div>
+            <div class="floating-orb w-72 h-72 bg-cyan-accent/15 bottom-20 right-10" style="animation-delay: 3s;"></div>
+            <div class="floating-orb w-64 h-64 bg-violet-accent/10 top-1/2 left-1/3" style="animation-delay: 5s;"></div>
 
-    <!-- Core Features Section -->
-    <section class="py-16 md:py-24 bg-ivs-neutral-800" id="features">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="section_features_title">Lợi Thế Cốt Lõi: Chức năng & Tích hợp Vượt Trội</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-cubes text-3xl text-ivs-blue mb-4"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="feature_1_title">Tích Hợp Phần Mềm Quản Lý</h3>
-                    <p class="text-ivs-text-secondary" data-lang-key="feature_1_desc">Liên kết website với các hệ thống ERP, CRM, LMS một cách liền mạch và an toàn.</p>
-                </div>
-                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-users-cog text-3xl text-ivs-purple mb-4"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="feature_2_title">Hệ Thống Tài Khoản Chuyên Sâu</h3>
-                    <p class="text-ivs-text-secondary" data-lang-key="feature_2_desc">Xây dựng cổng thông tin thành viên, quản lý tài khoản đa cấp, và phân quyền truy cập nội dung.</p>
-                </div>
-                <div class="interactive-card p-8 rounded-xl text-center" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-rocket text-3xl text-ivs-amber mb-4"></i>
-                    <h3 class="text-xl font-semibold text-white mb-2" data-lang-key="feature_3_title">Khả Năng Phát Triển Vô Hạn</h3>
-                    <p class="text-ivs-text-secondary" data-lang-key="feature_3_desc">Kiến trúc Code-First cho phép biến ý tưởng phức tạp thành các ứng dụng độc lập, sẵn sàng mở rộng.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 w-full">
+                <div class="grid lg:grid-cols-2 gap-14 items-center">
+                    <div class="hero-panel rounded-[32px] p-6 md:p-10" data-aos="fade-up">
+                        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#111]/80 border border-[#27272a] text-xs mb-6 backdrop-blur-sm">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22d3ee] opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#22d3ee]"></span>
+                            </span>
+                            Code-First • Tích hợp quản lý doanh nghiệp
+                        </div>
+                        <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.05] font-black tracking-tighter text-white">
+                            Website chuyên nghiệp<br class="hidden sm:block">
+                            <span class="text-gradient">và hệ thống số</span>
+                        </h1>
+                        <p class="hero-copy mt-6 max-w-xl text-lg text-zinc-200 leading-relaxed">
+                            Từ landing page đến CRM, ERP, LMS và cổng nội bộ, IVS Celestech xây dựng bằng kiến trúc Code-First để tối ưu hiệu năng, SEO và khả năng mở rộng lâu dài.
+                        </p>
+                        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+                            <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-zinc-200 transition shadow-xl shadow-white/5 text-sm">
+                                <i class="fas fa-paper-plane mr-2"></i> Yêu cầu tư vấn & báo giá
+                            </a>
+                            <a href="#demo-samples" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-[#27272a] hover:bg-[#3f3f46] border border-[#3f3f46] font-semibold transition text-sm">
+                                <i class="fas fa-play mr-2"></i> Khám phá năng lực
+                            </a>
+                        </div>
+                        <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl">
+                            <div class="metric-card">
+                                <div class="text-2xl font-bold text-white">&lt; 0.8s</div>
+                                <div class="text-sm text-zinc-400">Tốc độ tải mục tiêu</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="text-2xl font-bold text-white">100/100</div>
+                                <div class="text-sm text-zinc-400">Core Web Vitals</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="text-2xl font-bold text-white">120+</div>
+                                <div class="text-sm text-zinc-400">Dự án triển khai</div>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- Pricing Section -->
-    <section class="py-16 md:py-24 bg-ivs-bg" id="pricing">
-        <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-lang-key="section_pricing_title">Bảng Giá Toàn Diện</h2>
-                <p class="text-lg text-ivs-text-secondary" data-lang-key="pricing_subtitle">Giải pháp phù hợp với mọi quy mô đầu tư, cam kết chất lượng Code Tay ở mọi cấp độ.</p>
-            </div>
-            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 items-stretch">
-                <!-- Tier 0 -->
-                <div class="interactive-card p-8 rounded-xl flex flex-col" data-aos="fade-up">
-                    <h3 class="text-2xl font-bold text-ivs-cyan mb-2" data-lang-key="tier_0_name">Gói Siêu Tối Giản</h3>
-                    <p class="text-4xl font-extrabold text-white mb-4" data-lang-key="tier_0_price">Từ 1.5 Triệu</p>
-                    <ul class="space-y-3 text-ivs-text-secondary flex-grow">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-ivs-cyan mt-1 mr-2"></i><span data-lang-key="tier_0_f1">HTML/CSS/JS tĩnh, tốc độ tải tuyệt đối.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-ivs-cyan mt-1 mr-2"></i><span data-lang-key="tier_0_f2">Giao diện 1 trang (Landing Page) đơn giản.</span></li>
-                    </ul>
-                    <a href="/contact.html?interest=web_tier_0" class="mt-8 block text-center py-3 bg-ivs-cyan/80 hover:bg-ivs-cyan text-white font-semibold rounded-lg transition" data-lang-key="button_select">Chọn Gói Này</a>
-                </div>
-                <!-- Tier 1 -->
-                <div class="interactive-card p-8 rounded-xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-2xl font-bold text-ivs-blue mb-2" data-lang-key="tier_1_name">Gói Khởi Điểm</h3>
-                    <p class="text-4xl font-extrabold text-white mb-4" data-lang-key="tier_1_price">10-15 Triệu</p>
-                    <ul class="space-y-3 text-ivs-text-secondary flex-grow">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-ivs-blue mt-1 mr-2"></i><span data-lang-key="tier_1_f1">Hosting & Tên miền 1 năm.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-ivs-blue mt-1 mr-2"></i><span data-lang-key="tier_1_f2">Tối ưu tốc độ & SEO cơ bản.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-ivs-blue mt-1 mr-2"></i><span data-lang-key="tier_1_f3">Cấu trúc 5-7 trang, giao diện có sẵn.</span></li>
-                    </ul>
-                    <a href="/contact.html?interest=web_tier_1" class="mt-8 block text-center py-3 bg-ivs-blue/80 hover:bg-ivs-blue text-white font-semibold rounded-lg transition" data-lang-key="button_select">Chọn Gói Này</a>
-                </div>
-                <!-- Tier 2 -->
-                <div class="interactive-card p-8 rounded-xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-2xl font-bold text-ivs-purple mb-2" data-lang-key="tier_2_name">Gói Tiêu Chuẩn</h3>
-                    <p class="text-4xl font-extrabold text-white mb-4" data-lang-key="tier_2_price">15-25 Triệu</p>
-                    <ul class="space-y-3 text-ivs-text-secondary flex-grow">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-ivs-purple mt-1 mr-2"></i><span data-lang-key="tier_2_f1">Tất cả tính năng Gói Khởi Điểm.</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-ivs-purple mt-1 mr-2"></i><span data-lang-key="tier_2_f2">Hệ thống Quản lý Nội dung (CMS).</span></li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-ivs-purple mt-1 mr-2"></i><span data-lang-key="tier_2_f3">Tích hợp Marketing (CRM/Form).</span></li>
-                    </ul>
-                    <a href="/contact.html?interest=web_tier_2" class="mt-8 block text-center py-3 bg-ivs-purple/80 hover:bg-ivs-purple text-white font-semibold rounded-lg transition" data-lang-key="button_select">Chọn Gói Này</a>
-                </div>
-                <!-- Tier 4 (Premium) -->
-                <div class="interactive-card pricing-card-premium p-8 rounded-xl flex flex-col" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-2xl font-bold text-white mb-2" data-lang-key="tier_4_name">Gói Tùy Biến Chuyên Sâu</h3>
-                    <p class="text-4xl font-extrabold text-white mb-4" data-lang-key="tier_4_price">Từ 25 Triệu</p>
-                    <ul class="space-y-3 text-white/90 flex-grow">
-                        <li class="flex items-start"><i class="fas fa-star text-ivs-amber mt-1 mr-2"></i><span data-lang-key="tier_4_f1"><b>Lập trình Code Tay</b>, không giới hạn tính năng.</span></li>
-                        <li class="flex items-start"><i class="fas fa-star text-ivs-amber mt-1 mr-2"></i><span data-lang-key="tier_4_f2">Xây dựng hệ thống Tài khoản Người dùng (SaaS).</span></li>
-                        <li class="flex items-start"><i class="fas fa-star text-ivs-amber mt-1 mr-2"></i><span data-lang-key="tier_4_f3">Tối ưu bảo mật và khả năng mở rộng quốc tế.</span></li>
-                    </ul>
-                    <a href="/contact.html?interest=web_tier_4" class="mt-8 block text-center py-3 bg-ivs-amber hover:bg-amber-500 text-ivs-bg font-bold rounded-lg transition" data-lang-key="button_contact_exclusive">Liên hệ Báo giá</a>
+                    <div class="relative" data-aos="fade-left" data-aos-delay="150">
+                        <div class="absolute -inset-8 bg-gradient-to-r from-[#4c5ef7]/15 via-[#22d3ee]/10 to-[#8b5cf6]/15 rounded-[36px] blur-2xl"></div>
+                        <div class="relative rounded-[24px] border border-[#27272a] bg-[#111111]/90 shadow-2xl overflow-hidden">
+                            <div class="aspect-[4/5] relative">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200" alt="Dashboard interface preview" class="absolute inset-0 w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0b12]/75 via-[#0b0b12]/30 to-transparent"></div>
+                                <div class="absolute inset-0 grid-pattern opacity-20"></div>
+                                <div class="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-black/45 backdrop-blur-md p-4 shadow-2xl">
+                                    <div class="flex items-center justify-between gap-4">
+                                        <div>
+                                            <div class="text-xs uppercase tracking-[0.25em] text-zinc-400">IVS Workspace</div>
+                                            <div class="mt-1 text-lg font-bold text-white">Dashboard quản trị nội bộ</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-xl font-black text-[#22d3ee]">&lt; 0.8s</div>
+                                            <div class="text-xs text-zinc-400">mục tiêu tải</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="rounded-2xl bg-black/50 border border-white/10 p-4 backdrop-blur-sm">
+                                        <div class="text-xs uppercase tracking-[0.3em] text-zinc-400">SEO</div>
+                                        <div class="mt-2 text-lg font-bold text-white">Schema + OG</div>
+                                    </div>
+                                    <div class="rounded-2xl bg-black/50 border border-white/10 p-4 backdrop-blur-sm">
+                                        <div class="text-xs uppercase tracking-[0.3em] text-zinc-400">Stack</div>
+                                        <div class="mt-2 text-lg font-bold text-white">Next.js + Tailwind</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Final CTA Section -->
-    <section class="py-20 bg-ivs-neutral-800" id="contact">
-        <div class="container mx-auto px-4 text-center max-w-3xl" data-aos="fade-up">
-            <h2 class="text-4xl font-extrabold mb-4 text-gradient" data-lang-key="cta_final_title">Sẵn sàng hiện thực hóa Tầm nhìn của bạn?</h2>
-            <p class="text-xl text-ivs-text-secondary mb-10" data-lang-key="cta_final_subtitle">IVS Celestech cam kết biến ý tưởng phức tạp nhất thành Giải pháp Kỹ thuật Số hoạt động hiệu quả.</p>
-            <a href="/contact.html?interest=web_design_final_cta" class="inline-block bg-ivs-blue hover:bg-ivs-cyan text-white font-bold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30" data-lang-key="cta_final_button">Yêu cầu Tư vấn Code-First</a>
-        </div>
-    </section>
+        <!-- Core Features Section -->
+        <section class="py-20 md:py-28 bg-[#111111] border-y border-[#27272a]" id="features">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <div class="section-title-line mx-auto mb-5"></div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        Lợi thế cốt lõi: <span class="text-gradient">chức năng và tích hợp</span>
+                    </h2>
+                    <p class="mt-4 text-zinc-400 text-lg">Kiến trúc gọn, mở rộng tốt, bám sát quy trình vận hành của doanh nghiệp Việt.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                    <div class="interactive-card rounded-[24px] p-8" data-aos="fade-up" data-aos-delay="0">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#4c5ef7]/20 to-[#22d3ee]/20 border border-[#4c5ef7]/30 flex items-center justify-center mb-6">
+                            <i class="fas fa-bolt text-[#22d3ee] text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Tích hợp phần mềm quản lý</h3>
+                        <p class="text-zinc-400 leading-relaxed">Liên kết website với ERP, CRM, LMS, payment gateway và hệ thống nội bộ bằng API ổn định, đồng bộ realtime.</p>
+                    </div>
+                    <div class="interactive-card rounded-[24px] p-8" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#8b5cf6]/20 to-[#4c5ef7]/20 border border-[#8b5cf6]/30 flex items-center justify-center mb-6">
+                            <i class="fas fa-users-cog text-[#8b5cf6] text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Hệ thống tài khoản chuyên sâu</h3>
+                        <p class="text-zinc-400 leading-relaxed">Cổng thành viên, phân quyền đa cấp, workflow nội dung và khu vực riêng cho từng vai trò người dùng.</p>
+                    </div>
+                    <div class="interactive-card rounded-[24px] p-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#f59e0b]/20 to-[#8b5cf6]/20 border border-[#f59e0b]/30 flex items-center justify-center mb-6">
+                            <i class="fas fa-rocket text-[#f59e0b] text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Khả năng phát triển vô hạn</h3>
+                        <p class="text-zinc-400 leading-relaxed">Thiết kế để nâng cấp dần từ website marketing sang nền tảng vận hành quy mô lớn mà không phải làm lại từ đầu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-</main>
+        <!-- Demo Samples / Portfolio Section -->
+        <section class="py-20 md:py-28 relative" id="demo-samples">
+            <div class="absolute inset-0 hero-mesh opacity-50"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                    <div class="section-title-line mx-auto mb-5"></div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        Mẫu Website <span class="text-gradient">Code-First</span>
+                    </h2>
+                </div>
+
+                <div class="mb-14" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-[#27272a] to-transparent"></div>
+                        <span class="text-xs uppercase tracking-[0.25em] text-zinc-500">Pages / website</span>
+                        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-[#27272a] to-transparent"></div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="/Pages/website/website-englishcenter.html" class="portfolio-card block" data-category="education">
+                            <div class="p-6">
+                                <span class="portfolio-badge">Giáo dục</span>
+                                <h3 class="text-lg font-bold text-white mb-2">English Center</h3>
+                                <p class="text-zinc-400 text-sm mb-4">Trung tâm tiếng Anh với bố cục học viên, lớp học và tuyển sinh.</p>
+                                <div class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Mở mẫu</div>
+                            </div>
+                        </a>
+                        <a href="/Pages/website/website-gach.html" class="portfolio-card block" data-category="materials">
+                            <div class="p-6">
+                                <span class="portfolio-badge">Vật liệu</span>
+                                <h3 class="text-lg font-bold text-white mb-2">Gạch & Vật liệu</h3>
+                                <p class="text-zinc-400 text-sm mb-4">Trưng bày sản phẩm vật liệu xây dựng và báo giá nhanh.</p>
+                                <div class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Mở mẫu</div>
+                            </div>
+                        </a>
+                        <a href="/Pages/website/website-nhahangkhachsan.html" class="portfolio-card block" data-category="fnb">
+                            <div class="p-6">
+                                <span class="portfolio-badge">F&B</span>
+                                <h3 class="text-lg font-bold text-white mb-2">Restaurant & Hotel</h3>
+                                <p class="text-zinc-400 text-sm mb-4">Nhà hàng, khách sạn, booking phòng và giới thiệu dịch vụ.</p>
+                                <div class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Mở mẫu</div>
+                            </div>
+                        </a>
+                        <a href="/Pages/website/website-nhahangkhachsan2.html" class="portfolio-card block" data-category="fnb">
+                            <div class="p-6">
+                                <span class="portfolio-badge">F&B</span>
+                                <h3 class="text-lg font-bold text-white mb-2">Restaurant & Hotel 2</h3>
+                                <p class="text-zinc-400 text-sm mb-4">Biến thể nhà hàng - khách sạn với bố cục và nội dung khác.</p>
+                                <div class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Mở mẫu</div>
+                            </div>
+                        </a>
+                        <a href="/Pages/website/website-ta&sua.html" class="portfolio-card block" data-category="service">
+                            <div class="p-6">
+                                <span class="portfolio-badge">Dịch vụ</span>
+                                <h3 class="text-lg font-bold text-white mb-2">Tải & Sửa</h3>
+                                <p class="text-zinc-400 text-sm mb-4">Mẫu website dịch vụ với bố cục ngắn gọn, rõ ràng.</p>
+                                <div class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Mở mẫu</div>
+                            </div>
+                        </a>
+                        <a href="https://nova-mart1.netlify.app/" target="_blank" rel="noopener" class="portfolio-card block" data-category="ecommerce">
+                            <div class="p-6">
+                                <span class="portfolio-badge">E-commerce</span>
+                                <h3 class="text-lg font-bold text-white mb-2">Nova Mart</h3>
+                                <p class="text-zinc-400 text-sm mb-4">Cửa hàng online hiện đại, tối ưu trình bày sản phẩm và chuyển đổi.</p>
+                                <div class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Mở mẫu</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="filter-tabs justify-center flex flex-wrap gap-3 mb-8" data-aos="fade-up">
+                    <button class="filter-tab active" data-filter="all">Tất cả</button>
+                    <button class="filter-tab" data-filter="ecommerce">E-commerce</button>
+                    <button class="filter-tab" data-filter="corporate">Doanh nghiệp</button>
+                    <button class="filter-tab" data-filter="portfolio">Portfolio</button>
+                    <button class="filter-tab" data-filter="system">Hệ thống</button>
+                    <button class="filter-tab" data-filter="education">Giáo dục</button>
+                    <button class="filter-tab" data-filter="materials">Vật liệu</button>
+                    <button class="filter-tab" data-filter="fnb">F&B</button>
+                    <button class="filter-tab" data-filter="service">Dịch vụ</button>
+                </div>
+
+                <div class="stats-bar mb-10" data-aos="fade-up">
+                    <div class="stat-item"><div class="stat-number">9</div><div class="stat-label">Nhóm ngành</div></div>
+                    <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">Web đối tác</div></div>
+                    <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">App quản lý</div></div>
+                    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Link thật</div></div>
+                </div>
+
+                <!-- Portfolio Grid -->
+                <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+                    <!-- Card 1: E-commerce -->
+                    <div class="portfolio-card" data-category="ecommerce" data-aos="fade-up">
+                        <div class="portfolio-image bg-gradient-to-br from-[#1e1e2e] to-[#2a2a3e]">
+                            <span class="portfolio-badge">🔥 Hot</span>
+                            <img src="https://images.unsplash.com/photo-1472851294608-062f824d2949?q=80&w=1200" alt="E-commerce demo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Nova Mart Store</h3>
+                            <p class="text-zinc-400 text-sm mb-4">E-commerce thời trang, tối ưu chuyển đổi, thanh toán đa kênh và quản lý kho realtime.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2.5 py-1 bg-[#4c5ef7]/10 text-[#4c5ef7] text-xs rounded-lg font-medium">React</span>
+                                <span class="px-2.5 py-1 bg-[#8b5cf6]/10 text-[#8b5cf6] text-xs rounded-lg font-medium">Node.js</span>
+                                <span class="px-2.5 py-1 bg-[#22d3ee]/10 text-[#22d3ee] text-xs rounded-lg font-medium">Stripe API</span>
+                            </div>
+                            <a href="https://nova-mart1.netlify.app/" target="_blank" rel="noopener" class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Xem Demo</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Corporate -->
+                    <div class="portfolio-card" data-category="corporate" data-aos="fade-up" data-aos-delay="100">
+                        <div class="portfolio-image bg-gradient-to-br from-[#1e293b] to-[#1a1a2e]">
+                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200" alt="Corporate website demo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Corporate Portal</h3>
+                            <p class="text-zinc-400 text-sm mb-4">Website doanh nghiệp đa ngôn ngữ, kết nối CMS và cổng thông tin nội bộ.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2.5 py-1 bg-[#4c5ef7]/10 text-[#4c5ef7] text-xs rounded-lg font-medium">Next.js</span>
+                                <span class="px-2.5 py-1 bg-[#f59e0b]/10 text-[#f59e0b] text-xs rounded-lg font-medium">i18n</span>
+                                <span class="px-2.5 py-1 bg-[#8b5cf6]/10 text-[#8b5cf6] text-xs rounded-lg font-medium">Strapi CMS</span>
+                            </div>
+                            <a href="/Pages/website/website-mau01.html" class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Xem Demo</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Portfolio -->
+                    <div class="portfolio-card" data-category="portfolio" data-aos="fade-up" data-aos-delay="200">
+                        <div class="portfolio-image bg-gradient-to-br from-[#2a1a2e] to-[#1e1a2e]">
+                            <span class="portfolio-badge">✨ Creative</span>
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200" alt="Portfolio demo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Creative Portfolio</h3>
+                            <p class="text-zinc-400 text-sm mb-4">Portfolio nghệ thuật với animation mượt, gallery tương tác và bố cục giàu cảm xúc.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2.5 py-1 bg-[#22d3ee]/10 text-[#22d3ee] text-xs rounded-lg font-medium">GSAP</span>
+                                <span class="px-2.5 py-1 bg-[#4c5ef7]/10 text-[#4c5ef7] text-xs rounded-lg font-medium">Three.js</span>
+                                <span class="px-2.5 py-1 bg-[#8b5cf6]/10 text-[#8b5cf6] text-xs rounded-lg font-medium">Tailwind</span>
+                            </div>
+                            <a href="https://minhtriet.online" target="_blank" rel="noopener" class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Xem Demo</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Dashboard/System -->
+                    <div class="portfolio-card" data-category="system" data-aos="fade-up">
+                        <div class="portfolio-image bg-gradient-to-br from-[#1a2e1e] to-[#1a1a2e]">
+                            <span class="portfolio-badge">⚡ SaaS</span>
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200" alt="Dashboard demo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Admin Dashboard</h3>
+                            <p class="text-zinc-400 text-sm mb-4">Web app quản trị với biểu đồ realtime, phân quyền chi tiết và API tích hợp.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2.5 py-1 bg-[#8b5cf6]/10 text-[#8b5cf6] text-xs rounded-lg font-medium">Vue 3</span>
+                                <span class="px-2.5 py-1 bg-[#22d3ee]/10 text-[#22d3ee] text-xs rounded-lg font-medium">WebSocket</span>
+                                <span class="px-2.5 py-1 bg-[#f59e0b]/10 text-[#f59e0b] text-xs rounded-lg font-medium">D3.js</span>
+                            </div>
+                            <a href="https://ivscentercare.web.app" target="_blank" rel="noopener" class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Xem Demo</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Education -->
+                    <div class="portfolio-card" data-category="education" data-aos="fade-up" data-aos-delay="100">
+                        <div class="portfolio-image bg-gradient-to-br from-[#1e2e3b] to-[#1a1e2e]">
+                            <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1200" alt="E-learning demo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">LMS Center</h3>
+                            <p class="text-zinc-400 text-sm mb-4">Nền tảng học trực tuyến với video streaming, bài tập tương tác và theo dõi tiến độ.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2.5 py-1 bg-[#4c5ef7]/10 text-[#4c5ef7] text-xs rounded-lg font-medium">React</span>
+                                <span class="px-2.5 py-1 bg-[#22d3ee]/10 text-[#22d3ee] text-xs rounded-lg font-medium">Video.js</span>
+                                <span class="px-2.5 py-1 bg-[#8b5cf6]/10 text-[#8b5cf6] text-xs rounded-lg font-medium">Firebase</span>
+                            </div>
+                            <a href="https://ivslearning.io.vn" target="_blank" rel="noopener" class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Xem Demo</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Restaurant -->
+                    <div class="portfolio-card" data-category="fnb" data-aos="fade-up" data-aos-delay="200">
+                        <div class="portfolio-image bg-gradient-to-br from-[#2e1e1a] to-[#1a1a2e]">
+                            <span class="portfolio-badge">🍽️ Local</span>
+                            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200" alt="Restaurant demo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Restaurant Booking</h3>
+                            <p class="text-zinc-400 text-sm mb-4">Website đặt bàn và order online với menu động, bản đồ và tích hợp Zalo/Google Maps.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2.5 py-1 bg-[#f59e0b]/10 text-[#f59e0b] text-xs rounded-lg font-medium">PWA</span>
+                                <span class="px-2.5 py-1 bg-[#22d3ee]/10 text-[#22d3ee] text-xs rounded-lg font-medium">Maps API</span>
+                                <span class="px-2.5 py-1 bg-[#4c5ef7]/10 text-[#4c5ef7] text-xs rounded-lg font-medium">Zalo OA</span>
+                            </div>
+                            <a href="/Pages/website/website-nhahangkhachsan.html" class="view-demo-btn"><i class="fas fa-external-link-alt"></i> Xem Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="py-20 md:py-28 bg-[#111111] border-y border-[#27272a]" id="partners">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up">
+                    <div class="section-title-line mx-auto mb-5"></div>
+                    <span class="inline-block px-4 py-1.5 bg-[#8b5cf6]/10 text-[#8b5cf6] rounded-full text-sm font-medium mb-4 border border-[#8b5cf6]/20">🤝 Trusted Partners</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        Đối tác đã tin tưởng <span class="text-gradient">IVS</span>
+                    </h2>
+                    <p class="mt-4 text-zinc-400 text-lg">Các dự án tiêu biểu cho thấy cùng một nền tảng có thể đi từ branding đến vận hành số.</p>
+                </div>
+
+                <!-- Partner Logos -->
+                <div class="flex flex-wrap justify-center gap-6 mb-20" data-aos="fade-up" data-aos-delay="100">
+                    <a class="partner-logo-box" href="https://khadock.com/" target="_blank" rel="noopener" aria-label="Khadock">
+                        <i class="fas fa-box"></i>
+                    </a>
+                    <a class="partner-logo-box" href="https://khahome.com/" target="_blank" rel="noopener" aria-label="Khahome">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+
+                <!-- Case Studies -->
+                <div class="space-y-24">
+                    <!-- Case Study 1 -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-gradient-to-r from-[#4c5ef7]/20 to-[#22d3ee]/20 rounded-[32px] blur-2xl"></div>
+                            <div class="relative case-study-img">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200" alt="LMS dashboard preview" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0b12]/65 via-transparent to-transparent"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold tracking-widest text-[#22d3ee]">CASE STUDY #1</span>
+                            <h3 class="mt-3 text-2xl md:text-3xl font-bold text-white">IVS Academy - LMS + CRM</h3>
+                            <p class="mt-3 text-zinc-400 leading-relaxed">Nền tảng học trực tuyến với thanh toán, automation và chứng chỉ tự động, thiết kế để vận hành bền vững.</p>
+                            <ul class="mt-6 space-y-3 text-sm text-zinc-300">
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#22d3ee]"></i><span><b class="text-white">+240% đăng ký</b> sau 3 tháng</span></li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#22d3ee]"></i><span>Giảm <b class="text-white">65% chi phí</b> vận hành</span></li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#22d3ee]"></i><span>Tích hợp LMS-CRM-Zalo tự động</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 2 -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                        <div class="lg:order-2 relative">
+                            <div class="absolute -inset-4 bg-gradient-to-r from-[#8b5cf6]/20 to-[#4c5ef7]/20 rounded-[32px] blur-2xl"></div>
+                            <div class="relative case-study-img">
+                                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200" alt="Corporate website preview" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0b12]/65 via-transparent to-transparent"></div>
+                            </div>
+                        </div>
+                        <div class="lg:order-1">
+                            <span class="text-xs font-semibold tracking-widest text-[#8b5cf6]">CASE STUDY #2</span>
+                            <h3 class="mt-3 text-2xl md:text-3xl font-bold text-white">Celestech JSC - Corporate + ERP</h3>
+                            <p class="mt-3 text-zinc-400 leading-relaxed">Website tập đoàn đa ngôn ngữ, kết nối hệ thống ERP nội bộ và portal dành cho nhà đầu tư.</p>
+                            <ul class="mt-6 space-y-3 text-sm text-zinc-300">
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#8b5cf6]"></i><span>Thời gian tải <b class="text-white">&lt; 0.8s</b> toàn cầu</span></li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#8b5cf6]"></i><span><b class="text-white">+300% lead B2B</b> chất lượng</span></li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#8b5cf6]"></i><span>Dashboard ERP realtime</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 3 -->
+                    <div class="grid lg:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+                        <div class="relative">
+                            <div class="absolute -inset-4 bg-gradient-to-r from-[#f59e0b]/20 to-[#22d3ee]/20 rounded-[32px] blur-2xl"></div>
+                            <div class="relative case-study-img">
+                                <img src="https://images.unsplash.com/photo-1472851294608-062f824d2949?q=80&w=1200" alt="E-commerce website preview" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0b12]/65 via-transparent to-transparent"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold tracking-widest text-[#f59e0b]">CASE STUDY #3</span>
+                            <h3 class="mt-3 text-2xl md:text-3xl font-bold text-white">EcoGreen Retail - E-commerce</h3>
+                            <p class="mt-3 text-zinc-400 leading-relaxed">Chuyển đổi từ nền tảng cũ sang headless commerce để xử lý dữ liệu sản phẩm lớn và cải thiện tỉ lệ chuyển đổi.</p>
+                            <ul class="mt-6 space-y-3 text-sm text-zinc-300">
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#f59e0b]"></i><span><b class="text-white">+180% doanh thu</b> online</span></li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#f59e0b]"></i><span>Tỷ lệ chuyển đổi <b class="text-white">4.2%</b></span></li>
+                                <li class="flex items-center gap-3"><i class="fas fa-check text-[#f59e0b]"></i><span>PWA, hoạt động offline</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="mt-20 text-center" data-aos="fade-up">
+                    <p class="text-zinc-500 mb-8 text-sm uppercase tracking-wider">Cam kết chất lượng từ đối tác</p>
+                    <div class="flex flex-wrap justify-center gap-8 items-center opacity-70">
+                        <div class="flex items-center gap-2.5"><i class="fas fa-shield-alt text-[#22d3ee]"></i><span class="text-sm text-zinc-300">Bảo mật chuẩn OWASP</span></div>
+                        <div class="flex items-center gap-2.5"><i class="fas fa-bolt text-[#f59e0b]"></i><span class="text-sm text-zinc-300">Tốc độ tải &lt; 2s</span></div>
+                        <div class="flex items-center gap-2.5"><i class="fas fa-sync-alt text-[#8b5cf6]"></i><span class="text-sm text-zinc-300">Hỗ trợ 24/7</span></div>
+                        <div class="flex items-center gap-2.5"><i class="fas fa-chart-line text-[#4c5ef7]"></i><span class="text-sm text-zinc-300">Tăng conversion 35%+</span></div>
+                    </div>
+                </div>
+
+                <div class="mt-16 grid lg:grid-cols-2 gap-6 items-stretch" data-aos="fade-up">
+                    <div class="interactive-card rounded-[24px] p-8">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4c5ef7]/10 border border-[#4c5ef7]/20 text-xs text-[#a5b4fc] mb-4">
+                            Ứng dụng quản lý trung tâm
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Ecosystem quản lý trung tâm</h3>
+                        <p class="mt-4 text-zinc-400 leading-relaxed">
+                            Hệ thống quản lý cho trung tâm được thiết kế để theo dõi vận hành, học viên, quy trình nội bộ và các module liên quan trong một dashboard thống nhất.
+                        </p>
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 bg-[#4c5ef7]/10 text-[#4c5ef7] text-xs rounded-lg font-medium">Dashboard</span>
+                            <span class="px-2.5 py-1 bg-[#22d3ee]/10 text-[#22d3ee] text-xs rounded-lg font-medium">Ecosystem</span>
+                            <span class="px-2.5 py-1 bg-[#8b5cf6]/10 text-[#8b5cf6] text-xs rounded-lg font-medium">CenterCare</span>
+                        </div>
+                        <a href="https://ivscentercare.web.app/ecosystem" target="_blank" rel="noopener" class="mt-8 view-demo-btn">
+                            <i class="fas fa-external-link-alt"></i> Mở ứng dụng
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="py-20 md:py-28 relative" id="pricing">
+            <div class="absolute inset-0 hero-mesh opacity-30"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                    <div class="section-title-line mx-auto mb-5"></div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        Bảng giá <span class="text-gradient">minh bạch</span>
+                    </h2>
+                    <p class="mt-4 text-zinc-400 text-lg">Không phí ẩn. Code sở hữu 100%. Bảo hành trọn đời.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Starter -->
+                    <div class="interactive-card rounded-[24px] p-8 flex flex-col" data-aos="fade-up" data-aos-delay="0">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-xl bg-[#22d3ee]/10 border border-[#22d3ee]/20 flex items-center justify-center">
+                                <i class="fas fa-paper-plane text-[#22d3ee] text-sm"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-white">Starter</h3>
+                        </div>
+                        <p class="text-zinc-500 text-sm">Landing page đơn giản</p>
+                        <div class="mt-6 mb-2">
+                            <span class="text-4xl font-black text-white">8.9</span>
+                            <span class="text-zinc-400 text-sm">triệu</span>
+                        </div>
+                        <ul class="mt-6 space-y-3 text-sm text-zinc-300 flex-1">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#22d3ee] text-xs"></i> 1 trang, code Next.js</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#22d3ee] text-xs"></i> Tối ưu PageSpeed</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#22d3ee] text-xs"></i> Form liên hệ</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#22d3ee] text-xs"></i> Bàn giao source</li>
+                        </ul>
+                        <a href="#contact" class="mt-8 w-full text-center py-3 rounded-xl bg-[#27272a] hover:bg-[#3f3f46] font-semibold text-sm transition">Bắt đầu</a>
+                    </div>
+
+                    <!-- Business -->
+                    <div class="interactive-card rounded-[24px] p-8 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-xl bg-[#4c5ef7]/10 border border-[#4c5ef7]/20 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-[#4c5ef7] text-sm"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-white">Business</h3>
+                        </div>
+                        <p class="text-zinc-500 text-sm">Doanh nghiệp nhỏ</p>
+                        <div class="mt-6 mb-2">
+                            <span class="text-4xl font-black text-white">18.9</span>
+                            <span class="text-zinc-400 text-sm">triệu</span>
+                        </div>
+                        <ul class="mt-6 space-y-3 text-sm text-zinc-300 flex-1">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#4c5ef7] text-xs"></i> 5-7 trang tùy biến</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#4c5ef7] text-xs"></i> Blog chuẩn SEO</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#4c5ef7] text-xs"></i> Đa ngôn ngữ</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#4c5ef7] text-xs"></i> Tích hợp CRM</li>
+                        </ul>
+                        <a href="#contact" class="mt-8 w-full text-center py-3 rounded-xl bg-[#27272a] hover:bg-[#3f3f46] font-semibold text-sm transition">Chọn gói</a>
+                    </div>
+
+                    <!-- Pro (Premium) -->
+                    <div class="pricing-card-premium rounded-[24px] p-8 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-[#8b5cf6] text-xs font-bold tracking-wider">PHỔ BIẾN</div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-xl bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 flex items-center justify-center">
+                                <i class="fas fa-crown text-[#8b5cf6] text-sm"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-white">Pro</h3>
+                        </div>
+                        <p class="text-zinc-400 text-sm">Tăng trưởng mạnh</p>
+                        <div class="mt-6 mb-2">
+                            <span class="text-4xl font-black text-white">34.9</span>
+                            <span class="text-zinc-400 text-sm">triệu</span>
+                        </div>
+                        <ul class="mt-6 space-y-3 text-sm text-zinc-200 flex-1">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#8b5cf6] text-xs"></i> 15+ trang, design system</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#8b5cf6] text-xs"></i> Headless CMS</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#8b5cf6] text-xs"></i> Tích hợp ERP/LMS</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#8b5cf6] text-xs"></i> A/B Testing</li>
+                        </ul>
+                        <a href="#contact" class="mt-8 w-full text-center py-3 rounded-xl bg-[#8b5cf6] hover:bg-[#7c3aed] font-bold text-sm transition shadow-lg shadow-[#8b5cf6]/20">Đăng ký Pro</a>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="interactive-card rounded-[24px] p-8 flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-xl bg-[#f59e0b]/10 border border-[#f59e0b]/20 flex items-center justify-center">
+                                <i class="fas fa-building text-[#f59e0b] text-sm"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-white">Enterprise</h3>
+                        </div>
+                        <p class="text-zinc-500 text-sm">Tập đoàn</p>
+                        <div class="mt-6 mb-2">
+                            <span class="text-2xl font-black text-white">Liên hệ</span>
+                        </div>
+                        <ul class="mt-6 space-y-3 text-sm text-zinc-300 flex-1">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#f59e0b] text-xs"></i> Kiến trúc Microservices</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#f59e0b] text-xs"></i> SLA 99.99%</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#f59e0b] text-xs"></i> Bảo mật cấp ngân hàng</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-[#f59e0b] text-xs"></i> Đội ngũ riêng</li>
+                        </ul>
+                        <a href="#contact" class="mt-8 w-full text-center py-3 rounded-xl bg-[#27272a] hover:bg-[#3f3f46] font-semibold text-sm transition">Trao đổi</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="py-24 relative overflow-hidden" id="contact">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#4c5ef7]/12 via-transparent to-[#8b5cf6]/12"></div>
+            <div class="absolute inset-0 grid-pattern opacity-40"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight text-white">
+                    Sẵn sàng sở hữu website <span class="text-gradient">vượt trội</span>?
+                </h2>
+                <p class="mt-5 text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                    Để lại thông tin, chuyên gia IVS sẽ phản hồi sớm với demo và báo giá phù hợp theo ngành của bạn.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://m.me/ivsacademy.edu" target="_blank" rel="noopener" class="px-8 py-4 rounded-xl bg-[#4c5ef7] hover:bg-[#3b4de0] font-bold shadow-xl shadow-[#4c5ef7]/20 transition flex items-center justify-center gap-2">
+                        <i class="fab fa-facebook-messenger"></i> m.me/ivsacademy.edu
+                    </a>
+                    <a href="https://m.me/ivsjsc" target="_blank" rel="noopener" class="px-8 py-4 rounded-xl bg-[#111] hover:bg-[#1a1a1a] border border-[#27272a] font-semibold transition flex items-center justify-center gap-2">
+                        <i class="fab fa-facebook-messenger"></i> m.me/ivsjsc
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
 <footer id="footer-placeholder"></footer>
 <div id="fab-container-placeholder"></div>
 
-<!-- Scripts -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="/js/utils.js"></script>
-<script src="/js/language.js"></script>
-<script src="/ai/js/fabController.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        if (typeof AOS !== 'undefined') {
-            AOS.init({ duration: 800, once: true, offset: 50 });
-        }
-    });
-</script>
-<script defer src="/ai/js/loadComponents.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/language.js"></script>
+    <script src="/ai/js/fabController.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ duration: 800, once: true, offset: 50, easing: 'ease-out-cubic' });
+            }
 
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const filter = tab.dataset.filter;
+
+                    portfolioCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                            requestAnimationFrame(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0) scale(1)';
+                            });
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px) scale(0.95)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 350);
+                        }
+                    });
+                });
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+    </script>
+    <script defer src="/ai/js/loadComponents.js"></script>
 </body>
 </html>
+
+
+
+
