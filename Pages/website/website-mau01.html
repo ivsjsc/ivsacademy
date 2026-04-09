@@ -1,1 +1,722 @@
-website-mau01.html
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<!-- Playables SDK -->
+<script>// Playables SDK v1.0.0
+// Game lifecycle bridge: rAF-based game-ready detection + event communication
+(function() {
+  'use strict';
+
+  var HANDLER_NAME = 'playablesGameEventHandler';
+  var ANDROID_BRIDGE_NAME = '_MetaPlayablesBridge';
+  var RAF_FRAME_THRESHOLD = 3;
+
+  var gameReadySent = false;
+  var firstInteractionSent = false;
+  var errorSent = false;
+  var frameCount = 0;
+  var originalRAF = window.requestAnimationFrame;
+
+  // --- Transport Layer ---
+
+  function hasIOSBridge() {
+    return !!(window.webkit &&
+              window.webkit.messageHandlers &&
+              window.webkit.messageHandlers[HANDLER_NAME]);
+  }
+
+  function hasAndroidBridge() {
+    return !!(window[ANDROID_BRIDGE_NAME] &&
+              typeof window[ANDROID_BRIDGE_NAME].postEvent === 'function');
+  }
+
+  function isInIframe() {
+    return !!(window.parent && window.parent !== window);
+  }
+
+  function sendEvent(eventName, payload) {
+    var message = {
+      type: eventName,
+      payload: payload || {},
+      timestamp: Date.now()
+    };
+
+    if (hasIOSBridge()) {
+      try {
+        window.webkit.messageHandlers[HANDLER_NAME].postMessage(message);
+      } catch (e) { /* ignore */ }
+      return;
+    }
+
+    if (hasAndroidBridge()) {
+    try {
+      var p = payload || {};
+      p.__secureToken = window.__fbAndroidBridgeAuthToken || '';
+      window[ANDROID_BRIDGE_NAME].postEvent(
+        eventName,
+        JSON.stringify(p)
+      );
+    } catch (e) { /* ignore */ }
+    return;
+  }
+
+    if (isInIframe()) {
+      try {
+        window.parent.postMessage(message, '*');
+      } catch (e) { /* ignore */ }
+      return;
+    }
+  }
+
+  // --- rAF Game-Ready Detection ---
+
+  function onFrame() {
+    if (gameReadySent) return;
+
+    frameCount++;
+    if (frameCount >= RAF_FRAME_THRESHOLD) {
+      gameReadySent = true;
+      sendEvent('game_ready', {
+        frame_count: frameCount,
+        detected_at: Date.now()
+      });
+      return;
+    }
+
+    originalRAF.call(window, onFrame);
+  }
+
+  if (originalRAF) {
+    window.requestAnimationFrame = function(callback) {
+      if (!gameReadySent) {
+        return originalRAF.call(window, function(timestamp) {
+          frameCount++;
+          if (frameCount >= RAF_FRAME_THRESHOLD && !gameReadySent) {
+            gameReadySent = true;
+            sendEvent('game_ready', {
+              frame_count: frameCount,
+              detected_at: Date.now()
+            });
+          }
+          callback(timestamp);
+        });
+      }
+      return originalRAF.call(window, callback);
+    };
+  }
+
+  // --- First User Interaction Detection ---
+
+  function setupFirstInteractionDetection() {
+    var events = ['touchstart', 'mousedown', 'keydown'];
+
+    function onFirstInteraction() {
+      if (firstInteractionSent) return;
+      firstInteractionSent = true;
+      sendEvent('user_interaction_start', null);
+
+      for (var i = 0; i < events.length; i++) {
+        document.removeEventListener(events[i], onFirstInteraction, true);
+      }
+    }
+
+    for (var i = 0; i < events.length; i++) {
+      document.addEventListener(events[i], onFirstInteraction, true);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFirstInteractionDetection);
+  } else {
+    setupFirstInteractionDetection();
+  }
+
+  // --- Auto Error Capture ---
+
+  window.addEventListener('error', function(event) {
+    if (errorSent) return;
+    errorSent = true;
+    sendEvent('error', {
+      message: event.message || 'Unknown error',
+      source: event.filename || '',
+      lineno: event.lineno || 0,
+      colno: event.colno || 0,
+      auto_captured: true
+    });
+  });
+
+  window.addEventListener('unhandledrejection', function(event) {
+    if (errorSent) return;
+    errorSent = true;
+    var reason = event.reason;
+    sendEvent('error', {
+      message: (reason instanceof Error) ? reason.message : String(reason),
+      type: 'unhandled_promise_rejection',
+      auto_captured: true
+    });
+  });
+
+  // --- Public API ---
+
+  window.playablesSDK = {
+    complete: function(score) {
+      sendEvent('game_ended', {
+        score: score,
+        completed: true
+      });
+    },
+
+    error: function(message) {
+      if (errorSent) return;
+      errorSent = true;
+      sendEvent('error', {
+        message: message || 'Unknown error',
+        auto_captured: false
+      });
+    },
+
+    sendEvent: function(eventName, payload) {
+      if (!eventName || typeof eventName !== 'string') return;
+      sendEvent(eventName, payload);
+    }
+  };
+
+  // Kick off rAF detection in case no game code calls rAF immediately
+  if (originalRAF) {
+    originalRAF.call(window, onFrame);
+  }
+})();</script>
+<script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IVS Corporation - Nền tảng doanh nghiệp đa ngôn ngữ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --bg: #F8FAFC;
+    --text: #0F172A;
+    --primary: #0F1E3D;
+    --accent: #00A3A3;
+    --card: #FFFFFF;
+    --muted: #64748B;
+    --border: #E2E8F0;
+    --shadow: 0 10px 30px -10px rgba(15,30,61,0.12);
+  }
+  [data-theme="dark"] {
+    --bg: #0B1220;
+    --text: #E2E8F0;
+    --primary: #38BDF8;
+    --accent: #22D3EE;
+    --card: #111827cc;
+    --muted: #94A3B8;
+    --border: #1E293B;
+    --shadow: 0 10px 40px -10px rgba(0,0,0,0.6);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  h1,h2,h3 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; letter-spacing: -0.02em; }
+  .glass { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: color-mix(in oklab, var(--bg) 70%, transparent); }
+  .card { background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s, border-color .3s; }
+  .card:hover { transform: translateY(-6px); }
+  [data-theme="light"] .card:hover { box-shadow: 0 24px 48px -16px rgba(15,30,61,0.18); border-color: color-mix(in oklab, var(--accent) 30%, var(--border)); }
+  [data-theme="dark"] .card:hover { box-shadow: 0 24px 48px -16px rgba(34,211,238,0.18); border-color: color-mix(in oklab, var(--accent) 40%, var(--border)); }
+  .grid-bg { background-image: linear-gradient(to right, rgba(148,163,184,.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(148,163,184,.12) 1px, transparent 1px); background-size: 56px 56px; }
+  .orb { position:absolute; filter: blur(90px); opacity:.5; pointer-events:none; }
+  .lang-btn { transition: all .2s; color: var(--muted); }
+  .lang-btn.active { background: var(--text); color: var(--bg); }
+  [data-theme="dark"] .lang-btn.active { background: white; color: #0B1220; }
+  .marquee { animation: marquee 32s linear infinite; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  .theme-transition * { transition: background-color .45s ease, color .3s ease, border-color .45s ease, fill .3s ease !important; }
+  .pill { border:1px solid var(--border); background: color-mix(in oklab, var(--card) 85%, transparent); backdrop-filter: blur(8px); }
+</style>
+</head>
+<body class="antialiased">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b glass" style="border-color: var(--border)">
+    <div class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-[72px] items-center justify-between gap-4">
+        <a href="#" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary), var(--accent)); box-shadow: 0 10px 24px -10px color-mix(in oklab, var(--accent) 60%, transparent);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l8 4.5v9L12 20 4 15.5v-9L12 2z" stroke="white" stroke-opacity=".9" stroke-width="1.5" fill="white" fill-opacity=".15"/>
+              <circle cx="12" cy="12" r="2.5" fill="white"/>
+            </svg>
+          </div>
+          <span class="font-[700] tracking-tight text-[17px]">IVS CORPORATION</span>
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 text-[14px] font-medium">
+          <a href="#gioi-thieu" class="hover:opacity-80" style="color:var(--muted)" data-i18n="nav.about">Giới thiệu</a>
+          <a href="#giai-phap" class="hover:opacity-80" style="color:var(--muted)" data-i18n="nav.solutions">Giải pháp</a>
+          <a href="#tin-tuc" class="hover:opacity-80" style="color:var(--muted)" data-i18n="nav.news">Tin tức</a>
+          <a href="#investors" class="hover:opacity-80" style="color:var(--muted)" data-i18n="nav.investors">Nhà đầu tư</a>
+          <a href="#careers" class="hover:opacity-80" style="color:var(--muted)" data-i18n="nav.careers">Tuyển dụng</a>
+          <a href="#lien-he" class="hover:opacity-80" style="color:var(--muted)" data-i18n="nav.contact">Liên hệ</a>
+        </nav>
+        <div class="flex items-center gap-2.5">
+          <div class="hidden sm:flex items-center gap-1 p-1 rounded-full border" style="border-color:var(--border)">
+            <button data-lang="vi" class="lang-btn active px-2.5 py-1 text-xs font-semibold rounded-full">VI</button>
+            <button data-lang="en" class="lang-btn px-2.5 py-1 text-xs font-semibold rounded-full">EN</button>
+            <button data-lang="ja" class="lang-btn px-2.5 py-1 text-xs font-semibold rounded-full">JA</button>
+          </div>
+          <button id="theme-toggle" aria-label="Toggle theme" class="w-9 h-9 grid place-items-center rounded-full border hover:scale-105 transition" style="border-color:var(--border); background:var(--card)">
+            <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+            <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="#portal" class="hidden md:inline-flex items-center gap-2 px-4 h-9 rounded-full text-white font-medium text-[13.5px] shadow-lg shadow-cyan-900/10 hover:translate-y-[-1px] transition" style="background:linear-gradient(135deg, var(--primary), var(--accent))" data-i18n="cta.portal">Cổng nội bộ</a>
+          <button id="mobile-toggle" class="lg:hidden w-9 h-9 grid place-items-center rounded-xl border" style="border-color:var(--border)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="lg:hidden hidden border-t" style="border-color:var(--border); background:var(--bg)">
+      <div class="px-6 py-4 grid gap-3 text-[15px] font-medium" style="color:var(--muted)">
+        <a href="#gioi-thieu" data-i18n="nav.about">Giới thiệu</a>
+        <a href="#giai-phap" data-i18n="nav.solutions">Giải pháp</a>
+        <a href="#tin-tuc" data-i18n="nav.news">Tin tức</a>
+        <a href="#lien-he" data-i18n="nav.contact">Liên hệ</a>
+        <div class="flex gap-2 pt-2">
+          <button data-lang="vi" class="lang-btn active px-3 py-1.5 text-xs rounded-full border" style="border-color:var(--border)">VI</button>
+          <button data-lang="en" class="lang-btn px-3 py-1.5 text-xs rounded-full border" style="border-color:var(--border)">EN</button>
+          <button data-lang="ja" class="lang-btn px-3 py-1.5 text-xs rounded-full border" style="border-color:var(--border)">JA</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="gioi-thieu" class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-[.6] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]"></div>
+    <div class="orb w-[520px] h-[520px] -top-40 -left-32" style="background:radial-gradient(circle, color-mix(in oklab, var(--accent) 40%, transparent), transparent 60%)"></div>
+    <div class="orb w-[480px] h-[480px] top-20 -right-32" style="background:radial-gradient(circle, color-mix(in oklab, var(--primary) 35%, transparent), transparent 60%)"></div>
+    
+    <div class="relative max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 pt-14 lg:pt-24 pb-16">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 pill px-3 py-1.5 rounded-full text-xs font-medium mb-5">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
+            <span data-i18n="hero.eyebrow">IVS Corporation • Multilingual Platform</span>
+          </div>
+          <h1 class="text-[40px] sm:text-[52px] lg:text-[64px] font-[800] leading-[1.05] tracking-[-0.02em]" data-i18n="hero.title">Nền tảng doanh nghiệp đa ngôn ngữ</h1>
+          <p class="mt-5 text-[17px] leading-7 max-w-[56ch]" style="color:var(--muted)" data-i18n="hero.subtitle">Kết nối Strapi CMS headless với Cổng nội bộ ERP/CRM realtime. Một hệ sinh thái thống nhất, bảo mật, tốc độ vượt trội cho IVS Celestech.</p>
+          
+          <div class="flex flex-wrap gap-3 mt-7">
+            <div class="pill px-4 py-2.5 rounded-2xl flex items-center gap-2.5">
+              <span class="text-[18px] font-bold" style="color:var(--accent)" data-i18n="hero.stat1"><0.8s</span>
+              <span class="text-xs" style="color:var(--muted)" data-i18n="hero.stat1sub">LCP toàn cầu</span>
+            </div>
+            <div class="pill px-4 py-2.5 rounded-2xl flex items-center gap-2.5">
+              <span class="text-[18px] font-bold" style="color:var(--accent)" data-i18n="hero.stat2">100/100</span>
+              <span class="text-xs" style="color:var(--muted)" data-i18n="hero.stat2sub">PageSpeed</span>
+            </div>
+            <div class="pill px-4 py-2.5 rounded-2xl flex items-center gap-2.5">
+              <span class="text-[18px] font-bold" style="color:var(--accent)" data-i18n="hero.stat3">120+</span>
+              <span class="text-xs" style="color:var(--muted)" data-i18n="hero.stat3sub">dự án</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3 mt-8">
+            <a href="#portal" class="inline-flex items-center justify-center h-12 px-6 rounded-2xl text-white font-semibold shadow-[0_12px_30px_-12px_rgba(0,163,163,.5)] hover:translate-y-[-1px] transition" style="background:linear-gradient(135deg, var(--primary), var(--accent))" data-i18n="hero.cta.demo">Xem demo</a>
+            <a href="#giai-phap" class="inline-flex items-center justify-center h-12 px-6 rounded-2xl font-semibold border hover:bg-white/5 transition" style="border-color:var(--border)" data-i18n="hero.cta.solutions">Khám phá giải pháp</a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="relative rounded-[32px] overflow-hidden card p-2">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="Modern team collaboration" class="w-full h-[420px] lg:h-[520px] object-cover rounded-[24px]">
+            <div class="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
+              <div class="pill px-3 py-2 rounded-xl text-xs font-medium backdrop-blur-xl">Strapi CMS • Headless</div>
+              <div class="pill px-3 py-2 rounded-xl text-xs font-medium backdrop-blur-xl">ERP/CRM Realtime</div>
+              <div class="pill px-3 py-2 rounded-xl text-xs font-medium backdrop-blur-xl">SSO Secure</div>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -left-6 hidden md:block card rounded-2xl p-4 w-[220px]">
+            <div class="text-[11px] uppercase tracking-wide" style="color:var(--muted)">Uptime</div>
+            <div class="text-2xl font-bold mt-1">99.99%</div>
+            <div class="mt-2 h-[36px] w-full rounded-lg" style="background:linear-gradient(90deg, color-mix(in oklab, var(--accent) 80%, transparent), transparent)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="border-y" style="border-color:var(--border); background:color-mix(in oklab, var(--card) 60%, transparent)">
+    <div class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex items-center gap-6">
+        <div class="text-xs uppercase tracking-widest shrink-0" style="color:var(--muted)" data-i18n="partners.title">Được tin dùng bởi các đối tác hàng đầu</div>
+        <div class="relative overflow-hidden flex-1 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div class="flex gap-16 marquee w-max">
+            <div class="flex items-center gap-16 opacity-70">
+              <span class="font-semibold tracking-wider">CELESTECH</span>
+              <span class="font-semibold tracking-wider">IVS JSC</span>
+              <span class="font-semibold tracking-wider">NEXUS</span>
+              <span class="font-semibold tracking-wider">ORION</span>
+              <span class="font-semibold tracking-wider">AETHER</span>
+              <span class="font-semibold tracking-wider">LUMEN</span>
+            </div>
+            <div class="flex items-center gap-16 opacity-70" aria-hidden="true">
+              <span class="font-semibold tracking-wider">CELESTECH</span>
+              <span class="font-semibold tracking-wider">IVS JSC</span>
+              <span class="font-semibold tracking-wider">NEXUS</span>
+              <span class="font-semibold tracking-wider">ORION</span>
+              <span class="font-semibold tracking-wider">AETHER</span>
+              <span class="font-semibold tracking-wider">LUMEN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section id="giai-phap" class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="max-w-[720px]">
+      <h2 class="text-[32px] sm:text-[40px] font-[800] leading-tight" data-i18n="solutions.title">Giải pháp cốt lõi</h2>
+      <p class="mt-3 text-[16px]" style="color:var(--muted)" data-i18n="solutions.subtitle">Kiến trúc hiện đại, sẵn sàng mở rộng đa quốc gia</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 mt-10">
+      <article class="card rounded-[28px] overflow-hidden group">
+        <div class="h-[200px] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="CMS">
+        </div>
+        <div class="p-6">
+          <h3 class="text-[20px] font-bold" data-i18n="sol1.title">Strapi CMS Headless</h3>
+          <p class="mt-2 text-[14px] leading-6" style="color:var(--muted)" data-i18n="sol1.desc">Quản trị nội dung đa ngôn ngữ, workflow phê duyệt, API tốc độ cao.</p>
+          <div class="mt-4 flex gap-2">
+            <span class="text-[11px] px-2.5 py-1 rounded-full border" style="border-color:var(--border)">VI/EN/JA</span>
+            <span class="text-[11px] px-2.5 py-1 rounded-full border" style="border-color:var(--border)">API First</span>
+          </div>
+        </div>
+      </article>
+      <article class="card rounded-[28px] overflow-hidden group">
+        <div class="h-[200px] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Dashboard">
+        </div>
+        <div class="p-6">
+          <h3 class="text-[20px] font-bold" data-i18n="sol2.title">ERP/CRM Realtime</h3>
+          <p class="mt-2 text-[14px] leading-6" style="color:var(--muted)" data-i18n="sol2.desc">Sync dữ liệu tức thời, dashboard trực quan, tự động hóa quy trình.</p>
+          <div class="mt-4 flex gap-2">
+            <span class="text-[11px] px-2.5 py-1 rounded-full border" style="border-color:var(--border)">Realtime</span>
+            <span class="text-[11px] px-2.5 py-1 rounded-full border" style="border-color:var(--border)">WebSocket</span>
+          </div>
+        </div>
+      </article>
+      <article class="card rounded-[28px] overflow-hidden group">
+        <div class="h-[200px] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1521737605434-8ddf8c32b2c4?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Team">
+        </div>
+        <div class="p-6">
+          <h3 class="text-[20px] font-bold" data-i18n="sol3.title">Portal Nội bộ</h3>
+          <p class="mt-2 text-[14px] leading-6" style="color:var(--muted)" data-i18n="sol3.desc">SSO, phân quyền theo vai trò, bảo mật cấp doanh nghiệp.</p>
+          <div class="mt-4 flex gap-2">
+            <span class="text-[11px] px-2.5 py-1 rounded-full border" style="border-color:var(--border)">SSO</span>
+            <span class="text-[11px] px-2.5 py-1 rounded-full border" style="border-color:var(--border)">RBAC</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CMS News -->
+  <section id="tin-tuc" class="border-y" style="border-color:var(--border); background:color-mix(in oklab, var(--bg) 96%, var(--card))">
+    <div class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+      <div class="flex items-end justify-between gap-6 flex-wrap">
+        <div>
+          <h2 class="text-[30px] sm:text-[38px] font-[800]" data-i18n="news.title">Tin tức từ CMS</h2>
+          <p class="mt-2" style="color:var(--muted)" data-i18n="news.subtitle">Nội dung được đồng bộ realtime từ Strapi</p>
+        </div>
+        <a href="#" class="text-sm font-medium hover:opacity-80" style="color:var(--accent)" data-i18n="news.viewall">Xem tất cả →</a>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-10">
+        <!-- 4 articles -->
+        <article class="card rounded-[28px] overflow-hidden flex gap-0 md:gap-0 flex-col sm:flex-row">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="sm:w-[220px] h-[200px] sm:h-auto object-cover" alt="">
+          <div class="p-6 flex-1">
+            <div class="flex items-center gap-2"><span class="text-[11px] px-2 py-1 rounded-full" style="background:color-mix(in oklab, var(--accent) 18%, transparent); color:var(--accent)" data-i18n="news1.cat">Kỹ thuật</span><span class="text-xs" style="color:var(--muted)">12/04/2026</span></div>
+            <h3 class="mt-2 font-bold text-[18px] leading-snug" data-i18n="news1.title">Tối ưu Core Web Vitals cho doanh nghiệp</h3>
+            <p class="mt-1.5 text-sm leading-6" style="color:var(--muted)" data-i18n="news1.excerpt">Chiến lược đạt LCP <0.8s với edge caching và image optimization.</p>
+          </div>
+        </article>
+        <article class="card rounded-[28px] overflow-hidden flex flex-col sm:flex-row">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" class="sm:w-[220px] h-[200px] sm:h-auto object-cover" alt="">
+          <div class="p-6 flex-1">
+            <div class="flex items-center gap-2"><span class="text-[11px] px-2 py-1 rounded-full" style="background:color-mix(in oklab, var(--accent) 18%, transparent); color:var(--accent)" data-i18n="news2.cat">Kinh doanh</span><span class="text-xs" style="color:var(--muted)">05/04/2026</span></div>
+            <h3 class="mt-2 font-bold text-[18px] leading-snug" data-i18n="news2.title">Chuyển đổi số phòng kinh doanh</h3>
+            <p class="mt-1.5 text-sm leading-6" style="color:var(--muted)" data-i18n="news2.excerpt">Tích hợp CRM giúp tăng tỷ lệ chốt và theo dõi pipeline hiệu quả.</p>
+          </div>
+        </article>
+        <article class="card rounded-[28px] overflow-hidden flex flex-col sm:flex-row">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop" class="sm:w-[220px] h-[200px] sm:h-auto object-cover" alt="">
+          <div class="p-6 flex-1">
+            <div class="flex items-center gap-2"><span class="text-[11px] px-2 py-1 rounded-full" style="background:color-mix(in oklab, var(--accent) 18%, transparent); color:var(--accent)" data-i18n="news3.cat">Hạ tầng</span><span class="text-xs" style="color:var(--muted)">28/03/2026</span></div>
+            <h3 class="mt-2 font-bold text-[18px] leading-snug" data-i18n="news3.title">Hạ tầng bền vững cho dữ liệu</h3>
+            <p class="mt-1.5 text-sm leading-6" style="color:var(--muted)" data-i18n="news3.excerpt">Kiến trúc multi-region đảm bảo độ sẵn sàng 99.99%.</p>
+          </div>
+        </article>
+        <article class="card rounded-[28px] overflow-hidden flex flex-col sm:flex-row">
+          <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?q=80&w=1200&auto=format&fit=crop" class="sm:w-[220px] h-[200px] sm:h-auto object-cover" alt="">
+          <div class="p-6 flex-1">
+            <div class="flex items-center gap-2"><span class="text-[11px] px-2 py-1 rounded-full" style="background:color-mix(in oklab, var(--accent) 18%, transparent); color:var(--accent)" data-i18n="news4.cat">Quốc tế</span><span class="text-xs" style="color:var(--muted)">15/03/2026</span></div>
+            <h3 class="mt-2 font-bold text-[18px] leading-snug" data-i18n="news4.title">Mở rộng thị trường toàn cầu</h3>
+            <p class="mt-1.5 text-sm leading-6" style="color:var(--muted)" data-i18n="news4.excerpt">Đa ngôn ngữ, đa tiền tệ, tuân thủ địa phương.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portal -->
+  <section id="portal" class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <div class="card rounded-[32px] overflow-hidden" style="background:#0B1220; border-color:#1e293b">
+          <div class="flex items-center gap-1.5 px-4 h-11 border-b border-white/10">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span><span class="w-3 h-3 rounded-full bg-yellow-500/80"></span><span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-3 text-xs text-white/60">portal.ivs.internal</span>
+          </div>
+          <div class="p-4">
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1600&auto=format&fit=crop" alt="Dashboard dark" class="rounded-2xl w-full h-[320px] object-cover opacity-90">
+            <div class="grid grid-cols-3 gap-3 mt-4">
+              <div class="rounded-xl p-3 border border-white/10 bg-white/5"><div class="text-[11px] text-white/50">Leads</div><div class="text-xl font-bold text-white mt-1">1,248</div></div>
+              <div class="rounded-xl p-3 border border-white/10 bg-white/5"><div class="text-[11px] text-white/50">Deals</div><div class="text-xl font-bold text-white mt-1">342</div></div>
+              <div class="rounded-xl p-3 border border-white/10 bg-white/5"><div class="text-[11px] text-white/50">CSAT</div><div class="text-xl font-bold text-white mt-1">98%</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="text-[30px] sm:text-[38px] font-[800]" data-i18n="portal.title">Cổng nội bộ tích hợp</h2>
+        <p class="mt-3 text-[16px] max-w-[52ch]" style="color:var(--muted)" data-i18n="portal.subtitle">Một điểm đăng nhập cho toàn bộ hệ sinh thái IVS.</p>
+        <ul class="mt-7 space-y-3.5 text-[15px]">
+          <li class="flex items-start gap-3"><span class="mt-0.5 w-5 h-5 rounded-full grid place-items-center" style="background:color-mix(in oklab, var(--accent) 20%, transparent); color:var(--accent)">✓</span><span data-i18n="portal.feat1">Đăng nhập SSO (Google, Microsoft)</span></li>
+          <li class="flex items-start gap-3"><span class="mt-0.5 w-5 h-5 rounded-full grid place-items-center" style="background:color-mix(in oklab, var(--accent) 20%, transparent); color:var(--accent)">✓</span><span data-i18n="portal.feat2">Phân quyền RBAC chi tiết</span></li>
+          <li class="flex items-start gap-3"><span class="mt-0.5 w-5 h-5 rounded-full grid place-items-center" style="background:color-mix(in oklab, var(--accent) 20%, transparent); color:var(--accent)">✓</span><span data-i18n="portal.feat3">Dashboard Realtime ERP/CRM</span></li>
+          <li class="flex items-start gap-3"><span class="mt-0.5 w-5 h-5 rounded-full grid place-items-center" style="background:color-mix(in oklab, var(--accent) 20%, transparent); color:var(--accent)">✓</span><span data-i18n="portal.feat4">Thông báo & workflow phê duyệt</span></li>
+          <li class="flex items-start gap-3"><span class="mt-0.5 w-5 h-5 rounded-full grid place-items-center" style="background:color-mix(in oklab, var(--accent) 20%, transparent); color:var(--accent)">✓</span><span data-i18n="portal.feat5">Audit log & bảo mật 2FA</span></li>
+        </ul>
+        <a href="#" class="inline-flex mt-8 h-11 px-5 rounded-xl font-semibold text-white hover:translate-y-[-1px] transition" style="background:linear-gradient(135deg, var(--primary), var(--accent))" data-i18n="portal.demo">Trải nghiệm Portal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="border-y" style="border-color:var(--border)">
+    <div class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid lg:grid-cols-5 gap-10 items-center">
+        <div class="lg:col-span-3 card rounded-[32px] overflow-hidden p-2">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2000&auto=format&fit=crop" class="w-full h-[360px] object-cover rounded-[24px]" alt="Office">
+        </div>
+        <div class="lg:col-span-2">
+          <h3 class="text-[26px] font-[800]" data-i18n="case.title">Case Study: Celestech JSC</h3>
+          <p class="mt-2" style="color:var(--muted)" data-i18n="case.subtitle">Tái cấu trúc nền tảng giúp tăng trưởng vượt bậc.</p>
+          <div class="mt-6 grid grid-cols-3 gap-4">
+            <div class="card rounded-2xl p-5 text-center"><div class="text-[26px] font-[800]" style="color:var(--accent)" data-i18n="case.metric1">+300% Lead</div><div class="text-xs mt-1" style="color:var(--muted)" data-i18n="case.metric1sub">sau 90 ngày</div></div>
+            <div class="card rounded-2xl p-5 text-center"><div class="text-[26px] font-[800]" style="color:var(--accent)" data-i18n="case.metric2"><0.8s LCP</div><div class="text-xs mt-1" style="color:var(--muted)" data-i18n="case.metric2sub">trung bình toàn cầu</div></div>
+            <div class="card rounded-2xl p-5 text-center"><div class="text-[22px] font-[800] pt-1" style="color:var(--accent)" data-i18n="case.metric3">ERP Realtime</div><div class="text-xs mt-1" style="color:var(--muted)" data-i18n="case.metric3sub">đồng bộ tức thời</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global -->
+  <section class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="card rounded-[32px] overflow-hidden relative">
+      <div class="absolute inset-0 opacity-[.15]"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" class="w-full h-full object-cover" alt=""></div>
+      <div class="relative grid lg:grid-cols-2 gap-10 p-8 sm:p-12">
+        <div>
+          <h3 class="text-[28px] font-[800]" data-i18n="global.title">Vươn tầm toàn cầu</h3>
+          <p class="mt-2 max-w-[48ch]" style="color:var(--muted)" data-i18n="global.subtitle">Hạ tầng edge, CDN toàn cầu, hỗ trợ đa ngôn ngữ VI/EN/JA.</p>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="rounded-2xl p-5 text-center border" style="border-color:var(--border); background:color-mix(in oklab, var(--bg) 70%, transparent)"><div class="text-2xl font-bold" data-i18n="global.stat1">12+ Quốc gia</div></div>
+          <div class="rounded-2xl p-5 text-center border" style="border-color:var(--border); background:color-mix(in oklab, var(--bg) 70%, transparent)"><div class="text-2xl font-bold" data-i18n="global.stat2">24/7 Vận hành</div></div>
+          <div class="rounded-2xl p-5 text-center border" style="border-color:var(--border); background:color-mix(in oklab, var(--bg) 70%, transparent)"><div class="text-2xl font-bold" data-i18n="global.stat3">99.99% Uptime</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <h4 class="text-[13px] uppercase tracking-widest font-semibold" style="color:var(--muted)" data-i18n="tech.title">Công nghệ</h4>
+    <div class="flex flex-wrap gap-2.5 mt-4">
+      <span class="pill px-3 py-1.5 rounded-full text-sm font-medium">Next.js 14</span>
+      <span class="pill px-3 py-1.5 rounded-full text-sm font-medium">Strapi 5</span>
+      <span class="pill px-3 py-1.5 rounded-full text-sm font-medium">PostgreSQL</span>
+      <span class="pill px-3 py-1.5 rounded-full text-sm font-medium">Redis</span>
+      <span class="pill px-3 py-1.5 rounded-full text-sm font-medium">Docker</span>
+      <span class="pill px-3 py-1.5 rounded-full text-sm font-medium">Cloudflare</span>
+      <span class="pill px-3 py-1.5 rounded-full text-sm font-medium">Tailwind</span>
+      <span class="pill px-3 py-1.5 rounded-full text-sm font-medium">Vercel</span>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="lien-he" class="relative">
+    <div class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <div class="relative overflow-hidden rounded-[32px] p-[1px]" style="background:linear-gradient(135deg, color-mix(in oklab, var(--primary) 80%, transparent), color-mix(in oklab, var(--accent) 80%, transparent))">
+        <div class="rounded-[31px] px-8 sm:px-14 py-14 text-center" style="background:var(--card)">
+          <h3 class="text-[30px] sm:text-[38px] font-[800]" data-i18n="cta.title">Sẵn sàng tăng tốc doanh nghiệp của bạn?</h3>
+          <p class="mt-3 max-w-[60ch] mx-auto" style="color:var(--muted)" data-i18n="cta.subtitle">Kết nối CMS và Portal trong một nền tảng thống nhất.</p>
+          <a href="#" class="inline-flex mt-7 h-12 px-7 rounded-2xl text-white font-semibold shadow-xl hover:translate-y-[-1px] transition" style="background:linear-gradient(135deg, var(--primary), var(--accent))" data-i18n="cta.button">Liên hệ tư vấn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t" style="background:#060B14; border-color:#0f172a; color:#94A3B8">
+    <div class="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl grid place-items-center" style="background:linear-gradient(135deg,#38BDF8,#22D3EE)"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2l8 4.5v9L12 20 4 15.5v-9L12 2z" opacity=".9"/></svg></div>
+            <span class="font-bold text-white">IVS CORPORATION</span>
+          </div>
+          <p class="mt-4 text-sm leading-6">Nền tảng doanh nghiệp đa ngôn ngữ cho kỷ nguyên số.</p>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3" data-i18n="footer.solutions">Giải pháp</div>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#" class="hover:text-white">Strapi CMS</a></li>
+            <li><a href="#" class="hover:text-white">ERP/CRM</a></li>
+            <li><a href="#" class="hover:text-white">Portal Nội bộ</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3" data-i18n="footer.resources">Tài nguyên</div>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#" class="hover:text-white">Tài liệu API</a></li>
+            <li><a href="#" class="hover:text-white">Blog kỹ thuật</a></li>
+            <li><a href="#" class="hover:text-white">Trạng thái hệ thống</a></li>
+          </ul>
+        </div>
+        <div id="investors">
+          <div class="text-white font-semibold mb-3" data-i18n="footer.contact">Liên hệ</div>
+          <ul class="space-y-2.5 text-sm">
+            <li>hello@ivsjsc.vn</li>
+            <li>+84 24 xxxx xxxx</li>
+            <li>Hà Nội, Việt Nam</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div>© 2026 IVS JSC. All rights reserved.</div>
+        <div>Thiết kế và phát triển bởi <a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" class="text-white hover:underline">IVS Celestech, IVS JSC</a></div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+const translations = {
+  vi: {
+    "nav.about":"Giới thiệu","nav.solutions":"Giải pháp","nav.news":"Tin tức","nav.investors":"Nhà đầu tư","nav.careers":"Tuyển dụng","nav.contact":"Liên hệ","cta.portal":"Cổng nội bộ",
+    "hero.eyebrow":"IVS Corporation • Multilingual Platform","hero.title":"Nền tảng doanh nghiệp đa ngôn ngữ","hero.subtitle":"Kết nối Strapi CMS headless với Cổng nội bộ ERP/CRM realtime. Một hệ sinh thái thống nhất, bảo mật, tốc độ vượt trội cho IVS Celestech.",
+    "hero.cta.demo":"Xem demo","hero.cta.solutions":"Khám phá giải pháp","hero.stat1":"<0.8s","hero.stat1sub":"LCP toàn cầu","hero.stat2":"100/100","hero.stat2sub":"PageSpeed","hero.stat3":"120+","hero.stat3sub":"dự án",
+    "partners.title":"Được tin dùng bởi các đối tác hàng đầu",
+    "solutions.title":"Giải pháp cốt lõi","solutions.subtitle":"Kiến trúc hiện đại, sẵn sàng mở rộng đa quốc gia",
+    "sol1.title":"Strapi CMS Headless","sol1.desc":"Quản trị nội dung đa ngôn ngữ, workflow phê duyệt, API tốc độ cao.",
+    "sol2.title":"ERP/CRM Realtime","sol2.desc":"Sync dữ liệu tức thời, dashboard trực quan, tự động hóa quy trình.",
+    "sol3.title":"Portal Nội bộ","sol3.desc":"SSO, phân quyền theo vai trò, bảo mật cấp doanh nghiệp.",
+    "news.title":"Tin tức từ CMS","news.subtitle":"Nội dung được đồng bộ realtime từ Strapi","news.viewall":"Xem tất cả",
+    "news1.cat":"Kỹ thuật","news1.title":"Tối ưu Core Web Vitals cho doanh nghiệp","news1.excerpt":"Chiến lược đạt LCP <0.8s với edge caching và image optimization.",
+    "news2.cat":"Kinh doanh","news2.title":"Chuyển đổi số phòng kinh doanh","news2.excerpt":"Tích hợp CRM giúp tăng tỷ lệ chốt và theo dõi pipeline hiệu quả.",
+    "news3.cat":"Hạ tầng","news3.title":"Hạ tầng bền vững cho dữ liệu","news3.excerpt":"Kiến trúc multi-region đảm bảo độ sẵn sàng 99.99%.",
+    "news4.cat":"Quốc tế","news4.title":"Mở rộng thị trường toàn cầu","news4.excerpt":"Đa ngôn ngữ, đa tiền tệ, tuân thủ địa phương.",
+    "portal.title":"Cổng nội bộ tích hợp","portal.subtitle":"Một điểm đăng nhập cho toàn bộ hệ sinh thái IVS.",
+    "portal.feat1":"Đăng nhập SSO (Google, Microsoft)","portal.feat2":"Phân quyền RBAC chi tiết","portal.feat3":"Dashboard Realtime ERP/CRM","portal.feat4":"Thông báo & workflow phê duyệt","portal.feat5":"Audit log & bảo mật 2FA","portal.demo":"Trải nghiệm Portal",
+    "case.title":"Case Study: Celestech JSC","case.subtitle":"Tái cấu trúc nền tảng giúp tăng trưởng vượt bậc.",
+    "case.metric1":"+300% Lead","case.metric1sub":"sau 90 ngày","case.metric2":"<0.8s LCP","case.metric2sub":"trung bình toàn cầu","case.metric3":"ERP Realtime","case.metric3sub":"đồng bộ tức thời",
+    "global.title":"Vươn tầm toàn cầu","global.subtitle":"Hạ tầng edge, CDN toàn cầu, hỗ trợ đa ngôn ngữ VI/EN/JA.","global.stat1":"12+ Quốc gia","global.stat2":"24/7 Vận hành","global.stat3":"99.99% Uptime",
+    "tech.title":"Công nghệ","cta.title":"Sẵn sàng tăng tốc doanh nghiệp của bạn?","cta.subtitle":"Kết nối CMS và Portal trong một nền tảng thống nhất.","cta.button":"Liên hệ tư vấn",
+    "footer.solutions":"Giải pháp","footer.resources":"Tài nguyên","footer.contact":"Liên hệ"
+  },
+  en: {
+    "nav.about":"About","nav.solutions":"Solutions","nav.news":"News","nav.investors":"Investors","nav.careers":"Careers","nav.contact":"Contact","cta.portal":"Internal Portal",
+    "hero.eyebrow":"IVS Corporation • Multilingual Platform","hero.title":"Multilingual Enterprise Platform","hero.subtitle":"Connecting Strapi headless CMS with realtime ERP/CRM internal portal. A unified, secure, ultra-fast ecosystem for IVS Celestech.",
+    "hero.cta.demo":"View Demo","hero.cta.solutions":"Explore Solutions","hero.stat1":"<0.8s","hero.stat1sub":"Global LCP","hero.stat2":"100/100","hero.stat2sub":"PageSpeed","hero.stat3":"120+","hero.stat3sub":"projects",
+    "partners.title":"Trusted by leading partners",
+    "solutions.title":"Core Solutions","solutions.subtitle":"Modern architecture, ready to scale globally",
+    "sol1.title":"Strapi CMS Headless","sol1.desc":"Multilingual content management, approval workflows, high-speed APIs.",
+    "sol2.title":"ERP/CRM Realtime","sol2.desc":"Instant data sync, visual dashboards, process automation.",
+    "sol3.title":"Internal Portal","sol3.desc":"SSO, role-based access, enterprise-grade security.",
+    "news.title":"Latest from CMS","news.subtitle":"Content synced realtime from Strapi","news.viewall":"View all",
+    "news1.cat":"Engineering","news1.title":"Optimizing Core Web Vitals for Enterprise","news1.excerpt":"Strategy to achieve LCP <0.8s with edge caching and image optimization.",
+    "news2.cat":"Business","news2.title":"Digitizing the Sales Department","news2.excerpt":"CRM integration boosts close rate and pipeline visibility.",
+    "news3.cat":"Infrastructure","news3.title":"Sustainable Infrastructure for Data","news3.excerpt":"Multi-region architecture ensures 99.99% availability.",
+    "news4.cat":"Global","news4.title":"Expanding to Global Markets","news4.excerpt":"Multilingual, multi-currency, local compliance.",
+    "portal.title":"Integrated Internal Portal","portal.subtitle":"One login for the entire IVS ecosystem.",
+    "portal.feat1":"SSO Login (Google, Microsoft)","portal.feat2":"Granular RBAC","portal.feat3":"Realtime ERP/CRM Dashboard","portal.feat4":"Notifications & Approval Workflows","portal.feat5":"Audit log & 2FA Security","portal.demo":"Experience Portal",
+    "case.title":"Case Study: Celestech JSC","case.subtitle":"Platform rebuild driving breakthrough growth.",
+    "case.metric1":"+300% Leads","case.metric1sub":"after 90 days","case.metric2":"<0.8s LCP","case.metric2sub":"global average","case.metric3":"Realtime ERP","case.metric3sub":"instant sync",
+    "global.title":"Go Global","global.subtitle":"Edge infrastructure, global CDN, VI/EN/JA support.","global.stat1":"12+ Countries","global.stat2":"24/7 Operations","global.stat3":"99.99% Uptime",
+    "tech.title":"Tech Stack","cta.title":"Ready to accelerate your business?","cta.subtitle":"Connect CMS and Portal in one unified platform.","cta.button":"Contact Sales",
+    "footer.solutions":"Solutions","footer.resources":"Resources","footer.contact":"Contact"
+  },
+  ja: {
+    "nav.about":"会社概要","nav.solutions":"ソリューション","nav.news":"ニュース","nav.investors":"投資家情報","nav.careers":"採用","nav.contact":"お問い合わせ","cta.portal":"社内ポータル",
+    "hero.eyebrow":"IVS Corporation • 多言語プラットフォーム","hero.title":"多言語対応エンタープライズ基盤","hero.subtitle":"StrapiヘッドレスCMSとリアルタイムERP/CRMポータルを統合。IVS Celestechのための統一された安全で超高速なエコシステム。",
+    "hero.cta.demo":"デモを見る","hero.cta.solutions":"ソリューションを見る","hero.stat1":"<0.8秒","hero.stat1sub":"グローバルLCP","hero.stat2":"100/100","hero.stat2sub":"PageSpeed","hero.stat3":"120+","hero.stat3sub":"プロジェクト",
+    "partners.title":"主要パートナーに信頼されています",
+    "solutions.title":"コアソリューション","solutions.subtitle":"グローバルスケールに対応するモダンアーキテクチャ",
+    "sol1.title":"Strapi CMS Headless","sol1.desc":"多言語コンテンツ管理、承認ワークフロー、高速API。",
+    "sol2.title":"ERP/CRM リアルタイム","sol2.desc":"即時データ同期、可視化ダッシュボード、業務自動化。",
+    "sol3.title":"社内ポータル","sol3.desc":"SSO、ロールベース権限、エンタープライズセキュリティ。",
+    "news.title":"CMSからの最新情報","news.subtitle":"Strapiからリアルタイム同期","news.viewall":"すべて見る",
+    "news1.cat":"技術","news1.title":"コアウェブバイタルの最適化","news1.excerpt":"エッジキャッシュと画像最適化でLCP <0.8秒を実現。",
+    "news2.cat":"ビジネス","news2.title":"営業DXの推進","news2.excerpt":"CRM統合で成約率とパイプライン可視化を向上。",
+    "news3.cat":"インフラ","news3.title":"持続可能なデータ基盤","news3.excerpt":"マルチリージョンで99.99%の可用性を確保。",
+    "news4.cat":"グローバル","news4.title":"グローバル市場展開","news4.excerpt":"多言語・多通貨・現地法令対応。",
+    "portal.title":"統合社内ポータル","portal.subtitle":"IVS全体を一つのログインで。",
+    "portal.feat1":"SSOログイン (Google, Microsoft)","portal.feat2":"詳細なRBAC権限","portal.feat3":"リアルタイムERP/CRM","portal.feat4":"通知と承認ワークフロー","portal.feat5":"監査ログと2FA","portal.demo":"ポータルを体験",
+    "case.title":"事例: Celestech JSC","case.subtitle":"基盤刷新で飛躍的成長を実現。",
+    "case.metric1":"+300% リード","case.metric1sub":"90日後","case.metric2":"<0.8秒 LCP","case.metric2sub":"グローバル平均","case.metric3":"リアルタイムERP","case.metric3sub":"即時同期",
+    "global.title":"世界へ","global.subtitle":"エッジ基盤、グローバルCDN、VI/EN/JA対応。","global.stat1":"12カ国以上","global.stat2":"24/7 運用","global.stat3":"99.99% 稼働率",
+    "tech.title":"技術スタック","cta.title":"ビジネスを加速する準備はできていますか？","cta.subtitle":"CMSとポータルを一つの基盤に統合。","cta.button":"お問い合わせ",
+    "footer.solutions":"ソリューション","footer.resources":"リソース","footer.contact":"連絡先"
+  }
+};
+const $ = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+
+function applyLang(lang){
+  document.documentElement.lang = lang;
+  $$('[data-i18n]').forEach(el=>{
+    const key = el.dataset.i18n;
+    const txt = translations[lang]?.[key];
+    if(txt) el.textContent = txt;
+  });
+  localStorage.setItem('lang', lang);
+  $$('.lang-btn').forEach(b=> b.classList.toggle('active', b.dataset.lang===lang));
+}
+
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  $('#theme-icon-sun').classList.toggle('hidden', theme==='dark');
+  $('#theme-icon-moon').classList.toggle('hidden', theme==='light');
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const savedLang = localStorage.getItem('lang') || 'vi';
+  applyLang(savedLang);
+  const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  applyTheme(savedTheme);
+  setTimeout(()=> document.documentElement.classList.add('theme-transition'), 50);
+
+  $$('.lang-btn').forEach(btn=> btn.addEventListener('click', ()=> applyLang(btn.dataset.lang)));
+  $('#theme-toggle').addEventListener('click', ()=>{
+    const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+  });
+  $('#mobile-toggle').addEventListener('click', ()=> $('#mobile-menu').classList.toggle('hidden'));
+});
+</script>
+</body>
+</html>
