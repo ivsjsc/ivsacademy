@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Vụ Công Nghệ - IVS Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="//storage.googleapis.com">
+    <link rel="dns-prefetch" href="//unpkg.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <meta name="description" content="Dịch vụ công nghệ, giáo dục và giải pháp số toàn diện từ IVS Tech dành cho cơ quan, tổ chức, doanh nghiệp"/>
+    <meta name="keywords" content="IVS Tech, Công nghệ, Giáo dục, Giải pháp số, Doanh nghiệp, Tổ chức, Cơ quan" />
+    <meta property="og:title" content="IVS Tech - Dịch Vụ Công Nghệ - Giáo Dục - Giải Pháp Số"/>
+    <meta property="og:description" content="Dịch vụ công nghệ, giáo dục và giải pháp số toàn diện từ IVS Tech dành cho cơ quan, tổ chức, doanh nghiệp."/>
+    <meta property="og:image" content="https://ivstech.store/images/banners/ivstech.png"/>
+    <meta property="og:url" content="https://ivstech.store"/>
+    <meta property="og:type" content="website">
+    <meta name="author" content="IVS Tech" />
+    <link rel="icon" href="../images/logo/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/tailwind.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <script defer src="../js/language-init.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        /* Shared layout adjustments */
+        :root { --header-height: 4rem; }
+        body { padding-top: var(--header-height); }
+        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
+        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
+        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
+        .hero-content { position:relative; z-index:3; max-width:90%; }
+        .glassmorphism-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+        }
+        .badge-unlock {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-ivs-bg text-ivs-text-primary font-inter">
+    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
+    <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
+
+    <main>
+        <!-- Hero Section with Banner Image -->
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <!-- Video background overlay -->
+            <div class="absolute inset-0 z-1">
+                <img src="../images/banners/ivstech.png" alt="IVS Tech - Công nghệ - Giáo dục - Giải pháp số" 
+                     class="w-full h-full object-cover opacity-60">
+            </div>
+            
+            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+                <header class="text-center mb-12">
+                    <span class="badge-unlock mb-4 inline-block">🔓 Dùng thử miễn phí</span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-3" data-aos="fade-up">
+                        Dịch Vụ Công Nghệ - Giáo Dục - Giải Pháp Số
+                    </h1>
+                    <p class="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                        Giải pháp toàn diện dành cho cơ quan, tổ chức, doanh nghiệp trong hành trình chuyển đổi số và phát triển bền vững
+                    </p>
+                </header>
+
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#intro-section" class="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                        Khám Phá Ngay
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="intro-section" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Giới Thiệu Về IVS Tech</h2>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        IVS Tech là đơn vị tiên phong trong việc cung cấp các giải pháp công nghệ, giáo dục và số hóa toàn diện cho các cơ quan, tổ chức và doanh nghiệp trên khắp cả nước.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-right">
+                        <div class="glassmorphism-card p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Công Nghệ Tiên Tiến - Giải Pháp Hiện Đại</h3>
+                            <p class="text-gray-700 mb-4">
+                                Chúng tôi cung cấp các giải pháp công nghệ hiện đại bao gồm hệ thống quản lý thông tin, nền tảng học trực tuyến, trí tuệ nhân tạo ứng dụng và các giải pháp số hóa doanh nghiệp. Với đội ngũ kỹ sư giàu kinh nghiệm, IVS Tech cam kết mang đến những sản phẩm chất lượng cao, đáp ứng mọi nhu cầu của khách hàng.
+                            </p>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                    <span>Hệ thống quản lý doanh nghiệp (ERP)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                    <span>Nền tảng học trực tuyến (LMS)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                    <span>Trí tuệ nhân tạo (AI) và học máy (ML)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                    <span>Giải pháp điện toán đám mây</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left">
+                        <div class="glassmorphism-card p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Giáo Dục - Đào Tạo Chuyên Sâu</h3>
+                            <p class="text-gray-700 mb-4">
+                                IVS Tech không chỉ cung cấp giải pháp công nghệ mà còn là đối tác đáng tin cậy trong lĩnh vực giáo dục và đào tạo. Chúng tôi phát triển các chương trình giảng dạy hiện đại, tích hợp công nghệ vào quá trình học tập, giúp nâng cao chất lượng đào tạo và trải nghiệm người học.
+                            </p>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                    <span>Chương trình đào tạo kỹ năng số</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                    <span>Hệ thống quản lý đào tạo trực tuyến</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                    <span>Nội dung học tập tương tác</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
+                                    <span>Hỗ trợ giáo viên và nhà trường</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <div class="glassmorphism-card p-8 max-w-4xl mx-auto">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Giải Pháp Toàn Diện Cho Mọi Đối Tượng</h3>
+                        <p class="text-gray-700 mb-6">
+                            Với hơn 10 năm kinh nghiệm trong lĩnh vực công nghệ và giáo dục, IVS Tech đã và đang đồng hành cùng hàng ngàn cơ quan, tổ chức và doanh nghiệp trong quá trình chuyển đổi số. Chúng tôi tự hào là đơn vị uy tín, cung cấp các giải pháp linh hoạt, dễ triển khai và phù hợp với đặc thù từng đơn vị.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                            <div class="bg-white/10 p-6 rounded-xl">
+                                <div class="text-indigo-400 text-3xl mb-3">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h4 class="font-bold text-white mb-2">Cơ Quan Chính Phủ</h4>
+                                <p class="text-gray-300 text-sm">Hệ thống quản lý nội bộ, cổng thông tin điện tử, dịch vụ công trực tuyến</p>
+                            </div>
+                            
+                            <div class="bg-white/10 p-6 rounded-xl">
+                                <div class="text-indigo-400 text-3xl mb-3">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                                <h4 class="font-bold text-white mb-2">Trường Học - Trung Tâm</h4>
+                                <p class="text-gray-300 text-sm">Hệ thống LMS, quản lý học sinh, đào tạo trực tuyến, học liệu số</p>
+                            </div>
+                            
+                            <div class="bg-white/10 p-6 rounded-xl">
+                                <div class="text-indigo-400 text-3xl mb-3">
+                                    <i class="fas fa-industry"></i>
+                                </div>
+                                <h4 class="font-bold text-white mb-2">Doanh Nghiệp</h4>
+                                <p class="text-gray-300 text-sm">ERP, CRM, HRM, nền tảng làm việc từ xa, quản lý dự án</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Value Section -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Giá Trị Cộng Đồng</h2>
+                    <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        IVS Tech cam kết dành 15% lợi nhuận cho cộng đồng thông qua các hoạt động hỗ trợ giáo dục, học bổng và tài nguyên mở.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md" data-aos="fade-up">
+                        <div class="text-indigo-600 text-4xl mb-4">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Học Bổng Giáo Dục</h3>
+                        <p class="text-gray-600">
+                            Hỗ trợ học bổng cho học sinh, sinh viên có hoàn cảnh khó khăn nhưng có tinh thần học tập tốt.
+                        </p>
+                    </div>
+
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-indigo-600 text-4xl mb-4">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Workshop Miễn Phí</h3>
+                        <p class="text-gray-600">
+                            Tổ chức các buổi hội thảo, workshop chia sẻ kiến thức công nghệ và giáo dục miễn phí.
+                        </p>
+                    </div>
+
+                    <div class="text-center p-6 bg-white rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-indigo-600 text-4xl mb-4">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Tài Nguyên Mở</h3>
+                        <p class="text-gray-600">
+                            Cung cấp tài nguyên học tập, phần mềm mã nguồn mở phục vụ cộng đồng.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="py-16 bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Sẵn Sàng Bắt Đầu Hành Trình Cùng IVS Tech?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">
+                    Đăng ký tư vấn lộ trình chuyển đổi số 30 phút miễn phí từ chuyên gia của chúng tôi
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="../contact.html" class="px-8 py-4 bg-white text-indigo-600 font-bold rounded-full shadow-xl hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                        Liên Hệ Tư Vấn Ngay
+                    </a>
+                    <a href="../about.html" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full shadow-xl hover:bg-white/10 transition duration-300">
+                        Tìm Hiểu Thêm Về IVS
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer-placeholder"></footer>
+    <div id="fab-container-placeholder"></div>
+    <div id="ai-assistant-placeholder"></div>
+
+    <!-- Third party libraries -->
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="../js/utils.js"></script>
+    <script defer src="../js/language.js"></script>
+    <script defer src="../js/headerController.js"></script>
+    <script defer src="../js/footerController.js"></script>
+    <script defer src="/ai/js/fabController.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/aivy-integration.js"></script>
+    <script defer src="/ai/js/loadComponents.js"></script>
+    
+    <script>
+        // Initialize AOS animation library
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-quart',
+                once: true,
+                offset: 100
+            });
+        });
+    </script>
+</body>
+</html>

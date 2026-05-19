@@ -15,6 +15,14 @@
     ],
     "rewrites": [
       {
+        "source": "/Pages/ivstech",
+        "destination": "/Pages/ivstech.html"
+      },
+      {
+        "source": "/Pages/ivstech/**",
+        "destination": "/Pages/ivstech.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
