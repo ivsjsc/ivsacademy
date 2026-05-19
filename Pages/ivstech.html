@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dịch Vụ Công Nghệ - IVS Tech</title>
+    
+    <!-- Fonts & Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- DNS Prefetch for Performance -->
     <link rel="dns-prefetch" href="//storage.googleapis.com">
     <link rel="dns-prefetch" href="//unpkg.com">
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- SEO Meta Tags -->
     <meta name="description" content="Dịch vụ công nghệ, giáo dục và giải pháp số toàn diện từ IVS Tech dành cho cơ quan, tổ chức, doanh nghiệp"/>
     <meta name="keywords" content="IVS Tech, Công nghệ, Giáo dục, Giải pháp số, Doanh nghiệp, Tổ chức, Cơ quan" />
     <meta property="og:title" content="IVS Tech - Dịch Vụ Công Nghệ - Giáo Dục - Giải Pháp Số"/>
@@ -19,168 +25,503 @@
     <meta property="og:url" content="https://ivstech.store"/>
     <meta property="og:type" content="website">
     <meta name="author" content="IVS Tech" />
+    
+    <!-- Favicon & Stylesheets -->
     <link rel="icon" href="../images/logo/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../css/tailwind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <script defer src="../js/language-init.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/animations.css">
+    
+    <!-- Enhanced Design Styles -->
     <style>
-        /* Shared layout adjustments */
-        :root { --header-height: 4rem; }
-        body { padding-top: var(--header-height); }
-        #header-placeholder { position: fixed; top:0; left:0; width:100%; height:var(--header-height); z-index:1000; background:#0A0A0A; border-bottom:1px solid #1f2937 }
-        .hero-section-banner-container, .hero-section { position: relative; min-height: calc(100vh - var(--header-height)); overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; background-color:#000 }
-        .hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.85) 100%); z-index:2 }
-        .hero-content { position:relative; z-index:3; max-width:90%; }
-        .glassmorphism-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
+        :root {
+            --header-height: 4rem;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            --secondary-gradient: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+            --dark-gradient: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
+        * { box-sizing: border-box; }
+        
+        body {
+            padding-top: var(--header-height);
+            background: #0a0a14;
+            color: #f1f5f9;
+            font-family: 'Inter', 'Be Vietnam Pro', system-ui, sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER & NAV ===== */
+        #header-placeholder {
+            position: fixed; top: 0; left: 0; width: 100%;
+            height: var(--header-height); z-index: 1000;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: var(--transition-smooth);
+        }
+        #header-placeholder.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        #mobileMenu {
+            position: fixed; top: var(--header-height); left: 0; width: 100%;
+            height: calc(100vh - var(--header-height));
+            background: rgba(15, 15, 26, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobileMenu.active { transform: translateX(0); }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            position: relative;
+            min-height: calc(100vh - var(--header-height));
+            display: flex; align-items: center; justify-content: center;
+            background: var(--dark-gradient);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+        }
+        .hero-bg::before {
+            content: ''; position: absolute; inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(99,102,241,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(14,165,233,0.08) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .hero-bg img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+            filter: blur(1px) contrast(1.1);
+            transition: transform 0.8s ease;
+        }
+        .hero-section:hover .hero-bg img { transform: scale(1.03); }
+
+        .hero-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,10,20,0.3) 0%,
+                rgba(10,10,20,0.7) 40%,
+                rgba(10,10,20,0.95) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative; z-index: 3;
+            max-width: 1100px; padding: 2rem;
+            text-align: center;
+        }
+
+        /* ===== BADGE & TYPOGRAPHY ===== */
         .badge-unlock {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--primary-gradient);
+            color: white; padding: 8px 20px;
+            border-radius: 50px; font-size: 0.875rem;
+            font-weight: 600; letter-spacing: 0.3px;
+            box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+            animation: float 3s ease-in-out infinite;
         }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800; line-height: 1.15;
+            background: linear-gradient(to right, #fff, #c7d2fe);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1.25rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: rgba(241,245,249,0.85);
+            max-width: 700px; margin: 0 auto 2.5rem;
+            font-weight: 400;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 1rem 2.25rem;
+            background: var(--primary-gradient);
+            color: white; font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(99,102,241,0.45);
+            transition: var(--transition-smooth);
+            position: relative; overflow: hidden;
+        }
+        .btn-primary::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%); transition: transform 0.6s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(99,102,241,0.65);
+        }
+        .btn-primary:hover::before { transform: translateX(100%); }
+
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 1rem 2.25rem;
+            background: transparent;
+            color: white; font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            transition: var(--transition-smooth);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-2px);
+        }
+
+        /* ===== GLASSMORPHISM CARDS ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition-smooth);
+            position: relative; overflow: hidden;
+        }
+        .glass-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 60%);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+        .glass-card:hover::before { opacity: 1; }
+
+        .card-icon {
+            width: 64px; height: 64px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--primary-gradient);
+            border-radius: 16px;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem; color: white;
+            box-shadow: 0 8px 25px rgba(99,102,241,0.4);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section { padding: 5rem 0; }
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700; text-align: center;
+            margin-bottom: 1rem; color: #fff;
+        }
+        .section-subtitle {
+            text-align: center; color: rgba(241,245,249,0.75);
+            max-width: 700px; margin: 0 auto 3rem;
+            font-size: 1.125rem;
+        }
+        .divider {
+            width: 60px; height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px; margin: 0 auto 2.5rem;
+        }
+
+        /* ===== INTRO SECTION ===== */
+        #intro-section {
+            background: linear-gradient(180deg, #0a0a14 0%, #111122 100%);
+            position: relative;
+        }
+        #intro-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(99,102,241,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168,85,247,0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .feature-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+        .feature-list li {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 0.75rem 0; color: rgba(241,245,249,0.9);
+        }
+        .feature-list i {
+            color: #818cf8; margin-top: 4px;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+
+        .target-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; margin-top: 2rem;
+        }
+        .target-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; padding: 1.75rem;
+            text-align: center; transition: var(--transition-smooth);
+        }
+        .target-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-4px);
+            border-color: rgba(129,140,248,0.4);
+        }
+        .target-card .icon {
+            font-size: 2.5rem; color: #a78bfa;
+            margin-bottom: 1rem; display: block;
+        }
+        .target-card h4 {
+            color: #fff; font-weight: 600; margin-bottom: 0.75rem;
+        }
+        .target-card p {
+            color: rgba(241,245,249,0.7); font-size: 0.95rem;
+        }
+
+        /* ===== COMMUNITY SECTION ===== */
+        .community-section {
+            background: linear-gradient(180deg, #111122 0%, #0a0a14 100%);
+        }
+        .value-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px; padding: 2rem;
+            text-align: center; transition: var(--transition-smooth);
+        }
+        .value-card:hover {
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-5px);
+            border-color: rgba(14,165,233,0.3);
+        }
+        .value-icon {
+            width: 72px; height: 72px;
+            margin: 0 auto 1.25rem;
+            background: var(--secondary-gradient);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.75rem; color: white;
+            box-shadow: 0 10px 30px rgba(14,165,233,0.35);
+        }
+        .value-card h3 { color: #fff; font-weight: 600; margin-bottom: 0.75rem; }
+        .value-card p { color: rgba(241,245,249,0.75); }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: var(--primary-gradient);
+            position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+        @keyframes shimmer { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+        .cta-content { position: relative; z-index: 2; }
+        .cta-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700; margin-bottom: 1rem;
+        }
+        .cta-subtitle {
+            font-size: 1.25rem; opacity: 0.95;
+            max-width: 650px; margin: 0 auto 2.5rem;
+        }
+        .cta-buttons {
+            display: flex; flex-wrap: wrap; gap: 1rem;
+            justify-content: center;
+        }
+        .btn-white {
+            background: white; color: #6366f1;
+            padding: 1rem 2.25rem; border-radius: 50px;
+            font-weight: 600; transition: var(--transition-smooth);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+        .btn-outline-white {
+            background: transparent; color: white;
+            border: 2px solid white; padding: 1rem 2.25rem;
+            border-radius: 50px; font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+        .btn-outline-white:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER PLACEHOLDER ===== */
+        #footer-placeholder {
+            background: rgba(10,10,20,0.98);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 2rem 0; text-align: center;
+            color: rgba(241,245,249,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== UTILITIES ===== */
+        .text-gradient {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .fade-in-up { animation: fadeInUp 0.6s ease forwards; opacity: 0; transform: translateY(20px); }
+        .fade-in-up.delay-1 { animation-delay: 0.15s; }
+        .fade-in-up.delay-2 { animation-delay: 0.3s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-content { padding: 1.5rem; }
+            .glass-card { padding: 1.5rem; }
+            .section { padding: 3.5rem 0; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary, .btn-white, .btn-outline-white {
+                width: 100%; max-width: 320px; justify-content: center;
+            }
+        }
+
+        /* ===== SCROLL INDICATOR ===== */
+        .scroll-indicator {
+            position: absolute; bottom: 2rem; left: 50%;
+            transform: translateX(-50%); z-index: 3;
+            animation: bounce 2s infinite;
+        }
+        .scroll-indicator i {
+            color: rgba(255,255,255,0.7); font-size: 1.5rem;
+        }
+        @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateX(-50%) translateY(0)} 40%{transform:translateX(-50%) translateY(-10px)} 60%{transform:translateX(-50%) translateY(-5px)} }
     </style>
+    
+    <script defer src="../js/language-init.js"></script>
 </head>
 
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
-    <header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" id="header-placeholder"></header>
-    <nav class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu"></nav>
+    <!-- Header & Mobile Menu Placeholders (kept for JS injection) -->
+    <header id="header-placeholder"></header>
+    <nav id="mobileMenu" class="lg:hidden"></nav>
 
     <main>
-        <!-- Hero Section with Banner Image -->
+        <!-- 🔥 HERO SECTION -->
         <section class="hero-section">
-            <div class="hero-overlay"></div>
-            <!-- Video background overlay -->
-            <div class="absolute inset-0 z-1">
-                <img src="../images/banners/ivstech.png" alt="IVS Tech - Công nghệ - Giáo dục - Giải pháp số" 
-                     class="w-full h-full object-cover opacity-60">
+            <div class="hero-bg">
+                <img src="../images/banners/ivstech.png" alt="IVS Tech - Công nghệ - Giáo dục - Giải pháp số" loading="eager">
             </div>
+            <div class="hero-overlay"></div>
             
-            <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-                <header class="text-center mb-12">
-                    <span class="badge-unlock mb-4 inline-block">🔓 Dùng thử miễn phí</span>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-3" data-aos="fade-up">
-                        Dịch Vụ Công Nghệ - Giáo Dục - Giải Pháp Số
-                    </h1>
-                    <p class="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                        Giải pháp toàn diện dành cho cơ quan, tổ chức, doanh nghiệp trong hành trình chuyển đổi số và phát triển bền vững
-                    </p>
-                </header>
-
-                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <a href="#intro-section" class="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
-                        Khám Phá Ngay
+            <div class="hero-content container mx-auto px-4">
+                <span class="badge-unlock" data-aos="fade-down">
+                    <i class="fas fa-unlock"></i> Dùng thử miễn phí
+                </span>
+                
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                    Dịch Vụ Công Nghệ - Giáo Dục - Giải Pháp Số
+                </h1>
+                
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                    Giải pháp toàn diện dành cho cơ quan, tổ chức, doanh nghiệp trong hành trình chuyển đổi số và phát triển bền vững
+                </p>
+                
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <a href="#intro-section" class="btn-primary">
+                        Khám Phá Ngay <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
+            
+            <a href="#intro-section" class="scroll-indicator" aria-label="Cuộn xuống">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </section>
 
-        <!-- Introduction Section -->
-        <section id="intro-section" class="py-16 md:py-24 bg-white">
+        <!-- 💡 INTRODUCTION SECTION -->
+        <section id="intro-section" class="section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Giới Thiệu Về IVS Tech</h2>
-                    <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="section-title">Giới Thiệu Về IVS Tech</h2>
+                    <div class="divider"></div>
+                    <p class="section-subtitle">
                         IVS Tech là đơn vị tiên phong trong việc cung cấp các giải pháp công nghệ, giáo dục và số hóa toàn diện cho các cơ quan, tổ chức và doanh nghiệp trên khắp cả nước.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div data-aos="fade-right">
-                        <div class="glassmorphism-card p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Công Nghệ Tiên Tiến - Giải Pháp Hiện Đại</h3>
-                            <p class="text-gray-700 mb-4">
-                                Chúng tôi cung cấp các giải pháp công nghệ hiện đại bao gồm hệ thống quản lý thông tin, nền tảng học trực tuyến, trí tuệ nhân tạo ứng dụng và các giải pháp số hóa doanh nghiệp. Với đội ngũ kỹ sư giàu kinh nghiệm, IVS Tech cam kết mang đến những sản phẩm chất lượng cao, đáp ứng mọi nhu cầu của khách hàng.
-                            </p>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
-                                    <span>Hệ thống quản lý doanh nghiệp (ERP)</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
-                                    <span>Nền tảng học trực tuyến (LMS)</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
-                                    <span>Trí tuệ nhân tạo (AI) và học máy (ML)</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
-                                    <span>Giải pháp điện toán đám mây</span>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12">
+                    <!-- Tech Solutions Card -->
+                    <div class="glass-card" data-aos="fade-right" data-aos-delay="100">
+                        <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Công Nghệ Tiên Tiến - Giải Pháp Hiện Đại</h3>
+                        <p class="text-gray-300 mb-4">
+                            Chúng tôi cung cấp các giải pháp công nghệ hiện đại bao gồm hệ thống quản lý thông tin, nền tảng học trực tuyến, trí tuệ nhân tạo ứng dụng và các giải pháp số hóa doanh nghiệp.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Hệ thống quản lý doanh nghiệp (ERP)</li>
+                            <li><i class="fas fa-check-circle"></i> Nền tảng học trực tuyến (LMS)</li>
+                            <li><i class="fas fa-check-circle"></i> Trí tuệ nhân tạo (AI) và học máy (ML)</li>
+                            <li><i class="fas fa-check-circle"></i> Giải pháp điện toán đám mây</li>
+                        </ul>
                     </div>
 
-                    <div data-aos="fade-left">
-                        <div class="glassmorphism-card p-8">
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Giáo Dục - Đào Tạo Chuyên Sâu</h3>
-                            <p class="text-gray-700 mb-4">
-                                IVS Tech không chỉ cung cấp giải pháp công nghệ mà còn là đối tác đáng tin cậy trong lĩnh vực giáo dục và đào tạo. Chúng tôi phát triển các chương trình giảng dạy hiện đại, tích hợp công nghệ vào quá trình học tập, giúp nâng cao chất lượng đào tạo và trải nghiệm người học.
-                            </p>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
-                                    <span>Chương trình đào tạo kỹ năng số</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
-                                    <span>Hệ thống quản lý đào tạo trực tuyến</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
-                                    <span>Nội dung học tập tương tác</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-check-circle text-indigo-600 mt-1 mr-3"></i>
-                                    <span>Hỗ trợ giáo viên và nhà trường</span>
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Education Card -->
+                    <div class="glass-card" data-aos="fade-left" data-aos-delay="200">
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Giáo Dục - Đào Tạo Chuyên Sâu</h3>
+                        <p class="text-gray-300 mb-4">
+                            IVS Tech không chỉ cung cấp giải pháp công nghệ mà còn là đối tác đáng tin cậy trong lĩnh vực giáo dục và đào tạo, tích hợp công nghệ vào quá trình học tập.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Chương trình đào tạo kỹ năng số</li>
+                            <li><i class="fas fa-check-circle"></i> Hệ thống quản lý đào tạo trực tuyến</li>
+                            <li><i class="fas fa-check-circle"></i> Nội dung học tập tương tác</li>
+                            <li><i class="fas fa-check-circle"></i> Hỗ trợ giáo viên và nhà trường</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="mt-16 text-center">
-                    <div class="glassmorphism-card p-8 max-w-4xl mx-auto">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Giải Pháp Toàn Diện Cho Mọi Đối Tượng</h3>
-                        <p class="text-gray-700 mb-6">
-                            Với hơn 10 năm kinh nghiệm trong lĩnh vực công nghệ và giáo dục, IVS Tech đã và đang đồng hành cùng hàng ngàn cơ quan, tổ chức và doanh nghiệp trong quá trình chuyển đổi số. Chúng tôi tự hào là đơn vị uy tín, cung cấp các giải pháp linh hoạt, dễ triển khai và phù hợp với đặc thù từng đơn vị.
+                <!-- Target Audience Cards -->
+                <div class="mt-20 text-center" data-aos="fade-up">
+                    <div class="glass-card p-8 max-w-5xl mx-auto">
+                        <h3 class="text-2xl font-bold text-white mb-3">Giải Pháp Toàn Diện Cho Mọi Đối Tượng</h3>
+                        <p class="text-gray-300 mb-8 max-w-3xl mx-auto">
+                            Với hơn 10 năm kinh nghiệm, IVS Tech đã đồng hành cùng hàng ngàn đơn vị trong quá trình chuyển đổi số với giải pháp linh hoạt, dễ triển khai.
                         </p>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                            <div class="bg-white/10 p-6 rounded-xl">
-                                <div class="text-indigo-400 text-3xl mb-3">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <h4 class="font-bold text-white mb-2">Cơ Quan Chính Phủ</h4>
-                                <p class="text-gray-300 text-sm">Hệ thống quản lý nội bộ, cổng thông tin điện tử, dịch vụ công trực tuyến</p>
+                        <div class="target-grid">
+                            <div class="target-card">
+                                <span class="icon"><i class="fas fa-building-columns"></i></span>
+                                <h4>Cơ Quan Chính Phủ</h4>
+                                <p>Hệ thống quản lý nội bộ, cổng thông tin điện tử, dịch vụ công trực tuyến</p>
                             </div>
-                            
-                            <div class="bg-white/10 p-6 rounded-xl">
-                                <div class="text-indigo-400 text-3xl mb-3">
-                                    <i class="fas fa-school"></i>
-                                </div>
-                                <h4 class="font-bold text-white mb-2">Trường Học - Trung Tâm</h4>
-                                <p class="text-gray-300 text-sm">Hệ thống LMS, quản lý học sinh, đào tạo trực tuyến, học liệu số</p>
+                            <div class="target-card">
+                                <span class="icon"><i class="fas fa-school-flag"></i></span>
+                                <h4>Trường Học - Trung Tâm</h4>
+                                <p>Hệ thống LMS, quản lý học sinh, đào tạo trực tuyến, học liệu số</p>
                             </div>
-                            
-                            <div class="bg-white/10 p-6 rounded-xl">
-                                <div class="text-indigo-400 text-3xl mb-3">
-                                    <i class="fas fa-industry"></i>
-                                </div>
-                                <h4 class="font-bold text-white mb-2">Doanh Nghiệp</h4>
-                                <p class="text-gray-300 text-sm">ERP, CRM, HRM, nền tảng làm việc từ xa, quản lý dự án</p>
+                            <div class="target-card">
+                                <span class="icon"><i class="fas fa-industry"></i></span>
+                                <h4>Doanh Nghiệp</h4>
+                                <p>ERP, CRM, HRM, nền tảng làm việc từ xa, quản lý dự án</p>
                             </div>
                         </div>
                     </div>
@@ -188,75 +529,65 @@
             </div>
         </section>
 
-        <!-- Community Value Section -->
-        <section class="py-16 bg-gray-50">
+        <!-- 🤝 COMMUNITY VALUE SECTION -->
+        <section class="section community-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Giá Trị Cộng Đồng</h2>
-                    <div class="w-24 h-1 bg-indigo-600 mx-auto mb-6"></div>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                        IVS Tech cam kết dành 15% lợi nhuận cho cộng đồng thông qua các hoạt động hỗ trợ giáo dục, học bổng và tài nguyên mở.
+                <div class="text-center mb-14" data-aos="fade-up">
+                    <h2 class="section-title">Giá Trị Cộng Đồng</h2>
+                    <div class="divider"></div>
+                    <p class="section-subtitle">
+                        IVS Tech cam kết dành <span class="text-gradient font-semibold">15% lợi nhuận</span> cho cộng đồng thông qua các hoạt động hỗ trợ giáo dục, học bổng và tài nguyên mở.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center p-6 bg-white rounded-xl shadow-md" data-aos="fade-up">
-                        <div class="text-indigo-600 text-4xl mb-4">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Học Bổng Giáo Dục</h3>
-                        <p class="text-gray-600">
-                            Hỗ trợ học bổng cho học sinh, sinh viên có hoàn cảnh khó khăn nhưng có tinh thần học tập tốt.
-                        </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="value-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h3 class="text-xl font-bold">Học Bổng Giáo Dục</h3>
+                        <p>Hỗ trợ học bổng cho học sinh, sinh viên có hoàn cảnh khó khăn nhưng có tinh thần học tập tốt.</p>
                     </div>
 
-                    <div class="text-center p-6 bg-white rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <div class="text-indigo-600 text-4xl mb-4">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Workshop Miễn Phí</h3>
-                        <p class="text-gray-600">
-                            Tổ chức các buổi hội thảo, workshop chia sẻ kiến thức công nghệ và giáo dục miễn phí.
-                        </p>
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="value-icon"><i class="fas fa-chalkboard-user"></i></div>
+                        <h3 class="text-xl font-bold">Workshop Miễn Phí</h3>
+                        <p>Tổ chức các buổi hội thảo, workshop chia sẻ kiến thức công nghệ và giáo dục miễn phí.</p>
                     </div>
 
-                    <div class="text-center p-6 bg-white rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <div class="text-indigo-600 text-4xl mb-4">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Tài Nguyên Mở</h3>
-                        <p class="text-gray-600">
-                            Cung cấp tài nguyên học tập, phần mềm mã nguồn mở phục vụ cộng đồng.
-                        </p>
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="value-icon"><i class="fas fa-code-branch"></i></div>
+                        <h3 class="text-xl font-bold">Tài Nguyên Mở</h3>
+                        <p>Cung cấp tài nguyên học tập, phần mềm mã nguồn mở phục vụ cộng đồng.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action Section -->
-        <section class="py-16 bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Sẵn Sàng Bắt Đầu Hành Trình Cùng IVS Tech?</h2>
-                <p class="text-xl mb-8 max-w-2xl mx-auto">
-                    Đăng ký tư vấn lộ trình chuyển đổi số 30 phút miễn phí từ chuyên gia của chúng tôi
+        <!-- 🚀 CALL TO ACTION SECTION -->
+        <section class="section cta-section text-center">
+            <div class="container mx-auto px-4 cta-content">
+                <h2 class="cta-title text-white">Sẵn Sàng Bắt Đầu Hành Trình Cùng IVS Tech?</h2>
+                <p class="cta-subtitle text-white/95">
+                    Đăng ký tư vấn lộ trình chuyển đổi số <strong>30 phút miễn phí</strong> từ chuyên gia của chúng tôi
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="../contact.html" class="px-8 py-4 bg-white text-indigo-600 font-bold rounded-full shadow-xl hover:bg-gray-100 transition duration-300 transform hover:scale-105">
-                        Liên Hệ Tư Vấn Ngay
+                
+                <div class="cta-buttons">
+                    <a href="../contact.html" class="btn-white">
+                        <i class="fas fa-comment-dots mr-2"></i>Liên Hệ Tư Vấn Ngay
                     </a>
-                    <a href="../about.html" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full shadow-xl hover:bg-white/10 transition duration-300">
-                        Tìm Hiểu Thêm Về IVS
+                    <a href="../about.html" class="btn-outline-white">
+                        <i class="fas fa-info-circle mr-2"></i>Tìm Hiểu Thêm Về IVS
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer & Components Placeholders -->
     <footer id="footer-placeholder"></footer>
     <div id="fab-container-placeholder"></div>
     <div id="ai-assistant-placeholder"></div>
 
-    <!-- Third party libraries -->
+    <!-- Scripts -->
     <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="../js/utils.js"></script>
     <script defer src="../js/language.js"></script>
@@ -268,13 +599,35 @@
     <script defer src="/ai/js/loadComponents.js"></script>
     
     <script>
-        // Initialize AOS animation library
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS with enhanced settings
             AOS.init({
-                duration: 800,
-                easing: 'ease-out-quart',
+                duration: 700,
+                easing: 'ease-out-cubic',
                 once: true,
-                offset: 100
+                offset: 80,
+                disable: 'mobile'
+            });
+
+            // Header scroll effect
+            const header = document.getElementById('header-placeholder');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header?.classList.add('scrolled');
+                } else {
+                    header?.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
             });
         });
     </script>
