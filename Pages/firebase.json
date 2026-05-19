@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "dist", // 确保指向构建输出目录
+    "site": "ivsacademy",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -1,26 +1,23 @@
 {
-  "firestore": {
-    "database": "(default)",
-    "location": "asia-northeast2",
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
   "hosting": {
-    "public": "public",
+    "public": ".",
     "site": "ivsacademy",
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
-    ]
-  },
-  "auth": {
-    "providers": {
-      "emailPassword": true,
-      "googleSignIn": {
-        "oAuthBrandDisplayName": "IVS JSC",
-        "supportEmail": "info@ivsacademy.edu.vn"
+      "!**/.gitkeep",
+      "**/node_modules/**",
+      "server/**",
+      "webapp/**",
+      ".venv/**",
+      "**/*.md",
+      ".githooks/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
-    }
+    ]
   }
 }
