@@ -15,14 +15,14 @@
   "dependencies": {
     "dotenv": "^16.6.1",
     "express": "^4.22.1",
-    "express-rate-limit": "^8.1.0",
+    "express-rate-limit": "^8.1.1",
     "express-session": "^1.17.3",
     "form-data": "^4.0.4",
     "jsonwebtoken": "^9.0.3",
     "jwks-rsa": "^2.1.5",
     "minimist": "^1.2.8",
     "morgan": "^1.10.0",
-    "multer": "^2.1.0",
+    "multer": "^2.1.1",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
