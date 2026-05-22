@@ -12,9 +12,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title data-lang-key="nonprofit_page_title">IVS JSC - Sứ Mệnh Cộng Đồng & Phi Lợi Nhuận</title>
     <meta content="Các dự án phi lợi nhuận của IVS JSC tập trung vào giáo dục, kỹ năng sống và hỗ trợ cộng đồng, lan tỏa giá trị và kiến tạo tương lai bền vững." name="description" data-lang-key="nonprofit_meta_description"/>
-    <meta content="IVS JSC, phi lợi nhuận, cộng đồng, giáo dục, STEAM, Let's Talk, English Club, dự án xã hội" name="keywords" data-lang-key="nonprofit_meta_keywords"/>
+    <meta content="IVS JSC, phi lợi nhuận, cộng đồng, giáo dục, STEAM, Let's Talk, English Club, dự án xã hội, chống hàng giả, Quỹ Chống hàng giả ACF, ACFMart, QR Verified, Escrow, KYC, xác thực sản phẩm" name="keywords" data-lang-key="nonprofit_meta_keywords"/>
     <meta content="IVS JSC - Sứ Mệnh Cộng Đồng & Phi Lợi Nhuận" property="og:title" data-lang-key="nonprofit_og_title"/>
-    <meta content="Khám phá các hoạt động vì cộng đồng của IVS JSC, từ các câu lạc bộ tiếng Anh miễn phí đến dự án STEAM cho trẻ em khó khăn." property="og:description" data-lang-key="nonprofit_og_description"/>
+    <meta content="Khám phá các hoạt động vì cộng đồng của IVS JSC, từ các câu lạc bộ tiếng Anh miễn phí đến dự án STEAM cho trẻ em khó khăn và dự án chống hàng giả." property="og:description" data-lang-key="nonprofit_og_description"/>
     <meta content="/images/logo/logo.svg" property="og:image"/>
     <meta content="https://ivsacademy.edu.vn/Pages/non-profit.html" property="og:url"/>
     <meta content="website" property="og:type"/>
@@ -67,6 +67,42 @@
             box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5);
             border-color: #34d399; /* ivs-green for non-profit theme */
         }
+
+        .acf-gradient-card {
+            background:
+                radial-gradient(circle at top left, rgba(239, 68, 68, 0.22), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(52, 211, 153, 0.18), transparent 35%),
+                linear-gradient(135deg, rgba(17, 24, 39, 0.96), rgba(10, 10, 10, 0.98));
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 24px 70px -28px rgba(0,0,0,0.75);
+        }
+        .acf-trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.045);
+            color: #d1d5db;
+            padding: 0.55rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .acf-step {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .acf-step::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.35rem;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 9999px;
+            background: #34d399;
+            box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.12);
+        }
 </style>
 </head>
 <body class="bg-ivs-bg text-ivs-text-primary font-inter">
@@ -96,15 +132,152 @@
         </div>
     </section>
 
+    <!-- Impact Metrics -->
+    <section class="py-8 bg-ivs-bg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-ivs-card p-6 md:p-8 rounded-2xl shadow-xl border border-ivs-border" data-aos="zoom-in">
+                <div class="text-center p-4 border-r border-ivs-border last:border-0">
+                    <div class="text-3xl md:text-4xl font-extrabold text-ivs-green font-poppins mb-1">10+</div>
+                    <div class="text-xs md:text-sm text-ivs-text-secondary font-medium uppercase tracking-wider" data-lang-key="metric_projs">Dự Án Đã Thực Hiện</div>
+                </div>
+                <div class="text-center p-4 border-r border-ivs-border last:border-0">
+                    <div class="text-3xl md:text-4xl font-extrabold text-ivs-green font-poppins mb-1">15,000+</div>
+                    <div class="text-xs md:text-sm text-ivs-text-secondary font-medium uppercase tracking-wider" data-lang-key="metric_lives">Người Được Trợ Giúp</div>
+                </div>
+                <div class="text-center p-4 border-r border-ivs-border last:border-0">
+                    <div class="text-3xl md:text-4xl font-extrabold text-ivs-green font-poppins mb-1">50+</div>
+                    <div class="text-xs md:text-sm text-ivs-text-secondary font-medium uppercase tracking-wider" data-lang-key="metric_partners">Đối Tác Đồng Hành</div>
+                </div>
+                <div class="text-center p-4">
+                    <div class="text-3xl md:text-4xl font-extrabold text-ivs-green font-poppins mb-1">100%</div>
+                    <div class="text-xs md:text-sm text-ivs-text-secondary font-medium uppercase tracking-wider" data-lang-key="metric_transparent">Minh Bạch Tài Chính</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Pillars Section -->
+    <section class="py-16 md:py-24 bg-ivs-bg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold font-display text-white mb-4" data-lang-key="pillars_title">BA TRỤ CỘT HOẠT ĐỘNG CHÍNH</h2>
+                <div class="w-16 h-1 bg-ivs-green mx-auto rounded-full mb-6" data-aos="fade-up" data-aos-delay="50"></div>
+                <p class="text-lg text-ivs-text-secondary" data-lang-key="pillars_desc">
+                    Chúng tôi tập trung nguồn lực công nghệ, tri thức và tài chính vào ba khía cạnh cốt lõi nhằm thúc đẩy sự phát triển toàn diện của xã hội.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pillar 1: Education -->
+                <div class="interactive-card p-8 rounded-2xl border border-ivs-border hover:border-ivs-green transition duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-ivs-blue/20 rounded-xl flex items-center justify-center text-ivs-blue mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-lang-key="pillar_1_title">Giáo Dục & Ươm Mầm Trí Thức</h3>
+                    <p class="text-ivs-text-secondary leading-relaxed" data-lang-key="pillar_1_desc">
+                        Mang thư viện số, học bổng và trang thiết bị công nghệ hiện đại đến với học sinh vùng cao và hoàn cảnh khó khăn, giúp thu hẹp khoảng cách tri thức số.
+                    </p>
+                </div>
+
+                <!-- Pillar 2: Life Skills -->
+                <div class="interactive-card p-8 rounded-2xl border border-ivs-border hover:border-ivs-green transition duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-ivs-green/20 rounded-xl flex items-center justify-center text-ivs-green mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-lang-key="pillar_2_title">Kỹ Năng Sống & Phát Triển Bản Thân</h3>
+                    <p class="text-ivs-text-secondary leading-relaxed" data-lang-key="pillar_2_desc">
+                        Tổ chức các khóa đào tạo kỹ năng sinh tồn, định hướng tư duy sáng tạo, kỹ năng công nghệ và định hình nhân cách toàn diện cho thanh thiếu niên Việt Nam.
+                    </p>
+                </div>
+
+                <!-- Pillar 3: Community Support -->
+                <div class="interactive-card p-8 rounded-2xl border border-ivs-border hover:border-ivs-green transition duration-300 hover:shadow-xl hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-ivs-amber/20 rounded-xl flex items-center justify-center text-ivs-amber mb-6 text-2xl shadow-sm">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3" data-lang-key="pillar_3_title">Trợ Giúp Xã Hội & An Sinh Cộng Đồng</h3>
+                    <p class="text-ivs-text-secondary leading-relaxed" data-lang-key="pillar_3_desc">
+                        Tổ chức các chương trình cứu trợ thiên tai khẩn cấp, cải thiện nước sạch học đường, xây mái ấm tình thương và chăm lo cho cộng đồng dân cư yếu thế.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured ACF Anti-Counterfeit Project Section -->
+    <section id="acf-project" class="py-16 md:py-24 bg-ivs-bg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="acf-gradient-card rounded-3xl p-6 md:p-10 lg:p-12 overflow-hidden" data-aos="fade-up">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-7">
+                        <span class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-red-300 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-2 mb-5">
+                            <i class="fas fa-shield-virus"></i>
+                            Dự án cộng đồng mới
+                        </span>
+                        <h2 class="text-3xl md:text-5xl font-extrabold font-display text-white leading-tight mb-5">
+                            IVS JSC x Quỹ Chống hàng giả ACF
+                        </h2>
+                        <p class="text-lg md:text-xl text-ivs-text-secondary leading-relaxed mb-6">
+                            Dự án hướng đến xây dựng một lớp niềm tin độc lập cho giao dịch thương mại: giúp người tiêu dùng nhận diện hàng chính hãng, hỗ trợ doanh nghiệp chân chính bảo vệ thương hiệu và tạo dữ liệu minh bạch để xử lý tranh chấp.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="acf-trust-pill"><i class="fas fa-qrcode text-ivs-green"></i>QR Verified</span>
+                            <span class="acf-trust-pill"><i class="fas fa-handshake text-ivs-amber"></i>Escrow qua đối tác cấp phép</span>
+                            <span class="acf-trust-pill"><i class="fas fa-id-card text-ivs-blue"></i>KYC Seller / KOL / CTV</span>
+                            <span class="acf-trust-pill"><i class="fas fa-clipboard-check text-ivs-purple"></i>Audit Log</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-black/30 border border-white/10 rounded-2xl p-4">
+                                <p class="text-2xl font-extrabold text-ivs-green">5</p>
+                                <p class="text-sm text-ivs-text-secondary">Trạng thái QR: Genuine, Suspect, Invalid, Voided, Expired</p>
+                            </div>
+                            <div class="bg-black/30 border border-white/10 rounded-2xl p-4">
+                                <p class="text-2xl font-extrabold text-ivs-green">7</p>
+                                <p class="text-sm text-ivs-text-secondary">Bước giao dịch tin cậy từ KYC đến giải ngân</p>
+                            </div>
+                            <div class="bg-black/30 border border-white/10 rounded-2xl p-4">
+                                <p class="text-2xl font-extrabold text-ivs-green">3</p>
+                                <p class="text-sm text-ivs-text-secondary">Ngành ưu tiên: Điện tử, Sức khỏe & Làm đẹp, Mẹ & Bé</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <div class="bg-black/35 border border-white/10 rounded-3xl p-6 md:p-8">
+                            <h3 class="text-2xl font-bold text-white mb-5">Giải quyết vấn đề gì?</h3>
+                            <div class="space-y-5">
+                                <div class="acf-step">
+                                    <h4 class="font-bold text-white">Chống hàng giả & hàng nhái</h4>
+                                    <p class="text-sm text-ivs-text-secondary mt-1">Cung cấp công cụ quét QR xác thực nguồn gốc ngay tại điểm mua hoặc sau khi nhận hàng.</p>
+                                </div>
+                                <div class="acf-step">
+                                    <h4 class="font-bold text-white">Giảm rủi ro thanh toán</h4>
+                                    <p class="text-sm text-ivs-text-secondary mt-1">ACFMart không tự giữ tiền; dòng tiền được định hướng qua ngân hàng hoặc PSP được cấp phép.</p>
+                                </div>
+                                <div class="acf-step">
+                                    <h4 class="font-bold text-white">Minh bạch review & affiliate</h4>
+                                    <p class="text-sm text-ivs-text-secondary mt-1">KYC người bán, KOL và CTV để giảm review ảo, scam và tạo dấu vết kiểm chứng.</p>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-white/10">
+                                <p class="text-sm uppercase tracking-wider text-ivs-text-secondary mb-2">Trạng thái triển khai</p>
+                                <p class="text-white font-semibold">Đang chuẩn hóa hồ sơ phối hợp, công nghệ xác thực và quy trình truyền thông cộng đồng.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Projects Section -->
     <section id="projects" class="py-16 md:py-24 bg-ivs-bg">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold font-display text-white mb-4" data-lang-key="nonprofit_activities_title">Các Hoạt Động Chính</h2>
-                <p class="text-lg text-ivs-text-secondary" data-lang-key="nonprofit_activities_subtitle">IVS cam kết mang lại giá trị bền vững cho xã hội thông qua các dự án giáo dục và cộng đồng thiết thực.</p>
+                <h2 class="text-3xl md:text-4xl font-bold font-display text-white mb-4">Các Hoạt Động Chính</h2>
+                <p class="text-lg text-ivs-text-secondary">IVS cam kết mang lại giá trị bền vững cho xã hội thông qua giáo dục, kỹ năng sống, công nghệ xác thực và các dự án bảo vệ niềm tin cộng đồng.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Project 1: "Let's Talk" -->
                 <div class="interactive-card p-6 rounded-xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex-shrink-0 mb-4">
@@ -140,20 +313,75 @@
                     </p>
                     <span class="mt-auto font-semibold text-sm text-ivs-purple bg-purple-500/10 px-3 py-1 rounded-full self-start" data-lang-key="nonprofit_activity3_tag">Phát Triển Giáo Dục</span>
                 </div>
+
+                <!-- Project 4: ACF Anti-Counterfeit Community Project -->
+                <div class="interactive-card p-6 rounded-xl flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex-shrink-0 mb-4">
+                        <i class="fas fa-shield-alt text-4xl text-red-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Chống Hàng Giả cùng ACF</h3>
+                    <p class="text-ivs-text-secondary flex-grow mb-4">
+                        Dự án cộng đồng phối hợp cùng Quỹ Chống hàng giả ACF, ứng dụng QR Verified, KYC và quy trình xác thực để bảo vệ người tiêu dùng và doanh nghiệp chân chính.
+                    </p>
+                    <span class="mt-auto font-semibold text-sm text-red-300 bg-red-500/10 px-3 py-1 rounded-full self-start">Bảo Vệ Người Tiêu Dùng</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Cooperate -->
+    <section class="py-16 md:py-24 bg-ivs-neutral-800 scroll-mt-16" id="cooperate">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-ivs-blue/80 to-ivs-purple/80 rounded-3xl p-8 md:p-12 text-white text-center relative overflow-hidden shadow-2xl" data-aos="zoom-in">
+                <div class="relative z-10 max-w-3xl mx-auto">
+                    <span class="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">Đồng Hành Với Chúng Tôi</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold font-display mb-6 leading-tight">MỖI SỰ ĐỒNG HÀNH LÀ MỘT THẾ GIỚI THAY ĐỔI</h2>
+                    <p class="text-ivs-text-secondary mb-8 leading-relaxed">
+                        Cho dù bạn là một tổ chức phi chính phủ, doanh nghiệp mong muốn thực hiện CSR ý nghĩa, hay cá nhân giàu nhiệt huyết, IVS JSC đều mở rộng cánh cửa cùng đồng hành tạo tác động xã hội to lớn hơn.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-3 gap-4 text-left mb-10 max-w-2xl mx-auto">
+                        <div class="bg-white/10 p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <div class="w-10 h-10 bg-ivs-blue/20 rounded-lg flex items-center justify-center text-ivs-blue mb-4"><i class="fa-solid fa-handshake"></i></div>
+                            <h4 class="font-bold text-sm mb-1">Dành cho Doanh nghiệp</h4>
+                            <p class="text-xs text-ivs-text-secondary">Kết nối CSR, xây dựng dự án và mang tài nguyên đến cho vùng đặc thù khó khăn.</p>
+                        </div>
+                        <div class="bg-white/10 p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <div class="w-10 h-10 bg-ivs-green/20 rounded-lg flex items-center justify-center text-ivs-green mb-4"><i class="fa-solid fa-people-carry-box"></i></div>
+                            <h4 class="font-bold text-sm mb-1">Dành cho Tình nguyện viên</h4>
+                            <p class="text-xs text-ivs-text-secondary">Trải nghiệm thực địa, hỗ trợ lắp đặt công nghệ hoặc trợ giáo các điểm trường.</p>
+                        </div>
+                        <div class="bg-white/10 p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <div class="w-10 h-10 bg-ivs-amber/20 rounded-lg flex items-center justify-center text-ivs-amber mb-4"><i class="fa-solid fa-circle-nodes"></i></div>
+                            <h4 class="font-bold text-sm mb-1">Dành cho Đối tác Công nghệ</h4>
+                            <p class="text-xs text-ivs-text-secondary">Tích hợp và phân phối hạ tầng truy xuất, bảo mật giao dịch, ESCROW cộng đồng.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button class="px-8 py-3 bg-white text-ivs-bg font-bold rounded-xl shadow-lg hover:bg-ivs-gray transition duration-300 flex items-center gap-2">
+                            <span>Liên Hệ Đăng Ký Hợp Tác</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                        <button class="px-8 py-3 bg-transparent border border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition duration-300">
+                            <span>Nhận tài liệu báo cáo phi lợi nhuận</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Volunteer CTA Section -->
-    <section id="volunteer" class="bg-ivs-neutral-800">
+    <section id="volunteer" class="bg-ivs-bg">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="max-w-4xl mx-auto" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-ivs-green mb-3">Chung Tay Xây Dựng Tương Lai</h2>
+                <h2 class="text-3xl font-bold text-ivs-green mb-3">Chung Tay Bảo Vệ Niềm Tin Cộng Đồng</h2>
                 <p class="text-lg text-ivs-text-secondary mb-8">
-                    Chúng tôi luôn tìm kiếm những trái tim nhiệt huyết. Hãy tham gia cùng IVS JSC với vai trò Tình nguyện viên hoặc Đối tác Phát triển.
+                    IVS JSC tìm kiếm tình nguyện viên, doanh nghiệp chính hãng, đơn vị truyền thông và đối tác phát triển cùng tham gia các chương trình giáo dục, kỹ năng sống và chống hàng giả.
                 </p>
-                <a href="mailto:info@ivsacademy.edu.vn?subject=Đăng ký tình nguyện viên IVS Community" class="inline-block bg-ivs-green hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-green-500/40 transition transform hover:scale-105">
-                    Đăng Ký Tình Nguyện
+                <a href="mailto:info@ivsacademy.edu.vn?subject=Đồng hành cùng IVS Community & Dự án Chống hàng giả ACF" class="inline-block bg-ivs-green hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-green-500/40 transition transform hover:scale-105">
+                    Đăng Ký Đồng Hành
                 </a>
             </div>
         </div>
