@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ivs-static",
+      "runtimeExecutable": "D:\\IVS\\Website\\ivs.github.io\\.venv\\Scripts\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "8099"],
+      "port": 8099
+    }
+  ]
+}
