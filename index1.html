@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="vi">
+<head>
+    <link href="//storage.googleapis.com" rel="dns-prefetch"/>
+    <link href="//unpkg.com" rel="dns-prefetch"/>
+    <link href="//cdn.jsdelivr.net" rel="dns-prefetch"/>
+    <link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta name="theme-color" content="#2563EB" />
+
+    <title>IVS JSC - Hệ sinh thái Giáo dục, Công nghệ & Nhân lực</title>
+    <meta content="Khám phá câu chuyện, tầm nhìn, sứ mệnh, triết lý hoạt động và đội ngũ lãnh đạo của IVS JSC - Tổ chức tiên phong kiến tạo hệ sinh thái giáo dục toàn cầu." name="description"/>
+    <meta content="IVS JSC, về chúng tôi, tầm nhìn, sứ mệnh, integrate vision synergy, Nguyễn Minh Triết, giáo dục, EdTech, hồ sơ năng lực, IVS Academy, tiếng Anh K-12, kỹ năng sống, học tập số, IELTS" name="keywords"/>
+    <meta content="IVS Academy – English, Life Skills &amp; EdTech Learning" name="author" />
+    <link rel="canonical" href="https://ivsacademy.edu.vn/" />
+
+    <meta content="Về IVS JSC - Tầm Nhìn &amp; Sứ Mệnh" property="og:title"/>
+    <meta content="Tìm hiểu sâu hơn về IVS JSC: triết lý Integrate-Vision-Synergy, hành trình phát triển, đội ngũ chuyên gia và cam kết đối với một nền giáo dục toàn cầu kết hợp ngoại ngữ, kỹ năng sống và công nghệ." property="og:description"/>
+    <meta content="/images/banners/ivs_about_og.jpg" property="og:image"/>
+    <meta content="https://ivsacademy.edu.vn/index.html" property="og:url"/>
+    <meta content="website" property="og:type"/>
+    <meta property="og:locale" content="vi_VN" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link href="/images/logo/logo.svg" rel="icon" type="image/svg+xml" />
+    <link href="/favicon-32x32.png" rel="icon" type="image/png"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="css/local-fonts-fallback.css" rel="stylesheet"/>
+
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script defer src="js/language.js"></script>
+    <script defer src="js/language-init.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ivs-blue': '#2563EB',
+                        'ivs-blue-dark': '#1D4ED8',
+                        'ivs-sky': '#38BDF8',
+                        'ivs-teal': '#14B8A6',
+                        'ivs-purple': '#8B5CF6',
+                        'ivs-amber': '#F59E0B',
+                        'ivs-yellow': '#FBBF24',
+                        'ivs-ink': '#0F172A',
+                        'ivs-slate': '#475569',
+                    },
+                    fontFamily: {
+                        display: ['Poppins', 'Be Vietnam Pro', 'sans-serif'],
+                        sans: ['Be Vietnam Pro', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+    <link href="css/tailwind.css" rel="stylesheet"/>
+
+    <style>
+        /* CSS tuỳ chỉnh cho giao diện tối chuyên nghiệp */
+        :root {
+            --header-height: 4rem;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #f4f4f5;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            overflow-x: hidden;
+            padding-top: var(--header-height);
+            visibility: visible;
+            opacity: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        #header-placeholder {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 1000;
+            background-color: #0A0A0A;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        section {
+            scroll-margin-top: calc(var(--header-height) + 1rem);
+            padding: 4rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 6rem 2rem;
+            }
+        }
+
+        /* Hero Section Styling (Video Background) */
+        .hero-section {
+            position: relative;
+            min-height: calc(100vh - var(--header-height));
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #000;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.4);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-video.loaded {
+            opacity: 1;
+        }
+
+        .hero-fallback-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            display: block;
+            filter: brightness(0.4);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.2) 50%, rgba(10, 10, 10, 0.9) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 90%;
+        }
+        
+        /* Interactive Card Hover Effect */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #111111;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.5);
+            border-color: #60a5fa;
+        }
+        
+        /* Custom Style for Web Project Cards */
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #18181B;
+            border: 1px solid #27272A;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 20px -5px rgba(34, 211, 238, 0.2), 0 0 15px 0 rgba(34, 211, 238, 0.5);
+            transform: scale(1.02);
+            border-color: #22d3ee;
+        }
+
+        /* Custom Scrollbar for solutions tab */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #111111; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 2px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #60a5fa; }
+    </style>
+</head>
+<body class="bg-black text-zinc-100 font-sans">
+
+<header class="w-full fixed top-0 left-0 z-50 transition-all duration-300" data-loading-text="Đang tải menu..." id="header-placeholder">
+    </header>
+
+<nav class="fixed top-16 left-0 w-full h-full bg-neutral-950/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden" id="mobileMenu">
+    </nav>
+
+<main>
+    <section class="hero-section">
+        <video autoplay class="hero-video" id="heroVideo" loop muted playsinline>
+            <source src="/videos/ivs-coding.mp4" type="video/mp4"/>
+            <img alt="Hình nền giới thiệu IVS Academy" class="hero-fallback-image" decoding="async" src="/images/ivsacademy.jpg"/>
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="max-w-5xl mx-auto backdrop-blur-sm bg-black/40 p-6 md:p-10 rounded-3xl border border-white/10 shadow-2xl">
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold font-display text-white mb-4">
+                    <span class="text-xl sm:text-2xl font-semibold block mb-2 text-cyan-400" data-lang-key="hero_tagline">IVS JSC: HỆ SINH THÁI GIÁO DỤC, CÔNG NGHỆ &amp; NHÂN LỰC</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-emerald-400 text-6xl sm:text-7xl lg:text-8xl block" data-aos="fade-up" data-lang-key="hero_title_academy">IVS Academy</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-amber-500 block" data-aos="fade-up" data-aos-delay="100" data-lang-key="hero_title_slogan">CHINH PHỤC TƯƠNG LAI.</span>
+                </h1>
+                <p class="text-lg sm:text-xl lg:text-2xl text-zinc-300 max-w-4xl mx-auto mb-8 font-medium" data-aos="fade-up" data-aos-delay="200" data-lang-key="hero_description">
+                    IVS là hệ sinh thái giáo dục toàn diện, cung cấp các giải pháp đột phá từ đào tạo ngôn ngữ, kỹ năng đến tư vấn chiến lược cho các tổ chức giáo dục.
+                </p>
+                
+                <div class="mt-8 flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:space-x-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+                    <a class="group relative w-full max-w-xs md:w-auto p-4 rounded-xl bg-zinc-900 border-2 border-cyan-500/50 hover:border-cyan-400 transition-all duration-300 shadow-xl hover:shadow-cyan-500/40 transform hover:-translate-y-1 text-left" href="#web-projects">
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-code text-4xl text-cyan-400 group-hover:text-white transition-colors"></i>
+                            <div class="flex-1">
+                                <p class="text-lg font-bold font-display text-white mb-1" data-lang-key="hero_service_web">Thiết kế Web Tiên phong</p>
+                                <p class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors" data-lang-key="hero_service_web_sub">Lập trình Code Tay, chức năng không giới hạn.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="group relative w-full max-w-xs md:w-auto p-4 rounded-xl bg-zinc-900 border-2 border-emerald-500/50 hover:border-emerald-400 transition-all duration-300 shadow-xl hover:shadow-emerald-500/40 transform hover:-translate-y-1 text-left" href="#ecosystem">
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-robot text-4xl text-emerald-400 group-hover:text-white transition-colors"></i>
+                            <div class="flex-1">
+                                <p class="text-lg font-bold font-display text-white mb-1" data-lang-key="hero_service_apps">Apps Quản lý &amp; Tự động hóa</p>
+                                <p class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors" data-lang-key="hero_service_apps_sub">Triển khai quy trình, Apps tùy chỉnh (Mobile/Web).</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="group relative w-full max-w-xs md:w-auto p-4 rounded-xl bg-zinc-900 border-2 border-violet-500/50 hover:border-violet-400 transition-all duration-300 shadow-xl hover:shadow-violet-500/40 transform hover:-translate-y-1 text-left" href="#education-spotlight">
+                        <div class="flex items-center space-x-4">
+                            <i class="fas fa-graduation-cap text-4xl text-violet-400 group-hover:text-white transition-colors"></i>
+                            <div class="flex-1">
+                                <p class="text-lg font-bold font-display text-white mb-1" data-lang-key="hero_service_edu">Liên kết Giáo dục</p>
+                                <p class="text-xs text-zinc-400 group-hover:text-zinc-200 transition-colors" data-lang-key="hero_service_edu_sub">GVNN, Chương trình quốc tế &amp; Tư vấn chiến lược.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-0 right-0 flex justify-center z-20">
+            <a class="animate-bounce w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/30 transition-colors hover:bg-blue-500/30" href="#impact-counters">
+                <i class="fas fa-chevron-down text-blue-400 text-lg"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="py-16 lg:py-24 bg-neutral-900 border-b border-zinc-800" id="impact-counters">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-handshake text-6xl text-blue-500 mb-3"></i>
+                    <h3 class="text-5xl lg:text-6xl font-bold font-display text-blue-500" data-target="7">0</h3>
+                    <p class="mt-2 text-xl font-semibold text-zinc-400" data-lang-key="impact_partners">Đối tác Giáo dục Quốc tế</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-users text-6xl text-emerald-500 mb-3"></i>
+                    <h3 class="text-5xl lg:text-6xl font-bold font-display text-emerald-500" data-target="4999">0</h3>
+                    <p class="mt-2 text-xl font-semibold text-zinc-400" data-lang-key="impact_students">Học viên &amp; Giáo viên</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-map-marked-alt text-6xl text-violet-500 mb-3"></i>
+                    <h3 class="text-5xl lg:text-6xl font-bold font-display text-violet-500" data-target="5">0</h3>
+                    <p class="mt-2 text-xl font-semibold text-zinc-400" data-lang-key="impact_coverage">Tỉnh thành Phủ sóng</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-zinc-900 border-b border-zinc-800" id="affiliates">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold font-display text-emerald-400 mb-4 leading-tight" data-lang-key="affiliates_title">Hệ Thống Đơn Vị Trực Thuộc IVS JSC</h2>
+                <p class="text-lg md:text-xl text-zinc-400 leading-relaxed" data-lang-key="affiliates_subtitle">Mỗi đơn vị là một mảnh ghép quan trọng, cùng nhau tạo nên hệ sinh thái Công nghệ - Giáo dục toàn diện của IVS.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                <a class="interactive-card p-6 md:p-8 rounded-xl flex flex-col sm:flex-row items-start gap-6 bg-zinc-800 border-cyan-500/50 hover:border-cyan-400" data-aos="fade-right" data-aos-delay="100" href="Pages/ivscelestech.html">
+                    <div class="flex-shrink-0 p-4 rounded-full bg-zinc-700">
+                        <i class="fas fa-satellite-dish text-4xl text-cyan-400"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-semibold font-display text-white mb-2" data-lang-key="unit_celestech_title">IVS Celestech - Công nghệ</h3>
+                        <p class="text-base text-zinc-400">Phát triển phần mềm, giải pháp AI, chuyển đổi số doanh nghiệp và tối ưu hóa hệ thống vận hành chuyên sâu.</p>
+                    </div>
+                </a>
+                
+                </div>
+        </div>
+    </section>
+</main>
+
+<script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/utils.js"></script>
+<script src="ai/js/fabController.js"></script>
+<script defer src="/js/aivy-integration.js"></script>
+<script src="/js/firebase-init.js"></script>
+<script src="/ai/js/loadComponents.js" defer></script>
+
+<script defer>
+    // Logic Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 64;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = window.pageYOffset + elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Callback sau khi các component dùng chung đã được load thành công
+    window.onPageComponentsLoadedCallback = function() {
+        console.log('Page components loaded (callback)');
+
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 700,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
+        }
+    };
+
+    // Fallback kích hoạt load components nếu DOM sẵn sàng trước
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!window.__IVS_components_loadingStarted && typeof window.loadCommonComponents === 'function') {
+            window.loadCommonComponents().catch(err => console.error('Failed to start components (fallback):', err));
+        }
+    });
+</script>
+</body>
+</html>

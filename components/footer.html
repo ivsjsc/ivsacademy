@@ -1,140 +1,236 @@
-<footer class="footer-section bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300" id="footer">
-  <!-- Main Footer Content -->
-  <div class="relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 z-0 opacity-5">
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" />
-    </div>
-    
-    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-      <!-- Top Section: Company Info + Quick Links + Services + Newsletter -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-12">
-        
-        <!-- Column 1: Company Info -->
-        <div class="space-y-6">
-          <a class="inline-flex items-center space-x-3 group" href="/index.html">
-            <img alt="IVS JSC Logo" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='/images/logo/logo.svg';" src="/images/logo/logo.svg"/>
-            <span class="text-white font-semibold text-lg leading-tight">IVS JSC</span>
+<!-- Optimized IVS Footer Component
+     Usage: <footer id="footer-placeholder"></footer>
+     Loaded by /ai/js/loadComponents.js
+-->
+<div class="footer-section relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-950 to-black text-gray-300">
+  <div class="absolute inset-0 z-0 opacity-[0.04]" aria-hidden="true">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#60a5fa_0,transparent_28%),radial-gradient(circle_at_80%_10%,#f97316_0,transparent_24%),radial-gradient(circle_at_50%_100%,#8b5cf6_0,transparent_30%)]"></div>
+  </div>
+
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <!-- Footer CTA -->
+    <div class="mb-12 rounded-3xl border border-white/10 bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 p-6 md:p-8 shadow-2xl shadow-blue-950/40">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-blue-100">IVS JSC · Integrate Vision Synergy</p>
+          <h2 class="mt-2 text-2xl md:text-3xl font-extrabold text-white font-display">Giáo dục, Công nghệ & Chuyển đổi số cho tổ chức hiện đại</h2>
+          <p class="mt-3 max-w-3xl text-sm md:text-base text-blue-50/90">IVS đồng hành triển khai chương trình giáo dục, nền tảng EdTech, website, web/app, LMS, CRM, marketplace, AI assistant và hệ thống quản lý theo nhu cầu thực tế.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a href="/contact.html" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-50">
+            <i class="fas fa-paper-plane"></i> Đăng ký tư vấn
           </a>
-          <p class="text-sm text-gray-400 leading-relaxed" data-lang-key="footer_company_name">
-            INTEGRATE VISION SYNERGY TRADING SERVICES JOIN STOCK COMPANY
-          </p>
-          <div class="space-y-3 text-sm">
-            <div class="flex items-start group">
-              <i class="fas fa-map-marker-alt w-5 h-5 mr-3 mt-0.5 flex-shrink-0 text-orange-500 group-hover:text-orange-400 transition-colors"></i>
-              <span class="text-gray-400 group-hover:text-gray-300 transition-colors" data-lang-key="footer_address">Ấp Đất Mới, Xã Long Phước, Tỉnh Đồng Nai, Việt Nam</span>
-            </div>
-            <div class="flex items-center group">
-              <i class="fas fa-envelope w-5 h-5 mr-3 flex-shrink-0 text-orange-500 group-hover:text-orange-400 transition-colors"></i>
-              <a class="text-gray-400 hover:text-orange-400 transition-colors duration-200" data-lang-key="footer_email_address" href="mailto:info@ivsacademy.edu.vn">info@ivsacademy.edu.vn</a>
-            </div>
+          <a href="/Pages/webdesign.html" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/15">
+            <i class="fas fa-code"></i> Dịch vụ Web/App
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
+      <!-- Company -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a class="inline-flex items-center gap-3 group" href="/index.html">
+          <img alt="IVS JSC Logo" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='/images/logo/logo.svg';" src="/images/logo/logo.svg"/>
+          <span class="text-white font-bold text-lg leading-tight">IVS JSC</span>
+        </a>
+        <p class="mt-4 text-xs uppercase tracking-wide text-gray-500">INTEGRATE VISION SYNERGY TRADING SERVICES JOIN STOCK COMPANY</p>
+        <p class="mt-3 text-sm leading-relaxed text-gray-400">Giáo dục • Công nghệ • AI • Chuyển đổi số • Liên kết trường học</p>
+
+        <div class="mt-5 space-y-3 text-sm">
+          <div class="flex items-start">
+            <i class="fas fa-map-marker-alt mt-1 mr-3 w-4 text-orange-400"></i>
+            <span class="text-gray-400">Ấp Đất Mới, Xã Long Phước, Tỉnh Đồng Nai, Việt Nam</span>
           </div>
-          
-          <!-- Social Links -->
-          <div class="pt-4">
-            <h4 class="text-sm font-semibold text-white mb-3 uppercase tracking-wider" data-lang-key="footer_connect_title">Kết nối</h4>
-            <div class="flex space-x-3">
-              <a aria-label="YouTube" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-orange-500 hover:text-white transition-all duration-300 hover:scale-110" href="https://www.youtube.com/@integratevisionsynergy" rel="noopener noreferrer" target="_blank">
-                <i class="fab fa-youtube"></i>
-              </a>
-              <a aria-label="TikTok" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-orange-500 hover:text-white transition-all duration-300 hover:scale-110" href="https://www.tiktok.com/@congty.ivsjsc" rel="noopener noreferrer" target="_blank">
-                <i class="fab fa-tiktok"></i>
-              </a>
-              <a aria-label="Instagram" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-orange-500 hover:text-white transition-all duration-300 hover:scale-110" href="https://instagram.com/ivs.jsc/" rel="noopener noreferrer" target="_blank">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a aria-label="Zalo" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-orange-500 hover:text-white transition-all duration-300 hover:scale-110" href="https://zalo.me/1582587135739746654" rel="noopener noreferrer" target="_blank">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 50 50"><path d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z M 9 6 L 15.580078 6 C 12.00899 9.7156859 10 14.518083 10 19.5 C 10 24.66 12.110156 29.599844 15.910156 33.339844 C 16.030156 33.549844 16.129922 34.579531 15.669922 35.769531 C 15.379922 36.519531 14.799687 37.499141 13.679688 37.869141 C 13.249688 38.009141 12.97 38.430859 13 38.880859 C 13.03 39.330859 13.360781 39.710781 13.800781 39.800781 C 16.670781 40.370781 18.529297 39.510078 20.029297 38.830078 C 21.379297 38.210078 22.270625 37.789609 23.640625 38.349609 C 26.440625 39.439609 29.42 40 32.5 40 C 36.593685 40 40.531459 39.000731 44 37.113281 L 44 41 C 44 42.668484 42.668484 44 41 44 L 9 44 C 7.3315161 44 6 42.668484 6 41 L 6 9 C 6 7.3315161 7.3315161 6 9 6 z M 33 15 C 33.55 15 34 15.45 34 16 L 34 25 C 34 25.55 33.55 26 33 26 C 32.45 26 32 25.55 32 25 L 32 16 C 32 15.45 32.45 15 33 15 z M 18 16 L 23 16 C 23.36 16 23.700859 16.199531 23.880859 16.519531 C 24.050859 16.829531 24.039609 17.219297 23.849609 17.529297 L 19.800781 24 L 23 24 C 23.55 24 24 24.45 24 25 C 24 25.55 23.55 26 23 26 L 18 26 C 17.64 26 17.299141 25.800469 17.119141 25.480469 C 16.949141 25.170469 16.960391 24.780703 17.150391 24.470703 L 21.199219 18 L 18 18 C 17.45 18 17 17.55 17 17 C 17 16.45 17.45 16 18 16 z"></path></svg>
-              </a>
-              <a aria-label="Facebook" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-orange-500 hover:text-white transition-all duration-300 hover:scale-110" href="https://www.facebook.com/ivsacademy.edu/" rel="noopener noreferrer" target="_blank">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </div>
+          <div class="flex items-center">
+            <i class="fas fa-envelope mr-3 w-4 text-orange-400"></i>
+            <a class="text-gray-400 hover:text-orange-300" href="mailto:info@ivsacademy.edu.vn">info@ivsacademy.edu.vn</a>
           </div>
-        </div>
-        
-        <!-- Column 2: Quick Links -->
-        <div class="space-y-4">
-          <h3 class="text-base font-semibold text-white mb-4 uppercase tracking-wider border-b-2 border-orange-500 pb-2 inline-block" data-lang-key="footer_quick_links_title">Liên Kết Nhanh</h3>
-          <ul class="space-y-2.5 text-sm">
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_about_us" href="/about.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>Về chúng tôi</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_contact" href="/contact.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>Liên hệ</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_careers" href="/Pages/careervn.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>Tuyển Dụng</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_terms" href="/Pages/legal/terms.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>Điều khoản dịch vụ</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_privacy" href="/Pages/legal/privacy.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>Chính sách bảo mật</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_read_novel" href="/Pages/apps/story-repository.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>Đọc truyện</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_blog" href="/news-archive.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>Tin tức</a></li>
-          </ul>
-        </div>
-        
-        <!-- Column 3: Services -->
-        <div class="space-y-4">
-          <h3 class="text-base font-semibold text-white mb-4 uppercase tracking-wider border-b-2 border-orange-500 pb-2 inline-block" data-lang-key="footer_services_title">Dịch vụ</h3>
-          <ul class="space-y-2.5 text-sm">
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_service_languages" href="https://ivscentercare.web.app/"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>(SaaS) CenterCare by IVS</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_service_languages" href="/Pages/ivs-academy.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>IVS Academy</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_service_celestech" href="/Pages/ivscelestech.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>IVS Celestech</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_service_media" href="/Pages/ivsmedia.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>IVS Media</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_service_lifeminds" href="/Pages/ivslifeminds.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>IVS LifeMinds</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_service_rnd" href="/Pages/rnd-curriculum.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>R&amp;D Chương trình</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" data-lang-key="footer_menu_web_design" href="/Pages/webdesign.html"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>Thiết kế Web</a></li>
-            <li><a class="text-gray-400 hover:text-orange-400 transition-all duration-200 flex items-center group" href="https://ivstech.store/" target="_blank"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>ivstech.store</a></li>
-          </ul>
-        </div>
-        
-        <!-- Column 4: Newsletter -->
-        <div class="space-y-4">
-          <h3 class="text-base font-semibold text-white mb-4 uppercase tracking-wider border-b-2 border-orange-500 pb-2 inline-block" data-lang-key="footer_newsletter_title">Đăng ký nhận bản tin</h3>
-          <p class="text-sm text-gray-400 leading-relaxed" data-lang-key="footer_newsletter_desc">Nhập Email của bạn để nhận thông tin cập nhật mới nhất từ IVS JSC.</p>
-          <form action="/" class="space-y-3" data-fallback-action="https://formspree.io/f/mqaqqrkz" data-netlify="true" data-netlify-honeypot="bot-field" id="newsletterForm" method="POST" name="newsletter">
-            <input name="form-name" type="hidden" value="newsletter"/>
-            <div aria-hidden="true" style="display:none;">
-              <label>Không điền nếu bạn là người thật: <input name="bot-field"/></label>
-            </div>
-            <div class="relative">
-              <input aria-label="Nhập Email của bạn" class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:border-orange-400" data-lang-key="footer_newsletter_email_placeholder" id="newsletterEmail" name="email" placeholder="Nhập Email của bạn" required="" type="email"/>
-            </div>
-            <button class="w-full px-6 py-2.5 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg hover:from-orange-700 hover:to-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-orange-500/30" data-error-text-key="newsletter_error" data-invalid-email-text-key="newsletter_invalid_email" data-lang-key="footer_newsletter_button" data-processing-text-key="newsletter_processing" data-success-text-key="newsletter_success" type="submit">
-              <span class="flex items-center justify-center gap-2">
-                <i class="fas fa-paper-plane"></i>
-                <span>Đăng ký</span>
-              </span>
-            </button>
-          </form>
-          <div class="text-sm transition-all duration-300" id="newsletterMessage"></div>
-          
-          <!-- Fanpages -->
-          <div class="pt-4 border-t border-gray-800">
-            <h4 class="text-sm font-medium mb-3 text-white" data-lang-key="footer_fanpages_title">Fanpages</h4>
-            <div class="space-y-3">
-              <div class="rounded-lg overflow-hidden bg-gray-800/50 p-2">
-                <iframe allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" frameborder="0" height="120" loading="lazy" scrolling="no" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fivsacademy.edu%2F&amp;tabs=&amp;width=340&amp;height=120&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true" style="border:none;overflow:hidden;display:block" width="100%">
-                </iframe>
-              </div>
-              <div class="rounded-lg overflow-hidden bg-gray-800/50 p-2">
-                <iframe allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" frameborder="0" height="120" loading="lazy" scrolling="no" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fivsjsc%2F&amp;tabs=&amp;width=340&amp;height=120&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true" style="border:none;overflow:hidden;display:block" width="100%">
-                </iframe>
-              </div>
-            </div>
+          <div class="flex items-center">
+            <i class="fas fa-globe mr-3 w-4 text-orange-400"></i>
+            <a class="text-gray-400 hover:text-orange-300" href="https://ivsacademy.edu.vn" target="_blank" rel="noopener noreferrer">ivsacademy.edu.vn</a>
           </div>
         </div>
       </div>
-      
-      <!-- Bottom Section: Copyright -->
-      <div class="pt-8 border-t border-gray-800">
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div class="text-sm text-gray-400">
-            <p class="mb-1">🌐 Verified Enterprise D.U.N.S: <span class="text-orange-400 font-semibold">64-643-4880</span></p>
-            <a class="text-gray-400 hover:text-orange-400 transition-colors inline-flex items-center gap-1" href="https://vnbis.com/products/companies/..." target="_blank">
-              View Company Profile <i class="fas fa-external-link-alt text-xs"></i>
-            </a>
+
+      <!-- Digital Solutions -->
+      <div>
+        <h3 class="footer-heading">Giải pháp số</h3>
+        <ul class="footer-links">
+          <li><a href="https://ivscentercare.web.app/" target="_blank" rel="noopener noreferrer">CenterCare by IVS</a></li>
+          <li><a href="/Pages/learningcare.html">LearningCare</a></li>
+          <li><a href="https://qr.acfmart.vn/" target="_blank" rel="noopener noreferrer">QRVerified by IVS</a></li>
+          <li><a href="https://acfmart.vn/" target="_blank" rel="noopener noreferrer">ACFMart</a></li>
+          <li><a href="/Pages/ivscelestech.html">IVS Celestech</a></li>
+          <li><a href="/Pages/webdesign.html">Thiết kế Web/App</a></li>
+          <li><a href="https://ivstech.store/" target="_blank" rel="noopener noreferrer">ivstech.store</a></li>
+        </ul>
+      </div>
+
+      <!-- Education -->
+      <div>
+        <h3 class="footer-heading">Giáo dục</h3>
+        <ul class="footer-links">
+          <li><a href="/Pages/ivs-academy.html">IVS Academy</a></li>
+          <li><a href="/Pages/education-partnership.html">Liên kết trường học</a></li>
+          <li><a href="/Pages/international-teachers.html">Giáo viên quốc tế</a></li>
+          <li><a href="/Pages/rnd-curriculum.html">R&amp;D Chương trình</a></li>
+          <li><a href="/Pages/ivslifeminds.html">IVS LifeMinds</a></li>
+          <li><a href="https://ivseng.netlify.app/" target="_blank" rel="noopener noreferrer">IVS English</a></li>
+          <li><a href="https://mandarinbyivs.netlify.app/" target="_blank" rel="noopener noreferrer">IVS Mandarin Learners</a></li>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="footer-heading">Liên kết nhanh</h3>
+        <ul class="footer-links">
+          <li><a href="/about.html">Về chúng tôi</a></li>
+          <li><a href="/contact.html">Liên hệ</a></li>
+          <li><a href="/Pages/careervn.html">Tuyển dụng</a></li>
+          <li><a href="/profile-company-ivsjsc.html">Hồ sơ năng lực</a></li>
+          <li><a href="/news-archive.html">Tin tức</a></li>
+          <li><a href="/Pages/apps/story-repository.html">Đọc truyện</a></li>
+          <li><a href="/Pages/legal/terms.html">Điều khoản dịch vụ</a></li>
+          <li><a href="/Pages/legal/privacy.html">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div>
+        <h3 class="footer-heading">Kết nối</h3>
+        <p class="mb-4 text-sm text-gray-400">Nhận thông tin cập nhật mới nhất từ IVS JSC.</p>
+
+        <form action="/" class="space-y-3" data-fallback-action="https://formspree.io/f/mqaqqrkz" data-netlify="true" data-netlify-honeypot="bot-field" id="newsletterForm" method="POST" name="newsletter">
+          <input name="form-name" type="hidden" value="newsletter"/>
+          <div aria-hidden="true" style="display:none;">
+            <label>Không điền nếu bạn là người thật: <input name="bot-field"/></label>
           </div>
-          <div class="text-sm text-gray-400 text-center md:text-right">
-            <p class="mb-1">© <span id="current-year">2024</span> | <a class="text-orange-400 hover:text-orange-300 font-semibold transition-colors" href="/Pages/webdesign.html" rel="noopener noreferrer" target="_blank">IVS JSC</a> | Bản quyền số: 6207/2024/QTG</p>
-            <p class="text-xs text-gray-500">All rights reserved</p>
-          </div>
+          <input aria-label="Nhập Email của bạn" class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-500/30" id="newsletterEmail" name="email" placeholder="Nhập Email của bạn" required type="email"/>
+          <button class="w-full rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-orange-950/30 transition hover:from-orange-500 hover:to-orange-400" type="submit">
+            <span class="flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i>Đăng ký</span>
+          </button>
+        </form>
+        <div class="mt-2 text-sm transition-all duration-300" id="newsletterMessage"></div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a aria-label="Facebook" class="social-btn" href="https://www.facebook.com/ivsacademy.edu/" rel="noopener noreferrer" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a aria-label="YouTube" class="social-btn" href="https://www.youtube.com/@integratevisionsynergy" rel="noopener noreferrer" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a aria-label="TikTok" class="social-btn" href="https://www.tiktok.com/@congty.ivsjsc" rel="noopener noreferrer" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a aria-label="Instagram" class="social-btn" href="https://instagram.com/ivs.jsc/" rel="noopener noreferrer" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a aria-label="Zalo" class="social-btn" href="https://zalo.me/1582587135739746654" rel="noopener noreferrer" target="_blank"><span class="text-xs font-black">Zalo</span></a>
+        </div>
+
+        <div class="mt-5 grid gap-2">
+          <a class="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-sm text-gray-300 transition hover:border-orange-400/50 hover:bg-white/[0.06]" href="https://www.facebook.com/ivsacademy.edu/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook mr-2 text-orange-400"></i>Fanpage IVS Academy
+          </a>
+          <a class="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-sm text-gray-300 transition hover:border-orange-400/50 hover:bg-white/[0.06]" href="https://www.facebook.com/ivsjsc/" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook mr-2 text-orange-400"></i>Fanpage IVS JSC
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="mt-12 border-t border-white/10 pt-8">
+      <div class="grid gap-5 md:grid-cols-3 md:items-center">
+        <div class="text-sm text-gray-400">
+          <p class="font-semibold text-white">© <span id="current-year">2026</span> IVS JSC</p>
+          <p class="mt-1 text-xs text-gray-500">All rights reserved.</p>
+        </div>
+
+        <div class="text-sm text-gray-400 md:text-center">
+          <p>Verified Enterprise D.U.N.S: <span class="font-semibold text-orange-400">64-643-4880</span></p>
+          <a class="mt-1 inline-flex items-center gap-1 text-xs text-gray-500 hover:text-orange-300" href="https://vnbis.com/products/companies/..." target="_blank" rel="noopener noreferrer">
+            View Company Profile <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+
+        <div class="text-sm text-gray-400 md:text-right">
+          <p>Bản quyền số: <span class="font-semibold text-orange-400">6207/2024/QTG</span></p>
+          <p class="mt-1 text-xs text-gray-500">Giáo dục • Công nghệ • Chuyển đổi số</p>
         </div>
       </div>
     </div>
   </div>
-</footer>
+
+  <style>
+    .footer-heading {
+      margin-bottom: 1rem;
+      display: inline-block;
+      border-bottom: 2px solid #f97316;
+      padding-bottom: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .footer-links {
+      display: grid;
+      gap: 0.65rem;
+      font-size: 0.875rem;
+    }
+    .footer-links a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      color: #9ca3af;
+      transition: color 180ms ease, transform 180ms ease;
+    }
+    .footer-links a::before {
+      content: "";
+      width: 0.35rem;
+      height: 0.35rem;
+      margin-right: 0.5rem;
+      border-radius: 9999px;
+      background: #f97316;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+    .footer-links a:hover {
+      color: #fb923c;
+      transform: translateX(2px);
+    }
+    .footer-links a:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .social-btn {
+      display: inline-flex;
+      width: 2.25rem;
+      height: 2.25rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.06);
+      color: #d1d5db;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+    .social-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      background: #f97316;
+      color: #ffffff;
+    }
+  </style>
+
+  <script>
+    (function () {
+      var year = document.getElementById('current-year');
+      if (year) year.textContent = new Date().getFullYear();
+
+      var form = document.getElementById('newsletterForm');
+      var message = document.getElementById('newsletterMessage');
+      if (!form || !message || form.dataset.ivsBound === '1') return;
+      form.dataset.ivsBound = '1';
+
+      form.addEventListener('submit', function () {
+        message.textContent = 'Đang gửi thông tin đăng ký...';
+        message.className = 'mt-2 text-sm text-orange-300';
+      });
+    })();
+  </script>
+</div>
