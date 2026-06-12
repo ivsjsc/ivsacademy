@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IVS Academy — Proposal Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+/* ===== DESIGN TOKENS =====
+   Navy   #0B1F3A   |  Sky #2F80ED  |  Cyan #EAF4FF
+   Orange #F97316   |  Cream #FFF7ED |  Charcoal #1F2937
+   Heading: Fraunces (display serif)  Body: Be Vietnam Pro (VN-safe)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+
+:root{
+  --navy:#0B1F3A; --navy-2:#13315C; --sky:#2F80ED; --cyan:#EAF4FF;
+  --orange:#F97316; --cream:#FFF7ED; --char:#1F2937; --muted:#64748B;
+  --line:#E2E8F0; --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#525866;font-family:'Be Vietnam Pro',sans-serif;color:var(--char);
+  display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0}
+
+/* A4 landscape @ 96dpi = 1123 x 794 */
+.page{width:1123px;height:794px;background:var(--white);position:relative;
+  overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);page-break-after:always;break-after:page}
+@media print{body{padding:0;gap:0;background:#fff}.page{box-shadow:none}}
+
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase}
+.h-display{font-family:'Fraunces',serif;font-weight:600;line-height:1.04;letter-spacing:-.5px}
+
+/* shared footer */
+.foot{position:absolute;left:48px;right:48px;bottom:24px;display:flex;
+  justify-content:space-between;font-size:11px;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:12px}
+.page--dark .foot{color:#7E93B5;border-top-color:rgba(255,255,255,.12)}
+
+/* logo lockup */
+.logo{display:flex;align-items:center;gap:10px}
+.logo .mark{width:40px;height:40px;border-radius:9px;background:var(--orange);
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  font-family:'Fraunces',serif;font-weight:700;font-size:19px;
+  box-shadow:0 4px 14px rgba(249,115,22,.4)}
+.logo .wm{font-family:'Fraunces',serif;font-weight:700;font-size:18px;line-height:1;letter-spacing:.5px}
+.logo .wm small{display:block;font-family:'Be Vietnam Pro';font-weight:600;
+  font-size:8px;letter-spacing:2.5px;color:var(--muted);margin-top:3px}
+.page--dark .logo .wm{color:#fff}
+.page--dark .logo .wm small{color:#8FA6C9}
+
+/* ============ PAGE 01 — COVER ============ */
+#cover{background:var(--navy)}
+#cover .art{position:absolute;top:0;right:0;width:46%;height:100%;
+  background:linear-gradient(135deg,#1b3a66,#0B1F3A);overflow:hidden;
+  clip-path:polygon(18% 0,100% 0,100% 100%,0 100%)}
+#cover .art .imgph{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;color:#5B7AA8;font-size:13px;font-weight:600;letter-spacing:1px;
+  background:repeating-linear-gradient(45deg,#16335c,#16335c 14px,#173863 14px,#173863 28px)}
+#cover .slash{position:absolute;top:0;left:48%;width:46px;height:100%;
+  background:var(--orange);transform:skewX(-11deg);transform-origin:top;z-index:3}
+#cover .left{position:absolute;top:0;left:0;width:54%;height:100%;
+  padding:52px 56px;display:flex;flex-direction:column;z-index:2}
+#cover .pill{display:inline-block;align-self:flex-start;margin-top:30px;
+  padding:7px 16px;border:1px solid rgba(255,255,255,.28);border-radius:30px;
+  color:#BFD3F0;font-size:11px;font-weight:700;letter-spacing:2px}
+#cover .eyebrow{color:var(--orange);margin-top:42px}
+#cover h1{color:#fff;font-size:44px;margin-top:14px;max-width:100%}
+#cover h1 em{color:var(--orange);font-style:normal}
+#cover .partner{margin-top:auto;color:#fff;font-size:21px;font-weight:700}
+#cover .tag{color:#8FA6C9;font-size:13px;margin-top:8px;font-weight:500}
+#cover .card{position:absolute;right:40px;bottom:88px;width:268px;z-index:4;
+  background:rgba(255,255,255,.96);border-radius:16px;padding:20px 22px;
+  box-shadow:0 18px 40px rgba(0,0,0,.3)}
+#cover .card h4{font-family:'Fraunces',serif;font-size:17px;color:var(--navy);margin-bottom:7px}
+#cover .card p{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ============ PAGE 06 — PARTNERSHIP MODELS ============ */
+#models{background:var(--cream);padding:48px 56px 0}
+#models .top{display:flex;justify-content:space-between;align-items:flex-start}
+#models .tag-eb{background:#FCE3CF;color:var(--orange);padding:6px 14px;
+  border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1.5px}
+#models h2{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);
+  font-size:38px;margin-top:18px;letter-spacing:-.5px}
+#models .sub{color:var(--muted);font-size:14px;margin-top:8px;max-width:680px;line-height:1.5}
+#models .stairs{display:flex;gap:14px;margin-top:38px;align-items:flex-end}
+#models .step{flex:1;border-radius:16px 16px 0 0;padding:20px 16px 22px;
+  color:#fff;position:relative;box-shadow:0 12px 26px rgba(11,31,58,.16)}
+#models .step .n{font-family:'Fraunces',serif;font-size:30px;font-weight:700;opacity:.55}
+#models .step h3{font-size:15px;font-weight:700;margin-top:6px;line-height:1.2}
+#models .step p{font-size:11px;margin-top:8px;line-height:1.45;opacity:.92}
+#models .s1{height:200px;background:#9DB4D4}
+#models .s2{height:228px;background:#5B82C0}
+#models .s3{height:256px;background:var(--sky)}
+#models .s4{height:284px;background:var(--navy-2)}
+#models .s5{height:312px;background:var(--navy);border-top:4px solid var(--orange)}
+#models .principle{margin-top:26px;background:#fff;border:1px solid var(--line);
+  border-left:4px solid var(--orange);border-radius:12px;padding:16px 22px;
+  display:flex;align-items:center;gap:14px}
+#models .principle b{font-family:'Fraunces',serif;color:var(--navy);font-size:14px;white-space:nowrap}
+#models .principle span{color:var(--muted);font-size:13px;line-height:1.4}
+
+/* ============ PAGE 08 — IVS LEARNING ECOSYSTEM ============ */
+#eco{background:#fff;padding:48px 56px 0}
+#eco .top{display:flex;justify-content:space-between;align-items:flex-start}
+#eco .tag-eb{background:var(--cyan);color:var(--sky);padding:6px 14px;
+  border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1.5px}
+#eco h2{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);
+  font-size:38px;margin-top:18px;letter-spacing:-.5px}
+#eco .sub{color:var(--muted);font-size:14px;margin-top:8px;max-width:680px;line-height:1.5}
+#eco .grid{display:flex;gap:20px;margin-top:36px}
+#eco .mod{flex:1;border:1px solid var(--line);border-radius:18px;padding:24px 22px;
+  background:linear-gradient(180deg,#fff,#FBFDFF);position:relative;overflow:hidden}
+#eco .mod::before{content:"";position:absolute;top:0;left:0;right:0;height:5px}
+#eco .mod.m1::before{background:var(--orange)}
+#eco .mod.m2::before{background:var(--sky)}
+#eco .mod.m3::before{background:#16A34A}
+#eco .ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;
+  justify-content:center;font-size:22px;margin-bottom:14px}
+#eco .m1 .ico{background:#FEE8D6;color:var(--orange)}
+#eco .m2 .ico{background:var(--cyan);color:var(--sky)}
+#eco .m3 .ico{background:#DCFCE7;color:#16A34A}
+#eco .mod h3{font-family:'Fraunces',serif;color:var(--navy);font-size:21px}
+#eco .mod .role{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px;
+  text-transform:uppercase;margin:4px 0 14px}
+#eco .mod ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+#eco .mod li{font-size:13px;color:var(--char);display:flex;align-items:center;gap:9px}
+#eco .mod li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sky);flex:none}
+#eco .m1 li::before{background:var(--orange)}
+#eco .m3 li::before{background:#16A34A}
+#eco .integ{margin-top:22px;background:var(--navy);border-radius:16px;
+  padding:20px 26px;display:flex;align-items:center;gap:18px;color:#fff}
+#eco .integ .badge{background:var(--orange);color:#fff;font-weight:700;font-size:12px;
+  padding:8px 14px;border-radius:10px;white-space:nowrap;letter-spacing:.5px}
+#eco .integ p{font-size:13px;line-height:1.5;color:#C9D8EF}
+#eco .integ p b{color:#fff;font-family:'Fraunces',serif}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 01 : COVER ============ -->
+<section class="page page--dark" id="cover">
+  <div class="art"><div class="imgph">[ Ảnh lớp học / sảnh IVS Academy ]</div></div>
+  <div class="slash"></div>
+  <div class="left">
+    <div class="logo">
+      <div class="mark">IV+</div>
+      <div class="wm">ACADEMY<small>LEARN · GROW · SUCCEED</small></div>
+    </div>
+    <span class="pill">PROPOSAL PROFILE · A4 LANDSCAPE</span>
+    <div class="eyebrow">ĐỀ XUẤT HỢP TÁC</div>
+    <h1 class="h-display">Biến không gian sẵn có thành <em>chương trình tiếng Anh có doanh thu</em></h1>
+    <div class="partner">IVS Academy × [Tên Trường Mầm Non Đối Tác]</div>
+    <div class="tag">Learn · Grow · Succeed&nbsp;&nbsp;|&nbsp;&nbsp;CenterCare · LearningCare · LMS</div>
+  </div>
+  <div class="card">
+    <h4>Bắt đầu nhỏ — Mở rộng bằng dữ liệu</h4>
+    <p>Từ demo trải nghiệm, lớp định kỳ, chương trình tăng cường đến English Corner và điểm liên kết ngoại ngữ.</p>
+  </div>
+  <div class="foot"><span>IVS Academy × Mầm non Đối tác</span><span>Cover</span><span>01</span></div>
+</section>
+
+<!-- ============ PAGE 06 : PARTNERSHIP MODELS ============ -->
+<section class="page" id="models">
+  <div class="top">
+    <div><span class="tag-eb">03 / MÔ HÌNH HỢP TÁC</span></div>
+    <div class="logo"><div class="mark">IV+</div><div class="wm" style="color:var(--navy)">ACADEMY<small>LEARN · GROW · SUCCEED</small></div></div>
+  </div>
+  <h2>Năm cấp độ — bắt đầu nhẹ, nâng cấp khi thấy hiệu quả</h2>
+  <p class="sub">Trường có thể khởi động bằng demo, sau đó tăng dần mức cam kết khi phụ huynh và nhà trường thấy hiệu quả thực tế.</p>
+
+  <div class="stairs">
+    <div class="step s1"><div class="n">01</div><h3>Demo Experience</h3><p>Học thử, sự kiện, thu phản hồi phụ huynh.</p></div>
+    <div class="step s2"><div class="n">02</div><h3>Standard Class</h3><p>Lớp tiếng Anh định kỳ tại trường.</p></div>
+    <div class="step s3"><div class="n">03</div><h3>Bilingual Plus</h3><p>Tăng cường GVNN, speaking, phonics.</p></div>
+    <div class="step s4"><div class="n">04</div><h3>English Corner</h3><p>Không gian tiếng Anh đồng thương hiệu.</p></div>
+    <div class="step s5"><div class="n">05</div><h3>Linked Center</h3><p>Điểm liên kết ngoại ngữ vận hành tại trường.</p></div>
+  </div>
+
+  <div class="principle">
+    <b>Nguyên tắc thiết kế hợp tác</b>
+    <span>Bắt đầu nhỏ → đo phản hồi thật → chuẩn hóa vận hành → mở rộng bằng dữ liệu → tối ưu cơ sở vật chất.</span>
+  </div>
+  <div class="foot"><span>IVS Academy × Mầm non Đối tác</span><span>Mô hình hợp tác</span><span>06</span></div>
+</section>
+
+<!-- ============ PAGE 08 : IVS LEARNING ECOSYSTEM ============ -->
+<section class="page" id="eco">
+  <div class="top">
+    <div><span class="tag-eb">04 / HỆ SINH THÁI IVS LEARNING</span></div>
+    <div class="logo"><div class="mark">IV+</div><div class="wm" style="color:var(--navy)">ACADEMY<small>LEARN · GROW · SUCCEED</small></div></div>
+  </div>
+  <h2>Vận hành bằng hệ thống, không bằng file rời</h2>
+  <p class="sub">Mỗi lớp tiếng Anh được hỗ trợ bằng dữ liệu vận hành, học vụ và học liệu số trong một logic quản trị thống nhất.</p>
+
+  <div class="grid">
+    <div class="mod m1">
+      <div class="ico">▦</div>
+      <h3>CenterCare</h3>
+      <div class="role">Quản lý trung tâm</div>
+      <ul><li>Lớp học &amp; sĩ số</li><li>Lịch học &amp; điểm danh</li><li>Học phí &amp; thu chi</li><li>Vận hành trung tâm</li></ul>
+    </div>
+    <div class="mod m2">
+      <div class="ico">◑</div>
+      <h3>LearningCare</h3>
+      <div class="role">Quản lý học tập</div>
+      <ul><li>Học vụ &amp; tiến độ</li><li>Nhận xét học viên</li><li>Báo cáo định kỳ</li><li>Tương tác phụ huynh</li></ul>
+    </div>
+    <div class="mod m3">
+      <div class="ico">▤</div>
+      <h3>LMS</h3>
+      <div class="role">Nội dung học tập</div>
+      <ul><li>Học liệu &amp; chủ đề</li><li>Video bài học</li><li>Flashcard</li><li>Đánh giá kết quả</li></ul>
+    </div>
+  </div>
+
+  <div class="integ">
+    <span class="badge">+ Aivy AI</span>
+    <p><b>Tích hợp một luồng:</b> hỗ trợ tư vấn, chăm sóc phụ huynh và tự động hóa nhắc nhở — kết nối cả ba nền tảng để mọi hoạt động đều có dữ liệu, không vận hành bằng file rời rạc.</p>
+  </div>
+  <div class="foot"><span>IVS Academy × Mầm non Đối tác</span><span>IVS Learning</span><span>08</span></div>
+</section>
+
+</body>
+</html>
