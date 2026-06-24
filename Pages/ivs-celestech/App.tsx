@@ -152,6 +152,44 @@ const AppContent = () => {
                  </div>
                )
              } />
+             <Route path="/centercare" element={
+               <div className="max-w-4xl mx-auto">
+                 <div className="mb-8">
+                   <h1 className="text-3xl font-bold text-primary dark:text-dark-text mb-2">CenterCare</h1>
+                   <p className="text-textSub dark:text-dark-textSub">Quản lý trung tâm thông minh - Giải pháp quản lý vận hành trung tâm toàn diện</p>
+                 </div>
+                 <div className="bg-white dark:bg-dark-surface rounded-2xl shadow-lg border border-borderSub dark:border-dark-border p-6">
+                   <div className="flex flex-col items-center">
+                     <iframe 
+                       src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fivsacademy.edu%2Fposts%2Fpfbid02FSmyj257tfsVfym6aA7NXVYSVi6WsLFNg6HLDnCec5orZAVq835PFcS3G8yGpMJ9l&show_text=true&width=500" 
+                       width="500" 
+                       height="735" 
+                       style={{border:'none',overflow:'hidden'}} 
+                       scrolling="no" 
+                       frameBorder="0" 
+                       allowFullScreen={true} 
+                       allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                       title="CenterCare Facebook Post"
+                       className="rounded-lg"
+                     />
+                   </div>
+                   <div className="mt-6 grid md:grid-cols-3 gap-4">
+                     <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                       <h3 className="font-bold text-primary dark:text-dark-text mb-2">Lớp học & Sĩ số</h3>
+                       <p className="text-sm text-textSub dark:text-dark-textSub">Quản lý lớp học, theo dõi sĩ số và sắp xếp lịch học thông minh</p>
+                     </div>
+                     <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-xl">
+                       <h3 className="font-bold text-primary dark:text-dark-text mb-2">Điểm danh & Học phí</h3>
+                       <p className="text-sm text-textSub dark:text-dark-textSub">Tự động điểm danh, quản lý học phí và báo cáo thu chi</p>
+                     </div>
+                     <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                       <h3 className="font-bold text-primary dark:text-dark-text mb-2">Vận hành & Báo cáo</h3>
+                       <p className="text-sm text-textSub dark:text-dark-textSub">Quản lý vận hành trung tâm và báo cáo tự động</p>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             } />
              <Route path="*" element={<Dashboard />} />
            </Routes>
         </main>

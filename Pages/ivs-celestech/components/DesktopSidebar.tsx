@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Briefcase, PlusCircle, Settings, Rocket } from 'lucide-react';
+import { LayoutDashboard, Briefcase, PlusCircle, Settings, Rocket, Building2 } from 'lucide-react';
 import { Translation } from '../types';
 
 interface DesktopSidebarProps {
@@ -38,6 +38,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ trans }) => {
         <DesktopNavLink to="/dashboard" icon={<LayoutDashboard size={20} />} label={trans.dashboard} />
         <DesktopNavLink to="/services" icon={<Briefcase size={20} />} label={trans.services} />
         <DesktopNavLink to="/create" icon={<PlusCircle size={20} />} label={trans.create} />
+        <DesktopNavLink to="/centercare" icon={<Building2 size={20} />} label="CenterCare" />
         <DesktopNavLink to="/settings" icon={<Settings size={20} />} label={trans.support} />
       </nav>
 
