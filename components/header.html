@@ -14,7 +14,7 @@
 <span class="hidden sm:inline text-lg md:text-xl font-bold group-hover:text-ivs-accent transition-colors">IVS <span class="text-ivs-accent">JSC</span></span>
 </a>
 <div class="md:hidden ml-2 flex items-center">
-<button aria-expanded="false" aria-haspopup="true" class="p-2 rounded-full bg-white/5 backdrop-blur-sm shadow-sm focus:outline-none" id="lang-main-btn-mobile" onclick="(function(e){e.preventDefault();var dd=document.getElementById('lang-dropdown-mobile'); if(dd){ var isOpen=!dd.classList.contains('hidden'); dd.classList.toggle('hidden', isOpen); e.currentTarget.setAttribute('aria-expanded', String(!isOpen)); } else { var panel=document.getElementById('ivs-mobile-menu-panel'); var container=document.getElementById('ivs-mobile-menu-container'); if(panel &amp;&amp; container){ panel.classList.remove('hidden'); setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); },10); } } })(event)">
+<button aria-expanded="false" aria-haspopup="true" class="p-2 rounded-full bg-white/5 backdrop-blur-sm shadow-sm focus:outline-none" id="lang-main-btn-mobile">
 <span aria-hidden="true" class="flag-circle flag-circle-sm"><img alt="Lang" id="lang-main-mobile-flag" onerror="this.onerror=null; this.src='https://placehold.co/36x36/1f2937/ffffff?text=EN';" src="/images/flags/en.png"/></span>
 </button>
 </div>
@@ -164,6 +164,24 @@
                     panel.classList.remove('hidden');
                     // small delay so transitions apply
                     setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); }, 10);
+                });
+
+                // Mobile language button handler
+                addOnce(document.getElementById('lang-main-btn-mobile'), 'click', function(e){
+                    e.preventDefault();
+                    var dd = document.getElementById('lang-dropdown-mobile');
+                    if (dd) {
+                        var isOpen = !dd.classList.contains('hidden');
+                        dd.classList.toggle('hidden', isOpen);
+                        e.currentTarget.setAttribute('aria-expanded', String(!isOpen));
+                    } else {
+                        var panel = document.getElementById('ivs-mobile-menu-panel');
+                        var container = document.getElementById('ivs-mobile-menu-container');
+                        if (panel && container) {
+                            panel.classList.remove('hidden');
+                            setTimeout(function(){ panel.classList.remove('opacity-0'); container.classList.remove('-translate-x-full'); }, 10);
+                        }
+                    }
                 });
 
                 // Mobile close
