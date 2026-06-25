@@ -27,7 +27,7 @@ body.ivs-assistant-modal-open {
     position: fixed;
     bottom: var(--fab-spacing);
     right: var(--fab-spacing);
-    z-index: 12050; /* intentionally high but below .fab-topmost (2147483647) */
+    z-index: 10050; /* Below mobile menu (99999) but above regular content */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;

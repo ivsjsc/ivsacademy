@@ -180,8 +180,11 @@
                     setTimeout(function(){ panel.classList.add('hidden'); }, 300);
                 });
 
-                // Mobile backdrop close
-                addOnce(document.getElementById('ivs-mobile-menu-backdrop'), 'click', function(e){
+                // Mobile backdrop close - handle click on panel (outside container)
+                addOnce(document.getElementById('ivs-mobile-menu-panel'), 'click', function(e){
+                    // Only close if clicking directly on the panel (not on container or its children)
+                    const container = document.getElementById('ivs-mobile-menu-container');
+                    if (!container || container.contains(e.target)) return;
                     e.preventDefault();
                     document.getElementById('mobile-menu-close-btn')?.click();
                 });
@@ -416,10 +419,10 @@
 </header>
 <!-- Mobile language dropdown will be shown inline next to logo; dropdown options exist later in the DOM as .lang-option -->
 <!-- Mobile Menu Panel -->
-<div aria-modal="true" class="fixed inset-0 md:hidden hidden" id="ivs-mobile-menu-panel" role="dialog" style="z-index:12000;">
+<div aria-modal="true" class="fixed inset-0 md:hidden hidden" id="ivs-mobile-menu-panel" role="dialog" style="z-index:99999;">
 <!-- Backdrop with blur effect and background image -->
-<div class="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-400 opacity-0" id="ivs-mobile-menu-backdrop" style="background: url('/images/ivsacademy.jpeg') center/cover no-repeat, rgba(0,0,0,0.7);"></div>
-<div class="relative w-full max-w-sm h-full bg-ivs-bg-medium mr-auto flex flex-col transform -translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] rounded-r-3xl shadow-2xl p-2 md:p-4 glass-menu-panel" id="ivs-mobile-menu-container">
+<div class="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-400 opacity-0" id="ivs-mobile-menu-backdrop" style="background: url('/images/ivsacademy.jpeg') center/cover no-repeat, rgba(0,0,0,0.7); pointer-events: none;"></div>
+<div class="relative w-full max-w-sm h-full bg-ivs-bg-medium mr-auto flex flex-col transform -translate-x-full transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] rounded-r-3xl shadow-2xl p-2 md:p-4 glass-menu-panel" id="ivs-mobile-menu-container" style="pointer-events: auto; z-index: 100000;">
 <div class="flex items-center justify-between p-4 border-b border-ivs-bg-light">
 <span class="text-lg font-semibold text-ivs-accent menu-title" data-lang-key="mobile_menu_title">Menu</span>
 <img alt="IVS Logo" class="h-9 w-auto mx-auto hidden" height="36" id="mobile-menu-logo" loading="lazy" src="/images/logo.svg" width="120"/>
@@ -880,6 +883,7 @@
     -webkit-backdrop-filter: blur(10px);
     opacity: 0.98;
     transition: opacity 0.3s;
+    pointer-events: none;
 }
 
 /* Mobile menu panel nâng cấp */
@@ -892,6 +896,8 @@
     min-width: 80vw;
     max-width: 420px;
     transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
+    pointer-events: auto;
+    z-index: 100000;
 }
 
 #ivs-mobile-menu-panel:not(.hidden) #ivs-mobile-menu-container {

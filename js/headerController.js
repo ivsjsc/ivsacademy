@@ -109,7 +109,14 @@ const IVSHeaderController = {
         // Mobile Menu
         if (this.mobileOpenBtn) this.mobileOpenBtn.addEventListener('click', (e) => { e.preventDefault(); this.toggleMobileMenu(true); });
         if (this.mobileCloseBtn) this.mobileCloseBtn.addEventListener('click', (e) => { e.preventDefault(); this.toggleMobileMenu(false); });
-        if (this.mobileBackdrop) this.mobileBackdrop.addEventListener('click', (e) => { e.preventDefault(); this.toggleMobileMenu(false); });
+        // Handle backdrop click on panel (outside container)
+        if (this.mobilePanel) {
+            this.mobilePanel.addEventListener('click', (e) => {
+                // Only close if clicking directly on the panel, not on the container
+                if (this.mobileMenuContainer && this.mobileMenuContainer.contains(e.target)) return;
+                this.toggleMobileMenu(false);
+            });
+        }
 
         // Mobile Submenu
         this.submenuToggles.forEach(toggle => {
