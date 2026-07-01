@@ -208,7 +208,7 @@
             display: none;
             position: sticky;
             top: var(--header-height);
-            z-index: 40;
+            z-index: 999;
             background: rgba(5, 8, 22, .82);
             border-bottom: 1px solid rgba(148, 163, 184, .12);
             backdrop-filter: blur(16px);
@@ -486,7 +486,7 @@
 
 <body>
     <header id="header-placeholder" data-loading-text="Đang tải menu..."></header>
-    <nav id="mobileMenu" class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 lg:hidden"></nav>
+    <nav id="mobileMenu" class="fixed top-16 left-0 w-full h-full bg-ivs-bg/95 backdrop-blur-lg z-[998] transform translate-x-full transition-transform duration-300 lg:hidden"></nav>
 
     <nav class="subnav" aria-label="Điều hướng nhanh trong trang">
         <div class="max-w-7xl mx-auto container-pad">
