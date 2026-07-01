@@ -237,7 +237,7 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         .hero {
-            min-height: auto;
+            min-height: 100vh;
             position: relative;
             overflow: hidden;
         }
@@ -283,9 +283,16 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: .18;
-            filter: saturate(1.05) contrast(1.08);
+            opacity: .25;
+            filter: saturate(1.1) contrast(1.1) brightness(0.9);
             pointer-events: none;
+        }
+
+        @media (max-width: 767px) {
+            .hero-image {
+                opacity: .35;
+                filter: saturate(1.15) contrast(1.15) brightness(0.85);
+            }
         }
 
         .dashboard-frame {
@@ -406,22 +413,35 @@
             }
         }
 
-        .section-padding { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+        .section-padding { padding-top: 3rem; padding-bottom: 3rem; }
+
+        @media (min-width: 640px) {
+            .section-padding { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+        }
 
         @media (min-width: 768px) {
+            .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+        }
+
+        @media (min-width: 1024px) {
             .section-padding { padding-top: 6rem; padding-bottom: 6rem; }
         }
 
         .h1-fluid {
-            font-size: clamp(2.2rem, 9.4vw, 4.65rem);
-            line-height: .98;
-            letter-spacing: -.055em;
+            font-size: clamp(1.75rem, 8vw, 4.65rem);
+            line-height: 1.05;
+            letter-spacing: -.05em;
         }
 
         .h2-fluid {
-            font-size: clamp(2rem, 6vw, 3.75rem);
-            line-height: 1.06;
-            letter-spacing: -.045em;
+            font-size: clamp(1.5rem, 5vw, 3.75rem);
+            line-height: 1.1;
+            letter-spacing: -.04em;
+        }
+
+        @media (max-width: 767px) {
+            .h1-fluid { line-height: 1.1; }
+            .h2-fluid { line-height: 1.15; }
         }
 
         .small-heading {
@@ -429,13 +449,27 @@
             text-transform: uppercase;
             font-weight: 900;
             color: #22D3EE;
-            font-size: .78rem;
+            font-size: .7rem;
+        }
+
+        @media (min-width: 640px) {
+            .small-heading { font-size: .75rem; }
+        }
+
+        @media (min-width: 1024px) {
+            .small-heading { font-size: .78rem; }
         }
 
         @media (max-width: 767px) {
-            .dashboard-screen { min-height: 24rem; }
+            .dashboard-screen { min-height: 20rem; }
+            .dashboard-frame { display: none; }
             .soft-card:hover { transform: none; }
             [data-aos] { transform: none !important; }
+            .hero { min-height: auto; }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .dashboard-screen { min-height: 22rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -477,15 +511,15 @@
         <section class="hero" id="top">
             <div class="hero-bg-art" aria-hidden="true">
                 <picture>
-                    <source media="(max-width: 767px)" srcset="/images/banners/ivs-hero-mobile.webp" />
-                    <img class="hero-image" src="/images/banners/ivs-hero-desktop.webp" alt="" decoding="async" fetchpriority="high" onerror="this.style.display='none'" />
+                    <source media="(max-width: 767px)" srcset="/images/banners/ivstech.png" />
+                    <img class="hero-image" src="/images/banners/ivstech.png" alt="IVS JSC Banner Background" decoding="async" fetchpriority="high" onerror="this.style.display='none'" />
                 </picture>
             </div>
 
-            <div class="max-w-7xl mx-auto container-pad py-12 sm:py-16 lg:py-20">
-                <div class="grid lg:grid-cols-[1.02fr_.98fr] gap-10 lg:gap-12 items-center">
+            <div class="max-w-7xl mx-auto container-pad py-8 sm:py-12 lg:py-20">
+                <div class="grid lg:grid-cols-[1.02fr_.98fr] gap-8 lg:gap-12 items-center">
                     <div data-aos="fade-up">
-                        <p class="pill px-4 py-2 text-xs sm:text-sm mb-5">
+                        <p class="pill px-3 py-1.5 text-xs sm:text-sm mb-4 sm:mb-5">
                             <span class="w-2 h-2 rounded-full bg-ivs-green shadow-[0_0_18px_rgba(34,197,94,.8)]"></span>
                             IVS JSC · Education · Technology · Digital Transformation
                         </p>
@@ -496,39 +530,39 @@
                             cho tổ chức hiện đại
                         </h1>
 
-                        <p class="mt-5 sm:mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-slate-300 max-w-3xl">
+                        <p class="mt-4 sm:mt-5 lg:mt-6 text-sm sm:text-base lg:text-lg lg:text-xl leading-relaxed text-slate-300 max-w-3xl">
                             IVS JSC phát triển chương trình đào tạo, nền tảng quản lý, LMS, web/app, AI assistant và các giải pháp chuyển đổi số giúp trường học, trung tâm và doanh nghiệp vận hành hiệu quả hơn.
                         </p>
 
-                        <div class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
-                            <a href="#capabilities" class="btn-primary">
+                        <div class="mt-5 sm:mt-7 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 max-w-xl">
+                            <a href="#capabilities" class="btn-primary text-sm sm:text-base">
                                 <i class="fas fa-compass"></i>
                                 Khám phá năng lực IVS
                             </a>
-                            <a href="#contact" class="btn-secondary">
+                            <a href="#contact" class="btn-secondary text-sm sm:text-base">
                                 <i class="fas fa-handshake"></i>
                                 Liên hệ hợp tác
                             </a>
                         </div>
 
-                        <div class="mt-8 grid grid-cols-3 gap-3 max-w-2xl">
-                            <div class="rounded-2xl border border-white/10 bg-white/[.045] p-3 sm:p-4">
-                                <p class="text-xl sm:text-2xl font-display font-black text-ivs-cyan">Edu</p>
+                        <div class="mt-6 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-3 max-w-2xl">
+                            <div class="rounded-2xl border border-white/10 bg-white/[.045] p-2.5 sm:p-3 lg:p-4">
+                                <p class="text-lg sm:text-xl lg:text-2xl font-display font-black text-ivs-cyan">Edu</p>
                                 <p class="text-xs sm:text-sm text-slate-400 mt-1">Đào tạo & liên kết</p>
                             </div>
-                            <div class="rounded-2xl border border-white/10 bg-white/[.045] p-3 sm:p-4">
-                                <p class="text-xl sm:text-2xl font-display font-black text-ivs-green">Tech</p>
+                            <div class="rounded-2xl border border-white/10 bg-white/[.045] p-2.5 sm:p-3 lg:p-4">
+                                <p class="text-lg sm:text-xl lg:text-2xl font-display font-black text-ivs-green">Tech</p>
                                 <p class="text-xs sm:text-sm text-slate-400 mt-1">Nền tảng số</p>
                             </div>
-                            <div class="rounded-2xl border border-white/10 bg-white/[.045] p-3 sm:p-4">
-                                <p class="text-xl sm:text-2xl font-display font-black text-ivs-purple">AI</p>
+                            <div class="rounded-2xl border border-white/10 bg-white/[.045] p-2.5 sm:p-3 lg:p-4">
+                                <p class="text-lg sm:text-xl lg:text-2xl font-display font-black text-ivs-purple">AI</p>
                                 <p class="text-xs sm:text-sm text-slate-400 mt-1">Tự động hóa</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="dashboard-frame" data-aos="fade-up" data-aos-delay="120" aria-label="Minh họa nền tảng IVS JSC">
-                        <div class="dashboard-screen p-4 sm:p-5">
+                    <div class="dashboard-frame order-first lg:order-last" data-aos="fade-up" data-aos-delay="120" aria-label="Minh họa nền tảng IVS JSC">
+                        <div class="dashboard-screen p-3 sm:p-4 lg:p-5">
                             <picture>
                                 <source media="(max-width: 767px)" srcset="/images/banners/ivs-hero-mobile.webp" />
                                 <img class="dashboard-banner-img" src="/images/banners/ivs-hero-desktop.webp" alt="" loading="eager" decoding="async" onerror="this.style.display='none'" />
@@ -624,23 +658,23 @@
                     <p class="mt-4 text-lg leading-relaxed text-slate-400">Trọng tâm của IVS là tạo ra giải pháp có thể ứng dụng ngay trong vận hành: rõ mô hình, rõ quy trình, rõ công cụ và rõ kết quả triển khai.</p>
                 </div>
 
-                <div class="mt-10 grid md:grid-cols-3 gap-4 lg:gap-6">
-                    <article class="soft-card rounded-3xl p-6" data-aos="fade-up">
-                        <div class="icon-box text-ivs-cyan mb-5"><i class="fas fa-graduation-cap text-xl"></i></div>
-                        <h3 class="font-display font-extrabold text-2xl text-white">Education Solutions</h3>
-                        <p class="mt-3 text-slate-400 leading-relaxed">Chương trình đào tạo, giáo viên, ngoại ngữ, kỹ năng sống, liên kết trường học và mô hình học tập kết hợp công nghệ.</p>
+                <div class="mt-6 sm:mt-8 lg:mt-10 grid md:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
+                    <article class="soft-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up">
+                        <div class="icon-box text-ivs-cyan mb-3 sm:mb-4 lg:mb-5"><i class="fas fa-graduation-cap text-lg sm:text-xl"></i></div>
+                        <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white">Education Solutions</h3>
+                        <p class="mt-2 sm:mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">Chương trình đào tạo, giáo viên, ngoại ngữ, kỹ năng sống, liên kết trường học và mô hình học tập kết hợp công nghệ.</p>
                     </article>
 
-                    <article class="soft-card rounded-3xl p-6" data-aos="fade-up" data-aos-delay="80">
-                        <div class="icon-box text-ivs-green mb-5"><i class="fas fa-cubes text-xl"></i></div>
-                        <h3 class="font-display font-extrabold text-2xl text-white">EdTech Platforms</h3>
-                        <p class="mt-3 text-slate-400 leading-relaxed">CenterCare, LearningCare, IVS LMS, Aivy TeacherMatch và Aivy AI phục vụ quản lý, học tập, tuyển dụng và chăm sóc.</p>
+                    <article class="soft-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up" data-aos-delay="80">
+                        <div class="icon-box text-ivs-green mb-3 sm:mb-4 lg:mb-5"><i class="fas fa-cubes text-lg sm:text-xl"></i></div>
+                        <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white">EdTech Platforms</h3>
+                        <p class="mt-2 sm:mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">CenterCare, LearningCare, IVS LMS, Aivy TeacherMatch và Aivy AI phục vụ quản lý, học tập, tuyển dụng và chăm sóc.</p>
                     </article>
 
-                    <article class="soft-card rounded-3xl p-6" data-aos="fade-up" data-aos-delay="160">
-                        <div class="icon-box text-ivs-purple mb-5"><i class="fas fa-code text-xl"></i></div>
-                        <h3 class="font-display font-extrabold text-2xl text-white">Digital Products</h3>
-                        <p class="mt-3 text-slate-400 leading-relaxed">Website, web/app, CRM, portal, marketplace, dashboard dữ liệu, automation và các hệ thống số theo nhu cầu riêng.</p>
+                    <article class="soft-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up" data-aos-delay="160">
+                        <div class="icon-box text-ivs-purple mb-3 sm:mb-4 lg:mb-5"><i class="fas fa-code text-lg sm:text-xl"></i></div>
+                        <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white">Digital Products</h3>
+                        <p class="mt-2 sm:mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">Website, web/app, CRM, portal, marketplace, dashboard dữ liệu, automation và các hệ thống số theo nhu cầu riêng.</p>
                     </article>
                 </div>
             </div>
@@ -648,42 +682,42 @@
 
         <section id="business-units" class="section-padding">
             <div class="max-w-7xl mx-auto container-pad">
-                <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-10 lg:gap-14 items-start">
+                <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-6 sm:gap-8 lg:gap-14 items-start">
                     <div data-aos="fade-up">
                         <p class="small-heading">IVS JSC</p>
-                        <h2 class="mt-3 font-display font-black h2-fluid text-white">Một công ty, bốn hướng năng lực triển khai</h2>
-                        <p class="mt-4 text-lg leading-relaxed text-slate-400">Các đơn vị của IVS được tổ chức để bổ trợ nhau: từ giáo dục, nội dung đào tạo, công nghệ sản phẩm đến tư vấn và vận hành mô hình.</p>
-                        <a href="#contact" class="btn-secondary mt-7">
+                        <h2 class="mt-2 sm:mt-3 font-display font-black h2-fluid text-white">Một công ty, bốn hướng năng lực triển khai</h2>
+                        <p class="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg leading-relaxed text-slate-400">Các đơn vị của IVS được tổ chức để bổ trợ nhau: từ giáo dục, nội dung đào tạo, công nghệ sản phẩm đến tư vấn và vận hành mô hình.</p>
+                        <a href="#contact" class="btn-secondary mt-5 sm:mt-7 text-sm sm:text-base">
                             <i class="fas fa-paper-plane"></i>
                             Gửi yêu cầu hợp tác
                         </a>
                     </div>
 
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <a href="Pages/ivs-academy.html" class="soft-card rounded-3xl p-6 group" data-aos="fade-up">
-                            <i class="fas fa-book-open-reader text-3xl text-ivs-blue mb-5"></i>
-                            <h3 class="text-xl font-display font-extrabold text-white">IVS Academy</h3>
-                            <p class="mt-2 text-sm leading-relaxed text-slate-400">Đào tạo ngoại ngữ, kỹ năng sống, chương trình quốc tế và liên kết giáo dục.</p>
+                    <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                        <a href="Pages/ivs-academy.html" class="soft-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 group" data-aos="fade-up">
+                            <i class="fas fa-book-open-reader text-2xl sm:text-3xl text-ivs-blue mb-3 sm:mb-4 lg:mb-5"></i>
+                            <h3 class="text-lg sm:text-xl font-display font-extrabold text-white">IVS Academy</h3>
+                            <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-slate-400">Đào tạo ngoại ngữ, kỹ năng sống, chương trình quốc tế và liên kết giáo dục.</p>
                         </a>
-                        <a href="education.html" class="soft-card rounded-3xl p-6 group" data-aos="fade-up" data-aos-delay="80">
-                            <i class="fas fa-lightbulb text-3xl text-ivs-amber mb-5"></i>
-                            <h3 class="text-xl font-display font-extrabold text-white">IVS Education</h3>
-                            <p class="mt-2 text-sm leading-relaxed text-slate-400">Học liệu, chương trình, nội dung học tập số, STEAM và kỹ năng tương lai.</p>
+                        <a href="education.html" class="soft-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 group" data-aos="fade-up" data-aos-delay="80">
+                            <i class="fas fa-lightbulb text-2xl sm:text-3xl text-ivs-amber mb-3 sm:mb-4 lg:mb-5"></i>
+                            <h3 class="text-lg sm:text-xl font-display font-extrabold text-white">IVS Education</h3>
+                            <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-slate-400">Học liệu, chương trình, nội dung học tập số, STEAM và kỹ năng tương lai.</p>
                         </a>
-                        <a href="Pages/ivscelestech.html" class="soft-card rounded-3xl p-6 group" data-aos="fade-up" data-aos-delay="160">
-                            <i class="fas fa-satellite-dish text-3xl text-ivs-cyan mb-5"></i>
-                            <h3 class="text-xl font-display font-extrabold text-white">IVS Celestech</h3>
-                            <p class="mt-2 text-sm leading-relaxed text-slate-400">Thiết kế website, web/app, nền tảng quản lý, AI và tự động hóa quy trình.</p>
+                        <a href="Pages/ivscelestech.html" class="soft-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 group" data-aos="fade-up" data-aos-delay="160">
+                            <i class="fas fa-satellite-dish text-2xl sm:text-3xl text-ivs-cyan mb-3 sm:mb-4 lg:mb-5"></i>
+                            <h3 class="text-lg sm:text-xl font-display font-extrabold text-white">IVS Celestech</h3>
+                            <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-slate-400">Thiết kế website, web/app, nền tảng quản lý, AI và tự động hóa quy trình.</p>
                         </a>
-                        <a href="https://ivstech.store" target="_blank" rel="noopener noreferrer" class="soft-card rounded-3xl p-6 group" data-aos="fade-up" data-aos-delay="200">
-                            <i class="fas fa-store text-3xl text-ivs-cyan mb-5"></i>
-                            <h3 class="text-xl font-display font-extrabold text-white">IVS Tech Store</h3>
-                            <p class="mt-2 text-sm leading-relaxed text-slate-400">Cửa hàng ứng dụng công nghệ, giải pháp số và thiết bị thông minh.</p>
+                        <a href="https://ivstech.store" target="_blank" rel="noopener noreferrer" class="soft-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 group" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-store text-2xl sm:text-3xl text-ivs-cyan mb-3 sm:mb-4 lg:mb-5"></i>
+                            <h3 class="text-lg sm:text-xl font-display font-extrabold text-white">IVS Tech Store</h3>
+                            <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-slate-400">Cửa hàng ứng dụng công nghệ, giải pháp số và thiết bị thông minh.</p>
                         </a>
-                        <a href="consulting.html" class="soft-card rounded-3xl p-6 group" data-aos="fade-up" data-aos-delay="240">
-                            <i class="fas fa-chart-line text-3xl text-ivs-purple mb-5"></i>
-                            <h3 class="text-xl font-display font-extrabold text-white">IVS Consulting</h3>
-                            <p class="mt-2 text-sm leading-relaxed text-slate-400">Tư vấn chiến lược, vận hành, pháp lý, tài chính và phát triển mô hình hợp tác.</p>
+                        <a href="consulting.html" class="soft-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 group sm:col-span-2" data-aos="fade-up" data-aos-delay="240">
+                            <i class="fas fa-chart-line text-2xl sm:text-3xl text-ivs-purple mb-3 sm:mb-4 lg:mb-5"></i>
+                            <h3 class="text-lg sm:text-xl font-display font-extrabold text-white">IVS Consulting</h3>
+                            <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-slate-400">Tư vấn chiến lược, vận hành, pháp lý, tài chính và phát triển mô hình hợp tác.</p>
                         </a>
                     </div>
                 </div>
@@ -698,87 +732,87 @@
                     <p class="mt-4 text-lg leading-relaxed text-slate-400">Các nền tảng tập trung vào quản lý giáo dục, học tập, tuyển dụng giáo viên, AI assistant và hệ thống số theo yêu cầu.</p>
                 </div>
 
-                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    <article class="soft-card platform-card rounded-3xl p-6" data-aos="fade-up">
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="icon-box text-ivs-blue"><i class="fas fa-clipboard-check text-xl"></i></div>
-                            <span class="text-xs font-bold text-ivs-cyan bg-ivs-cyan/10 border border-ivs-cyan/20 rounded-full px-3 py-1">Management</span>
+                <div class="mt-8 sm:mt-10 lg:mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+                    <article class="soft-card platform-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up">
+                        <div class="flex items-start justify-between gap-2 sm:gap-4">
+                            <div class="icon-box text-ivs-blue w-10 h-10 sm:w-12 sm:h-12"><i class="fas fa-clipboard-check text-lg sm:text-xl"></i></div>
+                            <span class="text-[10px] sm:text-xs font-bold text-ivs-cyan bg-ivs-cyan/10 border border-ivs-cyan/20 rounded-full px-2 sm:px-3 py-0.5 sm:py-1">Management</span>
                         </div>
-                        <h3 class="mt-6 text-2xl font-display font-extrabold text-white">CenterCare</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-400">Quản lý trung tâm: học viên, lớp học, lịch học, điểm danh, học phí, giáo viên và báo cáo.</p>
-                        <a href="https://center.ivslearning.io.vn" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-ivs-cyan hover:text-white">
+                        <h3 class="mt-4 sm:mt-5 lg:mt-6 text-lg sm:text-xl lg:text-2xl font-display font-extrabold text-white">CenterCare</h3>
+                        <p class="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-400">Quản lý trung tâm: học viên, lớp học, lịch học, điểm danh, học phí, giáo viên và báo cáo.</p>
+                        <a href="https://center.ivslearning.io.vn" target="_blank" rel="noopener noreferrer" class="mt-3 sm:mt-4 lg:mt-5 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-extrabold text-ivs-cyan hover:text-white">
                             Truy cập CenterCare <i class="fas fa-arrow-right"></i>
                         </a>
                     </article>
 
-                    <article class="soft-card platform-card rounded-3xl p-6" data-aos="fade-up" data-aos-delay="70">
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="icon-box text-ivs-green"><i class="fas fa-user-graduate text-xl"></i></div>
-                            <span class="text-xs font-bold text-ivs-green bg-ivs-green/10 border border-ivs-green/20 rounded-full px-3 py-1">Student Care</span>
+                    <article class="soft-card platform-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up" data-aos-delay="70">
+                        <div class="flex items-start justify-between gap-2 sm:gap-4">
+                            <div class="icon-box text-ivs-green w-10 h-10 sm:w-12 sm:h-12"><i class="fas fa-user-graduate text-lg sm:text-xl"></i></div>
+                            <span class="text-[10px] sm:text-xs font-bold text-ivs-green bg-ivs-green/10 border border-ivs-green/20 rounded-full px-2 sm:px-3 py-0.5 sm:py-1">Student Care</span>
                         </div>
-                        <h3 class="mt-6 text-2xl font-display font-extrabold text-white">LearningCare</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-400">Cổng học viên/phụ huynh: lịch học, thông báo, tiến độ, học phí và kết nối chăm sóc học viên.</p>
-                        <a href="https://care.ivslearning.io.vn" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-ivs-green hover:text-white">
+                        <h3 class="mt-4 sm:mt-5 lg:mt-6 text-lg sm:text-xl lg:text-2xl font-display font-extrabold text-white">LearningCare</h3>
+                        <p class="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-400">Cổng học viên/phụ huynh: lịch học, thông báo, tiến độ, học phí và kết nối chăm sóc học viên.</p>
+                        <a href="https://care.ivslearning.io.vn" target="_blank" rel="noopener noreferrer" class="mt-3 sm:mt-4 lg:mt-5 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-extrabold text-ivs-green hover:text-white">
                             Truy cập LearningCare <i class="fas fa-arrow-right"></i>
                         </a>
                     </article>
 
-                    <article class="soft-card platform-card rounded-3xl p-6" data-aos="fade-up" data-aos-delay="140">
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="icon-box text-ivs-amber"><i class="fas fa-graduation-cap text-xl"></i></div>
-                            <span class="text-xs font-bold text-ivs-amber bg-ivs-amber/10 border border-ivs-amber/20 rounded-full px-3 py-1">LMS</span>
+                    <article class="soft-card platform-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up" data-aos-delay="140">
+                        <div class="flex items-start justify-between gap-2 sm:gap-4">
+                            <div class="icon-box text-ivs-amber w-10 h-10 sm:w-12 sm:h-12"><i class="fas fa-graduation-cap text-lg sm:text-xl"></i></div>
+                            <span class="text-[10px] sm:text-xs font-bold text-ivs-amber bg-ivs-amber/10 border border-ivs-amber/20 rounded-full px-2 sm:px-3 py-0.5 sm:py-1">LMS</span>
                         </div>
-                        <h3 class="mt-6 text-2xl font-display font-extrabold text-white">IVS LMS</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-400">Nền tảng học tập trực tuyến: học liệu, bài tập, lớp học, tiến độ, báo cáo và nội dung số.</p>
-                        <a href="https://lms.ivslearning.io.vn" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-ivs-amber hover:text-white">
+                        <h3 class="mt-4 sm:mt-5 lg:mt-6 text-lg sm:text-xl lg:text-2xl font-display font-extrabold text-white">IVS LMS</h3>
+                        <p class="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-400">Nền tảng học tập trực tuyến: học liệu, bài tập, lớp học, tiến độ, báo cáo và nội dung số.</p>
+                        <a href="https://lms.ivslearning.io.vn" target="_blank" rel="noopener noreferrer" class="mt-3 sm:mt-4 lg:mt-5 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-extrabold text-ivs-amber hover:text-white">
                             Truy cập IVS LMS <i class="fas fa-arrow-right"></i>
                         </a>
                     </article>
 
-                    <article class="soft-card platform-card rounded-3xl p-6" data-aos="fade-up">
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="icon-box text-ivs-purple"><i class="fas fa-location-dot text-xl"></i></div>
-                            <span class="text-xs font-bold text-ivs-purple bg-ivs-purple/10 border border-ivs-purple/20 rounded-full px-3 py-1">Matching</span>
+                    <article class="soft-card platform-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up">
+                        <div class="flex items-start justify-between gap-2 sm:gap-4">
+                            <div class="icon-box text-ivs-purple w-10 h-10 sm:w-12 sm:h-12"><i class="fas fa-location-dot text-lg sm:text-xl"></i></div>
+                            <span class="text-[10px] sm:text-xs font-bold text-ivs-purple bg-ivs-purple/10 border border-ivs-purple/20 rounded-full px-2 sm:px-3 py-0.5 sm:py-1">Matching</span>
                         </div>
-                        <h3 class="mt-6 text-2xl font-display font-extrabold text-white">Aivy TeacherMatch</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-400">Kết nối giáo viên và cơ sở giáo dục theo vị trí, hồ sơ, nhu cầu tuyển dụng và trao đổi trực tiếp.</p>
-                        <a href="https://ivslearning.top/" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-ivs-purple hover:text-white">
+                        <h3 class="mt-4 sm:mt-5 lg:mt-6 text-lg sm:text-xl lg:text-2xl font-display font-extrabold text-white">Aivy TeacherMatch</h3>
+                        <p class="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-400">Kết nối giáo viên và cơ sở giáo dục theo vị trí, hồ sơ, nhu cầu tuyển dụng và trao đổi trực tiếp.</p>
+                        <a href="https://ivslearning.top/" target="_blank" rel="noopener noreferrer" class="mt-3 sm:mt-4 lg:mt-5 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-extrabold text-ivs-purple hover:text-white">
                             Truy cập TeacherMatch <i class="fas fa-arrow-right"></i>
                         </a>
                     </article>
 
-                    <article class="soft-card platform-card rounded-3xl p-6" data-aos="fade-up" data-aos-delay="70">
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="icon-box text-ivs-cyan"><i class="fas fa-robot text-xl"></i></div>
-                            <span class="text-xs font-bold text-ivs-cyan bg-ivs-cyan/10 border border-ivs-cyan/20 rounded-full px-3 py-1">AI</span>
+                    <article class="soft-card platform-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up" data-aos-delay="70">
+                        <div class="flex items-start justify-between gap-2 sm:gap-4">
+                            <div class="icon-box text-ivs-cyan w-10 h-10 sm:w-12 sm:h-12"><i class="fas fa-robot text-lg sm:text-xl"></i></div>
+                            <span class="text-[10px] sm:text-xs font-bold text-ivs-cyan bg-ivs-cyan/10 border border-ivs-cyan/20 rounded-full px-2 sm:px-3 py-0.5 sm:py-1">AI</span>
                         </div>
-                        <h3 class="mt-6 text-2xl font-display font-extrabold text-white">Aivy AI</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-400">Trợ lý AI cho học tập, vận hành, chăm sóc khách hàng, nội dung, tư vấn và tự động hóa quy trình.</p>
-                        <a href="#contact" class="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-ivs-cyan hover:text-white">
+                        <h3 class="mt-4 sm:mt-5 lg:mt-6 text-lg sm:text-xl lg:text-2xl font-display font-extrabold text-white">Aivy AI</h3>
+                        <p class="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-400">Trợ lý AI cho học tập, vận hành, chăm sóc khách hàng, nội dung, tư vấn và tự động hóa quy trình.</p>
+                        <a href="#contact" class="mt-3 sm:mt-4 lg:mt-5 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-extrabold text-ivs-cyan hover:text-white">
                             Trao đổi tích hợp AI <i class="fas fa-arrow-right"></i>
                         </a>
                     </article>
 
-                    <article class="soft-card platform-card rounded-3xl p-6" data-aos="fade-up" data-aos-delay="140">
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="icon-box text-ivs-orange"><i class="fas fa-laptop-code text-xl"></i></div>
-                            <span class="text-xs font-bold text-ivs-orange bg-ivs-orange/10 border border-ivs-orange/20 rounded-full px-3 py-1">Custom</span>
+                    <article class="soft-card platform-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6" data-aos="fade-up" data-aos-delay="140">
+                        <div class="flex items-start justify-between gap-2 sm:gap-4">
+                            <div class="icon-box text-ivs-orange w-10 h-10 sm:w-12 sm:h-12"><i class="fas fa-laptop-code text-lg sm:text-xl"></i></div>
+                            <span class="text-[10px] sm:text-xs font-bold text-ivs-orange bg-ivs-orange/10 border border-ivs-orange/20 rounded-full px-2 sm:px-3 py-0.5 sm:py-1">Custom</span>
                         </div>
-                        <h3 class="mt-6 text-2xl font-display font-extrabold text-white">Custom Web/App</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-400">Phát triển hệ thống theo nhu cầu riêng: LMS, CRM, portal, dashboard, booking, marketplace và automation.</p>
-                        <a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-ivs-orange hover:text-white">
+                        <h3 class="mt-4 sm:mt-5 lg:mt-6 text-lg sm:text-xl lg:text-2xl font-display font-extrabold text-white">Custom Web/App</h3>
+                        <p class="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-400">Phát triển hệ thống theo nhu cầu riêng: LMS, CRM, portal, dashboard, booking, marketplace và automation.</p>
+                        <a href="https://ivsacademy.edu.vn/Pages/webdesign.html" target="_blank" rel="noopener noreferrer" class="mt-3 sm:mt-4 lg:mt-5 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-extrabold text-ivs-orange hover:text-white">
                             Đề xuất dự án <i class="fas fa-arrow-right"></i>
                         </a>
                     </article>
 
-                    <article class="soft-card platform-card rounded-3xl p-6" data-aos="fade-up" data-aos-delay="210">
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="icon-box text-ivs-cyan"><i class="fas fa-store text-xl"></i></div>
-                            <span class="text-xs font-bold text-ivs-cyan bg-ivs-cyan/10 border border-ivs-cyan/20 rounded-full px-3 py-1">Tech Store</span>
+                    <article class="soft-card platform-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-6 sm:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="210">
+                        <div class="flex items-start justify-between gap-2 sm:gap-4">
+                            <div class="icon-box text-ivs-cyan w-10 h-10 sm:w-12 sm:h-12"><i class="fas fa-store text-lg sm:text-xl"></i></div>
+                            <span class="text-[10px] sm:text-xs font-bold text-ivs-cyan bg-ivs-cyan/10 border border-ivs-cyan/20 rounded-full px-2 sm:px-3 py-0.5 sm:py-1">Tech Store</span>
                         </div>
-                        <h3 class="mt-6 text-2xl font-display font-extrabold text-white">IVS Tech Store</h3>
-                        <p class="mt-3 text-sm leading-relaxed text-slate-400">Cửa hàng ứng dụng công nghệ: giải pháp số, thiết bị thông minh, phần mềm giáo dục và công cụ chuyển đổi số.</p>
-                        <a href="https://ivstech.store" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-ivs-cyan hover:text-white">
+                        <h3 class="mt-4 sm:mt-5 lg:mt-6 text-lg sm:text-xl lg:text-2xl font-display font-extrabold text-white">IVS Tech Store</h3>
+                        <p class="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-400">Cửa hàng ứng dụng công nghệ: giải pháp số, thiết bị thông minh, phần mềm giáo dục và công cụ chuyển đổi số.</p>
+                        <a href="https://ivstech.store" target="_blank" rel="noopener noreferrer" class="mt-3 sm:mt-4 lg:mt-5 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-extrabold text-ivs-cyan hover:text-white">
                             Truy cập IVS Tech Store <i class="fas fa-arrow-right"></i>
                         </a>
                     </article>
@@ -788,59 +822,59 @@
 
         <section id="education" class="section-padding">
             <div class="max-w-7xl mx-auto container-pad">
-                <div class="grid lg:grid-cols-[1fr_.92fr] gap-10 lg:gap-14 items-center">
+                <div class="grid lg:grid-cols-[1fr_.92fr] gap-6 sm:gap-8 lg:gap-14 items-center">
                     <div data-aos="fade-up">
                         <p class="small-heading">Education Partnership</p>
-                        <h2 class="mt-3 font-display font-black h2-fluid text-white">Giải pháp giáo dục cho trường học, trung tâm và đối tác đào tạo</h2>
-                        <p class="mt-4 text-lg leading-relaxed text-slate-400">IVS Academy triển khai chương trình ngoại ngữ, kỹ năng sống, giáo viên, hoạt động ngoại khóa và mô hình liên kết giáo dục có hỗ trợ bởi nền tảng số.</p>
+                        <h2 class="mt-2 sm:mt-3 font-display font-black h2-fluid text-white">Giải pháp giáo dục cho trường học, trung tâm và đối tác đào tạo</h2>
+                        <p class="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg leading-relaxed text-slate-400">IVS Academy triển khai chương trình ngoại ngữ, kỹ năng sống, giáo viên, hoạt động ngoại khóa và mô hình liên kết giáo dục có hỗ trợ bởi nền tảng số.</p>
 
-                        <div class="mt-8 grid sm:grid-cols-2 gap-4">
-                            <div class="soft-card rounded-2xl p-5">
-                                <i class="fas fa-language text-2xl text-ivs-blue mb-3"></i>
-                                <h3 class="font-bold text-white">Ngoại ngữ K-12</h3>
-                                <p class="mt-1 text-sm text-slate-400">Lộ trình từ mầm non đến THPT, theo dõi tiến độ và năng lực ứng dụng.</p>
+                        <div class="mt-5 sm:mt-6 lg:mt-8 grid sm:grid-cols-2 gap-2.5 sm:gap-3 lg:gap-4">
+                            <div class="soft-card rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5">
+                                <i class="fas fa-language text-xl sm:text-2xl text-ivs-blue mb-2 sm:mb-3"></i>
+                                <h3 class="font-bold text-white text-sm sm:text-base">Ngoại ngữ K-12</h3>
+                                <p class="mt-1 text-xs sm:text-sm text-slate-400">Lộ trình từ mầm non đến THPT, theo dõi tiến độ và năng lực ứng dụng.</p>
                             </div>
-                            <div class="soft-card rounded-2xl p-5">
-                                <i class="fas fa-seedling text-2xl text-ivs-green mb-3"></i>
-                                <h3 class="font-bold text-white">Kỹ năng sống</h3>
-                                <p class="mt-1 text-sm text-slate-400">Giao tiếp, tự tin, làm việc nhóm, tư duy và hoạt động trải nghiệm.</p>
+                            <div class="soft-card rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5">
+                                <i class="fas fa-seedling text-xl sm:text-2xl text-ivs-green mb-2 sm:mb-3"></i>
+                                <h3 class="font-bold text-white text-sm sm:text-base">Kỹ năng sống</h3>
+                                <p class="mt-1 text-xs sm:text-sm text-slate-400">Giao tiếp, tự tin, làm việc nhóm, tư duy và hoạt động trải nghiệm.</p>
                             </div>
-                            <div class="soft-card rounded-2xl p-5">
-                                <i class="fas fa-chalkboard-user text-2xl text-ivs-purple mb-3"></i>
-                                <h3 class="font-bold text-white">Giáo viên đồng hành</h3>
-                                <p class="mt-1 text-sm text-slate-400">Tập trung chất lượng lớp học, giáo án, phản hồi và trải nghiệm học viên.</p>
+                            <div class="soft-card rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5">
+                                <i class="fas fa-chalkboard-user text-xl sm:text-2xl text-ivs-purple mb-2 sm:mb-3"></i>
+                                <h3 class="font-bold text-white text-sm sm:text-base">Giáo viên đồng hành</h3>
+                                <p class="mt-1 text-xs sm:text-sm text-slate-400">Tập trung chất lượng lớp học, giáo án, phản hồi và trải nghiệm học viên.</p>
                             </div>
-                            <div class="soft-card rounded-2xl p-5">
-                                <i class="fas fa-school text-2xl text-ivs-amber mb-3"></i>
-                                <h3 class="font-bold text-white">Mô hình liên kết</h3>
-                                <p class="mt-1 text-sm text-slate-400">Phù hợp trường học, mầm non, trung tâm và cơ sở giáo dục địa phương.</p>
+                            <div class="soft-card rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5">
+                                <i class="fas fa-school text-xl sm:text-2xl text-ivs-amber mb-2 sm:mb-3"></i>
+                                <h3 class="font-bold text-white text-sm sm:text-base">Mô hình liên kết</h3>
+                                <p class="mt-1 text-xs sm:text-sm text-slate-400">Phù hợp trường học, mầm non, trung tâm và cơ sở giáo dục địa phương.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-[2rem] p-5 sm:p-6" data-aos="fade-up" data-aos-delay="120">
-                        <img src="/images/banners/centercare-learningcare.webp" alt="Minh họa giải pháp giáo dục IVS" class="w-full aspect-[4/3] object-cover rounded-3xl border border-white/10 bg-ivs-card" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-                        <div class="mt-0 rounded-3xl border border-white/10 bg-gradient-to-br from-ivs-blue/15 via-ivs-cyan/10 to-ivs-purple/15 p-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-ivs-blue to-ivs-purple flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-layer-group text-white text-xl"></i>
+                    <div class="glass-card rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-5 lg:p-6" data-aos="fade-up" data-aos-delay="120">
+                        <img src="/images/banners/centercare-learningcare.webp" alt="Minh họa giải pháp giáo dục IVS" class="w-full aspect-[4/3] object-cover rounded-2xl sm:rounded-3xl border border-white/10 bg-ivs-card" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+                        <div class="mt-0 rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-br from-ivs-blue/15 via-ivs-cyan/10 to-ivs-purple/15 p-4 sm:p-5 lg:p-6">
+                            <div class="flex items-center gap-3 sm:gap-4">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-ivs-blue to-ivs-purple flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-layer-group text-white text-lg sm:text-xl"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-display font-extrabold text-white">Học tập kết hợp vận hành số</h3>
-                                    <p class="mt-1 text-sm text-slate-400">CenterCare · LearningCare · LMS · Aivy AI</p>
+                                    <h3 class="text-base sm:text-lg lg:text-xl font-display font-extrabold text-white">Học tập kết hợp vận hành số</h3>
+                                    <p class="mt-0.5 sm:mt-1 text-xs sm:text-sm text-slate-400">CenterCare · LearningCare · LMS · Aivy AI</p>
                                 </div>
                             </div>
-                            <div class="mt-6 space-y-4">
+                            <div class="mt-4 sm:mt-5 lg:mt-6 space-y-3 sm:space-y-4">
                                 <div>
-                                    <div class="flex justify-between text-xs text-slate-400 mb-2"><span>Quản lý lớp học</span><span>CenterCare</span></div>
+                                    <div class="flex justify-between text-[10px] sm:text-xs text-slate-400 mb-1.5 sm:mb-2"><span>Quản lý lớp học</span><span>CenterCare</span></div>
                                     <div class="mini-bar"><span style="width:86%"></span></div>
                                 </div>
                                 <div>
-                                    <div class="flex justify-between text-xs text-slate-400 mb-2"><span>Chăm sóc học viên</span><span>LearningCare</span></div>
+                                    <div class="flex justify-between text-[10px] sm:text-xs text-slate-400 mb-1.5 sm:mb-2"><span>Chăm sóc học viên</span><span>LearningCare</span></div>
                                     <div class="mini-bar"><span style="width:78%"></span></div>
                                 </div>
                                 <div>
-                                    <div class="flex justify-between text-xs text-slate-400 mb-2"><span>Học liệu trực tuyến</span><span>IVS LMS</span></div>
+                                    <div class="flex justify-between text-[10px] sm:text-xs text-slate-400 mb-1.5 sm:mb-2"><span>Học liệu trực tuyến</span><span>IVS LMS</span></div>
                                     <div class="mini-bar"><span style="width:72%"></span></div>
                                 </div>
                             </div>
@@ -852,54 +886,54 @@
 
         <section id="technology" class="section-padding bg-ivs-deep/70 border-y border-white/10">
             <div class="max-w-7xl mx-auto container-pad">
-                <div class="grid lg:grid-cols-[.95fr_1.05fr] gap-10 lg:gap-14 items-center">
-                    <div class="glass-card rounded-[2rem] p-5 sm:p-6 order-2 lg:order-1" data-aos="fade-up">
-                        <img src="/images/banners/webapp-ai.webp" alt="Minh họa phát triển web app và AI của IVS" class="w-full aspect-[16/10] object-cover rounded-3xl border border-white/10 bg-ivs-card" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-                        <div class="grid grid-cols-2 gap-3 mt-0">
-                            <div class="dash-card p-4">
-                                <i class="fas fa-code text-ivs-cyan mb-3"></i>
-                                <p class="font-bold text-white text-sm">Web/App</p>
+                <div class="grid lg:grid-cols-[.95fr_1.05fr] gap-6 sm:gap-8 lg:gap-14 items-center">
+                    <div class="glass-card rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-5 lg:p-6 order-2 lg:order-1" data-aos="fade-up">
+                        <img src="/images/banners/webapp-ai.webp" alt="Minh họa phát triển web app và AI của IVS" class="w-full aspect-[16/10] object-cover rounded-2xl sm:rounded-3xl border border-white/10 bg-ivs-card" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+                        <div class="grid grid-cols-2 gap-2 sm:gap-3 mt-0">
+                            <div class="dash-card p-3 sm:p-4">
+                                <i class="fas fa-code text-ivs-cyan mb-2 sm:mb-3 text-sm sm:text-base"></i>
+                                <p class="font-bold text-white text-xs sm:text-sm">Web/App</p>
                             </div>
-                            <div class="dash-card p-4">
-                                <i class="fas fa-brain text-ivs-purple mb-3"></i>
-                                <p class="font-bold text-white text-sm">AI Assistant</p>
+                            <div class="dash-card p-3 sm:p-4">
+                                <i class="fas fa-brain text-ivs-purple mb-2 sm:mb-3 text-sm sm:text-base"></i>
+                                <p class="font-bold text-white text-xs sm:text-sm">AI Assistant</p>
                             </div>
-                            <div class="dash-card p-4">
-                                <i class="fas fa-chart-pie text-ivs-green mb-3"></i>
-                                <p class="font-bold text-white text-sm">Dashboard</p>
+                            <div class="dash-card p-3 sm:p-4">
+                                <i class="fas fa-chart-pie text-ivs-green mb-2 sm:mb-3 text-sm sm:text-base"></i>
+                                <p class="font-bold text-white text-xs sm:text-sm">Dashboard</p>
                             </div>
-                            <div class="dash-card p-4">
-                                <i class="fas fa-gears text-ivs-amber mb-3"></i>
-                                <p class="font-bold text-white text-sm">Automation</p>
+                            <div class="dash-card p-3 sm:p-4">
+                                <i class="fas fa-gears text-ivs-amber mb-2 sm:mb-3 text-sm sm:text-base"></i>
+                                <p class="font-bold text-white text-xs sm:text-sm">Automation</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="order-1 lg:order-2" data-aos="fade-up" data-aos-delay="120">
                         <p class="small-heading">Technology & Digital Transformation</p>
-                        <h2 class="mt-3 font-display font-black h2-fluid text-white">Thiết kế sản phẩm số phục vụ vận hành thực tế</h2>
-                        <p class="mt-4 text-lg leading-relaxed text-slate-400">IVS Celestech phát triển website, web app, portal, LMS, CRM, dashboard, marketplace và automation theo nhu cầu riêng của từng tổ chức.</p>
+                        <h2 class="mt-2 sm:mt-3 font-display font-black h2-fluid text-white">Thiết kế sản phẩm số phục vụ vận hành thực tế</h2>
+                        <p class="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg leading-relaxed text-slate-400">IVS Celestech phát triển website, web app, portal, LMS, CRM, dashboard, marketplace và automation theo nhu cầu riêng của từng tổ chức.</p>
 
-                        <div class="mt-8 grid sm:grid-cols-2 gap-4">
-                            <div class="accent-line pl-5">
-                                <h3 class="font-bold text-white">Website & landing page</h3>
-                                <p class="mt-1 text-sm text-slate-400">Thiết kế thương hiệu, tuyển sinh, dịch vụ, bán hàng và giới thiệu dự án.</p>
+                        <div class="mt-5 sm:mt-6 lg:mt-8 grid sm:grid-cols-2 gap-2.5 sm:gap-3 lg:gap-4">
+                            <div class="accent-line pl-3 sm:pl-5">
+                                <h3 class="font-bold text-white text-sm sm:text-base">Website & landing page</h3>
+                                <p class="mt-1 text-xs sm:text-sm text-slate-400">Thiết kế thương hiệu, tuyển sinh, dịch vụ, bán hàng và giới thiệu dự án.</p>
                             </div>
-                            <div class="accent-line pl-5">
-                                <h3 class="font-bold text-white">Web app quản lý</h3>
-                                <p class="mt-1 text-sm text-slate-400">Quản trị dữ liệu, quy trình, người dùng, báo cáo và phân quyền.</p>
+                            <div class="accent-line pl-3 sm:pl-5">
+                                <h3 class="font-bold text-white text-sm sm:text-base">Web app quản lý</h3>
+                                <p class="mt-1 text-xs sm:text-sm text-slate-400">Quản trị dữ liệu, quy trình, người dùng, báo cáo và phân quyền.</p>
                             </div>
-                            <div class="accent-line pl-5">
-                                <h3 class="font-bold text-white">LMS / CRM / Portal</h3>
-                                <p class="mt-1 text-sm text-slate-400">Hệ thống học tập, chăm sóc khách hàng, cổng phụ huynh, cổng nội bộ.</p>
+                            <div class="accent-line pl-3 sm:pl-5">
+                                <h3 class="font-bold text-white text-sm sm:text-base">LMS / CRM / Portal</h3>
+                                <p class="mt-1 text-xs sm:text-sm text-slate-400">Hệ thống học tập, chăm sóc khách hàng, cổng phụ huynh, cổng nội bộ.</p>
                             </div>
-                            <div class="accent-line pl-5">
-                                <h3 class="font-bold text-white">AI & automation</h3>
-                                <p class="mt-1 text-sm text-slate-400">Tự động hóa nội dung, chăm sóc, phân loại yêu cầu và hỗ trợ vận hành.</p>
+                            <div class="accent-line pl-3 sm:pl-5">
+                                <h3 class="font-bold text-white text-sm sm:text-base">AI & automation</h3>
+                                <p class="mt-1 text-xs sm:text-sm text-slate-400">Tự động hóa nội dung, chăm sóc, phân loại yêu cầu và hỗ trợ vận hành.</p>
                             </div>
                         </div>
 
-                        <a href="#contact" class="btn-primary mt-8">
+                        <a href="#contact" class="btn-primary mt-6 sm:mt-8 text-sm sm:text-base">
                             <i class="fas fa-rocket"></i>
                             Trao đổi dự án công nghệ
                         </a>
