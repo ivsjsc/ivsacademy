@@ -93,7 +93,7 @@
             left: 0;
             width: 100%;
             height: var(--header-height);
-            z-index: 1000;
+            z-index: 1200;
             background: rgba(5, 8, 22, .92);
             border-bottom: 1px solid rgba(148, 163, 184, .14);
             backdrop-filter: blur(18px);
@@ -103,6 +103,7 @@
 
         .page-shell {
             position: relative;
+            z-index: 0;
             isolation: isolate;
             background:
                 radial-gradient(42rem 28rem at 10% 4%, rgba(34, 211, 238, .16), transparent 70%),
@@ -172,6 +173,8 @@
         }
 
         .btn-primary, .btn-secondary {
+            position: relative;
+            z-index: 2;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -208,7 +211,7 @@
             display: none;
             position: sticky;
             top: var(--header-height);
-            z-index: 999;
+            z-index: 1105;
             background: rgba(5, 8, 22, .82);
             border-bottom: 1px solid rgba(148, 163, 184, .12);
             backdrop-filter: blur(16px);
@@ -238,6 +241,7 @@
 
         .banner-section {
             position: relative;
+            z-index: 0;
             width: 100%;
             height: 60vh;
             min-height: 400px;
@@ -266,6 +270,7 @@
 
         .hero-content {
             position: relative;
+            z-index: 1;
             padding-top: 3rem;
         }
 
