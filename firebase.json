@@ -15,6 +15,20 @@
     ],
     "rewrites": [
       {
+        "source": "/api",
+        "run": {
+          "serviceId": "ivs-public-api",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "ivs-public-api",
+          "region": "us-central1"
+        }
+      },
+      {
         "source": "/Pages/ivstech",
         "destination": "/Pages/ivstech.html"
       },
