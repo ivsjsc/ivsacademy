@@ -76,9 +76,48 @@ async function postJson(url, payload) {
 }
 
 async function sendWelcomeEmail(email) {
-  const apiKey = getEnv('SENDGRID_API_KEY');
+  const apiKey = getEnv('BREVO_API_KEY') || getEnv('SENDGRID_API_KEY');
   const fromEmail = getEnv('NEWSLETTER_FROM_EMAIL') || getEnv('SUPPORT_EMAIL') || getEnv('ADMIN_EMAIL');
   if (!apiKey || !fromEmail) return { skipped: true };
+
+  const isBrevo = Boolean(getEnv('BREVO_API_KEY'));
+
+  if (isBrevo) {
+    const payload = {
+      sender: {
+        name: 'IVS JSC',
+        email: fromEmail
+      },
+      to: [
+        {
+          email
+        }
+      ],
+      subject: 'Cảm ơn bạn đã đăng ký nhận tin từ IVS JSC',
+      htmlContent: [
+        '<p>Xin chào,</p>',
+        '<p>Cảm ơn bạn đã đăng ký nhận bản tin từ IVS JSC.</p>',
+        '<p>Chúng tôi sẽ gửi tới bạn các cập nhật mới nhất về giáo dục, công nghệ và giải pháp số.</p>',
+        '<p>Trân trọng,<br>IVS JSC</p>'
+      ].join('')
+    };
+
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'api-key': apiKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(body || `Brevo HTTP ${response.status}`);
+    }
+
+    return { skipped: false, provider: 'brevo' };
+  }
 
   const payload = {
     personalizations: [
@@ -118,7 +157,7 @@ async function sendWelcomeEmail(email) {
     throw new Error(body || `SendGrid HTTP ${response.status}`);
   }
 
-  return { skipped: false };
+  return { skipped: false, provider: 'sendgrid' };
 }
 
 router.post('/subscribe', async (req, res) => {

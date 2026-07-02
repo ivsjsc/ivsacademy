@@ -354,7 +354,7 @@ Request body:
 What it does:
 - Stores the email in Firestore collection `newsletter_subscribers` when `FIREBASE_ADMIN_SDK_KEY` is configured.
 - Optionally forwards the submission to `NEWSLETTER_SHEET_WEBHOOK_URL` so an Apps Script can append it to Google Sheets.
-- Sends a welcome email through SendGrid when `SENDGRID_API_KEY` and `NEWSLETTER_FROM_EMAIL` are set.
+- Sends a welcome email through Brevo when `BREVO_API_KEY` and `NEWSLETTER_FROM_EMAIL` are set.
 
 ---
 
