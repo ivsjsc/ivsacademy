@@ -102,11 +102,9 @@
         <h3 class="footer-heading">Kết nối</h3>
         <p class="mb-4 text-sm text-gray-400">Nhận thông tin cập nhật mới nhất từ IVS JSC.</p>
 
-        <form action="/" class="space-y-3" data-fallback-action="https://formspree.io/f/mqaqqrkz" data-netlify="true" data-netlify-honeypot="bot-field" id="newsletterForm" method="POST" name="newsletter">
-          <input name="form-name" type="hidden" value="newsletter"/>
-          <div aria-hidden="true" style="display:none;">
-            <label>Không điền nếu bạn là người thật: <input name="bot-field"/></label>
-          </div>
+        <form action="/api/newsletter/subscribe" class="space-y-3" data-api-endpoint="/api/newsletter/subscribe" id="newsletterForm" method="POST" name="newsletter">
+          <input name="startedAt" type="hidden"/>
+          <input name="botField" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden"/>
           <input aria-label="Nhập Email của bạn" class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-gray-500 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-500/30" id="newsletterEmail" name="email" placeholder="Nhập Email của bạn" required type="email"/>
           <button class="w-full rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-orange-950/30 transition hover:from-orange-500 hover:to-orange-400" type="submit">
             <span class="flex items-center justify-center gap-2"><i class="fas fa-paper-plane"></i>Đăng ký</span>
@@ -226,6 +224,8 @@
       var message = document.getElementById('newsletterMessage');
       if (!form || !message || form.dataset.ivsBound === '1') return;
       form.dataset.ivsBound = '1';
+      var startedAtInput = form.querySelector('input[name="startedAt"]');
+      if (startedAtInput && !startedAtInput.value) startedAtInput.value = String(Date.now());
 
       form.addEventListener('submit', function () {
         message.textContent = 'Đang gửi thông tin đăng ký...';

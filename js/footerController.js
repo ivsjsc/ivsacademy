@@ -59,26 +59,26 @@ const IVSFooterController = {
         
         try {
             const fd = new FormData(form);
-            if (!fd.get('form-name')) fd.set('form-name', form.getAttribute('name') || 'newsletter');
+            const payload = {
+                email: String(fd.get('email') || '').trim(),
+                source: 'footer',
+                pageUrl: window.location.href
+            };
 
-            const target = form.getAttribute('action') || '/';
-            
-            const res = await fetch(target, { method: 'POST', body: fd });
-            
-            if (res.ok) {
-                const msg = 'Cảm ơn! Đăng ký thành công.';
-                if (messageOutput) { messageOutput.textContent = msg; messageOutput.className = 'text-sm mt-3 text-green-400'; }
-                form.reset();
-            } else {
-                const fallback = form.getAttribute('data-fallback-action');
-                if (fallback) {
-                    await fetch(fallback, { method: 'POST', body: fd });
-                    if (messageOutput) { messageOutput.textContent = 'Đã gửi (fallback). Cảm ơn!'; messageOutput.className = 'text-sm mt-3 text-green-400'; }
-                    form.reset();
-                } else {
-                    throw new Error('Server error and no fallback defined.');
-                }
+            const target = form.getAttribute('action') || form.dataset.apiEndpoint || '/api/newsletter/subscribe';
+            const res = await fetch(target, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const result = await res.json().catch(() => ({}));
+
+            if (!res.ok || !result.success) {
+                throw new Error(result.error || 'Server error.');
             }
+
+            if (messageOutput) { messageOutput.textContent = result.message || 'Cảm ơn! Đăng ký thành công.'; messageOutput.className = 'text-sm mt-3 text-green-400'; }
+            form.reset();
         } catch (err) {
             window.componentLog('Newsletter submit error: ' + err.message, 'error');
             if (messageOutput) { messageOutput.textContent = 'Lỗi khi gửi. Vui lòng thử lại sau.'; messageOutput.className = 'text-sm mt-3 text-red-400'; }

@@ -1,56 +1,47 @@
-// FILE: /js/contact-page.js
+'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Ngăn chặn hành vi gửi form mặc định
+  if (!contactForm || !formStatus || contactForm.dataset.ivsBound === '1') return;
+  contactForm.dataset.ivsBound = '1';
+  const startedAtInput = document.getElementById('contact-started-at');
+  if (startedAtInput && !startedAtInput.value) startedAtInput.value = String(Date.now());
 
-            formStatus.textContent = 'Đang gửi...'; // Hiển thị trạng thái đang gửi
-            formStatus.className = 'mt-4 text-center text-ivs-text-secondary'; // Reset classes
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton?.textContent || 'Gửi Yêu Cầu';
+    const payload = Object.fromEntries(new FormData(contactForm).entries());
 
-            // Đây là nơi bạn sẽ gửi dữ liệu form đến backend của mình.
-            // Ví dụ: sử dụng fetch API để gửi dữ liệu đến một API endpoint.
-            // Để đơn giản, tôi sẽ mô phỏng một yêu cầu gửi thành công/thất bại.
-            try {
-                // Mô phỏng độ trễ của mạng
-                await new Promise(resolve => setTimeout(resolve, 1500)); 
+    formStatus.textContent = 'Đang gửi...';
+    formStatus.className = 'mt-4 text-center text-sm text-ivs-text-secondary';
+    if (submitButton) submitButton.disabled = true;
 
-                // Mô phỏng phản hồi thành công
-                const response = { success: true, message: 'Yêu cầu của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại sớm nhất!' };
-                
-                // Nếu có API thực tế, bạn sẽ dùng:
-                /*
-                const response = await fetch('/api/contact', { // Thay thế bằng endpoint API thực tế của bạn
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-                const result = await response.json();
-                */
+    try {
+      const response = await fetch(contactForm.action || '/api/contact/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
 
-                if (response.success) {
-                    formStatus.textContent = window.langData ? window.langData['contact_form_success_message'] : response.message;
-                    formStatus.className = 'mt-4 text-center text-green-500 font-semibold';
-                    contactForm.reset(); // Xóa form sau khi gửi thành công
-                } else {
-                    // Xử lý lỗi từ backend
-                    formStatus.textContent = window.langData ? window.langData['contact_form_error_message'] : 'Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại.';
-                    formStatus.className = 'mt-4 text-center text-red-500 font-semibold';
-                }
-            } catch (error) {
-                console.error('Lỗi khi gửi form:', error);
-                formStatus.textContent = window.langData ? window.langData['contact_form_network_error_message'] : 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng và thử lại.';
-                formStatus.className = 'mt-4 text-center text-red-500 font-semibold';
-            }
-        });
-        
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Không thể gửi yêu cầu.');
+      }
+
+      formStatus.textContent = result.message || 'Yêu cầu của bạn đã được gửi thành công.';
+      formStatus.className = 'mt-4 text-center text-sm text-green-500 font-semibold';
+      contactForm.reset();
+    } catch (error) {
+      console.error('Lỗi khi gửi form:', error);
+      formStatus.textContent = 'Không thể gửi yêu cầu lúc này. Vui lòng thử lại sau.';
+      formStatus.className = 'mt-4 text-center text-sm text-red-500 font-semibold';
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+      if (submitButton) submitButton.textContent = originalText;
     }
+  });
 });

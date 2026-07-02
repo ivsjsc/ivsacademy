@@ -338,6 +338,24 @@ Set environment variables in your hosting platform:
 - `XAI_API_KEY` - X.ai API key
 - `AAD_TENANT_ID`, `AAD_CLIENT_ID`, `AAD_CLIENT_SECRET` - Azure AD credentials
 
+### Newsletter subscription flow
+
+Endpoint: `POST /api/newsletter/subscribe`
+
+Request body:
+```json
+{
+  "email": "user@example.com",
+  "source": "footer",
+  "pageUrl": "https://ivsacademy.edu.vn/contact.html"
+}
+```
+
+What it does:
+- Stores the email in Firestore collection `newsletter_subscribers` when `FIREBASE_ADMIN_SDK_KEY` is configured.
+- Optionally forwards the submission to `NEWSLETTER_SHEET_WEBHOOK_URL` so an Apps Script can append it to Google Sheets.
+- Sends a welcome email through SendGrid when `SENDGRID_API_KEY` and `NEWSLETTER_FROM_EMAIL` are set.
+
 ---
 
 **Security notes**:

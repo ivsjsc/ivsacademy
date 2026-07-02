@@ -83,10 +83,9 @@
                 <!-- Contact Form -->
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-6" data-lang-key="contact_form_title">Gửi Yêu Cầu</h2>
-                    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-6">
-                        <input type="hidden" name="form-name" value="contact" />
-                        <div class="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></div>
-                        
+                    <form id="contact-form" action="/api/contact/submit" method="POST" class="space-y-6">
+                        <input type="hidden" name="startedAt" id="contact-started-at" value="" />
+                        <input type="text" name="botField" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
                         <div>
                             <label class="block text-sm font-medium mb-2" for="name" data-lang-key="form_name_label">Họ và Tên *</label>
                             <input class="form-input" id="name" name="name" type="text" required />
@@ -107,6 +106,7 @@
                             <button type="submit" class="w-full bg-ivs-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105" data-lang-key="form_submit_button">Gửi Yêu Cầu</button>
                         </div>
                     </form>
+                    <div id="form-status" class="mt-4 text-center text-sm text-ivs-text-secondary"></div>
                 </div>
             </div>
         </div>
@@ -122,6 +122,7 @@
 <script src="/js/utils.js"></script>
 <script src="/js/language.js"></script>
 <script src="/ai/js/fabController.js"></script>
+<script defer src="/js/contact-page.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof AOS !== 'undefined') {
