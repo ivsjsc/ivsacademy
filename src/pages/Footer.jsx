@@ -21,7 +21,7 @@ const FooterComponent = () => {
           </div>
           <div style={{ marginBottom: '10px' }}>
             <MailOutlined style={{ color: '#ff9900', marginRight: '8px' }} />
-            <Text>info@ivsacademy.edu.vn</Text>
+            <Text>nmi.triet@gmail.com</Text>
           </div>
         </Col>
 
