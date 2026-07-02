@@ -198,6 +198,7 @@ router.post('/subscribe', async (req, res) => {
       await postJson(sheetWebhookUrl, {
         email,
         source,
+        provider: getEnv('BREVO_API_KEY') ? 'brevo' : 'sendgrid',
         pageUrl,
         subscribedAt: new Date().toISOString()
       });

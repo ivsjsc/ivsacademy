@@ -1,5 +1,5 @@
 const SHEET_NAME = 'Newsletter';
-const HEADER = ['createdAt', 'email', 'source', 'pageUrl', 'ip', 'userAgent'];
+const HEADER = ['createdAt', 'email', 'source', 'provider', 'pageUrl', 'ip', 'userAgent'];
 
 function setupNewsletterSheet() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -28,6 +28,7 @@ function doPost(e) {
       payload.subscribedAt || new Date().toISOString(),
       email,
       String(payload.source || 'website'),
+      String(payload.provider || 'brevo'),
       String(payload.pageUrl || ''),
       String(payload.ip || ''),
       String(payload.userAgent || '')
