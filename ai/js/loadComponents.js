@@ -157,7 +157,7 @@ async function loadCommonComponents() {
     }
     // Sử dụng đường dẫn Root-Relative Path
     const components = [
-        { id: 'header-placeholder', url: '/components/header.html', controller: window.IVSHeaderController },
+        { id: 'header-placeholder', url: '/components/header.html?v=20260706', controller: window.IVSHeaderController },
         // Giả định IVSFabController từ fabController.js đã định nghĩa
         { id: 'fab-container-placeholder', url: '/ai/components/fab-container.html', controller: window.IVSFabController },
         // Cookie consent component - site-wide privacy / cookie banner

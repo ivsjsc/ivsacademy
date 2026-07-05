@@ -1,6 +1,6 @@
 // componentLoader.js
 export const components = {
-  header: '/components/header.html',
+  header: '/components/header.html?v=20260706',
   footer: '/components/footer.html',
   fabContainer: '/components/fab-container.html'
 };
