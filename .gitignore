@@ -20,3 +20,6 @@ __pycache__/
 /server/*-key.json
 /server/*-key.json
 /server/*-key.json
+
+# Firebase service account (contains sensitive credentials)
+firebase-service-account.json
