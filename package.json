@@ -1,4 +1,12 @@
 {
+  "name": "ivs-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd webapp && npm run dev",
+    "build": "cd webapp && npm run build",
+    "deploy": "sh deploy.sh all"
+  },
   "dependencies": {
     "@microsoft/clarity": "^1.0.2"
   }
