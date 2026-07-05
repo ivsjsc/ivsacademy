@@ -30,26 +30,39 @@ const IVSHeaderController = {
         if (show) {
             this.mobilePanel.classList.remove('hidden', 'opacity-0');
             document.body.classList.add('menu-open'); 
+            if (this.mobileOpenBtn) this.mobileOpenBtn.setAttribute('aria-expanded', 'true');
             
             requestAnimationFrame(() => {
-                this.mobileMenuContainer.classList.remove('-translate-x-full');
+                this.mobileMenuContainer.classList.remove('translate-x-full');
             });
+
+            // Focus management: focus close button when opened
+            if (this.mobileCloseBtn) {
+                setTimeout(() => this.mobileCloseBtn.focus(), 100);
+            }
 
             // Reset Submenus on open
             this.submenuToggles.forEach(toggle => {
                 toggle.setAttribute('aria-expanded', 'false');
                 const content = toggle.nextElementSibling;
-                if (content) { content.style.maxHeight = '0px'; content.style.opacity = '0'; content.classList.remove('submenu-open'); }
+                if (content) {
+                    content.style.maxHeight = '0px';
+                    content.style.opacity = '0';
+                    content.classList.remove('submenu-open');
+                }
                 const icon = toggle.querySelector('i.fa-chevron-down');
                 if (icon) icon.style.transform = 'rotate(0deg)';
             });
         } else {
             this.mobilePanel.classList.add('opacity-0');
-            this.mobileMenuContainer.classList.add('-translate-x-full');
+            this.mobileMenuContainer.classList.add('translate-x-full');
+            if (this.mobileOpenBtn) this.mobileOpenBtn.setAttribute('aria-expanded', 'false');
             
             setTimeout(() => {
                 this.mobilePanel.classList.add('hidden');
                 document.body.classList.remove('menu-open');
+                // Return focus to open button
+                if (this.mobileOpenBtn) this.mobileOpenBtn.focus();
             }, 400);
         }
     },
@@ -121,6 +134,34 @@ const IVSHeaderController = {
         // Mobile Submenu
         this.submenuToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => { e.preventDefault(); this.toggleSubmenu(toggle); });
+        });
+
+        // Close menu on anchor link clicks
+        const mobileLinks = document.querySelectorAll('#ivs-mobile-main-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const href = link.getAttribute('href');
+                if (href && (href.startsWith('#') || href.includes('#'))) {
+                    this.toggleMobileMenu(false);
+                }
+            });
+        });
+
+        // Global Escape key listener
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (this.mobilePanel && !this.mobilePanel.classList.contains('hidden')) {
+                    this.toggleMobileMenu(false);
+                }
+                // Also close desktop dropdowns
+                this.desktopDropdownToggles.forEach(toggle => {
+                    const container = toggle.closest('.desktop-dropdown-container');
+                    if (container && container.classList.contains('open')) {
+                        container.classList.remove('open');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
         });
         
         // Desktop Dropdown
