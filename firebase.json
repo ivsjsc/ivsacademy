@@ -1,6 +1,21 @@
 {
   "hosting": {
-    "public": ".",
+    "public": "webapp-dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "!**/.gitkeep",
+      "**/node_modules/**",
+      "server/**",
+      "webapp/**",
+      ".venv/**",
+      "**/*.md",
+      ".githooks/**",
+      "**/*.sh",
+      "**/*.bat",
+      "**/*.py",
+      "**/*.exe"
+    ],
     "site": "ivsacademy",
     "ignore": [
       "firebase.json",
