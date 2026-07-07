@@ -305,12 +305,52 @@
         
         // Handle Global Teacher Form Submission
         const teacherForm = document.getElementById('teacher-application-form');
-        teacherForm.addEventListener('submit', function(e) {
+        teacherForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            // In a real scenario, you would validate and send this data to a server.
-            // For this template, we can just show a confirmation message.
-            alert('Thank you for your application! We will review it and get back to you soon.');
-            teacherForm.reset();
+            
+            const submitBtn = teacherForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.textContent : 'Submit Application';
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+            }
+            
+            const fullName = document.getElementById('fullNameTeacher')?.value || '';
+            const email = document.getElementById('emailTeacher')?.value || '';
+            const phoneNumber = document.getElementById('phoneNumberTeacher')?.value || '';
+            const nationality = document.getElementById('nationalityTeacher')?.value || '';
+            const resumeUrl = document.getElementById('resumeUrlTeacher')?.value || '';
+
+            try {
+                const response = await fetch('https://formspree.io/f/xlgyvvlz', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fullName,
+                        email,
+                        phoneNumber,
+                        nationality,
+                        resumeUrl,
+                        sourcePage: 'careervn.html'
+                    })
+                });
+
+                if (response.ok) {
+                    alert('Thank you for your application! We will review it and get back to you soon.');
+                    teacherForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error("Error submitting application: ", error);
+                alert('An error occurred. Please try again later or contact us directly.');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            }
         });
     });
 </script>

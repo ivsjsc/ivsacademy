@@ -466,9 +466,30 @@
             const bio = document.getElementById('bio').value;
             const expectation = document.getElementById('expectation').value; // Get the new expectation field value
             const resumeUrl = document.getElementById('resumeUrl').value;
-            const photoUrl = document.getElementById('photoUrl').value;
+            const photoUrl = document.getElementById('photoUrl').value;             try {
+                // Post to Formspree
+                const response = await fetch('https://formspree.io/f/xlgyvvlz', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        fullName,
+                        email,
+                        phoneNumber,
+                        nationality,
+                        qualification,
+                        experience,
+                        subjects: subjects.join(', '),
+                        bio,
+                        expectation,
+                        resumeUrl,
+                        photoUrl
+                    })
+                });
 
-            try {
+                if (!response.ok) {
+                    throw new Error('Failed to submit application to Formspree');
+                }
+
                 const googleFormBaseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd_TJ-EstYhFVSEAHGzqG-36dsbkdxvYRuGHiCi5PvgUICjnA/viewform?usp=pp_url";
                 const prefilledFormUrl = `${googleFormBaseUrl}` +
                     `&entry.1517655153=${encodeURIComponent(fullName)}` +
@@ -485,7 +506,7 @@
             } catch (error) {
                 console.error("Error submitting application: ", error);
                 showModal('application_error_message'); // Use key for message
-            } finally {
+            }   } finally {
                 hideLoadingSpinner();
             }
         });
