@@ -66,14 +66,26 @@ const IVSFooterController = {
             };
 
             const target = form.getAttribute('action') || form.dataset.apiEndpoint || '/api/newsletter/subscribe';
+            let bodyContent;
+            let headers = { 'Accept': 'application/json' };
+            if (target.indexOf('formspree.io') !== -1) {
+                const params = new URLSearchParams();
+                Object.entries(payload).forEach(([k, v]) => params.append(k, v));
+                bodyContent = params;
+                headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            } else {
+                bodyContent = JSON.stringify(payload);
+                headers['Content-Type'] = 'application/json';
+            }
+
             const res = await fetch(target, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                headers: headers,
+                body: bodyContent
             });
             const result = await res.json().catch(() => ({}));
 
-            if (!res.ok || !result.success) {
+            if (!res.ok || (target.indexOf('formspree.io') === -1 && !result.success)) {
                 throw new Error(result.error || 'Server error.');
             }
 

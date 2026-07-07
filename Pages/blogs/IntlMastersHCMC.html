@@ -636,13 +636,21 @@
 
                     // Decide where to post: Netlify expects POST to '/' for forms to be picked up
                     const targetAction = (fabElements.newsletterForm.getAttribute('action') || '/');
-
                     const fetchOptions = {
                         method: 'POST',
                         body: formData
                     };
 
-                    const response = await fetch(targetAction, fetchOptions);
+                    let response = await fetch(targetAction, fetchOptions);
+                    const fallbackAction = fabElements.newsletterForm.getAttribute('data-fallback-action');
+                    if (!response.ok && fallbackAction) {
+                        response = await fetch(fallbackAction, {
+                            method: 'POST',
+                            headers: { 'Accept': 'application/json' },
+                            body: formData
+                        });
+                    }
+
                     if (response.ok) {
                         fabElements.newsletterMessage.textContent = translations.success;
                         fabElements.newsletterMessage.className = 'text-sm mt-3 text-green-500 dark:text-green-400';

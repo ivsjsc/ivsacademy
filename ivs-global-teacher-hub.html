@@ -468,22 +468,26 @@
             const resumeUrl = document.getElementById('resumeUrl').value;
             const photoUrl = document.getElementById('photoUrl').value;             try {
                 // Post to Formspree
+                const params = new URLSearchParams();
+                params.append('fullName', fullName);
+                params.append('email', email);
+                params.append('phoneNumber', phoneNumber);
+                params.append('nationality', nationality);
+                params.append('qualification', qualification);
+                params.append('experience', String(experience));
+                params.append('subjects', subjects.join(', '));
+                params.append('bio', bio);
+                params.append('expectation', expectation);
+                params.append('resumeUrl', resumeUrl);
+                params.append('photoUrl', photoUrl);
+
                 const response = await fetch('https://formspree.io/f/xlgyvvlz', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        fullName,
-                        email,
-                        phoneNumber,
-                        nationality,
-                        qualification,
-                        experience,
-                        subjects: subjects.join(', '),
-                        bio,
-                        expectation,
-                        resumeUrl,
-                        photoUrl
-                    })
+                    headers: { 
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Accept': 'application/json'
+                    },
+                    body: params.toString()
                 });
 
                 if (!response.ok) {
