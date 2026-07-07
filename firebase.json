@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "webapp-dist",
+    "public": ".",
     "site": "ivsacademy",
     "ignore": [
       "firebase.json",
