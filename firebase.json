@@ -15,7 +15,27 @@
       "**/*.sh",
       "**/*.bat",
       "**/*.py",
-      "**/*.exe"
+      "**/*.exe",
+      "firebase-service-account.json"
+    ],
+    "redirects": [
+      { "source": "/Pages/webdesign.html", "destination": "https://ivstech.store/web-design", "type": 301 },
+      { "source": "/Pages/tech_devices.html", "destination": "https://ivstech.store/devices", "type": 301 },
+      { "source": "/Pages/apps/ivsapps.html", "destination": "https://ivstech.store/apps", "type": 301 },
+      { "source": "/Pages/apps/ivscentercare.html", "destination": "https://ivstech.store/centercare", "type": 301 },
+      { "source": "/Pages/apps/ivskinderlink.html", "destination": "https://ivstech.store/kinderlink", "type": 301 },
+      { "source": "/Pages/apps/ivsquicktest.html", "destination": "https://ivstech.store/quicktest", "type": 301 },
+      { "source": "/Pages/ivscelestech.html", "destination": "https://ivstech.store/", "type": 301 },
+      { "source": "/solutions.html", "destination": "https://ivstech.store/solutions", "type": 301 },
+      { "source": "/Pages/edtech.html", "destination": "https://ivstech.store/", "type": 301 },
+      { "source": "/Pages/learningcare.html", "destination": "https://ivstech.store/lms", "type": 301 },
+      { "source": "/Pages/consulting.html", "destination": "/consulting.html", "type": 301 },
+      { "source": "/Pages/education.html", "destination": "/education.html", "type": 301 },
+      { "source": "/Pages/ivslanguages.html", "destination": "/education.html", "type": 301 },
+      { "source": "/Pages/education-partnership.html", "destination": "/education.html", "type": 301 },
+      { "source": "/Pages/international-teachers.html", "destination": "/ivs-global-teacher-hub.html", "type": 301 },
+      { "source": "/served_index.html", "destination": "/", "type": 301 },
+      { "source": "/served_index_after.html", "destination": "/", "type": 301 }
     ],
     "rewrites": [
       {
@@ -27,8 +47,8 @@
         "destination": "/Pages/ivstech.html"
       },
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/webapp/**",
+        "destination": "/webapp/dist/index.html"
       }
     ]
   }

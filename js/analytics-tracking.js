@@ -5,43 +5,112 @@
 
 class AnalyticsManager {
     constructor() {
-        this.gaId = 'G-XXXXXXXXXX'; // Replace with actual GA4 ID
+        // Cấu hình GA4 property ID (hoặc đọc từ window.IVS_GA_ID)
+        this.gaId = window.IVS_GA_ID || 'G-XXXXXXXXXX'; 
         this.events = [];
         this.userSession = this.initializeSession();
         this.initialize();
     }
 
     initialize() {
-        this.loadGoogleAnalytics();
+        if (this.gaId !== 'G-XXXXXXXXXX') {
+            this.loadGoogleAnalytics();
+        } else {
+            // Safe stub if GA4 ID is placeholder
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+        }
         this.setupEventTracking();
+        this.setupEcosystemTracking();
         this.trackPageViews();
-        this.setupPerformanceMonitoring();
-        this.initializeEducationalMetrics();
     }
 
     /**
-     * Load Google Analytics 4
+     * Load Google Analytics 4 with Cross-Domain Measurement
      */
     loadGoogleAnalytics() {
-        // Load GA4 script
         const script = document.createElement('script');
         script.async = true;
         script.src = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`;
         document.head.appendChild(script);
 
-        // Initialize gtag
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
+        
+        // Configure GA4 with Cross-Domain measurement between ivsacademy.edu.vn and ivstech.store
         gtag('config', this.gaId, {
-            custom_map: {
-                'custom_parameter_1': 'educational_level',
-                'custom_parameter_2': 'course_category',
-                'custom_parameter_3': 'learning_progress'
-            }
+            'linker': {
+                'domains': ['ivsacademy.edu.vn', 'ivstech.store']
+            },
+            'anonymize_ip': true
         });
 
         window.gtag = gtag;
+    }
+
+    /**
+     * Setup Ecosystem Navigation & Form Submission Event Listeners
+     */
+    setupEcosystemTracking() {
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (!link) return;
+
+            const href = link.getAttribute('href') || '';
+            const linkText = link.innerText.trim();
+
+            if (href.includes('ivstech.store')) {
+                this.trackEcosystemNavigation({
+                    source_site: 'ivsacademy.edu.vn',
+                    target_site: 'ivstech.store',
+                    placement: link.closest('header') ? 'header' : link.closest('footer') ? 'footer' : 'body',
+                    link_text: linkText,
+                    link_url: href
+                });
+            } else if (href.includes('#contact')) {
+                this.trackEvent('education_consultation_click', {
+                    placement: link.closest('header') ? 'header' : 'hero',
+                    link_text: linkText
+                });
+            }
+        });
+
+        // Form submission listener
+        const form = document.getElementById('education-consultation-form') || document.getElementById('contact-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                const isValid = form.checkValidity();
+                if (isValid) {
+                    this.trackEvent('education_form_submit', {
+                        form_id: form.id,
+                        service_selected: form.querySelector('[name="service_interest"]')?.value || 'N/A'
+                    });
+                } else {
+                    this.trackEvent('form_submit_error', {
+                        form_id: form.id,
+                        reason: 'validation_failed'
+                    });
+                }
+            });
+        }
+    }
+
+    /**
+     * Track ecosystem cross-domain navigation event
+     */
+    trackEcosystemNavigation(params) {
+        this.trackEvent('ecosystem_navigation', params);
+        this.trackEvent('academy_to_tech_click', params);
+    }
+
+    /**
+     * Generic Event Tracker
+     */
+    trackEvent(eventName, eventParams = {}) {
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, eventParams);
+        }
     }
 
     /**
