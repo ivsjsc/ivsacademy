@@ -48,7 +48,7 @@
       },
       {
         "source": "/webapp/**",
-        "destination": "/webapp/dist/index.html"
+        "destination": "/webapp-dist/index.html"
       }
     ]
   }
