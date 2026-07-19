@@ -8,19 +8,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        
-        <!-- Mobile Menu Open Button -->
-        <button aria-controls="ivs-mobile-menu-panel" aria-expanded="false" aria-haspopup="true" aria-label="Mở menu di động" class="md:hidden inline-flex items-center justify-center p-2 rounded-xl text-neutral-300 hover:text-ivs-accent focus:outline-none focus:ring-2 focus:ring-ivs-accent transition-colors" id="mobile-menu-open-btn" type="button">
-            <svg fill="none" height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-            </svg>
-        </button>
-
         <!-- Brand / Logo -->
         <a aria-label="IVS JSC Homepage" class="flex-shrink-0 flex items-center space-x-3 group" href="/index.html">
             <img alt="IVS JSC Logo" class="h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105" onerror="this.onerror=null; this.src='https://placehold.co/40x40/1f2937/ffffff?text=IVS';" src="/images/logo/logo.svg"/>
             <span class="hidden sm:inline text-lg md:text-xl font-bold tracking-wide text-white group-hover:text-ivs-accent transition-colors">IVS <span class="text-ivs-accent">JSC</span></span>
         </a>
+
+        <!-- Mobile header actions: language selector followed by the existing menu trigger -->
+        <div class="mobile-header-actions ml-auto flex items-center gap-2 md:hidden">
+            <div class="relative" id="mobile-lang-container">
+                <button aria-controls="mobile-lang-dropdown" aria-expanded="false" aria-haspopup="menu" aria-label="Chọn ngôn ngữ" class="mobile-language-toggle flex h-11 min-w-11 items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-2.5 text-neutral-200 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-ivs-accent" id="mobile-lang-main-btn" type="button">
+                    <i aria-hidden="true" class="fas fa-globe text-base"></i>
+                    <span class="text-sm font-semibold" id="mobile-lang-main-label">VI</span>
+                    <i aria-hidden="true" class="fas fa-chevron-down text-[10px] text-neutral-400"></i>
+                </button>
+                <div aria-labelledby="mobile-lang-main-btn" class="hidden absolute right-0 mt-2 w-44 overflow-hidden rounded-xl border border-white/15 bg-[#0F172A] py-2 text-white shadow-2xl backdrop-blur-lg" id="mobile-lang-dropdown" role="menu">
+                    <button class="lang-option flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-white/10 focus:bg-white/10 focus:outline-none" data-lang="vi" role="menuitem" type="button">
+                        <span aria-hidden="true" class="flag-circle flag-circle-sm"><img alt="" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=VI';" src="/images/flags/vn.png"/></span>
+                        <span><span class="font-semibold">VI</span> <span class="text-neutral-300">— Tiếng Việt</span></span>
+                    </button>
+                    <button class="lang-option flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-white/10 focus:bg-white/10 focus:outline-none" data-lang="en" role="menuitem" type="button">
+                        <span aria-hidden="true" class="flag-circle flag-circle-sm"><img alt="" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=EN';" src="/images/flags/en.png"/></span>
+                        <span><span class="font-semibold">EN</span> <span class="text-neutral-300">— English</span></span>
+                    </button>
+                    <button class="lang-option flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-white/10 focus:bg-white/10 focus:outline-none" data-lang="zh" role="menuitem" type="button">
+                        <span aria-hidden="true" class="flag-circle flag-circle-sm"><img alt="" onerror="this.onerror=null;this.src='https://placehold.co/36x36/1f2937/ffffff?text=ZH';" src="/images/flags/zh.png"/></span>
+                        <span><span class="font-semibold">中文</span> <span class="text-neutral-300">— 中文</span></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Open Button -->
+            <button aria-controls="ivs-mobile-menu-panel" aria-expanded="false" aria-haspopup="true" aria-label="Mở menu di động" class="inline-flex h-11 w-11 items-center justify-center rounded-xl text-neutral-300 hover:text-ivs-accent focus:outline-none focus:ring-2 focus:ring-ivs-accent transition-colors" id="mobile-menu-open-btn" type="button">
+                <svg fill="none" height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+            </button>
+        </div>
 
         <!-- Desktop Navigation Bar -->
         <nav id="main-navigation" class="hidden md:flex items-center space-x-1 lg:space-x-2" role="navigation" aria-label="Main navigation">
@@ -217,6 +241,7 @@
         function openMobileMenu(e) {
             if (e) e.preventDefault();
             if (mobileMenuState.isOpen) return;
+            if (typeof closeLanguageDropdowns === 'function') closeLanguageDropdowns();
             setMobileMenuState(true);
         }
 
@@ -265,57 +290,118 @@
             });
         });
 
-        // Desktop language toggle
-        addOnce(document.getElementById('lang-main-btn'), 'click', function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            const dd = document.getElementById('lang-dropdown');
-            const btn = document.getElementById('lang-main-btn');
-            if (!dd || !btn) return;
-            const isOpen = !dd.classList.contains('hidden');
-            dd.classList.toggle('hidden', isOpen);
-            btn.setAttribute('aria-expanded', String(!isOpen));
-        });
+        function ensureLanguageSystem() {
+            if (typeof window.changeLanguage === 'function') return Promise.resolve();
+            if (window.__ivsLanguageScriptPromise) return window.__ivsLanguageScriptPromise;
 
-        // Close desktop lang dropdown on outside click
-        addOnce(document, 'click', function(e){
-            const dd = document.getElementById('lang-dropdown');
-            const btn = document.getElementById('lang-main-btn');
-            if (!dd || !btn) return;
-            if (!dd.classList.contains('hidden') && !dd.contains(e.target) && !btn.contains(e.target)) {
-                dd.classList.add('hidden');
-                btn.setAttribute('aria-expanded', 'false');
-            }
-        });
+            var existingLanguageScript = document.querySelector('script[src$="js/language.js"]');
+            if (existingLanguageScript) return Promise.resolve();
 
-        // Update desktop lang UI
-        function updateDesktopLangUI(lang) {
-            const flag = document.getElementById('lang-main-flag');
-            const label = document.getElementById('lang-main-label');
-            if (flag) flag.src = '/images/flags/' + (lang === 'vi' ? 'vn' : lang) + '.png';
-            if (label) label.textContent = (lang === 'vi' ? 'VI' : (lang === 'zh' ? '中文' : 'EN'));
+            window.__ivsLanguageScriptPromise = new Promise(function(resolve) {
+                var languageScript = document.createElement('script');
+                languageScript.src = '/js/language.js';
+                languageScript.onload = resolve;
+                languageScript.onerror = resolve;
+                document.head.appendChild(languageScript);
+            });
+            return window.__ivsLanguageScriptPromise;
         }
 
-        // Attach click listeners to language options
+        var languageSystemReady = ensureLanguageSystem();
+
+        var languageControls = [
+            { containerId: 'desktop-lang-container', buttonId: 'lang-main-btn', dropdownId: 'lang-dropdown', labelId: 'lang-main-label' },
+            { containerId: 'mobile-lang-container', buttonId: 'mobile-lang-main-btn', dropdownId: 'mobile-lang-dropdown', labelId: 'mobile-lang-main-label' }
+        ];
+
+        function getLanguageLabel(lang) {
+            return lang === 'vi' ? 'VI' : (lang === 'zh' ? '中文' : 'EN');
+        }
+
+        function closeLanguageDropdowns(exceptId) {
+            languageControls.forEach(function(control) {
+                if (control.dropdownId === exceptId) return;
+                var dropdown = document.getElementById(control.dropdownId);
+                var button = document.getElementById(control.buttonId);
+                if (dropdown) dropdown.classList.add('hidden');
+                if (button) button.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        function updateLanguageUI(lang) {
+            var normalizedLang = ['vi', 'en', 'zh'].includes(lang) ? lang : 'vi';
+            var flag = document.getElementById('lang-main-flag');
+            if (flag) flag.src = '/images/flags/' + (normalizedLang === 'vi' ? 'vn' : normalizedLang) + '.png';
+
+            languageControls.forEach(function(control) {
+                var label = document.getElementById(control.labelId);
+                if (label) label.textContent = getLanguageLabel(normalizedLang);
+            });
+
+            document.querySelectorAll('.lang-option, .lang-toggle-btn').forEach(function(option) {
+                var isActive = option.dataset.lang === normalizedLang;
+                option.classList.toggle('active-language', isActive);
+                option.setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+        }
+
+        languageControls.forEach(function(control) {
+            var button = document.getElementById(control.buttonId);
+            var dropdown = document.getElementById(control.dropdownId);
+            if (!button || !dropdown) return;
+
+            addOnce(button, 'click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var isOpen = !dropdown.classList.contains('hidden');
+                if (!isOpen) closeMobileMenu();
+                closeLanguageDropdowns(isOpen ? undefined : control.dropdownId);
+                dropdown.classList.toggle('hidden', isOpen);
+                button.setAttribute('aria-expanded', String(!isOpen));
+                if (!isOpen) {
+                    var firstOption = dropdown.querySelector('[role="menuitem"]');
+                    if (firstOption) firstOption.focus();
+                }
+            });
+
+            addOnce(button, 'keydown', function(e) {
+                if (e.key !== 'ArrowDown') return;
+                e.preventDefault();
+                if (dropdown.classList.contains('hidden')) button.click();
+                var firstOption = dropdown.querySelector('[role="menuitem"]');
+                if (firstOption) firstOption.focus();
+            });
+        });
+
         function bindLangButtons() {
-            document.querySelectorAll('.lang-option, .lang-toggle-btn').forEach(function(btn){
+            document.querySelectorAll('.lang-option, .lang-toggle-btn').forEach(function(btn) {
                 if (btn.dataset.ivsLangAttached) return;
-                btn.addEventListener('click', function(e){
+                btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const lang = btn.getAttribute('data-lang');
+                    var lang = btn.getAttribute('data-lang');
                     if (!lang) return;
-                    if (window.changeLanguage && typeof window.changeLanguage === 'function') {
-                        window.changeLanguage(lang).then(function(){
-                            updateDesktopLangUI(lang);
-                            const dd = document.getElementById('lang-dropdown');
-                            if (dd) dd.classList.add('hidden');
-                        }).catch(function(err){
-                            console.error('Language change failed', err);
-                        });
-                    } else {
+                    var sourceDropdown = btn.closest('[role="menu"]');
+                    var completeLanguageChange = function() {
+                        updateLanguageUI(lang);
+                        closeLanguageDropdowns();
+                        if (sourceDropdown) {
+                            var sourceControl = languageControls.find(function(control) {
+                                return control.dropdownId === sourceDropdown.id;
+                            });
+                            var sourceButton = sourceControl && document.getElementById(sourceControl.buttonId);
+                            if (sourceButton) sourceButton.focus();
+                        }
+                    };
+                    languageSystemReady.then(function() {
+                        if (window.changeLanguage && typeof window.changeLanguage === 'function') {
+                            return window.changeLanguage(lang).then(completeLanguageChange);
+                        }
                         document.documentElement.lang = lang;
-                        updateDesktopLangUI(lang);
-                    }
+                        completeLanguageChange();
+                    }).catch(function() {
+                        document.documentElement.lang = lang;
+                        completeLanguageChange();
+                    });
                 });
                 btn.dataset.ivsLangAttached = '1';
             });
@@ -323,10 +409,38 @@
 
         bindLangButtons();
 
+        if (!document.documentElement.dataset.ivsLanguageDropdownEventsAttached) {
+            document.addEventListener('click', function(e) {
+                var clickedInsideLanguageControl = languageControls.some(function(control) {
+                    var container = document.getElementById(control.containerId);
+                    return container && container.contains(e.target);
+                });
+                if (!clickedInsideLanguageControl) closeLanguageDropdowns();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key !== 'Escape') return;
+                var openControl = languageControls.find(function(control) {
+                    var dropdown = document.getElementById(control.dropdownId);
+                    return dropdown && !dropdown.classList.contains('hidden');
+                });
+                closeLanguageDropdowns();
+                var openButton = openControl && document.getElementById(openControl.buttonId);
+                if (openButton) openButton.focus();
+            });
+            window.addEventListener('languageChanged', function(e) {
+                updateLanguageUI(e.detail && e.detail.language);
+            });
+            document.documentElement.dataset.ivsLanguageDropdownEventsAttached = '1';
+        }
+
         try {
-            var initialLang = document.documentElement.lang || 'en';
-            updateDesktopLangUI(initialLang);
-        } catch (e) {}
+            var initialLang = window.langSystem && window.langSystem.currentLanguage;
+            if (!initialLang) initialLang = localStorage.getItem('userPreferredLanguage');
+            if (!initialLang) initialLang = document.documentElement.lang;
+            updateLanguageUI(initialLang);
+        } catch (e) {
+            updateLanguageUI('vi');
+        }
 
     })();
 </script>
@@ -591,6 +705,43 @@
     }
     .flag-circle img { width: 100%; height: 100%; object-fit: cover; }
     .flag-circle-sm { width: 26px; height: 26px; }
+
+    .lang-option.active-language,
+    .lang-toggle-btn.active-language {
+        background: rgba(255, 122, 24, 0.2);
+        color: #ffffff;
+        box-shadow: inset 3px 0 0 var(--ivs-accent);
+    }
+
+    @media (max-width: 767px) {
+        #ivs-main-header .mobile-header-actions {
+            margin-left: auto;
+            flex-shrink: 0;
+            gap: 8px;
+        }
+
+        #ivs-main-header .mobile-language-toggle,
+        #ivs-main-header #mobile-menu-open-btn {
+            min-width: 44px;
+            min-height: 44px;
+            height: 44px;
+        }
+
+        #ivs-main-header #mobile-menu-open-btn {
+            width: 44px;
+        }
+
+        #mobile-lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 11rem;
+            max-width: calc(100vw - 2rem);
+            max-height: calc(100dvh - 6rem);
+            overflow-y: auto;
+            z-index: 60;
+        }
+    }
 
     #ivs-mobile-menu-panel {
         position: fixed;
