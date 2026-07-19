@@ -119,6 +119,13 @@ const IVSHeaderController = {
         
         window.addEventListener('scroll', window.debounce(() => this.onScroll(), 50), { passive: true });
         
+        // Close mobile menu when screen size becomes desktop size (>= 768px)
+        window.addEventListener('resize', window.debounce(() => {
+            if (window.innerWidth >= 768) {
+                this.toggleMobileMenu(false);
+            }
+        }, 100));
+        
         // Mobile Menu
         if (this.mobileOpenBtn) this.mobileOpenBtn.addEventListener('click', (e) => { e.preventDefault(); this.toggleMobileMenu(true); });
         if (this.mobileCloseBtn) this.mobileCloseBtn.addEventListener('click', (e) => { e.preventDefault(); this.toggleMobileMenu(false); });
