@@ -232,6 +232,26 @@ async function loadHomeGlobalTeacherHubSection() {
     }
 }
 
+async function loadHomeManagementAppsSection() {
+    const isHome = /^\/(?:index\.html)?$/.test(window.location.pathname);
+    if (!isHome || document.getElementById('home-management-apps-placeholder')) return;
+
+    const main = document.getElementById('main-content') || document.querySelector('main');
+    if (!main) return;
+
+    const placeholder = document.createElement('div');
+    placeholder.id = 'home-management-apps-placeholder';
+
+    const serviceDirectory = document.getElementById('service-directory');
+    if (serviceDirectory && serviceDirectory.parentNode) {
+        serviceDirectory.insertAdjacentElement('afterend', placeholder);
+    } else {
+        main.prepend(placeholder);
+    }
+
+    await loadAndInject('/components/home-management-apps.html?v=20260917.1', 'home-management-apps-placeholder');
+}
+
 /**
  * Loads common components (header, fab-container, footer) and initializes their controllers.
  */
@@ -341,6 +361,13 @@ async function loadCommonComponents() {
         await loadTeacherHubIvsTechServices();
     } catch (err) {
         window.componentLog('Failed to inject Teacher Hub IVS TECH services: ' + (err && err.message ? err.message : err), 'warn');
+    }
+
+    // Surface the recommended management apps directly after the service directory on the homepage.
+    try {
+        await loadHomeManagementAppsSection();
+    } catch (err) {
+        window.componentLog('Failed to inject homepage management apps section: ' + (err && err.message ? err.message : err), 'warn');
     }
 
     // Surface Global Teacher Hub on the main homepage, before the consultation form.
