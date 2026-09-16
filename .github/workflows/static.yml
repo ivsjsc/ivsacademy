@@ -54,10 +54,10 @@ jobs:
         uses: actions/configure-pages@v5
         continue-on-error: true
 
-      - name: Setup Node 18 for webapp build
+      - name: Setup Node 22 for webapp build
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22'
 
       - name: Show Node & npm versions
         run: |
