@@ -42,12 +42,12 @@ jobs:
 
           # Force deployable HTML to reference the current component-loader cache key.
           while IFS= read -r -d '' file; do
-            sed -E -i 's#/ai/js/loadComponents\.js\?v=[0-9.]+#/ai/js/loadComponents.js?v=20260917.2#g' "$file"
+            sed -E -i 's#/ai/js/loadComponents\.js\?v=[0-9.]+#/ai/js/loadComponents.js?v=20260917.3#g' "$file"
           done < <(find . -type f -name '*.html' -not -path './.git/*' -print0)
 
           # Force the homepage loader to fetch the latest management-app cards.
           if [ -f "ai/js/loadComponents.js" ]; then
-            sed -E -i 's#/components/home-management-apps\.html\?v=[0-9.]+#/components/home-management-apps.html?v=20260917.2#g' ai/js/loadComponents.js
+            sed -E -i 's#/components/home-management-apps\.html\?v=[0-9.]+#/components/home-management-apps.html?v=20260917.3#g' ai/js/loadComponents.js
           fi
 
           echo "Remaining legacy Teacher Hub links in deployable content:"
